@@ -1,7 +1,21 @@
 # Thinkers 700 Content Format Instructions
-## Deep Enrichment Standard (2024-12-23 onwards)
+## Deep Enrichment Standard (2024-12-30 onwards)
 
 This document defines the required format and content standards for all philosopher individual pages in the Thinkers 700 project.
+
+---
+
+## 0. MANDATORY: Gold Standard Reference
+
+> [!IMPORTANT]
+> **新規ページ作成前に必ず C. Wright Mills のページを全体確認すること**
+
+**Gold Standard**: [C. Wright Mills](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mills-c-wright.html)
+
+このページが、デザイン・フォーマット・内容・クオリティ・ボリュームの**最低ライン**。
+- ヘッダー：名前/年の後に「一言（名言＋人物説明）」を入れる
+- Section 0：quote-box → 説明 → insight-box → **現代的アナロジー（IT風の掴み）** → 意義
+- 全セクションでこのページと同等以上の深さが必要
 
 ---
 
@@ -10,10 +24,11 @@ This document defines the required format and content standards for all philosop
 Every philosopher page must contain 12 sections. There are two "Grades" of enrichment:
 
 ### A. Standard Version (Perfect Format)
-**Benchmark:** [Harriet Taylor Mill](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mill-harriet-taylor.html)
-- **Header**: Standard indigo/purple theme + "知のOS標準バッジ" (or thematic banner).
+**Benchmark:** [C. Wright Mills](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mills-c-wright.html) ← **新ゴールドスタンダード**
+- **Header**: Standard theme + 名言一言 + 人物説明。
 - **Core Additions**: 
     - **Section 0b (Major Works)**: Included before Section 1.
+    - **Section 0**: Must include **modern IT/tech analogy** as a hook (e.g., "社会のデバッグ", "ソースコード分析")
     - **Section 3 (Kernel)**: Must include a **Quote Box** within the code explanation.
     - **Section 6 (Analogy)**: **Exactly 3 analogies** (1 classic, 1 modern, 1 unique/metaphorical).
     - **Section 8 (Application)**: Must include **Side Effects (副作用)** subsection.

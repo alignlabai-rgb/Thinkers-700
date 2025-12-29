@@ -153,10 +153,51 @@ description: Thinkers-700 Deep Enrichment Rich Page Creation Guide
 
 ## ベンチマーク・サンプリング
 
-1. **特別編（Special Edition）**: [John Stuart Mill](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mill-john-stuart.html)
-   - 最高密度の情報、リサーチ、視覚効果を実装。
-2. **標準版（Standard Perfect Format）**: [Harriet Taylor Mill](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mill-harriet-taylor.html)
-   - 12セクションすべての品質基準を満たした正規普及版。
+> [!IMPORTANT]
+> **C・ライト・ミルズが絶対的なゴールドスタンダード**
+> 
+> **新規ページ作成時は、必ず最初に以下のファイルを確認すること。**
+> このページのデザイン、フォーマット、内容、クオリティ、ボリュームが最低ラインである。
+
+1. **ゴールドスタンダード（Gold Standard）**: [C. Wright Mills](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mills-c-wright.html)
+   - **必読**: 新規ページ作成前に必ず全体を確認すること。
+   - ヘッダー：名前/年の後に「一言（名言＋人物説明）」あり。
+   - Section 0：quote-box → 説明 → insight-box → **現代的アナロジー（掴み）** → 意義の順。
+   - 全12セクションの構造、ボリューム、質がこのページと同等以上であること。
+
+2. **特別編（Special Edition）**: [John Stuart Mill](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mill-john-stuart.html)
+   - 最高密度の情報、リサーチ、視覚効果を実装。ゴールドスタンダードのさらに上を目指す場合の参考。
+
+---
+
+## 視認性・可読性ルール（NON-NEGOTIABLE）
+
+> [!CAUTION]
+> **視認性が低いページは絶対に作成しないこと**
+> 
+> どれだけインパクトのあるデザインでも、**読めなければ価値ゼロ**。
+> 南方熊楠ページのような視認性の低いスタイルは新規ページでは禁止。
+
+### 必須要件
+| 項目 | 要件 |
+|------|------|
+| テキスト色 | 背景とのコントラスト比 **4.5:1以上**（WCAG AA） |
+| 本文サイズ | 最小 **1rem（16px相当）** |
+| 行間 | 最小 **1.6** |
+| リンク | 下線または明確な色差で識別可能 |
+
+### 色の自由度（推奨事項）
+- **アクセントカラーは積極的に変えてよい**（むしろ歓迎）
+- 思想家ごとにテーマカラーを設定することでインパクト向上
+- ただし、**本文テキストは常に読みやすく**（白系 on 暗背景、暗色 on 明背景）
+
+### 禁止パターン
+- ❌ 薄いグレー文字 on 暗い背景
+- ❌ 彩度が高すぎる背景 + 低コントラストのテキスト
+- ❌ 過度なブラー効果でテキストが見えにくくなる
+- ❌ フォントサイズ 0.9rem以下の本文
+
+---
 
 ## 参照ファイル
 
@@ -164,3 +205,6 @@ description: Thinkers-700 Deep Enrichment Rich Page Creation Guide
 - スタイル: `style.css`
 - ガイドライン: `.agent/workflows/content-format.md`
 
+---
+
+*Last updated: 2024-12-30*
