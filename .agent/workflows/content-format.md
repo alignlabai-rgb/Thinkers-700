@@ -101,6 +101,14 @@ When creating/editing a philosopher page:
 "school": ["哲学OS", "科学OS"],
 ```
 
+### Years Field Format (IMPORTANT)
+In `data.js`, the `years` field should use **era + location format**, NOT birth-death years:
+- ✅ Correct: `"years": "19世紀イギリス"`, `"years": "20世紀アメリカ"`, `"years": "古代ギリシア"`
+- ❌ Incorrect: `"years": "1806-1873"`, `"years": "1916-1962"`
+
+Birth-death years can be shown in the **HTML header** of the detail page (e.g., `John Stuart Mill (1806-1873)`), but `data.js` uses the era+location format for index display consistency.
+
+
 ### Available OS Types (The Canon 14)
 Always use these exact strings in `data.js` for consistent searching. The order reflects the priority in the Humanity OS Interface:
 
