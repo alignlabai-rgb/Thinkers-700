@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マーヴィン・ミンスキー - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0e7490 0%, #164e63 100%);
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+            color: #cffafe;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #67e8f9, #22d3ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px rgba(34, 211, 238, 0.3);
+        }
+
+        .section-card {
+            background: rgba(22, 78, 99, 0.85);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #67e8f9;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #67e8f9, transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: #a5f3fc;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: #a5f3fc;
+            text-decoration: none;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(34, 211, 238, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #67e8f9;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(8, 145, 178, 0.2));
+            border: 2px solid #22d3ee;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(34, 211, 238, 0.1);
+            border-left: 4px solid #22d3ee;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(250, 204, 21, 0.1);
+            border-left: 4px solid #facc15;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(103, 232, 249, 0.1);
+            border-left: 4px solid #67e8f9;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">技術OS</span>
+            <h1>マーヴィン・ミンスキー</h1>
+            <p class="en-name">Marvin Minsky (1927-2016)</p>
+            <p style="color: #a5f3fc; margin-top: 1rem; font-size: 1.1rem;">
+                「心とは、何も考えていない小さなエージェントたちの社会である。」</p>
+        </header>
+
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「脳は機械だ。極めて複雑だが、しかし機械だ。魂のような神秘的なものは必要ない。」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──『心の社会』</p>
+            </div>
+            <p>人工知能（AI）の父。彼は、人間の心や意識を「魔法」として崇めることをやめ、徹底的にエンジニアリングの対象として分解した。「心」という一つの塊があるのではなく、無数の単純な機能（エージェント）が相互作用することで、あたかも心があるかのように振る舞っているだけだという衝撃的なモデルを提示した。
+            </p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p><strong>知性は、愚かさの集合体から「創発」する。</strong></p>
+                <p>一つ一つは「積む」「動かす」といった単純なことしかできないエージェント（小さなロボット）が集まり、社会を形成することで、複雑な思考や感情が生まれる。これは、現在のニューラルネットワークやマルチエージェントシステムの基礎哲学であり、人間の脳の理解においても決定的なパラダイムシフトをもたらした。
+                </p>
+            </div>
+            <p>たとえるなら、彼は「脳という巨大企業の組織図を書いたコンサルタント」である。社長（自我）が命令しているのではなく、各部署（エージェント）の会議の結果が社長の言葉として出力されているだけだと看破した。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>The Society of Mind: Intelligence emerges from the interaction of non-intelligent agents.
+                        Frame Theory: Representing knowledge as data structures.
+                        Father of AI.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>心の社会（エージェントの集合体としての知能）。フレーム理論（知識表現の枠組み）。パーセプトロンの限界証明（AI冬の時代の引き金）。MIT AIラボ創設。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. インパクトの変革構造</div>
+            <div class="synthesis-step">
+                <span class="step-number">Before</span>
+                <p><strong>ホムンクルスモデル</strong><br>脳に「司令塔（小さな人間）」がいて、それが全てを制御しているという直感的な心の理解。</p>
+            </div>
+            <div class="synthesis-arrow">▼</div>
+            <div class="synthesis-step">
+                <span class="step-number">Transformation</span>
+                <p><strong>心の社会モデル</strong><br>司令塔を廃し、単純な機能を持つ多数のエージェントの相互作用モデルへ置き換える。</p>
+            </div>
+            <div class="synthesis-arrow">▼</div>
+            <div class="synthesis-result">
+                <strong>創発的知能観</strong><br>
+                知能は「ある/なし」ではなく、単純なパーツの組み合わせから段階的に立ち現れる現象となる。
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <h3 style="color: #67e8f9; margin-bottom: 1rem;">中心的な問い</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                心を持たない物質（機械）が集まることで、なぜ心（意味）が生まれるのか？
+            </p>
+
+            <h3 style="color: #67e8f9; margin-bottom: 1rem;">書き換えたコード</h3>
+            <div class="insight-box">
+                <p><code>Unified_Soul</code> ➔ <code>Society_of_Agents</code></p>
+                <p>統一的な「魂」という変数を削除し、多数の「エージェント」オブジェクトの相互作用関数として心を再定義する。</p>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h4 style="color: #22d3ee;">1. エージェント（Agents）</h4>
+                <p>心の構成単位。一つ一つは知能を持たず、特定の小さな仕事（例：色を見る、手を動かす）しかしない。これらが連携し、競合し、抑制し合うことで、複雑な行動が可能になる。</p>
+
+                <h4 style="color: #22d3ee;">2. フレーム理論（Frame Theory）</h4>
+                <p>人間が新しい状況を理解するとき、過去の経験（フレーム）を呼び出し、そのスロット（空白）に現在の情報を当てはめることで理解するという仮説。AIが常識を持つための重要なアプローチとなった。</p>
+
+                <h4 style="color: #22d3ee;">3. Kライン（K-lines）</h4>
+                <p>記憶の仕組み。情報を丸ごと保存するのではなく、「ある思考状態を再現するために、どのエージェントを活性化させればいいか」という配線パターン（Knowledge-lines）を保存する。</p>
+
+                <h4 style="color: #22d3ee;">4. 感情マシン（The Emotion Machine）</h4>
+                <p>感情は理性の対極にある神秘的なものではなく、脳の動作モードを切り替えるための「思考の一種」である。例えば「怒り」は、問題を解決するために攻撃的なリソースを動員するモードに過ぎない。</p>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>⚠️ バグと警告（実装上の注意点）</strong></p>
+                <ol>
+                    <li><strong>コネクショニズム批判の副作用</strong>：著書『パーセプトロン』でニューラルネットワークの限界を数学的に証明しすぎたため、AI研究の資金を凍結させ、「AIの冬」を招いてしまった（後に自己批判）。
+                    </li>
+                    <li><strong>身体性の軽視</strong>：思考を記号操作として捉える傾向が強く、身体や環境との相互作用（アフォーダンス）を軽視しがちという批判がある。</li>
+                    <li><strong>還元主義への反発</strong>：「愛」や「意識」まで機械的に説明しようとするため、ヒューマニズムの立場からは「人間を侮辱している」と反発されることが多い。</li>
+                    <li><strong>ルールベースの限界</strong>：「常識」をすべてルールとして書き下すことの難しさ（フレーム問題）に直面し、現代の深層学習アプローチに主役を譲った側面がある。</li>
+                    <li><strong>優生思想的発言</strong>：晩年、知能増強や寿命延長に関して、一部でエリート主義的・優生学的な発言と取られる言動があり、物議を醸した。</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説</div>
+            <ul>
+                <li><strong>脱・司令塔思考</strong>：「統括する誰か（自己）」を探すのをやめ、システムの相互作用そのものに目を向ける。</li>
+                <li><strong>デバッグ思考</strong>：自分の感情や思考の不具合を、「エージェント間の競合」や「無限ループ」として冷静にデバッグする。</li>
+                <li><strong>常識のデータベース化</strong>：暗黙知である「常識」を明示的なデータ構造（フレーム）として記述・利用する。</li>
+                <li><strong>多重記述能力</strong>：一つの物事を一つの方法だけで理解せず、複数の視点（エージェント）から記述することで理解を強固にする。</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+
+            <h3 style="color: #a5f3fc; margin-bottom: 1rem;">Roots (継承)</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">
+                    <strong>ジョン・フォン・ノイマン</strong><br>
+                    プリンストン高等研究所での同僚。コンピュータアーキテクチャの基礎を学んだ。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>アラン・チューリング</strong><br>
+                    計算可能性理論とチューリングマシンの概念。ミンスキーの博士論文はニューラルネットに関するものだった。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>ウォーレン・マカロック & ピッツ</strong><br>
+                    世界初のニューロンモデルの提唱者。彼らの論文に影響を受け、神経回路網の研究を志した。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>ジャン・ピアジェ</strong><br>
+                    発達心理学者。子供の認知発達段階の研究は、「心の社会」が段階的に成長するというモデルに影響を与えた。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>フロイト</strong><br>
+                    無意識の構造を分析した点において、ミンスキーは彼を一種の「プロト・プログラマー」として評価していた。
+                </li>
+            </ul>
+
+            <h3 style="color: #a5f3fc; margin-top: 2rem; margin-bottom: 1rem;">Fruits (派生)</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">
+                    <strong>シーモア・パサート</strong><br>
+                    盟友。「心の社会」理論を共同で練り上げ、教育用言語LOGOや「コンストラクショニズム」教育を提唱。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>レイ・カーツワイル</strong><br>
+                    フューチャリスト。ミンスキーの教え子であり、シンギュラリティ（技術的特異点）の思想的バックボーンを継承。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>ダニー・ヒリス</strong><br>
+                    並列コンピュータ「コネクション・マシン」の開発者。「心の社会」をハードウェアレベルで実装しようとした。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>ロドニー・ブルックス</strong><br>
+                    サブサンプション・アーキテクチャ（反射的な層の積み重ね）は、ミンスキーのエージェント理論のロボット版とも言える。
+                </li>
+                <li style="margin-bottom: 1rem;">
+                    <strong>パトリック・ウィンストン</strong><br>
+                    MIT AIラボの後継者。アーチの学習など、ミンスキーの理論を具体的な学習アルゴリズムへ展開。
+                </li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. アナロジーで理解する</div>
+            <p><strong>心の社会 ＝ 建設現場の作業員たち</strong></p>
+            <p>
+                家を建てる（知的な行動）とき、「家建て係」という一人の人間がいるわけではない。「レンガ積み係」「セメント係」「設計図読み係」といった専門のエージェントが無数にいて、それぞれは自分の単純な仕事しかできない。しかし、全体がうまく調整されると、立派な家が建つ。知能とはこの「現場全体の調整結果」のことである。
+            </p>
+            <p style="margin-top: 2rem;"><strong>フレーム ＝ 公的書類の「申請フォーム」</strong></p>
+            <p>
+                役所で「転居届」というフォーム（フレーム）をもらうと、そこには「氏名」「旧住所」「新住所」という空白（スロット）がある。私たちは新しい家（未知の状況）を見ても、このフォームを当てはめることで、「ここが玄関だな」「ここがキッチンだな」と瞬時に理解できる。デフォルト値（記入例）が入っているので、全部確認しなくても予測できる。
+            </p>
+            <p style="margin-top: 2rem;"><strong>Kライン ＝ スマートホームの「シーン設定」</strong></p>
+            <p>
+                「映画モード」ボタンを押すと、照明が暗くなり、プロジェクターが降り、カーテンが閉まる。これは個々の機器（エージェント）を直接操作しているのではなく、「映画を見る」という状態に必要なエージェントたちの活性化パターン（配線）を一括呼び出ししている。記憶とはこのスイッチのことだ。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 比較で浮き彫りにする</div>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; min-width: 500px;">
+                    <thead>
+                        <tr style="background: rgba(34, 211, 238, 0.2);">
+                            <th style="padding: 1rem; text-align: left;">特徴</th>
+                            <th style="padding: 1rem; text-align: left;">古典的AI（ミンスキー等）</th>
+                            <th style="padding: 1rem; text-align: left;">現代AI（深層学習）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>知識の表現</strong></td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>記号論理・フレーム</strong><br>人間が読めるルールや構造として記述（明示的）。
+                            </td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>ベクトル・重み</strong><br>人間には解読不能な数値の羅列として表現（分散表現）。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>アプローチ</strong></td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>トップダウン</strong><br>知能の構造を設計し、エージェントを配置する。
+                            </td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>ボトムアップ</strong><br>大量のデータから勝手に特徴を学習させる。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>得意分野</strong></td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>論理推論・計画</strong><br>数学の証明やパズル、チェスなど。
+                            </td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>パターン認識</strong><br>画像認識、翻訳、直感的な判断。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>説明可能性</strong></td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>高い（White Box）</strong><br>なぜその答えになったか追跡可能。
+                            </td>
+                            <td style="padding: 1rem; border-bottom: 1px solid rgba(34, 211, 238, 0.1);">
+                                <strong>低い（Black Box）</strong><br>中身が複雑すぎてブラックボックス化しやすい。
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理的課題</div>
+            <p><strong>実践的応用</strong></p>
+            <ul style="margin-bottom: 2rem;">
+                <li><strong>マルチエージェントシステム</strong>：交通管制や電力網など、中央指令なしに自律的に調整し合うシステムの設計。</li>
+                <li><strong>組織マネジメント</strong>：「誰か一人の天才リーダー」に頼るのではなく、多様な機能を持つチームが自律的に動く「心の社会」型組織の構築。</li>
+                <li><strong>教育工学</strong>：パサートのLOGOのように、子供たちに「考えることについて考えさせる」プログラミング教育（思考のデバッグ）。</li>
+                <li><strong>認知行動療法</strong>：自分のネガティブな感情を「暴走した一つのエージェント」として客観視し、他のエージェントで抑制・管理する。</li>
+                <li><strong>UXデザイン</strong>：ユーザーのメンタルモデル（フレーム）を予測し、それに合致したインターフェースを提供する。</li>
+                <li><strong>創造性の拡張</strong>：異なるフレーム（視点）を意図的に衝突させ、新しいアイデアを生み出す発想法。</li>
+            </ul>
+            <p><strong>倫理的課題</strong></p>
+            <ul>
+                <li><strong>AIの権利と責任</strong>：もしAIが「心の社会」を持ち、人間と同じように振る舞うなら、そこには人権が発生するのか？（ロボット法）</li>
+                <li><strong>人間の機械化</strong>：人間を単なる機械（エージェントの集合）と見なすことで、人間の尊厳や命の重さが軽視される恐れ。</li>
+                <li><strong>超知能の制御</strong>：人間を超える知能（シンギュラリティ）が生まれた時、人類はそれを制御できるのか、それとも支配されるのか。</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">9. 思考実験：ミンスキーと現在のAI</div>
+            <p>
+                ミンスキーが現代のChatGPTや画像生成AIを見たら、驚嘆しつつも、おそらく不満を漏らすだろう。「素晴らしい。でも、これは本当に『理解』しているのか？」と。
+            </p>
+            <p>
+                現在の主流（ディープラーニング）は、彼の批判した「単なる統計的な相関関係（確率）」の極致である。彼はAIが「意味」や「構造」を理解し、因果関係を説明できることを求めていた。今のAIは「空が青い」ことは知っているが、「なぜ青いのか」を物理法則から導き出しているわけではなく、単に大量のテキストから「空」と「青」の結びつきを学習したに過ぎない。
+            </p>
+            <p>
+                「これでは巨大なオウムだ」と彼は言うかもしれない。「真の知能とは、未知の状況に直面した時、過去のフレームを創造的に組み替えて対処する能力だ。膨大なデータを丸暗記することではない」。
+            </p>
+            <p>
+                しかし、同時にこうも言うだろう。「だが、この『愚かなエージェント（ニューロン）』の圧倒的な数の力が、量から質への転換（創発）を起こしつつあるのは認めよう。次のステップは、この統計的な怪物に、論理的な骨組み（シンボリックAI）を組み込むことだ。そうすれば、最強の『心の社会』が生まれるだろう」と。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 限界と批判的視点</div>
+            <ul>
+                <li><strong>記号接地問題（シンボルグラウンディング）</strong>
+                    <br>コンピュータの中の「記号（例：APPLE）」と、現実世界の「実体（リンゴ）」がどう結びつくのか説明できていないという批判。記号操作だけでは意味を理解したことにならない。
+                </li>
+                <li><strong>トップダウン設計の限界</strong>
+                    <br>人間がすべてエージェントやルールを設計するのは手間がかかりすぎるし、想定外の事態に弱い。現代のAIは、データから勝手にルールを見つける（ボトムアップ）方が効率的であることを証明した。
+                </li>
+                <li><strong>意識のハードプロブレムの回避</strong>
+                    <br>「クオリア（主観的な質感）」や「意識体験」といった哲学的な難問を、「それは錯覚だ」の一言で片付けてしまい、正面から答えていないという批判。
+                </li>
+                <li><strong>楽観的すぎる未来予測</strong>
+                    <br>「1970年代には人間並みのAIができる」といった予言は大外れし、AI研究に対する過度な期待と幻滅を繰り返させた責任がある。
+                </li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. おすすめのQ&A</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #67e8f9; font-size: 1.1rem;">Q. 「心は社会だ」ってどういう意味？</h3>
+                <p>A.
+                    あなたの中に「あなた」という一人の小人はいません。代わりに、「食べたい係」「眠りたい係」「仕事をしたい係」など、無数の小さなエージェントが騒いでいて、その時々で一番声の大きい係が主導権を握っている状態が「心」だということです。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #67e8f9; font-size: 1.1rem;">Q. AIはいつか人間を超えますか？</h3>
+                <p>A. ミンスキーは「イエス」と考えていました。脳が機械である以上、それを機械的に再現し、さらに性能を上げることは原理的に可能だと考えていたからです。ただし、それがいつになるかは誰にもわかりません。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #67e8f9; font-size: 1.1rem;">Q. 感情はAIに作れますか？</h3>
+                <p>A.
+                    はい、ミンスキーによれば感情もプログラム可能です。感情とは「思考の優先順位を変える特別なサブルーチン（例えば緊急回避モードとしての恐怖）」に過ぎないからです。感情を持つロボットこそが、本当に賢いロボットになると彼は考えました。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #67e8f9; font-size: 1.1rem;">Q. フレーム理論って役に立ってるの？</h3>
+                <p>A.
+                    今のAI（深層学習）の主役ではありませんが、オブジェクト指向プログラミングの「クラス」や、Webページの記述など、コンピュータサイエンスの至る所にその考え方は生きています。知識を構造化する基本テクニックです。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #67e8f9; font-size: 1.1rem;">Q. 彼は冷たい人だったんですか？</h3>
+                <p>A.
+                    人間を機械扱いするような発言で誤解されがちですが、実際にはピアノを弾き、ユーモアを愛し、多くの学生に慕われた魅力的な人物でした。彼は人間を機械に格下げしたのではなく、機械（物質）の可能性を人間レベルまで引き上げようとしたのです。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 関連用語集</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <strong style="color: #22d3ee;">エージェント（Agent）</strong>
+                    <p style="font-size: 0.9rem; color: #a5f3fc;">それ自体は知能を持たない、心の構成単位となる小さなプロセス。</p>
+                </div>
+                <div>
+                    <strong style="color: #22d3ee;">創発（Emergence）</strong>
+                    <p style="font-size: 0.9rem; color: #a5f3fc;">単純な要素の相互作用から、予期せぬ複雑な秩序や性質が生まれること。</p>
+                </div>
+                <div>
+                    <strong style="color: #22d3ee;">フレーム（Frame）</strong>
+                    <p style="font-size: 0.9rem; color: #a5f3fc;">特定の状況認識に必要な情報をひとまとめにしたデータ構造。</p>
+                </div>
+                <div>
+                    <strong style="color: #22d3ee;">シンボリックAI</strong>
+                    <p style="font-size: 0.9rem; color: #a5f3fc;">記号と論理ルールを使って知能を実現しようとする、古典的AIのアプローチ（GOFAI）。</p>
+                </div>
+                <div>
+                    <strong style="color: #22d3ee;">Kライン</strong>
+                    <p style="font-size: 0.9rem; color: #a5f3fc;">ミンスキーが提唱した記憶の理論。エージェントの活性化パターンを記録するもの。</p>
+                </div>
+                <div>
+                    <strong style="color: #22d3ee;">MITメディアラボ</strong>
+                    <p style="font-size: 0.9rem; color: #a5f3fc;">ミンスキーが設立に関わった研究所。テクノロジーとアート、デザインの融合を目指す。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

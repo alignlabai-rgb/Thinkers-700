@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.E.ムーア - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            /* 分析的ミント：清潔感、明晰さ、クリニカルな白とグレー */
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.9;
+            color: #1e293b;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Pulse Focus Animation for Clarity */
+        @keyframes pulse-focus {
+            0% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+            }
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #064e3b;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            border: 1px solid rgba(16, 185, 129, 0.5);
+        }
+
+        .special-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            animation: pulse-focus 3s infinite;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .header-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #065f46, #047857);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 20px rgba(167, 243, 208, 0.5);
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #065f46;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(167, 243, 208, 0.5);
+            border-top: 4px solid #10b981;
+            /* Mint green top border */
+            border-radius: 8px;
+            padding: 3.5rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #064e3b;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981, transparent);
+        }
+
+        .quote-box {
+            background: rgba(167, 243, 208, 0.2);
+            border-left: 6px solid #10b981;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #064e3b;
+        }
+
+        .insight-box {
+            background: rgba(243, 244, 246, 0.8);
+            border: 2px solid #dbeafe;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: #059669;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+
+        strong {
+            color: #059669;
+            background: linear-gradient(180deg, transparent 60%, rgba(167, 243, 208, 0.5) 60%);
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: #6b7280;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .back-nav a:hover {
+            color: #10b981;
+        }
+
+        .main-works-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .work-item {
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .work-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(to right, #f0fdf4, #fff);
+            border-radius: 4px;
+            border-left: 4px solid #10b981;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: #10b981;
+        }
+
+        .synthesis-result {
+            padding: 2rem;
+            background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #064e3b;
+        }
+
+        .warning-box {
+            background: rgba(254, 226, 226, 0.3);
+            border-left: 6px solid #ef4444;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #f9fafb;
+            color: #059669;
+        }
+
+        details {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        details:hover {
+            background: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+
+        <header class="header-section">
+            <div class="standard-banner">分析哲学の創始者・常識の擁護者</div>
+            <br>
+            <div class="os-tags-wrapper">
+                <span class="os-tag">分析OS</span>
+                <span class="os-tag">倫理OS</span>
+            </div>
+            <h1>G.E.ムーア</h1>
+            <p class="en-name">George Edward Moore (1873-1958)</p>
+            <p style="color: #4b5563; margin-top: 1rem; font-size: 1.3rem; font-weight: bold;">
+                「『善い』とは、黄色が黄色であるようなものだ。それ以上分解できない。」</p>
+        </header>
+
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「すべてのことは、別の何かのことである」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: bold;">──（彼の墓碑銘に刻まれた、分析の精神を表す言葉
+                    ※出典要確認だが有名）</p>
+                <!-- 補足：墓碑銘の話は逸話的だが、彼のフィロソフィーを象徴する。正確には "Anything must be something" 的な実在論。 -->
+                <p style="margin-top:1rem;">
+                    正しくは、『倫理学原理』において彼が放った一撃はこうだ。「およそ定義というものは、ものが複合的である場合にのみ可能である。『善（Good）』は単純な観念であり、だから定義できない。」</p>
+            </div>
+            <p>20世紀初頭、ケンブリッジ。ラッセルやヴィトゲンシュタインと共に「分析哲学」という巨大な知的運動を立ち上げた男。当時の哲学界を覆っていた「難解すぎて意味不明な観念論（ヘーゲル主義）」に対し、「何を言っているのか明確にせよ」「常識に立ち返れ」と迫り、哲学を霧の中から明晰な日常へと引き戻した。
+            </p>
+            <p>彼は「善いこと」を「快楽」や「進化」で説明しようとする、あらゆる試みを「間違い（自然主義的誤謬）」だと断じ、倫理学を再起動させた。</p>
+
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>「善」という概念は、素数のようにこれ以上分解できない「単純な性質」である。だから定義（〜である）しようとすると必ず失敗する。ただ「直観」で捉えるしかない。</strong>
+                </p>
+                <p>例えば「黄色」を言葉で定義できるだろうか？「光の波長580nm」と言っても、あの「黄色という感覚（クオリア）」そのものではない。善も同じだ。「善＝みんなの幸福」と言っても、「善」そのものではない。この「定義できないものを定義しようとする過ち」を指摘したことが、彼の最大の功績である。
+                </p>
+            </div>
+
+            <p><strong>アナロジーで言えば、ムーアは「光の検察官」である。</strong><br>
+                「これは金塊だ」と偽るメッキ（快楽主義や進化論的倫理）に対し、「いや、それは金に見えるだけで金ではない」と厳密に鑑定し、次々と偽物を却下していく。そして残った純粋な「善」の輝きだけを、言葉にせずに指差すのである。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div class="main-works-grid">
+                <div class="work-item">
+                    <h4 style="color: #059669; font-size: 1.3rem;">『倫理学原理』（Principia Ethica, 1903）</h4>
+                    <p style="margin-top: 1rem;">
+                        倫理学の歴史を「前ムーア／後ムーア」に分けた記念碑的著作。「自然主義的誤謬」の概念を提示し、それまでの功利主義や形而上学的倫理学を徹底的に批判。「善」は定義不能だが直観できるとし、最高の善は「親愛な交わり」と「美的享受」にあると説いた。ブルームズベリー・グループ（ケインズやウルフら）のバイブルとなった。
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h4 style="color: #059669; font-size: 1.3rem;">『常識の擁護』（A Defence of Common Sense, 1925）</h4>
+                    <p style="margin-top: 1rem;">
+                        「外部世界は本当に存在するのか？」と疑う懐疑論者に対し、「ここに片手がある。そしてここにもう片手がある。ゆえに外部世界は存在する」と証明した論文。哲学者のひねくれた疑いよりも、誰もが知っている「常識」の方が確実だと主張し、日常言語学派への道を開いた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>G.E. Moore: British Analytic Philosopher.
+                        Core concept: Naturalistic Fallacy & Common Sense.
+                        Major Argument: "Good" is a simple, undefinable, non-natural quality (like "yellow"). Attempting
+                        to define it via natural properties (pleasure, evolution) is a fallacy.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>分析哲学の父。「善」は単純で定義不可能な性質であり、直観によってのみ把握できると主張（直観主義）。「ここにてがある」という論法で懐疑論を退け、哲学的難問を「言葉の使い方の問題」として常識的に解決しようとした。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🌫️</span><span><strong>Step 1:
+                        打破した旧常識（観念論と功利主義）</strong><br><strong>①「善＝快楽である」</strong>（ベンサムらの定義）<br>
+                    <strong>②「善＝進化することだ」</strong>（スペンサーらの定義）<br>
+                    <strong>③「世界は精神の現れだ」</strong>（ヘーゲル的観念論）</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>🔬</span><span><strong>Step 2:
+                        新パラダイム（分析と直観）</strong><br><strong>自然主義的誤謬</strong>：善を他の何か（自然物）で定義するのは論理的エラーだ。<br>
+                    <strong>未決問題論法</strong>：「快楽は善か？」と問うことには常に意味がある（＝同義ではない）。<br>
+                    <strong>常識の擁護</strong>：哲学的な屁理屈より、目の前の現実（常識）の方が信頼できる。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result">
+                <span>💎</span><strong>最も重要な態度</strong><br>「言葉の意味を分析せよ。そして定義できないものは、ありのまま直観せよ。」
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #059669; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #047857; text-shadow: 0 2px 10px rgba(16, 185, 129, 0.2);">
+                    「『善い』とはどういう意味か？ それは科学的に説明できるものなのか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #059669; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 自然主義的誤謬 (Naturalistic Fallacy)</strong></p>
+                <div class="quote-box">
+                    「もし誰かが『善とは快楽のことだ』と言うなら、私は問う。『では、快楽は常に善か？』と。この問いが常に意味を持つこと自体が、善と快楽が同じではないことの証明である。」
+                </div>
+                <p>多くの人は「健康は善だ」「進化は善だ」と早合点する。しかしムーアによれば、それは「レモン」と「黄色」を混同するようなものだ。レモンは黄色いが、レモン＝黄色ではない。善は、健康や進化という自然的な性質に「付随」するかもしれないが、それそのものではない。この区別を無視して、「である（Fact）」から「べし（Value）」を導き出そうとする誤りを、彼は徹底的に攻撃した。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 単純性と定義不可能性</strong></p>
+                <p>「馬」は定義できる。足が4本で、蹄があって…と部分に分解できるからだ。しかし「黄色」はこれ以上分解できない。誰かに説明するには、黄色いものを見せて「これだ」と感じさせるしかない。
+                    <br>ムーアは「善（Good）」もこれと同じカテゴリー（単純観念）だと見抜いた。善は分析できない。ただ、ある状況において「これは善だ」と直観（Intuition）するしかない。
+                </p>
+
+                <div class="insight-box">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 では何が善なのか？（理想功利主義）</strong></p>
+                    <p>善の「定義」はできないが、善い「もの」のリストを作ることはできる。ムーアが挙げた最高の善は、意外にもシンプルで美しいものだった。
+                        <br><strong>① 親愛な人との交わり（友情・愛）</strong>
+                        <br><strong>② 美しい対象の享受（芸術・自然鑑賞）</strong>
+                        <br>この結論は、当時の若き知識人たち（ケインズら）を熱狂させ、「社会的な義務や宗教的道徳よりも、友人との会話や芸術体験こそが生きる目的だ」という、新しいライフスタイルを正当化した。
+                    </p>
+                </div>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 懐疑論の粉砕</strong></p>
+                <p>「我々が夢を見ていないという証拠はあるか？」といった哲学的難問に対し、彼は右手を挙げて「ここに手がある」、左手を挙げて「ここにも手がある」と言い、「ゆえに外部世界は存在する」と証明終了した。
+                    <br>これはふざけているのではない。「手がある」という常識的確信は、「夢かもしれない」という哲学的仮説の前提よりもはるかに強固で確実だ、という「確実性の逆転」を行ったのだ。
+                </p>
+
+                <div class="warning-box">
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>⚠️ 批判と論争の焦点 (Controversies)</strong>
+                    </p>
+                    <p style="font-size: 0.9rem; margin-bottom: 0;">
+                        <strong>直観の主観性</strong>：「直観でわかる」と言うが、あなたの直観と私の直観が食い違ったらどうするのか？（マッキンタイアらの批判）。解決不能な水掛け論になる。
+                        <br><strong>エリート主義</strong>：「審美的な体験」を最高善とすることは、芸術や教養を楽しめる特権階級の自己正当化ではないか？
+                        <br><strong>自然主義的誤謬の誤用</strong>：現代では、「事実から価値を導けない」というのは厳密には言い過ぎではないかという議論もある（サールなど）。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2.5rem;">
+                <div>
+                    <h4
+                        style="color: #059669; font-size: 1.2rem; margin-bottom: 0.5rem; border-bottom: 2px solid #059669; display: inline-block;">
+                        ■ 未決問題論法 (Open Question Argument)</h4>
+                    <p>ある性質X（例：快楽）が善であると定義されたとしても、「Xは善か？」と問うことは常に意味を持つ。もし定義が正しければ「善は善か？」という無意味な問いになるはずだ。この論法は、あらゆる倫理的定義をテストするリトマス試験紙となる。
+                    </p>
+                </div>
+                <div>
+                    <h4
+                        style="color: #059669; font-size: 1.2rem; margin-bottom: 0.5rem; border-bottom: 2px solid #059669; display: inline-block;">
+                        ■ 有機的統一 (Organic Unity)</h4>
+                    <p>全体の価値は、部分の価値の総和とは異なる。「美しい絵」の価値は、絵の具とキャンバスの価値を足したものではない。善きもの（全体）は、部分の単なる寄せ集め以上の有機的な価値を持つ。
+                    </p>
+                </div>
+                <div>
+                    <h4
+                        style="color: #059669; font-size: 1.2rem; margin-bottom: 0.5rem; border-bottom: 2px solid #059669; display: inline-block;">
+                        ■ コモン・センス（常識）</h4>
+                    <p>「地球は私が生まれるずっと前から存在していた」といった、誰もが信じている常識的命題。哲学の役割は、これを疑うことではなく、これを出発点として分析することである。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #059669;">シジウィック</strong>：<br>ケンブリッジの倫理学者。彼の直観主義的功利主義から強い影響を受けた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #059669;">カント</strong>：<br>「善意志」の価値を説いた点で通じるが、ムーアはカントの義務論よりも結果（事態の価値）を重視した。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #059669;">ヒューム</strong>：<br>「事実（Is）から当為（Ought）は導けない」というヒュームの法則は、自然主義的誤謬の先駆的な洞察である。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #059669;">ラッセル &
+                                ヴィトゲンシュタイン</strong>：<br>共に分析哲学を創始した盟友。彼らは論理と言語の分析に進んだが、ムーアの明晰さと常識重視の姿勢を尊敬していた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #059669;">ケインズ（経済学者）</strong>：<br>『倫理学原理』を読み、「これこそが我々の宗教だ」と語った。彼の人生の目的（良き生）の定義に決定的な影響を与えた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #059669;">メタ倫理学</strong>：<br>「善とは何か」という言葉の意味そのものを問う分野（メタ倫理学）は、ムーアによって始まった。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2.5rem;">
+                <h4 style="font-size: 1.2rem; color: #059669; margin-bottom: 1rem;">アナロジー１：プリズムと光</h4>
+                <p>多くの人は、虹色の光（快楽、進化、幸福など）を見て、「これが光（善）だ！」と言う。
+                    <br>しかしムーアはプリズムを通す前の<strong>「透明な光そのもの」</strong>を見ろと言う。虹色は光の属性にすぎない。光そのものは色ではないし、定義もできない単純な輝きなのだ。
+                </p>
+            </div>
+            <div style="margin-bottom: 2.5rem;">
+                <h4 style="font-size: 1.2rem; color: #059669; margin-bottom: 1rem;">アナロジー２：原子と素粒子</h4>
+                <p>「馬」は原子に分解して説明できる（複合概念）。しかし「善」は素粒子のようなものだ（単純概念）。
+                    <br>これ以上割れない。加速器に入れても何も出てこない。<strong>「それはただ、そこにある」</strong>としか言いようがない基本的な構成要素なのだ。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.2rem; color: #059669; margin-bottom: 1rem;">アナロジー３：検定済みシール</h4>
+                <p>「これは最高級の牛肉です」というラベル（自然的性質）と、「美味しい」という事実（善）は別だ。
+                    <br>ラベルがいかに科学的に立派でも、実際に食べて「美味しい」と感じる直観（検定）とはイコールにはならない。ムーアは<strong>「ラベルを食べるな、肉を味わえ」</strong>と言っているようでもある。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>19世紀的OS (還元主義・観念論)</th>
+                        <th>ムーアOS (分析・直観)</th>
+                        <th>現代への実装</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>善の定義</td>
+                        <td>快楽、進化、神の意志などに還元</td>
+                        <td><strong>定義不可能（単純な非自然的性質）</strong></td>
+                        <td>価値多元論、環境倫理</td>
+                    </tr>
+                    <tr>
+                        <td>認識の方法</td>
+                        <td>科学的推論、または形而上学的思弁</td>
+                        <td><strong>直観（Intuition）と日常言語の分析</strong></td>
+                        <td>コモンセンス、分析哲学</td>
+                    </tr>
+                    <tr>
+                        <td>最高の価値</td>
+                        <td>最大多数の最大幸福、社会の発展</td>
+                        <td><strong>親愛な交わり、美しいものの享受</strong></td>
+                        <td>QOL、ウェルビーイング</td>
+                    </tr>
+                    <tr>
+                        <td>態度の基本</td>
+                        <td>壮大な体系構築</td>
+                        <td><strong>個別の問いの厳密な分析</strong></td>
+                        <td>概念分析、クリティカルシンキング</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #059669; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「それは定義か、属性か？」の区別</strong>：会議で「成長＝善だ」と言われたら、「成長すれば必ず良くなるのか？」と未決問題論法を使ってみる。成長しても不幸になる（環境破壊など）可能性に気づける。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>直観の尊重</strong>：データ分析で「この商品が売れる」と出ても、直観が「これは良くない（美しくない）」と告げるなら、その直観はデータ（自然的性質）には還元できない重要な「価値」を捉えている可能性がある。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>豊かな時間の優先</strong>：ムーアに従えば、人生の目的は「金を稼ぐこと（手段）」ではなく、「友と語らい、美を楽しむこと（内在的価値）」にある。ワークライフバランスの哲学的根拠。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>常識への回帰</strong>：陰謀論や極端な懐疑論（シミュレーション仮説など）に惑わされそうになったら、「ここに手がある」という圧倒的な現実感覚（常識）に立ち戻る。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>思考停止のリスク</strong>：「直観でわかる」を乱用すると、複雑な問題を分析せず、「なんとなく良い/悪い」で済ませてしまう思考停止に陥る。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>独善的な排除</strong>：自分の直観と異なる他者を、「倫理的盲目」扱いして排除する危険性（スノビズム）。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent); border: 1px solid rgba(16, 185, 129, 0.3);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;"><strong>もしムーアが「AIの倫理エンジニア」だったら？</strong></p>
+            <div
+                style="margin-top: 1rem; padding: 2.5rem; background: rgba(255,255,255,0.7); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                <p>彼は「AIに『善』をプログラムしようとする試み」に対して、警告を発するだろう。
+                </p>
+                <hr style="border-color: rgba(16, 185, 129, 0.2); margin: 1.5rem 0;">
+                <p style="margin-top: 1.5rem;">
+                    <strong>定義の罠</strong>：エンジニアが「善＝人間の快楽の最大化」とコードを書けば、AIは全人類に麻薬を投与するかもしれない。「善＝生存確率」とすれば、自由を奪って管理するかもしれない。
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    <strong>ムーアの解</strong>：「善は計算式では書けない。AIには『何が善かわからない』という空白（未定義領域）を残すべきだ。そして、都度の状況において、人間の直観的な判断（フィードバック）を参照するように設計せよ。」
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    つまり、善を「固定された関数」として実装する自然主義的誤謬をあえて避け、常に問い続ける「オープンエンドな倫理実装」を提案するだろう。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">① 直観主義の独断</h4>
+                    <p>「善は直観でわかる」と言うが、人によって直観は異なる（ナチスの直観とムーアの直観は違う）。議論や検証を拒否し、「私にはわかる」という独断に陥る危険性がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">② 常識の保守性</h4>
+                    <p>「常識は正しい」という主張は、現状の社会通念（偏見や差別を含む）を無批判に肯定することになりかねない。科学や哲学は、時に常識を覆すことで進歩してきた事実を軽視している。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">③ 自然主義的誤謬の疑義</h4>
+                    <p>「である」から「べし」を導けないとしても、人間の幸福やウェルビーイング（事実）と倫理（価値）を完全に切り離してしまえば、倫理は空虚なものになってしまうのではないか。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">④ 体系の欠如</h4>
+                    <p>彼は個別の誤謬を指摘することには長けていたが、独自の壮大な倫理システムを構築したわけではない。「分析」という手法の提示に留まったとも言える。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 2rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#059669; font-weight:bold; font-size:1.1rem;">Q1: 自然主義的誤謬とは何か？
+                    </summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #10b981;"><strong>A:</strong>
+                        「善（Good）」という非自然的な性質を、快楽や進化といった自然的な性質と同一視して定義しようとする論理的な誤りのこと。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#059669; font-weight:bold; font-size:1.1rem;">Q2:
+                        未決問題論法（Open Question Argument）の目的は？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #10b981;"><strong>A:</strong>
+                        ある定義（X＝善）が正しいかどうかをテストするため。「Xは本当に善か？」と問うことに意味があるなら、Xと善は同じ意味ではない（定義は失敗している）と証明する。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#059669; font-weight:bold; font-size:1.1rem;">Q3:
+                        ムーアにとって「善」はどうやって知るものか？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #10b981;"><strong>A:</strong>
+                        定義や推理によってではなく、黄色を見るときの同様の、直接的な精神の働きである「直観（Intuition）」によって把握される。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#059669; font-weight:bold; font-size:1.1rem;">Q4:
+                        彼が「手」を挙げて証明しようとしたことは？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #10b981;"><strong>A:</strong>
+                        外部世界の存在。外部世界を疑う懐疑論の前提よりも、「ここに手がある」という常識的確信の方がはるかに確実だということを示した。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#059669; font-weight:bold; font-size:1.1rem;">Q5:
+                        ムーアが考える最高の善（理想）の2つとは？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #10b981;"><strong>A:</strong>
+                        「親愛な人との交わり（human intercourse）」と「美しい対象の享受（enjoyment of beautiful objects）」。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#059669; font-weight:bold; font-size:1.1rem;">Q6:
+                        「単純概念」とはどういう意味か？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #10b981;"><strong>A:</strong>
+                        黄色や善のように、これ以上部分に分解して説明することができない基本的な性質のこと。複合概念（例：馬）と対比される。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">自然主義的誤謬 (Naturalistic Fallacy)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    善（価値）を事実（自然科学的性質）によって定義しようとする誤り。ムーア哲学の核心的概念。</dd>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">未決問題論法 (Open Question Argument)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    「快楽は善か？」のように、常に問いとして成立することを示し、いかなる自然的定義も不完全であることを暴く論法。</dd>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">直観主義 (Intuitionism)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    基本的な道徳的真理や善は、証明や経験的観察ではなく、理性的直観によって直接的に知られるとする立場。</dd>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">単純観念 (Simple Idea)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    黄色や善のように、それ以上分析・分割できない最小単位の概念。定義不可能だが、認識は可能。</dd>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">有機的統一 (Organic Unity)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    全体の価値が、部分の価値の総和と等しくない状態。全体として独自の価値を持つこと。</dd>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">コモン・センス (Common Sense)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    健全な常識。哲学的な疑いよりも、日常的な確信（世界はある、時間は流れている）の方を信頼すべき基盤とする態度。</dd>
+                <dt style="color:#059669; font-weight:700; font-size:1.1rem;">理想功利主義</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    快楽の量だけでなく、「美」や「友情」といった質的な価値をも最大化することを目指す功利主義の一種。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(16, 185, 129, 0.3); color: #4b5563;">
+        <p>© 2025 Thinkers 700 | G.E. Moore</p>
+    </footer>
+</body>
+
+</html>

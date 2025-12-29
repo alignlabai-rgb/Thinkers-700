@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Test</title>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: white;
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+
+        .mermaid {
+            background: #16213e;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mermaid Mindmap Test</h1>
+
+    <div class="mermaid">
+        mindmap
+        root((テスト))
+        カテゴリA
+        項目1
+        項目2
+        カテゴリB
+        項目3
+        項目4
+    </div>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose'
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベル・フックス - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">社会OS</span>
+            <h1>ベル・フックス</h1>
+            <p class="en-name">bell hooks (1952-2021)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「フェミニズムはすべての人のためにある」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──『Feminism Is for Everybody』(2000)</p>
+            </div>
+            <p>名前を意図的に小文字で書くフェミニスト・文化批評家。人種・ジェンダー・階級の<strong>交差性</strong>を分析し、抑圧への抵抗と愛の倫理を結びつけた。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>黒人女性は「黒人として」差別され、「女性として」差別される──しかしそれは<strong>足し算ではない</strong>。「黒人女性」として固有の差別を経験する。</p>
+                <p>フックスはこれを「交差性（intersectionality）」の視点で分析。人種、ジェンダー、階級、セクシュアリティ...これらは<strong>絡み合って</strong>抑圧を形成する。一つだけ見ても分からない。
+                </p>
+            </div>
+            <p>現代的に言えば、フックスは<strong>「複合的なバグを見つけるデバッガー」</strong>のような思想家です。単一の変数だけでなく、複数の変数の相互作用を分析する。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>bell hooks: Black feminist, cultural critic, educator. Lowercase name: challenge to ego and
+                        convention. Intersectionality: race, gender, class interlock. Critique of "white supremacist
+                        capitalist patriarchy." Engaged pedagogy: liberatory education. Love as political practice.
+                        Accessible writing style democratized feminist theory.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>黒人フェミニスト、文化批評家、教育者。小文字の名前：自我と慣習への挑戦。交差性：人種・ジェンダー・階級の絡み合い。「白人至上主義的資本主義家父長制」批判。参加型教育学：解放的教育。愛を政治的実践として。読みやすい文体でフェミニズム理論を民主化。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「フェミニズムは白人中産階級女性のもの」</strong>──主流フェミニズムの限界。フックス：<strong>黒人女性の経験</strong>を中心に据える。<br>
+                    <strong>②「抑圧は単一軸」</strong>──性差別だけ、人種差別だけを分析。フックス：抑圧は<strong>交差する</strong>。<br>
+                    <strong>③「知識人は難解であるべき」</strong>──アカデミックな言葉遣い。フックス：<strong>誰でも読める</strong>言葉で書く。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>交差性</strong>：人種・ジェンダー・階級・セクシュアリティの絡み合い。<br>
+                    <strong>白人至上主義的資本主義家父長制</strong>：抑圧の三位一体構造。<br>
+                    <strong>参加型教育学</strong>：教育は解放のための実践。<br>
+                    <strong>愛の倫理</strong>：愛は政治的・変革的実践。<br>
+                    <strong>周縁から中心へ</strong>：マージナルな視点こそが真実を見る。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「複合的な抑圧はどう絡み合い、どう抵抗できるか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「人種・ジェンダー・階級はどう交差して抑圧を形成するか？解放はどう可能か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ なぜ「bell hooks」は小文字なのか</strong></p>
+                <p>彼女の本名はGloria Jean Watkins。「bell hooks」は曽祖母の名前を取ったペンネーム。そしてすべて<strong>小文字</strong>。</p>
+                <p>なぜ？「重要なのは私のアイデアであって、私のアイデンティティではない」。自我を前面に出さず、<strong>メッセージに集中</strong>させる意図。同時に、学術界の権威主義的慣習への挑戦。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 白人至上主義的資本主義家父長制</strong></p>
+                    <p>フックスはこの長い用語を繰り返し使う。なぜ？三つの抑圧システムは<strong>分離できない</strong>から。①白人至上主義（人種）②資本主義（階級）③家父長制（ジェンダー）──これらは相互に強化し合う。一つだけ攻撃しても、システムは残る。
+                    </p>
+                </div>
+
+                <p><strong>▼ 交差性──足し算ではない</strong></p>
+                <p>「黒人」の差別＋「女性」の差別＝黒人女性の差別？<strong>違う</strong>。</p>
+                <p>黒人女性は、白人女性とも黒人男性とも異なる<strong>固有の経験</strong>をする。たとえば：①フェミニズム運動で人種差別に遭う②反人種差別運動で性差別に遭う③両方の運動から「代表」として期待される負担。
+                </p>
+                <p>これは「交差点（intersection）」の比喩：二つの道が交わる場所では、どちらの車も事故を起こしうる。しかし交差点特有のリスクもある。</p>
+
+                <div class="quote-box">
+                    <p>「私はフェミニズムの中で人種差別と戦い、反人種差別運動の中で性差別と戦わなければならなかった」</p>
+                </div>
+
+                <p><strong>▼ 参加型教育学</strong></p>
+                <p>フックスはパウロ・フレイレの『被抑圧者の教育学』から影響を受けた。教育は<strong>解放の実践</strong>であるべき。</p>
+                <p>従来の教育：教師が知識を「預金」のように学生に預ける（銀行型教育）。フックスの教育：教室は<strong>対話と変革</strong>の場。教師も学生も共に学ぶ。感情も身体も巻き込む。</p>
+
+                <p><strong>▼ 愛の倫理</strong></p>
+                <p>フックスは後期に「愛」を中心テーマにした。しかしこれはロマンチックな感傷ではない。</p>
+                <p>愛とは<strong>意志と実践</strong>。他者の成長を支援する選択。支配（domination）の対極。家父長制は愛を歪め、支配と混同させる。真の愛は<strong>解放的</strong>──支配ではなく相互尊重。
+                </p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 主流フェミニズム批判</strong></p>
+                    <p>フックスは白人中産階級フェミニズムを批判した。ベティ・フリーダンの『女らしさの神話』は、郊外の主婦の問題──しかし黒人女性はずっと働いてきた。「女性の労働参加」は彼女たちの問題ではない。フェミニズムは<strong>すべての女性</strong>を含むべき。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 交差性（Intersectionality）</h4>
+                    <p>人種・ジェンダー・階級など複数の抑圧軸が<strong>絡み合う</strong>こと。クレンショーが命名、フックスが発展。単一軸分析の限界を超える。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 周縁性（Marginality）</h4>
+                    <p>社会の<strong>周縁</strong>にいること。しかし弱さではなく強さ──周縁から中心を批判的に見る視点。抵抗の場所としての周縁。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 参加型教育学（Engaged Pedagogy）</h4>
+                    <p>教育を<strong>解放の実践</strong>として。対話、感情、身体を巻き込む。フレイレからの影響。銀行型教育の批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 愛の倫理（Love Ethic）</h4>
+                    <p>愛を<strong>意志と実践</strong>として再定義。支配の対極。家父長制が歪めた愛を回復。政治的・変革的実践としての愛。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>パウロ・フレイレ</strong>（被抑圧者の教育学）<br>
+                        <strong>ソジャーナ・トゥルース</strong>（黒人フェミニズムの先駆）<br>
+                        <strong>オードリー・ロード</strong>（詩人・フェミニスト）<br>
+                        <strong>ジェームズ・ボールドウィン</strong>（作家・文化批評家）<br>
+                        <strong>仏教</strong>（瞑想、マインドフルネス）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>クレンショー</strong>（交差性理論の法学的展開）<br>
+                        <strong>現代フェミニズム</strong>（第三波、第四波）<br>
+                        <strong>批判的教育学</strong>（変革的教育実践）<br>
+                        <strong>ポピュラーカルチャー批評</strong>（映画・メディア分析）<br>
+                        <strong>DEI（多様性・公平性・包摂性）</strong>（企業・教育の実践）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：交差性＝複合条件のデバッグ</h4>
+                <p>バグが「特定の条件Aのとき」かつ「特定の条件Bのとき」のみ発生する場合を考えよう。A単独でもB単独でも再現しない。<strong>交差点でのみ発生</strong>するバグ。</p>
+                <p>フックスの交差性も同様：黒人女性の経験は、「黒人」条件でも「女性」条件でも再現しない。両方の条件が交差したときに固有の問題が発生する。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：周縁性＝エッジケースからの学び</h4>
+                <p>ソフトウェアテストで、エッジケース（境界条件）は重要。中心的なユースケースでは見えない問題が見える。</p>
+                <p>フックスの周縁性も同様：社会の周縁にいる人は、中心にいる人には見えない<strong>システムの欠陥</strong>を見る。周縁からの視点が真実を暴く。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：参加型教育＝ペアプログラミング/モブプログラミング</h4>
+                <p>一人が「講師」として教え、他が「生徒」として学ぶのではなく、<strong>全員が参加</strong>して共に問題を解決するペアプログラミング。</p>
+                <p>フックスの参加型教育学も同様：教師と学生の階層を崩し、<strong>対話的に共に学ぶ</strong>。知識は「預金」されるのではなく、共同で構築される。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>主流フェミニズム</th>
+                        <th>フックス</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>主体</td>
+                        <td>白人中産階級女性</td>
+                        <td>すべての女性</td>
+                        <td>包摂的フェミニズム</td>
+                    </tr>
+                    <tr>
+                        <td>抑圧の分析</td>
+                        <td>ジェンダー単独</td>
+                        <td>交差性</td>
+                        <td>複合的理解</td>
+                    </tr>
+                    <tr>
+                        <td>文体</td>
+                        <td>学術的</td>
+                        <td>読みやすい</td>
+                        <td>民主化</td>
+                    </tr>
+                    <tr>
+                        <td>教育</td>
+                        <td>知識伝達</td>
+                        <td>解放的実践</td>
+                        <td>変革</td>
+                    </tr>
+                    <tr>
+                        <td>目標</td>
+                        <td>男女平等</td>
+                        <td>すべての支配の終焉</td>
+                        <td>根本的変革</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>DEI施策</strong>：企業・組織の多様性・公平性・包摂性</li>
+                    <li><strong>教育実践</strong>：参加型・対話型授業</li>
+                    <li><strong>メディア批評</strong>：映画・広告の表象分析</li>
+                    <li><strong>ソーシャルメディア</strong>：交差性の視点での議論</li>
+                    <li><strong>セルフケア</strong>：愛の倫理、自己への慈悲</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>アカデミックな批判</strong>：理論的厳密さの欠如？</li>
+                    <li><strong>本質主義批判</strong>：黒人女性の経験を一般化しすぎ？</li>
+                    <li><strong>政治的偏り</strong>：左派的バイアス？</li>
+                    <li><strong>実践の困難</strong>：交差性分析は複雑で実践しにくい</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしフックスがSNSのアルゴリズムと「キャンセル文化」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これは複雑だ」──フックスはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「SNSは声を持たなかった人に<strong>声を与えた</strong>。黒人女性、トランスジェンダー、障害者...周縁化された人々が発言できるようになった。これは良いことだ。</p>
+                <p style="margin-top: 1rem;">
+                    しかし同時に、アルゴリズムは<strong>分断を助長</strong>する。怒りがエンゲージメントを生み、エンゲージメントが広告収入を生む。白人至上主義的資本主義家父長制は、抵抗さえも利用する。
+                </p>
+                <p style="margin-top: 1rem;">
+                    キャンセル文化について...私は<strong>責任追及</strong>を支持する。権力者は説明責任を負うべきだ。しかし、キャンセル文化が<strong>対話なき処罰</strong>になるなら、それは愛の倫理に反する。
+                </p>
+                <p style="margin-top: 1rem;">
+                    私の教育学の核心は<strong>対話</strong>だ。間違いを犯した人を切り捨てるのではなく、対話を通して変容を促す。しかしこれは、加害者が権力を持ち続ける場合には通用しない。<strong>文脈が重要</strong>だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    交差性の視点で見れば、キャンセルの「コスト」は平等ではない。有名な白人男性は復帰できるが、黒人女性は一度の失言で永久に消える。誰がキャンセルされ、誰がされないか──そこにも権力構造がある」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 理論的厳密さ批判</h4>
+                    <p>フックスの著作は読みやすいが、アカデミックな基準では<strong>厳密さに欠ける</strong>という批判。経験的証拠、体系的論証よりも、個人的経験と直観に依存。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 本質主義批判</h4>
+                    <p>「黒人女性の経験」を語るが、黒人女性は<strong>均質ではない</strong>。階級、セクシュアリティ、国籍...黒人女性内部の多様性を十分に認めているか？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 愛の政治への懐疑</h4>
+                    <p>「愛」を政治的概念として使うことへの懐疑。構造的不正義は、愛だけでは解決しない。<strong>制度的・物質的変革</strong>が必要では？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 交差性の実践困難</h4>
+                    <p>交差性分析は概念的には説得力があるが、<strong>実践は難しい</strong>。すべての軸を同時に考慮すると、分析が複雑化しすぎて行動が困難になる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: なぜ「bell hooks」は小文字で書くのか？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        「重要なのは私のアイデアであって、私のアイデンティティではない」──<strong>自我を前面に出さず、メッセージに集中</strong>させる意図。同時に、学術界の権威主義的慣習への挑戦。名前はすべて小文字で書くことで、人物よりアイデアを強調。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 交差性（intersectionality）とは何か？
+                    </summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        人種・ジェンダー・階級など複数の抑圧軸が<strong>絡み合う</strong>こと。黒人女性の差別は「黒人の差別＋女性の差別」ではなく、<strong>固有の複合的経験</strong>。交差点の比喩：二つの道が交わる場所には、どちらの道にも属さない固有のリスクがある。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: フックスの教育観は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>参加型教育学</strong>──教育は解放の実践。フレイレの影響。従来の「銀行型教育」（教師が知識を預金のように預ける）を批判。教室は<strong>対話と変革</strong>の場。教師も学生も共に学ぶ。感情も身体も巻き込む全人的教育。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: フックスへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①理論的厳密さ──学術的基準では証拠・論証が不十分②本質主義──「黒人女性」を一般化しすぎ、内部の多様性を軽視③愛の政治への懐疑──構造問題は愛で解決しない④交差性の実践困難──すべての軸を考慮すると行動困難
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">交差性（Intersectionality）</dt>
+                <dd>複数の抑圧軸が<strong>絡み合う</strong>こと。単一軸分析の限界を超える。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">白人至上主義的資本主義家父長制</dt>
+                <dd>三つの抑圧システムの<strong>相互強化構造</strong>。フックスの中心概念。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">参加型教育学</dt>
+                <dd>教育を<strong>解放の実践</strong>として。対話的、変革的。フレイレからの影響。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">愛の倫理</dt>
+                <dd>愛を<strong>意志と実践</strong>として再定義。支配の対極。政治的変革の基盤。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">周縁性</dt>
+                <dd>社会の<strong>周縁</strong>にいること。弱さではなく、批判的視点の場所。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | bell hooks (Rich Edition)</p>
+    </footer>
+</body>
+
+</html>

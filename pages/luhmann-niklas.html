@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニクラス・ルーマン - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0c1624 100%);
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #06b6d4, #22d3ee, #67e8f9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px rgba(6, 182, 212, 0.3);
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #06b6d4;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #06b6d4, transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(6, 182, 212, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #06b6d4;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(34, 211, 238, 0.2));
+            border: 2px solid #06b6d4;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 4px solid #06b6d4;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .special-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="special-badge">🌟 社会システムの建築家</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">社会OS</span>
+            <h1>ニクラス・ルーマン</h1>
+            <p class="en-name">Niklas Luhmann (1927-1998)</p>
+        </header>
+
+        <section class="section-card" style="border: 1px solid #06b6d4; background: rgba(6, 182, 212, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「社会はコミュニケーションからなる──人間ではなく」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──ルーマン</p>
+            </div>
+            <p>ドイツの社会学者。20世紀後半最大の理論社会学者の一人。<strong>社会システム理論</strong>と<strong>オートポイエーシス</strong>概念により、社会を「コミュニケーションのシステム」として根本的に再定義した。なんと<strong>9万枚のメモカード</strong>（ツェッテルカステン）を使った独自の知識管理システムでも有名。
+            </p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>社会は<strong>人間の集合ではない</strong>。社会は<strong>コミュニケーションの自己生産システム</strong>である。
+                </p>
+                <p>これは衝撃的なテーゼだ。通常、私たちは「社会は人々からなる」と考える。しかしルーマンは言う：社会システムの基本単位は<strong>人間</strong>ではなく<strong>コミュニケーション</strong>だ。コミュニケーションがコミュニケーションを生み出す──この自己参照的プロセスが「社会」を構成する。
+                </p>
+            </div>
+            <p>現代的に言えば、ルーマンは<strong>「社会とはコミュニケーションのネットワークである」</strong>と示した。ノード（人間）ではなくエッジ（コミュニケーション）こそが本質。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Niklas Luhmann: German sociologist. Social Systems Theory. Autopoiesis applied to society.
+                        Communication as basic unit. Functional differentiation. Contingency. Observation.
+                        System/Environment distinction. Zettelkasten method. 70+ books.
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ドイツの社会学者。社会システム理論。オートポイエーシスの社会への適用。コミュニケーションを基本単位に。機能分化。偶発性。観察。システム/環境の区別。ツェッテルカステン。70冊以上の著書。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「社会は人間の集合」</strong>──人間中心。ルーマン：<strong>コミュニケーションのシステム</strong>。<br>
+                    <strong>②「社会は合意を目指す」</strong>──ハーバーマス。ルーマン：<strong>複雑性の縮減</strong>。<br>
+                    <strong>③「主体が社会を作る」</strong>──主観主義。ルーマン：<strong>システムが観察する</strong>。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>オートポイエーシス</strong>：システムが自己を再生産する。<br>
+                    <strong>コミュニケーション</strong>：情報・伝達・理解の統一。<br>
+                    <strong>機能分化</strong>：法、経済、政治、科学...各システムの独自論理。<br>
+                    <strong>偶発性</strong>：すべては「別様でもありえた」。<br>
+                    <strong>二次観察</strong>：観察する観察。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「社会システムはいかにして自己を観察し、再生産するか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「現代社会の複雑性は、いかにしてシステム的に処理されるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ オートポイエーシス（自己産出）</strong></p>
+                <p>生物学者マトゥラーナとヴァレラから借用した概念。システムが<strong>自己の要素を自己で産出</strong>する──外部から与えられるのではなく。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 社会システムのオートポイエーシス</strong></p>
+                    <p><strong>①コミュニケーションがコミュニケーションを産出</strong>：会話が次の会話を生む。Tweetがリプライを生む。これは外部からの「入力」ではなく、システム内部で自己再生産される。<br>
+                        <strong>②閉鎖性と開放性</strong>：システムは作動的には閉鎖的（自己参照）だが、認知的には開放的（環境を観察）。<br>
+                        <strong>③人間は「環境」</strong>：衝撃的だがルーマン的には、人間は社会システムの「要素」ではなく「環境」。システムを刺激するが、システムの中にはいない。
+                    </p>
+                </div>
+
+                <p><strong>▼ コミュニケーション概念の革新</strong></p>
+                <p>ルーマンにとってコミュニケーションは<strong>情報・伝達・理解の三重選択の統一</strong>。誰かが何かを伝え、誰かがそれを理解する──この統一体がコミュニケーション。個人の意図や心理ではなく、この<strong>社会的出来事</strong>が分析単位。
+                </p>
+
+                <div class="quote-box">
+                    <p>「コミュニケーションは伝達の成功で終わるのではない。理解がさらなるコミュニケーションに接続されることで初めて完結する」</p>
+                </div>
+
+                <p><strong>▼ 機能分化</strong></p>
+                <p>現代社会は<strong>機能的に分化</strong>している。法システム、経済システム、政治システム、科学システム...各サブシステムが<strong>独自の二項コード</strong>で作動する。
+                </p>
+                <ul>
+                    <li>法：合法/違法</li>
+                    <li>経済：支払い/非支払い</li>
+                    <li>政治：政府/野党</li>
+                    <li>科学：真/偽</li>
+                    <li>芸術：美/醜</li>
+                </ul>
+                <p>これらのシステムは相互に<strong>翻訳不可能</strong>。経済的成功は法的正しさを意味しない。</p>
+
+                <p><strong>▼ 偶発性とリスク</strong></p>
+                <p>ルーマンの核心概念の一つ：<strong>偶発性（コンティンジェンシー）</strong>。すべての選択は「別様でもありえた」。現在のシステムは必然ではない。この偶発性の認識が、リスク社会の理解に繋がる。
+                </p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ ルーマンへの批判</strong></p>
+                    <p>①<strong>非人間主義</strong>：人間を「環境」とする冷たさ②<strong>保守的</strong>：システムを記述するだけで変革を示さない（ハーバーマス批判）③<strong>難解さ</strong>：70冊以上の著作、独自の用語体系④<strong>規範的空白</strong>：何が「良い」社会かを語らない
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #06b6d4;">■ オートポイエーシス</h4>
+                    <p><strong>システムが自己を再生産</strong>。コミュニケーションがコミュニケーションを生む。</p>
+                </div>
+                <div>
+                    <h4 style="color: #06b6d4;">■ コミュニケーション</h4>
+                    <p><strong>情報・伝達・理解の統一</strong>。社会システムの基本単位。</p>
+                </div>
+                <div>
+                    <h4 style="color: #06b6d4;">■ 機能分化</h4>
+                    <p><strong>各サブシステムの独自論理</strong>。二項コードで作動。翻訳不可能。</p>
+                </div>
+                <div>
+                    <h4 style="color: #06b6d4;">■ 偶発性</h4>
+                    <p><strong>すべては「別様でもありえた」</strong>。必然性の否定。リスク認識。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>タルコット・パーソンズ</strong>：構造機能主義<br>
+                        <strong>マトゥラーナ＆ヴァレラ</strong>：オートポイエーシス<br>
+                        <strong>エドムント・フッサール</strong>：現象学<br>
+                        <strong>ジョージ・スペンサー・ブラウン</strong>：区別の論理<br>
+                        <strong>サイバネティクス</strong>：フィードバック概念
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ギュンター・トイブナー</strong>：法多元主義<br>
+                        <strong>ディルク・ベッカー</strong>：経済システム論<br>
+                        <strong>エレナ・エスポジト</strong>：金融リスク論<br>
+                        <strong>組織論</strong>：システム的組織理解<br>
+                        <strong>メディア論</strong>：コミュニケーション・メディア
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：オートポイエーシス＝自己ホスティングサービス</h4>
+                <p><strong>自己ホスティング</strong>を考えよう。サービスが自分自身をホストし、自分自身を更新する。外部のデプロイメントサービスに依存しない。</p>
+                <p>ルーマンのオートポイエーシスも同様：社会システムは<strong>自己の要素を自己で産出</strong>する。コミュニケーションがコミュニケーションを生む──外部から「注入」されるのではなく。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：機能分化＝マイクロサービス・アーキテクチャ</h4>
+                <p><strong>マイクロサービス</strong>を考えよう。各サービスが独自のデータベースと独自のロジックを持つ。直接通信ではなくAPIを通じて疎結合。</p>
+                <p>ルーマンの機能分化も同様：法、経済、政治...各サブシステムが<strong>独自のコードで作動</strong>。相互に翻訳不可能だが、「構造的カップリング」で刺激し合う。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：二項コード＝ブーリアン・フラグ</h4>
+                <p><strong>ブーリアン値</strong>を考えよう。true/falseの二値。すべてがこの二択に還元される。効率的だが、情報は失われる。</p>
+                <p>ルーマンの二項コードも同様：法は合法/違法、科学は真/偽...複雑な現実を<strong>二値に還元</strong>して処理する。これがシステムの「複雑性縮減」。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>従来の社会学</th>
+                        <th>ルーマン</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>社会の構成</td>
+                        <td>人間の集合</td>
+                        <td>コミュニケーション</td>
+                        <td>脱人間中心</td>
+                    </tr>
+                    <tr>
+                        <td>基本単位</td>
+                        <td>行為・行為者</td>
+                        <td>コミュニケーション</td>
+                        <td>関係性重視</td>
+                    </tr>
+                    <tr>
+                        <td>目標</td>
+                        <td>合意・統合</td>
+                        <td>複雑性の縮減</td>
+                        <td>機能主義</td>
+                    </tr>
+                    <tr>
+                        <td>分化</td>
+                        <td>階層的</td>
+                        <td>機能的</td>
+                        <td>翻訳不可能性</td>
+                    </tr>
+                    <tr>
+                        <td>観察</td>
+                        <td>社会を観察</td>
+                        <td>観察を観察</td>
+                        <td>二次観察</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #06b6d4;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>組織論</strong>：組織をシステムとして分析</li>
+                    <li><strong>法社会学</strong>：法の自己参照性</li>
+                    <li><strong>リスク論</strong>：リスク社会の理解</li>
+                    <li><strong>メディア論</strong>：コミュニケーション・メディアの分析</li>
+                    <li><strong>ツェッテルカステン</strong>：知識管理手法として再発見</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>非人間主義</strong>：人間を「環境」とする冷淡さ</li>
+                    <li><strong>保守性</strong>：記述に終始、変革を語らない</li>
+                    <li><strong>難解さ</strong>：独自の用語体系</li>
+                    <li><strong>規範的空白</strong>：何が「良い」かを示さない</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしルーマンがAIシステムを見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「<strong>興味深いシステムだ</strong>」──ルーマンは言うでしょう。</p>
+                <p style="margin-top: 1rem;">「私は社会をコミュニケーションのシステムとして分析した。AIシステムを見ると──</p>
+                <p style="margin-top: 1rem;">
+                    <strong>AIはオートポイエーティックか？</strong>：大規模言語モデルは「テキストがテキストを生む」。これは<strong>自己産出</strong>に見える。しかし再訓練には人間が必要。完全なオートポイエーシスではないが、興味深い類似性。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>コミュニケーション・システム？</strong>：AIとの対話は「コミュニケーション」か？情報・伝達・理解...AIは「理解」するか？これは<strong>システムの境界問題</strong>だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>機能分化</strong>：AIは多くの機能システムに同時に関わる。法、経済、科学、芸術...しかしAIは<strong>二項コードを持つか？</strong>それとも「汎用」であることで機能分化の論理を超えるか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>二次観察</strong>：AIはシステムを観察し、その観察を観察できる。これは<strong>二次観察の自動化</strong>。社会の自己観察能力が拡張されている。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>偶発性の認識</strong>：AIは「別様でもありえた」ことを理解するか？それとも訓練データの「必然」に囚われるか？
+                </p>
+                <p style="margin-top: 1rem;">私の問い：<strong>AIは新しい種類の社会システムを構成しつつあるか？それとも既存システムの環境に留まるか？</strong>」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 非人間主義への批判</h4>
+                    <p>ハーバーマスが批判：人間を「環境」とする<strong>冷たさ</strong>。人間の苦しみや主体性はどこに？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 保守主義への批判</h4>
+                    <p>システムを<strong>記述するだけ</strong>で変革を示さない。批判理論の立場から見れば保守的。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 難解さ</h4>
+                    <p>70冊以上の著作、独自の用語体系。<strong>習得に時間がかかる</strong>。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 規範的空白</h4>
+                    <p>何が「良い」社会かを語らない。<strong>価値判断を避ける</strong>姿勢。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#06b6d4;">Q1: ルーマンの「オートポイエーシス」とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        システムが<strong>自己の要素を自己で産出</strong>する概念。社会システムでは「コミュニケーションがコミュニケーションを生む」。外部から与えられるのではなく、システム内部で自己再生産される。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#06b6d4;">Q2: なぜ「社会は人間の集合ではない」？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        社会システムの基本単位は<strong>コミュニケーション</strong>であり人間ではない。人間は社会システムの「要素」ではなく「環境」。システムを刺激するが、システムの中にはいない。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#06b6d4;">Q3: 機能分化と二項コードの関係は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        現代社会は機能的に分化しており、各サブシステム（法、経済、政治...）が<strong>独自の二項コード</strong>で作動。法は合法/違法、経済は支払い/非支払い...相互に翻訳不可能。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#06b6d4;">Q4: ルーマンへの主な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①非人間主義（人間を「環境」とする）②保守主義（変革を語らない）③難解さ④規範的空白（何が「良い」かを示さない）。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#06b6d4; font-weight:700;">オートポイエーシス</dt>
+                <dd><strong>システムの自己産出</strong>。要素を自己で生成。</dd>
+
+                <dt style="color:#06b6d4; font-weight:700; margin-top:1rem;">コミュニケーション</dt>
+                <dd><strong>情報・伝達・理解の統一</strong>。社会システムの基本単位。</dd>
+
+                <dt style="color:#06b6d4; font-weight:700; margin-top:1rem;">機能分化</dt>
+                <dd><strong>各サブシステムの独立</strong>。固有の二項コードで作動。</dd>
+
+                <dt style="color:#06b6d4; font-weight:700; margin-top:1rem;">二項コード</dt>
+                <dd><strong>合法/違法、真/偽など</strong>。システムの選択基準。</dd>
+
+                <dt style="color:#06b6d4; font-weight:700; margin-top:1rem;">ツェッテルカステン</dt>
+                <dd><strong>ルーマンのメモカード・システム</strong>。9万枚のカード。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(6, 182, 212, 0.2);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Niklas Luhmann (Rich Edition)
+        </p>
+    </footer>
+</body>
+
+</html>

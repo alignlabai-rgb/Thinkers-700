@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ソール・クリプキ - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #14b8a6, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #14b8a6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(6, 182, 212, 0.2));
+            border: 2px solid #14b8a6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(20, 184, 166, 0.1);
+            border-left: 4px solid #14b8a6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #14b8a6, #06b6d4);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="hero-badge">🧠 20世紀最高の論理学者</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">哲学OS</span>
+            <h1>ソール・クリプキ</h1>
+            <p class="en-name">Saul Kripke (1940-2022)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 2px solid #14b8a6; background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(6, 182, 212, 0.05));">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「明けの明星と宵の明星は同じ星だ──これは経験的発見であり、かつ必然的真理である」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──クリプキ</p>
+            </div>
+            <p>アメリカの論理学者・言語哲学者。16歳で様相論理の決定的論文を発表した天才。『名指しと必然性』で20世紀分析哲学に革命を起こした。固定指示子、後験的必然性、可能世界論の発展で知られる。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>「明けの明星」と「宵の明星」──どちらも金星を指す。しかし意味は違うように見える（朝の星 vs
+                    夜の星）。フレーゲ以来、哲学者は<strong>意味（Sinn）</strong>と<strong>指示対象（Bedeutung）</strong>を区別してきた。</p>
+                <p>クリプキの革命的洞察：固有名は<strong>記述</strong>ではなく<strong>固定指示子</strong>。「アリストテレス」は「プラトンの弟子」という記述を意味しない。どの可能世界でも<strong>同一の個体</strong>を指し示す。たとえアリストテレスが哲学者にならなかった世界でも、「アリストテレス」はその人を指す。
+                </p>
+            </div>
+            <p>現代的に言えば、クリプキは<strong>「ポインタ vs 値」</strong>の区別を哲学に導入した思想家。名前は記述（値）ではなく、対象への直接参照（ポインタ）だ。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Saul Kripke: American logician and philosopher. "Naming and Necessity" (1980). Rigid designators:
+                        names refer directly to objects. A posteriori necessity: some necessary truths known only
+                        through experience. Possible worlds semantics. Kripke semantics for modal logic.
+                        Anti-descriptivism. Major influence on philosophy of language, metaphysics.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>アメリカの論理学者・哲学者。『名指しと必然性』（1980年）。固定指示子：名前は対象を直接指す。後験的必然性：経験を通じてのみ知られる必然的真理。可能世界意味論。様相論理のクリプキ意味論。反記述主義。言語哲学・形而上学への重大な影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「名前＝記述の略」</strong>──フレーゲ、ラッセル。クリプキ：<strong>固定指示子</strong>。<br>
+                    <strong>②「必然＝先験」</strong>──カント以来。クリプキ：<strong>後験的必然性</strong>がある。<br>
+                    <strong>③「可能世界＝メタファー」</strong>。クリプキ：<strong>厳密な意味論</strong>として。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>固定指示子</strong>：名前はどの可能世界でも同一対象を指す。<br>
+                    <strong>後験的必然性</strong>：経験で知られるが必然的。<br>
+                    <strong>先験的偶然性</strong>：先験的に知られるが偶然的。<br>
+                    <strong>可能世界意味論</strong>：様相の厳密な理論。<br>
+                    <strong>因果的命名理論</strong>：名前は因果連鎖で伝達。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「名前はいかにして対象を指し示すか？必然性とは何か？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「名前はいかにして対象を指し示すか？必然性と偶然性、先験性と後験性はどう区別されるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 固定指示子（Rigid Designator）</strong></p>
+                <p>固有名（「アリストテレス」「ニクソン」等）は<strong>固定指示子</strong>である。どの可能世界においても、<strong>同一の個体</strong>を指し示す。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 記述説 vs 固定指示子</strong></p>
+                    <p><strong>記述説（フレーゲ、ラッセル）</strong>：「アリストテレス」＝「プラトンの弟子で、アレクサンダーの教師で、形而上学の著者で...」という記述の略。しかし問題がある：アリストテレスが哲学者にならなかった可能世界では、彼は「アリストテレス」ではなくなる？
+                    </p>
+                    <p><strong>クリプキの答え</strong>：否。「アリストテレス」は、どの可能世界でも<strong>その人</strong>を指す。記述は名前の意味ではなく、対象を最初に<strong>固定</strong>するために使われる。
+                    </p>
+                </div>
+
+                <p><strong>▼ 後験的必然性</strong></p>
+                <p>カント以来、「必然的真理は先験的（経験なしに知れる）」「偶然的真理は後験的（経験を通じて知れる）」と考えられてきた。クリプキはこれを覆す。</p>
+                <p>例：「水＝H₂O」──これは<strong>経験的発見</strong>。しかし一度発見されれば、水は<strong>あらゆる可能世界で</strong>H₂Oである。水がXYZであるような世界は、水のない世界。つまり「水＝H₂O」は<strong>後験的かつ必然的</strong>。
+                </p>
+
+                <div class="quote-box">
+                    <p>「『明けの明星は宵の明星である』は経験的発見だが、必然的真理である」</p>
+                </div>
+
+                <p><strong>▼ 可能世界</strong></p>
+                <p>クリプキの可能世界は<strong>実在論的</strong>ではない（ルイスとは異なる）。可能世界は「事態がどうありえたか」を語る<strong>規定</strong>（stipulation）。私たちは可能世界を「発見」するのではなく、<strong>規定</strong>する。
+                </p>
+
+                <p><strong>▼ 因果的命名理論</strong></p>
+                <p>名前はどう伝わるか？<strong>因果連鎖</strong>による。誰かが「アリストテレス」と命名し、その使用が人から人へ伝わる。私が「アリストテレス」と言うとき、私はその因果連鎖を通じて、元の命名行為で指された個体を指している。
+                </p>
+
+                <p><strong>▼ 様相論理のクリプキ意味論</strong></p>
+                <p>16歳で発表！可能世界と到達可能性関係を使った様相論理の意味論。これにより「必然」「可能」の概念が厳密に扱えるようになった。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ クリプキへの批判と問題</strong></p>
+                    <p>①<strong>本質主義</strong>への回帰？──何が本質的かは誰が決める？②<strong>記述が必要では</strong>──対象を固定するには記述が必要③<strong>可能世界の存在論</strong>──何を意味する？④<strong>パズル</strong>──「信念の謎」（ピエールのパズル）⑤<strong>自然種</strong>以外への適用──人工物は？
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #14b8a6;">■ 固定指示子</h4>
+                    <p><strong>どの可能世界でも同一対象を指す</strong>表現。固有名、自然種名。</p>
+                </div>
+                <div>
+                    <h4 style="color: #14b8a6;">■ 後験的必然性</h4>
+                    <p><strong>経験で知られるが必然的</strong>な真理。「水＝H₂O」。</p>
+                </div>
+                <div>
+                    <h4 style="color: #14b8a6;">■ 因果的命名理論</h4>
+                    <p><strong>名前は因果連鎖</strong>で伝達される。記述ではなく。</p>
+                </div>
+                <div>
+                    <h4 style="color: #14b8a6;">■ クリプキ意味論</h4>
+                    <p><strong>可能世界による様相論理</strong>の意味論。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>フレーゲ</strong>（意味と指示）<br>
+                        <strong>ラッセル</strong>（記述理論）<br>
+                        <strong>ウィトゲンシュタイン</strong>（規則遵守）<br>
+                        <strong>カルナップ</strong>（様相論理）<br>
+                        <strong>マーカス</strong>（固有名の直接参照）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>パトナム</strong>（意味の外在主義）<br>
+                        <strong>カプラン</strong>（指標詞）<br>
+                        <strong>本質主義の復権</strong><br>
+                        <strong>分析形而上学</strong><br>
+                        <strong>現代言語哲学</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：固定指示子＝ポインタ（参照）</h4>
+                <p><strong>ポインタ</strong>と<strong>値</strong>の区別を考えよう。ポインタはメモリ上の特定のオブジェクトを直接指す。値はオブジェクトのプロパティのコピー。</p>
+                <p>クリプキの固定指示子も同様：名前は対象への<strong>直接参照（ポインタ）</strong>。記述は対象のプロパティ（値）。名前＝ポインタ、記述＝値。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：後験的必然性＝実行時に発見される型制約</h4>
+                <p><strong>静的解析</strong>と<strong>実行時検証</strong>を考えよう。一部の制約は実行してみないと分からない。しかし一度違反すると、プログラムは必然的に失敗する。</p>
+                <p>クリプキの後験的必然性も同様：「水＝H₂O」は<strong>経験で発見</strong>されるが、一度発見されれば<strong>必然的</strong>。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：因果的命名＝イベント伝播</h4>
+                <p><strong>イベント伝播</strong>を考えよう。元のイベントが発生し、それがリスナーからリスナーへ伝わる。各リスナーは元のイベントを参照している。</p>
+                <p>クリプキの因果的命名も同様：命名行為から始まり、<strong>因果連鎖</strong>で伝播。私が「アリストテレス」と言うとき、元の命名に遡って参照している。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>フレーゲ/ラッセル</th>
+                        <th>クリプキ</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>名前</td>
+                        <td>記述の略</td>
+                        <td>固定指示子</td>
+                        <td>直接参照</td>
+                    </tr>
+                    <tr>
+                        <td>意味</td>
+                        <td>意味＝記述</td>
+                        <td>意味≠指示</td>
+                        <td>分離</td>
+                    </tr>
+                    <tr>
+                        <td>必然＝先験</td>
+                        <td>はい</td>
+                        <td>いいえ</td>
+                        <td>後験的必然</td>
+                    </tr>
+                    <tr>
+                        <td>本質</td>
+                        <td>懐疑</td>
+                        <td>復権</td>
+                        <td>形而上学</td>
+                    </tr>
+                    <tr>
+                        <td>可能世界</td>
+                        <td>メタファー</td>
+                        <td>厳密な意味論</td>
+                        <td>様相論理</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #14b8a6;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>参照とプロパティの区別</strong>：対象を指すこと vs 記述すること</li>
+                    <li><strong>アイデンティティ</strong>の哲学：同一性とは何か</li>
+                    <li><strong>法/権利</strong>：固有名の法的地位</li>
+                    <li><strong>AI/機械学習</strong>：参照と分類の違い</li>
+                    <li><strong>自然種</strong>理論：科学的分類の本質</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>本質主義</strong>：何が本質的かは誰が決める？</li>
+                    <li><strong>記述の必要性</strong>：対象固定に記述が要る？</li>
+                    <li><strong>信念の謎</strong>：ピエールのパズル</li>
+                    <li><strong>人工物</strong>：自然種以外への適用は？</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしクリプキがAIの命名問題を論じたら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「AIは固定指示子を理解できるか？」──クリプキは問うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私は言った：名前は<strong>固定指示子</strong>だと。『アリストテレス』は、どんな記述でも定義できない。あらゆる可能世界でその個体を指す。</p>
+                <p style="margin-top: 1rem;">
+                    <strong>AIの参照</strong>について。LLMは『アリストテレス』という名前をどう処理しているか？おそらく<strong>記述の束</strong>として──「古代ギリシャの哲学者、プラトンの弟子、形而上学の著者...」。しかし私が示したのは、これでは不十分だということ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    記述は<strong>変わりうる</strong>。アリストテレスに関する新事実が発見されれば、記述は変わる。しかし『アリストテレス』という名前は、<strong>同一人物</strong>を指し続ける。AIはこの<strong>直接参照</strong>を捉えているか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>因果連鎖</strong>について。私が『アリストテレス』と言うとき、私は歴史的因果連鎖の中にいる。AIは訓練データを通じてこの連鎖に接続しているか？それとも単なる統計的パターンか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    根本的問いがある：AIには<strong>指示する</strong>能力があるか？それとも単に記述を操作しているだけか？固定指示は<strong>世界との接続</strong>を必要とする。AIにそれはあるか？」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 本質主義への回帰</h4>
+                    <p>何が<strong>本質的</strong>で何が偶有的かは、誰が決めるのか？客観的に決まる？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 記述の必要性</h4>
+                    <p>対象を<strong>固定</strong>するには記述が必要では？「あの人」と指すためにも何らかの識別が要る。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ ピエールのパズル</h4>
+                    <p>ピエールは「Londres」を美しいと信じ、「London」を美しくないと信じる。同一都市なのに。<strong>信念の不整合</strong>。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 人工物への適用</h4>
+                    <p>自然種（水、金）には本質があるとして、<strong>人工物</strong>（机、椅子）は？社会的種（お金、結婚）は？</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#14b8a6;">Q1: 固定指示子とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>どの可能世界でも同一の対象を指す</strong>表現。固有名（「アリストテレス」）、自然種名（「水」「金」）。記述（「プラトンの弟子」）は固定指示子ではない──異なる世界では異なる人を指しうる。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#14b8a6;">Q2: 後験的必然性とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>経験を通じて知られるが、一度知られれば必然的</strong>な真理。例：「水＝H₂O」「明けの明星＝宵の明星」。経験的発見だが、あらゆる可能世界で成り立つ。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#14b8a6;">Q3: 記述説とクリプキの違いは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>記述説</strong>：名前は記述の略。「アリストテレス」＝「プラトンの弟子で...」。<strong>クリプキ</strong>：名前は固定指示子。記述はあくまで対象を固定する手段。名前の意味ではない。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#14b8a6;">Q4: 因果的命名理論とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        名前は<strong>因果連鎖</strong>で伝達される。誰かが命名し、その使用が人から人へ伝わる。私が「アリストテレス」と言うとき、元の命名行為に遡って同一個体を指す。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#14b8a6;">Q5: クリプキへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①本質主義への回帰──何が本質的か誰が決める？②記述の必要性──固定には記述が要る？③ピエールのパズル──信念の不整合④人工物への適用──自然種以外は？</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#14b8a6; font-weight:700;">固定指示子（Rigid Designator）</dt>
+                <dd><strong>どの可能世界でも同一対象を指す</strong>表現。</dd>
+
+                <dt style="color:#14b8a6; font-weight:700; margin-top:1rem;">後験的必然性</dt>
+                <dd><strong>経験で知られるが必然的</strong>な真理。「水＝H₂O」。</dd>
+
+                <dt style="color:#14b8a6; font-weight:700; margin-top:1rem;">因果的命名理論</dt>
+                <dd><strong>名前は因果連鎖で伝達</strong>される。</dd>
+
+                <dt style="color:#14b8a6; font-weight:700; margin-top:1rem;">可能世界</dt>
+                <dd>「事態がどうありえたか」を語る<strong>規定</strong>。</dd>
+
+                <dt style="color:#14b8a6; font-weight:700; margin-top:1rem;">クリプキ意味論</dt>
+                <dd><strong>可能世界による様相論理</strong>の意味論。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Saul Kripke (Rich Edition /
+            Extended)</p>
+    </footer>
+</body>
+
+</html>

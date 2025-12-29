@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダフィット・ヒルベルト - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">技術OS</span>
+            <h1>ダフィット・ヒルベルト</h1>
+            <p class="en-name">David Hilbert (1862-1943)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「我々は知らねばならない、我々は知るだろう（Wir müssen wissen, wir werden wissen）」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──墓碑銘</p>
+            </div>
+            <p>20世紀最高の数学者の一人。数学の基礎を完全に形式化しようとした「ヒルベルト・プログラム」は、ゲーデルの不完全性定理によって打ち砕かれたが、そのヴィジョンは計算機科学と論理学を永久に変えた。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>数学は信頼できるか？矛盾なく、すべての真なる命題を証明できるか？ヒルベルトの壮大な計画：<strong>有限的手段</strong>で数学の完全性と無矛盾性を証明する。</p>
+                <p>もし成功すれば、数学は人類史上最も確実な知識体系になる。しかしゲーデルは証明した：<strong>十分に強力な体系は、自らの無矛盾性を証明できない</strong>。計画は挫折したが、挫折の過程で計算機科学が生まれた。
+                </p>
+            </div>
+            <p>現代的に言えば、ヒルベルトは<strong>「形式検証」の究極形</strong>を追求した数学者です。コードのすべてのバグを自動的に検出できるか？その問いの数学的限界を探った。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Hilbert: towering figure in 20th-century mathematics. Formalism: mathematics as manipulation of
+                        symbols according to rules. Hilbert's Program: prove consistency and completeness of math using
+                        finite methods. 23 problems (1900): set research agenda for century. Hilbert spaces: fundamental
+                        in quantum mechanics. Gödel refuted complete program but legacy remains in logic and computer
+                        science.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>20世紀数学の巨人。形式主義：数学は規則に従った記号操作。ヒルベルト・プログラム：有限的手段で数学の無矛盾性と完全性を証明。23問題（1900）：20世紀の研究アジェンダを設定。ヒルベルト空間：量子力学の基盤。ゲーデルが計画を否定したが、論理学・計算機科学への遺産は不滅。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「数学は直観に依存」</strong>──幾何学的直観、数についての感覚。ヒルベルト：数学は<strong>純粋な形式体系</strong>。<br>
+                    <strong>②「基礎は自明」</strong>──公理は「自明な真理」。ヒルベルト：公理は<strong>証明なしに受け入れる規則</strong>。<br>
+                    <strong>③「無限は神秘」</strong>──無限をめぐるパラドックス。ヒルベルト：<strong>有限的手段</strong>で無限を扱う方法を確立。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>形式主義</strong>：数学＝規則に従った記号操作。意味から独立。<br>
+                    <strong>公理的方法</strong>：定義なき原始概念＋公理→定理を導出。<br>
+                    <strong>メタ数学</strong>：数学を対象とする数学。証明可能性を研究。<br>
+                    <strong>ヒルベルト・プログラム</strong>：無矛盾性・完全性・決定可能性の証明。<br>
+                    <strong>停止するプログラミング</strong>：アルゴリズム的思考の数学化（チューリングへ）。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「数学は完全か？すべての問題には答えがあるか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「数学は無矛盾で完全か？すべての真なる命題は証明可能か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 形式主義──意味からの解放</strong></p>
+                <p>「点、線、平面」とは何か？ユークリッドは「点は部分を持たないもの」と定義した。しかしこれは循環的。ヒルベルトは主張：<strong>「点」「線」「平面」は定義しない。公理が満たされればよい</strong>。
+                </p>
+                <p>「テーブル」「椅子」「ビールジョッキ」と呼んでもよい──公理を満たす限り、名前は重要ではない。数学は<strong>意味から解放された記号ゲーム</strong>。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 公理的方法の革命</strong></p>
+                    <p>ヒルベルトの『幾何学基礎論』（1899）はユークリッド幾何学を完全に公理化した。①<strong>定義なき原始概念</strong>（点、線、平面）②<strong>公理</strong>（これらの関係を規定する規則）③<strong>定理</strong>（公理から論理的に導出）。
+                    </p>
+                    <p>この方法は20世紀数学の標準となり、ブルバキ、現代の形式的証明支援システムにつながる。</p>
+                </div>
+
+                <p><strong>▼ ヒルベルト・プログラム</strong></p>
+                <p>1920年代、ヒルベルトは壮大な計画を立てた：数学の基礎を<strong>完全に確立</strong>する。目標：</p>
+                <p>①<strong>無矛盾性（Consistency）</strong>：矛盾は導出されない。「1=0」は証明できない。</p>
+                <p>②<strong>完全性（Completeness）</strong>：すべての真なる命題は証明可能。</p>
+                <p>③<strong>決定可能性（Decidability）</strong>：任意の命題が真か偽か決定する手続きがある。</p>
+
+                <div class="quote-box">
+                    <p>「数学には解けない問題は存在しない。我々は知らねばならない、我々は知るだろう」</p>
+                </div>
+
+                <p><strong>▼ ゲーデルの打撃</strong></p>
+                <p>1931年、クルト・ゲーデルは衝撃的な定理を証明した：</p>
+                <p><strong>第一不完全性定理</strong>：ペアノ算術を含む無矛盾な体系には、<strong>証明も反証もできない命題</strong>が存在する。</p>
+                <p><strong>第二不完全性定理</strong>：そのような体系は、<strong>自らの無矛盾性を証明できない</strong>。</p>
+                <p>ヒルベルト・プログラムは挫折した──しかし完全には死んでいない。部分的形式化、弱い体系の無矛盾性証明は今も続く。</p>
+
+                <p><strong>▼ 23の問題</strong></p>
+                <p>1900年、パリ国際数学者会議でヒルベルトは<strong>23の問題</strong>を提示した。これらは20世紀数学の研究アジェンダを設定。リーマン予想（未解決）、連続体仮説（独立性が証明された）、フェルマーの最終定理（1995年解決）など。
+                </p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 形式主義の限界</strong></p>
+                    <p>ゲーデルの定理後、形式主義は修正を迫られた。しかしヒルベルトの遺産は計算機科学に生きている。チューリングの計算可能性理論、形式的証明支援システム（Coq、Lean）、プログラム検証...ヒルベルトの夢は形を変えて続く。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 形式主義（Formalism）</h4>
+                    <p>数学＝<strong>規則に従った記号操作</strong>。意味から独立。公理が満たされれば、記号が何を「表す」かは問わない。数学の厳密化・普遍化の基盤。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ ヒルベルト・プログラム</h4>
+                    <p>数学の<strong>無矛盾性、完全性、決定可能性</strong>を有限的手段で証明する計画。ゲーデルにより完全な形では不可能と示されたが、部分的成果は多大。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ メタ数学（Metamathematics）</h4>
+                    <p>数学を<strong>対象とする数学</strong>。証明可能性、無矛盾性、完全性を数学的に研究。証明論の誕生。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ ヒルベルト空間</h4>
+                    <p><strong>無限次元の内積空間</strong>。関数解析の基盤。量子力学の数学的基盤（シュレーディンガー方程式）。フーリエ解析、信号処理にも応用。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>ユークリッド</strong>（公理的方法の先駆）<br>
+                        <strong>カント</strong>（数学は先験的綜合判断？──批判的に継承）<br>
+                        <strong>クロネッカー</strong>（有限主義──対立しつつ影響）<br>
+                        <strong>デデキント</strong>（実数の厳密化）<br>
+                        <strong>カントール</strong>（集合論──無限の数学化）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ゲーデル</strong>（不完全性定理──批判的継承）<br>
+                        <strong>チューリング</strong>（計算可能性──決定問題への応答）<br>
+                        <strong>フォン・ノイマン</strong>（弟子、量子力学の数学化）<br>
+                        <strong>ブルバキ</strong>（公理主義的数学）<br>
+                        <strong>形式検証</strong>（Coq、Lean──プログラムの証明）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：形式主義＝型システム</h4>
+                <p>TypeScriptの型システムを考えよう。型は「意味」を持たない──コンパイル時に満たすべき<strong>制約</strong>。`string`か`number`か、構文規則が満たされればよい。
+                </p>
+                <p>ヒルベルトの形式主義も同様：公理は「真理」ではなく<strong>満たすべき制約</strong>。制約が整合的であれば、「点」が何であるかは問わない。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ヒルベルト・プログラム＝完全なテストカバレッジ</h4>
+                <p>「すべてのバグを自動的に検出できるか？」これはヒルベルト・プログラムの類似問題。ゲーデルとチューリングの結果は示す：<strong>一般的には不可能</strong>。</p>
+                <p>停止問題：あるプログラムが停止するか否かを判定する一般的アルゴリズムは存在しない。完全な自動検証の限界。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：メタ数学＝リフレクション</h4>
+                <p>プログラムが自身を検査するリフレクション機能。Javaの`Class.forName()`、PythonのインスペクションAPI。</p>
+                <p>ヒルベルトのメタ数学も同様：数学を対象とする数学。「この体系で何が証明可能か？」を数学的に問う。ゲーデル符号化はまさに数学の「リフレクション」。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>直観主義/構成主義</th>
+                        <th>ヒルベルト形式主義</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>数学対象</td>
+                        <td>構成可能なもののみ</td>
+                        <td>記号と規則</td>
+                        <td>無限の取り扱い</td>
+                    </tr>
+                    <tr>
+                        <td>排中律</td>
+                        <td>制限的に使用</td>
+                        <td>無条件に採用</td>
+                        <td>非構成的証明の許容</td>
+                    </tr>
+                    <tr>
+                        <td>無限</td>
+                        <td>潜在的無限のみ</td>
+                        <td>完結した無限も可</td>
+                        <td>実無限の容認</td>
+                    </tr>
+                    <tr>
+                        <td>証明</td>
+                        <td>構成的手続き</td>
+                        <td>記号操作</td>
+                        <td>存在証明の位置づけ</td>
+                    </tr>
+                    <tr>
+                        <td>意味</td>
+                        <td>内容が重要</td>
+                        <td>形式が重要</td>
+                        <td>記号ゲームとしての数学</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>形式検証</strong>：Coq、Lean、Isabelle──プログラムの正しさを証明</li>
+                    <li><strong>計算機科学</strong>：チューリングマシン、計算可能性理論</li>
+                    <li><strong>量子力学</strong>：ヒルベルト空間が状態空間の数学的基盤</li>
+                    <li><strong>暗号理論</strong>：数論的問題（RSA）</li>
+                    <li><strong>AI安全性</strong>：形式的検証による安全性保証の可能性と限界</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>ゲーデルによる挫折</strong>：完全性と無矛盾性の同時達成は不可能</li>
+                    <li><strong>形式主義の限界</strong>：数学は「意味なき記号」か？直観の役割は？</li>
+                    <li><strong>複雑性の爆発</strong>：形式証明は膨大になりうる</li>
+                    <li><strong>決定不能性</strong>：多くの問題は原理的に決定不能</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしヒルベルトがAGIと形式検証を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「私の夢が形を変えて生きている！」──ヒルベルトはそう興奮するでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「形式検証システムを見よ。Coq、Lean...これらは<strong>証明を検証する機械</strong>だ。人間が書いた証明を、機械が正しさを保証する。これはまさに私が夢見たものだ。</p>
+                <p style="margin-top: 1rem;">
+                    しかしゲーデルの定理は消えていない。完全な形式化には<strong>限界</strong>がある。すべてのバグを自動検出することはできない──停止問題。すべての数学的真理を証明することもできない──不完全性。
+                </p>
+                <p style="margin-top: 1rem;">
+                    AGIについて...これは興味深い。AGIは<strong>証明を発見</strong>できるか？人間の数学者を超えるか？私は楽観主義者だった。『我々は知るだろう』と言った。AGIがそれを実現するなら、素晴らしい。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし警告もある。AGIが証明を発見しても、人間がそれを<strong>理解</strong>できなければ意味がある半減だ。1万ページの証明を機械が発見しても、誰も検証できない。<strong>理解可能性</strong>も数学の価値だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    そして根本的な問い：AGI自身は<strong>自らの無矛盾性を証明できるか</strong>？ゲーデルの定理によれば、できない──十分に強力なシステムは、自らの無矛盾性を内部から証明できない。これはAGI安全性の根本的限界かもしれない」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① ゲーデルの不完全性定理</h4>
+                    <p>ヒルベルト・プログラムの核心を否定。十分に強力な体系は<strong>不完全</strong>か<strong>矛盾</strong>する。自らの無矛盾性を内部から証明できない。計画は挫折したが、部分的成果は残る。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 直観主義からの批判（ブラウワー）</h4>
+                    <p>数学は「意味なき記号」ではない。<strong>構成可能性</strong>が重要。排中律の無条件使用、非構成的存在証明は意味がない。数学は人間の精神活動であり、形式システムに還元できない。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 数学的実践との乖離</h4>
+                    <p>働く数学者は形式主義者ではない。<strong>直観、美、意味</strong>が発見を導く。ゲーデル自身は<strong>プラトン主義者</strong>──数学的対象は実在する。形式主義は数学の「哲学」として不十分？
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ ヴィトゲンシュタインの批判</h4>
+                    <p>ゲーデルの定理を過大評価するな。数学の「基礎」問題は<strong>言語ゲーム</strong>の問題。形式化は日常的実践を捉え損なう。哲学的問題は解決されるのではなく解消される。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: ヒルベルト・プログラムとは何か？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        数学の<strong>無矛盾性、完全性、決定可能性</strong>を有限的手段で証明する計画。①無矛盾性：矛盾は導出されない②完全性：すべての真なる命題は証明可能③決定可能性：任意の命題が真か偽か決定する手続きがある。ゲーデルにより完全な形では不可能と示された。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 形式主義の核心は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        数学＝<strong>規則に従った記号操作</strong>。意味から独立。「点」「線」の定義は不要──公理が満たされればよい。「テーブル」「椅子」と呼んでもよい。数学の厳密化・普遍化を可能にしたが、ゲーデルが限界を示した。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: ゲーデルの不完全性定理がヒルベルトに与えた影響は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①第一定理：十分に強力な体系には<strong>証明も反証もできない命題</strong>が存在（不完全）②第二定理：そのような体系は<strong>自らの無矛盾性を証明できない</strong>。ヒルベルト・プログラムの完全な実現は不可能。しかし部分的形式化、弱い体系の研究は続く。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: ヒルベルトへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①ゲーデル──不完全性定理によりプログラムは挫折②ブラウワー（直観主義）──数学は構成可能性が重要、記号ゲームではない③数学的実践との乖離──働く数学者は直観・意味を重視④ヴィトゲンシュタイン──形式化は日常的実践を捉え損なう
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">形式主義（Formalism）</dt>
+                <dd>数学＝<strong>規則に従った記号操作</strong>。意味から独立。公理的体系による厳密化。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">ヒルベルト・プログラム</dt>
+                <dd>数学の<strong>無矛盾性、完全性、決定可能性</strong>を有限的手段で証明する計画。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">メタ数学</dt>
+                <dd>数学を<strong>対象とする数学</strong>。証明可能性、無矛盾性を数学的に研究。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">ヒルベルト空間</dt>
+                <dd><strong>無限次元の完備内積空間</strong>。量子力学、関数解析の基盤。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">決定問題（Entscheidungsproblem）</dt>
+                <dd>任意の命題が真か偽か決定する<strong>一般的手続き</strong>があるか？チューリングが否定的に解決。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | David Hilbert (Rich Edition)
+        </p>
+    </footer>
+</body>
+
+</html>

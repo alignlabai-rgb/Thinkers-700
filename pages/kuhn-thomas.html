@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・クーン - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(167, 139, 250, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="hero-badge">📚 パラダイムを発明した男</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">科学OS</span>
+            <h1>トマス・クーン</h1>
+            <p class="en-name">Thomas Kuhn (1922-1996)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 2px solid #8b5cf6; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(167, 139, 250, 0.05));">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「科学者はパラダイムの中でパズルを解いている」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──クーン</p>
+            </div>
+            <p>アメリカの科学哲学者・科学史家。『科学革命の構造』（1962年）で「パラダイム」「通常科学」「科学革命」の概念を提唱し、科学観を一変させた。20世紀で最も引用された学術書の一つ。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>科学は<strong>累積的に進歩する</strong>と考えられてきた。発見が積み重なり、真理に近づく。クーンは反論する：科学は連続的ではなく<strong>断続的</strong>だ。</p>
+                <p><strong>通常科学</strong>：科学者はパラダイム（共有された前提）の中でパズルを解く。疑問のない前提の上で研究。<br>
+                    <strong>異常</strong>：パラダイムで説明できない現象。最初は無視。しかし蓄積すると危機に。<br>
+                    <strong>革命</strong>：パラダイムが崩壊し、新しいパラダイムに転換。ニュートンからアインシュタインへ。<br>
+                    <strong>通約不可能性</strong>：新旧パラダイムは単純に比較できない。世界の見方自体が変わる。
+                </p>
+            </div>
+            <p>現代的に言えば、クーンは<strong>「フレームワークの非互換性」</strong>を発見した思想家。異なるフレームワーク間では、同じ問題も違って見える。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Thomas Kuhn: American philosopher and historian of science. "The Structure of Scientific
+                        Revolutions" (1962). Paradigm: shared framework of assumptions. Normal science: puzzle-solving
+                        within paradigm. Scientific revolution: paradigm shift. Incommensurability: paradigms cannot be
+                        directly compared. Influenced science studies, philosophy of science.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>アメリカの科学哲学者・科学史家。『科学革命の構造』（1962年）。パラダイム：共有された前提の枠組み。通常科学：パラダイム内でのパズル解き。科学革命：パラダイム・シフト。通約不可能性：パラダイムは直接比較できない。科学論、科学哲学への影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「科学は累積的」</strong>──論理実証主義。クーン：<strong>革命的断絶</strong>がある。<br>
+                    <strong>②「科学は合理的」</strong>──ポパー。クーン：<strong>社会的プロセス</strong>もある。<br>
+                    <strong>③「進歩は線形」</strong>──常識。クーン：<strong>パラダイム間に断絶</strong>。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>パラダイム</strong>：共有された前提・方法・問題の枠組み。<br>
+                    <strong>通常科学</strong>：パラダイム内でのパズル解き。<br>
+                    <strong>異常</strong>：パラダイムで説明できない現象。<br>
+                    <strong>危機</strong>：異常の蓄積でパラダイムが揺らぐ。<br>
+                    <strong>革命</strong>：新パラダイムへの転換。<br>
+                    <strong>通約不可能性</strong>：新旧パラダイムは直接比較できない。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「科学はいかに変化するか？科学革命の構造とは何か？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「科学はいかに変化するか？科学革命の構造とは何か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ パラダイム</strong></p>
+                <p>クーンの核心概念。しかし多義的で物議を醸した。大きく言えば：<br>
+                    ・<strong>模範（exemplar）</strong>：科学者が模倣する模範的問題解決。<br>
+                    ・<strong>規律基盤</strong>：共有された法則、理論、方法、道具、価値観。<br>
+                    ・<strong>世界観</strong>：何が問題で、どう解くかの前提。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 科学革命のサイクル</strong></p>
+                    <p><strong>1. 前パラダイム期</strong>：統一された枠組みがない。諸派が競争。<br>
+                        <strong>2. 通常科学</strong>：パラダイムが確立。科学者はパズル解きに従事。パラダイムを疑わない。<br>
+                        <strong>3. 異常の発見</strong>：パラダイムで説明できない現象。最初は無視。しかし蓄積する。<br>
+                        <strong>4. 危機</strong>：異常が蓄積。パラダイムへの信頼が揺らぐ。<br>
+                        <strong>5. 革命</strong>：新しいパラダイムが提唱され、受け入れられる。転換。<br>
+                        <strong>6. 新たな通常科学</strong>：新パラダイムでのパズル解きが始まる。
+                    </p>
+                </div>
+
+                <p><strong>▼ 通約不可能性（Incommensurability）</strong></p>
+                <p>最も論争的な概念。新旧パラダイム間では：<br>
+                    ・<strong>同じ言葉が違う意味</strong>を持つ（「質量」など）。<br>
+                    ・<strong>問題自体が変わる</strong>。何が重要な問題かが違う。<br>
+                    ・<strong>世界が違って見える</strong>。「ゲシュタルト転換」。</p>
+                <p>だから単純に「新パラダイムが優れている」と言えない。比較の共通基盤がない。</p>
+
+                <div class="quote-box">
+                    <p>「科学者は革命後に違う世界に住んでいる」</p>
+                </div>
+
+                <p><strong>▼ 歴史的例</strong></p>
+                <p>・<strong>天文学</strong>：プトレマイオス → コペルニクス。天動説から地動説へ。<br>
+                    ・<strong>化学</strong>：フロギストン → ラボアジエの化学革命。<br>
+                    ・<strong>物理学</strong>：ニュートン → アインシュタイン。絶対空間から相対論へ。<br>
+                    ・<strong>量子力学</strong>：古典物理学から確率的記述へ。</p>
+
+                <p><strong>▼ コイレからの影響</strong></p>
+                <p>クーンはコイレの科学史から多くを学んだ。「閉じた世界から無限の宇宙へ」──まさにパラダイム・シフト。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ クーンへの批判</strong></p>
+                    <p>①<strong>「パラダイム」の曖昧さ</strong>──何を意味するか不明確（21以上の用法！）②<strong>相対主義</strong>──真理はないのか？科学に進歩はないのか？③<strong>通約不可能性の過大評価</strong>──完全に比較不能か？④<strong>社会決定論</strong>──合理的選択は？⑤<strong>自然科学以外への適用</strong>──人文学にも当てはまる？
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #8b5cf6;">■ パラダイム</h4>
+                    <p><strong>共有された前提・方法・問題の枠組み</strong>。科学者が住む世界。</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b5cf6;">■ 通常科学</h4>
+                    <p><strong>パラダイム内でのパズル解き</strong>。前提を疑わない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b5cf6;">■ 科学革命</h4>
+                    <p><strong>パラダイム・シフト</strong>。古い枠組みから新しい枠組みへ。</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b5cf6;">■ 通約不可能性</h4>
+                    <p><strong>パラダイム間は直接比較できない</strong>。共通基盤がない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>コイレ</strong>（科学史）<br>
+                        <strong>ポランニー</strong>（暗黙知）<br>
+                        <strong>フレック</strong>（思考集団）<br>
+                        <strong>ウィトゲンシュタイン</strong>（言語ゲーム）<br>
+                        <strong>ゲシュタルト心理学</strong>
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>科学社会学</strong>（SSK）<br>
+                        <strong>科学技術社会論</strong>（STS）<br>
+                        <strong>科学哲学の歴史主義</strong><br>
+                        <strong>ビジネス用語「パラダイムシフト」</strong><br>
+                        <strong>ラカトシュ、ファイヤアーベント</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：パラダイム＝フレームワーク</h4>
+                <p>開発<strong>フレームワーク</strong>を考えよう。React、Angular、Vue...それぞれが「問題の見方」「解決方法」「ベストプラクティス」を規定。フレームワーク内では効率的に開発できる。しかし前提自体は問わない。
+                </p>
+                <p>クーンのパラダイムも同様：科学者は<strong>パラダイム内</strong>で効率的に研究。前提自体は問わない。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：革命＝フレームワーク移行</h4>
+                <p><strong>フレームワーク移行</strong>を考えよう。jQuery から React
+                    へ。単なるライブラリの更新ではない。考え方が根本的に変わる。同じ問題も違うアプローチで解く。旧コードはそのまま使えない。</p>
+                <p>クーンの科学革命も同様：ニュートンからアインシュタインへは<strong>フレームワーク移行</strong>。同じ物理現象も、違う概念で記述。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：通約不可能性＝API非互換</h4>
+                <p><strong>API非互換</strong>を考えよう。メジャーバージョンが変わると、APIが変わる。同じ名前のメソッドが、違う意味・挙動を持つことも。</p>
+                <p>クーンの通約不可能性も同様：同じ「質量」という言葉が、ニュートンとアインシュタインで<strong>違う意味</strong>。直接の翻訳が困難。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>論理実証主義</th>
+                        <th>クーン</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>科学の変化</td>
+                        <td>累積的</td>
+                        <td>革命的</td>
+                        <td>断絶</td>
+                    </tr>
+                    <tr>
+                        <td>進歩</td>
+                        <td>線形</td>
+                        <td>非線形</td>
+                        <td>パラダイム間</td>
+                    </tr>
+                    <tr>
+                        <td>合理性</td>
+                        <td>論理的</td>
+                        <td>社会的も</td>
+                        <td>複雑</td>
+                    </tr>
+                    <tr>
+                        <td>比較</td>
+                        <td>可能</td>
+                        <td>困難</td>
+                        <td>通約不可能</td>
+                    </tr>
+                    <tr>
+                        <td>歴史</td>
+                        <td>付随的</td>
+                        <td>本質的</td>
+                        <td>歴史主義</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #8b5cf6;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>前提の意識</strong>：自分のパラダイムを意識</li>
+                    <li><strong>異常への注意</strong>：説明できない現象に敏感に</li>
+                    <li><strong>革命への備え</strong>：フレームワークは変わりうる</li>
+                    <li><strong>歴史的視点</strong>：現在の科学も歴史的</li>
+                    <li><strong>異分野理解</strong>：パラダイムの違いを理解</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>パラダイムの曖昧さ</strong>：多義的</li>
+                    <li><strong>相対主義</strong>：真理はないのか？</li>
+                    <li><strong>通約不可能性の限界</strong>：完全に比較不能？</li>
+                    <li><strong>適用範囲</strong>：自然科学以外は？</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしクーンがAI発展を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「AIはパラダイム・シフトか？」──クーンは問うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私は言った：科学は<strong>パラダイム内のパズル解き</strong>と、<strong>パラダイム・シフト</strong>の交替だと。AIはどちらか？</p>
+                <p style="margin-top: 1rem;">
+                    <strong>通常科学として</strong>見れば、機械学習は既存パラダイム内でのパズル解き。精度向上、モデル改良、アプリケーション拡大...異常を解消するためにパラダイムを精緻化している。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>革命として</strong>見れば、深層学習は認知科学・言語学に挑戦している。「言語とは何か」「知能とは何か」という問い自体が変わりつつある。これはパラダイム・シフトの兆候かもしれない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>通約不可能性</strong>について。従来のAI（記号主義）と深層学習は、通約不可能に近い。同じ「推論」という言葉が、違う意味を持つ。同じ「理解」という言葉が、違う基準で測られる。
+                </p>
+                <p style="margin-top: 1rem;">
+                    注意すべきこと：<strong>革命は起きてから分かる</strong>。今起きていることが革命かどうかは、歴史が判断する。科学者は自分がパラダイムの中にいることに気づきにくい。<strong>自分の前提を意識せよ</strong>」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① パラダイムの曖昧さ</h4>
+                    <p>クーンの「パラダイム」は<strong>21以上の用法</strong>があると批判された。何を意味するか不明確。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 相対主義</h4>
+                    <p>パラダイムが通約不可能なら、<strong>真理はないのか</strong>？科学に進歩はないのか？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 通約不可能性の過大評価</h4>
+                    <p>本当に<strong>完全に比較不能</strong>か？翻訳可能な部分もあるのでは？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 社会決定論</h4>
+                    <p>パラダイム選択は純粋に<strong>社会的</strong>か？合理的選択の余地は？</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#8b5cf6;">Q1: パラダイムとは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>共有された前提・方法・問題の枠組み</strong>。科学者コミュニティが共有する模範的問題解決（模範）、法則・理論・道具・価値観（規律基盤）、世界の見方。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#8b5cf6;">Q2: 通常科学と科学革命の違いは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>通常科学</strong>：パラダイム内でのパズル解き。前提を疑わない。<strong>科学革命</strong>：パラダイムの転換。異常が蓄積し、危機が生じ、新パラダイムが採用される。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#8b5cf6;">Q3: 通約不可能性とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        新旧パラダイム間では<strong>直接の比較が困難</strong>。同じ言葉が違う意味を持つ。問題自体が変わる。世界が違って見える（ゲシュタルト転換）。共通の比較基盤がない。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#8b5cf6;">Q4: コイレからの影響は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        クーンはコイレの科学史から多くを学んだ。「閉じた世界から無限の宇宙へ」は<strong>パラダイム・シフト</strong>の好例。概念的転換、非連続性、理論の優位──クーンの核心概念と共鳴。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#8b5cf6;">Q5: クーンへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①パラダイムの曖昧さ──21以上の用法②相対主義──真理はないのか③通約不可能性の過大評価──完全に比較不能？④社会決定論──合理的選択は？</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#8b5cf6; font-weight:700;">パラダイム</dt>
+                <dd><strong>共有された前提・方法・問題の枠組み</strong>。科学者が住む世界。</dd>
+
+                <dt style="color:#8b5cf6; font-weight:700; margin-top:1rem;">通常科学</dt>
+                <dd><strong>パラダイム内でのパズル解き</strong>。前提を疑わない。</dd>
+
+                <dt style="color:#8b5cf6; font-weight:700; margin-top:1rem;">科学革命</dt>
+                <dd><strong>パラダイムの転換</strong>。古い枠組みから新しい枠組みへ。</dd>
+
+                <dt style="color:#8b5cf6; font-weight:700; margin-top:1rem;">通約不可能性</dt>
+                <dd><strong>パラダイム間は直接比較できない</strong>。共通基盤がない。</dd>
+
+                <dt style="color:#8b5cf6; font-weight:700; margin-top:1rem;">異常（アノマリー）</dt>
+                <dd><strong>パラダイムで説明できない現象</strong>。蓄積すると危機に。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Thomas Kuhn (Rich Edition /
+            Extended)</p>
+    </footer>
+</body>
+
+</html>

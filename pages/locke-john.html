@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョン・ロック - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0a1628 100%);
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.3);
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #3b82f6;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #3b82f6, transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #3b82f6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.2));
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .special-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="special-badge">🌟 自由主義の父</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">政治OS</span>
+            <span class="os-tag">哲学OS</span>
+            <h1>ジョン・ロック</h1>
+            <p class="en-name">John Locke (1632-1704)</p>
+        </header>
+
+        <section class="section-card" style="border: 2px solid #3b82f6;">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「心は白紙（タブラ・ラサ）である」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──ロック</p>
+            </div>
+            <p>イギリスの哲学者・政治思想家。近代自由主義の父。『人間知性論』『統治二論』。経験論（タブラ・ラサ）、社会契約論、所有権論、抵抗権（革命権）。アメリカ独立宣言、人権宣言に直接影響。現代民主主義の基盤。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p><strong>認識論</strong>：人間の心は生まれつき「白紙」（タブラ・ラサ）。すべての知識は<strong>経験</strong>から来る。生得観念を否定。</p>
+                <p><strong>政治哲学</strong>：人間には<strong>自然権</strong>（生命・自由・財産）がある。政府はこれを守るために存在。守らなければ人民は<strong>抵抗権</strong>（革命権）を持つ。権力の正当性は人民の同意に基づく。
+                </p>
+            </div>
+            <p>現代的に言えば、ロックは<strong>「政府は人民へのサービスである」</strong>と定義した思想家。サービスが役割を果たさなければ解約できる。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>John Locke: British philosopher, political theorist. "Father of Liberalism." "Essay Concerning
+                        Human Understanding," "Two Treatises of Government." Tabula rasa. Natural rights: life, liberty,
+                        property. Social contract. Right of revolution. Separation of powers. Direct influence on modern
+                        democracy.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>イギリスの哲学者・政治思想家。「自由主義の父」。『人間知性論』『統治二論』。タブラ・ラサ。自然権：生命・自由・財産。社会契約論。抵抗権。権力分立。現代民主主義への直接的影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「生得観念がある」</strong>──デカルト。ロック：<strong>タブラ・ラサ</strong>。<br>
+                    <strong>②「王権神授説」</strong>。ロック：<strong>人民の同意が基盤</strong>。<br>
+                    <strong>③「絶対王政」</strong>。ロック：<strong>制限政府</strong>。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>経験論</strong>：知識は経験から。<br>
+                    <strong>自然権</strong>：生命・自由・財産。<br>
+                    <strong>社会契約</strong>：人民の同意が正当性。<br>
+                    <strong>抵抗権</strong>：悪政への革命権。<br>
+                    <strong>権力分立</strong>：立法と執行の分離。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「知識はどこから来るか？政府の正当性は何に基づくか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「知識はどこから来るか？政府はいかにして正当化されるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ タブラ・ラサ（白紙）</strong></p>
+                <p>ロック認識論の核心。人間の心は生まれつき白紙。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 タブラ・ラサの意味</strong></p>
+                    <p><strong>①生得観念を否定</strong>：デカルトは「神の観念」は生得と主張。ロック：<strong>否</strong>。すべては経験から。<br>
+                        <strong>②感覚と反省</strong>：知識源は二つ──外部からの感覚、内部の心の働きへの反省。<br>
+                        <strong>③観念の結合</strong>：単純観念が複合観念に。経験の蓄積と組み合わせ。<br>
+                        <strong>④教育の重要性</strong>：人間は環境と経験で形成される。教育が決定的。
+                    </p>
+                </div>
+
+                <p><strong>▼ 自然権</strong></p>
+                <p>人間は自然状態において権利を持つ：<strong>生命、自由、財産</strong>。これは政府以前から存在。政府の目的はこれを守ること。</p>
+
+                <div class="quote-box">
+                    <p>「政府の目的は生命、自由、財産の保護である」</p>
+                </div>
+
+                <p><strong>▼ 社会契約と同意</strong></p>
+                <p>自然状態→不便（紛争解決がない）→社会契約で政府を設立。<br>
+                    政府の正当性は<strong>人民の同意</strong>に基づく。王権神授説を否定。支配は神からではなく人民から。</p>
+
+                <p><strong>▼ 抵抗権（革命権）</strong></p>
+                <p>政府が自然権を守らなければ？ロック：人民は<strong>抵抗権</strong>を持つ。政府を解体し新たな政府を設立できる。ただし軽々しくではなく、「長期にわたる権利侵害」に対して。</p>
+
+                <p><strong>▼ 所有権論（労働所有論）</strong></p>
+                <p>なぜ所有権は正当か？ロック：<strong>労働</strong>による。自然物に自分の労働を加えれば、それは自分のものになる。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ ロックへの批判</strong></p>
+                    <p>①<strong>経験論の限界</strong>──純粋経験だけで十分か②<strong>所有権の問題</strong>──労働者と資本家、格差の正当化？③<strong>同意の虚構</strong>──実際に同意したか④<strong>歴史的限界</strong>──財産資格、奴隷制への態度⑤<strong>抵抗権の曖昧さ</strong>──いつ発動できる？
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #3b82f6;">■ タブラ・ラサ</h4>
+                    <p><strong>心は白紙</strong>。すべての知識は経験から。</p>
+                </div>
+                <div>
+                    <h4 style="color: #3b82f6;">■ 自然権</h4>
+                    <p><strong>生命・自由・財産</strong>。政府以前から存在。</p>
+                </div>
+                <div>
+                    <h4 style="color: #3b82f6;">■ 社会契約</h4>
+                    <p><strong>人民の同意</strong>が政府の正当性。</p>
+                </div>
+                <div>
+                    <h4 style="color: #3b82f6;">■ 抵抗権</h4>
+                    <p><strong>悪政への革命権</strong>。政府を解体しうる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>ホッブズ</strong>（社会契約、批判的）<br>
+                        <strong>ベーコン</strong>（経験論）<br>
+                        <strong>ニュートン</strong>（科学革命）<br>
+                        <strong>名誉革命</strong>（歴史的文脈）<br>
+                        <strong>古代自然法論</strong>
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ヒューム・バークリー</strong>（経験論）<br>
+                        <strong>モンテスキュー</strong>（権力分立）<br>
+                        <strong>アメリカ独立宣言</strong><br>
+                        <strong>フランス人権宣言</strong><br>
+                        <strong>現代リベラリズム</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：タブラ・ラサ＝初期化された変数</h4>
+                <p><strong>初期化された変数</strong>を考えよう。デフォルト値なし。あとで代入する。内容は実行時に決まる。</p>
+                <p>ロックのタブラ・ラサも同様：心は<strong>初期値なし</strong>。経験という「代入」で内容が決まる。生まれつきの値はない。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：社会契約＝サービス利用規約</h4>
+                <p><strong>サービス利用規約</strong>を考えよう。ユーザーが同意して利用開始。サービス提供者は約束を守る。守らなければ解約できる。</p>
+                <p>ロックの社会契約も同様：人民が<strong>同意</strong>して政府を設立。政府は自然権を守る約束。守らなければ人民は「解約」（革命）できる。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：自然権＝基本的な権限</h4>
+                <p><strong>基本的な権限</strong>を考えよう。ユーザーには基本的な権限がある（データへのアクセス、削除など）。システム管理者もこれを侵害できない。</p>
+                <p>ロックの自然権も同様：生命・自由・財産は<strong>政府が与えるのではなく</strong>、人間が持つ。政府はこれを侵害できない。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>絶対王政/生得論</th>
+                        <th>ロック</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>知識源</td>
+                        <td>生得観念</td>
+                        <td>経験</td>
+                        <td>タブラ・ラサ</td>
+                    </tr>
+                    <tr>
+                        <td>権力の源</td>
+                        <td>神</td>
+                        <td>人民の同意</td>
+                        <td>民主主義</td>
+                    </tr>
+                    <tr>
+                        <td>権利</td>
+                        <td>与えられる</td>
+                        <td>自然に持つ</td>
+                        <td>自然権</td>
+                    </tr>
+                    <tr>
+                        <td>悪政</td>
+                        <td>服従</td>
+                        <td>抵抗権</td>
+                        <td>革命</td>
+                    </tr>
+                    <tr>
+                        <td>政府</td>
+                        <td>支配者</td>
+                        <td>サービス</td>
+                        <td>制限政府</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #3b82f6;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>民主主義</strong>：人民主権</li>
+                    <li><strong>人権</strong>：自然権の概念</li>
+                    <li><strong>憲法</strong>：政府の制限</li>
+                    <li><strong>教育</strong>：経験と環境の重視</li>
+                    <li><strong>プライバシー</strong>：財産権の延長</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>所有権の問題</strong>：格差の正当化？</li>
+                    <li><strong>同意の虚構</strong>：実際に同意したか？</li>
+                    <li><strong>歴史的限界</strong>：財産資格、奴隷制</li>
+                    <li><strong>経験論の限界</strong>：純粋経験だけで？</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしロックがデジタル時代を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「<strong>私の原則は今も有効だ</strong>」──ロックは言うでしょう。</p>
+                <p style="margin-top: 1rem;">「私は17世紀に自然権と社会契約を説いた。デジタル時代を見ると──</p>
+                <p style="margin-top: 1rem;">
+                    <strong>デジタル所有権</strong>：私は労働による所有を説いた。デジタルデータは誰のものか？自分で生成したデータは自分のものか？プラットフォームか？</p>
+                <p style="margin-top: 1rem;">
+                    <strong>デジタル自然権</strong>：生命・自由・財産。デジタル時代には「プライバシー」「データ」「オンライン表現の自由」が追加されるべきか？</p>
+                <p style="margin-top: 1rem;">
+                    <strong>プラットフォームと同意</strong>：利用規約に同意...これは私の社会契約か？しかし<strong>拒否すれば使えない</strong>。真の同意か強制か？</p>
+                <p style="margin-top: 1rem;"><strong>抵抗権</strong>：テック企業が私たちの権利を侵害するなら？「キャンセル」「ボイコット」「規制要求」...これは現代の抵抗権か。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>AIとタブラ・ラサ</strong>：AIは学習前は空。データで「経験」を積む。これは私のタブラ・ラサと似ている。しかしAIには権利があるか？」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 所有権の問題</h4>
+                    <p>労働による所有は<strong>格差を正当化</strong>？無産者はどうなる？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 同意の虚構</h4>
+                    <p>実際に「<strong>社会契約に同意</strong>」したか？黙示の同意は十分か？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 歴史的限界</h4>
+                    <p>財産資格、<strong>奴隷制への関与</strong>など、時代の制約。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 経験論の限界</h4>
+                    <p>カントが批判：<strong>純粋経験だけでは不十分</strong>。アプリオリな形式がある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#3b82f6;">Q1: タブラ・ラサとは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>心は白紙</strong>。生まれつきの観念はない。すべての知識は<strong>経験</strong>から来る。感覚と反省が知識源。教育と環境が人間を形成。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#3b82f6;">Q2: 自然権とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>生命・自由・財産</strong>。政府以前から人間が持つ権利。政府はこれを守るために存在。侵害できない。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#3b82f6;">Q3: 抵抗権（革命権）とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        政府が自然権を守らなければ、人民は<strong>政府を解体</strong>できる権利。長期にわたる権利侵害に対して。アメリカ独立宣言に反映。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#3b82f6;">Q4: ロックの社会契約論とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        自然状態→社会契約→政府設立。政府の正当性は<strong>人民の同意</strong>に基づく。王権神授説を否定。政府は人民へのサービス。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#3b82f6;">Q5: ロックへの批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①所有権の問題──格差の正当化②同意の虚構──実際に同意したか③歴史的限界──財産資格、奴隷制④経験論の限界──カントの批判。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#3b82f6; font-weight:700;">タブラ・ラサ</dt>
+                <dd><strong>心は白紙</strong>。経験で形成される。</dd>
+
+                <dt style="color:#3b82f6; font-weight:700; margin-top:1rem;">自然権</dt>
+                <dd><strong>生命・自由・財産</strong>。政府以前から持つ。</dd>
+
+                <dt style="color:#3b82f6; font-weight:700; margin-top:1rem;">社会契約</dt>
+                <dd><strong>人民の同意</strong>による政府設立。正当性の基盤。</dd>
+
+                <dt style="color:#3b82f6; font-weight:700; margin-top:1rem;">抵抗権</dt>
+                <dd><strong>悪政への革命権</strong>。政府を解体しうる。</dd>
+
+                <dt style="color:#3b82f6; font-weight:700; margin-top:1rem;">労働所有論</dt>
+                <dd><strong>労働を加えたものは所有</strong>。所有権の正当化。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(59, 130, 246, 0.2);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | John Locke (Rich Edition /
+            Special)</p>
+    </footer>
+</body>
+
+</html>

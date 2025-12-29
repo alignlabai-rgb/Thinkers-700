@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊藤仁斎 - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">技術OS</span>
+            <h1>伊藤仁斎</h1>
+            <p class="en-name">Ito Jinsai (1627-1705)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「論語は最上至極宇宙第一の書なり」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──『童子問』</p>
+            </div>
+            <p>江戸前期の儒学者。「古義学」を提唱。朱子学の抽象的解釈を批判し、孔子・孟子の原典に直接帰ることを主張。「仁」を中心に据えた実践的倫理。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>当時の儒学は「朱子学」が主流。宇宙論、形而上学、理気論...孔子の教えは複雑な哲学体系に覆われていた。</p>
+                <p>仁斎の問い：<strong>孔子自身は何を教えたか？</strong>朱子学の解釈を取り払い、『論語』『孟子』を直接読め。すると見えてくる：孔子の教えの核心は<strong>「仁」（人を愛すること）</strong>であり、抽象的な宇宙論ではない。
+                </p>
+            </div>
+            <p>現代的に言えば、仁斎は<strong>「原典に戻れ」</strong>と言った先駆者。ドキュメントより先人のコメンタリーが権威を持つとき、原典を読み直すことで本質が見える。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Ito Jinsai: Edo period Confucian scholar. "Kogigaku" (Ancient Meaning Learning): return to
+                        original texts. Critique of Zhu Xi's metaphysics. "Analects" as supreme text. "Ren"
+                        (benevolence/love) as core virtue. Ethics over cosmology. Practical, humanistic Confucianism.
+                        "Dojimmon" (Questions from Children): educational dialogue. Influenced Japanese intellectual
+                        history.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>江戸時代の儒学者。「古義学」：原典に帰る。朱子学の形而上学批判。『論語』を最高の書とする。「仁」（愛）を中心的徳目に。宇宙論より倫理学。実践的で人間主義的な儒学。『童子問』：教育的対話。日本思想史に影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「朱子学が正統」</strong>──官学。仁斎：朱子学は<strong>孔子を歪めている</strong>。<br>
+                    <strong>②「理気論が重要」</strong>──形而上学。仁斎：孔子は<strong>形而上学を語っていない</strong>。<br>
+                    <strong>③「注釈を通して読む」</strong>──学問の方法。仁斎：<strong>原典を直接</strong>読め。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>古義学</strong>：原典の「古い意味」に帰る。<br>
+                    <strong>仁</strong>：人を愛すること。儒学の核心。<br>
+                    <strong>日常の実践</strong>：抽象的思弁より具体的行為。<br>
+                    <strong>人間関係</strong>：宇宙論より人と人の関係。<br>
+                    <strong>活物の学</strong>：生きた学問、心が温まる学問。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「孔子の本当の教えは何か？いかに人を愛し、どう生きるか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「孔子は何を教えたか？朱子学を通さず、孔子自身の言葉に帰ったとき、何が見えるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 朱子学批判</strong></p>
+                <p>朱子学は12世紀中国の朱熹が大成した儒学の体系。「理」（普遍的原理）と「気」（物質的エネルギー）の形而上学、「格物致知」（物事を究めて知に至る）の認識論...。</p>
+                <p>仁斎の批判：これは<strong>孔子の教えではない</strong>。朱子学は仏教や道教の影響で形而上学的になった。孔子自身は「怪力乱神を語らず」──宇宙論や神秘的なことには触れなかった。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 古義学</strong></p>
+                    <p>仁斎の方法：後世の注釈を捨て、『論語』『孟子』を直接読み、<strong>孔子・孟子時代の言葉の意味</strong>（古義）を明らかにする。</p>
+                    <p>例えば「理」という字。朱子学では形而上学的原理。しかし孔子の時代は単に「道理」「筋道」の意味。朱子学は後の概念を孔子に読み込んでいる。</p>
+                </div>
+
+                <p><strong>▼ 仁──愛の徳</strong></p>
+                <p>仁斎が発見したもの：孔子の教えの核心は<strong>「仁」</strong>。朱子学では「仁」は静かな心の状態とされたが、仁斎にとって「仁」は<strong>積極的に人を愛すること</strong>。
+                </p>
+                <p>仁とは「愛のみ」。理屈ではなく、<strong>温かい心</strong>。親への孝、友への誠、他者への思いやり...「仁」は日常の人間関係の中で実践されるもの。</p>
+
+                <p><strong>▼ 活物の学 vs 死物の学</strong></p>
+                <p>朱子学は「死物の学」──冷たい理論、抽象的思弁。心が動かない。</p>
+                <p>孔子の学は「活物の学」──生きた学問。読むと心が温まる、行動に移したくなる。『論語』を読んで感動しない人は、まだ本当に読めていない。</p>
+
+                <div class="quote-box">
+                    <p>「仁は愛のみ、愛は仁のみ」</p>
+                </div>
+
+                <p><strong>▼ 日用倫理</strong></p>
+                <p>孔子の教えは<strong>日常生活</strong>のためにある。難しい宇宙論ではなく、いかに家族と暮らし、友人と付き合い、仕事をするか。具体的な人間関係の倫理。</p>
+                <p>仁斎は京都で「古義堂」を開き、門人に教えた。実践的な学問、生きた教育。</p>
+
+                <p><strong>▼ 『童子問』</strong></p>
+                <p>仁斎の代表作。「童子（子供）の問い」に答える形式。難しい哲学用語を避け、<strong>平易な言葉</strong>で孔子の教えを説明。教育的配慮、民主的精神。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 批判と論争</strong></p>
+                    <p>仁斎は朱子学を強く批判したが、後の荻生徂徠は仁斎も批判。仁斎は「仁」を強調しすぎて<strong>制度や礼の側面を軽視</strong>しているという。また仁斎の原典解釈も、本当に「孔子の意図」か、仁斎自身の解釈か、という問題は残る。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 古義学</h4>
+                    <p>後世の注釈を捨て、<strong>原典の古い意味</strong>に帰る学問方法。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 仁（じん）</h4>
+                    <p><strong>人を愛すること</strong>。儒学の核心的徳目。具体的な人間関係の中で実践。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 活物の学</h4>
+                    <p><strong>生きた学問</strong>。心が温まり、行動を促す。「死物の学」（冷たい理論）と対比。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 童子問</h4>
+                    <p>仁斎の代表作。<strong>問答形式</strong>で平易に孔子の教えを説明。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>孔子</strong>（『論語』）<br>
+                        <strong>孟子</strong>（『孟子』）<br>
+                        <strong>朱子学</strong>（批判対象として）<br>
+                        <strong>陽明学</strong>（心即理の影響？）<br>
+                        <strong>中国の考証学</strong>（原典研究）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>荻生徂徠</strong>（古文辞学、仁斎批判）<br>
+                        <strong>伊藤東涯</strong>（息子、継承）<br>
+                        <strong>国学</strong>（原典回帰の方法）<br>
+                        <strong>本居宣長</strong>（古事記への回帰）<br>
+                        <strong>近代日本の儒学研究</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：古義学＝原典ドキュメントへの回帰</h4>
+                <p>技術コミュニティを考えよう。長年の間に様々な「ベストプラクティス」が蓄積。しかしそれらが本当に元の設計思想に合っているか？<strong>原典ドキュメント（RFC、仕様書）</strong>に戻って確認する。
+                </p>
+                <p>仁斎の古義学も同様：朱子学の「ベストプラクティス」が蓄積しすぎた。<strong>原典（論語）に戻れ</strong>。そこに本当の設計思想がある。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：仁＝心理的安全性</h4>
+                <p>良いチームには<strong>心理的安全性</strong>がある──メンバーが安心してリスクを取れる。人を信頼し、思いやる環境。</p>
+                <p>仁斎の「仁」も同様：人を愛し、信頼し、大切にすること。これが人間関係の基盤。抽象的な原理より<strong>温かい人間関係</strong>。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：活物の学＝プロダクション・コード</h4>
+                <p>学術論文だけを読んでも、実際のプロダクションコードは書けない。<strong>動くコード</strong>を見て、手を動かして学ぶ。生きた学問。</p>
+                <p>仁斎の「活物の学」も同様：抽象的理論（死物の学）ではなく、行動に移せる、<strong>日常で実践できる</strong>学問。読むと心が動く。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>朱子学</th>
+                        <th>伊藤仁斎</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>方法</td>
+                        <td>注釈を通して</td>
+                        <td>原典に直接</td>
+                        <td>古義学</td>
+                    </tr>
+                    <tr>
+                        <td>核心</td>
+                        <td>理気論</td>
+                        <td>仁（愛）</td>
+                        <td>人間関係</td>
+                    </tr>
+                    <tr>
+                        <td>学問の性質</td>
+                        <td>冷たい理論</td>
+                        <td>心が温まる</td>
+                        <td>活物の学</td>
+                    </tr>
+                    <tr>
+                        <td>関心</td>
+                        <td>形而上学</td>
+                        <td>日用倫理</td>
+                        <td>実践</td>
+                    </tr>
+                    <tr>
+                        <td>対象</td>
+                        <td>学者</td>
+                        <td>一般人</td>
+                        <td>民主的</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>原典回帰</strong>：二次情報より一次情報を</li>
+                    <li><strong>人間関係重視</strong>：抽象的原理より具体的な愛</li>
+                    <li><strong>実践志向</strong>：理論より行動</li>
+                    <li><strong>平易さ</strong>：専門用語より分かりやすい言葉</li>
+                    <li><strong>温かさ</strong>：心が動く学びを</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>反知性主義？</strong>：理論や体系の軽視</li>
+                    <li><strong>制度軽視</strong>：「仁」だけでは社会は回らない</li>
+                    <li><strong>解釈の問題</strong>：仁斎の「古義」も解釈</li>
+                    <li><strong>時代錯誤？</strong>：孔子の時代に戻れるか</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし仁斎がAI時代の教育を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「道具は変わった、しかし問いは変わらぬ」──仁斎はそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私は朱子学を批判した──孔子の教えを<strong>難しい理論で覆い隠している</strong>と。今、AIを見よ。膨大な情報、複雑なアルゴリズム...しかし問え：<strong>人を愛することを教えているか？</strong>
+                </p>
+                <p style="margin-top: 1rem;">
+                    AIは知識を与える。しかし心は温まるか？行動に移したくなるか？これが<strong>活物の学</strong>と<strong>死物の学</strong>の違いだ。</p>
+                <p style="margin-top: 1rem;">
+                    私は『論語』を最高の書と呼んだ。なぜか？読むと心が動くからだ。孔子は弟子を愛し、弟子は師を敬った。この<strong>温かい関係</strong>こそ学びの本質。</p>
+                <p style="margin-top: 1rem;">
+                    AIに教師の役割を任せるなら、問え：<strong>愛はあるか？</strong>学習者を一人の人間として大切にしているか？データポイントとして扱っていないか？</p>
+                <p style="margin-top: 1rem;">
+                    私が教えたことは単純だ：<strong>人を愛せ</strong>。これはテクノロジーが変わっても変わらない。AIを作る人も、AIで学ぶ人も、忘れるな──学問の核心は仁である」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 制度軽視</h4>
+                    <p>荻生徂徠の批判：仁斎は「仁」を強調しすぎ、<strong>制度や礼</strong>の重要性を軽視している。個人の徳だけでは社会は回らない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 解釈の問題</h4>
+                    <p>仁斎の「古義」も結局は<strong>仁斎自身の解釈</strong>。孔子の「本当の意図」を知ることはできるか？原典もテキストであり、解釈が必要。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 反知性主義？</h4>
+                    <p>朱子学の<strong>理論的体系を否定</strong>することで、知性的探求を軽視していないか？「温かさ」だけでは複雑な問題に対処できない？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 時代錯誤</h4>
+                    <p>孔子の時代に「戻る」ことは可能か？2500年前の文脈をどこまで<strong>再現できるか</strong>？</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: 古義学とは何か？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        後世の注釈（朱子学の解釈など）を捨て、『論語』『孟子』の<strong>原典に直接帰って</strong>、孔子・孟子時代の言葉の意味（古義）を明らかにする学問方法。朱子学は孔子を歪めているという批判に基づく。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 仁斎にとって「仁」とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>人を愛すること</strong>。儒学の核心的徳目。朱子学では「仁」は静かな心の状態とされたが、仁斎にとっては積極的に人を愛すること。日常の人間関係の中で実践される温かい心。「仁は愛のみ」。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: 「活物の学」とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>生きた学問</strong>。心が温まり、行動に移したくなる学問。『論語』を読むと感動する、実践したくなる。対照的に「死物の学」＝朱子学的な冷たい理論、抽象的思弁。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: 仁斎への主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①制度軽視──「仁」だけでは社会は回らない（徂徠の批判）②解釈の問題──仁斎の「古義」も解釈③反知性主義──理論軽視④時代錯誤──孔子の時代に戻れるか</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">古義学</dt>
+                <dd><strong>原典の古い意味</strong>に帰る学問方法。朱子学批判。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">仁（じん）</dt>
+                <dd><strong>人を愛すること</strong>。儒学の核心的徳目。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">活物の学</dt>
+                <dd><strong>生きた学問</strong>。心が動き、実践を促す。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">童子問</dt>
+                <dd>仁斎の代表作。<strong>問答形式</strong>で平易に孔子の教えを説明。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">古義堂</dt>
+                <dd>仁斎が京都に開いた<strong>私塾</strong>。古義学を教えた。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Ito Jinsai (Rich Edition)</p>
+    </footer>
+</body>
+
+</html>

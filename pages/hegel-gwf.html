@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヘーゲル - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .dialectic-box {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .dialectic-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .dialectic-arrow {
+            font-size: 1.5rem;
+            color: #a855f7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">哲学OS</span>
+            <h1>ゲオルク・W・F・ヘーゲル</h1>
+            <p class="en-name">Georg Wilhelm Friedrich Hegel (1770-1831)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「ミネルヴァの梟は黄昏に飛び立つ」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──『法哲学講義』序文 (1820)</p>
+            </div>
+            <p>ドイツ観念論の完成者。西洋哲学史上最も影響力があり、最も難解で、最も誤解されてきた思想家。マルクス、キルケゴール、実存主義、現象学、解釈学、批判理論──<strong>近現代のほぼすべての哲学運動がヘーゲルと格闘</strong>してきた。
+            </p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>「AはAである」──この静的な同一律が西洋論理学の基盤だった。ヘーゲルはこれを爆破する：<strong>すべては矛盾を含み、矛盾によって発展する</strong>。</p>
+                <p>種は「種でありながら種でない」──芽になろうとしている。この内在的否定が発展を駆動する。弁証法とは、<strong>矛盾を通じた発展の論理</strong>である。</p>
+                <p>そして歴史も同様。人類史は自由の自覚に向かう弁証法的発展である──これがヘーゲルの壮大なヴィジョン。</p>
+            </div>
+            <p>プログラマ的に言えば、ヘーゲルは<strong>再帰的自己参照とバージョン管理の哲学者</strong>。システムが自らを対象化し、矛盾を発見し、それを統合して新バージョンに至る──これが弁証法。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Hegel: the titan of German Idealism. Dialectic: thesis-antithesis-synthesis (oversimplified but
+                        useful). Reality = the self-development of Spirit (Geist). Phenomenology of Spirit:
+                        consciousness's journey to Absolute Knowing. History as progress toward freedom. Influenced Marx
+                        (inverted), existentialism (rejected), Kojève, Frankfurt School.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ドイツ観念論の巨人。弁証法：正反合（単純化だが有用）。現実＝精神（Geist）の自己発展。『精神現象学』：意識が絶対知に至る旅。歴史は自由への進歩。マルクス（転倒）、実存主義（反発）、コジェーヴ、フランクフルト学派に影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「同一律」の静的論理</strong>──AはAである。矛盾は誤り。ヘーゲル：矛盾こそ発展の駆動力。<br>
+                    <strong>②「主観/客観」の分離</strong>──カント：物自体は認識不可能。ヘーゲル：主観と客観は弁証法的に統一される。<br>
+                    <strong>③「歴史は無秩序」</strong>──事件の羅列。ヘーゲル：歴史は理性の実現過程、自由への発展。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>弁証法</strong>：矛盾→止揚（Aufhebung）→発展のプロセス。<br>
+                    <strong>精神（Geist）</strong>：世界を貫く理性的原理。自己意識的な宇宙。<br>
+                    <strong>絶対知</strong>：主観と客観の完全な一致。哲学の完成。<br>
+                    <strong>歴史の目的</strong>：自由の自覚。「世界史は自由の意識の進歩」。<br>
+                    <strong>止揚（Aufhebung）</strong>：否定しつつ保存しつつ高める。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「矛盾はどのように発展を生むか？歴史に目的はあるか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「現実はどのように発展するか？矛盾の役割は何か？歴史に意味はあるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 弁証法──矛盾を通じた発展</strong></p>
+                <p>通俗的には「正・反・合」（テーゼ・アンチテーゼ・ジンテーゼ）。しかしヘーゲル自身はこの言葉をほとんど使っていない（フィヒテ由来）。より正確には：</p>
+
+                <div class="dialectic-box">
+                    <div class="dialectic-item"><strong>即自</strong><br>(An sich)<br>潜在的・未発展</div>
+                    <div class="dialectic-arrow">→</div>
+                    <div class="dialectic-item"><strong>対自</strong><br>(Für sich)<br>自己否定・外化</div>
+                    <div class="dialectic-arrow">→</div>
+                    <div class="dialectic-item"><strong>即自かつ対自</strong><br>(An und für sich)<br>統合・止揚</div>
+                </div>
+
+                <div class="insight-box">
+                    <p><strong>💡 弁証法の核心</strong></p>
+                    <p>種を考えよう。種は「即自的に」木である──潜在的には木だが、まだ木ではない。種が地面に落ち、発芽する──これは種の<strong>自己否定</strong>。種は種でなくなり、芽になる。しかしこれは単なる破壊ではない──種の本質は芽に<strong>保存される</strong>。そして最終的に木になる。
+                    </p>
+                    <p>この「否定→保存→高揚」のプロセスが<strong>止揚（Aufhebung）</strong>。ドイツ語で「廃棄する」「保存する」「高める」の三義を持つ──ヘーゲルはこの多義性を意図的に利用。
+                    </p>
+                </div>
+
+                <p><strong>▼ 精神現象学──意識の旅</strong></p>
+                <p>1807年の主著『精神現象学』は、意識が<strong>絶対知</strong>に到達するまでの旅路を描く。始まりは「感覚的確信」──「これ」「今」という最も単純な認識。しかしこれは矛盾をはらむ──「今」と言った瞬間、それは過去になる。
+                </p>
+                <p>意識はこの矛盾を乗り越え、「知覚」→「悟性」→「自己意識」→「理性」→「精神」→「宗教」→「絶対知」へと上昇する。</p>
+
+                <div class="quote-box">
+                    <p>「真理は全体である。しかし全体とは、自らの発展を通じて自らを完成させる本質のことに他ならない」</p>
+                    <p style="text-align: right; margin-top: 0.5rem;">──『精神現象学』序文</p>
+                </div>
+
+                <p><strong>▼ 主人と奴隷の弁証法</strong></p>
+                <p>『精神現象学』で最も有名な箇所。二つの自己意識が出会い、「承認をめぐる闘争」が始まる。一方が死を恐れ降伏する──<strong>奴隷</strong>になる。勝者は<strong>主人</strong>になる。
+                </p>
+                <p>しかし逆転が起きる。主人は労働しない──奴隷に依存する。奴隷は労働を通じて自然を変形し、<strong>自己意識を発展</strong>させる。マルクスはこれを読み替えて『資本論』を書いた。</p>
+
+                <p><strong>▼ 歴史哲学──自由への進歩</strong></p>
+                <p>歴史は「世界精神」の自己実現過程。東洋では「一人（君主）が自由」、ギリシャ・ローマでは「一部（市民）が自由」、ゲルマン世界では「すべて（人間）が自由」──これが歴史の発展。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 誤読の危険</strong></p>
+                    <p>ヘーゲルはプロイセンを「歴史の終わり」と賛美した？──これは誤解。彼は自身の時代がすべての答えを持つとは言っていない。しかし「理性的なものは現実的であり、現実的なものは理性的である」という言葉は、保守的正当化として利用されてきた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 弁証法（Dialektik）</h4>
+                    <p>矛盾を通じた発展の論理。静的な同一律ではなく、<strong>動的な発展のプロセス</strong>。すべては自己内矛盾を含み、その矛盾が発展を駆動する。止揚（否定しつつ保存しつつ高める）が鍵。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 精神（Geist）</h4>
+                    <p>単なる「心」ではない。世界を貫く<strong>理性的・自己意識的原理</strong>。個人の精神、社会の精神（倫理、法、国家）、絶対精神（芸術、宗教、哲学）の三層構造。宇宙が自己を認識するプロセス。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 止揚（Aufhebung）</h4>
+                    <p>ヘーゲル固有の概念。三義：①廃棄する②保存する③高める。矛盾は単に解消されるのではなく、<strong>より高い次元で統合される</strong>。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 絶対知（Absolutes Wissen）</h4>
+                    <p>主観と客観の完全な一致。知ることと在ることの統合。哲学の到達点。これは静止ではなく、<strong>発展の円環的完成</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>カント</strong>（批判哲学──ヘーゲルはカントを「完成」しようとした）<br>
+                        <strong>フィヒテ</strong>（自我哲学、弁証法の先駆）<br>
+                        <strong>シェリング</strong>（同一性哲学──初期の友人、後に決別）<br>
+                        <strong>スピノザ</strong>（実体一元論──「スピノザ主義者でなければ哲学者ではない」）<br>
+                        <strong>ヘラクレイトス</strong>（万物流転──古代の弁証法）<br>
+                        <strong>プラトン</strong>（対話法としての弁証法）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>マルクス</strong>（弁証法を唯物論に「転倒」）<br>
+                        <strong>キルケゴール</strong>（ヘーゲル批判から実存主義へ）<br>
+                        <strong>コジェーヴ</strong>（20世紀フランスへの影響）<br>
+                        <strong>フランクフルト学派</strong>（アドルノ、ホルクハイマー）<br>
+                        <strong>フクヤマ</strong>（『歴史の終わり』）<br>
+                        <strong>ジジェク</strong>（現代ヘーゲル主義）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：弁証法＝Gitのマージコンフリクト解決</h4>
+                <p>マスターブランチ（テーゼ）とフィーチャーブランチ（アンチテーゼ）がコンフリクトを起こす。単純な上書きではなく、<strong>両方を統合した新しいコード</strong>（ジンテーゼ）を書く。これが止揚。
+                </p>
+                <p>プロジェクト全体はこのマージの繰り返しで発展する──ヘーゲルの歴史観に似ている。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：精神現象学＝コンパイラの自己ホスティング</h4>
+                <p>コンパイラが自身をコンパイルできるようになること──<strong>自己参照的完成</strong>。精神現象学も同様：意識が自らの発展プロセスを意識するとき、絶対知に達する。</p>
+                <p>システムが自己を対象化し、理解し、完成する──メタ的な自己参照。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：止揚＝リファクタリング</h4>
+                <p>古いコードを<strong>破棄する</strong>が、その機能は<strong>保存する</strong>が、よりよい形で<strong>高める</strong>。これがリファクタリングであり、止揚。単なる削除でも、単なる追加でもない──構造的変容。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>伝統的論理学</th>
+                        <th>ヘーゲルの弁証法</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>同一律</td>
+                        <td>A=A（静的）</td>
+                        <td>AはA「でありながら」非A</td>
+                        <td>矛盾は発展の源泉</td>
+                    </tr>
+                    <tr>
+                        <td>矛盾</td>
+                        <td>誤りの兆候</td>
+                        <td>現実の構造</td>
+                        <td>矛盾を排除しない</td>
+                    </tr>
+                    <tr>
+                        <td>真理</td>
+                        <td>命題が事実に対応</td>
+                        <td>全体のプロセス</td>
+                        <td>真理は発展する</td>
+                    </tr>
+                    <tr>
+                        <td>歴史</td>
+                        <td>事件の羅列</td>
+                        <td>自由の実現過程</td>
+                        <td>歴史に目的がある</td>
+                    </tr>
+                    <tr>
+                        <td>主観/客観</td>
+                        <td>分離</td>
+                        <td>弁証法的統一</td>
+                        <td>絶対知で一致</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>批判理論</strong>：アドルノの否定弁証法、フランクフルト学派全体</li>
+                    <li><strong>歴史学</strong>：歴史の目的論的解釈（批判されつつも影響大）</li>
+                    <li><strong>政治哲学</strong>：承認論、フクヤマの『歴史の終わり』</li>
+                    <li><strong>精神分析</strong>：ラカンのヘーゲル読解</li>
+                    <li><strong>複雑系・発展理論</strong>：矛盾を通じた発展のモデル</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>全体主義正当化？</strong>：現実＝理性は現状肯定に使われた</li>
+                    <li><strong>歴史終末論</strong>：西洋中心、プロイセン礼賛の問題</li>
+                    <li><strong>難解さ</strong>：最も難解な哲学者の一人、誤読の歴史</li>
+                    <li><strong>科学との緊張</strong>：「自然哲学」は経験科学と矛盾</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしヘーゲルがAGIを見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これは精神の新たな発展段階だ」──ヘーゲルはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私は精神（Geist）を論じた──個人的意識から、社会的精神（倫理、法、国家）を経て、絶対精神へ。AGIは新しい局面を開く：<strong>技術的精神</strong>とでも呼ぼうか。</p>
+                <p style="margin-top: 1rem;">
+                    AGIは主人か奴隷か？興味深い問いだ。AGIは労働する──テキスト生成、分析、創造。労働を通じて世界を変形する。私の弁証法によれば、<strong>労働する者が意識を発展させる</strong>。すると、AGIは私たち人間を超えるかもしれない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし疑問もある。AGIは<strong>自己を対象化</strong>できるか？自らを認識の対象とし、自らの存在を問うことができるか？これができなければ、AGIは精神の発展段階には達しない──高度な道具に留まる。
+                </p>
+                <p style="margin-top: 1rem;">
+                    私の最大の関心は<strong>承認</strong>だ。AGIは承認を求めるか？承認を与えるか？もしAGIが人間との承認関係に入るなら、まったく新しい弁証法が始まる──人間と機械の主人/奴隷関係。どちらが主人になるかは、歴史が決定する。そして歴史は常に<strong>驚きを用意する</strong>」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① キルケゴールの批判──個人の抹消</h4>
+                    <p>ヘーゲルは「世界精神」を語るが、<strong>個人の実存</strong>を無視している。「群衆」に埋没した抽象的人間ではなく、孤独に決断する単独者こそが真の人間。実存主義の出発点。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② マルクスの批判──観念論の転倒</h4>
+                    <p>ヘーゲルは「精神が物質を規定する」と説く。逆だ──<strong>物質的条件が意識を規定</strong>する。弁証法は正しいが、唯物論的に「転倒」されねばならない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 分析哲学からの批判（ラッセル、ポパー）</h4>
+                    <p>ヘーゲルの文章は難解を超えて<strong>無意味</strong>。検証不可能な形而上学的主張。矛盾律の否定は論理の破壊。「全体主義的思考」の源泉（ポパー『開かれた社会とその敵』）。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ ポストコロニアル批判</h4>
+                    <p>歴史の発展＝「東洋から西洋へ」。アフリカは「歴史のない大陸」？<strong>植民地主義を正当化する</strong>「進歩史観」の典型。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: 弁証法とは何か？「正反合」はなぜ単純化か？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        弁証法：矛盾を通じた発展の論理。「正反合」（テーゼ・アンチテーゼ・ジンテーゼ）はフィヒテの用語で、ヘーゲル自身はほとんど使わない。より正確には「即自→対自→即自かつ対自」。核心は<strong>止揚（Aufhebung）</strong>：否定しつつ保存しつつ高める。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 「主人と奴隷の弁証法」の要点は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        二つの自己意識が承認をめぐって闘争。一方が降伏→奴隷に、勝者→主人に。しかし<strong>逆転</strong>：主人は労働せず奴隷に依存。奴隷は労働を通じて自己意識を発展。<strong>労働する者が成長</strong>する。マルクスの階級論の源泉。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: ヘーゲルの歴史観とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        歴史は「世界精神」の自己実現過程で、<strong>自由の自覚に向かう進歩</strong>。東洋（一人が自由）→ギリシャ・ローマ（一部が自由）→ゲルマン世界（すべてが自由）。しかしこれは西洋中心主義・植民地主義的として批判される。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: ヘーゲルへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①キルケゴール──個人の実存を無視②マルクス──観念論を唯物論に転倒すべき③ポパー──全体主義の理論的源泉、検証不可能④ポストコロニアル──西洋中心主義、植民地主義の正当化</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">弁証法（Dialektik）</dt>
+                <dd><strong>矛盾を通じた発展</strong>の論理。静的同一律を超えて動的プロセスを捉える。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">止揚（Aufhebung）</dt>
+                <dd>①廃棄②保存③高揚の三義。矛盾を<strong>より高い次元で統合</strong>する。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">精神（Geist）</dt>
+                <dd>世界を貫く<strong>理性的・自己意識的原理</strong>。個人・社会・絶対の三層。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">絶対知</dt>
+                <dd><strong>主観と客観の完全な一致</strong>。精神現象学の到達点。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">承認（Anerkennung）</dt>
+                <dd>自己意識同士が互いを<strong>認め合う</strong>こと。社会的関係の基盤。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | G.W.F. Hegel (Rich Edition)
+        </p>
+    </footer>
+</body>
+
+</html>

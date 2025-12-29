@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カール・ヘンペル - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .dn-model {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">科学OS</span>
+            <h1>カール・ヘンペル</h1>
+            <p class="en-name">Carl Gustav Hempel (1905-1997)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「科学的説明とは、なぜそうなったかを法則から論理的に導き出すことである」</p>
+            </div>
+            <p>20世紀を代表する科学哲学者。論理実証主義からアメリカに渡り、「科学的説明とは何か」を厳密に定式化した。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>「なぜ水は100℃で沸騰するか？」「なぜ太陽は東から昇るか？」──私たちは「なぜ」を問う。しかし「説明」とは<strong>何をすること</strong>なのか？</p>
+                <p>ヘンペルの答え：<strong>法則から論理的に導出すること</strong>。「水は100℃で沸騰する」は、物理法則＋初期条件から演繹的に導ける。これがDNモデル（演繹的-法則的モデル）。</p>
+                <p>この単純な発想が科学哲学に革命を起こし、同時に多くの反例と論争を生んだ。</p>
+            </div>
+            <p>現代的に言えば、ヘンペルは<strong>「説明」のフォーマットを定義</strong>しようとした思想家です。「バグの原因を説明せよ」──これが何を意味するか、厳密に考えたことはあるでしょうか。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Hempel: analytic philosopher of science. Emigrated from Nazi Germany to USA.
+                        Deductive-Nomological (DN) model: explanation = deduction from laws + initial conditions.
+                        Inductive-Statistical (IS) model for probabilistic explanations. "Raven paradox" on
+                        confirmation. Challenged by counterexamples but foundational for philosophy of science.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>分析哲学系の科学哲学者。ナチス・ドイツから米国に移住。演繹的-法則的（DN）モデル：説明＝法則＋初期条件からの演繹。確率的説明のための帰納的-統計的（IS）モデル。「カラスのパラドックス」で確証を分析。反例に挑戦されたが科学哲学の基盤を形成。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「説明は直観でわかる」</strong>──「なぜ」に答えれば説明。しかし何が「良い説明」か？基準がなかった。<br>
+                    <strong>②「科学と歴史は別物」</strong>──自然科学は法則、歴史は物語。ヘンペル：<strong>説明の論理構造は共通</strong>。<br>
+                    <strong>③「確率的説明は非科学的」</strong>──確実性がないから説明ではない？ヘンペル：<strong>IS（帰納的-統計的）モデル</strong>で確率的説明も定式化可能。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>DNモデル</strong>：説明＝法則＋初期条件→結論（演繹）。<br>
+                    <strong>ISモデル</strong>：確率法則から高確率で導出。<br>
+                    <strong>説明と予測の対称性</strong>：良い説明は、事後的に構成すれば予測になりえた。<br>
+                    <strong>確証の論理</strong>：仮説はどう確証されるか。カラスのパラドックス。<br>
+                    <strong>統一科学</strong>：自然科学も社会科学も、説明の論理構造は共通。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「科学的に『説明する』とは何をすることか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「科学的説明とは何か？『なぜ』に答えるとはどういうことか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 演繹的-法則的（DN）モデル</strong></p>
+                <p>「なぜこの金属は膨張したか？」ヘンペルの答え：</p>
+
+                <div class="dn-model">
+                    <p><strong>説明項（Explanans）</strong></p>
+                    <p>L1: すべての金属は加熱すると膨張する（<strong>法則</strong>）</p>
+                    <p>C1: この金属は加熱された（<strong>初期条件</strong>）</p>
+                    <p style="text-align: center; margin: 1rem 0;">∴（演繹）</p>
+                    <p><strong>被説明項（Explanandum）</strong></p>
+                    <p>E: この金属は膨張した</p>
+                </div>
+
+                <p>これが<strong>DN（Deductive-Nomological）モデル</strong>。説明とは：①普遍法則②初期条件→③帰結を<strong>論理的に演繹</strong>すること。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 説明と予測の対称性</strong></p>
+                    <p>事前に「金属を加熱する」「金属は加熱で膨張する」を知っていれば、膨張を<strong>予測</strong>できた。事後に同じ構造で構成すれば<strong>説明</strong>になる。説明と予測は論理的に対称的。
+                    </p>
+                </div>
+
+                <p><strong>▼ 帰納的-統計的（IS）モデル</strong></p>
+                <p>確率的な説明はどうか？「なぜジョンはインフルエンザから回復したか？」</p>
+                <p>ペニシリンを飲んだインフルエンザ患者の95%は回復する。ジョンはペニシリンを飲んだ。∴ジョンは（高確率で）回復した。</p>
+                <p>これがIS（Inductive-Statistical）モデル。演繹ではなく<strong>帰納</strong>──結論は高確率だが必然ではない。</p>
+
+                <p><strong>▼ カラスのパラドックス</strong></p>
+                <p>「すべてのカラスは黒い」を確証するには？黒いカラスを観察すればいい。しかし論理的には：「すべてのカラスは黒い」＝「すべての非黒色のものは非カラスである」。</p>
+                <p>すると<strong>赤いリンゴを見ること</strong>も「すべてのカラスは黒い」を確証する？直観に反するが論理的には正しい。ヘンペルはこれを<strong>paradoxではなくparadoxical
+                        appearance</strong>と説明──確証はするが、程度は極小。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 反例の嵐</strong></p>
+                    <p>DNモデルは多くの反例に直面する：①旗竿と影──影の長さから旗竿の高さを「説明」できる？②満月と潮──相関はあるが説明か？③対称性の問題──説明は因果的方向を持つべきでは？これらの反例がDNモデルの限界を示し、因果的説明理論への移行を促した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 演繹的-法則的（DN）モデル</h4>
+                    <p><strong>Covering Law
+                            Model</strong>とも呼ばれる。説明＝法則で「覆う」こと。説明項（法則＋初期条件）から被説明項を<strong>論理的に演繹</strong>。説明と予測の対称性を主張。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 帰納的-統計的（IS）モデル</h4>
+                    <p>確率法則を用いた説明。結論は必然ではなく<strong>高確率</strong>。95%の患者が回復するなら、「回復した」は「高確率で説明された」。確率的説明の論理を定式化。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 確証の論理</h4>
+                    <p>仮説はどのように証拠によって<strong>確証</strong>されるか。カラスのパラドックスはこの分析から生まれた。確証＝確率の上昇として定式化（ベイズ的転回への橋渡し）。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 統一科学テーゼ</h4>
+                    <p>自然科学も社会科学・歴史も、説明の<strong>論理構造は共通</strong>。「フランス革命はなぜ起きたか」も法則から導出可能（べき）。論争が続く。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>論理実証主義</strong>（ウィーン学団──カルナップ、シュリック）<br>
+                        <strong>ヒューム</strong>（因果と法則──規則性理論）<br>
+                        <strong>モーズ</strong>（科学的説明の先駆的議論）<br>
+                        <strong>ライヘンバッハ</strong>（確率・帰納・科学哲学）<br>
+                        <strong>フレーゲ・ラッセル</strong>（論理学の形式化）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>因果的説明理論</strong>（サルモン、ウッドワード）<br>
+                        <strong>統計的関連性理論</strong>（サルモン）<br>
+                        <strong>科学的実在論論争</strong><br>
+                        <strong>社会科学の方法論</strong>（説明 vs 理解）<br>
+                        <strong>ベイズ主義</strong>（確証の論理の発展）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：DNモデル＝テスト仕様書</h4>
+                <p>「なぜこのテストが失敗したか？」──テスト仕様（期待値）＋実行環境（初期条件）→失敗（結果）を論理的に導出。これがバグの「説明」。</p>
+                <p>DNモデルも同様：<strong>法則＋初期条件→結論</strong>を演繹的に導く。良い説明は、事前に構成すれば失敗を予測できた。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ISモデル＝確率的予測</h4>
+                <p>「なぜこのモデルの予測が当たったか？」──過去データ（統計法則）から高確率で正解を導いた。必然ではなく<strong>確率的に妥当</strong>。</p>
+                <p>機械学習モデルの説明もこれに近い。「95%の精度」は確率的説明。外れることもあるが、<strong>高確率なら説明として成立</strong>。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：カラスのパラドックス＝データセットの偏り</h4>
+                <p>「すべてのカラスは黒い」を確証するには、黒いカラスを集める。しかし論理的には「非黒の非カラス」も確証になる──赤いリンゴ、青い空...</p>
+                <p>たとえるなら、分類モデルの学習で<strong>負例にも情報がある</strong>こと。「猫ではない画像」も「猫を識別する」モデルを確証する──ただし情報量は正例より小さい。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>前ヘンペル</th>
+                        <th>ヘンペルのDNモデル</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>説明とは</td>
+                        <td>直観的「なぜ」への応答</td>
+                        <td>法則からの演繹</td>
+                        <td>形式的基準を設定</td>
+                    </tr>
+                    <tr>
+                        <td>法則の役割</td>
+                        <td>暗黙的・曖昧</td>
+                        <td>必須の構成要素</td>
+                        <td>「被覆法則」なしには説明不可</td>
+                    </tr>
+                    <tr>
+                        <td>確率的説明</td>
+                        <td>非科学的？</td>
+                        <td>ISモデルで定式化可能</td>
+                        <td>帰納的説明の論理化</td>
+                    </tr>
+                    <tr>
+                        <td>説明と予測</td>
+                        <td>別物？</td>
+                        <td>対称的</td>
+                        <td>論理構造は同一</td>
+                    </tr>
+                    <tr>
+                        <td>歴史説明</td>
+                        <td>「理解」は別物</td>
+                        <td>法則による説明可能</td>
+                        <td>統一科学テーゼ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>科学教育</strong>：「説明するとは何か」を明確に教える</li>
+                    <li><strong>法学・医学</strong>：因果推論、疫学的説明の論理</li>
+                    <li><strong>歴史学</strong>：歴史的説明は法則を必要とするか？論争が続く</li>
+                    <li><strong>AI説明可能性</strong>：モデルの予測を「説明」するとは何か？</li>
+                    <li><strong>ビジネス分析</strong>：「なぜ売上が下がったか」の説明構造</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>反例の嵐</strong>：旗竿と影、避妊薬パラドックス、六角形の氷...</li>
+                    <li><strong>因果性の欠如</strong>：相関≠因果。DNモデルは因果的方向を捉えない</li>
+                    <li><strong>説明と予測の非対称性</strong>：進化論は説明するが予測しにくい</li>
+                    <li><strong>歴史への適用困難</strong>：法則なき説明は可能では？</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしヘンペルがAIの「説明可能性」について聞かれたら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「まず『説明』とは何かを定義せよ」──ヘンペルはそう答えるでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「あなたたちは『AIの予測を説明せよ』と言う。しかし『説明』とは何だ？私のDNモデルでは、説明とは<strong>法則から結論を導出すること</strong>。</p>
+                <p style="margin-top: 1rem;">
+                    AIモデルには法則があるか？ニューラルネットワークの重みは<strong>数学的関数</strong>であり、ある意味で法則だ──入力と出力を決定する規則。すると、モデルの内部構造を示すことは『説明』たりうる。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし問題がある。人間はその『法則』を<strong>理解できるか</strong>？100万のパラメータを示しても、それは説明として機能しない。説明には<strong>理解可能性</strong>が必要では？──これは私のモデルでは扱えなかった問題だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    もう一つの問題：AIの説明は<strong>因果的か</strong>？私のモデルへの批判の一つは、因果性を捉えていないことだった。『この特徴量がこの予測を<strong>引き起こした</strong>』と言えるか？相関ではなく因果を示せるか？
+                </p>
+                <p style="margin-top: 1rem;">私のアドバイス：『説明可能AI』を設計する前に、<strong>何を説明と呼ぶか</strong>を定義せよ。それなしには、評価基準すら設定できない」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 反例──旗竿と影</h4>
+                    <p>旗竿の高さと太陽の角度から影の長さを「説明」できる。しかし逆に、影の長さから旗竿の高さを「説明」できるか？DNモデルでは可能。しかし直観的には逆──影は旗竿によって「引き起こされる」のであって逆ではない。<strong>因果的方向性</strong>が欠如。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 説明と予測の非対称性（スクリヴェン）</h4>
+                    <p>進化論は種の分布を説明するが、未来の進化を予測しない。歴史学は第一次大戦を説明するが、予測はできなかった。<strong>良い説明が良い予測を意味するとは限らない</strong>。対称性テーゼへの反例。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ サルモンの因果的説明理論</h4>
+                    <p>説明には<strong>因果的メカニズム</strong>が必要。単に法則から導出するだけでは不十分。ビリヤードの玉がなぜ動いたか？──他の玉がぶつかった<strong>因果的プロセス</strong>。これがDNモデルでは捉えられない。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 解釈学的批判（ライト、ドライ）</h4>
+                    <p>歴史や人間行動の説明は法則的ではなく<strong>意図・動機の理解</strong>。「なぜフランス革命が起きたか」は物理法則ではなく、行為者の理由の理解。自然科学と人文学は方法論が異なる。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: DNモデル（演繹的-法則的モデル）の構造は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        説明＝<strong>法則＋初期条件→結論</strong>の演繹。例：①すべての金属は加熱で膨張（法則）②この金属は加熱された（初期条件）→③この金属は膨張した（結論）。被説明項を法則で「覆う」ことが説明。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 説明と予測の対称性テーゼとは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>良い説明は、事前に構成すれば予測になりえた</strong>。説明と予測は論理構造が同一。事前なら予測、事後なら説明。しかしこのテーゼは批判される──進化論は説明するが予測しにくい。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: カラスのパラドックスとは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        「すべてのカラスは黒い」を確証するには黒いカラスを観察。しかし論理的には「すべての非黒色は非カラス」と同値。すると<strong>赤いリンゴ</strong>も仮説を確証する？直観に反するが論理的には正しい。ヘンペル：確証はするが程度は極小。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: DNモデルへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①反例──旗竿と影（因果的方向の欠如）②説明と予測の非対称性（進化論は説明するが予測しない）③因果性の欠如（相関≠因果、サルモンの批判）④解釈学的批判（人間行動は法則ではなく意図の理解）
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">DNモデル（演繹的-法則的モデル）</dt>
+                <dd>説明＝<strong>法則＋初期条件</strong>から結論を<strong>演繹</strong>すること。Covering Law Model。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">ISモデル（帰納的-統計的モデル）</dt>
+                <dd><strong>確率法則</strong>から高確率で結論を導く説明。必然ではなく蓋然的。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">カラスのパラドックス</dt>
+                <dd>「すべてのカラスは黒い」を赤いリンゴが確証する？<strong>確証の論理</strong>の問題。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">被覆法則</dt>
+                <dd>被説明項を<strong>「覆う」法則</strong>。説明には普遍法則が必要という考え。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">説明と予測の対称性</dt>
+                <dd>良い説明は、事前に構成すれば<strong>予測</strong>になりえた。論理構造は同一。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Carl Hempel (Rich Edition)</p>
+    </footer>
+</body>
+
+</html>

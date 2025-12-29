@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北一輝 - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #dc2626;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(153, 27, 27, 0.2));
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .japan-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="japan-badge">🇯🇵 昭和維新の理論家</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">政治OS</span>
+            <h1>北一輝</h1>
+            <p class="en-name">Kita Ikki (1883-1937)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 2px solid #dc2626; background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(153, 27, 27, 0.05));">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「天皇を中心とした革命によって、日本を改造せよ」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──北一輝</p>
+            </div>
+            <p>日本の革命思想家。二・二六事件の思想的指導者として処刑。『日本改造法案大綱』で、天皇を中心とした社会主義的国家改造を構想。右翼と左翼が交錯する独自の思想。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>大正〜昭和初期、日本は矛盾を抱えていた。財閥は肥え太り、農村は疲弊。政党政治は腐敗。軍部は外征。格差と不正義が蔓延。</p>
+                <p>北の答え：<strong>天皇を戴く革命</strong>。天皇は人民の側に立つべきだ。財閥を解体し、土地を国有化し、労働者に権利を与えよ。これはマルクス主義ではない──天皇を中心とした<strong>日本的な革命</strong>だ。右でも左でもない、第三の道。
+                </p>
+            </div>
+            <p>現代的に言えば、北は<strong>「システムのラディカルなリファクタリング」</strong>を構想した思想家。既存の権威（天皇）を利用しつつ、社会構造を根本から変えようとした。</p>
+            <div class="warning-box">
+                <p><strong>⚠️ 思想の危険性についての注意</strong></p>
+                <p>北一輝の思想は<strong>歴史的暴力</strong>と結びついている。二・二六事件（1936年）の青年将校たちに影響を与え、クーデター未遂を招いた。暴力革命の肯定、超国家主義的傾向を含む。学問的理解のために取り上げるが、その<strong>危険性</strong>を認識した上で読むべきである。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Kita Ikki: Japanese revolutionary thinker. "General Outline of Measures for the Reconstruction of
+                        Japan" (1919). Emperor-centered socialism. National reorganization: dissolution of zaibatsu,
+                        land nationalization, labor rights. Influenced February 26 Incident (1936). Executed. Fusion of
+                        nationalism and socialism. Controversial legacy.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>日本の革命思想家。『日本改造法案大綱』（1919年）。天皇を中心とした社会主義。国家改造：財閥解体、土地国有化、労働者権利。二・二六事件（1936年）に影響。処刑。国家主義と社会主義の融合。論争的な遺産。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「天皇＝現状維持」</strong>──保守派。北：天皇は<strong>革命の旗印</strong>。<br>
+                    <strong>②「社会主義＝反天皇」</strong>──左翼。北：天皇と<strong>社会改革は両立</strong>。<br>
+                    <strong>③「改革は議会で」</strong>──政党政治。北：議会は<strong>腐敗</strong>している。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>天皇大権の発動</strong>：天皇による革命。<br>
+                    <strong>財閥解体</strong>：独占資本の打破。<br>
+                    <strong>土地国有化</strong>：農民の解放。<br>
+                    <strong>労働権</strong>：8時間労働、利益配分。<br>
+                    <strong>国家総動員</strong>：対外膨張。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「天皇を中心に、いかに日本を根本から改造するか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「天皇を中心に、いかに日本の政治・経済・社会を根本から改造するか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 『日本改造法案大綱』（1919年）</strong></p>
+                <p>北の主著。発禁処分を受けたが、青年将校たちの間で写本が流通。主要な内容：</p>
+                <p>①<strong>天皇大権の発動</strong>：憲法を停止し、戒厳令を布く。天皇親政で革命を実行。<br>
+                    ②<strong>華族制度廃止</strong>：貴族院解散。階級の打破。<br>
+                    ③<strong>財閥解体</strong>：1000万円以上の私有財産を国に納める。<br>
+                    ④<strong>土地制限</strong>：個人の土地所有を制限。余剰は国有化。<br>
+                    ⑤<strong>労働権</strong>：8時間労働、利益配分制度、労働者の権利拡大。<br>
+                    ⑥<strong>対外膨張</strong>：アジア解放、領土拡大。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 右と左の融合</strong></p>
+                    <p>北の思想は左右の区別を超える。<strong>左翼的要素</strong>：財閥解体、土地改革、労働者権利──社会主義的。<strong>右翼的要素</strong>：天皇制維持、国家主義、対外膨張──国粋主義的。
+                    </p>
+                    <p>これは「国家社会主義」の一形態。ナチスドイツ、ファシストイタリアと共通する構造を持つ。しかし北は日本固有の文脈（天皇制）を活用した。</p>
+                </div>
+
+                <p><strong>▼ 天皇観</strong></p>
+                <p>北にとって天皇は「神聖」であると同時に「人民の天皇」。財閥や官僚に囲まれた天皇を<strong>解放</strong>し、人民と直接つなげる。天皇は革命の<strong>正統性の源泉</strong>。
+                </p>
+                <p>これは既存の天皇制を利用した転覆──保守的外観の革命。</p>
+
+                <p><strong>▼ 二・二六事件（1936年）</strong></p>
+                <p>陸軍青年将校によるクーデター未遂。首相官邸、警視庁などを襲撃。斎藤実内大臣、高橋是清蔵相らを殺害。</p>
+                <p>青年将校たちは北の思想に影響を受けていた。北自身は直接参加しなかったが、思想的指導者として<strong>銃殺刑</strong>に処された。</p>
+
+                <div class="quote-box">
+                    <p>「天皇は人民の天皇である。財閥や特権階級のものではない」</p>
+                </div>
+
+                <p><strong>▼ 『国体論及び純正社会主義』（1906年）</strong></p>
+                <p>若き北の著作。社会主義を国体と両立させようとした。この時点で既に北の独自路線が見える。</p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 思想の危険性と批判</strong></p>
+                    <p>①<strong>暴力革命</strong>──クーデターを正当化②<strong>超国家主義</strong>──対外膨張、侵略③<strong>全体主義</strong>──個人の自由の軽視④<strong>歴史的帰結</strong>──二・二六事件、戦争への道⑤<strong>ロマン主義</strong>──現実を見ない理想化
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #dc2626;">■ 天皇大権の発動</h4>
+                    <p><strong>天皇による革命</strong>。憲法停止、戒厳令。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">■ 財閥解体</h4>
+                    <p><strong>独占資本の打破</strong>。私有財産の制限。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">■ 土地国有化</h4>
+                    <p><strong>農民の解放</strong>。土地所有の制限。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">■ 国家社会主義</h4>
+                    <p><strong>右と左の融合</strong>。天皇制＋社会改革。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>社会進化論</strong><br>
+                        <strong>日本の社会主義運動</strong><br>
+                        <strong>国学</strong>（神道ナショナリズム）<br>
+                        <strong>辛亥革命</strong>（中国革命への関与）<br>
+                        <strong>幸徳秋水</strong>（影響と分岐）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>二・二六事件</strong>の青年将校<br>
+                        <strong>革新右翼</strong><br>
+                        <strong>総力戦体制論</strong><br>
+                        <strong>戦後の思想史的評価</strong><br>
+                        <strong>丸山眞男</strong>（批判的分析）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：天皇大権＝root権限の発動</h4>
+                <p>システムの<strong>root権限</strong>を考えよう。通常は制限されているが、緊急時には全権を持つ。システムを根本から変えられる。</p>
+                <p>北の「天皇大権発動」も同様：通常の議会政治を停止し、<strong>最高権限</strong>で国を改造する。しかし root権限の乱用がシステムを破壊しうるように、この発想は危険を伴う。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：国家改造＝レガシーシステムのリファクタリング</h4>
+                <p><strong>レガシーシステム</strong>を考えよう。長年の蓄積で複雑化、腐敗。部分修正では限界。根本的なリファクタリングが必要。</p>
+                <p>北の国家改造も同様：明治体制は腐敗した<strong>レガシー</strong>。財閥、政党、官僚...パッチでは対処不能。根本から書き直せ──しかしこのリファクタリングは暴力を伴った。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：右左融合＝対立フレームワークの統合</h4>
+                <p><strong>対立するフレームワーク</strong>を考えよう。通常は二者択一。しかし両方の強みを取り込もうとする試みがある。</p>
+                <p>北の思想も同様：左翼（社会改革）と右翼（国体）を<strong>統合</strong>しようとした。しかしこの「統合」は内部矛盾を抱え、最終的にファシズムに収斂した。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>自由主義</th>
+                        <th>北一輝</th>
+                        <th>マルクス主義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>天皇</td>
+                        <td>立憲君主</td>
+                        <td>革命の旗印</td>
+                        <td>打倒対象</td>
+                    </tr>
+                    <tr>
+                        <td>財産</td>
+                        <td>私有</td>
+                        <td>制限</td>
+                        <td>共有</td>
+                    </tr>
+                    <tr>
+                        <td>革命</td>
+                        <td>否定</td>
+                        <td>天皇による</td>
+                        <td>プロレタリア</td>
+                    </tr>
+                    <tr>
+                        <td>国家</td>
+                        <td>最小</td>
+                        <td>総動員</td>
+                        <td>死滅へ</td>
+                    </tr>
+                    <tr>
+                        <td>対外</td>
+                        <td>協調</td>
+                        <td>膨張</td>
+                        <td>国際主義</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #dc2626;">歴史的教訓 (Lessons)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>ポピュリズムの危険</strong>：大衆の不満を革命的に動員する危険</li>
+                    <li><strong>暴力革命の否定</strong>：目的は手段を正当化しない</li>
+                    <li><strong>左右融合の罠</strong>：ファシズムへの道</li>
+                    <li><strong>格差問題の真剣な対処</strong>：不満の放置は過激化を招く</li>
+                    <li><strong>制度的チャンネル</strong>：変革は民主的手続きで</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Dangers)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>暴力革命</strong>：クーデターの正当化</li>
+                    <li><strong>超国家主義</strong>：個人の自由の否定</li>
+                    <li><strong>対外侵略</strong>：アジア膨張論</li>
+                    <li><strong>歴史的帰結</strong>：戦争への道</li>
+                    <li><strong>ロマン主義</strong>：現実軽視</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>なぜ北一輝を学ぶ価値があるのか？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>北一輝の思想は<strong>危険</strong>であり、その帰結は悲惨だった。しかし学ぶ価値がある。なぜか？</p>
+                <p style="margin-top: 1rem;">
+                    <strong>第一に、歴史理解</strong>。なぜ二・二六事件は起きたか？なぜ日本は戦争に向かったか？北の思想を理解することで、あの時代の空気が見えてくる。</p>
+                <p style="margin-top: 1rem;">
+                    <strong>第二に、格差問題</strong>。北が批判した財閥支配、農村の疲弊、政治腐敗は、現代にも通じる問題だ。格差への不満が放置されるとき、過激な解決策が魅力を持つ。北の思想は<strong>警告</strong>として読める。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>第三に、思想の構造</strong>。右翼と左翼はどう融合しうるか？ファシズムはなぜ生まれるか？北の思想は「第三の道」の<strong>失敗例</strong>として分析価値がある。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>第四に、ポピュリズムへの警戒</strong>。「既得権益を打破せよ」「エリートは腐敗している」「強いリーダーが改革を」──こうしたレトリックは今も響く。北の思想はその<strong>極端な帰結</strong>を示している。
+                </p>
+                <p style="margin-top: 1rem;">北を賛美するためではなく、<strong>批判的に</strong>理解するために学ぶ。歴史の過ちを繰り返さないために。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 暴力革命の正当化</h4>
+                    <p>クーデターによる国家改造。<strong>暴力は手段として正当化されない</strong>。民主的プロセスの否定。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 超国家主義</h4>
+                    <p>国家を個人に優先。<strong>個人の自由・権利</strong>の軽視。全体主義への傾斜。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 対外侵略論</h4>
+                    <p>アジア膨張を正当化。<strong>帝国主義・植民地主義</strong>の肯定。被害を与えた国々の視点の欠如。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 歴史的帰結</h4>
+                    <p>二・二六事件、戦争への道に影響。<strong>思想の帰結への責任</strong>。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">⑤ ロマン主義</h4>
+                    <p>「純粋な天皇」「腐敗した現状」という<strong>単純化</strong>。現実の複雑さを無視。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#dc2626;">Q1: 『日本改造法案大綱』の主な主張は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①天皇大権の発動──憲法停止、戒厳令②華族制度廃止③財閥解体──私有財産制限④土地国有化⑤労働権拡大⑥対外膨張。天皇を中心とした社会主義的国家改造。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#dc2626;">Q2: 北の思想はなぜ「右左融合」と言われるか？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>左翼的要素</strong>：財閥解体、土地改革、労働者権利（社会主義的）。<strong>右翼的要素</strong>：天皇制維持、国家主義、対外膨張（国粋主義的）。両方を取り込んだ「国家社会主義」の一形態。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#dc2626;">Q3: 二・二六事件とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        1936年、陸軍青年将校による<strong>クーデター未遂</strong>。首相官邸等を襲撃、斎藤内大臣らを殺害。北の思想に影響された。失敗し、北は思想的指導者として<strong>銃殺刑</strong>に処された。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#dc2626;">Q4: 北一輝を学ぶ現代的意義は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①歴史理解──戦前日本の空気②格差問題への警告──不満の放置は過激化を招く③ファシズムの構造分析──右左融合の帰結④ポピュリズムへの警戒──「強いリーダー」論の極端な帰結</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#dc2626; font-weight:700;">天皇大権</dt>
+                <dd><strong>天皇の最高権限</strong>。通常は制限されるが、北は発動を主張。</dd>
+
+                <dt style="color:#dc2626; font-weight:700; margin-top:1rem;">日本改造法案大綱</dt>
+                <dd>北の<strong>主著（1919年）</strong>。国家改造の具体案。発禁処分。</dd>
+
+                <dt style="color:#dc2626; font-weight:700; margin-top:1rem;">国家社会主義</dt>
+                <dd><strong>国家主義と社会主義の融合</strong>。右左融合。</dd>
+
+                <dt style="color:#dc2626; font-weight:700; margin-top:1rem;">二・二六事件</dt>
+                <dd>1936年の<strong>クーデター未遂</strong>。北の思想が影響。</dd>
+
+                <dt style="color:#dc2626; font-weight:700; margin-top:1rem;">昭和維新</dt>
+                <dd><strong>明治維新のような根本的変革</strong>を昭和に実現しようとする運動。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Kita Ikki (Rich Edition)</p>
+    </footer>
+</body>
+
+</html>

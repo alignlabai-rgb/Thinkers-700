@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルキメデス - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .synthesis-container {
+            padding: 1rem 0;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            background: var(--accent-primary, #8b5cf6);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: var(--accent-primary, #8b5cf6);
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid var(--accent-primary, #8b5cf6);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+
+        <header class="header-section">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">数学OS</span>
+            <h1>アルキメデス</h1>
+            <p class="en-name">Archimedes (287-212 BCE)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <p>「エウレカ！」の叫びで有名な古代最大の科学者。純粋数学と応用工学を統合し、てこ・滑車・螺旋から円周率の計算まで、理論と実践を往復した知の巨人です。今日のエンジニアリング・サイエンスの原型がここにあります。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Archimedes was the greatest mathematician and engineer of antiquity. He discovered the principles
+                        of buoyancy and leverage, calculated pi with unprecedented precision, and anticipated integral
+                        calculus with his method of exhaustion.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>古代最大の数学者・技術者でした。浮力とてこの原理を発見し、円周率を高精度で計算。「取り尽くし法」で積分法を先取りしました。理論と応用の両方で画期的な業績を残しました。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span class="step-icon">🔓</span>
+                    <span class="step-text"><strong>Step 1: 打破した旧常識</strong><br>「理論と実践は別物」「数学は純粋な思弁」というギリシア的知識観。</span>
+                </div>
+                <div class="synthesis-arrow">⬇️</div>
+                <div class="synthesis-step">
+                    <span class="step-icon">💡</span>
+                    <span class="step-text"><strong>Step 2:
+                            提示した新パラダイム</strong><br>「数学で自然現象を説明し、機械に応用できる」。理論が実践を導き、実践が理論を検証する循環。</span>
+                </div>
+                <div class="synthesis-arrow">⬇️</div>
+                <div class="synthesis-step">
+                    <span class="step-icon">📜</span>
+                    <span class="step-text"><strong>Step 3:
+                            実装・証明</strong><br>浮力の法則、てこの原理を数学的に定式化。戦争機械の設計でローマ軍を撃退。円周率の上下限を計算。</span>
+                </div>
+                <div class="synthesis-arrow">⬇️</div>
+                <div class="synthesis-result">
+                    <span class="result-icon">🎯</span>
+                    <strong>Result: 現代への実装</strong><br>静力学・流体力学の創始、積分法の先駆、科学と工学の統合モデル。
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「数学的原理で、物理世界をどこまで説明・制御できるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+                <p>「私に支点を与えよ。そうすれば地球を動かしてみせる」。てこの原理を数学的に定式化することで、適切な条件さえあれば無限の力を発揮できることを示しました。物理法則の数学化の原型です。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 浮力の原理（アルキメデスの原理）</h4>
+                    <p>「流体中の物体は、その物体が押しのけた流体の重さに等しい浮力を受ける」。王冠の金純度を調べる問題から発見。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ てこの原理</h4>
+                    <p>「支点からの距離 × 力 = 一定」。単純な原理で複雑な機械を設計可能にした。力学の基礎。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 取り尽くし法</h4>
+                    <p>曲線で囲まれた面積を多角形で近似し、無限に細分化することで計算。積分法の先駆的方法。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 球と円柱の幾何学</h4>
+                    <p>球の体積と表面積が、それを外接する円柱のそれらの2/3であることを証明。彼自身が最も愛した発見で、墓石にもその図が刻まれというた。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p>ユークリッド（幾何学）、エウドクソス（取り尽くし法）。アレクサンドリアで学んだとされます。</p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p>ガリレオ（力学の数学化）、ニュートン・ライプニッツ（微積分）、現代工学全般。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１</h4>
+                <p>アルキメデスは「ハードウェアとソフトウェアの両方を書いた」最初のフルスタック・エンジニア。数学（理論OS）と機械（実装）を自在に行き来しました。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２ (現代版)</h4>
+                <p>イーロン・マスクのように「理論を自分で理解し、製品に落とし込む」タイプ。SpaceXのロケットもテスラのバッテリーも、物理法則の数学的理解から始まります。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>アルキメデスの仕様 (New OS)</th>
+                        <th>旧OS（ギリシア的観照）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>理論と実践</td>
+                        <td>統合可能</td>
+                        <td>分離すべき</td>
+                    </tr>
+                    <tr>
+                        <td>数学の役割</td>
+                        <td>自然を説明・予測・制御</td>
+                        <td>純粋な思弁</td>
+                    </tr>
+                    <tr>
+                        <td>機械・技術</td>
+                        <td>知的活動の成果</td>
+                        <td>奴隷の仕事・卑しい</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <p>すべての工学・物理学・応用数学。船舶設計、建築、機械工学の基礎はここにあります。「計算で予測し、実験で検証」という方法論の原型。</p>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <p>彼は戦争機械も設計しました（カタパルト、クレーンなど）。技術は中立ではなく、使い方次第で破壊にも貢献する。科学者の社会的責任の問題を先取りしています。</p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしアルキメデスがNASAにいたら？</strong></p>
+            <p style="margin-top: 1rem;">
+                「これは私の取り尽くし法が発展したものだな」と微積分に感心し、「軌道計算は私がやる」と喜ぶでしょう。ロケットのスラスト計算も重心の設計も、彼の力学原理の延長です。そして3Dプリンターでアルキメデスの螺旋を作り始めるかもしれません。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <ul style="list-style: disc; padding-left: 1.5rem; display: grid; gap: 1rem;">
+                <li><strong>軍事技術への貢献</strong>：ローマとの戦争で使われた機械は倫理的に問題視されうる。</li>
+                <li><strong>社会的応用の限定</strong>：古代ギリシアでは技術を広く普及させる社会的条件（産業資本など）がなかった。</li>
+                <li><strong>断片的伝承</strong>：多くの著作が失われ、全貌は推測に依存する部分がある。</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">「エウレカ」の逸話とは何ですか？</summary>
+                    <p style="margin-top:1rem;">王冠の金純度を調べる問題を解くため入浴中に浮力の原理を発見し、「わかった！」と裸で街を走ったという伝説です。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">「取り尽くし法」とは何ですか？</summary>
+                    <p style="margin-top:1rem;">曲線で囲まれた面積を多角形で近似し、辺の数を増やすことで真の値に近づける方法。積分法の先駆です。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">「地球を動かす」という言葉には、どんな確信がありましたか？</summary>
+                    <p style="margin-top:1rem;">てこの原理（距離を稼げば力を増強できる）という数学的法則が、宇宙のどの規模でも適用できるという、自然の法則化への強い信頼が込められています。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">アルキメデスの原理</dt>
+                <dd>流体中の物体は、押しのけた流体の重さに等しい浮力を受ける。流体力学の基本法則。</dd>
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">取り尽くし法</dt>
+                <dd>多角形による近似の極限として面積を計算する方法。微積分の発明に先立つ2000年の先駆。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer
+        style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000;">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">&copy; 2025 Intellectual OS Pioneer Project |
+            Archimedes Analysis Edition</p>
+    </footer>
+</body>
+
+</html>

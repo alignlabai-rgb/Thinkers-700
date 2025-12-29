@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニッコロ・マキャヴェッリ - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #020408 0%, #1a1410 100%);
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #b45309, #d97706, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px rgba(180, 83, 9, 0.3);
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(180, 83, 9, 0.2);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #d97706;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #d97706, transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(180, 83, 9, 0.2);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(180, 83, 9, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #d97706;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(217, 119, 6, 0.2));
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(180, 83, 9, 0.1);
+            border-left: 4px solid #d97706;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .special-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #b45309, #d97706);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="special-badge">🌟 近代政治学の父</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">哲学OS</span>
+            <h1>ニッコロ・マキャヴェッリ</h1>
+            <p class="en-name">Niccolò Machiavelli (1469-1527)</p>
+        </header>
+
+        <section class="section-card" style="border: 1px solid #d97706; background: rgba(180, 83, 9, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「愛されるよりも恐れられるほうがはるかに安全である」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──マキャヴェッリ『君主論』</p>
+            </div>
+            <p>ルネサンス期フィレンツェの政治思想家・外交官。『君主論』で<strong>近代政治学の父</strong>と呼ばれる。政治を道徳から分離し、<strong>権力の現実</strong>を直視した。「マキャベリズム」の語源。
+            </p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>政治は<strong>道徳ではなく権力</strong>の問題である。
+                </p>
+                <p>中世以来、政治は「正義」「道徳」「神の摂理」で語られた。しかしマキャヴェッリは言う：<strong>理想ではなく現実を見よ</strong>。人間は善良ではない。約束は破られる。権力を維持するには、時に<strong>冷酷な手段</strong>も必要。道徳的な君主が没落し、狡猾な君主が生き残る──これが現実。
+                </p>
+            </div>
+            <p>現代的に言えば、マキャヴェッリは<strong>「政治のセキュリティモデル」</strong>を提唱した──理想的なシステムではなく、敵対的な環境での生存戦略。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Niccolò Machiavelli: Florentine political thinker, diplomat. "The Prince."
+                        Father of modern political science. Separation of politics and morality.
+                        Virtù and Fortuna. Republicanism in "Discourses." Realism. Reason of state.
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>フィレンツェの政治思想家・外交官。『君主論』。近代政治学の父。政治と道徳の分離。ヴィルトゥとフォルトゥナ。『ディスコルシ』で共和主義。現実主義。国家理性。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「政治は道徳の延長」</strong>──中世的理想。マキャヴェッリ：<strong>権力の論理</strong>。<br>
+                    <strong>②「人間は善良」</strong>──キリスト教的人間観。マキャヴェッリ：<strong>人間は悪</strong>。<br>
+                    <strong>③「正義が勝つ」</strong>──道徳的楽観。マキャヴェッリ：<strong>力が勝つ</strong>。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>政治的リアリズム</strong>：現実をありのままに見る。<br>
+                    <strong>ヴィルトゥ（能力・徳）</strong>：状況に応じて行動する力。<br>
+                    <strong>フォルトゥナ（運命）</strong>：人間がコントロールできない力。<br>
+                    <strong>必要悪</strong>：目的が手段を正当化する場合がある。<br>
+                    <strong>ライオンと狐</strong>：力と狡猾さの両方が必要。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「権力を獲得し維持するために、何が実際に必要か？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「混乱した世界で、いかにして権力を獲得し維持するか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 政治的リアリズム</strong></p>
+                <p>『君主論』（1513年）の核心：<strong>人間をあるべき姿ではなく、ありのままに見よ</strong>。理想の共和国や敬虔な君主を夢見るのは時間の無駄。現実を分析し、そこから教訓を引き出す。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 人間の悪しき本性</strong></p>
+                    <p><strong>①人間は裏切る</strong>：恩義を忘れ、約束を破り、利益のために裏切る。<br>
+                        <strong>②恐怖は愛より強い</strong>：愛は義務で壊れるが、恐怖は罰で維持される。<br>
+                        <strong>③言葉より結果</strong>：人は約束ではなく結果で判断する。<br>
+                        <strong>④大衆は見かけで判断</strong>：手段より結果、過程より印象。
+                    </p>
+                </div>
+
+                <p><strong>▼ ヴィルトゥとフォルトゥナ</strong></p>
+                <p><strong>ヴィルトゥ</strong>：道徳的な「徳」ではなく、<strong>状況に応じて行動する能力</strong>。柔軟性、決断力、狡猾さ。<strong>フォルトゥナ</strong>：運命、偶然、人間がコントロールできない力。マキャヴェッリ曰く、「運命は我々の行動の半分を支配するが、残り半分は我々に任されている」。
+                </p>
+
+                <div class="quote-box">
+                    <p>「運命は激流のようなものだ。堤防と土手を築いておけば、その力に対抗できる」</p>
+                </div>
+
+                <p><strong>▼ ライオンと狐</strong></p>
+                <p>君主は<strong>二つの動物</strong>を模倣すべき。<strong>ライオン</strong>：力で敵を威圧。<strong>狐</strong>：狡猾さで罠を避ける。力だけでは不十分、狡猾さだけでも不十分。両方が必要。
+                </p>
+
+                <p><strong>▼ 共和主義（『ディスコルシ』）</strong></p>
+                <p>『君主論』だけがマキャヴェッリではない。『ディスコルシ』（ローマ史論）では、<strong>共和政の優位性</strong>を論じた。市民的自由、混合政体、人民の参加...マキャヴェッリは専制主義者ではなく、状況に応じた現実主義者。
+                </p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ マキャヴェッリへの批判</strong></p>
+                    <p>①<strong>不道徳</strong>：「マキャベリズム」は悪の同義語に②<strong>文脈の無視</strong>：16世紀イタリアの特殊な状況③<strong>『君主論』偏重</strong>：『ディスコルシ』の共和主義が無視される④<strong>歴史的誤用</strong>：独裁者の正当化に悪用
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #d97706;">■ 政治的リアリズム</h4>
+                    <p><strong>現実をありのままに見る</strong>。理想ではなく実態。</p>
+                </div>
+                <div>
+                    <h4 style="color: #d97706;">■ ヴィルトゥ</h4>
+                    <p><strong>状況適応能力</strong>。柔軟性、決断力、狡猾さ。</p>
+                </div>
+                <div>
+                    <h4 style="color: #d97706;">■ フォルトゥナ</h4>
+                    <p><strong>運命・偶然</strong>。コントロール不能だが準備で対抗可能。</p>
+                </div>
+                <div>
+                    <h4 style="color: #d97706;">■ ライオンと狐</h4>
+                    <p><strong>力と狡猾さの両立</strong>。両方が必要。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>古代ローマ史</strong>：リウィウス、キケロ<br>
+                        <strong>トゥキディデス</strong>：政治的リアリズム<br>
+                        <strong>ルネサンス</strong>：古典復興<br>
+                        <strong>フィレンツェ政治</strong>：実務経験<br>
+                        <strong>チェーザレ・ボルジア</strong>：『君主論』のモデル
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>トマス・ホッブズ</strong>：国家論<br>
+                        <strong>国際関係論</strong>：リアリズム学派<br>
+                        <strong>カール・シュミット</strong>：政治神学<br>
+                        <strong>ハンス・モーゲンソー</strong>：現代リアリズム<br>
+                        <strong>グラムシ</strong>：ヘゲモニー論
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：政治的リアリズム＝脅威モデリング</h4>
+                <p><strong>脅威モデリング</strong>を考えよう。セキュリティでは「攻撃者がいる」と仮定してシステムを設計する。善意を前提にしない。</p>
+                <p>マキャヴェッリのリアリズムも同様：人間は<strong>裏切りうると仮定</strong>して政治を設計する。善意に頼らず、インセンティブと抑止力で統治。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ヴィルトゥ＝アジャイルな適応</h4>
+                <p><strong>アジャイル開発</strong>を考えよう。固定された計画ではなく、変化に対応する能力。柔軟性、迅速な意思決定、状況への適応。</p>
+                <p>ヴィルトゥも同様：<strong>状況に応じて戦略を変える</strong>能力。時に優しく、時に冷酷に。固定された「正しい方法」はない。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：フォルトゥナ＝不確実性</h4>
+                <p><strong>システム障害</strong>を考えよう。完全に予測はできないが、冗長性、バックアップ、フェイルオーバーで対処可能。</p>
+                <p>フォルトゥナも同様：運命は<strong>完全にはコントロールできない</strong>。しかし「堤防と土手」──準備、計画、リソースの蓄積──で対抗可能。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>中世的政治観</th>
+                        <th>マキャヴェッリ</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>政治の基盤</td>
+                        <td>道徳・宗教</td>
+                        <td>権力・利益</td>
+                        <td>世俗化</td>
+                    </tr>
+                    <tr>
+                        <td>人間観</td>
+                        <td>善への潜在力</td>
+                        <td>悪への傾向</td>
+                        <td>懐疑主義</td>
+                    </tr>
+                    <tr>
+                        <td>方法</td>
+                        <td>理想の追求</td>
+                        <td>歴史から学ぶ</td>
+                        <td>経験主義</td>
+                    </tr>
+                    <tr>
+                        <td>手段</td>
+                        <td>道徳的に正しい</td>
+                        <td>効果的</td>
+                        <td>結果主義</td>
+                    </tr>
+                    <tr>
+                        <td>徳</td>
+                        <td>キリスト教的美徳</td>
+                        <td>ヴィルトゥ（能力）</td>
+                        <td>政治的徳</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #d97706;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>国際関係論</strong>：リアリズム学派の基盤</li>
+                    <li><strong>経営戦略</strong>：競争、権力、組織政治</li>
+                    <li><strong>リーダーシップ論</strong>：状況適応型リーダーシップ</li>
+                    <li><strong>セキュリティ</strong>：敵対的環境の想定</li>
+                    <li><strong>交渉術</strong>：現実的なアプローチ</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>道徳の軽視</strong>：「マキャベリズム」の悪評</li>
+                    <li><strong>文脈の問題</strong>：16世紀イタリアの特殊状況</li>
+                    <li><strong>悪用の歴史</strong>：独裁者による正当化</li>
+                    <li><strong>人間観の偏り</strong>：協力・信頼の過小評価？</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしマキャヴェッリがテック業界を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「<strong>人間は変わらない</strong>」──マキャヴェッリは言うでしょう。</p>
+                <p style="margin-top: 1rem;">「私は16世紀のイタリアで、権力と政治を観察した。今日のテック業界を見ると──</p>
+                <p style="margin-top: 1rem;">
+                    <strong>プラットフォームは新しい「君主」</strong>：Amazon、Google、Apple...彼らは<strong>デジタル公国</strong>を支配している。ユーザーは「臣民」。開発者は「傭兵」。規約は「法律」。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>ライオンと狐</strong>：成功した企業はこの両方を使う。<strong>力</strong>（市場支配、資金力）と<strong>狡猾さ</strong>（ロビー活動、戦略的買収、規制の操作）。どちらかだけでは生き残れない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>ヴィルトゥとピボット</strong>：成功したスタートアップは<strong>状況に適応</strong>する。固定観念に囚われず、市場の変化に柔軟に対応。これはまさにヴィルトゥ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>恐怖か愛か</strong>：プラットフォームはユーザーに「愛される」か「依存させる」か？両方必要だが、<strong>依存（恐怖）のほうが安定</strong>。ロックイン効果、切り替えコスト...
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>現実を見よ</strong>：テック企業が「世界を良くする」と言う？私は言う：<strong>動機ではなく結果を見よ</strong>。権力の拡大、利益の追求、支配...これが現実。
+                </p>
+                <p style="margin-top: 1rem;">私の助言：<strong>善意や理想を語る者を信頼するな。行動とインセンティブを分析せよ。</strong>」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 道徳の軽視</h4>
+                    <p>「マキャベリズム」は<strong>不道徳</strong>の同義語になった。手段の正当化は危険。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 歴史的文脈</h4>
+                    <p>16世紀イタリアの<strong>特殊な状況</strong>（分裂、戦争、不安定）への反応。普遍化は危険。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 人間観の偏り</h4>
+                    <p>人間は本当に「悪」か？<strong>協力、信頼、利他主義</strong>の過小評価？</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 悪用の歴史</h4>
+                    <p>ムッソリーニ、スターリン...独裁者による<strong>正当化に悪用</strong>された。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#d97706;">Q1: マキャヴェッリの「政治的リアリズム」とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>人間と政治をあるべき姿ではなく、ありのままに見る</strong>こと。理想ではなく現実を分析し、そこから教訓を引き出す。人間の悪しき本性を前提に政治を設計。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#d97706;">Q2: ヴィルトゥとフォルトゥナの関係は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>ヴィルトゥ</strong>は状況適応能力（柔軟性、決断力）。<strong>フォルトゥナ</strong>は運命・偶然（コントロール不能）。運命は行動の半分を支配するが、準備と能力で残り半分は対抗可能。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#d97706;">Q3: 「ライオンと狐」とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        君主は<strong>二つの動物を模倣</strong>すべき。<strong>ライオン</strong>：力で敵を威圧。<strong>狐</strong>：狡猾さで罠を避ける。力だけでも狡猾さだけでも不十分、両方が必要。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#d97706;">Q4: マキャヴェッリへの主な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①不道徳への批判（「マキャベリズム」の悪評）②16世紀の特殊状況③人間観の偏り（協力の過小評価）④独裁者による悪用。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#d97706;">Q5: 『君主論』以外のマキャヴェッリの著作は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        『ディスコルシ（ローマ史論）』で<strong>共和主義</strong>を論じた。市民的自由、混合政体、人民の参加...マキャヴェッリは専制主義者ではなく、状況を分析した現実主義者。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#d97706; font-weight:700;">ヴィルトゥ</dt>
+                <dd><strong>状況適応能力</strong>。柔軟性、決断力、狡猾さ。道徳的美徳ではなく政治的能力。</dd>
+
+                <dt style="color:#d97706; font-weight:700; margin-top:1rem;">フォルトゥナ</dt>
+                <dd><strong>運命・偶然</strong>。コントロール不能だが準備で対抗可能。</dd>
+
+                <dt style="color:#d97706; font-weight:700; margin-top:1rem;">マキャベリズム</dt>
+                <dd><strong>目的が手段を正当化</strong>。狡猾で不道徳な政治手法（批判的な意味で使われる）。</dd>
+
+                <dt style="color:#d97706; font-weight:700; margin-top:1rem;">国家理性</dt>
+                <dd><strong>国家の利益が最優先</strong>。道徳や宗教より優先される。</dd>
+
+                <dt style="color:#d97706; font-weight:700; margin-top:1rem;">君主論</dt>
+                <dd><strong>1513年の政治論文</strong>。近代政治学の古典。権力維持の方法を論じる。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(180, 83, 9, 0.2);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Niccolò Machiavelli (Rich
+            Edition)</p>
+    </footer>
+</body>
+
+</html>

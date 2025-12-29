@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マックス・ホルクハイマー - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">哲学OS</span>
+            <h1>マックス・ホルクハイマー</h1>
+            <p class="en-name">Max Horkheimer (1895-1973)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「啓蒙は、神話のうちにすでに絡み合っており、しかも一歩ごとにますます神話的なものに絡み合っていく」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──『啓蒙の弁証法』(1944)</p>
+            </div>
+            <p>フランクフルト学派の創設者・指導者。批判理論（Critical Theory）の父。アドルノとともに『啓蒙の弁証法』を著し、西洋理性の自己破壊を分析した。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>啓蒙は人類を迷信から解放するはずだった。しかし20世紀に何が起きたか？<strong>ナチズム、ホロコースト、全体主義</strong>。なぜ「理性の時代」が野蛮を生んだか？</p>
+                <p>ホルクハイマー（とアドルノ）の答え：<strong>道具的理性</strong>。理性は「何のために」を問わなくなり、「いかに効率的に」だけを問う道具に堕落した。アウシュビッツは「効率的」な殺人工場だった。
+                </p>
+            </div>
+            <p>現代的に言えば、ホルクハイマーは<strong>「最適化の暴走」</strong>を批判した思想家です。KPIを追求するあまり、本来の目的を忘れる──この危険性を誰よりも早く警告した。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Horkheimer: founder of Frankfurt School. Critical Theory: social theory aimed at critique and
+                        transformation, not just description. "Dialectic of Enlightenment" (with Adorno): Enlightenment
+                        reason turns into its opposite. Instrumental reason: reason reduced to means-end calculation.
+                        Eclipse of reason. Influenced Habermas, contemporary social critique.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>フランクフルト学派の創設者。批判理論：記述ではなく批判と変革を目指す社会理論。『啓蒙の弁証法』（アドルノと共著）：啓蒙の理性はその反対物に転化する。道具的理性：手段-目的計算に矮小化された理性。理性の消失。ハーバーマス、現代の社会批判に影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「啓蒙は進歩」</strong>──理性の拡大は人類を解放する。ホルクハイマー：啓蒙は<strong>支配に転化</strong>しうる。<br>
+                    <strong>②「理論は中立的記述」</strong>──科学は事実を客観的に記述。ホルクハイマー：理論は<strong>社会的実践</strong>と不可分。<br>
+                    <strong>③「実証主義」</strong>──事実と価値の分離。ホルクハイマー：実証主義は<strong>現状肯定</strong>──批判を放棄。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>批判理論</strong>：社会を批判的に分析し、変革を志向する理論。<br>
+                    <strong>道具的理性批判</strong>：目的を問わず手段だけを最適化する理性の批判。<br>
+                    <strong>啓蒙の弁証法</strong>：啓蒙はその反対物（神話、支配）に転化する。<br>
+                    <strong>文化産業</strong>：大衆文化は支配のイデオロギー装置。<br>
+                    <strong>否定の哲学</strong>：現実を否定し続けることで可能性を開く。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「なぜ理性の時代が野蛮を生んだか？啓蒙はどこで道を誤ったか？」
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「啓蒙はなぜ野蛮に転化したか？理性はどこで道具化されたか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 批判理論とは何か</strong></p>
+                <p>ホルクハイマーは「伝統的理論」と「批判理論」を区別する。伝統的理論：客観的な記述を目指す。理論家は外部の観察者。</p>
+                <p><strong>批判理論</strong>：理論は社会の一部。理論家は社会的行為者。理論の目的は<strong>社会の批判と変革</strong>。価値中立性の仮面を剥ぐ。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 道具的理性</strong></p>
+                    <p>理性は本来、①目的の吟味（何のために？）②手段の選択（いかに？）の両方を含む。しかし近代以降、理性は②だけに縮小。<strong>目的は問わず、手段だけを最適化</strong>する。</p>
+                    <p>結果：効率的な殺人工場（アウシュビッツ）、効率的な搾取（資本主義）、効率的なプロパガンダ（ナチズム）。「何のために？」を問わなくなった理性は、あらゆる野蛮に仕えうる。</p>
+                </div>
+
+                <p><strong>▼ 啓蒙の弁証法</strong></p>
+                <p>『啓蒙の弁証法』（1944）はアドルノとの共著で、フランクフルト学派の中心的著作。テーゼ：<strong>啓蒙はその反対物に転化する</strong>。</p>
+                <p>啓蒙は神話を打倒するはずだった。しかし：①啓蒙は自然を<strong>支配</strong>する（脱魔術化＝対象化）②同じ論理が人間を支配する③啓蒙自体が新しい<strong>神話</strong>になる（進歩への盲目的信仰）。
+                </p>
+
+                <div class="quote-box">
+                    <p>「神話はすでに啓蒙であり、啓蒙は神話に帰っていく」</p>
+                </div>
+
+                <p><strong>▼ 文化産業</strong></p>
+                <p>大衆文化（映画、ラジオ、広告...）は<strong>産業</strong>として組織されている。目的は娯楽ではなく、支配への服従を促すこと。</p>
+                <p>文化産業は①標準化された製品を大量生産②受動的な消費者を作り出す③批判的思考を麻痺させる④「自由」の幻想を与えながら支配を強化。ハリウッド映画もナチのプロパガンダも、<strong>同じ論理</strong>。
+                </p>
+
+                <p><strong>▼ 理性の消失（Eclipse of Reason）</strong></p>
+                <p>ホルクハイマーは「主観的理性」と「客観的理性」を区別する。客観的理性：目的と価値を問う理性──善、正義、美。主観的理性：手段だけを計算する理性──効率、有用性。</p>
+                <p>近代は客観的理性を<strong>排除</strong>し、主観的理性だけを残した。「価値は主観的」というテーゼの帰結。しかし価値を問う能力を失った理性は、あらゆる目的に仕える<strong>奴隷</strong>となる。
+                </p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ 悲観主義の問題</strong></p>
+                    <p>ホルクハイマー（とアドルノ）の診断は<strong>極めて悲観的</strong>。啓蒙は野蛮に、理性は支配に、文化は産業に...では希望はどこに？後期のホルクハイマーは宗教的救済に傾くが、これは批判理論の挫折か？ハーバーマスはコミュニケーション的理性で再建を試みる。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 批判理論（Critical Theory）</h4>
+                    <p>社会を<strong>批判的に分析し変革を志向</strong>する理論。伝統的理論の「客観性」を批判。マルクス、フロイト、ウェーバーを統合。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 道具的理性（Instrumental Reason）</h4>
+                    <p>目的を問わず<strong>手段だけを最適化</strong>する理性。効率至上主義。アウシュビッツの論理。本来の理性の矮小化。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 啓蒙の弁証法</h4>
+                    <p>啓蒙は<strong>その反対物に転化</strong>する。自然支配→人間支配。脱神話化→新しい神話。理性→非理性。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 文化産業</h4>
+                    <p>大衆文化は<strong>支配のイデオロギー装置</strong>。標準化、受動化、批判の麻痺。娯楽の政治的機能。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>マルクス</strong>（資本主義批判、イデオロギー論）<br>
+                        <strong>フロイト</strong>（精神分析、権威主義的人格）<br>
+                        <strong>ウェーバー</strong>（合理化、鉄の檻）<br>
+                        <strong>ヘーゲル</strong>（弁証法）<br>
+                        <strong>ショーペンハウアー</strong>（悲観主義）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>アドルノ</strong>（共同研究者、否定弁証法）<br>
+                        <strong>ハーバーマス</strong>（コミュニケーション的理性で批判理論を再建）<br>
+                        <strong>ホネット</strong>（承認論でフランクフルト学派第三世代へ）<br>
+                        <strong>ポストモダン思想</strong>（理性批判の影響）<br>
+                        <strong>メディア批評</strong>（文化産業論の現代的展開）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：道具的理性＝KPI至上主義</h4>
+                <p>KPI（重要業績評価指標）を考えよう。本来は目標達成の指標。しかし<strong>KPIを上げること自体が目的化</strong>すると？ユーザー体験を犠牲にしてクリック率を上げる。品質を落として生産量を増やす。
+                </p>
+                <p>ホルクハイマーの道具的理性も同様：<strong>「何のために」を忘れ、「いかに効率的に」だけを追求</strong>する。最適化の暴走。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：文化産業＝アルゴリズム推奨</h4>
+                <p>YouTubeやTikTokのレコメンドアルゴリズムを考えよう。<strong>エンゲージメント最大化</strong>のために、刺激的で中毒性のあるコンテンツを推奨。</p>
+                <p>ホルクハイマーの文化産業批判も同様：大衆文化は<strong>受動的消費者を作る産業</strong>。批判的思考を麻痺させ、支配への服従を促す。アルゴリズムは現代の文化産業装置。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：啓蒙の弁証法＝技術の逆説</h4>
+                <p>SNSは人々をつなぐはずだった。しかし結果は？分断、孤立、フェイクニュース。<strong>解放の道具が支配の道具に転化</strong>。</p>
+                <p>ホルクハイマーの啓蒙の弁証法も同様：啓蒙は神話からの解放のはずだった。しかし啓蒙自体が新しい神話に、理性が新しい支配に転化。すべての「進歩」には闘の側面がある。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>啓蒙主義</th>
+                        <th>ホルクハイマー</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>理性</td>
+                        <td>解放の力</td>
+                        <td>支配に転化しうる</td>
+                        <td>弁証法的理解</td>
+                    </tr>
+                    <tr>
+                        <td>進歩</td>
+                        <td>不可避</td>
+                        <td>野蛮と表裏一体</td>
+                        <td>批判的警戒</td>
+                    </tr>
+                    <tr>
+                        <td>科学</td>
+                        <td>客観的</td>
+                        <td>社会的利害と結合</td>
+                        <td>価値中立の否定</td>
+                    </tr>
+                    <tr>
+                        <td>文化</td>
+                        <td>自由の表現</td>
+                        <td>支配のイデオロギー</td>
+                        <td>産業としての文化</td>
+                    </tr>
+                    <tr>
+                        <td>理論</td>
+                        <td>記述</td>
+                        <td>批判と変革</td>
+                        <td>実践との統一</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>テクノロジー批判</strong>：監視資本主義、アルゴリズム支配</li>
+                    <li><strong>メディアリテラシー</strong>：文化産業としてのSNS</li>
+                    <li><strong>ビジネス倫理</strong>：効率至上主義への警戒</li>
+                    <li><strong>AI倫理</strong>：道具的理性としてのAI</li>
+                    <li><strong>環境問題</strong>：自然支配の帰結</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>悲観主義</strong>：希望はどこに？批判が行動を麻痺させる？</li>
+                    <li><strong>全体主義との等置</strong>：ナチズムと自由民主主義は本当に同じか？</li>
+                    <li><strong>文化的エリート主義</strong>：大衆文化を全面否定する傲慢さ？</li>
+                    <li><strong>代替案の欠如</strong>：批判はあるが建設的提案が弱い</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしホルクハイマーがAIとビッグデータを見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「私の懸念がさらに現実化している」──ホルクハイマーはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「AIを見よ。これは<strong>道具的理性の究極形態</strong>だ。目的を問わない。データを最適化し、パターンを見つけ、予測する。しかし『何のために？』は問わない。その問いはアルゴリズムには存在しない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    そして誰がAIを使うか？<strong>資本と国家</strong>だ。広告のターゲティング、監視、予測的警察活動...すべてが効率化されている。私たちが『啓蒙の弁証法』で分析した論理が、桁違いのスケールで作動している。
+                </p>
+                <p style="margin-top: 1rem;">
+                    文化産業も進化した。かつては映画とラジオだった。今は<strong>アルゴリズムが個人に最適化されたコンテンツ</strong>を提供する。かつては標準化だったが、今は個別化された支配。しかし論理は同じ──受動的消費者の生産、批判の麻痺、支配への服従。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし同時に、私は希望も見る。若い世代は<strong>テクノロジーを批判的に見る</strong>ことを学んでいる。デジタルデトックス、プライバシー意識、オープンソース運動...これらは抵抗の萌芽だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    問いは変わらない：<strong>理性を道具的利用から救えるか</strong>？技術を解放のために使えるか？答えは保証されていないが、問いを立て続けることが批判理論の使命だ」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 悲観主義批判（ハーバーマス）</h4>
+                    <p>ハーバーマスは師たちを批判：<strong>理性を全面否定しすぎ</strong>。道具的理性だけでなく、コミュニケーション的理性（相互理解を目指す理性）もある。批判理論は<strong>理性の別の形態</strong>で再建できる。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 全体主義との等置批判</h4>
+                    <p>ナチズムとリベラル民主主義を「同じ論理」とするのは<strong>過激すぎる</strong>。両者の間には重要な違いがある。批判者：民主的制度には、たとえ不十分でも、批判と抵抗の余地がある。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 文化的エリート主義</h4>
+                    <p>文化産業批判は<strong>大衆を見下している</strong>のでは？大衆は受動的消費者ではなく、能動的に意味を構築する。バーミンガム学派（カルチュラル・スタディーズ）はこれを批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 代替案の欠如</h4>
+                    <p>批判はするが、<strong>では何をすべきか</strong>が不明確。後期のホルクハイマーは宗教的救済に傾くが、これは批判理論の<strong>挫折</strong>ではないか？</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: 「批判理論」とは何か？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        社会を<strong>批判的に分析し変革を志向</strong>する理論。「伝統的理論」（客観的記述を目指す）と対比。理論は社会の一部であり、価値中立はありえない。マルクス、フロイト、ウェーバーを統合。フランクフルト学派の基盤。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 「道具的理性」とは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>目的を問わず手段だけを最適化</strong>する理性。本来の理性は①目的の吟味②手段の選択の両方を含むが、近代は②だけに縮小。結果：効率的な殺人工場、効率的な搾取。「何のために」を問わない理性はあらゆる野蛮に仕える。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: 「啓蒙の弁証法」の核心テーゼは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>啓蒙はその反対物に転化する</strong>。啓蒙は神話を打倒するはずだった。しかし：①自然支配→人間支配②啓蒙自体が新しい神話に③理性が非理性に転化。理性の時代がナチズムを生んだ逆説の説明。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: ホルクハイマーへの主要な批判は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ①ハーバーマス──理性を全面否定しすぎ、コミュニケーション的理性で再建可能②全体主義との等置──ナチと民主主義は違う③文化的エリート主義──大衆を見下している④代替案の欠如──批判だけで建設的提案がない
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">批判理論（Critical Theory）</dt>
+                <dd>社会を<strong>批判的に分析し変革を志向</strong>する理論。フランクフルト学派の基盤。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">道具的理性</dt>
+                <dd><strong>手段だけを最適化</strong>する理性。目的を問わない。効率至上主義。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">啓蒙の弁証法</dt>
+                <dd>啓蒙が<strong>その反対物に転化</strong>するプロセス。理性→非理性。解放→支配。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">文化産業</dt>
+                <dd>大衆文化が<strong>支配のイデオロギー装置</strong>として機能すること。標準化、受動化。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">フランクフルト学派</dt>
+                <dd>批判理論を発展させた<strong>社会研究所</strong>のグループ。ホルクハイマー、アドルノ、マルクーゼなど。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Max Horkheimer (Rich Edition)
+        </p>
+    </footer>
+</body>
+
+</html>

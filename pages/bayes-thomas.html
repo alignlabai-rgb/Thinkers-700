@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・ベイズ - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">数学OS</span>
+            <h1>トマス・ベイズ</h1>
+            <p class="en-name">Thomas Bayes (c. 1701-1761)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <p>「ベイズの定理」の発見者であり、現代AI・機械学習の論理的基盤を築いた18世紀の牧師兼数学者。確率を客観的頻度ではなく主観的信念として捉え、証拠に基づいて信念を更新する方法を示しました。スパムフィルタからGPT、医療診断まで、現代技術のあらゆるところにベイズの思想が息づいています。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Thomas Bayes discovered Bayes' theorem, enabling probabilistic reasoning that updates beliefs
+                        with new evidence. This "inverse probability" revolutionized statistics and now powers machine
+                        learning, AI, medical diagnosis, and spam filtering across the modern world.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>「ベイズの定理」を発見し、新しい証拠で信念を更新する確率論的推論を可能にしました。この「逆確率」は統計学を革新し、機械学習・AI・医療診断・スパムフィルタなど現代世界のあらゆる場面で活用されています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「確率は客観的な頻度である」「結果から原因を推論することはできない」という古典的確率観を補完。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>確率は信念の度合いであり、証拠によって更新される。事後確率 = 事前確率 × 尤度 /
+                    正規化定数。「逆確率」によって結果から原因を推論可能に。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>死後にリチャード・プライスが論文を公表。ラプラスが発展させ「ラプラス＝ベイズの定理」に。20世紀後半にMCMC法で計算可能になり爆発的普及。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>ベイズ統計学、機械学習・深層学習、AI、スパムフィルタ、医療診断、A/Bテスト、推薦システム、自動運転。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「新しい証拠を得たとき、どのように信念を更新すべきか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+                <p>「ベイズの定理」を発見。P(A|B) = P(B|A) × P(A) /
+                    P(B)。事前の信念（事前確率）を、証拠が与えられたときの尤度で更新し、事後確率を得る。学習とは信念の更新プロセス。知らないことに確率を割り当て、データを見るたびに更新する。完全な無知から始めても、証拠の蓄積で真実に近づける。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ ベイズの定理</h4>
+                    <p>P(仮説|証拠) = P(証拠|仮説) × P(仮説) /
+                        P(証拠)。証拠を見た後の仮説の確率（事後確率）を計算できる。医療診断なら「検査陽性という証拠が出たとき、本当に病気である確率は？」を計算。偽陽性問題の理解に不可欠。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 主観確率（主観的ベイズ主義）</h4>
+                    <p>確率を客観的頻度ではなく、信念の度合いとして解釈。「この仮説が正しいと私は何%信じるか」。繰り返し実験できない一回限りの事象（歴史的事件、宇宙の始まりなど）にも確率を割り当て可能。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 事前分布と事後分布</h4>
+                    <p>事前分布＝証拠を見る前の信念。事後分布＝証拠を見た後の更新された信念。学習とはこの更新プロセス。事後分布は次の事前分布になり、証拠が蓄積するほど信念は収束する。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ MCMC（マルコフ連鎖モンテカルロ）</h4>
+                    <p>複雑な事後分布を数値的に計算する手法。ベイズ的手法が計算可能になった20世紀後半の革命。現代機械学習の基盤技術。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p>パスカル、フェルマー（確率論の創始）、ニュートン（彼の下で学んだ可能性）、初期確率論の発展。</p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p>ラプラス（発展）、ベイズ統計学全体、機械学習、AI、確率的プログラミング、意思決定理論、認知科学。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１</h4>
+                <p>ベイズは「信念のバージョン管理」を発明した人。仮説v1.0（事前確率）に証拠というcommitが入り、仮説v2.0（事後確率）に更新。差分（尤度）を使って効率的にマージ。データが増えるほど信念は収束する。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２ (現代版)</h4>
+                <p>Gmailのスパムフィルタはベイズの定理の実装。「この単語があるメールはスパム確率何%？」と計算し、ユーザーの行動（証拠）で常に更新される。学習するフィルタ。あなたがスパムボタンを押すたびにベイズ更新が走っている。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>ベイズ主義 (New OS)</th>
+                        <th>頻度主義（旧OS）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>確率の解釈</td>
+                        <td>信念の度合い</td>
+                        <td>長期的頻度</td>
+                    </tr>
+                    <tr>
+                        <td>事前情報</td>
+                        <td>積極的に使う</td>
+                        <td>使わない</td>
+                    </tr>
+                    <tr>
+                        <td>パラメータ</td>
+                        <td>確率変数</td>
+                        <td>固定値</td>
+                    </tr>
+                    <tr>
+                        <td>一回限りの事象</td>
+                        <td>確率割当可能</td>
+                        <td>確率割当不可</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <p>機械学習・AI全般（ベイズ推論が基盤）、スパムフィルタ、医療診断（検査結果の解釈）、A/Bテスト、推薦システム、自動運転、認知科学（脳はベイズ推論をしているという仮説）。データから学ぶすべての場面で有効。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <p>事前分布の選択が恣意的になりうる（「お前の事前は何だ？」問題）。計算コストが高い場合がある（MCMCで解決されつつある）。主観性への批判（科学は客観的であるべきとの立場から）。</p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしベイズがChatGPTを見たら？</strong></p>
+            <p style="margin-top: 1rem;">
+                「これは私の定理の大規模実装だ」と言うでしょう。LLMは確率的に次のトークンを予測し、コンテキスト（証拠）で分布を更新している。学習とは信念の更新である、という彼の洞察が巨大なニューラルネットワークで実装されている。「人間の思考もまたベイズ的だ」と認知科学者たちが主張していることを知れば、彼は満足するでしょう。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <ul style="list-style: disc; padding-left: 1.5rem; display: grid; gap: 1rem;">
+                <li><strong>事前分布の恣意性</strong>：事前確率の選択に客観的基準がない。同じ証拠でも事前が違えば結論が違う。「主観的」は科学的でないとの批判。</li>
+                <li><strong>計算量問題</strong>：複雑なモデルでは事後分布の計算が困難（MCMC等で部分的に解決）。</li>
+                <li><strong>頻度主義との論争</strong>：20世紀の統計学は頻度主義（p値・信頼区間）が主流であり、ベイズ派は少数派だった。今も論争は続く。</li>
+                <li><strong>主観確率の合理性</strong>：信念に確率を割り当てることが常に適切かという哲学的問題。</li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">ベイズの定理の直感的な意味は？</summary>
+                    <p style="margin-top:1rem;">「証拠を見た後で、仮説の確信度をどれだけ更新すべきか」を教えてくれる公式。事前の信念 × 証拠のもっともらしさ ÷ 証拠の珍しさ =
+                        更新後の信念。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">なぜ医療診断でベイズが重要？</summary>
+                    <p style="margin-top:1rem;">
+                        検査陽性でも「本当に病気である確率」は事前確率（有病率）に依存する。稀な病気の検査で陽性が出ても、偽陽性の可能性が高い。ベイズなしでは検査結果を正しく解釈できない。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">なぜ20世紀にベイズ統計が復活した？</summary>
+                    <p style="margin-top:1rem;">MCMC（マルコフ連鎖モンテカルロ）法とコンピュータの発達により、複雑なベイズ計算が実行可能に。機械学習の発展とも連動。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">ベイズの定理</dt>
+                <dd>条件付き確率を逆転させる公式。P(A|B) = P(B|A)P(A)/P(B)。証拠から仮説の確率を推論する。</dd>
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">事前確率・事後確率</dt>
+                <dd>事前確率＝証拠を見る前の信念。事後確率＝証拠を見た後の更新された信念。</dd>
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">尤度（Likelihood）</dt>
+                <dd>仮説が正しいとしたとき、観察された証拠がどれだけありそうかを示す量。P(証拠|仮説)。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | Thomas Bayes</p>
+    </footer>
+</body>
+
+</html>

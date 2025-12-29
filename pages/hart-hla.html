@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.L.A. ハート - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <span class="os-tag">法OS</span>
+            <h1>H.L.A. ハート</h1>
+            <p class="en-name">Herbert Lionel Adolphus Hart (1907-1992)</p>
+        </header>
+
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「法とは何か？脅しを持った命令ではない。ルールなのだ」</p>
+            </div>
+            <p>20世紀を代表する法哲学者であり、オックスフォードで法理学を刷新した「法実証主義」の巨匠。</p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p>「悪法も法か？」──ナチスの法律は「法」だったのか？この問いに答えることは、<strong>法の本質</strong>を問うことだ。</p>
+                <p>ハートは答える：法と道徳は<strong>概念的に分離できる</strong>。悪法も「法」としては存在しうる──しかしそれは従う義務があることを意味しない。この分離こそ、法についての<strong>明晰な思考の条件</strong>である。
+                </p>
+            </div>
+            <p>法をプログラマ的に言えば、ハートは法システムの<strong>仕様書</strong>を書いた人物です。「ルールとは何か」「ルールに従うとは何か」を精密に分析し、法理論に革命をもたらしました。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Hart revolutionized legal philosophy. Law is not "commands backed by threats" (Austin) but a
+                        system of rules. Primary rules (obligations) + secondary rules (rules about rules). The rule of
+                        recognition: how to identify valid law. Separation of law and morality. Oxford ordinary language
+                        philosophy applied to law. Key work: "The Concept of Law" (1961).</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>法哲学を革新。法は「脅しを伴う命令」（オースティン）ではなく、ルールのシステム。一次ルール（義務）＋二次ルール（ルールについてのルール）。承認のルール：有効な法の識別方法。法と道徳の分離。オックスフォード日常言語哲学を法に適用。主著『法の概念』(1961)。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1: 打破した旧常識</strong><br>
+                    <strong>①「法＝主権者の命令」（オースティン）</strong>──法は銃を突きつけて「金を出せ」と言う強盗と同じ？違う。法には「ルールとして受け入れられている」という次元がある。<br>
+                    <strong>②「法と道徳は一体」（自然法論）</strong>──「悪法は法でない」？しかしこれでは「何が法か」が不明確になる。<br>
+                    <strong>③「法は一枚岩」</strong>──法は単一のルールではなく、<strong>ルールの階層構造</strong>（一次・二次ルール）から成る複雑なシステム。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 新パラダイム</strong><br>
+                    <strong>ルールとしての法</strong>：法は命令ではなくルール。<br>
+                    <strong>一次ルール＋二次ルール</strong>：義務を課すルール＋ルールについてのルール。<br>
+                    <strong>承認のルール</strong>：何が法であるかを識別する究極のルール。<br>
+                    <strong>法と道徳の分離</strong>：概念的に分離可能（「である」と「べき」）。<br>
+                    <strong>内的観点</strong>：ルールを外から観察するだけでなく、参加者として受け入れる視点。
+                </span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「法とは何か？法に従うとはどういうことか？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「法とは何か？命令とルールは何が違うか？法を法たらしめるものは何か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ オースティン批判──「命令説」の欠陥</strong></p>
+                <p>19世紀のジョン・オースティンは法を「主権者の命令」と定義した。法は銃を持った人間の「やれ、さもなくば」と同じ構造だと。</p>
+                <p>ハートは反論する：これでは説明できないことがある。①契約法や遺言法は「命令」ではなく「権限付与」②立法者自身も法に従う③国際法には主権者がいない④習慣は誰の命令でもない。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 ハートの洞察</strong></p>
+                    <p>強盗と徴税官の違いは何か？両者とも「金を出せ、さもなくば」と言う。違いは<strong>ルールとしての受容</strong>。徴税は「正当な要求」として受け入れられている。強盗はそうではない。この「内的観点」──ルールを参加者として受け入れる視点──がオースティンには欠けていた。
+                    </p>
+                </div>
+
+                <p><strong>▼ 一次ルールと二次ルール</strong></p>
+                <p>ハートは法を二層構造として分析する：</p>
+                <p><strong>一次ルール</strong>：「殺すな」「盗むな」「契約を守れ」──<strong>行為への義務</strong>を課す。原始社会はこれだけで機能しうる。</p>
+                <p><strong>二次ルール</strong>：ルールについてのルール。3種類ある：<br>
+                    ①<strong>承認のルール</strong>：何が有効な法であるかを識別する（例：「国会で可決されたものは法」）<br>
+                    ②<strong>変更のルール</strong>：法を改廃する手続き（例：憲法改正手続き）<br>
+                    ③<strong>裁定のルール</strong>：法違反を認定し制裁を課す権限（例：裁判所の権限）</p>
+
+                <div class="quote-box">
+                    <p>「一次ルールと二次ルールの結合こそが、法システムの中心であり、法を理解する鍵である」</p>
+                    <p style="text-align: right; margin-top: 0.5rem;">──『法の概念』</p>
+                </div>
+
+                <p><strong>▼ 法と道徳の分離</strong></p>
+                <p>ナチスの法律は「法」か？アパルトヘイトは？ハートは答える：<strong>法と道徳は概念的に分離できる</strong>。</p>
+                <p>これは「悪法に従え」ではない。分離することで、①何が法であるかを明確に識別でき②その法が道徳的に正しいかを別途評価できる。混同すると、法の批判も法の識別もできなくなる。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 承認のルール（Rule of Recognition）</h4>
+                    <p>法システムの<strong>究極のルール</strong>。何が有効な法であるかを識別する基準。日本では「国会で可決され、天皇が公布したものは法」。アメリカでは「憲法に反しないものは法」。このルール自体は法ではなく<strong>社会的事実</strong>──官僚・裁判官・市民が受け入れているから機能する。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 内的観点（Internal Point of View）</h4>
+                    <p>ルールを外から観察する「外的観点」と、参加者としてルールを受け入れる「内的観点」の区別。法を理解するには<strong>内的観点</strong>が必要。「赤信号で止まる」は、外から見れば「みんな止まっている」。内からは「止まるべきだ」。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 法の開かれた構造（Open Texture）</h4>
+                    <p>法は完全に確定していない。「車両は公園に入るな」──自転車は？ベビーカーは？電動キックボードは？<strong>周辺で不確定性</strong>がある。これは欠陥ではなく、法の本質。裁判官はこの不確定性を解消する「裁量」を持つ。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 法実証主義</h4>
+                    <p>「法とは何か」と「法がどうあるべきか」を分離する立場。法の存在と法の道徳的価値は別問題。悪法も「法」──しかしだから従う義務があるわけではない。分離することで明晰な分析が可能に。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>ジョン・オースティン</strong>（命令説を批判的に継承）<br>
+                        <strong>ベンサム</strong>（功利主義・法実証主義の先駆）<br>
+                        <strong>オックスフォード日常言語哲学</strong>（オースティン、ライル──概念分析の手法）<br>
+                        <strong>ウィトゲンシュタイン</strong>（言語ゲーム、ルール遵守論）<br>
+                        <strong>ハンス・ケルゼン</strong>（純粋法学──承認のルールとの対比）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ロナルド・ドゥオーキン</strong>（ハートを批判──「原理」の重要性）<br>
+                        <strong>ジョセフ・ラズ</strong>（ハートの弟子──権威と法）<br>
+                        <strong>包含的法実証主義</strong>（ジュール・コールマン）<br>
+                        <strong>排他的法実証主義</strong>（ラズ）<br>
+                        <strong>分析法哲学</strong>全般
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：法システム＝プログラミング言語</h4>
+                <p>一次ルールは<strong>実行可能なコード</strong>。「殺すな」「盗むな」は具体的な行為への指示。</p>
+                <p>二次ルールは<strong>メタプログラミング</strong>──コードを生成・変更・評価するためのコード。コンパイラ、リンタ、テストフレームワーク。</p>
+                <p>承認のルールは<strong>言語仕様</strong>。何が有効なコードかを定義する究極のルール。JavaScript仕様、Python PEPなど。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：内的観点＝ユーザー vs 開発者</h4>
+                <p>アプリのユーザーは「ボタンを押すと動く」を観察する（外的観点）。開発者は「このボタンはこのように機能すべき」と理解する（内的観点）。</p>
+                <p>法も同様。外から見れば「みんな税金を払っている」。内から見れば「税金を払うべきだ」。<strong>法の参加者</strong>は内的観点を持つ。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：法の開かれた構造＝型システム</h4>
+                <p>「このAPIはnumberを受け取る」──しかしNaN、Infinity、-0は含む？<strong>周辺事例</strong>で曖昧さがある。</p>
+                <p>法の「車両は公園に入るな」も同様。自転車は？おもちゃの車は？法は<strong>周辺で開かれている</strong>。これを解消するのは裁判官の裁量──まさに<strong>型推論</strong>。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>命令説（オースティン）</th>
+                        <th>ハートの法理論</th>
+                        <th>含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>法の本質</td>
+                        <td>主権者の命令</td>
+                        <td>ルールのシステム</td>
+                        <td>法は権力だけでなく正当性</td>
+                    </tr>
+                    <tr>
+                        <td>法と強盗の違い</td>
+                        <td>スケール</td>
+                        <td>内的受容</td>
+                        <td>「べき」の次元</td>
+                    </tr>
+                    <tr>
+                        <td>法の構造</td>
+                        <td>一枚岩</td>
+                        <td>一次＋二次ルール</td>
+                        <td>階層的システム</td>
+                    </tr>
+                    <tr>
+                        <td>法と道徳</td>
+                        <td>混同</td>
+                        <td>分離</td>
+                        <td>明晰な分析が可能</td>
+                    </tr>
+                    <tr>
+                        <td>不確定性</td>
+                        <td>欠陥</td>
+                        <td>本質（開かれた構造）</td>
+                        <td>裁量の余地</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>立法論</strong>：二次ルールの設計──どんな手続きで法を作るか</li>
+                    <li><strong>司法論</strong>：法の開かれた構造における裁判官の役割</li>
+                    <li><strong>国際法</strong>：承認のルールは国際社会にあるか？</li>
+                    <li><strong>AI規制</strong>：新技術に対する法の不確定性──どう解消するか</li>
+                    <li><strong>契約法</strong>：スマートコントラクトは「法」か？</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>道徳からの切断</strong>：法と道徳の分離は悪法への抵抗を弱めないか？</li>
+                    <li><strong>原理の無視</strong>：法には「ルール」だけでなく「原理」もある（ドゥオーキン）</li>
+                    <li><strong>裁量の過大評価</strong>：裁判官の裁量は「法」と言えるか？</li>
+                    <li><strong>西洋中心主義</strong>：英米法を前提にした分析</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしハートがAI立法システムを見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「興味深い問題だ」──ハートはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「AIが法案を起草し、分析し、修正する？これは<strong>二次ルールの自動化</strong>だ。法の内容（一次ルール）はまだ人間が決めるとしても、法の作成・変更プロセス（二次ルール）にAIが介入する。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし核心的問題がある：<strong>承認のルール</strong>は誰が受容するか？AIは内的観点を持つか？AIは「この法は有効であるべきだ」と考えられるのか？</p>
+                <p style="margin-top: 1rem;">
+                    私の分析では、法の妥当性は最終的に<strong>人間の態度</strong>に依存する。裁判官・官僚・市民が「これを法として受け入れる」という態度がなければ、どんなAI生成法案も法にはならない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    もう一つ：AIは法の<strong>開かれた構造</strong>をどう扱うか？「車両」に電動キックボードは含むか？AIは過去のパターンから判断するだろうが、<strong>新しい事例</strong>についてはどうか？ここに人間的判断──裁量──が残る余地がある」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① ドゥオーキンの批判──「原理」の無視</h4>
+                    <p>ハートの弟子であり最大の批判者であるドゥオーキンは主張：法にはルールだけでなく<strong>原理（principles）</strong>がある。「人は自らの不法行為から利益を得てはならない」──これはルールではなく原理。ハートのモデルではこの区別が捉えられない。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② 自然法論からの批判──法と道徳の分離の危険</h4>
+                    <p>フラー、フィニスらは批判：法と道徳を分離すると、悪法への抵抗が弱まる。ナチスの裁判官は「法に従っただけ」と言えるのか？法には<strong>内在的道徳性</strong>があるべきだ。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 批判法学（CLS）からの批判──イデオロギーの隠蔽</h4>
+                    <p>法の「開かれた構造」は中立ではない。裁判官の「裁量」は実際には<strong>階級・人種・ジェンダーのバイアス</strong>を反映する。ハートの分析は法の政治性を隠蔽している。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ 社会学的批判──「承認のルール」は曖昧</h4>
+                    <p>「官僚・裁判官が受け入れている」──しかし誰が？どの程度？承認のルールの<strong>同定基準</strong>が曖昧。社会的事実として記述するには具体性が不足。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q1: 一次ルールと二次ルールの違いは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        一次ルール：「殺すな」「契約を守れ」──<strong>行為への義務</strong>を課す。二次ルール：ルールについてのルール──①承認のルール（何が法か識別）②変更のルール（法を改廃）③裁定のルール（違反を認定）。一次ルールだけでは不確定・静態的・非効率。二次ルールとの結合で近代法システムが成立。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q2: 「内的観点」とは何か？なぜ重要か？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        内的観点：ルールを<strong>参加者として受け入れる</strong>視点。「赤信号で止まる」を観察（外的）ではなく、「止まるべきだ」と考える（内的）。重要な理由：①法と強盗の違いを説明②法の規範性を捉える③社会的実践としての法を理解。オースティンの命令説にはこの視点がなかった。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q3: 法と道徳を分離する意義は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        分離の意義：①「何が法か」と「法がどうあるべきか」を区別②悪法を「法」として認識しつつ批判可能③法の明晰な分析④法改革の土台。「悪法は法でない」と言うと、現行法の批判ができなくなる。分離することで、法の存在を認めつつ道徳的評価を加えられる。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">Q4: ドゥオーキンのハート批判の核心は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        ドゥオーキンは主張：法には「ルール」だけでなく<strong>「原理」</strong>がある。原理：「人は自らの不法から利益を得てはならない」──具体的行為を命じないが、法的推論を導く。ハートのモデルではルールか非ルールかしかなく、原理の<strong>重みづけ</strong>（バランシング）を説明できない。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">一次ルール</dt>
+                <dd>行為への義務を課すルール。「殺すな」「契約を守れ」。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">二次ルール</dt>
+                <dd>ルールについてのルール。承認・変更・裁定の3種。法システムの<strong>メタレベル</strong>。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">承認のルール</dt>
+                <dd>何が有効な法であるかを識別する<strong>究極のルール</strong>。社会的事実として存在。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">内的観点</dt>
+                <dd>ルールを<strong>参加者として受け入れる</strong>視点。「べき」を含む。</dd>
+
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">法の開かれた構造</dt>
+                <dd>法の周辺事例における<strong>不確定性</strong>。裁判官の裁量で解消。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | H.L.A. Hart (Rich Edition)</p>
+    </footer>
+</body>
+
+</html>

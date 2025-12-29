@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・モア - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%);
+            /* ユートピアン・ティール：深海や理想の島をイメージした深い青緑 */
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.9;
+            color: #f0fdf4;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Wave Float Animation for Island vibe */
+        @keyframes wave-float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(0.5deg);
+            }
+        }
+
+        .special-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24, #d97706);
+            color: #134e4a;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            animation: wave-float 5s infinite ease-in-out;
+            letter-spacing: 0.1em;
+            border: 2px solid #fcd34d;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: rgba(45, 212, 191, 0.1);
+            color: #ccfbf1;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            border: 1px solid rgba(45, 212, 191, 0.4);
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .header-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fcd34d, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #fcd34d;
+        }
+
+        .section-card {
+            background: rgba(19, 78, 74, 0.85);
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            border-radius: 8px;
+            padding: 3.5rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Map contour lines decoration */
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2dd4bf;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #2dd4bf, transparent);
+        }
+
+        .quote-box {
+            background: rgba(45, 212, 191, 0.1);
+            border-left: 4px solid #2dd4bf;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            font-family: serif;
+        }
+
+        .insight-box {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: #ccfbf1;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(204, 251, 241, 0.3);
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+
+        strong {
+            color: #fcd34d;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: #5eead4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .back-nav a:hover {
+            color: #2dd4bf;
+        }
+
+        .main-works-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .work-item {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .work-item:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            border-left: 4px solid #2dd4bf;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: #5eead4;
+        }
+
+        .synthesis-result {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(20, 184, 166, 0.2));
+            border: 2px solid #2dd4bf;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: rgba(220, 38, 38, 0.2);
+            border-left: 6px solid #ef4444;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            text-align: left;
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        details:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+
+        <header class="header-section">
+            <div class="standard-banner">ユートピアの創造主・抵抗の聖人</div>
+            <br>
+            <div class="os-tags-wrapper">
+                <span class="os-tag">理想OS</span>
+                <span class="os-tag">社会OS</span>
+            </div>
+            <h1>トマス・モア</h1>
+            <p class="en-name">Thomas More (1478-1535)</p>
+            <p style="color: #cbd5e1; margin-top: 1rem; font-size: 1.3rem; font-weight: bold;">
+                「羊が人間を食べている（Sheep are eating men）」</p>
+        </header>
+
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「私有財産がある限り、そして金銭があらゆるものの尺度である限り、国家が正しく統治されることはあり得ない。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: bold;">──『ユートピア』</p>
+            </div>
+            <p>ルネサンス期イギリスの法律家、思想家であり、大法官にまで上り詰めた大政治家。しかし最後はヘンリー8世の離婚問題に反対し、信念を曲げずに処刑された「良心の殉教者」でもある。</p>
+            <p>彼が描いた『ユートピア（どこにもない場所）』は、単なる空想小説ではない。当時のイギリス社会の貧困、格差、犯罪を鋭く分析し、「私有財産こそが諸悪の根源だ」と断じた、資本主義以前の強烈な社会主義的マニフェストだった。彼の問いは、格差が極限まで拡大した現代にこそ、鋭利な刃物のように突き刺さる。
+            </p>
+
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>犯罪を生み出しているのは、個人の邪悪さではなく、社会のシステム（囲い込み運動）である。泥棒を処刑する前に、泥棒にならざるを得ない貧困をなくせ。</strong>
+                </p>
+                <p>当時、パンを盗んだだけで死刑になるような世の中で、彼は「厳しい罰では犯罪はなくならない」と主張した。羊毛価格が上がったために貴族が農地を牧草地に変え、農民を追い出した（囲い込み）。これを「羊が人間を食べている」と表現し、経済構造が人間性を破壊するメカニズムを告発した最初期の人物である。
+                </p>
+            </div>
+
+            <p><strong>アナロジーで言えば、モアは「社会というOSのデバッガー」である。</strong><br>
+                「犯罪増加」というバグが出たとき、普通の人は「ユーザー（泥棒）が悪い」と言ってユーザーを削除（死刑）しようとする。しかしモアは「OSのコード（私有財産制）そのものがバグっている」と見抜き、バグのない理想のOS（共産制）を仮想空間（ユートピア）で実際に走らせてみせたのだ。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div class="main-works-grid">
+                <div class="work-item">
+                    <h4 style="color: #fcd34d; font-size: 1.3rem;">『ユートピア』（Utopia, 1516）</h4>
+                    <p style="margin-top: 1rem;">
+                        第一巻は当時のイギリス社会への痛烈な批判、第二巻は架空の島国「ユートピア」の見聞録という構成。
+                        <br>ユートピア島では、金銭は廃止され、全員が働き、全員が学ぶ。家も服も共有。1日6時間労働で、余暇は教養に充てられる。それは天国のような場所だが、同時に徹底した管理社会でもある。この本は、後世の社会主義思想の源流となった。
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h4 style="color: #fcd34d; font-size: 1.3rem;">良心の抵抗</h4>
+                    <p style="margin-top: 1rem;">
+                        著作ではないが、彼の生き様（死に様）そのものが最大のメッセージである。絶対権力者である王に対し、「私は王の良き臣下だが、その前に神の臣下である」として、死を賭して自身の良心（カトリック信仰）を守った。この態度は、権力に対する個人の良心の優位を示す倫理的模範として語り継がれている。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Thomas More: English Renaissance Humanist/Statesman.
+                        Core concept: Utopia (No-place/Good-place).
+                        Major Argument: Critique of "Enclosure" (Sheep eating men). Abolition of private property to
+                        cure social ills. Executed for refusing to accept King as head of church.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ユートピア思想の創始者。「羊が人間を食う（囲い込み）」と当時の資本の本源的蓄積を批判し、私有財産廃止、労働の共有、教育の平等を説く理想国を描いた。カトリックの信念を貫き処刑され、聖人に列せられた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🐑</span><span><strong>Step 1:
+                        打破した旧常識（貧困の罪）</strong><br><strong>①「貧乏人は怠惰だから貧しい」</strong>（自己責任論）<br>
+                    <strong>②「盗みは死刑で報いるべき」</strong>（厳罰主義）<br>
+                    <strong>③「王の命令は絶対である」</strong>（絶対王政）</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>🏝️</span><span><strong>Step 2:
+                        新パラダイム（構造改革）</strong><br><strong>構造的暴力</strong>：社会システムが彼らを泥棒に追い込んでいる。<br>
+                    <strong>共有（コモンズ）</strong>：金銭を廃止すれば、欲望も犯罪も消える。<br>
+                    <strong>良心の自由</strong>：魂の領域においては、王よりも神（良心）に従う。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result">
+                <span>🕊️</span><strong>最も重要な結論</strong><br>「どこにもない場所（Utopia）を描くことで、今ある現実の異常さを浮き彫りにする。」
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #2dd4bf; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #ccfbf1; text-shadow: 0 0 10px rgba(45, 212, 191, 0.5);">
+                    「もし『自分のもの』という概念がなくなったら、人間はもっと幸福になれるのではないか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #2dd4bf; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 羊が人間を食べている (Sheep eat men)</strong></p>
+                <div class="quote-box">
+                    「おとなしく大食いなど知らぬはずの羊たちが、今では人間さえも蹴散らして食べてしまうほど貪欲で凶暴になった」
+                </div>
+                <p>囲い込み（エンクロージャー）への批判。貴族は金儲けのために農地を牧場にし、農民を追い出した。行き場を失った農民は浮浪者となり、盗みを働くか餓死するしかなかった。モアはこの因果関係を見抜き、「泥棒を作っておいて、それを処刑するとは、正義でも何でもない」と断罪した。経済活動が人間の生存権を侵害することへの初期の警告である。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 私有財産の廃止と共有</strong></p>
+                <p>ユートピア島には通貨がない。市場も交換もない。必要なものは共同倉庫から持ってくるだけ。なぜなら「足りなくなる恐怖」がないからだ。全員が働き、全員が必要な分だけ手に入れるなら、誰も余計に溜め込もうとはしない。
+                    <br>金（ゴールド）は「奴隷の鎖」や「子供の珍しいおもちゃ」として使われ、軽蔑の対象となる。価値観の完全な転換（Reversal of Values）である。
+                </p>
+
+                <div class="insight-box">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 労働と教養のバランス</strong></p>
+                    <p>ユートピア人の労働時間は1日6時間だけ。残りの時間は？
+                        <br>睡眠や食事を除いた時間は、「精神の自由と培養（教養）」に充てられる。読書、音楽、議論。モアにとって、労働は生産の手段であり、人生の目的は「知的な活動」にある。これは現代のベーシックインカム論や「AI時代の労働観」を500年先取りしたビジョンと言える。
+                    </p>
+                </div>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 宗教的寛容（の限界付き）</strong></p>
+                <p>ユートピアでは、太陽を拝もうが、英雄を崇拝しようが、宗教は自由である。宗教の違いで争うことは禁じられている。ただし、「神の存在と魂の不滅」を否定すること（無神論）だけは許されない。秩序の根幹が揺らぐからだ。
+                </p>
+
+                <div class="warning-box">
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>⚠️ 批判と論争の焦点 (Controversies)</strong>
+                    </p>
+                    <p style="font-size: 0.9rem; margin-bottom: 0;">
+                        <strong>管理社会の恐怖</strong>：ユートピアはプライバシー皆無の監視社会でもある。全員が同じ服を着て、同じ家（10年ごとに交代）に住む。個性は抑圧される（ディストピアとの紙一重）。
+                        <br><strong>奴隷制の肯定</strong>：驚くべきことに、ユートピアには「奴隷」がいる。犯罪者や戦争捕虜が、きつい仕事を担当している。これは当時の限界でもある。
+                        <br><strong>異端者への厳しさ</strong>：現実のモアは大法官として、ルター派などのプロテスタントを異端として厳しく弾圧し、火刑にした。寛容なユートピアの作者と、冷徹な異端審問官という二つの顔を持つ。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2.5rem;">
+                <div>
+                    <h4
+                        style="color: #2dd4bf; font-size: 1.2rem; margin-bottom: 0.5rem; border-bottom: 2px solid #2dd4bf; display: inline-block;">
+                        ■ アイロニー（Irony）</h4>
+                    <p>「ユートピア（Utopia）」はギリシャ語の「Ou-topos（ない場所）」と「Eu-topos（良い場所）」を掛けた造語。また主人公の「ヒュトロダエウス」は「ナンセンスを語る者」という意味。モアは「これはただの冗談だよ」という顔をしながら、最も危険な真実を語った。
+                    </p>
+                </div>
+                <div>
+                    <h4
+                        style="color: #2dd4bf; font-size: 1.2rem; margin-bottom: 0.5rem; border-bottom: 2px solid #2dd4bf; display: inline-block;">
+                        ■ 6時間労働</h4>
+                    <p>なぜ6時間で社会が回るのか？ 貴族、僧侶、乞食など、現実社会には「働かない人」が多すぎるからだ。全員が生産活動に参加すれば、一人当たりの負担は激減するという計算。
+                    </p>
+                </div>
+                <div>
+                    <h4
+                        style="color: #2dd4bf; font-size: 1.2rem; margin-bottom: 0.5rem; border-bottom: 2px solid #2dd4bf; display: inline-block;">
+                        ■ 黄金の軽蔑</h4>
+                    <p>ユートピアでは金や銀は、便器や奴隷の鎖を作る材料にされる。子供たちは宝石で遊ぶが、大人になると捨てる。こうして「金＝価値がある」という洗脳を幼少期から解く教育システム。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #fcd34d;">プラトン</strong>：<br>『国家』。哲人王による統治、財産の共有、詩人の追放など、ユートピアの直接的なモデル。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #fcd34d;">エラスムス</strong>：<br>『痴愚神礼讃』の著者で、モアの生涯の親友。「人文主義（ユマニスム）」の理想を共有し、互いに影響し合った。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #fcd34d;">アメリゴ・ヴェスプッチ</strong>：<br>新大陸発見の旅行記『新世界』。ユートピア島の設定は、当時の新大陸への冒険熱を背景にしている。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #fcd34d;">マルクス &
+                                エンゲルス</strong>：<br>共産主義思想。モアを「社会主義の先駆者」として高く評価した。私有財産の廃止は彼らにとっての究極の到達点だった。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #fcd34d;">フランシス・ベーコン</strong>：<br>『ニュー・アトランティス』。モアの社会的なユートピアに対し、科学技術によって人類を救う科学的ユートピアを描いた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #fcd34d;">ディストピア文学</strong>：<br>オーウェル『1984年』やハクスリー『すばらしい新世界』。ユートピアの管理性が極まると地獄になるという、モアへのアンチテーゼ的応答。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2.5rem;">
+                <h4 style="font-size: 1.2rem; color: #fcd34d; margin-bottom: 1rem;">アナロジー１：隔離された実験室</h4>
+                <p>ユートピア島は、巨大な社会実験室だ。
+                    <br>「私有財産」という変数をゼロにしたら、人間はどうなるか？ 犯罪は減るのか？ 人は怠けるのか？ モアはこのシミュレーションを通して、現実社会のバグの原因を特定しようとした。
+                </p>
+            </div>
+            <div style="margin-bottom: 2.5rem;">
+                <h4 style="font-size: 1.2rem; color: #fcd34d; margin-bottom: 1rem;">アナロジー２：家族の拡張</h4>
+                <p>家族の間では、お金のやり取りはしない。「冷蔵庫の牛乳飲んでいいよ」「はい」で済む。
+                    <br>モアの理想は、国家全体を「一つの大きな家族」にすることだ。家族なら、困っている兄弟を見捨てないし、誰かが独り占めすれば親（国家）が叱る。これが共産主義（Communism）の原義である。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.2rem; color: #fcd34d; margin-bottom: 1rem;">アナロジー３：外科手術</h4>
+                <p>貧困対策として、現実の政治家は「絆創膏（厳罰や施し）」を貼るだけだ。
+                    <br>しかしモアは、「患部（私有財産制）そのものを切除しない限り、病気は治らない」とメスを入れる。それは痛みを伴うが、根治を目指す医師の態度である。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>16世紀現実OS (封建・初期資本主義)</th>
+                        <th>モアOS (共産・ユートピア)</th>
+                        <th>現代社会への実装</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>財産</td>
+                        <td>私有財産制、貧富の極大化</td>
+                        <td><strong>共有財産制、貨幣廃止</strong></td>
+                        <td>シェアリングエコノミー、コモンズ</td>
+                    </tr>
+                    <tr>
+                        <td>労働</td>
+                        <td>過酷な長時間労働と失業</td>
+                        <td><strong>全員労働、短時間（6時間）</strong></td>
+                        <td>ワークシェアリング、時短勤務</td>
+                    </tr>
+                    <tr>
+                        <td>犯罪対策</td>
+                        <td>厳罰主義（盗みで死刑）</td>
+                        <td><strong>原因（貧困）の除去</strong></td>
+                        <td>社会福祉、更生プログラム</td>
+                    </tr>
+                    <tr>
+                        <td>価値観</td>
+                        <td>金と権力を崇拝</td>
+                        <td><strong>知識と精神的な喜びを崇拝</strong></td>
+                        <td>生涯学習、リベラルアーツ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #fcd34d; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>ベーシックインカム（UBI）の思考</strong>：仕事がなくなったら食べていけないという恐怖を取り除いた時、人は何をするか？
+                        モアは「創造的な活動をする」と信じた。この信頼がUBIの基礎である。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>構造的視点</strong>：社会問題が起きた時、「個人の心」を責める前に、「システム（ルールやインセンティブ）」を疑う。ブラック企業の社員が不正をするのは、個人の資質か、ノルマの構造か？
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>所有から利用へ</strong>：マイカー、マイホームにこだわるのをやめ、カーシェアやサブスクリプションを利用する。これもある種の「私有財産の相対化」であり、ユートピア的ライフスタイルの現代版。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>良心の砦</strong>：組織の命令が自分の倫理に反する時、「私は会社の社員だが、その前に人間である」としてNOと言う勇気。モアの殉教は、組織人としての究極の矜持を教えている。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>理想への陶酔</strong>：現実離れした「あるべき論」を振りかざし、現実の漸進的な改善を「不十分だ」として全否定してしまう教条主義。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>監視の正当化</strong>：「みんなの幸せ」のためなら、個人のプライバシーは犠牲になっても構わないというパターナリズムの暴走。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent); border: 1px solid rgba(251, 191, 36, 0.3);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;"><strong>もしモアが現代の「格差社会」を見たら？</strong></p>
+            <div
+                style="margin-top: 1rem; padding: 2.5rem; background: rgba(0,0,0,0.3); border-radius: 8px; border: 1px solid rgba(251, 191, 36, 0.1);">
+                <p>彼は間違いなく激怒し、また悲しむだろう。
+                </p>
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                <p style="margin-top: 1.5rem;">
+                    <strong>新・囲い込み批判</strong>：「昔は羊が人を食べたが、今は『株』や『アルゴリズム』が人を食べているな。一部の巨大IT企業が富を囲い込み（データ独占）、多くの人々がプレカリアート（不安定労働者）になっている。」
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    <strong>SDGsへの皮肉</strong>：「持続可能性と言うが、私有財産と無限の成長を求めたまま、どうやって持続するつもりだ？
+                    環境破壊も格差も、根っこは『もっと欲しい』という貪欲（Pride）だ。システムを変えずに、ストローだけ紙に変えてもユートピアは来ないよ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">① 自由の不在</h4>
+                    <p>ユートピアは平等の国だが、自由の国ではない。住む場所、着る服、食事の時間まで管理されている。「皆と同じ幸福」を押し付けられる息苦しさ（全体主義）がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">② 変化の否定</h4>
+                    <p>ユートピアは完成された社会なので、これ以上の変化や進歩がない。歴史が止まった世界である。多様性やイノベーションは、この均質な社会からは生まれにくい。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">③ 外部への攻撃性</h4>
+                    <p>内部では平和だが、周辺国に対しては植民地支配を行ったり、傭兵を使って戦争をさせたりする冷酷な一面がある。「我々の平和」を守るためには、外部の犠牲を厭わない排外主義が見え隠れする。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">④ 現実の不寛容</h4>
+                    <p>思想家としてのモアは寛容を説いたが、政治家としてのモアは異端者を拷問・処刑した。理想と現実の自分自身の行動の乖離は、最も大きな矛盾として批判される。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 2rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#fcd34d; font-weight:bold; font-size:1.1rem;">Q1:
+                        「羊が人間を食べている」とはどういう意味か？
+                    </summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #fbbf24;"><strong>A:</strong>
+                        経済的利益（羊毛生産）のために、地主が農民を土地から追い出し（囲い込み）、農民が生活の糧を奪われて死んでいく状況を告発した比喩。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#fcd34d; font-weight:bold; font-size:1.1rem;">Q2:
+                        ユートピアで金銭（マネー）が廃止された理由は？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #fbbf24;"><strong>A:</strong>
+                        金銭こそが強欲、詐欺、盗み、殺人などのあらゆる犯罪の根源だと考えたから。貨幣がなくなれば、富への執着も消滅するとした。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#fcd34d; font-weight:bold; font-size:1.1rem;">Q3:
+                        ユートピアの労働時間は？残りの時間は何をする？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #fbbf24;"><strong>A:</strong>
+                        1日6時間。残りの時間は睡眠や食事を除き、主に「精神の教養（読書や講義）」のために使われる。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#fcd34d; font-weight:bold; font-size:1.1rem;">Q4:
+                        モアが処刑された理由は？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #fbbf24;"><strong>A:</strong>
+                        ヘンリー8世がカトリック教会から離脱し、自らを教会の長とすること（国王至上法）に、良心に従って反対し、忠誠の誓いを拒否したため。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#fcd34d; font-weight:bold; font-size:1.1rem;">Q5:
+                        「ユートピア」という言葉の二重の意味は？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #fbbf24;"><strong>A:</strong>
+                        ギリシャ語の「Ou-topos（ない場所）」と「Eu-topos（良い場所）」のダブルミーニング。「どこにもない理想郷」ということ。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#fcd34d; font-weight:bold; font-size:1.1rem;">Q6:
+                        ユートピアにおける金の扱いは？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #fbbf24;"><strong>A:</strong>
+                        便器や奴隷の鎖を作るための材料として扱われ、軽蔑の対象となっている。金そのものに価値があるという幻想を打ち砕くため。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">ユートピア (Utopia)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    モアの造語。現実社会の批判として描かれた、私有財産のない理想的な共産社会。転じて、実現不可能な空想的理想社会を指す。</dd>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">囲い込み (Enclosure)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    地主が共有地や農地を柵で囲い込み、私有地（牧場）に変えた歴史的動き。農民が土地を追われ、労働者階級が生まれるきっかけとなった。</dd>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">私有財産制 (Private Property)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    土地や生産手段を個人が所有する制度。モアはこれを諸悪の根源とし、共有財産制（Common Property）を対置した。</dd>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">人文主義 (Humanism)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    ルネサンス期の知的運動。ギリシャ・ローマの古典を学び、人間性の陶冶を目指す。モアやエラスムスはその代表。</dd>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">良心の自由</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    権力者の命令よりも、自分の内なる道徳的信念（神の声）に従う権利。モアの殉教はこの権利の象徴。</dd>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">ヒュトロダエウス</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    『ユートピア』に登場する架空の旅行家。「ナンセンスを語る者」の意味。彼の口を借りて急進的な思想が語られる。</dd>
+                <dt style="color:#fcd34d; font-weight:700; font-size:1.1rem;">コモンズ (Commons)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    共有地、入会地。誰のものでもなく、みんなが使える場所や資源。囲い込みによって破壊されたが、現代において再評価されている概念。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(45, 212, 191, 0.3); color: #5eead4;">
+        <p>© 2025 Thinkers 700 | Thomas More</p>
+    </footer>
+</body>
+
+</html>

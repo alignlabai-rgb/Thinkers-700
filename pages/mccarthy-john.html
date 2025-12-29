@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョン・マッカーシー - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0a1929 100%);
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #34d399;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #34d399, transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            text-align: left;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 8px;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: #34d399;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.2));
+            border: 2px solid #34d399;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .insight-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #34d399;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid #f43f5e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.8);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
+        <header class="header-section">
+            <div
+                style="display: inline-block; background: linear-gradient(135deg, #10b981, #34d399); color: #000; padding: 0.5rem 1.5rem; border-radius: 30px; font-weight: bold; margin-bottom: 1.5rem; animation: pulse 2s infinite;">
+                ⭐ 特別編 ─ AIの父 ⭐</div>
+            <span class="os-tag">技術OS</span>
+            <h1>ジョン・マッカーシー</h1>
+            <p class="en-name">John McCarthy (1927-2011)</p>
+            <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 1.1rem;">「人工知能」という言葉を生み出し、AIの夢を現実にした先駆者
+            </p>
+        </header>
+
+        <section class="section-card" style="border: 1px solid #34d399; background: rgba(16, 185, 129, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「人工知能とは、知的なふるまいをする機械を作る科学と工学である」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──マッカーシー</p>
+            </div>
+            <p>アメリカの計算機科学者。<strong>「人工知能（AI）」という言葉の創始者</strong>。プログラミング言語<strong>LISP</strong>の発明者。1956年ダートマス会議を主催し、AI研究を正式な学問分野として確立した「AIの父」の一人。
+            </p>
+            <div class="insight-box">
+                <p><strong>💡 核心的洞察</strong></p>
+                <p><strong>機械は「考える」ことができる──そしてそれを実現するために言語を設計せよ</strong>。チューリングが「機械は考えられるか」と問うた。マッカーシー：<strong>考えられる</strong>。LISPを発明し、シンボリックAIの基礎を築いた。
+                </p>
+            </div>
+            <p>たとえるなら、マッカーシーは<strong>「ソフトウェア産業のビジョナリストCEO」</strong>──分野に名前を付け、チームを集め、道具（LISP）を作り、ロードマップを設定した。</p>
+        </section>
+
+        <section class="section-card" style="border: 2px solid #34d399;">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-radius: 16px;">
+                    <h4 style="color: #34d399; font-size: 1.3rem;">LISP (1958)</h4>
+                    <p style="margin-top: 1rem;">
+                        <strong>現存する最古のプログラミング言語の一つ</strong>。リスト処理、再帰、ガベージコレクション、高階関数...現代プログラミングの多くの概念を先取り。関数型プログラミングの祖。
+                    </p>
+                </div>
+                <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-radius: 16px;">
+                    <h4 style="color: #34d399; font-size: 1.3rem;">ダートマス会議 (1956)</h4>
+                    <p style="margin-top: 1rem;">
+                        <strong>「人工知能」という用語を初めて使用</strong>。AI研究を正式な学問分野として確立。ミンスキー、シャノン、ニューウェルらが参加。
+                    </p>
+                </div>
+                <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-radius: 16px;">
+                    <h4 style="color: #34d399; font-size: 1.3rem;">タイムシェアリング</h4>
+                    <p style="margin-top: 1rem;">複数ユーザーが同時にコンピュータを使用する概念を提唱。<strong>クラウドコンピューティングの先駆</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>John McCarthy: American computer scientist. Coined "Artificial Intelligence". LISP. Dartmouth
+                        Conference. Time-sharing. Turing Award.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>アメリカの計算機科学者。「人工知能」の命名者。LISP。ダートマス会議。タイムシェアリング。チューリング賞受賞。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br><strong>①「機械は計算するだけ」</strong>→マッカーシー：<strong>思考できる</strong><br><strong>②「コンピュータは一人用」</strong>→マッカーシー：<strong>共有可能</strong></span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        新パラダイム</strong><br><strong>人工知能</strong>：学問分野として確立。<strong>LISP</strong>：AI向け言語。<strong>シンボリックAI</strong>：記号処理。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>最も重要な問い</strong><br>「機械に『知能』を与えるには何が必要か？」</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「知能の本質とは、論理的な記号処理として記述可能か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 人工知能（Artificial Intelligence）の創始</strong></p>
+                <p>1956年のダートマス会議でこの用語を提唱。知能のあらゆる側面は、原理的にコンピュータでシミュレート可能なほど精密に記述できるという信念に基づき、AIを一つの学問領域として独立させた。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 シンボリックAI（記号的AI）</strong></p>
+                    <p>知能とは、本質的に<strong>「記号の操作」</strong>であるというパラダイム。コンピュータは単なる計算機ではなく、論理的なルールに基づいて記号を処理する「思考機械」であると定義した。<br>
+                        <strong>現代への影響</strong>：現在のディープラーニング（統計的AI）とは対照的な、知識を明示的に記述するアプローチの原点。
+                    </p>
+                </div>
+
+                <p><strong>▼ LISP言語の開発</strong></p>
+                <p>AI研究のために設計された革新的なプログラミング言語。プログラム自身をデータとして扱う（コードとデータの等価性）という哲学を持ち、再帰、動的型付け、ガベージコレクションといった現代の主要なプログラミング概念の多くを世界で初めて実装した。
+                </p>
+
+                <div class="quote-box">
+                    <p>「知能のあらゆる特徴、あるいは学習のあらゆる側面は、原理的には機械がシミュレートできるほど正確に記述できる」</p>
+                </div>
+
+                <p><strong>▼ 常識推論（Common Sense Reasoning）</strong></p>
+                <p>人間が自然に行う「常識」を、論理的な数式（述語論理）として記述するプロジェクトを推進。特に、「状況の変化をどう論理的に記述するか」という<strong>状況計算（Situation
+                        Calculus）</strong>の手法を開発し、コンピュータに「世界」を理解させる試みを続けた。
+                </p>
+
+                <p><strong>▼ 状況限定条件（Circumscription）</strong></p>
+                <p>「鳥は飛ぶ」という知識があっても、「翼が折れている鳥」は飛ばない。こうした例外的な事態を論理的に扱うための<strong>非単調論理</strong>の手法を開発。完全な知識がなくても合理的に推論する「人間の思考の柔軟さ」を数学的にモデル化しようとした。
+                </p>
+
+                <p><strong>▼ タイムシェアリング・システム</strong></p>
+                <p>一人の人間が一台のコンピュータを占有するのではなく、複数の人間が同時にコンピュータを「共有」して利用する技術を提唱。これは現代のOSやクラウドコンピューティング、ひいてはインターネット社会のインフラ的なOSを設計したに等しい貢献。
+                </p>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ マッカーシー的AIの限界と批判</strong></p>
+                    <p>①<strong>フレーム問題</strong>：世界の変化のすべてを論理的に記述しようとすると、計算量が爆発してしまうという根本的な困難（自身が発見し、生涯解決に挑んだ）。<br>
+                        ②<strong>記号接地問題</strong>：記号が現実世界の何れを指すのかという「意味」が機械には理解できないという批判（ハルナッドら）。<br>
+                        ③<strong>身体性の欠如</strong>：知能には肉体と外部環境との相互作用が不可欠であるとする「身体的知能」派からの批判。<br>
+                        ④<strong>コネクショニズムとの対立</strong>：神経細胞を模したニューラルネットワーク（現在の主流）に対し、論理性こそが本質であるとして懐疑的であり続けた。<br>
+                        ⑤<strong>AIの冬</strong>：初期の楽観的な予測が実現しなかったことでAI研究全体への期待が剥落し、長期の停滞を招いた一因とも指摘される。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #34d399;">■ LISP</h4>
+                    <p><strong>AI向けプログラミング言語</strong>。関数型。再帰。現存2番目に古い高水準言語。</p>
+                </div>
+                <div>
+                    <h4 style="color: #34d399;">■ シンボリックAI</h4>
+                    <p><strong>記号処理による知能</strong>。知識表現、論理推論。深層学習とは異なるパラダイム。</p>
+                </div>
+                <div>
+                    <h4 style="color: #34d399;">■ タイムシェアリング</h4>
+                    <p><strong>コンピュータの共有利用</strong>。クラウドの先駆。</p>
+                </div>
+                <div>
+                    <h4 style="color: #34d399;">■ 形式知識表現</h4>
+                    <p><strong>常識の形式化</strong>。状況計算、フレーム問題。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>アラン・チューリング</strong>：計算可能性とチューリング・テスト<br><strong>クロード・シャノン</strong>：数理的情報理論の確立<br><strong>アロンゾ・チャーチ
+                            /
+                            スティーヴン・クリーネ</strong>：ラムダ計算、帰納的関数理論<br><strong>エミール・ポスト</strong>：記号処理システム（生産システム）の先駆<br><strong>数理論理学者たち</strong>：ゲーデル、タルスキ等の形式体系
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>マービン・ミンスキー</strong>：ダートマス会議共催、フレーム理論（認知）<br><strong>ガイ・スチール /
+                            ジェラルド・サスマン</strong>：Scheme言語の開発（LISPの洗練）<br><strong>ポール・グレアム</strong>：LISPによるWeb開発（Yahoo!
+                        Store）、ベンチャー投資<br><strong>リッチ・ヒッキー</strong>：Clojure開発（現代のJVM上でのLISPリバイバル）<br><strong>知識グラフ /
+                            セマティックWeb</strong>：記号的推論をベースとした情報抽出技術
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：LISP＝思考のためのDSL</h4>
+                <p><strong>DSL（ドメイン特化言語）</strong>を考えよう。SQLはデータベース操作に、HTMLは文書構造に最適化された言語。汎用言語では冗長になる処理を、簡潔に表現できる。</p>
+                <p>マッカーシーのLISPも同様：<strong>「思考」という問題領域に最適化された言語</strong>。リスト処理は知識の表現に、再帰は推論のプロセスに、S式は論理式の記述に適している。AIを書くための言語としてデザインされた。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ダートマス会議＝プロジェクトキックオフ</h4>
+                <p><strong>スタートアップのローンチ</strong>を考えよう。ビジョンを明確にし、コアチームを結成し、初期資金を確保し、ロードマップを設定する。名前を付けてブランディングする。</p>
+                <p>ダートマス会議も同様：マッカーシーは<strong>AI研究という「プロジェクト」を正式にキックオフ</strong>した。「人工知能」という名前を与え、ミンスキー、シャノン、ニューウェルらのコアチームを招集し、ロックフェラー財団の資金を獲得した。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：タイムシェアリング＝クラウドの原型</h4>
+                <p><strong>AWS</strong>を考えよう。必要な時にコンピューティングリソースをオンデマンドで利用。電気のように、使った分だけ払う。インフラを所有せずにサービスを享受。</p>
+                <p>マッカーシーのタイムシェアリングも同様：<strong>コンピュータを「ユーティリティ（公共事業）」として共有する</strong>ビジョン。1960年代に「いつかコンピューティングは電話や電気のように販売されるようになる」と予言した。60年後にAWSが実現した。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>従来</th>
+                        <th>マッカーシー</th>
+                        <th>現代への含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>機械の能力</td>
+                        <td>計算のみ</td>
+                        <td>思考可能</td>
+                        <td>現代AI</td>
+                    </tr>
+                    <tr>
+                        <td>プログラミング</td>
+                        <td>手続き型</td>
+                        <td>関数型（LISP）</td>
+                        <td>Haskell, Clojure</td>
+                    </tr>
+                    <tr>
+                        <td>コンピュータ利用</td>
+                        <td>個人/バッチ</td>
+                        <td>共有/インタラクティブ</td>
+                        <td>クラウド</td>
+                    </tr>
+                    <tr>
+                        <td>知識表現</td>
+                        <td>暗黙</td>
+                        <td>形式化・記号化</td>
+                        <td>知識グラフ</td>
+                    </tr>
+                    <tr>
+                        <td>AIアプローチ</td>
+                        <td>散発的</td>
+                        <td>学問分野として確立</td>
+                        <td>AI研究エコシステム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #34d399;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>関数型プログラミング</strong>：Haskell, Scala, Clojure,
+                        Elixir...すべてLISPのDNA。JavaScriptの関数型パラダイムもLISPの影響</li>
+                    <li><strong>クラウドコンピューティング</strong>：AWS, GCP, Azure...マッカーシーの「ユーティリティ・コンピューティング」ビジョンが60年後に実現</li>
+                    <li><strong>知識グラフ</strong>：Google Knowledge Graph, Wikidata, DBpedia...シンボリックAIの現代版。検索エンジンの知識ベース
+                    </li>
+                    <li><strong>ニューロシンボリックAI</strong>：深層学習と記号AIの融合。LLM+知識グラフ（RAG）など</li>
+                    <li><strong>AGI研究</strong>：汎用人工知能。マッカーシーの当初の目標が再び注目。OpenAI、DeepMind</li>
+                    <li><strong>Emacs</strong>：LISPで拡張可能なエディタ。プログラム可能なソフトウェアの設計思想</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>楽観的すぎる予測</strong>：「20年で人間レベルのAI」は実現せず。AIの冬（1970s, 1980s末）を招いた</li>
+                    <li><strong>シンボリックAIの限界</strong>：知識の手動コーディングはスケールしない。フレーム問題、常識の形式化の困難</li>
+                    <li><strong>社会的影響の軽視</strong>：技術楽観主義。AIの倫理・バイアス・失業問題をあまり考慮しなかった</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしマッカーシーが現代のAIを見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「私が『人工知能』と名付けた分野は、想像を超える発展を遂げた。しかし私が驚くのは──</p>
+                <p style="margin-top: 1rem;">
+                    <strong>方法論の転換</strong>：私はシンボリック（記号処理）を追求した。知識を明示的にコード化し、論理的に推論する。しかし現代のAIは統計的・ニューラルアプローチだ。ChatGPTは記号を操作しているのではなく、パターンを学習している。私のアプローチは『敗北』したのか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>常識の問題</strong>：私が後年追求したのは『常識推論』だった。人間が当たり前に持つ知識をどう形式化するか。LLMは常識を持っているように見える...しかし本当に『理解』しているのか？それとも統計的相関を再現しているだけか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>融合の可能性</strong>：ニューロシンボリックAI──深層学習と記号AIの融合。これが次のブレークスルーではないか。私のLISP的思想（知識の明示的表現）と現代の統計的学習の接続点。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>LISPの遺産</strong>：括弧が笑われても、LISPのアイデア──関数型、再帰、メタプログラミング──は生き続けている。ReactのJSX、ClojureScriptのフロントエンド...現代のプログラマーは知らずにLISPの思想を使っている。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #f43f5e;">① 楽観的すぎる予測</h4>
+                    <p>「20年で人間レベルのAI」は<strong>実現しなかった</strong>。AIの冬を招いた。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">② シンボリックAIの限界</h4>
+                    <p>知識の手動コーディングは<strong>スケールしない</strong>。深層学習へのパラダイムシフト。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">③ 技術楽観主義</h4>
+                    <p>AIの<strong>社会的影響</strong>をあまり考慮しなかった。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f43f5e;">④ LISP括弧問題</h4>
+                    <p>LISPの括弧記法は<strong>可読性に問題</strong>。普及に限界。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#34d399;">Q1: マッカーシーの最大の貢献は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>「人工知能」という分野を確立</strong>。用語を作り、コミュニティを形成し、LISPという道具を提供。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#34d399;">Q2: LISPの特徴は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>関数型プログラミングの先駆</strong>。リスト処理、再帰、高階関数、ガベージコレクション。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#34d399;">Q3: ダートマス会議の意義は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>AI研究を学問分野として確立</strong>（1956年）。「人工知能」という用語を初使用。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#34d399;">Q4: シンボリックAIと深層学習の違いは？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        シンボリック：<strong>記号を操作</strong>。知識を明示的にコード化。深層学習：<strong>パターンを統計的に学習</strong>。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#34d399;">Q5: タイムシェアリングとクラウドの関係は？</summary>
+                    <p style="margin-top:1rem;"><strong>A:</strong>
+                        <strong>コンピュータを電気のように共有</strong>するビジョン。現代クラウド（AWS等）の直接的先駆。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#34d399; font-weight:700;">人工知能（AI）</dt>
+                <dd>マッカーシーが1956年に命名。<strong>機械に知的ふるまいをさせる</strong>科学と工学。</dd>
+                <dt style="color:#34d399; font-weight:700; margin-top:1rem;">LISP</dt>
+                <dd>1958年開発。<strong>リスト処理言語</strong>。関数型プログラミングの祖。</dd>
+                <dt style="color:#34d399; font-weight:700; margin-top:1rem;">シンボリックAI</dt>
+                <dd><strong>記号処理</strong>によるAI。深層学習と対照的。</dd>
+                <dt style="color:#34d399; font-weight:700; margin-top:1rem;">タイムシェアリング</dt>
+                <dd>複数ユーザーがコンピュータを<strong>同時に共有</strong>。クラウドの先駆。</dd>
+                <dt style="color:#34d399; font-weight:700; margin-top:1rem;">ダートマス会議</dt>
+                <dd>1956年。<strong>AI研究の出発点</strong>。</dd>
+                <dt style="color:#34d399; font-weight:700; margin-top:1rem;">チューリング賞</dt>
+                <dd>コンピュータ科学の<strong>ノーベル賞</strong>。マッカーシーは1971年受賞。</dd>
+            </dl>
+        </section>
+    </div>
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(16, 185, 129, 0.2);">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">© 2025 Thinkers 700 | John McCarthy (Special
+            Edition)</p>
+    </footer>
+</body>
+
+</html>

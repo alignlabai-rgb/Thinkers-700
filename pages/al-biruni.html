@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アル＝ビールーニー - 知のOSアップデート | Thinkers 700</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- No external JS dependencies - using pure CSS visualization -->
+    <style>
+        body {
+            background: #020408;
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.8;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-box h3 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .synthesis-container {
+            padding: 1rem 0;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            background: var(--accent-primary, #8b5cf6);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: var(--accent-primary, #8b5cf6);
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid var(--accent-primary, #8b5cf6);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="detail-container">
+        <nav class="back-nav">
+            <a href="../index.html">← アーカイブに戻る</a>
+        </nav>
+
+        <header class="header-section">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag" style="margin-left: 0.5rem;">社会OS</span>
+            <h1>アル＝ビールーニー</h1>
+            <p class="en-name">Al-Biruni (973-1048)</p>
+        </header>
+
+        <!-- 0. Target Audience -->
+        <section class="section-card"
+            style="border: 1px solid var(--accent-color); background: rgba(56, 189, 248, 0.05);">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <p>自分とは異なる文化や宗教を持つ人々を、偏見なく理解する方法を知りたい人へ。「比較」によって真理に近づくという、現代の人類学や比較宗教学の原点がここにあります。</p>
+        </section>
+
+        <!-- 1. Abstract -->
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Al-Biruni was a polymath who pioneered comparative cultural studies and geodesy. He approached
+                        foreign cultures, especially India, with unprecedented objectivity, documenting their science,
+                        religion, and customs without imposing his own beliefs.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>アル＝ビールーニーは、比較文化学と測地学の先駆者となった万学の巨人です。特にインド文化を、自らの信条を押し付けることなく驚くべき客観性で記録し、科学・宗教・習俗を体系的に分析しました。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Visual Synthesis (CSS-based) -->
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span class="step-icon">🔓</span>
+                    <span class="step-text"><strong>Step 1: 打破した旧常識</strong><br>
+                        「異教徒の知識は劣っている」という中世の常識。自文化中心主義がすべてを覆っていた。</span>
+                </div>
+                <div class="synthesis-arrow">⬇️</div>
+                <div class="synthesis-step">
+                    <span class="step-icon">💡</span>
+                    <span class="step-text"><strong>Step 2: 提示した新パラダイム</strong><br>
+                        「他文化を内側から理解する」客観的比較法。サンスクリット語を学び、インド人学者と対話し、その視点から記述する。</span>
+                </div>
+                <div class="synthesis-arrow">⬇️</div>
+                <div class="synthesis-step">
+                    <span class="step-icon">📜</span>
+                    <span class="step-text"><strong>Step 3: 実装・証明</strong><br>
+                        『インド誌』を著し、インドの天文学・数学・哲学・社会制度を膨大かつ正確に記録。地球の半径も驚異的精度で測定。</span>
+                </div>
+                <div class="synthesis-arrow">⬇️</div>
+                <div class="synthesis-result">
+                    <span class="result-icon">🎯</span>
+                    <strong>Result: 現代への実装</strong><br>
+                    現代の文化人類学、比較宗教学、エスノグラフィーの方法論の原型を1000年前に確立した。
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Kernel of Innovation -->
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「異なる文明を、その内側から客観的に理解することは可能か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+                <p>「真理は一つの文明に独占されない」という認識をインストール。イスラム学者として、ヒンドゥー教徒の宇宙観を尊重しながら科学的に検証するという、今日でも稀有な知的態度を実践しました。</p>
+            </div>
+        </section>
+
+        <!-- 4. Key Components -->
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 参与観察法の先駆</h4>
+                    <p>インドに13年間滞在し、サンスクリット語を習得。文化を外から眺めるのではなく、その言語と思考様式に入り込んで記述しました。現代のエスノグラフィーの原型です。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 測地学的精密測定</h4>
+                    <p>山の高さと地平線の角度から地球の半径を計算。現代の値との誤差はわずか2%。三角法と観測技術を駆使した科学的方法論の金字塔です。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 比較宗教学の方法</h4>
+                    <p>ヒンドゥー教の輪廻転生をイスラムの視点から「批判」するのではなく、インド哲学の内部論理で「説明」する。宗教間対話の模範を示しました。</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-color);">■ 比較年代学の確立</h4>
+                    <p>『古代民族年代記』にて、異なる文化圏のカレンダーや歴史記述を数学的に突合。歴史学に客観的な外部指標を導入しました。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Genealogy -->
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p>アリストテレスの論理学、プトレマイオスの天文学、そしてインドの数学（ブラフマグプタなど）を統合。ギリシア・ペルシア・インドの知の交差点に立ちました。</p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p>イブン・ハルドゥーンの歴史社会学、近代オリエンタリズム批判（サイード）、現代の比較文化研究すべてに影響を与えています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Analogies -->
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１</h4>
+                <p>アル＝ビールーニーは「言語という翻訳ソフトをインストールして、異文化のOSにログインした」初めての学者です。外から眺めるのではなく、相手のデスクトップに座って作業したのです。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２ (現代版)</h4>
+                <p>現代でいえば、GoogleのエンジニアがAppleに転職してmacOSの設計思想を内側から理解し、それを偏見なく解説書にまとめるようなもの。競合を「敵」ではなく「別解」として尊重する姿勢です。</p>
+            </div>
+        </section>
+
+        <!-- 7. Specs Comparison -->
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">共通の土俵: 異文化理解の方法論</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>ビールーニーの仕様 (New OS)</th>
+                        <th>旧OS (自文化中心主義)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>異文化への態度</td>
+                        <td>内側から理解、尊重</td>
+                        <td>外から批判、蔑視</td>
+                    </tr>
+                    <tr>
+                        <td>言語</td>
+                        <td>現地語を習得</td>
+                        <td>翻訳に頼る、または無視</td>
+                    </tr>
+                    <tr>
+                        <td>記述の目的</td>
+                        <td>客観的理解</td>
+                        <td>布教・征服の正当化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. Application & Ethics -->
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: var(--accent-color);">実践 (Installation)</h4>
+                <p>異文化コミュニケーション、国際ビジネス、多文化共生社会の構築において、「相手の視点に立つ」という基本姿勢は今も最重要スキルです。</p>
+            </div>
+            <div>
+                <h4 style="color: #f43f5e;">バグと副作用 (Limitations)</h4>
+                <p>極端な相対主義に陥ると、自文化のアイデンティティが曖昧になるリスクがあります。また、権力関係を無視した「対等な比較」は幻想になりえます。</p>
+            </div>
+        </section>
+
+        <!-- 9. Simulation Mode -->
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしビールーニーが現代の「AI翻訳による異文化交流」を見たら？</strong></p>
+            <p style="margin-top: 1rem;">
+                彼は「便利だが危険だ」と警告するでしょう。言語を学ぶプロセスこそが、その文化の思考様式を体得する道。AIが翻訳を代行すると、文法の裏にある世界観が見えなくなる。「訳せても、理解したことにはならない」と。
+            </p>
+        </section>
+
+        <!-- 10. Limitations and Critiques -->
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <ul style="list-style: disc; padding-left: 1.5rem; display: grid; gap: 1rem;">
+                <li><strong>権力関係の不均衡</strong>：征服者側（ガズナ朝）の学者としてインドを研究した点で、植民地主義的な知の非対称性を完全には免れない。</li>
+                <li><strong>エリート文化への偏り</strong>：記録したのは主にバラモン知識階級の文化であり、民衆文化や周縁の声は拾いきれていない。</li>
+                <li><strong>方法論の限界</strong>：現代の人類学が重視する「権力への反省」や「当事者研究」の視点はまだなかった。</li>
+            </ul>
+        </section>
+
+        <!-- 11. Comprehension Check -->
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">ビールーニーが他の中世学者と決定的に異なる点は何ですか？</summary>
+                    <p style="margin-top:1rem;">異文化を「劣ったもの」として批判するのではなく、その言語を学び内側から理解しようとした点。これは現代の参与観察法の原型です。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">『インド誌』が現代に与えた影響は？</summary>
+                    <p style="margin-top:1rem;">比較文化研究、宗教学、人類学の方法論的基盤を提供しました。「内側から理解する」という姿勢は、今も人文科学の基本です。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:var(--accent-color);">ビールーニーが測定した地球の半径の精度は？</summary>
+                    <p style="margin-top:1rem;">現代の測定値は約6371kmですが、彼は約6339kmと計算しました。1000年以上前に数パーセントの誤差で測定した驚異的な精度です。</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- 12. Glossary -->
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:var(--accent-color); font-weight:700;">測地学</dt>
+                <dd>地球の形状・大きさ・重力場を測定する学問。ビールーニーは山の高さと角度から地球の半径を計算しました。</dd>
+                <dt style="color:var(--accent-color); font-weight:700; margin-top:1rem;">参与観察</dt>
+                <dd>研究対象の社会に入り込み、その一員として生活しながらデータを収集する人類学の方法。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer
+        style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000;">
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">&copy; 2025 Intellectual OS Pioneer Project |
+            Al-Biruni Analysis Edition</p>
+    </footer>
+</body>
+
+</html>
