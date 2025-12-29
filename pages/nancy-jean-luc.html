@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャン＝リュック・ナンシー | Thinkers 700</title>
+    <meta name="description"
+        content="ジャン＝リュック・ナンシー（Nancy, Jean-Luc）の思想を解説。「共同体」や「共にあること（Being-with）」を独自の視点で問い直した現代フランスの哲学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #0c4a6e;
+            --text-primary: #f8fafc;
+            --text-secondary: #bae6fd;
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), transparent);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #0ea5e9, #0284c7);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #7dd3fc, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #7dd3fc;
+            border-bottom: 2px solid #0ea5e9;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(14, 165, 233, 0.15);
+            border-left: 4px solid #0ea5e9;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(125, 211, 252, 0.1);
+            border-left: 4px solid #7dd3fc;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #0ea5e9;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(2, 132, 199, 0.2));
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(14, 165, 233, 0.2);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #7dd3fc;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .analogy-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px dashed var(--text-secondary);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <br>
+        <div class="standard-banner">「共にある」ことの哲学者</div>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">存在OS</span>
+        </div>
+        <h1>ジャン＝リュック・ナンシー</h1>
+        <p class="en-name">Nancy, Jean-Luc (1940 - 2021)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「共同体とは作品ではない。それは我々が共にさらされている『境界』そのものだ」
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「存在することは、常に『共にある』ことである。バラバラの個体が後から集まるのではなく、最初から多重的なつながりとして存在しているのだ。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『複数にして単数の存在』(1996)</p>
+            </div>
+            <p>ジャン＝リュック・ナンシーは、現代フランスを代表する哲学者であり、ジャック・デリダの親友としても知られています。彼は、全体主義や国家といった「一つの大きな物語」が崩壊した後の世界で、私たちはどのように「共に」生きることができるのかを問い直しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>共同体は「作る」ものではなく、私たちが互いに「有限であること」を分かち合っている状態そのもの。</strong></p>
+                <p>ナンシーによれば、共同体は共通の目的やアイデンティティ（民族、宗教、愛国心など）によって完成される「作品」ではありません。むしろ、人間が死すべき存在（有限な存在）であり、互いの境界線にさらされ続けていることこそが、共同体の真の姿であると説きました。
+                </p>
+            </div>
+            <div class="analogy-card">
+                <h4 style="color: #7dd3fc; margin-bottom: 0.5rem;">現代IT風アナロジー：P2P vs Server-Client</h4>
+                <p>従来の国家や組織が「中央サーバー（一つの真理）」に従うユーザーたちだとすれば、ナンシーの考える共同体は「P2P（ピア・トゥ・ピア）」ネットワークに似ています。中央がなくても、個々のノード（個人）が互いに隣接し、接続し合っている状態そのものがネットワークを形成している。「Being
+                    Singular Plural（複数にして単数の存在）」とは、独立した一ノードでありながら、同時にネットワークそのものでもあるというパラドックスを指しています。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #7dd3fc; font-size: 1.3rem;">『無為の共同体』 (1986)</h4>
+                    <p style="margin-top: 1rem;">
+                        共同体を「特定の目的を達成するための手段」と見る考えを批判。共同体は何かを「なす（為す）」ためのものではなく、何もしない（無為の）中で現れるつながりであることを示した。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #7dd3fc; font-size: 1.3rem;">『複数にして単数の存在』 (1996)</h4>
+                    <p style="margin-top: 1rem;">
+                        ハイデガーの「世界内存在」を拡張し、「共にあること（Being-with）」が存在の根源であることを論じた。個と全体という二項対立を超えた新しい存在論を提示。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Jean-Luc Nancy was a major French philosopher who transformed the concepts of community and
+                        ontology. He argued that existence is inherently "being-with" others, a concept he coined as
+                        "Being Singular Plural." Nancy rejected the idea of community as a completed "work" or a shared
+                        identity (such as nationalism), instead defining it as the shared exposure of finite beings to
+                        one another. His thought provides a crucial framework for understanding social connection in a
+                        deconstructed, post-modern world.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ジャン＝リュック・ナンシーは、現代フランスの哲学者。全体主義や既存の共同体概念を解体し、「無為の共同体」という概念を提唱した。彼は、存在の本質を「共にある（Being-with）」こととし、個は常に他者との関係性（複数性）においてのみ単数として存在しうると論じた（複数にして単数の存在）。死や有限性を分かち合うことから生まれる、所有不可能な「つながり」の形を追求した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「共同体とは、同じ目標や血縁を持つ人々が団結して作り上げる『一つの大きな塊（作品）』である」という思い込み。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>「無為の共同体」。結びつきは、何かのために働く（為す）ところにあるのではなく、互いの「弱さ（有限性）」が露出する境界線に宿る。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3: 実装・証明</strong><br>「Being Singular
+                    Plural（複数にして単数の存在）」というロジック。私は「私」であると同時に、最初から「複数」の中に放り出されている。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>排他的なナショナリズムの克服、SNS時代の緩い繋がりの肯定、エコロジーやグローバリゼーションにおける「共生」の哲学的基礎。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「共通の目的やアイデンティティがなくても、私たちは『共に』になれるだろうか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+                <p><strong>▼ 分かち合えないものを分かち合う (Sharing what is unsharable)</strong></p>
+                <p>通常、分かち合うとは「ケーキを分ける」ように何かを所有すること。しかしナンシーは、他人と共有できるのは「お互いに死すべき存在である（有限である）」という、所有不可能な事実だけだと言います。この「分かち合えない孤独」を隣同士でさらけ出している状態が「共同体」です。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 境界としての触れ合い (Touch as a Boundary)</strong></p>
+                <p>「触れる」とは、相手と同じになること（融合）ではありません。むしろ「私はここまで、あなたはそこから」という境界線を確認することです。この「触れ合っているが混ざり合わない」適度な距離感こそが、健康的な社会のOSコードとなります。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>🌟 「共に」のOSアウフヘーベン</strong></p>
+                    <p>「個人の自由（アトム的個人）」と「集団への従属（全体主義）」という古い対立を、「最初から共にあるという存在の前提」に書き換えることで、どちらの極端も回避しようとしました。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #7dd3fc;">■ 脱内在化 (Ex-pe-ri-ence)</h4>
+                    <p>自分の中に安住するのではなく、外へと自分をさらし出すこと。経験（エクスフェリエンス）とは「外（ex）へ向かう危険（periri）」であることを再定義した。</p>
+                </div>
+                <div>
+                    <h4 style="color: #7dd3fc;">■ 意味の重さ (The Sense of the World)</h4>
+                    <p>世界に意味があるのではなく、私たちが共に世界を構成していることが「意味」を生み出している。意味とは固定された結論ではなく、他者へと向かう「ベクトル」のようなもの。</p>
+                </div>
+                <div>
+                    <h4 style="color: #7dd3fc;">■ 身体の哲学</h4>
+                    <p>頭（精神）だけで考えるのではなく、物理的に「そこにあること」「触れ合うこと」の重要性（Corpus）を強調。心臓移植を受けた自らの体験をもとに生命論も展開した。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>ハイデガー</strong>（「世界内存在」からの展開）<br>
+                        <strong>バタイユ</strong>（消滅と蕩尽の共同体論）<br>
+                        <strong>ジャック・デリダ</strong>（脱構築を通じた対話）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ジョルジュ・アガンベン</strong>（「来たるべき共同体」）<br>
+                        <strong>モーリス・ブランショ</strong>（「明かしえぬ共同体」）<br>
+                        <strong>現代のクィア理論や脱植民地化論</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：ジグソーパズルの「ピースの端」</h4>
+                <p>パズルの絵（完成した共同体）が重要なのではなく、ピースとピースが噛み合っている「デコボコの境界線」が共同体の実体です。ピースが四角いブロック（個）なら、ただ並ぶだけですが、デコボコ（他者への依存）があるからこそ、私たちは繋がり（共にある）を持つことができます。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：合唱団の「ハーモニー」</h4>
+                <p>一人一人がバラバラの音を出すのでもなく、一人の圧倒的なリーダーが全員に複唱させるのでもありません。それぞれの声（単数）が重なり合い、共鳴し合っているとき、そこには一つの「作品」としての結論ではなく、流動的な「共鳴（複数）」が生まれます。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS (全体主義 / 契約論)</th>
+                        <th>ジャン＝リュック・ナンシー OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>形成理由</td>
+                        <td>共通利益、共通の敵、国家契約</td>
+                        <td>「共にある」という存在の前提</td>
+                    </tr>
+                    <tr>
+                        <td>個の扱い</td>
+                        <td>全体に従属する部品</td>
+                        <td>複数の中に輝く「単数」</td>
+                    </tr>
+                    <tr>
+                        <td>関係の理想</td>
+                        <td>「我々は一つだ！」(融合)</td>
+                        <td>「我々は境界を接している」(露出)</td>
+                    </tr>
+                    <tr>
+                        <td>死の捉え方</td>
+                        <td>公的な目的のための犠牲</td>
+                        <td>互いの有限性を分かち合う場所</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #7dd3fc;">実践 (Installation)</h4>
+                <p><strong>多文化共生</strong>：文化的なアイデンティティを一つに統合（同化）しようとするのではなく、異なるものが隣接し、互いの境界で交流し続ける状態を肯定する知恵。<br>
+                    <strong>緩いつながりのSNS</strong>：ガチガチのコミュニティではなく、タイムラインで互いの断片的な「生」に適度にさらされ、影響し合う現代的な繋がり方の解釈。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #0ea5e9;">バグと副作用 (Limitations)</h4>
+                <p><strong>無力さへの懸念</strong>：「何もしない（無為）」を強調しすぎると、実際に困難（戦争、環境破壊）に対して団結して行動しなければならない時に、具体的なアクションが取りづらくなるという批判もあります。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしジャン＝リュック・ナンシーが「メタバースの島」を作ったら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「そこには城も法律も、一つの目的もありません」とナンシーは設定するでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「アバター同士が完全に融合して『一つ』になる魔法も、個室に引きこもって完全に『孤立』することも不可能です。
+                </p>
+                <p style="margin-top: 1rem;">
+                    唯一できることは、海岸で波の音を聞きながら、他者のアバターがそこに『映っていること（存在）』を眺め、そのアバターに触れれば自分のアバターがかすかに揺れる（境界の露出）のを感じるだけ。<strong>何もしない（無為）中で、誰かがそこに『いる』ことを受け入れる。</strong>
+                    それこそが最高の共同体のシミュレーションです。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #7dd3fc;">① 抽象性の壁</h4>
+                    <p>「無為の共同体」は、具体的な制度設計（政治）にどう落とし込むべきかが分かりにくい、詩的・文学的に過ぎるという指摘があります。</p>
+                </div>
+                <div>
+                    <h4 style="color: #7dd3fc;">② 責任の所在</h4>
+                    <p>「共にある」ことを重視しすぎると、個人の明確な意思決定や、失敗した時の個人的な責任が、集団（複数性）の中に溶け出してしまう危険性があります。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「無為の共同体」の「無為」とはどういう意味？</summary>
+                    <p style="margin-top: 1rem;">
+                        答え：共同体を「共通の目的を達成するための道具（作品）」として機能させようとしない、という意味。作り上げるものではなく、最初からそこにある関係性に身を委ねることを指します。</p>
+                </details>
+                <details>
+                    <summary>「複数にして単数の存在」を簡単に説明すると？</summary>
+                    <p style="margin-top: 1rem;">
+                        答え：私たちは一人一人独立した「単数」であると同時に、その「単数」という定義自体が他者（複数）との比較や境界線によって成り立っているということ。一人きりでは「単数」にすらなれないという逆説です。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #7dd3fc; font-weight: 700;">共にあること (Being-with / Mitsein)</dt>
+                <dd>ハイデガーの言葉をナンシーが再定義。人間存在は、最初から他者との共生を前提としたOS上で動いている、ということ。</dd>
+                <dt style="color: #7dd3fc; font-weight: 700; margin-top: 1rem;">分かち合い (Partage)</dt>
+                <dd>分配（分ける）と共有（分かち合う）の両方の意味を持つ。有限性を互いに分け、かつその境界線を共有すること。</dd>
+                <dt style="color: #7dd3fc; font-weight: 700; margin-top: 1rem;">内在性への批判</dt>
+                <dd>「我々は本来、一つであるべきだ」という、内側へ閉じていこうとする全体主義的な引力をナンシーは最も警戒しました。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Jean-Luc Nancy Analysis</p>
+    </footer>
+</body>
+
+</html>
