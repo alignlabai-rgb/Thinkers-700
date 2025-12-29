@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガエターノ・モスカ | Thinkers 700</title>
+    <meta name="description" content="ガエターノ・モスカの思想を学ぶ。支配階級論でエリート支配の必然性を説いた政治学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), transparent);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #8b5cf6;
+            border-bottom: 2px solid #8b5cf6;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.1));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #8b5cf6;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">エリート理論の創始者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">政治OS</span>
+        </div>
+        <h1>ガエターノ・モスカ</h1>
+        <p class="en-name">Gaetano Mosca (1858-1941)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「いかなる社会においても、少数者が多数者を支配する」──民主主義の裏側を暴いた政治学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「政治的な決定を実際に下すのは、組織された少数者であり、組織されていない多数者ではない。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『支配階級』(1896)</p>
+            </div>
+            <p>ガエターノ・モスカは、20世紀初頭のイタリアを代表する政治学者であり、「エリート理論」の創始者の一人です。彼は、民主主義であれ独裁であれ、すべての社会は「支配階級（政治階級）」と「被支配階級」に分かれ、実質的な権力は常に組織された少数者の手にあると論じました。これは、「国民主権」や「多数決」という民主主義の理念に対する根本的な挑戦でした。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「民主主義」でも、実際に決定を下すのは組織された少数者である。</strong></p>
+                <p>数百万人の有権者がいても、彼らは組織されていない。一方、政党、官僚、経済エリートは組織されている。組織された少数者は、常に非組織の多数者に勝つ──これがモスカの「政治階級」の鉄則である。
+                </p>
+            </div>
+            <p>現代IT風に言えば、モスカは<strong>「社会のアクセス権限構造」</strong>を分析した思想家です。表向きはすべてのユーザーが平等でも、Admin権限を持つ少数のグループが実際のシステムを動かしている──それが「政治階級」の正体。彼を学ぶことは、民主主義社会における権力の実態、政治家・官僚・経済エリートの関係を理解するための鍵を手に入れることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #8b5cf6; font-size: 1.3rem;">『支配階級』（Elementi di Scienza Politica, 1896）</h4>
+                    <p style="margin-top: 1rem;">
+                        モスカの代表作にして、エリート理論の古典。すべての社会には「政治階級」（支配する少数者）と「非政治階級」（支配される多数者）が存在すると論じた。政治階級は組織力、政治的公式（支配の正当化）、社会的力（富、教育、人脈）によって権力を維持する。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #8b5cf6; font-size: 1.3rem;">『支配階級の理論と政府の形態』（1923）</h4>
+                    <p style="margin-top: 1rem;">
+                        前作をさらに発展させ、支配階級の更新メカニズムと政府形態の関係を論じた。「開かれた」エリート（新参者を受け入れる）と「閉じた」エリート（世襲的）の区別を明確化。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Gaetano Mosca: Italian political scientist and founder of elite theory. Argued that all societies
+                        are divided into a ruling "political class" and a ruled majority. The organized minority always
+                        dominates the unorganized majority. Influenced C. Wright Mills, Robert Michels, and modern
+                        political science.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>イタリアの政治学者、エリート理論の創始者。すべての社会は「政治階級」（支配する少数）と被支配者に分かれる。組織された少数者は非組織の多数者を支配する。C・ライト・ミルズ、ロベルト・ミヒェルスに影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「民主主義では国民が支配する」「多数決が社会を動かす」「選挙で民意が反映される」という民主主義の建前を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①政治階級（支配する組織された少数者）②政治的公式（支配を正当化するイデオロギー）③社会的力（富、教育、人脈）④エリートの更新（開放型 vs
+                    閉鎖型）。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『支配階級』(1896)で理論を体系化。古代から近代までの歴史的事例を分析し、エリート支配の普遍性を実証。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>エリート理論、民主主義批判、政治学の科学化、C・ライト・ミルズ『パワー・エリート』への直接的影響。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「なぜ民主主義でも少数者が多数者を支配するのか？権力の実態とは何か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 政治階級（Political Class）</strong></p>
+                <p>モスカの最重要概念。すべての社会には、実際に政治的決定を下す「少数の支配者」と、それに従う「多数の被支配者」がいる。これは独裁制だけでなく、民主制にも当てはまる。</p>
+
+                <div class="quote-box">
+                    <p>「すべての社会において──最も原始的なものから最も進んだものまで──二つの階級が現れる。支配する階級と、支配される階級である。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem;">──『支配階級』</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 少数者支配の必然性</strong></p>
+                <p>なぜ少数者が支配するのか？答えは「組織」にある。100万人の群衆がいても、彼らは組織されていない。一方、1000人の政党や官僚組織は、明確な目標と指揮系統を持つ。組織された少数は、常に非組織の多数に勝つ──これが「少数者支配の鉄則」。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 組織の優位性</strong></p>
+                    <p>選挙を例に考えよう。有権者1億人 vs 政党組織1万人。1億人は散らばり、情報もバラバラ。1万人は統一された戦略、資金、情報を持つ。どちらが勝つか？答えは明らか。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 政治的公式（Political Formula）</strong></p>
+                <p>支配階級は裸の力だけでは支配できない。正当化のイデオロギー──モスカはこれを「政治的公式」と呼ぶ──が必要だ。「神の意志」「人民の意志」「歴史の法則」「国民の総意」...名目は変わっても、機能は同じ。支配を正当化し、被支配者の服従を調達する装置。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ エリートの更新</strong></p>
+                <p>モスカは支配階級が固定されているとは考えなかった。健全な社会では、エリートは下層から有能な人材を取り込み、自らを更新する（開放型エリート）。これが停止すると、エリートは固定化し、革命の危機を招く（閉鎖型エリート）。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #8b5cf6;">■ 政治階級（Political Class）</h4>
+                    <p>実際に政治的決定を下す組織された少数者。民主制でも存在する。政党幹部、官僚トップ、経済エリートが含まれる。選挙で選ばれるかどうかは本質ではない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b5cf6;">■ 政治的公式（Political Formula）</h4>
+                    <p>支配を正当化するイデオロギー。「神の意志」「人民の意志」「科学的法則」など。内容は変わっても、機能は同じ──支配の正当化と服従の調達。</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b5cf6;">■ 社会的力（Social Forces）</h4>
+                    <p>政治階級の地位を支える資源。富、教育、人脈、専門知識など。これらを持つ者が政治階級に参入しやすい。</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b5cf6;">■ エリートの更新（Elite Circulation）</h4>
+                    <p>支配階級が新しい人材を取り込むプロセス。開放型エリートは安定を維持し、閉鎖型エリートは革命を招く。パレートの「エリートの循環」と類似。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>マキャヴェリ</strong>（権力のリアリズム、政治の自律性）<br>
+                        <strong>サン＝シモン</strong>（産業社会論、テクノクラート）<br>
+                        <strong>コント</strong>（実証主義、社会の科学的分析）<br>
+                        <strong>スペンサー</strong>（社会進化論）<br>
+                        <strong>イタリア統一運動</strong>（政治的現実主義の必要性）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ヴィルフレド・パレート</strong>（エリートの循環）<br>
+                        <strong>ロベルト・ミヒェルス</strong>（寡頭制の鉄則）<br>
+                        <strong>C・ライト・ミルズ</strong>（パワー・エリート）<br>
+                        <strong>ジョセフ・シュンペーター</strong>（競争的民主主義）<br>
+                        <strong>現代エリート研究</strong>（政治学、社会学）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：Admin権限とUser権限</h4>
+                <p>OSを考えよう。すべてのユーザーは表向き「平等」だが、Admin権限を持つグループだけがシステム設定を変更できる。政治階級とは、社会システムのAdmin権限を持つグループ。選挙という「ユーザー投票」で一部のAdminは交代するが、Admin層の存在自体は変わらない。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：SNSのアルゴリズム支配</h4>
+                <p>SNSでは「すべての投稿は平等」に見えるが、実際はアルゴリズム（組織された少数のエンジニアが設計）がタイムラインを支配している。数億人のユーザーより、数十人のアルゴリズム設計者の判断が影響力を持つ──これがモスカ的エリート支配のデジタル版。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：会社組織と株主総会</h4>
+                <p>株主総会では「1株1票」の民主主義が建前。しかし実際には、経営陣（組織された少数）が議案を設定し、分散した株主（非組織の多数）は追認するだけ。政治的公式は「株主主権」、実態は経営者支配──これがモスカの理論の企業版。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（民主主義の理念）</th>
+                        <th>モスカの仕様（New OS）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>支配者</td>
+                        <td>国民全体</td>
+                        <td>政治階級（組織された少数）</td>
+                    </tr>
+                    <tr>
+                        <td>権力の源泉</td>
+                        <td>多数決、民意</td>
+                        <td>組織力、社会的力</td>
+                    </tr>
+                    <tr>
+                        <td>選挙の役割</td>
+                        <td>民意の反映</td>
+                        <td>エリート間競争の舞台</td>
+                    </tr>
+                    <tr>
+                        <td>イデオロギー</td>
+                        <td>真理の表現</td>
+                        <td>政治的公式（正当化装置）</td>
+                    </tr>
+                    <tr>
+                        <td>社会変革</td>
+                        <td>革命で根本変化</td>
+                        <td>エリートの交代（支配構造は不変）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #8b5cf6;">実践 (Installation)</h4>
+                <p><strong>政治学</strong>：エリート理論の基礎として現代政治学に影響。<br>
+                    <strong>民主主義研究</strong>：「競争的エリート主義」の理論的基盤。<br>
+                    <strong>組織論</strong>：ミヒェルスの「寡頭制の鉄則」に発展。<br>
+                    <strong>メディア研究</strong>：誰がアジェンダを設定するか（エリート支配）。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #ef4444;">バグと副作用 (Limitations)</h4>
+                <p><strong>シニシズムへの傾斜</strong>：すべてをエリート支配で説明すると、民主的努力が無意味に見える。<br>
+                    <strong>民衆運動の軽視</strong>：下からの社会変革の可能性を過小評価。<br>
+                    <strong>エリートの多様性</strong>：政治階級が一枚岩ではないという反論。<br>
+                    <strong>規範の不在</strong>：エリート支配は不可避でも、「良いエリート」とは何かが不明確。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしモスカがSNS時代の政治を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「私の理論は、一層明確に立証された」──モスカはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「SNSは民主主義を拡大したか？表面上はそう見える。誰でも発信できる。しかし実態を見よ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>新しい政治階級</strong>が生まれた。プラットフォーム企業（GAFAやTikTok）、アルゴリズム設計者、インフルエンサー。彼らは選挙で選ばれていないが、何が『見える』かを決定する。これは旧来の政治階級より強力かもしれない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>新しい政治的公式</strong>も登場した。『エンゲージメント』『バイラル』『トレンド』──これらは民意を反映しているように見えるが、実際はアルゴリズムが設計した方向に群衆を誘導する装置だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    私が驚くのは、組織された少数者の支配がこれほど<strong>効率化</strong>されたことだ。かつては軍隊、官僚、メディアを必要とした。今はコードとサーバーで十分。しかし本質は変わらない──組織された少数者が、非組織の多数者を支配する。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #ef4444;">① 民主主義への過度のシニシズム</h4>
+                    <p>民主主義の価値をエリート支配に還元しすぎ。選挙、言論の自由、法の支配には独自の価値がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">② 民衆運動の軽視</h4>
+                    <p>公民権運動、女性参政権運動など、「非組織の多数」が変革を起こした歴史的事例を説明しにくい。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">③ エリートの分裂</h4>
+                    <p>政治階級は一枚岩ではない。エリート間の競争、対立、分裂が民主主義の本質という反論（シュンペーター）。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">④ 規範的曖昧さ</h4>
+                    <p>エリート支配が不可避でも、「良いエリート」と「悪いエリート」の区別基準が不明確。ファシズムに利用される危険。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「政治階級」とは何か？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        すべての社会に存在する「支配する組織された少数者」。民主制でも独裁制でも存在する。政党幹部、官僚トップ、経済エリートなど。選挙で選ばれるかどうかは本質ではない。
+                    </p>
+                </details>
+                <details>
+                    <summary>なぜ少数者が多数者を支配できるのか？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        「組織」の力。100万人の群衆は非組織で、1000人の政党や官僚組織は組織されている。統一された戦略、指揮系統、資源を持つ組織された少数者は、常に非組織の多数者に勝つ。
+                    </p>
+                </details>
+                <details>
+                    <summary>「政治的公式」とは？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong> 支配を正当化するイデオロギー。「神の意志」「人民の意志」「科学的法則」など、名目は変わっても機能は同じ──支配の正当化と被支配者の服従の調達。
+                    </p>
+                </details>
+                <details>
+                    <summary>モスカとC・ライト・ミルズの関係は？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        ミルズの『パワー・エリート』（1956）は、モスカのエリート理論を20世紀アメリカに適用したもの。軍部・企業・政界のトップが「パワー・エリート」を形成するという分析は、モスカの「政治階級」概念の発展形。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #8b5cf6; font-weight: 700;">政治階級（Political Class）</dt>
+                <dd>実際に政治的決定を下す組織された少数者。すべての社会に普遍的に存在。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">政治的公式（Political Formula）</dt>
+                <dd>支配を正当化するイデオロギー。「神の意志」「人民主権」など。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">社会的力（Social Forces）</dt>
+                <dd>政治階級の地位を支える資源。富、教育、人脈、専門知識など。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">エリートの更新（Elite Circulation）</dt>
+                <dd>支配階級が新しい人材を取り込むプロセス。開放型 vs 閉鎖型。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">少数者支配の鉄則</dt>
+                <dd>組織された少数者は常に非組織の多数者を支配するという法則。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Gaetano Mosca</p>
+    </footer>
+</body>
+
+</html>

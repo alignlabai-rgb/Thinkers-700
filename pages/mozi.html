@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨子 | Thinkers 700</title>
+    <meta name="description" content="墨子の思想を学ぶ。「兼愛」（無差別の愛）と「非攻」（侵略戦争反対）を説いた古代中国の思想家・技術者集団の祖。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #22c55e;
+            --accent-glow: rgba(34, 197, 94, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), transparent);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #22c55e;
+            border-bottom: 2px solid #22c55e;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #22c55e;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.1));
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #22c55e;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">兼愛と非攻の思想家</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">技術OS</span>
+        </div>
+        <h1>墨子</h1>
+        <p class="en-name">Mozi (c. 470-391 BCE)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「天下の人をすべて自分の家族のように愛せ」──功利主義的平和思想と技術実践を説いた反儒教の巨人
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「兼ねて相愛し、交々相利せば、則ち天下治まる。」（すべての人を平等に愛し、互いに利益をもたらせば、天下は治まる）</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『墨子』兼愛篇</p>
+            </div>
+            <p>墨子は、戦国時代の中国で活躍した思想家であり、墨家と呼ばれる思想・技術者集団の創始者です。孔子以後、最大の影響力を持った思想家でありながら、後に儒教に敗北し、長く忘れられてきました。彼の核心思想は「兼愛」（すべての人を差別なく愛する）と「非攻」（侵略戦争への反対）。さらに、防御技術の専門家として、実際に城を守る技術集団を率いた実践家でもあります。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>愛は「差をつけるもの」ではなく「広げるもの」。自分の親と他人の親を同じように愛せ。</strong></p>
+                <p>儒教は「親への愛が最も深い」と説く。墨子は反論する──その差別こそが争いの原因だ。自分の親だけを愛するから、他人の親を傷つける。すべての人を自分の家族のように愛すれば（兼愛）、戦争は起こらない。
+                </p>
+            </div>
+            <p>現代IT風に言えば、墨子は<strong>「社会のコスト最適化」</strong>を追求した思想家です。戦争、儀礼、音楽──すべてを「それは社会全体の利益になるか？」で判断する。ROI（投資対効果）を最大化するシステム設計思想。彼を学ぶことは、功利主義的思考の東洋的起源、そして「理想と実践」を両立させた稀有な思想家の姿を知ることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #22c55e; font-size: 1.3rem;">『墨子』（全53篇、現存48篇）</h4>
+                    <p style="margin-top: 1rem;">
+                        墨子とその弟子たちの思想を集めた書。「兼愛」「非攻」「尚賢」「節用」「天志」「明鬼」などの十論が核心。また、論理学（墨弁）、光学、力学、城守の技術なども含む、東アジア最古の科学・論理学テキストの一つ。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #22c55e; font-size: 1.3rem;">城守（防御技術）篇</h4>
+                    <p style="margin-top: 1rem;">
+                        墨家は理論だけでなく、実際に城を守る技術集団でもあった。『墨子』には、城壁・堀・投石機・弩などの防御技術が具体的に記されている。「非攻」（侵略反対）を実践するための技術マニュアル。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Mozi: Ancient Chinese philosopher and founder of Mohism. Advocated "jian ai" (universal love)
+                        against Confucian differential love, and "fei gong" (anti-aggression). Pioneer of
+                        consequentialist ethics in East Asia. Also a practical engineer leading defense operations. His
+                        school rivaled Confucianism but later declined.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>戦国時代の思想家、墨家の祖。「兼愛」（無差別の愛）で儒教の差別愛を批判。「非攻」（侵略反対）を説く。東アジアにおける帰結主義倫理の先駆。防御技術の実践家でもあった。儒教と並ぶ勢力だったが後に衰退。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「親への愛は他者への愛より深い」（儒教の差別愛）、「礼楽は社会の基盤」（儒教の儀礼重視）、「戦争は正義のために行われうる」という常識を打破。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①兼愛（無差別の愛）②非攻（侵略反対）③尚賢（能力主義）④節用（倹約）⑤天志（天の意志）⑥論理学（墨弁）⑦科学技術（光学、力学）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『墨子』で理論を体系化。実際に城守集団を率いて「非攻」を実践。弟子たちは技術者・論理学者として活動。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>功利主義の東洋的先駆、平和思想、論理学・科学技術、能力主義の思想的基盤。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「人々が争う根本原因は何か？どうすれば天下を平和にできるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 兼愛（Jian Ai / Universal Love）</strong></p>
+                <p>墨子の最も有名な概念。儒教は「親への愛が最も深く、他人への愛は薄い」（差等の愛）と説く。墨子はこれを根本から批判する──差別こそが争いの原因だ。</p>
+
+                <div class="quote-box">
+                    <p>「諸侯は互いに相攻め、家長は互いに争い、人は互いに害す。これ皆、不相愛より生ず。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem;">──『墨子』兼愛篇</p>
+                </div>
+
+                <p style="margin-top: 1rem;">
+                    自分の親だけを愛するから、他人の親を傷つける。自分の国だけを愛するから、他国を攻める。解決策は？すべての人を自分の家族のように愛すること（兼愛）。他人の親を自分の親のように、他人の国を自分の国のように扱えば、争いは消える。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 功利主義的論証</strong></p>
+                    <p>墨子は感情ではなく「利」（結果）で論じる。兼愛は感傷ではない──それが「天下の利」（社会全体の利益）になるから実践すべきなのだ。これは功利主義的（帰結主義的）倫理である。ベンサムより2000年以上前に。
+                    </p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 非攻（Fei Gong / Anti-Aggression）</strong></p>
+                <p>侵略戦争への反対。墨子は、一人を殺せば殺人罪なのに、戦争で万人を殺せば英雄と讃えられる矛盾を指摘する。小さな悪は罰せられ、大きな悪は称賛される──この不義を告発。ただし、防衛戦争は肯定。墨家は実際に城守技術を持ち、弱小国の防衛を助けた。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 尚賢（Shang Xian / Meritocracy）</strong></p>
+                <p>能力主義。官職は血統ではなく能力で決めるべし。農民でも有能なら大臣に、貴族でも無能なら退けよ。これは当時の世襲制への挑戦。</p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 節用・節葬・非楽</strong></p>
+                <p>倹約の思想。儒教が重視する豪華な葬儀、音楽、礼服は「民の財を費やし、民の力を傷める」。社会全体の利益にならないなら、やめるべし。これは貴族文化への批判であり、庶民の立場からの発言。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #22c55e;">■ 兼愛（けんあい）</h4>
+                    <p>すべての人を差別なく愛すること。儒教の「差等の愛」への批判。自分の親と他人の親を同じように扱う。争いの根本原因を除去する思想。</p>
+                </div>
+                <div>
+                    <h4 style="color: #22c55e;">■ 非攻（ひこう）</h4>
+                    <p>侵略戦争への反対。防衛戦争は肯定。墨家は実際に城守技術を持ち、弱国防衛を実践した。理論と実践の両立。</p>
+                </div>
+                <div>
+                    <h4 style="color: #22c55e;">■ 天志・明鬼</h4>
+                    <p>天（自然/神）の意志は兼愛である。鬼神は存在し、善悪を見ている。宗教的権威による道徳の裏付け。</p>
+                </div>
+                <div>
+                    <h4 style="color: #22c55e;">■ 墨弁（論理学）</h4>
+                    <p>墨家は論理学を発展させた。「同」「異」「類」「故」などの概念分析。西洋論理学と独立に発展した東アジアの論理学伝統。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>孔子</strong>（批判的継承、対抗関係）<br>
+                        <strong>夏の文化</strong>（墨子は夏の伝統を称揚）<br>
+                        <strong>工匠文化</strong>（職人・技術者の伝統）<br>
+                        <strong>庶民の視点</strong>（貴族文化への対抗）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>墨家集団</strong>（戦国時代の有力学派）<br>
+                        <strong>法家</strong>（尚賢の発展）<br>
+                        <strong>論理学・科学</strong>（墨弁、光学、力学）<br>
+                        <strong>近代の再発見</strong>（梁啓超、胡適による再評価）<br>
+                        <strong>功利主義との比較研究</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：オープンソース vs クローズドソース</h4>
+                <p>儒教の「差等の愛」は、家族・一族という「クローズドソース」コミュニティへの貢献を優先する。墨子の「兼愛」は、すべてのユーザーに平等に価値を提供する「オープンソース」思想。貢献対象を限定しないことで、全体最適を目指す。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：コスト最適化としての節用</h4>
+                <p>企業が無駄なマーケティング費用（豪華な葬儀、儀礼）を削減し、本質的な価値（民の生活）に投資する──これが墨子の「節用」。ROI（投資対効果）で社会制度を評価する、データドリブンな意思決定の先駆け。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：セキュリティチームとしての墨家</h4>
+                <p>墨家は「ホワイトハットハッカー」のような存在。攻撃技術（侵略戦争）を理解しつつ、防御（城守）に特化。「非攻」を説くだけでなく、実際に防御技術を持ち、弱者を守るサービスを提供した。理念と技術の両立。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>儒家（孔子）</th>
+                        <th>墨家（墨子）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>愛の形態</td>
+                        <td>差等の愛（親に厚く他者に薄い）</td>
+                        <td>兼愛（すべて平等に愛す）</td>
+                    </tr>
+                    <tr>
+                        <td>戦争観</td>
+                        <td>義戦を肯定</td>
+                        <td>非攻（侵略戦争反対）</td>
+                    </tr>
+                    <tr>
+                        <td>人材登用</td>
+                        <td>礼・教養重視</td>
+                        <td>尚賢（能力主義）</td>
+                    </tr>
+                    <tr>
+                        <td>礼楽</td>
+                        <td>社会秩序の基盤</td>
+                        <td>民の財を費やす浪費</td>
+                    </tr>
+                    <tr>
+                        <td>評価基準</td>
+                        <td>伝統・礼</td>
+                        <td>利（結果・効用）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #22c55e;">実践 (Installation)</h4>
+                <p><strong>功利主義</strong>：ベンサム以前の帰結主義倫理として再評価。<br>
+                    <strong>平和思想</strong>：「非攻」は現代の反戦・非暴力運動と共鳴。<br>
+                    <strong>能力主義</strong>：「尚賢」は近代的メリトクラシーの先駆。<br>
+                    <strong>科学史</strong>：墨弁（論理学）、光学（影の研究）、力学は東アジア科学史の重要テーマ。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #ef4444;">バグと副作用 (Limitations)</h4>
+                <p><strong>人間の感情を無視？</strong>：親への愛と他人への愛が同じという主張は、人間の自然な感情に反するとの批判（孟子）。<br>
+                    <strong>権威主義的傾向</strong>：「天志」「明鬼」で道徳を神的権威に基づける。思想統制に転化する危険。<br>
+                    <strong>集団主義</strong>：墨家は厳格な規律を持つ集団。個人の自由との緊張。<br>
+                    <strong>衰退の理由</strong>：秦漢統一後に衰退。儒教に敗北した理由の分析が必要。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし墨子がSNSと国際紛争を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「私の論じた問題が、二千年経っても解決されていないのか」──墨子はそう嘆くでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「SNSを見よ。人々は自分の国、自分の意見、自分の集団だけを愛し、他者を攻撃する。これこそ<strong>兼愛の欠如</strong>だ。自分と意見が違う者を『敵』と見なす──差別愛の極み。
+                </p>
+                <p style="margin-top: 1rem;">
+                    国際紛争も同じだ。自分の国の利益だけを考え、他国を攻める。一人を殺せば殺人、戦争で万人を殺せば正当化される──この不義は二千年前と変わらない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし希望もある。SNSは<strong>兼愛のインフラ</strong>にもなりうる。他国の人々と直接つながり、その苦しみを知ることができる。私の時代には不可能だった。問題は、この技術を差別愛に使うか、兼愛に使うか。
+                </p>
+                <p style="margin-top: 1rem;">
+                    そして<strong>「非攻」の技術</strong>も進化せよ。私は城守技術を教えた。現代なら、フェイクニュース検出、平和的紛争解決、情報セキュリティ──これらが新しい「城守」だ。攻撃ではなく防御に技術を使え。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #ef4444;">① 孟子の批判──人間の自然に反する</h4>
+                    <p>「墨子は父を無みす」（孟子）。親への特別な愛情は人間の自然であり、兼愛は不自然で実行不可能という批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">② 権威主義的傾向</h4>
+                    <p>「天志」「明鬼」で道徳を宗教的権威に基づける。墨家集団の厳格な規律は、思想統制に転化する危険を孕む。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">③ 歴史的敗北</h4>
+                    <p>かつては儒教と並ぶ勢力だったが、秦漢統一後に急速に衰退。なぜ墨家は敗北し、儒教が勝利したのか。組織の問題？国家との関係？</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">④ 功利主義の限界</h4>
+                    <p>「利」（結果）だけで判断する功利主義は、少数者の権利を多数者の利益のために犠牲にする危険がある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「兼愛」と儒教の「仁」の違いは？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        儒教の「仁」は「差等の愛」──親への愛が最も深く、他者への愛は薄くなる同心円状。墨子の「兼愛」は「無差別の愛」──すべての人を自分の親のように愛する。墨子は差別こそが争いの原因だと批判した。
+                    </p>
+                </details>
+                <details>
+                    <summary>「非攻」とは何か？防衛戦争は認めるか？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong> 侵略戦争への反対。一人を殺せば殺人罪、万人を殺せば英雄という矛盾を指摘。ただし防衛戦争は肯定し、墨家は実際に城守技術を持ち弱国防衛を助けた。
+                    </p>
+                </details>
+                <details>
+                    <summary>墨子が儒教を批判したポイントは？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        ①差等の愛（親にだけ厚い）→争いの原因。②礼楽重視→民の財を浪費。③世襲制→尚賢（能力主義）で対抗。④豪華な葬儀→節葬・節用。結果（利）ではなく伝統（礼）を重視する点を批判。
+                    </p>
+                </details>
+                <details>
+                    <summary>墨子が「功利主義の先駆」と言われる理由は？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        道徳を「天下の利」（社会全体の利益）で評価する帰結主義的思考。兼愛は感情ではなく「利になるから」実践すべきとした。ベンサムの功利主義より2000年以上前。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #22c55e; font-weight: 700;">兼愛（けんあい）</dt>
+                <dd>すべての人を差別なく平等に愛すること。墨子の核心概念。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">非攻（ひこう）</dt>
+                <dd>侵略戦争への反対。防衛戦争は肯定。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">尚賢（しょうけん）</dt>
+                <dd>能力主義。官職は血統ではなく能力で決める。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">節用（せつよう）</dt>
+                <dd>倹約。社会全体の利益にならない浪費を排除。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">天志（てんし）</dt>
+                <dd>天の意志。兼愛は天の命令であるという宗教的根拠。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Mozi</p>
+    </footer>
+</body>
+
+</html>

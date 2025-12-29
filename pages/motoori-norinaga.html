@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本居宣長 | Thinkers 700</title>
+    <meta name="description" content="本居宣長の思想を学ぶ。「もののあはれ」の美学と『古事記伝』で日本固有の精神を探求した国学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #f472b6;
+            --accent-glow: rgba(244, 114, 182, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), transparent);
+            border-bottom: 1px solid rgba(244, 114, 182, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #f472b6, #ec4899);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #f472b6, #fb7185);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f472b6;
+            border-bottom: 2px solid #f472b6;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(244, 114, 182, 0.1);
+            border-left: 4px solid #f472b6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(244, 114, 182, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #f472b6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(236, 72, 153, 0.1));
+            border: 2px solid #f472b6;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(244, 114, 182, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(244, 114, 182, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #f472b6;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #f472b6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">「もののあはれ」の発見者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">芸術OS</span>
+            <span class="os-tag">言語OS</span>
+        </div>
+        <h1>本居宣長</h1>
+        <p class="en-name">Motoori Norinaga (1730-1801)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「源氏物語の本意は、もののあはれを知る心にあり」──日本固有の美意識を言語化した国学の大成者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「もののあはれを知る、これ歌の本意なり。人の情を知らでは、歌は詠めぬなり。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『石上私淑言』</p>
+            </div>
+            <p>本居宣長は、江戸時代中期の国学者であり、日本思想史上最も独創的な文献学者の一人です。彼は35年をかけて『古事記伝』を完成させ、中国思想（儒教・仏教）の影響を受ける前の「古代日本の精神」を復元しようとしました。また、『源氏物語』の本質を「もののあはれ」という概念で説明し、日本固有の美意識を言語化することに成功しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「もののあはれ」とは、物事に触れて自然に湧き起こる感情に素直に心を動かすこと。</strong></p>
+                <p>善悪の判断ではなく、感情の共鳴が文学の本質。『源氏物語』は道徳を説く本ではない──人間の心の機微に「あはれ」と感じさせる本なのだ。この洞察は、道徳主義的な儒教文芸観への根本的批判であった。
+                </p>
+            </div>
+            <p>現代IT風に言えば、宣長は<strong>「日本文化のソースコード解読」</strong>を試みた思想家です。中国由来のフレームワーク（儒教・仏教）をアンインストールし、日本固有のネイティブコードを復元する──それが「国学」の営み。彼を学ぶことは、日本文化の深層構造、「感情」と「美」を重視する日本的価値観の源流を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f472b6; font-size: 1.3rem;">『古事記伝』（1764-1798、全44巻）</h4>
+                    <p style="margin-top: 1rem;">
+                        宣長のライフワーク。35年を費やして完成させた『古事記』の注釈書。8世紀の原文を一語一語精密に分析し、中国思想の影響を排除して「古代日本の心」を復元しようとした。文献学的厳密さと思想的情熱が融合した記念碑的作品。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f472b6; font-size: 1.3rem;">『紫文要領』『源氏物語玉の小櫛』</h4>
+                    <p style="margin-top: 1rem;">
+                        『源氏物語』研究書。物語の本質を「もののあはれを知る」ことにあると論じた。道徳的教訓を読み取ろうとする儒教的解釈を批判し、文学の自律性を主張。日本文芸批評の古典。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f472b6; font-size: 1.3rem;">『うひ山ぶみ』</h4>
+                    <p style="margin-top: 1rem;">
+                        国学入門書。学問の方法と心構えを平易に説いた。「師の説に拘泥するな」「自ら古典に向かえ」という教えは、独立した学問精神の宣言。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Motoori Norinaga: Japan's greatest philologist and founder of Kokugaku (National Learning). Spent
+                        35 years completing "Kojiki-den," a monumental commentary on Japan's oldest chronicle. Developed
+                        the concept of "mono no aware" (pathos of things) as the essence of Japanese aesthetics. Sought
+                        to recover ancient Japanese spirit free from Chinese influences.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>江戸時代の国学者、日本文献学の巨人。35年かけて『古事記伝』完成。「もののあはれ」概念で日本美学の本質を解明。中国思想の影響を排除し、古代日本精神の復元を目指した。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「日本文化は中国文化の亜流」「文学は道徳的教訓のため」「『古事記』は支離滅裂な神話」という儒教的・中国中心的な見方を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①もののあはれ（感情の共鳴）②古道（中国以前の日本精神）③言霊（言葉に宿る霊力）④「からごころ」批判（中国的思考様式への批判）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『古事記伝』（1764-1798）で古典の精密注釈。『源氏物語玉の小櫛』で「もののあはれ」論を展開。文献学的方法で思想を実証。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>国学の完成、日本美学の基礎理論、近代国語学・古典文学研究、日本文化論の原型。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「日本固有の精神とは何か？中国思想の影響を取り除くと、何が見えてくるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ もののあはれ（Mono no Aware）</strong></p>
+                <p>宣長の最も有名な概念。「もの」は対象（事物、人、状況）、「あはれ」は心が動かされる感嘆（ああ、と思う心）。物事に触れて自然に湧き起こる感情に素直に心を動かすこと──それが「もののあはれを知る」。</p>
+
+                <div class="quote-box">
+                    <p>「世の中にありとしある事の、さまざまの品々につけて、その情を知り、その事を知りて、嬉しきにつけ、悲しきにつけ、心の動くをいふなり。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem;">──『紫文要領』</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 『源氏物語』解釈革命</strong></p>
+                <p>宣長以前、『源氏物語』は儒教的に解釈されていた──「不倫の物語だから戒めとして読め」と。宣長はこれを根本から批判する。紫式部は道徳を説こうとしたのではない。「もののあはれ」を描こうとしたのだ。光源氏の恋愛は「良い」か「悪い」かではなく、人の心の機微として「あはれ」と感じられるもの。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 文学の自律性</strong></p>
+                    <p>これは「文学の自律性」の宣言である。文学は道徳の道具ではない。人間の感情を描き、読者の感情を動かす──それ自体が文学の価値。この洞察は、近代文芸批評に先駆けていた。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 「からごころ」批判</strong></p>
+                <p>「からごころ」とは中国的な思考様式。儒教的な道徳観、仏教的な厭世観、合理的・分析的な態度。宣長によれば、これらは日本人の心を歪めている。古代日本人は、善悪を分析するのではなく、素直に感情を動かした。この「まごころ（真心）」を取り戻すことが国学の目標。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 『古事記伝』の方法</strong></p>
+                <p>35年かけて『古事記』の一語一語を注釈。重要なのは方法論──中国思想のフィルターを通さず、原文の言葉そのものに即して読む。「言葉」から「意味」へ、「意味」から「古代の心」へ。これは近代的な文献学の先駆け。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #f472b6;">■ もののあはれ（物の哀れ）</h4>
+                    <p>物事に触れて自然に心が動くこと。喜び、悲しみ、感動などの感情すべてを含む。日本文学・美学の核心概念。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f472b6;">■ 古道（いにしえのみち）</h4>
+                    <p>中国思想が入る前の古代日本の道。神道の原型。人為的な道徳ではなく、自然な心の動きに従う生き方。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f472b6;">■ からごころ（漢意）</h4>
+                    <p>中国的な思考様式。儒教的道徳観、仏教的厭世観、分析的態度。日本人の「まごころ」を歪めるものとして批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f472b6;">■ 言霊（ことだま）</h4>
+                    <p>言葉に宿る霊力。古代日本人は言葉それ自体に力があると信じた。言語と現実の密接な関係。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>賀茂真淵</strong>（国学の師、万葉研究）<br>
+                        <strong>契沖</strong>（古典文献学の先駆）<br>
+                        <strong>荷田春満</strong>（国学の祖）<br>
+                        <strong>『源氏物語』『古事記』</strong>（古典そのもの）<br>
+                        <strong>和歌の伝統</strong>（歌学）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>平田篤胤</strong>（復古神道への発展）<br>
+                        <strong>明治期国粋主義</strong>（ナショナリズム）<br>
+                        <strong>小林秀雄</strong>（「本居宣長」論）<br>
+                        <strong>九鬼周造</strong>（「いき」の構造）<br>
+                        <strong>日本文化論</strong>（丸山眞男批判など）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：ネイティブコードへの回帰</h4>
+                <p>Javaアプリケーション（儒教・仏教という外来フレームワーク）を取り除いて、C言語で書かれたネイティブコード（古代日本精神）を読み解く──これが宣長の「からごころ」批判。レイヤーをひとつずつ剥がして、OSの原型に到達しようとする。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：UXとしての「あはれ」</h4>
+                <p>「もののあはれ」はUX（ユーザー体験）に近い。製品の「機能」（道徳的教訓）ではなく、使った時に何を「感じる」か（感情の共鳴）が本質。宣長は、文学を「機能」ではなく「体験」として評価する視点を確立した。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：オリジナル版の復元</h4>
+                <p>古いソフトウェアが後のバージョンで改変され、オリジナルの設計思想が見えなくなる。宣長は「バージョン1.0」（古代日本）を復元しようとした。『古事記伝』は35年かけたリバースエンジニアリングのドキュメント。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（儒教的解釈）</th>
+                        <th>宣長の仕様（New OS）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>文学の目的</td>
+                        <td>道徳的教訓</td>
+                        <td>もののあはれ（感情の共鳴）</td>
+                    </tr>
+                    <tr>
+                        <td>評価基準</td>
+                        <td>善悪の判断</td>
+                        <td>心が動くかどうか</td>
+                    </tr>
+                    <tr>
+                        <td>日本文化</td>
+                        <td>中国文化の亜流</td>
+                        <td>独自の精神伝統</td>
+                    </tr>
+                    <tr>
+                        <td>『古事記』</td>
+                        <td>支離滅裂な神話</td>
+                        <td>古代日本精神の結晶</td>
+                    </tr>
+                    <tr>
+                        <td>学問の方法</td>
+                        <td>中国経典の注釈</td>
+                        <td>原文に即した精読</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #f472b6;">実践 (Installation)</h4>
+                <p><strong>日本文学研究</strong>：古典文学研究の基礎理論。<br>
+                    <strong>美学</strong>：「もののあはれ」は日本美学のキーワード。<br>
+                    <strong>国語学</strong>：日本語研究の先駆（古語の精密分析）。<br>
+                    <strong>日本文化論</strong>：ベネディクト、丸山眞男など、日本論の参照点。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #ef4444;">バグと副作用 (Limitations)</h4>
+                <p><strong>ナショナリズムへの転用</strong>：平田篤胤、明治国粋主義への流用。<br>
+                    <strong>「純粋な古代」の虚構</strong>：中国影響以前の「純粋」日本は本当に存在したか？構築された伝統への批判。<br>
+                    <strong>排外主義の萌芽</strong>：「からごころ」批判が、外来文化全般への拒否に転化する危険。<br>
+                    <strong>神道の神秘化</strong>：合理的説明を拒否し、神秘的権威を与える側面。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし本居宣長がアニメ・ゲーム文化を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これこそ、もののあはれの現代的発露ではないか」──宣長はそう言うかもしれません。</p>
+                <p style="margin-top: 1rem;">
+                    「私は『源氏物語』を論じた。紫式部は道徳を説いたのではない──人の心の機微を描いた。読者は光源氏の恋愛を『良い』『悪い』ではなく、『あはれ』と感じる。
+                </p>
+                <p style="margin-top: 1rem;">
+                    今のアニメや物語ゲームを見よ。外国の人々が日本のコンテンツに惹きつけられるのは、<strong>もののあはれを感じる</strong>からではないか。登場人物の感情に共感し、儚さに心を動かされ、別れに涙する──これは道徳ではなく、感情の共鳴だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし注意も要る。私が批判した<strong>「からごころ」</strong>──外来の思考様式への盲従──は、今も別の形で存在する。西洋の価値観をそのまま輸入し、日本固有の感性を「遅れたもの」と見なす風潮。これも「からごころ」の一種ではないか。
+                </p>
+                <p style="margin-top: 1rem;">
+                    大切なのは、<strong>素直に心を動かすこと</strong>。理論や概念で武装する前に、まず「あはれ」と感じる心を持つこと。それが古代日本人の心であり、私の国学が伝えたかったことだ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #ef4444;">① ナショナリズムへの転用</h4>
+                    <p>宣長自身は温和な学者だったが、弟子の平田篤胤以降、国学は排外的ナショナリズムに転化。明治期の国粋主義、戦前の皇国史観に利用された。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">② 「純粋な古代」の虚構</h4>
+                    <p>中国影響以前の「純粋な日本」は、宣長が構築した理念であり、歴史的実態ではない。エドワード・サイードの「オリエンタリズム」批判に類似した問題。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">③ 反知性主義的傾向</h4>
+                    <p>「からごころ」批判が、合理的思考一般への批判に拡大する危険。分析・批判を「外来的」として排除する態度。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">④ 神道の政治化</h4>
+                    <p>学問的な古典研究が、神道の宗教的・政治的権威づけに転用される。宣長の意図を超えた帰結。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「もののあはれ」とは何か？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        物事に触れて自然に心が動くこと。「もの」は対象、「あはれ」は心が動かされる感嘆（ああ、と思う心）。喜びも悲しみも含む。『源氏物語』の本質は、読者に「あはれ」と感じさせることにある。
+                    </p>
+                </details>
+                <details>
+                    <summary>宣長が批判した「からごころ」とは？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong> 中国的な思考様式。儒教的道徳観、仏教的厭世観、分析的・合理的態度など。日本人の「まごころ」（素直な心）を歪めるものとして批判。
+                    </p>
+                </details>
+                <details>
+                    <summary>『古事記伝』とは何か？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        宣長が35年かけて完成させた『古事記』の注釈書（全44巻）。原文の一語一語を精密に分析し、中国思想のフィルターを通さずに古代日本の精神を復元しようとした。日本文献学の記念碑。
+                    </p>
+                </details>
+                <details>
+                    <summary>宣長の『源氏物語』解釈はなぜ革命的だったか？</summary>
+                    <p style="margin-top: 1rem;">
+                        <strong>答え:</strong>
+                        従来の儒教的解釈（道徳的教訓として読む）を批判し、「もののあはれを知る」ことが本質だと論じた。善悪ではなく感情の共鳴が文学の価値──これは「文学の自律性」の宣言であり、近代文芸批評に先駆けていた。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #f472b6; font-weight: 700;">もののあはれ（物の哀れ）</dt>
+                <dd>物事に触れて自然に心が動くこと。日本美学の核心概念。</dd>
+                <dt style="color: #f472b6; font-weight: 700; margin-top: 1rem;">からごころ（漢意）</dt>
+                <dd>中国的思考様式。儒教・仏教的な態度。宣長が批判。</dd>
+                <dt style="color: #f472b6; font-weight: 700; margin-top: 1rem;">まごころ（真心）</dt>
+                <dd>素直な心、自然な感情。古代日本人の心のあり方。</dd>
+                <dt style="color: #f472b6; font-weight: 700; margin-top: 1rem;">古道（いにしえのみち）</dt>
+                <dd>中国思想以前の古代日本の道。神道の原型。</dd>
+                <dt style="color: #f472b6; font-weight: 700; margin-top: 1rem;">言霊（ことだま）</dt>
+                <dd>言葉に宿る霊力。言語と現実の密接な関係。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Motoori Norinaga</p>
+    </footer>
+</body>
+
+</html>

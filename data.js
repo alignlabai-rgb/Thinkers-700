@@ -4457,11 +4457,11 @@
     "name": "ガエターノ・モスカ",
     "en_name": "Mosca, Gaetano",
     "years": "20世紀イタリア",
-    "school": ["社会OS"],
+    "school": ["社会OS", "政治OS"],
     "summary": "支配階級論",
     "explanation": "ガエターノ・モスカは、昔の『社会OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは支配階級論という新しい視点を持てるようになったんだ。",
     "contribution": "支配階級論をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/mosca-gaetano.html"
   },
   {
     "id": "P-373",
@@ -4469,11 +4469,11 @@
     "name": "本居宣長",
     "en_name": "Motoori, Norinaga",
     "years": "江戸時代日本",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "芸術OS", "言語OS"],
     "summary": "もののあはれ、古事記伝",
     "explanation": "本居宣長は、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはもののあはれ、古事記伝という新しい視点を持てるようになったんだ。",
     "contribution": "もののあはれ、古事記伝を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/motoori-norinaga.html"
   },
   {
     "id": "P-374",
@@ -4481,11 +4481,11 @@
     "name": "墨子",
     "en_name": "Mozi",
     "years": "古代中国",
-    "school": ["倫理OS"],
+    "school": ["倫理OS", "政治OS", "技術OS"],
     "summary": "兼愛、非攻",
     "explanation": "墨子は、昔の『倫理OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは兼愛、非攻という新しい視点を持てるようになったんだ。",
     "contribution": "兼愛、非攻をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/mozi.html"
   },
   {
     "id": "P-375",
