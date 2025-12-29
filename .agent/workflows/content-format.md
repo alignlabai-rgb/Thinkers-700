@@ -72,6 +72,17 @@ instituted）」は、その結果として固まった構造やルールです�
 - [ ] Thought experiments are **scenario-based** with dialogue or narrative
 - [ ] Glossary terms include **English equivalents** where applicable
 
+> [!IMPORTANT]
+> **No Arbitrary Upper Limits on Content Items**
+> 
+> The table above shows **MINIMUM** counts only. There is **NO UPPER LIMIT**:
+> - **Section 3 (Kernel)**: Should have as many subsections as needed to fully explain the thinker's core ideas (minimum 3, but major thinkers like J.S. Mill may have 5-6)
+> - **Section 5 (Genealogy)**: Roots and Fruits should reflect the thinker's actual influence network (minimum 4 each, but major thinkers may have 6-8+)
+> - **Section 10 (Critiques)**: List all substantive critiques (minimum 3)
+> 
+> Do NOT artificially limit content to match a fixed number. If a thinker has 8 important influences, list all 8. Do NOT pad thin content to meet minimums either.
+
+
 ---
 
 ## 3. OS Tag Synchronization (CRITICAL)
