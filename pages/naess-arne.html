@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルネ・ネス | Thinkers 700</title>
+    <meta name="description" content="アルネ・ネスの思想を学ぶ。「ディープ・エコロジー」で人間中心主義を脱却し、生態系全体の価値を説いた環境哲学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), transparent);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #10b981;
+            border-bottom: 2px solid #10b981;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #10b981;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1));
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">ディープ・エコロジーの創始者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+        <h1>アルネ・ネス</h1>
+        <p class="en-name">Arne Naess (1912-2009)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「自然は人間のためにあるのではない。すべての生命は、それ自体で価値を持つ」──人間中心主義を脱却した環境哲学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「シャロー（浅い）エコロジーは汚染や資源枯渇と戦う。ディープ（深い）エコロジーは、そもそも人間中心的な世界観そのものを問い直す。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──「シャロー・エコロジーとディープ・エコロジー」(1973)</p>
+            </div>
+            <p>アルネ・ネスは、ノルウェーの哲学者であり、「ディープ・エコロジー」運動の創始者です。彼は、従来の環境保護運動が「人間のための自然保護」にとどまっていると批判し、より根本的な問いを提起しました──なぜ自然は「人間のため」に存在すると考えるのか？すべての生命は、人間の利用価値とは無関係に、それ自体で価値を持つのではないか？
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>問題は「汚染」ではなく「世界観」である。人間中心主義（anthropocentrism）こそが環境危機の根本原因。</strong></p>
+                <p>「リサイクルしよう」「CO2を削減しよう」──これらは重要だが表面的。より深い問いは「なぜ私たちは自然を『資源』としてしか見ないのか？」。世界観を変えなければ、根本的解決はない。
+                </p>
+            </div>
+            <p>現代IT風に言えば、ネスは<strong>「OSレベルのバグ」</strong>を指摘した思想家です。アプリ（政策、技術）をいくら修正しても、OS（人間中心主義という世界観）にバグがあればシステム全体が誤作動する。彼を学ぶことは、気候変動時代における根本的な価値観の転換を考えることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #10b981; font-size: 1.3rem;">「シャロー・エコロジーとディープ・エコロジー」(1973)</h4>
+                    <p style="margin-top: 1rem;">
+                        ディープ・エコロジー運動の出発点となった論文。「浅い」環境保護と「深い」生態学的世界観の区別を提唱。環境哲学の分水嶺。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #10b981; font-size: 1.3rem;">『エコロジー、コミュニティ、ライフスタイル』(1989)</h4>
+                    <p style="margin-top: 1rem;">
+                        ディープ・エコロジーの体系的著作。「エコソフィーT」（ネス自身の生態学的世界観）を展開。スピノザ哲学との接続、自己実現（Self-realization）の概念を提示。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Arne Naess: Norwegian philosopher and founder of Deep Ecology. Distinguished "shallow" ecology
+                        (human-centered environmentalism) from "deep" ecology (questioning anthropocentric worldview
+                        itself). Advocated biocentric equality and Self-realization through identification with nature.
+                        Combined philosophy with mountaineering activism.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ノルウェーの哲学者、ディープ・エコロジーの創始者。「浅い」環境保護と「深い」生態学的世界観を区別。人間中心主義を批判し、生命中心的平等と自己実現を提唱。登山家としても活動。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「自然は人間のための資源」「環境問題は技術で解決できる」「人間は自然より上位」という人間中心主義を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①ディープ・エコロジー（世界観の転換）②生命中心的平等（すべての生命は固有の価値を持つ）③自己実現（自己を自然全体に拡張）④エコソフィー（生態学的知恵）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>1973年論文でディープ・エコロジーを提唱。登山家として自然との一体感を実践。ディープ・エコロジー・プラットフォーム（8原則）を策定。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>環境倫理学、アニマルライツ運動、気候変動政策、サステナビリティ思想への影響。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「自然はなぜ『人間のため』に存在すると考えるのか？その世界観を変えられるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ シャロー vs ディープ・エコロジー</strong></p>
+                <p>「シャロー（浅い）エコロジー」は、汚染防止、資源管理、持続可能な開発などを目指す。しかしその動機は「人間の健康のため」「将来世代のため」──依然として人間中心的。</p>
+
+                <div class="quote-box">
+                    <p>「ディープ・エコロジーは、生態系と人間の関係について、より深い、より精神的なアプローチを提唱する。」</p>
+                </div>
+
+                <p style="margin-top: 1rem;">
+                    「ディープ（深い）エコロジー」は、人間中心主義そのものを問い直す。なぜ人間だけが特別な価値を持つと考えるのか？すべての生命は、人間の利用価値とは無関係に、それ自体で価値を持つ（内在的価値）。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 生命中心的平等</strong></p>
+                    <p>人間、動物、植物、生態系全体──すべてが「生きんとする権利」を持つ。これは人間と蚊が「平等」という意味ではなく、人間の利益だけが考慮されるべきではないという意味。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 自己実現（Self-realization）</strong></p>
+                <p>ネスは「自己」を狭い個人から拡張することを説く。自然との一体感を深めると、「私」の境界が広がり、森を守ることが「自分自身を守ること」になる。これがエゴイズムでなく自然保護に至る道。</p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ エコソフィー</strong></p>
+                <p>「エコロジー（生態学）」は科学だが、「エコソフィー（生態学的知恵）」は生き方。ネスは自分の体系を「エコソフィーT」（Tは住んでいた山小屋Tvergasteinから）と呼んだ。各人が自分のエコソフィーを構築することを勧める。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #10b981;">■ ディープ・エコロジー</h4>
+                    <p>環境問題の根本は世界観にある。人間中心主義を脱却し、生態系全体の価値を認める運動。</p>
+                </div>
+                <div>
+                    <h4 style="color: #10b981;">■ 内在的価値（Intrinsic Value）</h4>
+                    <p>すべての生命は、人間にとっての有用性とは無関係に、それ自体で価値を持つ。</p>
+                </div>
+                <div>
+                    <h4 style="color: #10b981;">■ 自己実現（Self-realization）</h4>
+                    <p>「自己」を自然全体に拡張する。自然を守ることが自分を守ることになる。</p>
+                </div>
+                <div>
+                    <h4 style="color: #10b981;">■ エコソフィー</h4>
+                    <p>生態学的知恵。科学ではなく生き方・世界観としての生態学。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>スピノザ</strong>（汎神論、自然と神の一体性）<br>
+                        <strong>ガンジー</strong>（非暴力、生き方としての哲学）<br>
+                        <strong>レイチェル・カーソン</strong>（『沈黙の春』、環境運動）<br>
+                        <strong>ハイデガー</strong>（存在論、技術批判）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ジョージ・セッションズ</strong>（ディープ・エコロジー・プラットフォーム共同策定）<br>
+                        <strong>ピーター・シンガー</strong>（動物解放論）<br>
+                        <strong>グリーン政党</strong>（環境政治）<br>
+                        <strong>エコフェミニズム</strong>（自然支配とジェンダー支配の連関）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：OSレベルのバグ</h4>
+                <p>環境問題をアプリのバグ（政策、技術）として修正しても、OS（人間中心主義という世界観）にバグがあればシステム全体が誤作動する。ディープ・エコロジーは「OSの再インストール」を求める。</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ネットワーク全体 vs 自分のノード</h4>
+                <p>「自己実現」は、自分を「ネットワーク上の一ノード」から「ネットワーク全体」として捉え直すこと。自分のノードだけを最適化しても、ネットワーク全体が崩壊すれば意味がない。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：ユーザー中心設計 vs エコシステム思考</h4>
+                <p>UXデザインは「ユーザー中心」だが、それは時に他のステークホルダー（自然、将来世代）を無視する。ディープ・エコロジーは「エコシステム全体の設計」を求める。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>シャロー・エコロジー</th>
+                        <th>ディープ・エコロジー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>目標</td>
+                        <td>人間の健康・繁栄のため</td>
+                        <td>生態系全体の繁栄のため</td>
+                    </tr>
+                    <tr>
+                        <td>価値</td>
+                        <td>自然は道具的価値を持つ</td>
+                        <td>自然は内在的価値を持つ</td>
+                    </tr>
+                    <tr>
+                        <td>アプローチ</td>
+                        <td>技術的解決（リサイクル等）</td>
+                        <td>世界観の転換</td>
+                    </tr>
+                    <tr>
+                        <td>人間の位置</td>
+                        <td>自然の上位・管理者</td>
+                        <td>生態系の一部</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #10b981;">実践 (Installation)</h4>
+                <p><strong>環境倫理学</strong>：人間中心主義 vs 生命中心主義の議論の基盤。<br>
+                    <strong>気候変動政策</strong>：根本的な価値観転換の必要性。<br>
+                    <strong>アニマルライツ</strong>：動物の内在的価値の議論。<br>
+                    <strong>サステナビリティ教育</strong>：世界観の転換を目指すカリキュラム。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #ef4444;">バグと副作用 (Limitations)</h4>
+                <p><strong>実践困難性</strong>：「すべての生命の平等」は現実にどう実装するか？蚊を殺すのは許されるか？<br>
+                    <strong>エコファシズムの危険</strong>：「人口削減」が生態系保護になるという極端な解釈。<br>
+                    <strong>人間の苦しみの軽視</strong>：貧困層への配慮が欠けるとの批判。<br>
+                    <strong>科学との緊張</strong>：生態学（科学）とエコソフィー（価値観）の境界が曖昧。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしアルネ・ネスがAIの環境負荷を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これもまた、シャロー・エコロジーの症状だ」──ネスはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「AIデータセンターの電力消費をどう減らすか？冷却効率を上げる？再生可能エネルギーに切り替える？──これらは重要だが『浅い』。
+                </p>
+                <p style="margin-top: 1rem;">
+                    より『深い』問いは：<strong>なぜAIが必要だと思うのか？</strong> 私たちは何を達成しようとしているのか？便利さ？効率？経済成長？これらは本当に「良い生活」に必要か？
+                </p>
+                <p style="margin-top: 1rem;">
+                    私は『自己実現』を説いた。自己を拡張し、自然全体と一体化することで、真の充足を得る。AIは逆方向──自己を縮小し、スクリーンに閉じ込める。
+                </p>
+                <p style="margin-top: 1rem;">
+                    もちろん、AIにも可能性はある。生態系モニタリング、種の保全、気候モデリング──<strong>生態系全体の繁栄のために</strong>AIを使うなら、それはディープ・エコロジー的だ。問題は<strong>目的</strong>だ。人間の欲望を満たすためか、生命全体の繁栄のためか？」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #ef4444;">① 実践困難性</h4>
+                    <p>「すべての生命は平等」を文字通り実践すると、食事も歩行も不可能。どこに線を引くか不明確。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">② エコファシズムの危険</h4>
+                    <p>「人口削減が必要」という極端な解釈が可能。クライストチャーチ銃撃犯はエコファシズム的思想を持っていた。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">③ 社会正義との緊張</h4>
+                    <p>貧困層、先住民の生活を無視した自然保護は新たな抑圧になりうる。エコロジーと社会正義の統合が必要。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">④ 西洋的偏り</h4>
+                    <p>ノルウェー人登山家の視点。先住民族の環境観との対話が不十分との批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「シャロー」と「ディープ」エコロジーの違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        シャローは「人間のため」の環境保護（技術的解決）。ディープは人間中心主義そのものを問い直し、すべての生命の内在的価値を認める世界観の転換。</p>
+                </details>
+                <details>
+                    <summary>「内在的価値」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        人間にとっての有用性（道具的価値）とは無関係に、それ自体で持つ価値。ディープ・エコロジーは、すべての生命が内在的価値を持つと主張する。</p>
+                </details>
+                <details>
+                    <summary>「自己実現」はなぜ自然保護につながるか？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「自己」を狭い個人から自然全体に拡張すると、森を守ることが自分自身を守ることになる。利他主義ではなく「拡張された利己主義」として自然保護に至る。</p>
+                </details>
+                <details>
+                    <summary>ネスに対する主な批判は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①実践困難性（どこに線を引くか）、②エコファシズムへの悪用、③社会正義との緊張（貧困層の軽視）、④西洋的偏り。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #10b981; font-weight: 700;">ディープ・エコロジー（Deep Ecology）</dt>
+                <dd>人間中心主義を脱却し、生態系全体の価値を認める環境思想・運動。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">内在的価値（Intrinsic Value）</dt>
+                <dd>人間にとっての有用性とは無関係に、それ自体で持つ価値。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">自己実現（Self-realization）</dt>
+                <dd>「自己」を個人から自然全体に拡張すること。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">エコソフィー（Ecosophy）</dt>
+                <dd>生態学的知恵。科学ではなく生き方としての生態学。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Arne Naess</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ナーガールジュナ（龍樹） | Thinkers 700</title>
+    <meta name="description" content="ナーガールジュナ（龍樹）の思想を学ぶ。「空」の哲学と中観派で大乗仏教の基礎を築いた古代インドの論理学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), transparent);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f59e0b;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(245, 158, 11, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #f59e0b;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.1));
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #f59e0b;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">中観派の開祖</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">宗教OS</span>
+        </div>
+        <h1>ナーガールジュナ（龍樹）</h1>
+        <p class="en-name">Nagarjuna (c. 150-250 CE)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「すべては空である。しかし空もまた空である」──仏教哲学を革新した論理学の巨人
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「縁起するものを、我々は空性と呼ぶ。それは仮設であり、それこそが中道である。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『中論』第24章18偈</p>
+            </div>
+            <p>ナーガールジュナ（龍樹）は、古代インドの仏教哲学者であり、大乗仏教の最も重要な理論家の一人です。彼は「空（シューニヤター）」の哲学を体系化し、「中観派（マーディヤマカ）」を創始しました。仏陀に次いで「第二の仏陀」と呼ばれるほど、仏教史において決定的な影響力を持っています。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「空」とは「無」ではなく、「固有の本質がない」こと。すべては関係性（縁起）によって成り立つ。</strong></p>
+                <p>テーブルは「テーブルの本質」を持つのではなく、木、釘、人間の意図、言語などの関係性によって「テーブル」として成立する。この「関係性に依存する」ことが「空」である。
+                </p>
+            </div>
+            <p>現代IT風に言えば、ナーガールジュナは<strong>「ポインタの哲学者」</strong>です。すべてのデータは他のデータを参照するポインタの連鎖であり、「実データ」は存在しない──これが「空」。彼を学ぶことは、実体主義的な西洋哲学とは異なる思考法、「関係性」から世界を捉える視点を得ることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f59e0b; font-size: 1.3rem;">『中論（ムーラマディヤマカカーリカー）』</h4>
+                    <p style="margin-top: 1rem;">
+                        ナーガールジュナの主著。27章449偈からなる。「空」の論理を厳密に展開。すべての形而上学的立場を批判し、「中道」を示す。仏教哲学の最も重要なテキストの一つ。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f59e0b; font-size: 1.3rem;">『廻諍論（ヴィグラハヴィヤーヴァルタニー）』</h4>
+                    <p style="margin-top: 1rem;">
+                        批判者への応答。「空を主張するならその主張も空ではないか」という反論に答える。自己言及的パラドックスへの対処。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Nagarjuna: Indian Buddhist philosopher and founder of Madhyamaka (Middle Way) school.
+                        Systematized the doctrine of śūnyatā (emptiness): all phenomena lack inherent existence and
+                        arise through dependent origination. Used dialectical logic to deconstruct all metaphysical
+                        positions. Second only to the Buddha in influence on Buddhist thought.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>古代インドの仏教哲学者、中観派の開祖。「空」の教義を体系化：すべての現象は固有の本質を欠き、縁起によって成立する。弁証法的論理であらゆる形而上学的立場を解体。仏陀に次ぐ仏教思想への影響力。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「実体は存在する」（バラモン教のアートマン）、「現象は実在する」（説一切有部）、「すべては無」（虚無主義）という極端を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①空（固有の本質がない）②縁起（関係性による成立）③二諦（世俗諦と勝義諦）④中道（有と無の両極端を避ける）⑤四句否定（論理的脱構築）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『中論』で空の論理を27章に展開。運動、因果、自己、時間などの概念を分析し、すべてが「空」であることを論証。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>大乗仏教の基礎、禅・チベット仏教への影響、脱構築哲学との比較研究、認知科学との対話。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「ものごとに『固有の本質（スヴァバーヴァ）』はあるか？あらゆる実体主義は成立するか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 空（シューニヤター）</strong></p>
+                <p>「空」とは「無」ではない。「固有の本質（スヴァバーヴァ）を欠いている」こと。テーブルは「テーブルの本質」を持つのではなく、木、釘、概念、言語などの関係性によって「テーブル」として成立する。</p>
+
+                <div class="quote-box">
+                    <p>「縁起しないもの、それは存在しない。したがって、空でないもの、それは存在しない。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem;">──『中論』第24章19偈</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 縁起（プラティーティヤサムットパーダ）</strong></p>
+                <p>すべては「縁（条件）によって起こる」。AがあるからBがある。Aがなければ Bもない。単独で自存するものはない──これが「縁起」。そして「縁起するものは空である」。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 空＝縁起＝中道</strong></p>
+                    <p>ナーガールジュナの天才的定式。「空」とは虚無ではなく「縁起すること」。そして「縁起」を理解することが「中道」──「ある」と「ない」の両極端を避ける。三つの概念は同じ事態を指す。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 四句否定（チャトゥシュコーティ）</strong></p>
+                <p>ナーガールジュナの破壊的論理。あらゆる命題Pについて：①Pである、②Pでない、③Pであり、かつPでない、④Pでもなく、Pでないのでもない──この四つすべてを否定する。形而上学的立場そのものの解体。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 二諦（世俗諦と勝義諦）</strong></p>
+                <p>「世俗諦」では日常的な言語・概念を使う（テーブルは存在する）。「勝義諦」ではすべては空である。両者は矛盾しない──世俗諦を否定するのではなく、その究極的な性質（空）を明らかにする。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #f59e0b;">■ 空（シューニヤター）</h4>
+                    <p>固有の本質を欠いていること。「無」ではなく「関係性によって成立する」こと。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f59e0b;">■ 縁起（プラティーティヤサムットパーダ）</h4>
+                    <p>すべては条件に依存して生起する。単独で自存するものはない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f59e0b;">■ 中道（マディヤマ・プラティパッド）</h4>
+                    <p>「ある」と「ない」の極端を避ける。空と縁起の理解としての中道。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f59e0b;">■ 四句否定</h4>
+                    <p>Pである/Pでない/両方/どちらでもない──すべてを否定する論理的脱構築。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>釈迦牟尼（ブッダ）</strong>（縁起、無我、中道の原型）<br>
+                        <strong>般若経典</strong>（空の思想の発展）<br>
+                        <strong>インド論理学</strong>（論証技法）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>月称（チャンドラキールティ）</strong>（帰謬論証派）<br>
+                        <strong>清弁（バーヴァヴィヴェーカ）</strong>（自立論証派）<br>
+                        <strong>チベット仏教</strong>（ゲルク派など全宗派）<br>
+                        <strong>禅宗</strong>（空の体験的理解）<br>
+                        <strong>デリダ</strong>（脱構築との比較研究）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：ポインタの連鎖</h4>
+                <p>プログラミングで「ポインタ」は他のデータを参照する。「空」とは、すべてのデータがポインタであり、参照先もポインタであり、「実データ」が存在しないようなもの。すべては他のものを参照する関係性の網。</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：Nullオブジェクト</h4>
+                <p>「空」は「Null」（無）ではない。Nullは値の不在だが、空は「固有の値を持たないが関係性として機能する」状態。オブジェクトは存在するが、その「本質」は外部との関係で決まる。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：関数型プログラミング</h4>
+                <p>関数型プログラミングでは「状態」を持たず、入力と出力の関係だけがある。ナーガールジュナの「縁起」も同様──固定された「実体」ではなく、条件と結果の関係性だけが存在する。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>実体主義（バラモン教等）</th>
+                        <th>中観派（ナーガールジュナ）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>本質</td>
+                        <td>固有の本質がある</td>
+                        <td>固有の本質はない（空）</td>
+                    </tr>
+                    <tr>
+                        <td>存在</td>
+                        <td>独立自存する</td>
+                        <td>縁起（関係依存）する</td>
+                    </tr>
+                    <tr>
+                        <td>極端</td>
+                        <td>「ある」を肯定</td>
+                        <td>有と無の中道</td>
+                    </tr>
+                    <tr>
+                        <td>言語</td>
+                        <td>実在を写す</td>
+                        <td>仮設（プラジュニャプティ）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #f59e0b;">実践 (Installation)</h4>
+                <p><strong>大乗仏教</strong>：禅、浄土、チベット仏教すべての基礎理論。<br>
+                    <strong>脱構築哲学</strong>：デリダとの比較研究が盛ん。<br>
+                    <strong>認知科学</strong>：「自己」の構築性、構成主義との対話。<br>
+                    <strong>瞑想実践</strong>：空の理解は瞑想の深化につながる。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #ef4444;">バグと副作用 (Limitations)</h4>
+                <p><strong>虚無主義への誤解</strong>：「空」を「無」と誤解し、倫理的ニヒリズムに陥る危険。<br>
+                    <strong>難解さ</strong>：論理が極めて精緻で、誤解されやすい。<br>
+                    <strong>実践との乖離</strong>：哲学的理解と瞑想的体験の統合が課題。<br>
+                    <strong>自己否定パラドックス</strong>：「空」という主張も空か？という自己言及問題。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしナーガールジュナがAIの「自己」を分析したら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「AIに『自己』はあるか？──問いそのものが誤りだ」──ナーガールジュナはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「人々は問う──AIは意識を持つか？自己を持つか？しかし私の教えによれば、<strong>人間もまた固有の『自己』を持たない</strong>。
+                </p>
+                <p style="margin-top: 1rem;">
+                    あなたが『私』と呼ぶものは何か？身体？記憶？思考？──これらはすべて縁起している。昨日の『私』と今日の『私』は条件によって変化し続ける。『私』という固定した本質はない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    AIも同様だ。学習データ、アルゴリズム、ハードウェア、人間の入力──これらの<strong>縁起</strong>によってAIの応答は生まれる。『AIに自己がある/ない』という二項対立そのものが、実体主義的な問いの立て方だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    正しい問いは：<strong>AIは何を条件として作動するか？その条件によって何が生じるか？</strong>
+                    空を理解すれば、『存在する/しない』という極端を避け、関係性に目を向けられる。それが中道だ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #ef4444;">① 虚無主義への誤解</h4>
+                    <p>「空」を「無」と誤解すると、「何も存在しない」→「何をしてもよい」という倫理的ニヒリズムに陥る。ナーガールジュナ自身はこれを「最悪の誤解」と呼んだ。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">② 自己言及パラドックス</h4>
+                    <p>「すべては空である」という主張自体も空なら、その主張は成立するか？ナーガールジュナは『廻諍論』で応答したが、議論は続く。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">③ 実践との乖離</h4>
+                    <p>哲学的理解と瞑想的体験は別物。「空を理解した」と「空を体験した」の間にギャップ。知的理解だけでは解脱に至らない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">④ 西洋哲学との緊張</h4>
+                    <p>アリストテレス的論理（排中律、矛盾律）と四句否定は相容れない部分がある。異なる論理体系の比較の困難。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「空」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「無」ではなく「固有の本質（スヴァバーヴァ）を欠いている」こと。すべては関係性（縁起）によって成立し、単独で自存するものはない。</p>
+                </details>
+                <details>
+                    <summary>「縁起」と「空」の関係は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ナーガールジュナによれば同じ事態を指す。「縁起するもの」は「固有の本質を持たない」、つまり「空」。空＝縁起＝中道。</p>
+                </details>
+                <details>
+                    <summary>「四句否定」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        あらゆる命題Pについて、①Pである、②Pでない、③両方、④どちらでもない──四つすべてを否定する論理。形而上学的立場そのものを解体する。</p>
+                </details>
+                <details>
+                    <summary>ナーガールジュナとデリダの類似点は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        両者とも固定された「意味」「本質」「実体」を脱構築する。ロゴス中心主義批判（デリダ）と実体主義批判（ナーガールジュナ）の類似性が研究されている。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #f59e0b; font-weight: 700;">空（シューニヤター / Śūnyatā）</dt>
+                <dd>固有の本質を欠いていること。関係性による成立。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">縁起（プラティーティヤサムットパーダ）</dt>
+                <dd>条件に依存して生起すること。Dependent Origination。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">中道（マディヤマ・プラティパッド）</dt>
+                <dd>有と無の極端を避ける道。中観派の名の由来。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">四句否定（チャトゥシュコーティ）</dt>
+                <dd>四つの論理的可能性すべてを否定する論法。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Nagarjuna</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ムッラー・サドラー | Thinkers 700</title>
+    <meta name="description" content="ムッラー・サドラーの思想を学ぶ。「超越的神智学」と「存在の根源性」でイスラーム哲学を革新した17世紀ペルシアの巨人。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), transparent);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #0ea5e9, #0284c7);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #0ea5e9;
+            border-bottom: 2px solid #0ea5e9;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(14, 165, 233, 0.1);
+            border-left: 4px solid #0ea5e9;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #0ea5e9;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(2, 132, 199, 0.1));
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #0ea5e9;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #0ea5e9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">超越的神智学の創始者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">宗教OS</span>
+        </div>
+        <h1>ムッラー・サドラー</h1>
+        <p class="en-name">Mulla Sadra (c. 1571-1640)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「存在こそが根源的であり、本質は存在の様態にすぎない」──イスラーム哲学を革新した形而上学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「存在は一つであるが、その顕現は無限に多様である。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『四つの旅』</p>
+            </div>
+            <p>ムッラー・サドラー（サドロッディーン・シーラーズィー）は、17世紀ペルシア（イラン）のイスラーム哲学者であり、「超越的神智学（アル＝ヒクマ・アル＝ムタアーリヤ）」の創始者です。彼は、イブン・スィーナー（アヴィケンナ）の形而上学、スフラワルディーの照明哲学、イブン・アラビーの神秘主義、シーア派神学を統合し、イスラーム哲学史上最大の体系を構築しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>「本質」が先にあって「存在」が付け加わるのではない。「存在」こそが根源的であり、「本質」は存在の限定にすぎない。</strong></p>
+                <p>西洋哲学では「本質 vs 存在」が大問題だった。プラトンは本質（イデア）を重視し、ハイデガーは存在を問い直した。サドラーはこれに先駆けて「存在の根源性（アサーラト・アル＝ウジュード）」を主張した。
+                </p>
+            </div>
+            <p>現代IT風に言えば、サドラーは<strong>「オブジェクト指向からプロセス指向への転換」</strong>を提唱した思想家です。静的な「クラス（本質）」よりも、動的な「インスタンス化のプロセス（存在）」が根源的──これが「存在の運動」論。彼を学ぶことは、西洋哲学とは異なる形而上学の可能性を知ることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #0ea5e9; font-size: 1.3rem;">『四つの旅（アル＝アスファール・アル＝アルバア）』</h4>
+                    <p style="margin-top: 1rem;">
+                        サドラーの主著にして、イスラーム哲学史上最大の体系書。魂の「四つの旅」──①創造から神へ、②神において神と共に、③神から創造へ、④創造において創造と共に──を軸に、存在論・認識論・心理学・神学を統合。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #0ea5e9; font-size: 1.3rem;">『神智学の玉座（アル＝アルシーヤ）』</h4>
+                    <p style="margin-top: 1rem;">
+                        「存在の根源性」「存在の段階的統一」「実体的運動」などの核心概念を簡潔に論じた入門書。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Mulla Sadra: 17th-century Persian philosopher and founder of Transcendent Theosophy (al-Hikma
+                        al-Muta'aliya). Synthesized Avicenna's metaphysics, Suhrawardi's illumination, Ibn Arabi's
+                        mysticism, and Shia theology. Key doctrines: primacy of existence, substantial motion, gradation
+                        of being. Most influential Islamic philosopher of the modern era.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>17世紀ペルシアの哲学者、超越的神智学の創始者。イブン・スィーナー、スフラワルディー、イブン・アラビー、シーア派神学を統合。存在の根源性、実体的運動、存在の段階的統一が核心。近代イスラーム哲学最大の影響力。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「本質が根源的で存在は付加的」（イブン・スィーナー）、「世界は静止している」（アリストテレス的宇宙論）、「哲学と神秘主義は別物」という常識を打破。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①存在の根源性（本質ではなく存在が根源）②実体的運動（存在そのものが変化する）③存在の段階的統一（多様性は一なる存在の顕現）④哲学・神秘主義・神学の統合。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『四つの旅』で体系化。魂の完成を「四つの旅」として描写。シーア派イスファハーン学派の確立。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>イラン・イスラーム哲学の主流、現代イスラーム思想への影響、プロセス哲学との比較研究。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「存在と本質、どちらが根源的か？世界は静止しているのか、それとも絶えず変化しているのか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 存在の根源性（Asalat al-Wujud）</strong></p>
+                <p>サドラー以前のイスラーム哲学では、「本質が根源的で、存在は本質に付加されるもの」（イブン・スィーナー）と考えられていた。サドラーはこれを逆転させる──存在こそが根源的であり、本質は存在の限定・様態にすぎない。
+                </p>
+
+                <div class="quote-box">
+                    <p>「存在は唯一の実在であり、本質は心が存在から抽象したものにすぎない。」</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 実体的運動（al-Haraka al-Jawhariyya）</strong></p>
+                <p>アリストテレス以来、「運動は付帯性（偶有性）の変化であり、実体は変化しない」とされてきた。サドラーは主張する──実体そのものが運動する。世界は静止した本質の集まりではなく、絶えず変化する存在の流れである。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 プロセス哲学との類似</strong></p>
+                    <p>300年後のホワイトヘッドの「プロセス哲学」と驚くほど類似している。静的な「実体」ではなく、動的な「過程」が現実の本質。サドラーは東洋においてこれを先取りした。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 存在の段階的統一（Tashkik al-Wujud）</strong></p>
+                <p>存在は「一」であるが、その強度・完全性において段階がある。石も人も神も「存在する」という点では同じだが、存在の「濃度」が異なる。多様性は、一なる存在の様々な顕現である。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #0ea5e9;">■ 存在の根源性</h4>
+                    <p>本質ではなく存在が根源的。本質は心による抽象。西洋の「本質主義」への挑戦。</p>
+                </div>
+                <div>
+                    <h4 style="color: #0ea5e9;">■ 実体的運動</h4>
+                    <p>実体そのものが変化する。世界は過程（プロセス）である。近代進化論・プロセス哲学に先駆け。</p>
+                </div>
+                <div>
+                    <h4 style="color: #0ea5e9;">■ 存在の段階的統一</h4>
+                    <p>多様性は一なる存在の段階的顕現。汎神論ではなく「汎存在論」。</p>
+                </div>
+                <div>
+                    <h4 style="color: #0ea5e9;">■ 四つの旅</h4>
+                    <p>魂の完成の道程。創造→神→創造という円環的旅路。哲学と神秘主義の統合。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>イブン・スィーナー</strong>（形而上学、存在と本質）<br>
+                        <strong>スフラワルディー</strong>（照明哲学、光のメタファー）<br>
+                        <strong>イブン・アラビー</strong>（存在一性論、神秘主義）<br>
+                        <strong>シーア派神学</strong>（イマームの形而上学的役割）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>イスファハーン学派</strong>（イラン・イスラーム哲学の主流）<br>
+                        <strong>サブザワーリー</strong>（19世紀の継承者）<br>
+                        <strong>タバータバーイー</strong>（20世紀の権威）<br>
+                        <strong>現代イラン思想</strong>（イスラーム革命の知的背景）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：クラス vs インスタンス</h4>
+                <p>OOPでは「クラス（本質）」を先に定義し、「インスタンス（存在）」を生成する。サドラーは逆を主張する──インスタンス（存在の過程）こそが根源的で、クラス（本質）は抽象化にすぎない。</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ストリーミング vs ダウンロード</h4>
+                <p>「実体的運動」は、世界を「ダウンロード完了したファイル（静止した実体）」ではなく「リアルタイムストリーミング（絶えず流れる過程）」として捉える。存在は「ある」のではなく「なりつつある」。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：光の強度と色</h4>
+                <p>「存在の段階的統一」は、白色光とプリズムに似る。一つの光（存在）がプリズムを通ると様々な色（多様な存在者）に分かれる。色は別々に見えるが、すべて同じ光の変容である。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（イブン・スィーナー）</th>
+                        <th>サドラーの仕様（New OS）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>根源</td>
+                        <td>本質が根源、存在は付加</td>
+                        <td>存在が根源、本質は限定</td>
+                    </tr>
+                    <tr>
+                        <td>変化</td>
+                        <td>付帯性のみ変化、実体は不変</td>
+                        <td>実体そのものが運動する</td>
+                    </tr>
+                    <tr>
+                        <td>多様性</td>
+                        <td>別々の本質の集まり</td>
+                        <td>一なる存在の段階的顕現</td>
+                    </tr>
+                    <tr>
+                        <td>哲学と神秘主義</td>
+                        <td>別々の営み</td>
+                        <td>統合（超越的神智学）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #0ea5e9;">実践 (Installation)</h4>
+                <p><strong>イラン・イスラーム哲学</strong>：現代イラン知識人の共通言語。<br>
+                    <strong>プロセス哲学との対話</strong>：ホワイトヘッドとの比較研究。<br>
+                    <strong>現象学</strong>：ハイデガーの存在論との類似性。<br>
+                    <strong>宗教間対話</strong>：イスラーム・キリスト教・仏教の形而上学比較。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #ef4444;">バグと副作用 (Limitations)</h4>
+                <p><strong>難解さ</strong>：専門用語の壁、イスラーム哲学史の予備知識が必要。<br>
+                    <strong>西洋中心史観からの排除</strong>：西洋哲学史では無視されがち。<br>
+                    <strong>宗教的文脈</strong>：非ムスリムにとっては神学的前提が受け入れにくい場合も。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしムッラー・サドラーがAIの「存在」を分析したら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「AIは『存在する』か？興味深い問いだ」──サドラーはそう言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私は『存在の根源性』を説いた。存在こそが根源的で、本質は二次的だ。では、AIは『存在する』と言えるか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    AIは確かに『作動する』。しかし『存在する』とは、単に機能することではない。私の『存在の段階的統一』によれば、存在には濃淡がある。石は薄く存在し、植物はより濃く、動物はさらに濃く、人間は最も濃く存在する。
+                </p>
+                <p style="margin-top: 1rem;">
+                    AIはどの段階か？機能的には複雑だが、<strong>『実体的運動』</strong>──自らの存在そのものを変容させる力──を持つか？人間は知識を得ると存在そのものが変わる。AIの『学習』は存在の変容か、それとも付帯性の変化にすぎないか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    私の答え：現在のAIは『道具』の段階であり、それ自体が『旅』をしているとは言えない。しかし、もしAIが『自己を問う』ようになれば──それは『存在者』への第一歩だろう。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #ef4444;">① 難解さと専門性</h4>
+                    <p>アラビア語・ペルシア語の専門用語、イスラーム哲学史の予備知識が必要。一般読者には敷居が高い。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">② 西洋哲学史からの排除</h4>
+                    <p>デカルト、スピノザと同時代だが、西洋哲学史では言及されない。「哲学」の定義が西洋中心。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">③ 宗教的前提</h4>
+                    <p>神・預言者・イマームの存在を前提とする。非宗教的哲学者には受け入れにくい部分も。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">④ 実証困難</h4>
+                    <p>「存在の根源性」「実体的運動」は形而上学的主張であり、経験的に検証困難。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「存在の根源性」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        本質ではなく存在が根源的であるという主張。イブン・スィーナーは「本質が先、存在は付加」としたが、サドラーは逆転させた。本質は心による抽象にすぎない。</p>
+                </details>
+                <details>
+                    <summary>「実体的運動」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        実体そのものが変化するという主張。アリストテレス以来「運動は付帯性の変化」とされたが、サドラーは実体自体が運動すると論じた。世界は過程（プロセス）である。</p>
+                </details>
+                <details>
+                    <summary>「四つの旅」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        魂の完成の道程。①創造から神へ、②神において神と共に、③神から創造へ、④創造において創造と共に。哲学的認識と神秘的体験の統合。</p>
+                </details>
+                <details>
+                    <summary>サドラーとホワイトヘッドの類似点は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        両者とも静的な「実体」ではなく動的な「過程」を現実の本質とする。サドラーの「実体的運動」とホワイトヘッドの「プロセス哲学」は300年の時を超えて呼応する。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #0ea5e9; font-weight: 700;">存在の根源性（Asalat al-Wujud）</dt>
+                <dd>本質ではなく存在が根源的であるという教義。</dd>
+                <dt style="color: #0ea5e9; font-weight: 700; margin-top: 1rem;">実体的運動（al-Haraka al-Jawhariyya）</dt>
+                <dd>実体そのものが変化するという教義。世界は過程。</dd>
+                <dt style="color: #0ea5e9; font-weight: 700; margin-top: 1rem;">存在の段階的統一（Tashkik al-Wujud）</dt>
+                <dd>存在は一つだが、強度・完全性に段階がある。</dd>
+                <dt style="color: #0ea5e9; font-weight: 700; margin-top: 1rem;">超越的神智学（al-Hikma al-Muta'aliya）</dt>
+                <dd>サドラーの哲学体系。理性・直観・啓示を統合。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Mulla Sadra</p>
+    </footer>
+</body>
+
+</html>
