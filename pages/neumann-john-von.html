@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョン・フォン・ノイマン | Thinkers 700</title>
+    <meta name="description" content="ジョン・フォン・ノイマンの思想を学ぶ。ゲーム理論、コンピュータアーキテクチャ、量子力学など、20世紀最高の知性の一つ。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0c1c2e;
+            --bg-secondary: #1e3a5f;
+            --text-primary: #f0f9ff;
+            --text-secondary: #93c5fd;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), transparent);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(96, 165, 250, 0.1);
+            border-left: 4px solid #60a5fa;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.1));
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">20世紀最高の知性</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">数学OS</span>
+        </div>
+        <h1>ジョン・フォン・ノイマン</h1>
+        <p class="en-name">von Neumann, John (1903 - 1957)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「あなたがたは数学を理解しているのではない。ただ慣れているだけだ」──数学、物理、コンピュータ科学を革新した万能の天才
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「もし人々が数学が単純だと信じないなら、それは彼らが人生がどれほど複雑かを理解していないからだ。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──ジョン・フォン・ノイマン</p>
+            </div>
+            <p>ジョン・フォン・ノイマンは、20世紀を代表する数学者であり、現代コンピュータの基礎を築いた人物です。彼の業績は、量子力学、ゲーム理論、コンピュータアーキテクチャ、セルオートマトン、核兵器開発など、驚くほど広範囲に渡ります。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>数学的厳密性と実用性の両立。純粋数学の美しさと、現実世界への応用を同時に追求した稀有な天才。</strong></p>
+                <p>多くの数学者は「純粋数学（理論）」か「応用数学（実用）」のどちらかに傾きます。フォン・ノイマンは両方を最高レベルで達成しました──量子力学の数学的基礎づけ（理論）と、原子爆弾の爆縮レンズ計算（実用）を同時に行ったのです。
+                </p>
+            </div>
+            <p>現代IT風に言えば、フォン・ノイマンは<strong>「現代コンピュータのOSアーキテクトそのもの」</strong>です。私たちが今使っているすべてのコンピュータは「フォン・ノイマン・アーキテクチャ」という設計思想に基づいています──CPU、メモリ、プログラム格納方式。彼を学ぶことは、デジタル文明の基礎設計図を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #60a5fa; font-size: 1.3rem;">『ゲームの理論と経済行動』(1944) - with Morgenstern</h4>
+                    <p style="margin-top: 1rem;">ゲーム理論の創始的著作。戦略的意思決定を数学で記述する革命的枠組み。経済学、政治学、生物学に影響。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #60a5fa; font-size: 1.3rem;">EDVACレポート (1945)</h4>
+                    <p style="margin-top: 1rem;">「プログラム内蔵方式」を提唱。ハードウェアとソフトウェアを分離し、プログラムをメモリに格納する現代コンピュータの設計哲学。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #60a5fa; font-size: 1.3rem;">『量子力学の数学的基礎』(1932)</h4>
+                    <p style="margin-top: 1rem;">量子力学をヒルベルト空間の数学で厳密に定式化。物理学の哲学的混乱を数学で整理した記念碑的著作。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>John von Neumann: Hungarian-American polymath who made groundbreaking contributions across
+                        mathematics, physics, economics, and computing. Pioneered game theory, formalized quantum
+                        mechanics, designed the architecture of modern computers (von Neumann architecture),
+                        conceptualized cellular automata, and contributed to the Manhattan Project. One of the greatest
+                        scientific minds of the 20th century.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ハンガリー系アメリカ人の数学者。ゲーム理論の創始、量子力学の数学的定式化、現代コンピュータアーキテクチャの設計、セルオートマトンの概念化、原子爆弾開発への貢献など、驚異的に広範囲な業績。20世紀最高の知性の一人。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「コンピュータは専用機（特定の計算専用）」「プログラムは外部の紙テープや配線」「戦略的思考は数学化できない」という思い込みを打破。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①プログラム内蔵方式（ソフトウェアとハードウェアの分離）②ゲーム理論（戦略を数学で記述）③量子力学の厳密化（ヒルベルト空間）④セルオートマトン（自己複製機械の理論）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>EDVAC設計、マンハッタン計画での爆縮計算、『ゲームの理論と経済行動』執筆、自己複製オートマトンの理論構築。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>すべての現代コンピュータ、経済学・AI・進化生物学へのゲーム理論応用、量子コンピュータの理論的基盤。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「計算とは何か？自己複製とは何か？戦略的思考を数学化できるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ フォン・ノイマン・アーキテクチャ</strong></p>
+                <p>それまでのコンピュータ（ENIACなど）は、計算ごとに配線を組み替える「専用機」でした。フォン・ノイマンは提案しました──<strong>プログラム（命令）もデータと同じくメモリに格納する</strong>。これが「プログラム内蔵方式」です。
+                </p>
+
+                <div class="quote-box">
+                    <p>「命令とデータを区別する必要はない。どちらも数値としてメモリに保存すればよい。」</p>
+                </div>
+
+                <p style="margin-top: 1rem;">
+                    この単純なアイデアが、汎用コンピュータを可能にしました。ワープロも、ゲームも、AIも、すべて同じハードウェア上で異なるソフトウェア（プログラム）を走らせるだけ──これが現代のすべてのコンピュータの基礎です。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 構成要素</strong></p>
+                    <p>①CPU（中央演算装置）②メモリ（記憶装置）③入出力装置④制御装置⑤プログラムとデータを同じメモリに格納──この5つが「フォン・ノイマン・アーキテクチャ」。あなたのスマホも、この設計思想に基づいている。
+                    </p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ ゲーム理論</strong></p>
+                <p>経済学者オスカー・モルゲンシュテルンと共に『ゲームの理論と経済行動』を執筆。「ゼロサム（勝者の利益＝敗者の損失）」から「非ゼロサム（win-win可能）」まで、あらゆる戦略的状況を数学で記述する枠組みを構築しました。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ セルオートマトンと自己複製</strong></p>
+                <p>「機械は自分自身を複製できるか？」──この問いに、フォン・ノイマンは「ユニバーサル・コンストラクター」という理論モデルで答えました。格子状の空間に単純なルールで動くセル（細胞）を配置すると、そのパターンが自己増殖する──これが後の「ライフゲーム」や人工生命研究の原型となります。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 量子力学の厳密化</strong></p>
+                <p>量子力学は、当時「観測すると波動関数が収縮する」などの哲学的に曖昧な表現がされていました。フォン・ノイマンは、これをヒルベルト空間（無限次元のベクトル空間）の数学で厳密に定式化し、測定理論の基礎を築きました。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #60a5fa;">■ プログラム内蔵方式</h4>
+                    <p>ソフトウェアとハードウェアの分離。命令もデータも同じメモリに格納し、汎用計算を可能にした。</p>
+                </div>
+                <div>
+                    <h4 style="color: #60a5fa;">■ ゲーム理論</h4>
+                    <p>戦略的意思決定を数学で記述。経済学、政治学、生物学（進化的に安定な戦略）に応用。</p>
+                </div>
+                <div>
+                    <h4 style="color: #60a5fa;">■ セルオートマトン</h4>
+                    <p>単純なルールから複雑なパターンが生成される。自己複製機械、人工生命研究の基礎。</p>
+                </div>
+                <div>
+                    <h4 style="color: #60a5fa;">■ 量子力学の数学的基礎</h4>
+                    <p>ヒルベルト空間による厳密な定式化。現代の量子コンピュータ理論の土台。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>ダフィット・ヒルベルト</strong>（数学の公理化、ヒルベルト空間）<br>
+                        <strong>アラン・チューリング</strong>（計算可能性理論）<br>
+                        <strong>クルト・ゲーデル</strong>（不完全性定理、論理学）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ジョン・ナッシュ</strong>（ナッシュ均衡、非協力ゲーム理論）<br>
+                        <strong>ジョン・コンウェイ</strong>（ライフゲーム）<br>
+                        <strong>スティーブン・ウルフラム</strong>（セルオートマトン研究）<br>
+                        <strong>量子コンピュータ</strong>（量子力学の計算理論的応用）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：専用機 vs 汎用機</h4>
+                <p>フォン・ノイマン以前のコンピュータは「専用電卓」──足し算専用、弾道計算専用など。フォン・ノイマン・アーキテクチャは「スマートフォン」──アプリ（ソフトウェア）を変えるだけで、カメラにもゲーム機にもなる汎用性。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：DVDプレイヤー vs ストリーミング端末</h4>
+                <p>DVDプレイヤー（専用機）は映画しか再生できない。Roku/Fire Stick（汎用機）はアプリを変えるだけでNetflix、YouTube、ゲームが可能。後者がフォン・ノイマン的。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：ライフゲーム（セルオートマトン）</h4>
+                <p>格子の各マスに「生」「死」の状態があり、隣接マスの状況で次の状態が決まる単純ルール。これだけで、複雑なパターン（グライダー、振動子）が創発する──フォン・ノイマンの自己複製機械のシンプル版。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（ENIAC時代）</th>
+                        <th>フォン・ノイマン OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>プログラム</td>
+                        <td>配線を物理的に組み替え</td>
+                        <td>メモリに格納（ソフトウェア化）</td>
+                    </tr>
+                    <tr>
+                        <td>用途</td>
+                        <td>専用機（計算ごとに別マシン）</td>
+                        <td>汎用機（一つで全て対応）</td>
+                    </tr>
+                    <tr>
+                        <td>変更速度</td>
+                        <td>数日～数週間</td>
+                        <td>数秒（プログラム差し替え）</td>
+                    </tr>
+                    <tr>
+                        <td>柔軟性</td>
+                        <td>低（ハードウェア改造必要）</td>
+                        <td>高（ソフトで対応）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #60a5fa;">実践 (Installation)</h4>
+                <p><strong>すべての現代コンピュータ</strong>：スマホ、PC、サーバー──すべてフォン・ノイマン・アーキテクチャ。<br>
+                    <strong>ゲーム理論の応用</strong>：経済学（オークション設計）、AI（強化学習）、生物学（進化戦略）。<br>
+                    <strong>量子コンピュータ</strong>：フォン・ノイマンの量子力学定式化が理論的基盤。<br>
+                    <strong>人工生命</strong>：セルオートマトンからALife（人工生命）研究へ。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #2563eb;">バグと副作用 (Limitations)</h4>
+                <p><strong>フォン・ノイマン・ボトルネック</strong>：CPUとメモリ間のデータ転送が遅いと全体が遅くなる構造的弱点。<br>
+                    <strong>核兵器への貢献</strong>：マンハッタン計画で爆縮レンズ計算に協力。科学と倫理のジレンマ。<br>
+                    <strong>冷戦へのタカ派的姿勢</strong>：ソ連への先制攻撃を主張するなど、好戦的な政治姿勢が批判された。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしフォン・ノイマンが現代の「量子コンピュータ」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「素晴らしい！理論通りだ」──フォン・ノイマンは満足げに言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私が1932年に『量子力学の数学的基礎』で定式化したヒルベルト空間の演算子──まさにそれを物理的に実装しているではないか。
+                </p>
+                <p style="margin-top: 1rem;">
+                    古典コンピュータ（私の「フォン・ノイマン・アーキテクチャ」）は、ビット（0 or 1）で動く。量子コンピュータは、量子ビット（重ね合わせ状態）で動く。これは私の量子力学理論の直接応用だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし、<strong>エラー訂正が課題だろう</strong>。量子状態はデコヒーレンス（環境との相互作用で古典状態に崩壊）する。私ならセルオートマトン的な冗長性を使って、量子エラー訂正符号を設計するが──おや、既にピーター・ショアが実現しているのか。良い仕事だ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #2563eb;">① フォン・ノイマン・ボトルネック</h4>
+                    <p>CPUとメモリが分離しているため、データ転送がシステム全体の速度を律速してしまう。並列処理やニューロモルフィック・コンピューティングで克服を試みている。</p>
+                </div>
+                <div>
+                    <h4 style="color: #2563eb;">② 核兵器と倫理</h4>
+                    <p>原爆開発への貢献、ソ連への先制攻撃主張など、科学者の社会的責任という問題を提起。</p>
+                </div>
+                <div>
+                    <h4 style="color: #2563eb;">③ 人間の多様性への無理解</h4>
+                    <p>極端な合理主義者であり、感情や非合理的行動を軽視する傾向。現実の人間行動は、ゲーム理論の完全合理性を前提としない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「フォン・ノイマン・アーキテクチャ」の核心は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        プログラム（命令）もデータも、同じメモリに格納する「プログラム内蔵方式」。これによりソフトウェアとハードウェアが分離され、汎用コンピュータが可能になった。</p>
+                </details>
+                <details>
+                    <summary>ゲーム理論とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        複数のプレイヤーが戦略的に意思決定する状況を数学で記述する理論。ゼロサム（勝者の利益＝敗者の損失）から非ゼロサム（協力可能）まで分析できる。</p>
+                </details>
+                <details>
+                    <summary>セルオートマトンとは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        格子状の空間で、各セルが隣接セルの状態に応じて単純ルールで変化するシステム。フォン・ノイマンはこれで「自己複製機械」の理論モデルを構築した。</p>
+                </details>
+                <details>
+                    <summary>フォン・ノイマンへの批判は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①フォン・ノイマン・ボトルネック（構造的速度制限）、②核兵器開発への関与、③人間の非合理性への無理解。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #60a5fa; font-weight: 700;">フォン・ノイマン・アーキテクチャ</dt>
+                <dd>プログラムとデータを同じメモリに格納する現代コンピュータの基本設計。CPU、メモリ、入出力、制御装置から構成。</dd>
+                <dt style="color: #60a5fa; font-weight: 700; margin-top: 1rem;">ゲーム理論</dt>
+                <dd>戦略的意思決定の数学的モデル。経済学、政治学、生物学に応用される。</dd>
+                <dt style="color: #60a5fa; font-weight: 700; margin-top: 1rem;">セルオートマトン（Cellular Automata）</dt>
+                <dd>格子状の空間で、各セルが局所的ルールで状態変化するシステム。自己複製、パターン生成を研究。</dd>
+                <dt style="color: #60a5fa; font-weight: 700; margin-top: 1rem;">フォン・ノイマン・ボトルネック</dt>
+                <dd>CPUとメモリ間のデータ転送速度が全体性能を制限する現象。アーキテクチャの構造的弱点。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | John von Neumann</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アレン・ニューウェル | Thinkers 700</title>
+    <meta name="description" content="アレン・ニューウェルの思想を学ぶ。物理記号システム仮説とGPSで人工知能の基礎を築いた認知科学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1a2e1a;
+            --bg-secondary: #2d4a2d;
+            --text-primary: #f0fdf4;
+            --text-secondary: #bbf7d0;
+            --accent: #22c55e;
+            --accent-glow: rgba(34, 197, 94, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), transparent);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #4ade80, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #4ade80;
+            border-bottom: 2px solid #22c55e;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(74, 222, 128, 0.1);
+            border-left: 4px solid #4ade80;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #22c55e;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.1));
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #4ade80;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">人工知能のパイオニア</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">認識OS</span>
+        </div>
+        <h1>アレン・ニューウェル</h1>
+        <p class="en-name">Newell, Allen (1927 - 1992)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「思考とは記号操作である」──物理記号システム仮説で人工知能と認知科学を統合した先駆者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「物理記号システム（Physical Symbol System）は、知的行動を示すための必要十分条件である。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──「物理記号システム仮説」(1976)</p>
+            </div>
+            <p>アレン・ニューウェルは、ハーバート・サイモンとともに人工知能（AI）と認知科学の基礎を築いたアメリカの研究者です。彼らは世界初の汎用問題解決プログラム「GPS（General Problem
+                Solver）」を開発し、人間の思考プロセスをコンピュータでシミュレートする道を切り開きました。</p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>人間の知能も、コンピュータのAIも、どちらも「記号（シンボル）の操作」という同じメカニズムで動いている。</strong>
+                </p>
+                <p>「記号」とは、何かを「代理表現」するものです（"猫"という文字は実際の猫を代理する）。ニューウェルは、人間の思考もコ
+                    ンピュータのプログラムも、どちらも記号を操作するシステムであり、原理的には同じだと主張しました──これが「物理記号システム仮説」です。</p>
+            </div>
+            <p>現代IT風に言えば、ニューウェルは<strong>「思考＝プログラム実行」</strong>というメタファーを確立した思想家です。人間の脳は生物学的なCPUであり、概念や推論は「ソフトウェア」として記述可能──このアイデアが、現代のAIやエキスパートシステム、ChatGPTのような言語モデルにつながっています。彼を学ぶことは、「知能とは計算である」という現代AIの根本仮定を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem;">GPS (General Problem Solver) (1957) - with H. Simon
+                    </h4>
+                    <p style="margin-top: 1rem;">世界初の汎用問題解決プログラム。「手段目的分析（Means-Ends
+                        Analysis）」で、目標と現状の差を埋める戦略を自動生成。人間の思考プロセスのシミュレーション。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem;">『人間の問題解決』(1972) - with H. Simon</h4>
+                    <p style="margin-top: 1rem;">人間の認知プロセスを、情報処理システムとして分析した認知心理学の古典。プロトコル分析（思考発話）を用いた実験的方法論を確立。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #4ade80; font-size: 1.3rem;">『認知の統一理論』(1990)</h4>
+                    <p style="margin-top: 1rem;">ニューウェルの集大成。ACT-R、SOARなどの認知アーキテクチャを通じて、人間の全認知機能を単一のシステムで説明しようとした野心的試み。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Allen Newell: American computer scientist and cognitive psychologist. Co-creator (with Herbert
+                        Simon) of the General Problem Solver (GPS) and pioneer of artificial intelligence. Proposed the
+                        Physical Symbol System Hypothesis: that intelligence, whether human or artificial, is
+                        fundamentally symbol manipulation. Developed cognitive architectures (SOAR) attempting to unify
+                        all human cognition into a single computational framework.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>アメリカのコンピュータ科学者、認知心理学者。ハーバート・サイモンとともに汎用問題解決プログラム「GPS」を開発し、AIの基礎を築いた。「物理記号システム仮説」を提唱──人間もAIも記号操作という同じメカニズムで知的活動を行う。認知アーキテクチャ（SOAR）で、全認知機能の統一理論を目指した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「知能は神秘的で測定不能」「思考は心理学の領分、計算とは無関係」という行動主義・心理学の常識を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①物理記号システム仮説（知能＝記号操作）②GPS（汎用問題解決）③認知アーキテクチャ（SOARなど）④手段目的分析（問題解決の一般戦略）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>GPS開発（1957）、チェスプログラム、論理定理証明プログラム。プロトコル分析で人間の思考プロセスを実験的に観察。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>エキスパートシステム、自然言語処理、ChatGPT（記号的AI）、認知科学の計算モデル。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「思考とは何か？それは機械で再現可能か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 物理記号システム仮説</strong></p>
+                <p>この仮説は2つの主張からなります：</p>
+                <ol style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li><strong>必要条件</strong>：知的行動を示すシステムは、必ず物理記号システムである。</li>
+                    <li><strong>十分条件</strong>：物理記号システムは、知的行動を示すための十分な手段を持つ。</li>
+                </ol>
+
+                <div class="quote-box">
+                    <p>「記号」とは、何か他のものを指示（参照）する物理的パターン。「操作」とは、記号を組み合わせたり、変換したりすること。</p>
+                </div>
+
+                <p style="margin-top: 1rem;">つまり、「知能＝記号の操作」という等式が成り立つなら、人間の脳もコンピュータも、どちら も記号を操作するシステムとして同じ原理で動いているはずです。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 例：チェス</strong></p>
+                    <p>チェスの駒の配置は「記号」（現在の盤面）。合法手を生成し、評価し、選択するのが「記号操作」。人間もコンピュータも、この操作で思考している──ニューウェルはそう考えた。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ GPS（General Problem Solver）</strong></p>
+                <p>「手段目的分析（Means-Ends Analysis）」というアルゴリズムを用いる汎用問題解決プログラム。</p>
+                <ol style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>現在の状態と目標の「差」を特定する。</li>
+                    <li>その差を縮める「手段（操作）」を選ぶ。</li>
+                    <li>手段を適用し、新しい状態を得る。</li>
+                    <li>目標に達するまで繰り返す。</li>
+                </ol>
+
+                <p style="margin-top: 1rem;">
+                    これは、「東京から大阪に行く」という問題を解くプロセスに似ています──「今は東京（現状）」「大阪に行きたい（目標）」→「新幹線という手段を使う」→「移動」→「大阪到着」。</p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 認知アーキテクチャ（SOAR）</strong></p>
+                <p>ニューウェルの晩年の目標は、「認知の統一理論」──すべての認知機能（知覚、記憶、推論、学習）を単一のアーキテクチャで説明することでした。SOARは、長期記憶、作業記憶、プロダクションシステム（if-then
+                    ルール）を統合した認知モデルです。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #4ade80;">■ 物理記号システム仮説</h4>
+                    <p>知能＝記号操作。人間もAIも同じ原理で思考する。知的行動の必要十分条件。</p>
+                </div>
+                <div>
+                    <h4 style="color: #4ade80;">■ GPS（汎用問題解決）</h4>
+                    <p>手段目的分析で、多様な問題を解く。初期のAIプログラムとして歴史的に重要。</p>
+                </div>
+                <div>
+                    <h4 style="color: #4ade80;">■ プロトコル分析</h4>
+                    <p>被験者に「考えながら声に出す（思考発話）」を頼み、思考プロセスを観察する方法論。</p>
+                </div>
+                <div>
+                    <h4 style="color: #4ade80;">■ 認知アーキテクチャ（SOAR）</h4>
+                    <p>全認知機能を統一的に記述する計算モデル。記憶、推論、学習を統合。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>アラン・チューリング</strong>（計算可能性、チューリングテスト）<br>
+                        <strong>クロード・シャノン</strong>（情報理論）<br>
+                        <strong>ノーバート・ウィーナー</strong>（サイバネティクス）<br>
+                        <strong>ハーバート・サイモン</strong>（共同研究者、限定合理性）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>エキスパートシステム</strong>（MYCIN、DENDRALなど）<br>
+                        <strong>記号的AI</strong>（LISP、Prologプログラミング）<br>
+                        <strong>ACT-R</strong>（John Andersonの認知アーキテクチャ）<br>
+                        <strong>コネクショニズムとの論争</strong>（記号的AI vs ニューラルネット）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：地図とナビゲーション</h4>
+                <p>現在地（記号）、目的地（記号）、道路網（記号）──これらの記号を操作して「最短経路」を計算するのがナビゲーションシステム。人間が頭の中で行う「道順を考える」プロセスも、記号操作の一種とニューウェルは考えた。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：レシピの実行</h4>
+                <p>料理レシピは「記号」（材料名、手順）の集まり。料理をするとは、このレシピ（記号）を物理的に実行すること。思考も同様に、脳内の「概念レシピ」を実行する記号操作プロセスとみなせる。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：Excelのセル参照</h4>
+                <p>Excelで「=A1+B1」という数式は、A1とB1という「記号」を参照し、操作（足し算）する。人間の思考も、概念（記号）を参照し、組み合わせる（操作）プロセスだとニューウェルは主張した。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（行動主義心理学）</th>
+                        <th>ニューウェル OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>思考の扱い</td>
+                        <td>ブラックボックス（測定不能）</td>
+                        <td>記号操作として観察・モデル化可能</td>
+                    </tr>
+                    <tr>
+                        <td>知能の定義</td>
+                        <td>行動の結果のみ観察</td>
+                        <td>内部プロセス（記号操作）を重視</td>
+                    </tr>
+                    <tr>
+                        <td>実験手法</td>
+                        <td>刺激・反応</td>
+                        <td>プロトコル分析（思考発話）</td>
+                    </tr>
+                    <tr>
+                        <td>AIとの関係</td>
+                        <td>無関係</td>
+                        <td>人間とAIは同じ原理（記号操作）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #4ade80;">実践 (Installation)</h4>
+                <p><strong>エキスパートシステム</strong>：医療診断（MYCIN）、化学分析（DENDRAL）など、専門知識をif-thenルールで記述。<br>
+                    <strong>ChatGPT</strong>：記号（トークン）操作による言語生成。統計的だが、記号的AIの延長線上。<br>
+                    <strong>認知モデリング</strong>：ACT-R、SOARなどの認知アーキテクチャが教育、HCI（ヒューマン・コンピュータ・インタラクション）で活用。<br>
+                    <strong>プログラミング教育</strong>：「思考＝プログラム実行」というメタファーで、論理的思考を教える。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #16a34a;">バグと副作用 (Limitations)</h4>
+                <p><strong>記号接地問題（Symbol Grounding
+                        Problem）</strong>：記号は何を「意味」するのか？言語モデルは記号を操作するが、「猫」という記号が実際の猫と対応していることをどう知るのか？<br>
+                    <strong>コネクショニズムの台頭</strong>：1980年代以降、ニューラルネットワーク（脳の神経回路を模倣）が台頭し、記号的AIは一時衰退。<br>
+                    <strong>身体性の欠如</strong>：記号操作だけでは、身体を持つ人間の知覚・運動の側面を説明できないという批判（ロドニー・ブルックス）。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしアレン・ニューウェルが現代の「ChatGPT」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「驚くべき進化だ！しかし根本原理は同じだ」──ニューウェルは興奮しながらも冷静に分析するでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「ChatGPTは、私とハーバートが1950年代に夢見た『汎用問題解決プログラム』の進化形だ。記号（トークン）を操作し、パターンマッチングとルール適用で文章を生成している。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし、<strong>重要な違い</strong>がある。私たちのGPSは『手段目的分析』という明示的なルールを持っていた。ChatGPTは、統計的な確率分布からルールを暗黙的に学習している。
+                </p>
+                <p style="margin-top: 1rem;">
+                    この『暗黙性』は諸刃の剣だ。柔軟性は増すが、<strong>なぜその答えを出したか説明できない</strong>（ブラックボックス問題）。私の認知アーキテクチャは、各ステップを追跡可能にすることを重視していた。
+                </p>
+                <p style="margin-top: 1rem;">
+                    それでも、ChatGPTは『物理記号システム仮説』の正しさを証明している。記号操作だけで、これほど高度な対話が可能になるとは──私の予測通りだ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #16a34a;">① 記号接地問題</h4>
+                    <p>記号は何を「意味」するのか？記号は他の記号を参照するだけで、実世界との接続（grounding）が欠けているという批判（スティーヴン・ハルナッド）。</p>
+                </div>
+                <div>
+                    <h4 style="color: #16a34a;">② コネクショニズムの挑戦</h4>
+                    <p>1980年代以降、ニューラルネットワークが台頭し、記号的AIは「脆弱で柔軟性がない」と批判された。現代AIはハイブリッド（記号＋統計）。</p>
+                </div>
+                <div>
+                    <h4 style="color: #16a34a;">③ 身体性の無視</h4>
+                    <p>ロドニー・ブルックスなどが主張──知能は記号操作だけでなく、身体と環境の相互作用から生まれる（embodied cognition）。</p>
+                </div>
+                <div>
+                    <h4 style="color: #16a34a;">④ GPSの限界</h4>
+                    <p>GPSは玩具的な問題（ハノイの塔、三段論法）しか解けず、実世界の複雑な問題には適用困難だった。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「物理記号システム仮説」の主張は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①知的行動を示すシステムは必ず物理記号システムである（必要条件）。②物理記号システムは知的行動を示すための十分な手段を持つ（十分条件）。つまり、知能＝記号操作。</p>
+                </details>
+                <details>
+                    <summary>GPSの「手段目的分析」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        現在の状態と目標の差を特定し、その差を縮める手段を選んで適用し、目標に達するまで繰り返すアルゴリズム。汎用的な問題解決戦略。</p>
+                </details>
+                <details>
+                    <summary>「認知アーキテクチャ」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        人間の全認知機能（知覚、記憶、推論、学習）を統一的に記述する計算モデル。ニューウェルのSOAR、John AndersonのACT-Rなど。</p>
+                </details>
+                <details>
+                    <summary>ニューウェルへの主な批判は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①記号接地問題（記号の意味とは何か）、②コネクショニズムの挑戦（ニューラルネットの台頭）、③身体性の無視（embodied cognition）、④GPSの実用性の低さ。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #4ade80; font-weight: 700;">物理記号システム（Physical Symbol System）</dt>
+                <dd>記号（何かを指示する物理的パターン）を操作するシステム。ニューウェルによれば、これが知的行動の必要十分条件。</dd>
+                <dt style="color: #4ade80; font-weight: 700; margin-top: 1rem;">GPS（General Problem Solver）</dt>
+                <dd>手段目的分析を用いた汎用問題解決プログラム。世界初のAIプログラムの一つ。</dd>
+                <dt style="color: #4ade80; font-weight: 700; margin-top: 1rem;">認知アーキテクチャ（Cognitive Architecture）</dt>
+                <dd>人間の全認知機能を統一的に記述する計算モデル。SOAR、ACT-Rなど。</dd>
+                <dt style="color: #4ade80; font-weight: 700; margin-top: 1rem;">記号接地問題（Symbol Grounding Problem）</dt>
+                <dd>記号が実世界の何を「意味」するのかという問題。記号が他の記号を参照するだけでは、実世界との接続が欠ける。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Allen Newell</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アントニオ・ネグリ | Thinkers 700</title>
+    <meta name="description" content="アントニオ・ネグリの思想を学ぶ。「マルチチュード」と「帝国」で現代グローバル資本主義を分析した革命的思想家。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #dc2626;
+            --accent-glow: rgba(220, 38, 38, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), transparent);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #dc2626, #991b1b);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ef4444;
+            border-bottom: 2px solid #dc2626;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid #dc2626;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(220, 38, 38, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #dc2626;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(153, 27, 27, 0.1));
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #ef4444;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">マルチチュードの哲学者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+        <h1>アントニオ・ネグリ</h1>
+        <p class="en-name">Negri, Antonio (1933 - 2023)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「マルチチュードは『人民』ではない。無数の特異性が、支配されることなく共に生きる可能性だ」──グローバル資本主義を問い直す革命思想家
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「帝国は国家ではない。それは、国境を超えたグローバルな支配の新しい形態であり、主権は分散され、どこにも中心がない。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『帝国』(2000)</p>
+            </div>
+            <p>アントニオ・ネグリは、イタリアの政治哲学者であり、マイケル・ハートとの共著『帝国』『マルチチュード』『コモンウェルス』で知られています。彼は、冷戦終結後のグローバル資本主義を「帝国（Empire）」と呼び、それに対抗する民衆の新しい形態として「マルチチュード（Multitude）」という概念を提唱しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>「人民（People）」は一つにまとまることで力を持つが、「マルチチュード（Multitude）」は多様なまま、統一されずに力を持つ。</strong></p>
+                <p>従来の革命理論は「バラバラの大衆を、一つの人民（nation/people）に団結させること」を目標としていました。しかしネグリは、グローバル化とネットワーク化の時代において、多様性を保ったまま協働する「マルチチュード」こそが、新しい解放の主体だと主張します。
+                </p>
+            </div>
+            <p>現代IT風に言えば、ネグリは<strong>「中央集権サーバー vs
+                    分散型ネットワーク」</strong>の対立を政治に持ち込んだ思想家です。旧来の革命は「強力な中央サーバー（前衛党、国家）」を作ることでしたが、マルチチュードは「P2Pネットワーク」のように、中心なく自律的に協働する群れです。彼を学ぶことは、SNS時代の政治運動（アラブの春、occupy運動など）の理論的背景を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ef4444; font-size: 1.3rem;">『帝国』(2000) - with Michael Hardt</h4>
+                    <p style="margin-top: 1rem;">グローバル資本主義の新しい支配形態を「帝国」と名付けた記念碑的著作。アメリカ中心主義を超えた、脱中心的な主権の分析。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ef4444; font-size: 1.3rem;">『マルチチュード』(2004) - with Michael Hardt</h4>
+                    <p style="margin-top: 1rem;">「帝国」に対抗する新しい民衆の形態。統一されない多様性としてのマルチチュードが、どのように民主主義を作り直すかを論じる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Antonio Negri: Italian Marxist philosopher and political activist. Co-author with Michael Hardt
+                        of the Empire trilogy. Challenged traditional revolutionary models by proposing "Multitude" as a
+                        new revolutionary subject that retains its internal diversity rather than unifying into a
+                        singular "People." Analyzed contemporary globalization as "Empire"—a decentered, networked form
+                        of sovereignty replacing nation-states.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>イタリアのマルクス主義哲学者、政治活動家。マイケル・ハートとの共著『帝国』三部作で知られる。従来の革命理論が「人民への統一」を目指したのに対し、「マルチチュード（多様なまま協働する群れ）」という新概念を提唱。グローバル資本主義を「帝国（中心なき主権ネットワーク）」として分析した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「革命＝バラバラの大衆を一つの『人民』に団結させること」「国家権力を奪取すること」という20世紀的革命観を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①マルチチュード（多様性を保持したまま協働）②帝国（脱中心的グローバル主権）③生政治的生産（生命・感情・知識そのものが搾取される）④コモン（共有財の民主的管理）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>イタリア「自律主義（Autonomia）」運動の理論家として実践。獄中で『帝国』執筆。アラブの春、Occupy運動の理論的基盤となる。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>SNS時代の政治運動、DAO（分散自律組織）、コモンズ（共有財）運動、ベーシックインカム論への影響。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「国家がなくなった後のグローバル資本主義で、私たちはどう解放されるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 帝国（Empire）</strong></p>
+                <p>冷戦終結後、「アメリカ帝国主義」という表現は不正確になった。なぜなら、支配の中心はアメリカだけでなく、IMF、WTO、多国籍企業、NGOなどに分散しているから。ネグリはこれを「帝国」と呼んだ──中心なき、ネットワーク型のグローバル主権。
+                </p>
+
+                <div class="quote-box">
+                    <p>「帝国は領土を持たない。それは至る所に存在し、同時にどこにも存在しない。」</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ マルチチュード vs 人民</strong></p>
+                <p>「人民（People）」は、多様な個人が「国民」「労働者階級」という同一性に統合された存在。対して「マルチチュード（Multitude）」は、多様性を保持したまま、ネットワーク的に協働する無数の特異性の集まり。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 イメージ：軍隊 vs 群れ</strong></p>
+                    <p>軍隊は階層的で、一つの意志（司令官）に従う。群れ（鳥、魚）は中心なく、各個体が局所的ルールに従うだけで全体として協調する。マルチチュードは後者のモデル。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 生政治的生産（Biopolitical Production）</strong></p>
+                <p>フーコーの「生政治（Biopower）」を拡張。現代の資本主義は、工場での「物質的労働」だけでなく、感情、知識、ケア、コミュニケーションといった「非物質的労働」を搾取する。SNSでの「いいね」生産やインフルエンサーの感情労働もこの一部。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ コモン（Common）</strong></p>
+                <p>「私有（Private）」でも「国有（Public/State）」でもない、第三の所有形態。知識、言語、自然、インターネットなど、みんなで共有し、みんなで管理する財。マルチチュードはコモンを拡大することで帝国に対抗する。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #ef4444;">■ 帝国（Empire）</h4>
+                    <p>中心なき、ネットワーク型のグローバル主権。国境を超えた資本・法・文化の支配システム。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">■ マルチチュード（Multitude）</h4>
+                    <p>多様性を保持したまま協働する無数の特異性。統一されない民衆。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">■ 非物質的労働</h4>
+                    <p>感情、知識、ケア、コミュニケーションなど、モノを作らない労働。現代資本主義の主戦場。</p>
+                </div>
+                <div>
+                    <h4 style="color: #ef4444;">■ コモン（Common）</h4>
+                    <p>私有でも国有でもない、共有財の民主的管理。知識、自然、インターネットなど。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>マルクス</strong>（資本主義批判、階級闘争）<br>
+                        <strong>スピノザ</strong>（マルチチュードの語源、内在的民主主義）<br>
+                        <strong>フーコー</strong>（生政治、権力の脱中心化）<br>
+                        <strong>ドゥルーズ＆ガタリ</strong>（リゾーム、脱領土化）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>アラブの春</strong>（中心なき民衆蜂起）<br>
+                        <strong>Occupy運動</strong>（マルチチュード的抗議）<br>
+                        <strong>DAO（分散自律組織）</strong>（ブロックチェーン民主主義）<br>
+                        <strong>コモンズ運動</strong>（共有財の再生）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：クライアント・サーバー vs P2P</h4>
+                <p>従来の革命モデルは「クライアント・サーバー型」──中央の強力な党（サーバー）が指令を出し、大衆（クライアント）が従う。マルチチュードは「P2P（ピア・トゥ・ピア）型」──各個人が対等に接続し、中心なく協働する。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：Wikipedia vs Britannica</h4>
+                <p>ブリタニカ百科事典（人民モデル）は、専門家が統一的な知識を作る。Wikipediaの（マルチチュードモデル）は、無数の匿名ユーザーが、各自の専門性を保ったまま、共通の知識（コモン）を構築する。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：インフルエンサーの労働</h4>
+                <p>SNSで「バズる」ための感情労働、フォロワーとのコミュニケーション──これらは「非物質的労働」の典型。プラットフォーム企業はこの労働から利益を得るが、労働者（インフルエンサー）は不安定な立場に置かれる。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（20世紀革命）</th>
+                        <th>ネグリ OS（21世紀）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>主体</td>
+                        <td>人民（統一された大衆）</td>
+                        <td>マルチチュード（多様な群れ）</td>
+                    </tr>
+                    <tr>
+                        <td>目標</td>
+                        <td>国家権力の奪取</td>
+                        <td>コモンの拡大</td>
+                    </tr>
+                    <tr>
+                        <td>組織</td>
+                        <td>前衛党（中央集権）</td>
+                        <td>ネットワーク（分散型）</td>
+                    </tr>
+                    <tr>
+                        <td>敵</td>
+                        <td>資本家階級、帝国主義国家</td>
+                        <td>帝国（脱中心的グローバル主権）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #ef4444;">実践 (Installation)</h4>
+                <p><strong>SNS時代の政治運動</strong>：アラブの春、香港デモ、BLM運動などの「リーダーなき蜂起」の理論的基盤。<br>
+                    <strong>DAO（分散自律組織）</strong>：ブロックチェーン技術による、中心なき民主的組織の実験。<br>
+                    <strong>ベーシックインカム</strong>：コモンからの配当として、すべての人が生存権を得る仕組み。<br>
+                    <strong>オープンソース運動</strong>：ソフトウェアというコモンを、みんなで開発・共有する実践。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #dc2626;">バグと副作用 (Limitations)</h4>
+                <p><strong>具体性の欠如</strong>：「マルチチュード」は魅力的だが、具体的にどう組織し、意思決定するかが不明確。<br>
+                    <strong>暴力の問題</strong>：ネグリ自身がテロ組織との関連を疑われ投獄された（後に無罪）。革命と暴力の境界線が曖昧。<br>
+                    <strong>楽観主義</strong>：グローバル資本主義の適応力を過小評価しているという批判。帝国は簡単には崩れない。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしアントニオ・ネグリが現代の「DAO（分散自律組織）」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これは素晴らしい実験だ！」──ネグリは興奮するでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「DAOは、私が『マルチチュード』で夢見た組織形態の一つの実装だ。中央の権威なしに、スマートコントラクトというコード（ルール）によって、無数の参加者が意思決定を行う。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし、注意が必要だ。<strong>誰がそのコードを書いたのか？</strong> トークンの分配は公平か？ 多数派の暴力（51%攻撃）をどう防ぐか？
+                </p>
+                <p style="margin-top: 1rem;">
+                    DAOが真に解放的であるためには、『コモン（共有財）』の精神が必要だ。利益の私的蓄積ではなく、全メンバーへの再分配。技術的な分散だけでなく、富と権力の分散が伴わなければ、それは新しい『帝国』の一部になってしまう。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 実現可能性の欠如</h4>
+                    <p>「マルチチュード」は詩的で魅力的だが、具体的な政治プログラムに欠ける。どう組織し、どう意思決定し、どう権力と対峙するか不明確。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 暴力との距離感</h4>
+                    <p>ネグリ自身がイタリア「赤い旅団」との関連を疑われ投獄された。革命理論が暴力を正当化するリスクを軽視しているという批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 資本主義の適応力</h4>
+                    <p>「帝国」は脆弱だとネグリは言うが、実際にはグローバル資本主義は極めて強靭で、批判すら商品化（Tシャツに印刷）してしまう。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">④ 西洋中心主義</h4>
+                    <p>「帝国」の分析は主に欧米の視点。グローバルサウスの視点、ポストコロニアルな批判が不十分という指摘。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「マルチチュード」と「人民」の違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        人民は多様な個人が「国民」などの同一性に統合された存在。マルチチュードは多様性を保持したまま、ネットワーク的に協働する無数の特異性の集まり。統一されない民衆。</p>
+                </details>
+                <details>
+                    <summary>「帝国」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        冷戦後のグローバル資本主義における、中心なき主権のネットワーク。アメリカだけでなく、IMF、多国籍企業、NGOなどが分散的に支配する新しい形態。領土を持たず、至る所に存在する。</p>
+                </details>
+                <details>
+                    <summary>「非物質的労働」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        モノを作らない労働。感情、知識、ケア、コミュニケーションなど。SNSの「いいね」生産、インフルエンサーの感情労働、看護、教育などが含まれる。現代資本主義の主要な搾取対象。</p>
+                </details>
+                <details>
+                    <summary>ネグリへの主な批判は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①具体的な政治プログラムの欠如、②暴力との距離感の曖昧さ、③資本主義の適応力の過小評価、④西洋中心主義。理論は魅力的だが実践が難しい。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #ef4444; font-weight: 700;">帝国（Empire）</dt>
+                <dd>中心なき、ネットワーク型のグローバル主権。国境を超えた資本・法・文化の支配システム。</dd>
+                <dt style="color: #ef4444; font-weight: 700; margin-top: 1rem;">マルチチュード（Multitude）</dt>
+                <dd>多様性を保持したまま協働する無数の特異性。統一されない民衆。スピノザから借用した概念。</dd>
+                <dt style="color: #ef4444; font-weight: 700; margin-top: 1rem;">コモン（Common）</dt>
+                <dd>私有でも国有でもない、第三の所有形態。知識、言語、自然、インターネットなど、みんなで共有し管理する財。</dd>
+                <dt style="color: #ef4444; font-weight: 700; margin-top: 1rem;">生政治的生産（Biopolitical Production）</dt>
+                <dd>生命、感情、知識、コミュニケーションなど、非物質的なものを生産・搾取する資本主義の新形態。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Antonio Negri</p>
+    </footer>
+</body>
+
+</html>
