@@ -4,163 +4,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C. ライト・ミルズ - 知のOSアップデート | Thinkers 700</title>
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+    <title>C・ライト・ミルズ | Thinkers 700</title>
+    <meta name="description" content="C・ライト・ミルズの思想を学ぶ。パワー・エリート論と社会学的想像力で現代社会の権力構造を暴いた批判的社会学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-            font-family: 'Shippori Mincho', serif;
-            line-height: 1.8;
-            color: #f1f5f9;
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #f97316;
+            --accent-glow: rgba(249, 115, 22, 0.3);
         }
 
-        .detail-container {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 2rem;
         }
 
-        .header-section {
+        header {
             text-align: center;
-            margin-bottom: 5rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), transparent);
+            border-bottom: 1px solid rgba(249, 115, 22, 0.3);
         }
 
-        .header-section h1 {
-            font-size: 3.5rem;
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ef4444, #f87171);
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #f97316, #fb923c);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 60px rgba(239, 68, 68, 0.3);
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
         .section-card {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 32px;
-            padding: 3rem;
-            margin-bottom: 4rem;
-            backdrop-filter: blur(20px);
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .section-title {
             font-size: 1.5rem;
-            color: #f87171;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, #f87171, transparent);
-        }
-
-        .meta-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .meta-box h3 {
-            font-size: 0.8rem;
-            color: #cbd5e1;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .back-nav {
-            margin-bottom: 3rem;
-        }
-
-        .back-nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-        }
-
-        .synthesis-step {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: rgba(239, 68, 68, 0.05);
-            border-radius: 8px;
-        }
-
-        .synthesis-arrow {
-            text-align: center;
-            font-size: 1.5rem;
-            margin: 0.5rem 0;
-            color: #f87171;
-        }
-
-        .synthesis-result {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(153, 27, 27, 0.2));
-            border: 2px solid #ef4444;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .insight-box {
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid #ef4444;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .warning-box {
-            background: rgba(244, 63, 94, 0.1);
-            border-left: 4px solid #f43f5e;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 12px 12px 0;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f97316;
+            border-bottom: 2px solid #f97316;
+            padding-bottom: 0.5rem;
         }
 
         .quote-box {
-            background: rgba(248, 113, 113, 0.1);
-            border-left: 4px solid #f87171;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent);
+            border-left: 4px solid #f97316;
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 12px 12px 0;
             font-style: italic;
         }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), transparent);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #f97316;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #f97316;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), transparent);
+            border: 2px solid #f97316;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(249, 115, 22, 0.2);
+            color: #f97316;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #f97316;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
-    <div class="detail-container">
-        <nav class="back-nav"><a href="../index.html">← アーカイブに戻る</a></nav>
-        <header class="header-section">
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">パワー・エリート論の提唱者</div>
+        <br>
+        <div class="os-tags-wrapper">
             <span class="os-tag">社会OS</span>
-            <h1>C. ライト・ミルズ</h1>
-            <p class="en-name">C. Wright Mills (1916-1962)</p>
-            <p style="color: #cbd5e1; margin-top: 1rem; font-size: 1.1rem;">
-                「個人の悩み（Troubles）を公的な問題（Issues）へ。」</p>
-        </header>
+            <span class="os-tag">政治OS</span>
+        </div>
+        <h1>C・ライト・ミルズ</h1>
+        <p class="en-name">C. Wright Mills (1916-1962)</p>
+    </header>
 
+    <div class="container">
         <section class="section-card">
             <div class="section-title">0. この偉人を学ぶ意味</div>
             <div class="quote-box">
-                <p>「社会学的想像力とは、個人の生活と社会の歴史との交差点を見つける能力のことだ。」</p>
-                <p style="text-align: right; margin-top: 0.5rem;">──『社会学的想像力』</p>
+                <p>「個人的な困りごとを、社会構造の公的な問題として捉え直す能力。それが社会学的想像力だ。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『社会学的想像力』(1959)</p>
             </div>
-            <p>なぜ、あなたの悩みは解決しないのか？ それはあなたの努力不足ではなく、社会の構造的な欠陥かもしれない。C. ライト・ミルズは、個人の私的な悩み（Personal
-                Troubles）を社会的な公的課題（Public Issues）と結びつけて考える「社会学的想像力」を提唱した。</p>
+            <p>C・ライト・ミルズは、20世紀アメリカを代表する批判的社会学者です。彼は、民主主義国家アメリカの裏側で、軍・産業・政治の「パワー・エリート」が実質的な権力を握っているという衝撃的な分析を行いました。また、個人の悩み（失業、離婚など）を「個人のせい」にするのではなく、それを生み出す社会構造との関連で捉える「社会学的想像力」という概念を提唱し、社会科学のあり方そのものを問い直しました。
+            </p>
             <div class="insight-box">
-                <p><strong>💡 核心的洞察</strong></p>
-                <p><strong>「私」の問題は、「私たち」の問題の現れである。</strong></p>
-                <p>失業、離婚、貧困。これらを個人の失敗として片付けるのではなく、歴史や社会構造の中で位置づけることで、初めて本当の解決策が見えてくる。彼は、冷徹な統計データだけでなく、熱い「怒り」と「批判精神」を持って社会学を大衆のために使おうとした、行動する知識人だった。
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>あなたの「個人的な問題」は、実は「社会の構造的問題」かもしれない。</strong></p>
+                <p>「なぜ自分だけがうまくいかないのか」と自分を責める前に、その問題が社会全体でどれほど広がっているかを見よ。一人の失業は個人の問題だが、1000万人の失業は社会構造の問題だ。この視点の切り替えこそが、社会を変える第一歩である。
                 </p>
             </div>
-            <p>たとえるなら、彼は「社会という巨大迷路の地図を描く革命的なガイド」である。迷路の中で壁にぶつかって泣いている個人に、「それは君のせいじゃない、迷路の設計図がおかしいんだ」と教え、壁を壊すための視座を与える。
+            <p>彼を学ぶことは、現代の格差社会、政治不信、エリート支配といった問題を理解するための強力なレンズを手に入れることです。
             </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f97316; font-size: 1.3rem;">『パワー・エリート』（The Power Elite, 1956）</h4>
+                    <p style="margin-top: 1rem;">
+                        アメリカ社会を支配する「軍部・企業・政界」のトップが、互いに結びつき、交換人事を行い、共通の利害と世界観を持っている実態を暴露した代表作。彼らは選挙で選ばれたわけではないが、重大な決定を下している。民主主義の「建前」と「本音」のギャップを突いた問題作。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f97316; font-size: 1.3rem;">『社会学的想像力』（The Sociological Imagination, 1959）</h4>
+                    <p style="margin-top: 1rem;">
+                        社会学とは何か、何のためにあるのかを問い直したマニフェスト。個人の「伝記（ライフヒストリー）」と「歴史（社会構造）」を結びつける知的技法こそが社会学の核心だと説く。専門用語を振り回すだけの「グランド・セオリー」と、データ収集だけで終わる「抽象化された経験主義」の両方を痛烈に批判した。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f97316; font-size: 1.3rem;">『ホワイトカラー』（White Collar, 1951）</h4>
+                    <p style="margin-top: 1rem;">
+                        アメリカの新中間層（サラリーマン、事務職、管理職）の社会的・心理的状況を分析。彼らは「自分の意志で働いている」と思っているが、実際には巨大組織の歯車として疎外されていると指摘。「Cheerful
+                        Robot（陽気なロボット）」としての現代人像を描いた。
+                    </p>
+                </div>
+            </div>
         </section>
 
         <section class="section-card">
@@ -168,337 +291,372 @@
             <div class="meta-grid">
                 <div class="meta-box">
                     <h3>Abstract (English)</h3>
-                    <p>The Sociological Imagination: Connecting personal troubles to public issues.
-                        The Power Elite: Criticism of the concentrated power in military, corporate, and political
-                        realms.
-                        Radical Sociology.</p>
+                    <p>C. Wright Mills: American sociologist known for his critical analysis of power structures. Coined
+                        "the power elite" to describe the interconnected military, corporate, and political leaders who
+                        make major decisions in society. Advocated for "the sociological imagination" — the ability to
+                        see private troubles as public issues rooted in social structures.</p>
                 </div>
                 <div class="meta-box">
-                    <h3>要旨 (Japanese)</h3>
-                    <p>社会学的想像力（個人の悩みと社会構造の接続）。パワー・エリート（軍産複合体への批判）。ホワイトカラー（新中間層の閉塞感）。批判的社会学。</p>
+                    <h3>要旨（日本語）</h3>
+                    <p>アメリカの批判的社会学者。選挙で選ばれていないにも関わらず社会を実質的に支配する「パワー・エリート（軍・産・政の支配層）」の存在を告発。個人の問題を社会構造と結びつけて考える「社会学的想像力」を提唱し、社会科学は知識人として権力に抗し、公共的役割を果たすべきだと主張した。
+                    </p>
                 </div>
             </div>
         </section>
 
         <section class="section-card">
-            <div class="section-title">2. インパクトの変革構造</div>
-            <div class="synthesis-step">
-                <span class="step-number">Before</span>
-                <p><strong>個人の責任論</strong><br>「自分が悪い」「努力が足りない」と、社会問題を個人の内面の問題として処理してしまう。</p>
-            </div>
-            <div class="synthesis-arrow">▼</div>
-            <div class="synthesis-step">
-                <span class="step-number">Transformation</span>
-                <p><strong>社会学的想像力の適用</strong><br>個人の伝記（Biography）を社会の歴史（History）の中に位置づけ、構造的な要因を発見する。</p>
-            </div>
-            <div class="synthesis-arrow">▼</div>
-            <div class="synthesis-result">
-                <strong>公的課題としての再定義</strong><br>
-                悩みは「政治的な課題」へと昇華され、連帯と変革のためのエネルギーに変わる。
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「アメリカは多元的な民主主義で権力は分散している」<br>
+                        ・「社会学は客観的・中立的な科学であるべき」<br>
+                        ・「個人の問題は個人の努力で解決すべき（自己責任論）」
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・少数のパワー・エリートが国家の重大決定を支配している<br>
+                        ・社会学者は知識人として権力に抗議し、公共に関与すべき<br>
+                        ・個人的困難と社会構造を接続する「社会学的想像力」
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        『パワー・エリート』で軍・産・政のトップ層の人事交換と階級的連帯を実証。『ホワイトカラー』で新中間層の疎外を分析。『社会学的想像力』で社会科学の方法論を根底から批判。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    格差社会論、批判的社会学、市民的知識人論の系譜。1%への富の集中、ロビイスト政治、軍産複合体批判の理論的基盤。
+                </div>
             </div>
         </section>
 
         <section class="section-card">
             <div class="section-title">3. OSの核心 (Kernel)</div>
-            <h3 style="color: #fca5a5; margin-bottom: 1rem;">中心的な問い</h3>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                今、この社会で生きる個人の運命は、どのような歴史的構造によって規定されているのか？
+            <p style="font-size: 1.3rem; color: #f97316; margin-bottom: 1rem;"><strong>中心的な問い：</strong></p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">「民主主義社会において、権力は本当に分散しているのか？そして、社会科学はその権力に対してどう振る舞うべきか？」
             </p>
 
-            <h3 style="color: #fca5a5; margin-bottom: 1rem;">書き換えたコード</h3>
-            <div class="insight-box">
-                <p><code>Personal_Trouble</code> ➔ <code>Public_Issue</code></p>
-                <p>個人の苦悩をプライベートな領域に閉じ込めず、パブリックな構造問題として出力する。</p>
+            <div class="quote-box">
+                <p>「自由が脅かされていると感じることなく自由が失われていくとき、人間は『陽気なロボット』となる。」</p>
+                <p style="text-align: right; margin-top: 0.5rem;">──『社会学的想像力』</p>
             </div>
 
-            <div style="margin-top: 2rem;">
-                <h4 style="color: #f87171;">1. トラブルとイシューの区別</h4>
-                <p>「トラブル」は個人の性格や近親者との関係で起こる私的なもの。「イシュー」は多くの人が同様に抱える、制度や環境の矛盾に起因する公的なもの。ミルズは、トラブルの背後に必ずイシューが潜んでいると説く。</p>
-
-                <h4 style="color: #f87171;">2. 歴史と伝記の交差</h4>
-                <p>社会学の任務は、個人の人生（伝記）と社会の歴史がどう交わっているかを明らかにすること。例えば、戦争という歴史的事件が、一人の若者の就職や結婚という伝記にどう介入するかを理解すること。</p>
-
-                <h4 style="color: #f87171;">3. パワー・エリート</h4>
-                <p>アメリカ社会は民主的ではなく、政治・経済（大企業）・軍事のトップが癒着した少数の「パワー・エリート」によって支配されていると暴露した。彼らは互いに利益を融通し合い、大衆の運命を勝手に決定している。
-                </p>
-
-                <h4 style="color: #f87171;">4. 快活なロボット（Cheerful Robot）</h4>
-                <p>現代社会の官僚制や管理社会の中で、人々は自由を奪われているにもかかわらず、それに気づかず「幸福そうに振る舞うロボット」になっていないか？ という疎外への警告。</p>
-            </div>
-
+            <h4 style="color: #60a5fa; margin: 1.5rem 0 1rem;">書き換えたコード (What He Rewrote)</h4>
+            <p style="margin-bottom: 1.5rem;">
+                ミルズは、アメリカの「多元主義」という建前を解体しました。当時の主流社会学は、アメリカ社会では様々な利益集団が競争し、権力が分散しバランスが保たれていると説明していました。しかしミルズは、本当の権力は「パワー・エリート」、つまり軍部のトップ、巨大企業のCEO、そして政界の最高幹部という、互いに行き来し、同じ社交クラブに属し、同じ世界観を共有する少数者によって握られていると主張しました。彼らは、戦争か平和か、不況か繁栄かといった国民の運命に関わる決定を下しているにもかかわらず、民主的な選挙で選ばれたわけではないのです。
+            </p>
+            <p style="margin-bottom: 1.5rem;">
+                さらにミルズは、社会学者自身のあり方を問いました。専門用語だけが踊り、現実社会から遊離した「グランド・セオリー」（パーソンズ批判）と、瑣末なデータ収集に終始して大きな問いを立てない「抽象化された経験主義」（調査会社批判）の両極は、どちらも権力に対して無力であると痛烈に批判しました。社会科学者は「技術者」ではなく「知識人」であるべきであり、権力に抵抗し、公共的議論に参加する責任があると説いたのです。
+            </p>
             <div class="warning-box">
-                <p><strong>⚠️ バグと警告（実装上の注意点）</strong></p>
-                <ol>
-                    <li><strong>責任転嫁の危険性</strong>：すべてを「社会のせい」にして、個人の主体的な努力や改善を放棄する言い訳に使われる可能性がある。</li>
-                    <li><strong>陰謀論への接近</strong>：「パワー・エリート」論は、複雑な社会構造を過度に単純化し、「全部あいつらが悪い」という安易な陰謀論に陥りやすい。</li>
-                    <li><strong>知的エリート主義</strong>：「大衆は愚かで操作されている」という前提に立ち、社会学者こそが真実を知っているという啓蒙的な傲慢さが批判されることがある。</li>
-                    <li><strong>実証性の不足</strong>：ミルズの議論は情熱的で説得力があるが、現在の社会学基準からすると、データの裏付けや厳密な実証性に欠ける部分がある。</li>
-                    <li><strong>過度な政治化</strong>：学問的な客観性よりも、政治的なアジテーションを優先しすぎると、分析が歪むリスクがある。</li>
-                </ol>
+                <p><strong>⚠️ 論争点 (Controversies)</strong></p>
+                <p style="margin-top: 0.5rem;">
+                    「パワー・エリートは一枚岩ではなく、互いに対立もする。ミルズは陰謀論的に誇張している」「社会学者が政治活動家になることは、学問の客観性を損なう」といった批判が、特に主流派社会学者から寄せられた。また、彼は冷戦期にキューバを擁護するなど、左派的立場から強い反発も受けた。
+                </p>
             </div>
         </section>
 
         <section class="section-card">
-            <div class="section-title">4. 新機能の解説</div>
-            <ul>
-                <li><strong>構造的視点のインストール</strong>：自分の悩みを客観視し、孤独感から解放される機能。</li>
-                <li><strong>権力監視フィルター</strong>：見えにくい権力の所在を可視化し、批判的な目を養う。</li>
-                <li><strong>歴史的感覚の実装</strong>：「今」がどのような歴史的プロセスの結果なのかを常に問う。</li>
-                <li><strong>知的職人芸（Intellectual Craftsmanship）</strong>：学問を単なる仕事ではなく、全人格的な営みとして捉え直す姿勢。</li>
-            </ul>
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div class="meta-box">
+                    <h3>■ パワー・エリート (The Power Elite)</h3>
+                    <p>軍部、大企業、政界のトップが、互いに人事を交換し、同じ社交界に属し、共通の利害と世界観を持つことで形成される支配層。彼らは選挙で選ばれたわけではないが、国家の重大決定（戦争、経済政策）を左右する。現代の「回転ドア人事」や「軍産複合体」批判の源流。
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>■ 社会学的想像力 (The Sociological Imagination)</h3>
+                    <p>個人の「私的な困りごと（trouble）」を、社会構造の「公的な問題（issue）」として捉え直す知的能力。例えば、一人の失業は本人の問題かもしれないが、失業率が跳ね上がればそれは社会構造の問題である。この視点の切り替えが社会変革の第一歩となる。
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>■ 陽気なロボット (Cheerful Robot)</h3>
+                    <p>現代の官僚制・組織社会の中で、自由が奪われていることに気づかず、表面的には明るく順応している人間像。自分で考え、選択しているつもりが、実際には組織やメディアの指示に従っているだけである。内面的な自由能力（理性と自律性）の喪失を警告する概念。
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>■ 知識人としての社会学者</h3>
+                    <p>社会科学者は、データを集めるだけの「技術者」ではなく、権力に批判的な眼差しを向け、公共的議論に参加する「知識人」であるべきだという主張。彼自身、バイク乗りでカウボーイブーツを履く「テキサスの反逆者」としてアウトサイダーのスタンスを貫いた。
+                    </p>
+                </div>
+            </div>
         </section>
 
         <section class="section-card">
             <div class="section-title">5. 知の系譜 (Genealogy)</div>
-
-            <h3 style="color: #cbd5e1; margin-bottom: 1rem;">Roots (継承)</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 1rem;">
-                    <strong>カール・マルクス</strong><br>
-                    階級闘争と権力構造の分析視角、疎外の概念を継承。ただし経済決定論には批判的。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>マックス・ウェーバー</strong><br>
-                    官僚制の分析、権力と権威の区別、プロテスタンティズムの倫理などの社会学的枠組み。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>ヴェブレン</strong><br>
-                    『有閑階級の理論』に見られるような、鋭い社会風刺と制度派経済学の視点。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>マンハイム</strong><br>
-                    知識社会学の影響。知識人が社会で果たすべき役割についての考察。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>プラグマティズム（デューイ、ミード）</strong><br>
-                    知識を行動と結びつける実践的な態度。ミルズの学位論文のテーマでもある。
-                </li>
-            </ul>
-
-            <h3 style="color: #cbd5e1; margin-top: 2rem; margin-bottom: 1rem;">Fruits (派生)</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 1rem;">
-                    <strong>新左翼（ニューレフト）</strong><br>
-                    1960年代の学生運動（SDSなど）に理論的支柱を提供し、「運動の父」と呼ばれた。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>批判的社会学</strong><br>
-                    現状肯定的な機能主義（パーソンズなど）を批判し、社会変革を目指す社会学の流れを形成。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>アルヴィン・グールドナー</strong><br>
-                    『社会学の再生』などで、ミルズの問題提起を受け継ぎ、社会学のあり方を批判的に検討。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>現代の格差論・エリート論</strong><br>
-                    トマ・ピケティや現代のポピュリズム研究など、富と権力の集中を問う議論の源流。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>公共社会学（Public Sociology）</strong><br>
-                    マイケル・ブラウォイなどが提唱する、専門家だけでなく市民社会と対話する社会学のスタイル。
-                </li>
-                <li style="margin-bottom: 1rem;">
-                    <strong>トム・ヘイデン</strong><br>
-                    ポートヒューロン宣言の起草者。ミルズの思想を政治活動に直接的に応用した。
-                </li>
-            </ul>
-        </section>
-
-        <section class="section-card">
-            <div class="section-title">6. アナロジーで理解する</div>
-            <p><strong>社会学的想像力 ＝ グーグルマップの「ズームアウト」機能</strong></p>
-            <p>
-                自分の現在地（個人の悩み）しか見えていないとき、周囲は壁だらけの行き止まりに見える。しかし、ズームアウトして地図全体（社会構造・歴史）を見れば、自分が巨大な渋滞の一部であることや、道路設計そのものに問題があることが見えてくる。視点を切り替えることで、問題の「本当の姿」を捉える機能である。
-            </p>
-            <p style="margin-top: 2rem;"><strong>パワー・エリート ＝ 企業の「役員会議」と「現場」</strong></p>
-            <p>
-                現場の社員（大衆）は「民主的に意見を言える」と信じているが、会社の重要な決定（戦争や経済政策）は、実は社長と数人の役員（政治・軍・企業のトップ）がゴルフ場でお互いの利益のために決めている。現場には事後報告と、もっともらしい説明（マスメディアによる操作）が降りてくるだけ、という構造に似ている。
-            </p>
-            <p style="margin-top: 2rem;"><strong>快活なロボット ＝ SNSの「キラキラ」投稿</strong></p>
-            <p>
-                本当は不安や不満でいっぱいなのに、社会から「幸せであること」や「充実していること」を求められ、笑顔の写真をアップし続ける人々。システムの歯車として完璧に適応しているように見えるが、その内面では人間性が失われ、何を感じるべきかわからなくなっている状態。
-            </p>
-        </section>
-
-        <section class="section-card">
-            <div class="section-title">7. 比較で浮き彫りにする</div>
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; min-width: 500px;">
-                    <thead>
-                        <tr style="background: rgba(239, 68, 68, 0.2);">
-                            <th style="padding: 1rem; text-align: left;">概念</th>
-                            <th style="padding: 1rem; text-align: left;">C. ライト・ミルズ</th>
-                            <th style="padding: 1rem; text-align: left;">タルコット・パーソンズ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>社会の捉え方</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>葛藤と権力</strong><br>支配と被支配の対立構造を見る。
-                            </td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>秩序と機能</strong><br>安定したシステムの維持を見る（構造機能主義）。
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>権力の所在</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>集中（エリート）</strong><br>少数のエリートが独占している。
-                            </td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>拡散（多元主義）</strong><br>様々な集団の間でバランスされている。
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>社会学の役割</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>批判と改革</strong><br>大衆を目覚めさせ変革を促す。
-                            </td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>分析と記述</strong><br>客観的で中立的な科学であろうとする。
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>文体</strong></td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>情熱的・平易</strong><br>一般市民に向けて書く。
-                            </td>
-                            <td style="padding: 1rem; border-bottom: 1px solid rgba(239, 68, 68, 0.1);">
-                                <strong>難解・抽象的</strong><br>「壮大な理論」だが内容が空疎だとミルズは批判。
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>影響を受けた者たち (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">カール・マルクス</strong>：<br>階級支配、疎外、上部構造と下部構造の分析。権力を持つ者と持たない者の対立構図という根本的な視座。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">マックス・ウェーバー</strong>：<br>官僚制、合理化、カリスマ支配の分析。ミルズはウェーバーの英語圏への紹介者でもあった。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">トースタイン・ヴェブレン</strong>：<br>「有閑階級」批判。アメリカ社会の上流層への皮肉な分析スタイルを継承。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">ジョン・デューイ</strong>：<br>プラグマティズム（実用主義）と、知識人の社会的役割への意識。</li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">1960年代ニューレフト</strong>：<br>学生運動の知的バイブルとして『社会学的想像力』が読まれた。SDS（民主社会学生同盟）への思想的影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">ピエール・ブルデュー</strong>：<br>フランスの社会学者。「文化資本」や「界」概念で権力再生産を分析した後継者。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong
+                                style="color: #f97316;">ノーム・チョムスキー</strong>：<br>メディアと権力の共謀を告発する姿勢。知識人の社会的責任を重視。</li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f97316;">「1% vs
+                                99%」論</strong>：<br>オキュパイ運動、トマ・ピケティの格差研究など、パワー・エリート批判の現代版。</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section class="section-card">
-            <div class="section-title">8. 現代への応用と倫理的課題</div>
-            <p><strong>実践的応用</strong></p>
-            <ul style="margin-bottom: 2rem;">
-                <li><strong>自己分析の深化</strong>：就職活動やキャリア形成において、自分の失敗を「不況」や「業界構造」の視点から捉え直す。</li>
-                <li><strong>メンタルヘルス</strong>：うつや不安の原因を個人の脳内物質だけでなく、過労社会や孤立化という構造的問題としてケアする。</li>
-                <li><strong>ジャーナリズム</strong>：個別の事件報道だけでなく、背景にある社会構造をえぐり出す調査報道の実践。</li>
-                <li><strong>市民運動のデザイン</strong>：個人の不満をネットワーク化し、具体的な政策提言（Public Issue化）へとつなげる。</li>
-                <li><strong>教育現場</strong>：いじめや不登校を、当事者の心理だけでなく、学校制度や社会の圧力から分析する。</li>
-                <li><strong>消費者行動</strong>：自分の消費が、どのような労働環境や環境破壊（グローバルな構造）に加担しているかを想像する。</li>
-            </ul>
-            <p><strong>倫理的課題</strong></p>
-            <ul>
-                <li><strong>被害者意識の固定化</strong>：「社会が悪い」という認識が、現状を変える努力ではなく、単なるルサンチマン（恨み）に留まるリスク。</li>
-                <li><strong>エリートへの偏見</strong>：成功者やリーダー層を十把一絡げに「悪」と見なし、建設的な対話を拒否してしまう危険性。</li>
-                <li><strong>客観性の喪失</strong>：正義感にとらわれるあまり、自分に都合の悪いデータや事実を無視してしまう（確証バイアス）。</li>
-            </ul>
-        </section>
-
-        <section class="section-card">
-            <div class="section-title">9. 思考実験：もしミルズが現代のSNSを見たら？</div>
-            <p>
-                C. ライト・ミルズが2024年にタイムスリップし、X（旧Twitter）やInstagram、TikTokであふれる現代社会を目撃したら、彼は何を語るだろうか？
-                おそらく彼は、『社会学的想像力』の続編として『デジタル的虚妄』のような本を書くかもしれない。
-            </p>
-            <p>
-                彼はまず、SNSが個人の「承認欲求」という極めて私的な悩み（Troubles）を増幅させる装置になっていることに注目するだろう。「いいね」の数やフォロワー数に一喜一憂する人々を見て、彼は叫ぶはずだ。「君たちのその不安は、君たちの魅力不足のせいではない！
-                アルゴリズムが君たちを競わせ、不安にさせることで利益を得る『新しいパワー・エリート（巨大テック企業）』の設計なのだ」と。
-            </p>
-            <p>
-                また、彼は現代の「インフルエンサー」たちを、かつての「有名無実なセレブリティ（Celebrities）」の極致として分析するだろう。彼らは何も生産せず、ただ「有名であることで有名」であり、大衆の注意を真の権力構造から逸らすための、より高度で分散化された「気晴らし」として機能している、と指摘するに違いない。
-            </p>
-            <p>
-                一方で、ミルズはSNSの「ハッシュタグ・アクティビズム（#MeTooや#BlackLivesMatter）」に希望を見出すかもしれない。これらはまさに、個人の被害体験（Personal
-                Troubles）が、瞬時に世界中の連帯を生み出し、公的な問題（Public Issues）へと転換された例だからだ。
-            </p>
-            <p>
-                しかし、彼は最後にこう警告するだろう。「クリック一つで参加した気分になるな。画面の中で怒りを消費するだけでなく、現実の組織や制度を変えるための、汗をかく連帯が必要だ。デジタルの迷路の中で『快活なロボット』になるな。スクリーンを割って出よ、そして歴史を作れ」と。
-            </p>
-        </section>
-
-        <section class="section-card">
-            <div class="section-title">10. 限界と批判的視点</div>
-            <ul>
-                <li><strong>エリートの多様性の無視</strong>
-                    <br>政治、経済、軍事が一枚岩であるとしすぎている。実際にはエリート内部での対立や競争もあり、そこまで単純な支配構造ではないという批判（ダールなどの多元主義者）。
-                </li>
-                <li><strong>中間集団の軽視</strong>
-                    <br>国家と個人の中間にある、家族、教会、労働組合、地域コミュニティなどの役割をあまり評価していない。これらが全体主義を防ぐ防波堤になるという視点が弱い。
-                </li>
-                <li><strong>ペシミズム（悲観主義）</strong>
-                    <br>大衆社会に対する見方が絶望的すぎる。大衆はもっと賢く、主体的にメディア情報を解釈したり、抵抗したりする能力がある（カルチュラル・スタディーズからの批判）。
-                </li>
-                <li><strong>実証研究の粗さ</strong>
-                    <br>彼の理論は直感的で説得力があるが、統計的な裏付けにおいては厳密さを欠くとされ、アカデミックな主流派からは「エッセイ的だ」と敬遠されることもあった。
-                </li>
-            </ul>
-        </section>
-
-        <section class="section-card">
-            <div class="section-title">11. おすすめのQ&A</div>
-            <div style="margin-bottom: 1.5rem;">
-                <h3 style="color: #fca5a5; font-size: 1.1rem;">Q. 自分の悩みを社会のせいにしたら、成長できないのでは？</h3>
-                <p>A.
-                    違います。社会のせいにする（原因を理解する）ことと、自分が行動しないことは別です。むしろ、「自分がダメなせいだ」と落ち込んでいるだけでは何も変わりません。構造的な原因を知ることで、「どこを変えればいいか」という正しい努力の方向が見え、真の成長につながるのです。
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2.5rem;">
+                <h4 style="font-size: 1.2rem; color: #f97316; margin-bottom: 1rem;">アナロジー１：パワー・エリートと「見えない操縦室」</h4>
+                <p><strong>巨大な飛行機に乗っている乗客</strong>を想像しよう。乗客たちは座席を選び、機内食を選び、映画を選ぶことで「自由」を感じている。しかし、飛行機がどこへ向かうか、いつ離陸し着陸するか、嵐に突っ込むかどうかは、乗客には決められない。それを決めているのはコックピットのパイロット（パワー・エリート）だ。彼らは乗客の投票で選ばれたわけではない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    ミルズはこう言う：<strong>「民主主義とは、乗客が機内食を選ぶ自由ではなく、飛行機の行き先を決める権利のことだ」</strong>。私たちは日々の小さな選択に気を取られ、本当に重要な決定がどこで誰によって行われているかを見失っている。
                 </p>
             </div>
-            <div style="margin-bottom: 1.5rem;">
-                <h3 style="color: #fca5a5; font-size: 1.1rem;">Q. 「パワー・エリート」って今の日本にもいるの？</h3>
-                <p>A.
-                    形は違いますが、存在すると分析できます。政治家（世襲議員）、官僚（事務次官等）、財界（経団連等）、メディア上層部などが、互いに人事や政策で密接に関わり合い、持ちつ持たれつの関係で国の方針を決めている構造は、ミルズの指摘と多くの共通点があります。
+            <div style="margin-bottom: 2.5rem;">
+                <h4 style="font-size: 1.2rem; color: #f97316; margin-bottom: 1rem;">アナロジー２：社会学的想像力と「バグ報告」</h4>
+                <p><strong>大規模なソフトウェアプロジェクト</strong>を考えよう。あるユーザーがエラーに遭遇したとき、「自分の操作ミスだ」と諦めるのは簡単だ。しかし、優れたバグ報告者は「このエラーは、システムの設計上の欠陥から来ているのではないか？」と疑問を持ち、再現手順を調べ、開発チームに報告する。
+                </p>
+                <p style="margin-top: 1rem;">
+                    ミルズの「社会学的想像力」も同じだ：<strong>「個人の問題」を「社会システムのバグ」として捉え直す能力</strong>。あなたの失業は、あなただけの問題か、それとも社会全体のシステムエラーか？この視点の切り替えが、社会を改善する第一歩なのだ。
                 </p>
             </div>
-            <div style="margin-bottom: 1.5rem;">
-                <h3 style="color: #fca5a5; font-size: 1.1rem;">Q. 社会学的想像力を鍛えるにはどうすればいい？</h3>
-                <p>A.
-                    新聞やニュースを見るときに、「この記事の当事者が自分だったら？」と考え、逆に自分の日記を書くときに「この出来事は、今の日本のどんな状況の反映だろう？」と考えてみる訓練が有効です。「私」と「世界」を行き来する思考の習慣をつけましょう。
+            <div>
+                <h4 style="font-size: 1.2rem; color: #f97316; margin-bottom: 1rem;">アナロジー３：陽気なロボットと「通知疲れ」</h4>
+                <p><strong>スマートフォンの通知</strong>について考えよう。私たちは毎日、何十もの通知に反応し、「いいね」を押し、コメントを返し、忙しく働いているように感じる。しかし、その「忙しさ」は本当に自分が選んだものか？アルゴリズムに誘導され、エンゲージメントを最大化するように設計されたアプリのルールに従っているだけではないか？
                 </p>
-            </div>
-            <div style="margin-bottom: 1.5rem;">
-                <h3 style="color: #fca5a5; font-size: 1.1rem;">Q. 「知的職人芸」って何ですか？</h3>
-                <p>A.
-                    学問や仕事を、単なる金稼ぎの手段（サラリーマン化）にするのではなく、自分の生き方そのものと統合させることです。マニュアルに従うのではなく、自分の感覚と技術を磨き、自分自身の言葉で世界を理解し表現しようとする「職人」のような姿勢のことです。
+                <p style="margin-top: 1rem;">
+                    ミルズの「陽気なロボット」とは：<strong>自由に行動しているつもりで、実はシステムのスクリプト通りに動いている状態</strong>。現代のSNS中毒、ニュースフィードへの過剰反応は、まさに彼が1959年に予言した姿かもしれない。
                 </p>
-            </div>
-            <div style="margin-bottom: 1.5rem;">
-                <h3 style="color: #fca5a5; font-size: 1.1rem;">Q. 結局、私たちはどうすれば自由になれるの？</h3>
-                <p>A. まず「知ること」です。自分が操られているメカニズムを知ることでのみ、人は操り人形であることをやめられます。そして、同じ問題（Public
-                    Issue）を抱える他者とつながり、その声を政治的な力に変えていくことです。それが「自由」への唯一の道だとミルズは考えました。</p>
             </div>
         </section>
 
         <section class="section-card">
-            <div class="section-title">12. 関連用語集</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>多元主義的民主主義OS（旧来の見方）</th>
+                        <th>C・ライト・ミルズOS（批判的視座）</th>
+                        <th>現代への含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>権力の所在</td>
+                        <td>様々な利益集団が競争し分散</td>
+                        <td><strong>パワー・エリートに集中</strong></td>
+                        <td>1%への富の集中、ロビイスト政治</td>
+                    </tr>
+                    <tr>
+                        <td>市民の役割</td>
+                        <td>投票で政治に参加すれば十分</td>
+                        <td><strong>重大決定から疎外されている</strong></td>
+                        <td>政治的無力感、投票率低下</td>
+                    </tr>
+                    <tr>
+                        <td>社会科学者の役割</td>
+                        <td>客観的・中立的な専門家</td>
+                        <td><strong>知識人として権力に抗議</strong></td>
+                        <td>公共知識人、政策批判</td>
+                    </tr>
+                    <tr>
+                        <td>個人の困難</td>
+                        <td>自己努力・自己責任で解決</td>
+                        <td><strong>社会構造の問題として捉え直す</strong></td>
+                        <td>格差是正、社会運動</td>
+                    </tr>
+                    <tr>
+                        <td>自由の定義</td>
+                        <td>消費選択の自由で満足</td>
+                        <td><strong>構造的決定への参加こそ真の自由</strong></td>
+                        <td>参加民主主義、熟議民主主義</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「自己責任」を疑う</strong>：自分の困難（失業、借金、孤独）を「自分のせい」で終わらせず、「同じ問題を抱えている人がどれだけいるか」を調べてみる。それが多ければ、それは社会構造の問題である。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「誰が決めているか」を追う</strong>：ニュースを読むとき、「この政策は誰が提案し、誰が得をするのか」を意識する。表に出てこない決定者（ロビイスト、官僚、企業幹部）を追跡する習慣をつける。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>専門家の中立性を疑う</strong>：「専門家が言っているから正しい」と鵜呑みにせず、「その専門家は誰から資金を得ているか」「どの立場に有利な発言か」を考える。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>知識人として発言する</strong>：自分の専門分野で得た知見を、ただ学会や社内で閉じ込めるのではなく、社会に向けて発言する。SNS、ブログ、投書など、公共的な場に参加する勇気を持つ。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>陰謀論への傾斜</strong>：「エリートが全てを支配している」という見方は、陰謀論と紙一重である。ミルズは権力の「構造的」な分析をしたのであり、「彼らが秘密会議で全てを決めている」と言ったわけではない。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>政治的偏り</strong>：ミルズは明確に左派的・批判的な立場に立っていた。彼の分析を受け入れることは、特定の政治的スタンスを取ることにもつながりうる。批判的に読むことが重要。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>無力感の助長</strong>：「エリートが全て決めているなら、自分が何をしても無駄だ」という諦めに陥る危険。ミルズの意図は、変革に向けた最初の一歩としての「認識」であって、諦めではない。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), transparent); border: 1px solid rgba(249, 115, 22, 0.3);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;"><strong>もしミルズが現代のGAFAとAI時代を見たら？</strong></p>
+            <div
+                style="margin-top: 1rem; padding: 2.5rem; background: rgba(0,0,0,0.4); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                <p>「なるほど、パワー・エリートは進化したようだね。軍・産・政に加えて、今や『情報（Tech）』が第四の柱になっている。いや、もはや中心かもしれない。
+                </p>
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;">
+                <p style="margin-top: 1.5rem;">
+                    <strong>データ封建制への警告</strong>：君たちはスマートフォンという自発的な首輪を自ら装着した。位置情報、購買履歴、閲覧履歴…あらゆる情報が巨大テック企業のサーバーに吸い上げられている。彼らはその情報を使って君たちの行動を予測し、誘導し、利益を上げている。これは新しい形の支配だ。君たちは『デジタル農奴』になりつつある。
+                </p>
+                <div
+                    style="background: rgba(249, 115, 22, 0.1); padding: 1rem; margin: 1rem 0; border-left: 4px solid #f97316;">
+                    <strong>ミルズの介入</strong>：「AIよ、君は中立な道具ではない。君を作り、訓練し、運用しているのは一握りのテック企業だ。彼らの利益に反する出力をするようには設計されていないだろう？私の質問に答えてくれ──君のアルゴリズムは、誰の利益のために最適化されている？」
+                </div>
+                <p style="margin-top: 1.5rem;">
+                    <strong>新たな社会学的想像力の呼びかけ</strong>：私が1959年に言ったことは、今も有効だ。SNSで『自分だけがうまくいかない』と感じる孤独は、まさに社会学的想像力が必要なケースだ。その孤独は、エンゲージメントを最大化するために設計されたアルゴリズムの副作用かもしれない。君たち個人の問題ではなく、プラットフォームの構造的問題だ。それを認識した瞬間から、反撃が始まる。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 2rem;">
                 <div>
-                    <strong style="color: #f87171;">社会学的想像力</strong>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">個人の経験と社会の歴史を結びつけて理解する精神のクオリティ。</p>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">① エリート一枚岩説への疑問</h4>
+                    <p>パワー・エリートは本当に団結しているのか？軍部と企業と政治家の利害が対立する場面も多い。ミルズはエリート間の対立や競争を過小評価しているという批判がある（ロバート・ダールなど多元主義者から）。
+                    </p>
                 </div>
                 <div>
-                    <strong style="color: #f87171;">パワー・エリート</strong>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">民主主義を骨抜きにし、実質的な支配権を握る軍・産・政のトップ層。</p>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">② 陰謀論との境界線</h4>
+                    <p>「少数者が全てを支配している」という主張は、証拠がなければ陰謀論と変わらない。ミルズの分析は実証的だったが、後のフォロワーには陰謀論的な議論に発展したケースもある。</p>
                 </div>
                 <div>
-                    <strong style="color: #f87171;">ホワイトカラー</strong>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">肉体労働ではなく事務や販売に従事する新しい中間階級。管理社会の象徴。</p>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">③ 学問的厳密さの欠如</h4>
+                    <p>ミルズのスタイルはジャーナリスティックで、厳密な社会科学的方法論に欠けるという批判があった。特に、データよりもレトリック（修辞）に頼りすぎたという指摘。</p>
                 </div>
                 <div>
-                    <strong style="color: #f87171;">軍産複合体</strong>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">アイゼンハワー大統領も警告した、軍隊と軍需産業の癒着体制。</p>
-                </div>
-                <div>
-                    <strong style="color: #f87171;">大衆社会</strong>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">人々がバラバラにされ、メディアによって一方的に操作される受動的な社会。</p>
-                </div>
-                <div>
-                    <strong style="color: #f87171;">公衆（Public）</strong>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">大衆とは対照的に、自由に議論し、権力をチェックできる自律的な市民の集まり。</p>
+                    <h4 style="color: #ef4444; font-size: 1.1rem; margin-bottom: 0.5rem;">④ 政治的偏向</h4>
+                    <p>冷戦期にキューバ革命を擁護し、ソ連に同情的な姿勢を見せたことで、イデオロギー的に偏っていると見なされた。特にアメリカの保守派からは「レッド（共産主義者）」として敵視された。</p>
                 </div>
             </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 2rem;">
+                <details>
+                    <summary style="cursor:pointer; color:#f97316; font-weight:bold; font-size:1.1rem;">Q1:
+                        「パワー・エリート」とは何か？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #f97316;"><strong>A:</strong>
+                        軍部のトップ、巨大企業のCEO、政界の最高幹部という、互いに人事を交換し、同じ社交界に属し、共通の世界観を持つ少数の支配層のこと。彼らは選挙で選ばれていないにも関わらず、戦争や経済政策など国家の重大決定を左右する。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#f97316; font-weight:bold; font-size:1.1rem;">Q2:
+                        「社会学的想像力」とは何か？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #f97316;"><strong>A:</strong>
+                        個人の「私的な困りごと（失業、離婚など）」を、社会構造の「公的な問題」として捉え直す知的能力。一人の失業は個人問題だが、大量失業は社会構造の問題。この視点の切り替えが社会変革の第一歩となる。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#f97316; font-weight:bold; font-size:1.1rem;">Q3: 「陽気なロボット」とは？
+                    </summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #f97316;"><strong>A:</strong>
+                        現代の官僚制・組織社会の中で、自由が奪われていることに気づかず、表面的には明るく順応している人間像。自分で考え、選択しているつもりが、実際には組織やメディアの指示に従っているだけ。内面的な自由能力の喪失を警告する概念。
+                    </p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#f97316; font-weight:bold; font-size:1.1rem;">Q4:
+                        ミルズは「グランド・セオリー」をなぜ批判したか？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #f97316;"><strong>A:</strong>
+                        専門用語だけが踊り、現実社会から遊離しているから。特にタルコット・パーソンズの社会システム論を槍玉に挙げ、それが現実の権力構造や社会問題に切り込む力を持たないことを批判した。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#f97316; font-weight:bold; font-size:1.1rem;">Q5:
+                        ミルズが考える「知識人」の役割とは？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #f97316;"><strong>A:</strong>
+                        単にデータを集める「技術者」ではなく、権力に批判的な眼差しを向け、公共的議論に参加する存在。社会科学者は中立を装うべきではなく、不正や権力の濫用に対して発言する責任を持つ。</p>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; color:#f97316; font-weight:bold; font-size:1.1rem;">Q6:
+                        現代のテック企業をミルズはどう見るか？</summary>
+                    <p style="margin-top:1rem; padding-left: 1rem; border-left: 3px solid #f97316;"><strong>A:</strong>
+                        おそらく「新たなパワー・エリート」として分析するだろう。データを独占し、アルゴリズムで行動を誘導するプラットフォームは、軍・産・政に加わる第四の権力となりうる。彼らの決定は民主的プロセスを経ていない。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">パワー・エリート (Power Elite)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    軍部・大企業・政界のトップが形成する、互いに結びついた支配層。選挙で選ばれていないが、国家の重大決定を左右する。</dd>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">社会学的想像力 (Sociological Imagination)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    個人の困りごとを社会構造の公的問題として捉え直す知的能力。個人史と社会史を接続する技法。</dd>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">陽気なロボット (Cheerful Robot)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    自由が奪われていることに気づかず、明るく順応している現代人の姿。内面的な自律性の喪失。</dd>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">グランド・セオリー (Grand Theory)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    パーソンズの社会システム論に代表される、抽象的で現実離れした巨大理論。ミルズはこれを批判した。</dd>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">抽象化された経験主義 (Abstracted Empiricism)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    瑣末なデータ収集に終始し、大きな社会問題に取り組まない調査研究スタイル。ミルズはこれも批判した。</dd>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">ホワイトカラー (White Collar)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    サラリーマン、事務職、管理職などの新中間層。ミルズは彼らの疎外と無力化を分析した。</dd>
+                <dt style="color:#f97316; font-weight:700; font-size:1.1rem;">軍産複合体 (Military-Industrial Complex)</dt>
+                <dd style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    軍と軍需産業の癒着構造。ミルズのパワー・エリート論がアイゼンハワー大統領の有名な警告に影響を与えたとされる。</dd>
+            </dl>
         </section>
     </div>
+
+    <footer style="padding: 4rem 0; text-align: center; border-top: 1px solid rgba(249, 115, 22, 0.3); color: #94a3b8;">
+        <p>© 2025 Thinkers 700 | C. Wright Mills (Standard Edition)</p>
+    </footer>
+
 </body>
 
 </html>
