@@ -90,24 +90,30 @@ When creating/editing a philosopher page:
 "school": ["哲学OS", "科学OS"],
 ```
 
-### Available OS Types (Major Categories)
-Use these exactly in `data.js` for consistent searching:
-- **哲学OS** (Philosophy)
-- **心理OS** (Psychology)
-- **社会OS** (Social/Culture/Human Rights)
-- **政治OS** (Politics/State/Civil Rights)
-- **経済OS** (Economics/Labor)
-- **法OS** (Law/Justice)
-- **科学OS** (Natural Sciences/Math)
-- **科学方法OS** (Epistemology/Methods)
-- **技術OS** (Tech/Tools/AI)
-- **言語OS** (Linguistics/Comm)
-- **宗教OS** (Theology/Spirituality)
-- **倫理OS** (Ethics/Morality)
-- **芸術OS** (Aesthetics/Art)
+### Available OS Types (The Canon 14)
+Always use these exact strings in `data.js` for consistent searching. Every thinker must be mapped to at least one of these:
 
-> [!TIP]
-> **Sub-categories** (e.g., "人権", "メディア", "数学") should be handled by mapping them to the closest Major Category above in `data.js`, but can be explicitly named in the HTML header tags for detail.
+1.  **哲学OS** (Philosophy/Logic/Reason)
+2.  **心理OS** (Mind/Behavior/Ego)
+3.  **社会OS** (Sociology/Inequality/Gender)
+4.  **経済OS** (Economics/Labor/Value)
+5.  **倫理OS** (Ethics/Morality/Values)
+6.  **法OS** (Law/Contracts/Justice)
+7.  **政治OS** (Politics/State/Power)
+8.  **科学OS** (Nature/Biology/Physics)
+9.  **数学OS** (Mathematics/Quantitative Logic)
+10. **技術OS** (Tech/Tools/Digital)
+11. **芸術OS** (Art/Aesthetics/Culture)
+12. **教育OS** (Education/Learning/Transmission)
+13. **言語OS** (Linguistics/Comm/Symbols)
+14. **宗教OS** (Theology/Spirituality/Belief)
+
+> [!IMPORTANT]
+> **Sub-modules Mapping**: High-level topics like "人権 (Human Rights)" or "メディア (Media)" should be mapped to the closest Major Layer above. 
+> - **人権** -> `社会OS` or `政治OS`
+> - **メディア** -> `技術OS` or `言語OS`
+> - **科学方法 (Methodology)** -> `科学OS` or `哲学OS`
+> Use descriptive labels in the **HTML header banner** to mention these specific sub-topics.
 
 ---
 

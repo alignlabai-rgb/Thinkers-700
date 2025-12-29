@@ -144,6 +144,7 @@ description: Thinkers-700 Deep Enrichment Rich Page Creation Guide
 
 ## 品質チェックリスト
 
+- [ ] OSタグは「14の正典（Canon 14）」に準拠しているか
 - [ ] Section 0にinsight-boxまたはquote-boxがあるか
 - [ ] Section 6に技術アナロジーが3つあるか
 - [ ] Section 9が現代AI/テクノロジーと絡んでいるか
