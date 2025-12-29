@@ -7,23 +7,44 @@ This document defines the required format and content standards for all philosop
 
 ## 1. Required Sections (12 Sections)
 
-Every philosopher page must contain all 12 sections:
+Every philosopher page must contain 12 sections. There are two "Grades" of enrichment:
+
+### A. Standard Version (Perfect Format)
+**Benchmark:** [Harriet Taylor Mill](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mill-harriet-taylor.html)
+- **Header**: Standard indigo/purple theme + "知のOS標準バッジ" (or thematic banner).
+- **Core Additions**: 
+    - **Section 0b (Major Works)**: Included before Section 1.
+    - **Section 3 (Kernel)**: Must include a **Quote Box** within the code explanation.
+    - **Section 6 (Analogy)**: **Exactly 3 analogies** (1 classic, 1 modern, 1 unique/metaphorical).
+    - **Section 8 (Application)**: Must include **Side Effects (副作用)** subsection.
+    - **Section 11 (Q&A)**: **4-6 questions** (collapsible).
+    - **Section 12 (Glossary)**: **5-7 terms**.
+
+### B. Special Edition (Premium)
+**Benchmark:** [John Stuart Mill](file:///C:/Users/kiku/Desktop/Contents/thinkers-700/pages/mill-john-stuart.html)
+- **Superset**: Includes everything in the Standard Version.
+- **Header**: Gold/Glassmorphism pulse banner + ⭐ 特別編 ⭐ label.
+- **Advanced Visuals**: Use of complex CSS gradients, hover effects, and distinct section styling.
+- **Section 9 (Simulation)**: Deep, multi-paragraph scenario-based dialogue (3+ paragraphs).
+- **Criticism & Detail**: More items in sections 10-12 (e.g., 5+ criticisms, 7+ glossary terms).
+- **Cross-References**: Deep genealogy links to other thinkers in the 700 list.
 
 | Section | Title (Japanese) | Requirements |
 |---------|-----------------|--------------|
-| 0 | この偉人を学ぶ意味 | 2-3 sentences explaining why studying this thinker matters |
+| 0 | この偉人を学ぶ意味 | 2-3 sentences explaining relevance |
+| 0b | 📚 主著・主業績ガイド | **[NEW]** Summary of major works/impact |
 | 1 | 基本情報 & 要旨 | Abstract in English + Japanese |
-| 2 | 変革の構造図 (Visual Synthesis) | 4 steps: 打破した旧常識 → 提示した新パラダイム → 実装・証明 → 現代への実装 |
-| 3 | OSの核心 (Kernel) | Central question + "書き換えたコード" (detailed explanation, 3+ paragraphs) |
-| 4 | 新機能の解説 (Key Components) | **Exactly 4 components**, each with 2-3 sentence explanation |
-| 5 | 知の系譜 (Genealogy) | Roots (influences) + Fruits (influence on others) |
-| 6 | 深層理解のアナロジー | **2 analogies**: one classic, one modern (具体的・わかりやすく) |
-| 7 | 座標軸：新旧OS分析 | Comparison table with 4 rows |
-| 8 | 現代への応用と倫理 | 実践 (Installation) + バグと副作用 (Limitations) |
-| 9 | 思考実験 (Simulation) | Scenario-based thought experiment (3+ paragraphs) |
-| 10 | 思想の限界と批判 | 3-4 bullet points of limitations/criticisms |
-| 11 | 理解度チェック | **Exactly 3 questions** with collapsible answers |
-| 12 | 用語集 | **Minimum 3 terms**, each with 2-3 sentence definition |
+| 2 | 変革の構造図 (Visual Synthesis) | 4 steps (Single line formatting) |
+| 3 | OSの核心 (Kernel) | Central question + "書き換えたコード" + **Quote Box** |
+| 4 | 新機能の解説 (Key Components) | Exactly 4 components (Deep explanations) |
+| 5 | 知の系譜 (Genealogy) | Roots (influences) + Fruits (impact) |
+| 6 | 深層理解のアナロジー | **3 Analogies** (Classic / Modern / Metaphorical) |
+| 7 | 座標軸：新旧OS分析 | Comparison table (4-5 rows) |
+| 8 | 現代への応用と倫理 | 実践 (Installation) + **副作用 (Side Effects)** |
+| 9 | 思考実験 (Simulation) | Deep scenario (Dialogue style for Special Edition) |
+| 10 | 思想の限界と批判 | 4+ items (Red/Warning style) |
+| 11 | 理解度チェック | 4-6 questions (Collapsible) |
+| 12 | 用語集 | 5-7 terms with definitions |
 
 ---
 
@@ -69,20 +90,24 @@ When creating/editing a philosopher page:
 "school": ["哲学OS", "科学OS"],
 ```
 
-### Available OS Types
-- 哲学OS
-- 心理OS
-- 社会OS
-- 政治OS
-- 経済OS
-- 法OS
-- 科学方法OS
-- 技術OS
-- 言語OS
-- 宗教OS
-- 数学OS
-- 倫理OS
-- メディアOS
+### Available OS Types (Major Categories)
+Use these exactly in `data.js` for consistent searching:
+- **哲学OS** (Philosophy)
+- **心理OS** (Psychology)
+- **社会OS** (Social/Culture/Human Rights)
+- **政治OS** (Politics/State/Civil Rights)
+- **経済OS** (Economics/Labor)
+- **法OS** (Law/Justice)
+- **科学OS** (Natural Sciences/Math)
+- **科学方法OS** (Epistemology/Methods)
+- **技術OS** (Tech/Tools/AI)
+- **言語OS** (Linguistics/Comm)
+- **宗教OS** (Theology/Spirituality)
+- **倫理OS** (Ethics/Morality)
+- **芸術OS** (Aesthetics/Art)
+
+> [!TIP]
+> **Sub-categories** (e.g., "人権", "メディア", "数学") should be handled by mapping them to the closest Major Category above in `data.js`, but can be explicitly named in the HTML header tags for detail.
 
 ---
 
