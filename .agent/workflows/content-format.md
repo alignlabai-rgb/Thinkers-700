@@ -91,29 +91,32 @@ When creating/editing a philosopher page:
 ```
 
 ### Available OS Types (The Canon 14)
-Always use these exact strings in `data.js` for consistent searching. Every thinker must be mapped to at least one of these:
+Always use these exact strings in `data.js` for consistent searching. The order reflects the priority in the Humanity OS Interface:
 
-1.  **哲学OS** (Philosophy/Logic/Reason)
-2.  **心理OS** (Mind/Behavior/Ego)
-3.  **社会OS** (Sociology/Inequality/Gender)
-4.  **経済OS** (Economics/Labor/Value)
-5.  **倫理OS** (Ethics/Morality/Values)
-6.  **法OS** (Law/Contracts/Justice)
-7.  **政治OS** (Politics/State/Power)
-8.  **科学OS** (Nature/Biology/Physics)
-9.  **数学OS** (Mathematics/Quantitative Logic)
-10. **技術OS** (Tech/Tools/Digital)
-11. **芸術OS** (Art/Aesthetics/Culture)
-12. **教育OS** (Education/Learning/Transmission)
-13. **言語OS** (Linguistics/Comm/Symbols)
-14. **宗教OS** (Theology/Spirituality/Belief)
+1.  **哲学OS** (Philosophy / Reason)
+2.  **心理OS** (Psychology / Mind)
+3.  **社会OS** (Social / Society / Inequality)
+4.  **経済OS** (Economics / Value / Exchange)
+5.  **倫理OS** (Ethics / Values / Morality)
+6.  **法OS** (Law / Justice / Contracts)
+7.  **政治OS** (Politics / Power / State)
+8.  **科学OS** (Science / Nature / Empirical Knowledge)
+9.  **数学OS** (Mathematics / Logic / form)
+10. **技術OS** (Technology / Tools / Digital)
+11. **芸術OS** (Art / Aesthetics / Expression)
+12. **教育OS** (Education / Learning / Transmission)
+13. **言語OS** (Language / Symbols / Comm)
+14. **宗教OS** (Religion / Theology / Belief)
 
 > [!IMPORTANT]
-> **Sub-modules Mapping**: High-level topics like "人権 (Human Rights)" or "メディア (Media)" should be mapped to the closest Major Layer above. 
-> - **人権** -> `社会OS` or `政治OS`
-> - **メディア** -> `技術OS` or `言語OS`
-> - **科学方法 (Methodology)** -> `科学OS` or `哲学OS`
-> Use descriptive labels in the **HTML header banner** to mention these specific sub-topics.
+> **Sub-modules Mapping Rules**: 
+> Granular topics like "人権 (Human Rights)" or "メディア (Media)" are not top-level categories in `data.js`. Instead, map them as follows for system efficiency:
+> - **人権** -> `社会OS` (or `政治OS`)
+> - **メディア** -> `技術OS` (or `言語OS`)
+> - **生物学/物理学** -> `科学OS`
+> - **論理学/方法論** -> `哲学OS` or `科学OS`
+> 
+> *Detail labels (e.g. 人権OS)* can still be used in the **HTML Header Banner** and as descriptive keywords in Section 3 (Kernel), but the primary search tag MUST be one of the Canon 14.
 
 ---
 
