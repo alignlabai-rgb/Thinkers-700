@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アイザック・ニュートン | Thinkers 700</title>
+    <meta name="description" content="アイザック・ニュートンの思想を学ぶ。万有引力の法則、微積分法、光学で近代科学を確立した科学革命の巨人。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #1a1a3a;
+            --text-primary: #f0f0ff;
+            --text-secondary: #a0a0d0;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), transparent);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #a78bfa, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #a78bfa;
+            border-bottom: 2px solid #8b5cf6;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(167, 139, 250, 0.1);
+            border-left: 4px solid #a78bfa;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #8b5cf6;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(124, 58, 237, 0.1));
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #a78bfa;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">科学革命の完成者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">数学OS</span>
+        </div>
+        <h1>アイザック・ニュートン</h1>
+        <p class="en-name">Newton, Isaac (1642 - 1727)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「私が遠くを見ることができたのは、巨人たちの肩の上に立っていたからだ」──近代科学の基礎を築いた稀代の天才
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「自然とその法則は闇の中に隠されていた。神は言った『ニュートンあれ』と。すべては光に包まれた。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──アレクサンダー・ポープ</p>
+            </div>
+            <p>アイザック・ニュートンは、科学史上最も偉大な科学者の一人であり、万有引力の法則、運動の三法則、微積分法、光学など、近代科学の根幹をなす業績を残しました。彼の登場により、宇宙は「神秘」から「数式で記述可能なシステム」へと変わりました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>リンゴが落ちるのも、月が地球の周りを回るのも、同じ法則（万有引力）で説明できる。</strong></p>
+                <p>それまで「天上界」と「地上界」は異なる法則に支配されていると考えられていました。ニュートンは、地上のリンゴと天上の月を同じ数式で結びつけ、「宇宙は統一的な法則に従う機械である」という世界観を確立しました。
+                </p>
+            </div>
+            <p>現代IT風に言えば、ニュートンは<strong>「宇宙の物理エンジン」のソースコードを発見した</strong>人物です。彼の運動方程式（F=ma）と万有引力の法則は、現代のシミュレーションゲームやロケット軌道計算の基礎です。彼を学ぶことは、現代テクノロジーの根底にある「力学的世界観」を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #a78bfa; font-size: 1.3rem;">『プリンキピア（自然哲学の数学的諸原理）』(1687)</h4>
+                    <p style="margin-top: 1rem;">科学史上最も重要な著作の一つ。運動の三法則、万有引力の法則を定式化。天体の運動から潮の満ち引きまで、あらゆる現象を統一的に説明した。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #a78bfa; font-size: 1.3rem;">『光学』(1704)</h4>
+                    <p style="margin-top: 1rem;">プリズム実験で白色光がスペクトル（虹色）に分解されることを発見。光の粒子説を主張し、反射望遠鏡を発明。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #a78bfa; font-size: 1.3rem;">微積分法（1660年代開発）</h4>
+                    <p style="margin-top: 1rem;">ライプニッツと独立に微積分学を発明。変化率（微分）と累積（積分）を数学的に扱う方法論で、現代物理学・工学の基礎言語となった。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Isaac Newton: English mathematician, physicist, and astronomer. Established the foundations of
+                        modern physics with his laws of motion and universal gravitation in "Principia." Co-invented
+                        calculus. Revolutionary work in optics demonstrated the spectrum of white light. His mechanistic
+                        worldview dominated science for over two centuries until Einstein's relativity. One of the most
+                        influential scientists in human history.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>イギリスの数学者、物理学者、天文学者。『プリンキピア』で運動の三法則と万有引力の法則を定式化し、近代物理学の基礎を築いた。微積分法を（ライプニッツと独立に）発明。光学でもプリズム実験など画期的業績。彼の力学的世界観はアインシュタインの相対性理論まで200年以上科学を支配した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「天上界（月や惑星）と地上界（リンゴ）は異なる法則に支配されている」「物体は自然に静止する」というアリストテレス的世界観を打破。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①万有引力（すべての質量は互いに引き合う）②運動の三法則（慣性・加速度・作用反作用）③微積分（変化を数学で捉える）④光のスペクトル。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>惑星の楕円軌道、潮汐、彗星の周期を同じ法則で予測。プリズム実験で光の本性を解明。反射望遠鏡の発明。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>ロケット軌道計算、人工衛星、GPS、シミュレーションゲームの物理エンジン、機械工学すべての基礎。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「宇宙のすべての運動を、少数の法則と数式で記述できるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 運動の三法則</strong></p>
+                <ol style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li><strong>慣性の法則</strong>：外力がなければ、物体は静止または等速直線運動を続ける。</li>
+                    <li><strong>加速度の法則</strong>：力＝質量×加速度（F=ma）。</li>
+                    <li><strong>作用反作用の法則</strong>：すべての作用には、等しく反対向きの反作用がある。</li>
+                </ol>
+
+                <div class="quote-box">
+                    <p>「私は仮説を作らない（Hypotheses non fingo）」──ニュートンは「なぜ重力があるか」ではなく「どのように作用するか」を数学で記述することに徹した。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 万有引力の法則</strong></p>
+                <p>すべての質量を持つ物体は、互いに引き合う。その力は質量の積に比例し、距離の二乗に反比例する（F = Gm₁m₂/r²）。この一つの式で、リンゴの落下も月の軌道も説明できる。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 IT風アナロジー：API仕様書</strong></p>
+                    <p>ニュートンの法則は「宇宙のAPI仕様書」のようなもの。質量と距離を入力すると、引力という出力が返ってくる。この仕様書さえあれば、どんな天体の運動も計算（シミュレート）可能になった。</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 微積分法</strong></p>
+                <p>物体の位置の変化（速度）、速度の変化（加速度）を数学で扱う方法。ニュートンは「流率法（フラクション）」と呼んだ。連続的な変化を離散的な数式で捉える革命的道具。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #a78bfa;">■ 万有引力の法則</h4>
+                    <p>すべての質量は互いに引き合う。天体運動から潮汐まで統一的に説明。</p>
+                </div>
+                <div>
+                    <h4 style="color: #a78bfa;">■ 運動の三法則</h4>
+                    <p>慣性、F=ma、作用反作用。すべての力学問題の基礎公理。</p>
+                </div>
+                <div>
+                    <h4 style="color: #a78bfa;">■ 微積分法</h4>
+                    <p>変化率（微分）と累積（積分）を扱う数学。現代物理・工学の言語。</p>
+                </div>
+                <div>
+                    <h4 style="color: #a78bfa;">■ 光学</h4>
+                    <p>白色光はスペクトルに分解される。反射望遠鏡の発明。光の粒子説。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>ガリレオ・ガリレイ</strong>（慣性の法則、実験科学）<br>
+                        <strong>ヨハネス・ケプラー</strong>（惑星運動の三法則）<br>
+                        <strong>ルネ・デカルト</strong>（解析幾何学、機械論的世界観）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>ラプラス</strong>（天体力学の完成）<br>
+                        <strong>オイラー、ラグランジュ</strong>（解析力学）<br>
+                        <strong>アインシュタイン</strong>（相対性理論でニュートン力学を超克）<br>
+                        <strong>現代工学</strong>（ロケット、人工衛星、物理シミュレーション）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：宇宙は巨大な時計仕掛け</h4>
+                <p>ニュートン以前、宇宙は神秘に満ちた「生き物」のようなものでした。ニュートン以後、宇宙は「精密な時計」──初期条件と法則さえ分かれば、未来が完全に予測可能な機械とみなされるようになりました（決定論的世界観）。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：ゲームの物理エンジン</h4>
+                <p>UnityやUnreal
+                    Engineの「物理エンジン」は、ニュートン力学のリアルタイム実装です。重力、衝突、摩擦──すべてF=maと万有引力に基づいて計算されています。ゲームの世界をリアルに感じさせているのは、300年前のニュートンの数式です。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：GPSと人工衛星</h4>
+                <p>スマホのGPSは、人工衛星からの電波で位置を測定します。その衛星は、ニュートンの万有引力と運動法則で正確に地球を周回しています（+アインシュタインの補正）。ニュートンなしに現代のナビゲーションは存在しません。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（アリストテレス物理学）</th>
+                        <th>ニュートン OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>運動の原因</td>
+                        <td>物体の「本性」（重いものは下へ）</td>
+                        <td>外力（F=ma）</td>
+                    </tr>
+                    <tr>
+                        <td>天と地</td>
+                        <td>異なる法則で支配</td>
+                        <td>同一法則（万有引力）</td>
+                    </tr>
+                    <tr>
+                        <td>時間と空間</td>
+                        <td>物質に依存</td>
+                        <td>絶対的・独立（後にアインシュタインが修正）</td>
+                    </tr>
+                    <tr>
+                        <td>予測可能性</td>
+                        <td>神の意志による</td>
+                        <td>数学で完全に計算可能（決定論）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #a78bfa;">実践 (Installation)</h4>
+                <p><strong>ロケット工学</strong>：アポロ計画から民間宇宙開発まで、すべてニュートン力学に基づく軌道計算。<br>
+                    <strong>GPS・人工衛星</strong>：衛星軌道の設計と維持。<br>
+                    <strong>物理シミュレーション</strong>：ゲーム、映画VFX、建築構造計算。<br>
+                    <strong>日常の技術</strong>：自動車のABS、航空機の設計、橋梁建設。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #7c3aed;">バグと副作用 (Limitations)</h4>
+                <p><strong>相対論的効果</strong>：光速に近い速度や強い重力場ではニュートン力学は不正確（アインシュタインの相対性理論が必要）。<br>
+                    <strong>量子効果</strong>：原子レベルではニュートン力学は通用しない（量子力学が必要）。<br>
+                    <strong>決定論の限界</strong>：カオス理論により、初期条件の微小な差が巨大な結果の違いを生むことが判明。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしニュートンが現代の「SpaceXのロケット着陸」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これぞ私の法則の究極の実装だ！」──ニュートンは感嘆するでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「ロケットが逆噴射して着陸する──これは私の運動の第三法則（作用反作用）そのものだ。噴射ガスは下向きに押し出され、ロケット本体は上向きに押し返される。
+                </p>
+                <p style="margin-top: 1rem;">
+                    そしてコンピュータが1秒間に何千回も軌道を計算し直している。私が一晩かけて解いた三体問題の近似解を、この機械は一瞬でシミュレートしている！
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし、<strong>なぜこの機械に『意識』がないのか？</strong>
+                    計算能力と理性は別物だ。私は錬金術と神学に半生を費やしたが、この宇宙の究極の秘密──意識と魂──は、まだ数式で捉えられていないようだな。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #7c3aed;">① 相対性理論による修正</h4>
+                    <p>ニュートンの「絶対時間・絶対空間」は、アインシュタインにより否定された。時間と空間は物質とエネルギーにより歪む。</p>
+                </div>
+                <div>
+                    <h4 style="color: #7c3aed;">② 量子力学の登場</h4>
+                    <p>原子・素粒子レベルでは、ニュートン力学は通用しない。確率的・波動的な量子世界が発見された。</p>
+                </div>
+                <div>
+                    <h4 style="color: #7c3aed;">③ 錬金術・神学への傾倒</h4>
+                    <p>ニュートンは生涯にわたり錬金術の実験と聖書の数秘術的解釈に没頭した。「合理的科学者」のイメージとは異なる側面。</p>
+                </div>
+                <div>
+                    <h4 style="color: #7c3aed;">④ 人格の問題</h4>
+                    <p>優先権争い（ライプニッツとの微積分論争）で陰湿な手段を用いるなど、人格面での問題も指摘される。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>万有引力の法則を簡単に説明すると？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> すべての質量を持つ物体は互いに引き合う。その力は質量の積に比例し、距離の二乗に反比例する（F =
+                        Gm₁m₂/r²）。リンゴも月も同じ法則に従う。</p>
+                </details>
+                <details>
+                    <summary>運動の三法則とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> ①慣性の法則（外力なしで等速直線運動）②加速度の法則（F=ma）③作用反作用の法則。</p>
+                </details>
+                <details>
+                    <summary>ニュートン力学の限界は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①光速に近い速度・強い重力場では相対性理論が必要②原子レベルでは量子力学が必要③カオス的システムでは予測困難。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #a78bfa; font-weight: 700;">万有引力</dt>
+                <dd>すべての質量を持つ物体間に働く引力。質量の積に比例し、距離の二乗に反比例。</dd>
+                <dt style="color: #a78bfa; font-weight: 700; margin-top: 1rem;">運動の三法則</dt>
+                <dd>慣性の法則、加速度の法則（F=ma）、作用反作用の法則。古典力学の基礎公理。</dd>
+                <dt style="color: #a78bfa; font-weight: 700; margin-top: 1rem;">微積分法</dt>
+                <dd>変化率（微分）と累積（積分）を扱う数学。ニュートンとライプニッツが独立に発明。</dd>
+                <dt style="color: #a78bfa; font-weight: 700; margin-top: 1rem;">決定論（Determinism）</dt>
+                <dd>初期条件と法則が与えられれば、未来は完全に予測可能という世界観。ニュートン力学の帰結。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Isaac Newton</p>
+    </footer>
+</body>
+
+</html>

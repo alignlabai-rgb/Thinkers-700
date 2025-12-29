@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フリードリヒ・ニーチェ | Thinkers 700</title>
+    <meta name="description" content="フリードリヒ・ニーチェの思想を学ぶ。超人、永劫回帰、力への意志、神の死。西洋哲学の根幹を揺るがした破壊と創造の哲学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2f;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0c0;
+            --accent: #ef4444;
+            --accent-secondary: #8b5cf6;
+            --accent-glow: rgba(239, 68, 68, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(139, 92, 246, 0.1), transparent);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #ef4444, #8b5cf6);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #f87171, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f87171;
+            border-bottom: 2px solid #ef4444;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(239, 68, 68, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #ef4444;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(139, 92, 246, 0.15));
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #f87171;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #f87171;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">価値のハンマーを振るう者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+        <h1>フリードリヒ・ニーチェ</h1>
+        <p class="en-name">Nietzsche, Friedrich (1844 - 1900)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「神は死んだ」──伝統的な価値をハンマーで破壊し、超人と永劫回帰という新たな地平を切り開いた哲学の爆弾
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「深淵を覗くとき、深淵もまたこちらを覗いている。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『善悪の彼岸』(1886)</p>
+            </div>
+            <p>フリードリヒ・ニーチェは、19世紀ドイツの哲学者であり、西洋文明の根幹──キリスト教的道徳、プラトン的真理、啓蒙主義的理性──を激しく批判しました。彼の思想は、20世紀の実存主義、ポストモダニズム、心理学（フロイト）に多大な影響を与え、今なお「読むと人生観が変わる」哲学者として読み継がれています。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「真理」も「善悪」も、強者が自らの力を増大させるために創造した「解釈」に過ぎない。</strong></p>
+                <p>ニーチェは、私たちが「当然のもの」と信じている価値観が、実は歴史的に構築されたものであり、「力への意志」に奉仕するものだと暴きました。これは価値の相対主義ではなく、「自分自身の価値を創造せよ」という呼びかけです。
+                </p>
+            </div>
+            <p>現代IT風に言えば、ニーチェは<strong>「社会OSのソースコードを暴露したハッカー」</strong>です。宗教・道徳・哲学という「システム」が、どのような力学で設計されたかをリバースエンジニアリングし、「このOSはバグだらけだ、自分でOSを書き直せ！」と宣言しました。彼を学ぶことは、常識の根拠を問い直し、自分自身の価値観を主体的に構築する力を養うことです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f87171; font-size: 1.3rem;">『ツァラトゥストラはかく語りき』(1883-1885)</h4>
+                    <p style="margin-top: 1rem;">ニーチェの最高傑作とされる哲学的散文詩。「神の死」「超人」「永劫回帰」などの核心概念を、預言者ツァラトゥストラの口を借りて詩的に展開。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f87171; font-size: 1.3rem;">『道徳の系譜学』(1887)</h4>
+                    <p style="margin-top: 1rem;">「善」と「悪」の概念がどのように歴史的に生まれたかを系譜学的に分析。「主人道徳」と「奴隷道徳」の対比で西洋道徳の起源を暴く。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f87171; font-size: 1.3rem;">『善悪の彼岸』(1886)</h4>
+                    <p style="margin-top: 1rem;">伝統的な哲学、特にプラトン以来の「真理への意志」を批判。「力への意志」という新概念を導入し、既存の道徳を超えた視座を模索。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Friedrich Nietzsche: German philosopher and cultural critic who profoundly challenged Western
+                        philosophy, religion, and morality. Famous for proclaiming "God is dead," he analyzed the crisis
+                        of meaning that results when traditional values collapse. Key concepts include the "Übermensch"
+                        (Superman), "Will to Power," "Eternal Return," and "Slave/Master morality." Influenced
+                        existentialism, postmodernism, and psychoanalysis. Often misappropriated, his complex legacy
+                        requires careful interpretation.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>ドイツの哲学者、文化批評家。「神は死んだ」と宣言し、伝統的価値が崩壊した後の意味の危機を分析。「超人」「力への意志」「永劫回帰」「主人道徳・奴隷道徳」などの概念で知られる。実存主義、ポストモダニズム、精神分析に多大な影響を与えた。しばしば誤解・悪用されてきたが、その複雑な遺産は慎重な解釈を要する。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>キリスト教的世界観（神・来世・道徳的秩序）、プラトン的真理観（イデア界=真の世界）、啓蒙主義的進歩史観を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2:
+                        提示した新パラダイム</strong><br>①神の死（価値の危機）②力への意志（すべての生の根本動力）③超人（自ら価値を創造する者）④永劫回帰（この瞬間を永遠に繰り返すとしても肯定できるか？）⑤系譜学（道徳の歴史的・心理的起源の暴露）。</span>
+            </div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『ツァラトゥストラ』『道徳の系譜学』などで既存価値を徹底批判。アフォリズム（箴言）形式で読者を直接挑発する独自のスタイル。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>実存主義（サルトル、ハイデガー）、ポストモダン（フーコー、デリダ）、深層心理学（フロイト、ユング）、自己啓発、カウンターカルチャー。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「神が死んだ後、私たちは何を信じ、どう生きればよいのか？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 神は死んだ（Gott ist tot）</strong></p>
+                <p>これは無神論の宣言ではなく、「神を中心とした価値体系が、もはや機能しなくなった」という近代の診断です。科学・啓蒙・産業革命が、キリスト教的世界観を解体してしまった。その結果、私たちは「ニヒリズム（虚無主義）」の危機に直面している。
+                </p>
+
+                <div class="quote-box">
+                    <p>「神は死んだ。神は死んだままだ。そして我々がその殺害者なのだ。」──『悦ばしき知識』</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 力への意志（Wille zur Macht）</strong></p>
+                <p>すべての生命、すべての行為の根底にある駆動力。「権力欲」という単純な意味ではなく、「自己超克」「創造」「成長」への衝動。芸術家が作品を作り、戦士が勝利を目指し、哲学者が真理を求める──すべて「力への意志」の表現。
+                </p>
+
+                <div class="insight-box">
+                    <p><strong>💡 IT風アナロジー：OSのカーネル</strong></p>
+                    <p>「力への意志」は、人間というシステムのカーネル（最深部のプロセス）。すべてのアプリ（行動・思想・芸術）はこのカーネル上で動いている。宗教も道徳も、実は「力への意志」のユーザーインターフェースに過ぎない。
+                    </p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 超人（Übermensch）</strong></p>
+                <p>神が死んだ後、自ら価値を創造する新しい人間像。「超人」は生物学的優越者ではなく、「ルサンチマン（嫉妬・怨恨）」を克服し、自分自身の運命を肯定する者。「なれ、汝自身であるところのものに！」</p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 永劫回帰（Ewige Wiederkehr）</strong></p>
+                <p>「この瞬間が、永遠に繰り返されるとしたら、お前はそれを望むか？」──この問いに「然り！（Ja!）」と答えられる人生を生きよ。これは宇宙論ではなく、「今この瞬間を最大限に肯定せよ」という倫理的・実存的要求。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 主人道徳 vs 奴隷道徳</strong></p>
+                <p>古代の貴族は「自分が良いから『善』、自分と異なるから『悪』」と定義した（主人道徳）。しかし弱者（奴隷、キリスト教徒）は、強者への怨恨（ルサンチマン）から「強者は『悪』、弱者こそ『善』」と価値を転倒させた（奴隷道徳）。これが西洋道徳の隠された起源だとニーチェは暴いた。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #f87171;">■ 神の死</h4>
+                    <p>伝統的価値体系の崩壊の診断。ニヒリズムの危機と、その克服の必要性。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f87171;">■ 力への意志</h4>
+                    <p>すべての生の根本動力。自己超克、創造、成長への衝動。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f87171;">■ 超人（Übermensch）</h4>
+                    <p>自ら価値を創造する新しい人間像。ルサンチマンを克服し、運命を肯定する。</p>
+                </div>
+                <div>
+                    <h4 style="color: #f87171;">■ 永劫回帰</h4>
+                    <p>「今この瞬間を永遠に繰り返しても肯定できるか？」という実存的試金石。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>アルトゥール・ショーペンハウアー</strong>（ペシミズム、意志の哲学）<br>
+                        <strong>ヘラクレイトス</strong>（生成と闘争の哲学）<br>
+                        <strong>リヒャルト・ワーグナー</strong>（早期の師、後に決裂）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>マルティン・ハイデガー</strong>（存在論への展開）<br>
+                        <strong>ジャン＝ポール・サルトル</strong>（実存主義）<br>
+                        <strong>ミシェル・フーコー</strong>（系譜学の方法論を継承）<br>
+                        <strong>ジークムント・フロイト</strong>（無意識の発見と力動論）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：社会OSのリバースエンジニアリング</h4>
+                <p>ニーチェは、宗教・道徳・哲学という「社会OS」のソースコードを読み解き、「これは真理ではなく、特定の力関係を維持するためのプログラムだ」と暴露した。彼はシステム管理者ではなく、ホワイトハットハッカー。
+                </p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：マトリックスからの脱出</h4>
+                <p>映画『マトリックス』のネオが「赤い薬」を飲んで現実に目覚めるように、ニーチェは「道徳・宗教という仮想現実から目覚めよ」と呼びかける。しかし、目覚めた後に何を信じるか──そこに超人の課題がある。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：ゲームのニューゲーム+</h4>
+                <p>「永劫回帰」は、人生というゲームを「全く同じ条件で無限にリプレイする」こと。その時、あなたは「もう一度このゲームをプレイしたい」と言えるか？ これが最高の難易度設定──自分の人生を肯定するという挑戦。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（キリスト教・プラトン主義）</th>
+                        <th>ニーチェ OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>価値の源泉</td>
+                        <td>神（外部の絶対者）</td>
+                        <td>人間自身（創造する者）</td>
+                    </tr>
+                    <tr>
+                        <td>真理の本性</td>
+                        <td>客観的・永遠的イデア</td>
+                        <td>力関係の産物、「解釈」</td>
+                    </tr>
+                    <tr>
+                        <td>道徳の起源</td>
+                        <td>神の命令、理性</td>
+                        <td>ルサンチマン、力への意志</td>
+                    </tr>
+                    <tr>
+                        <td>人生の目標</td>
+                        <td>来世での救済</td>
+                        <td>この生の肯定（永劫回帰）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #f87171;">実践 (Installation)</h4>
+                <p><strong>実存主義</strong>：サルトル「実存は本質に先立つ」、カミュの不条理哲学。<br>
+                    <strong>ポストモダン</strong>：フーコーの権力分析、デリダの脱構築。<br>
+                    <strong>心理学</strong>：フロイトの無意識、ユングの影（シャドウ）。<br>
+                    <strong>自己啓発</strong>：「自分自身を創造せよ」というメッセージの通俗化（良くも悪くも）。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #dc2626;">バグと副作用 (Limitations)</h4>
+                <p><strong>ナチスによる悪用</strong>：「超人」「力への意志」がナチズムに利用された（ニーチェ自身は反ナショナリスト、反反ユダヤ主義だったが、妹エリザベートが遺稿を改竄）。<br>
+                    <strong>相対主義の罠</strong>：「真理は解釈だ」が「何でもあり」に堕する危険。ニーチェ自身は「強い解釈」を創造せよと主張。<br>
+                    <strong>エリート主義</strong>：「超人」思想が、弱者への冷淡さや差別を正当化する危険。<br>
+                    <strong>精神崩壊</strong>：晩年に精神を病み、最後の10年は狂気の中で過ごした。思想と伝記の関係は複雑。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(139, 92, 246, 0.1));">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしニーチェが現代の「SNSと承認欲求」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これこそルサンチマンの劇場だ！」──ニーチェは嫌悪と興味を込めて言うでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「見よ、この『いいね』乞食たちを。彼らは自分で価値を創造する力がないから、他者の承認を求めてやまない。これは奴隷道徳の現代版だ。
+                </p>
+                <p style="margin-top: 1rem;">
+                    そして、彼らは『インフルエンサー』という称号を求める。だが、真の超人は<strong>フォロワーを求めない。自分自身を超克することに忙しいのだ。</strong>
+                </p>
+                <p style="margin-top: 1rem;">
+                    SNSで何千人にリツイートされても、それが永劫回帰するとして耐えられるか？ お前の投稿は、永遠に繰り返すに値するか？ 『然り！』と言えないなら、それは畜群の騒音に過ぎない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし──もし誰かがこの道具を使って、自らの『力への意志』を表現し、真に創造的な作品を世界に放つなら、それは興味深い。道具は中立だ。問題は、それを使う者が奴隷か、創造者かだ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① ナチスによる悪用</h4>
+                    <p>ニーチェの思想（特に「超人」「力への意志」）はナチスに悪用された。妹エリザベートによる遺稿の改竄も問題。ニーチェ自身は反ナショナリスト、反反ユダヤ主義だった。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 論理的一貫性の欠如</h4>
+                    <p>アフォリズム形式のため、体系的な議論が欠けている。同じ概念が異なる文脈で異なる意味を持つことがあり、解釈が分かれる。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 女性蔑視的発言</h4>
+                    <p>著作中にミソジニー的な発言が多数あり、フェミニズムの観点から批判される。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">④ 「何でもあり」への転落</h4>
+                    <p>「真理は解釈だ」が、道徳的相対主義・虚無主義を正当化するために使われる危険がある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「神は死んだ」とはどういう意味？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        無神論の宣言ではなく、「神を中心とした価値体系（キリスト教的世界観）がもはや機能しなくなった」という近代の危機の診断。科学・啓蒙により、神への信仰が自明ではなくなった。</p>
+                </details>
+                <details>
+                    <summary>「力への意志」とは権力欲のこと？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        いいえ。政治的権力だけでなく、「自己超克」「創造」「成長」への衝動すべてを含む。芸術家が作品を作り、哲学者が真理を探求するのも「力への意志」の表現。</p>
+                </details>
+                <details>
+                    <summary>「超人」とは生物学的に優れた人間のこと？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        いいえ。「超人」は道徳的・精神的な概念で、「自ら価値を創造し、ルサンチマン（怨恨）を克服し、この生を肯定する者」。ナチスの人種的解釈は誤用。</p>
+                </details>
+                <details>
+                    <summary>ニーチェへの主な批判は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> ①ナチスによる悪用、②論理的一貫性の欠如、③女性蔑視的発言、④道徳的虚無主義への転落の危険。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #f87171; font-weight: 700;">力への意志（Wille zur Macht）</dt>
+                <dd>すべての生の根本動力。自己超克、創造、成長への衝動。「権力欲」より広い概念。</dd>
+                <dt style="color: #f87171; font-weight: 700; margin-top: 1rem;">超人（Übermensch）</dt>
+                <dd>自ら価値を創造する新しい人間像。「神が死んだ」後の虚無を克服し、この生を肯定する者。</dd>
+                <dt style="color: #f87171; font-weight: 700; margin-top: 1rem;">永劫回帰（Ewige Wiederkehr）</dt>
+                <dd>「この瞬間が永遠に繰り返される」という思考実験。これを肯定できるか？という実存的試金石。</dd>
+                <dt style="color: #f87171; font-weight: 700; margin-top: 1rem;">ルサンチマン（Ressentiment）</dt>
+                <dd>弱者が強者に対して抱く嫉妬・怨恨。これが「奴隷道徳」（弱さを「善」とする価値転倒）の源泉とニーチェは分析した。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Friedrich Nietzsche</p>
+    </footer>
+</body>
+
+</html>

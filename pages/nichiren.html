@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日蓮 | Thinkers 700</title>
+    <meta name="description" content="日蓮の思想を学ぶ。法華経至上主義と題目（南無妙法蓮華経）で日本仏教を革新した宗教改革者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1a0f0a;
+            --bg-secondary: #2d1a10;
+            --text-primary: #fff8f0;
+            --text-secondary: #d4a574;
+            --accent: #d97706;
+            --accent-glow: rgba(217, 119, 6, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), transparent);
+            border-bottom: 1px solid rgba(217, 119, 6, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #d97706, #b45309);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+            border-bottom: 2px solid #d97706;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(217, 119, 6, 0.1);
+            border-left: 4px solid #d97706;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid #fbbf24;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .meta-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(217, 119, 6, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .synthesis-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #d97706;
+        }
+
+        .synthesis-result {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.2), rgba(180, 83, 9, 0.1));
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(217, 119, 6, 0.1);
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #fbbf24;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">法華経の獅子</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+        <h1>日蓮</h1>
+        <p class="en-name">Nichiren (1222 - 1282)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「南無妙法蓮華経」──この七文字に宇宙の真理が込められている。法華経こそが唯一の正法だと説いた日本仏教の革命児
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「立正安国」──正しい教え（法華経）を立てれば、国は安らかになる。邪教を捨てなければ、天災と国難が続く。</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『立正安国論』(1260)</p>
+            </div>
+            <p>日蓮は、鎌倉時代の日本の僧侶であり、法華経（妙法蓮華経）を唯一の正しい教えと説き、他の仏教宗派を激しく批判しました。彼の教えは「日蓮宗」「日蓮正宗」「創価学会」など、現代にも続く多くの宗派・団体に受け継がれています。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「南無妙法蓮華経」と唱えるだけで、誰でも仏になれる。難しい修行も哲学的理解も不要。</strong></p>
+                <p>日蓮は、末法の世（釈迦の教えが衰退した時代）においては、法華経の題名を唱える「題目」こそが、すべての人を救う唯一の方法だと主張しました。これは、エリートのための仏教を、万人のためのシンプルな実践へと変革したのです。
+                </p>
+            </div>
+            <p>現代IT風に言えば、日蓮は<strong>「宗教のAPI単純化」</strong>を行った人物です。従来の仏教は複雑な教義や厳しい修行（複雑なコードベース）を必要としました。日蓮は「題目を唱える」という一行コードで、誰でも悟り（成仏）というアウトプットにアクセスできるインターフェースを設計しました。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #fbbf24; font-size: 1.3rem;">『立正安国論』(1260)</h4>
+                    <p style="margin-top: 1rem;">当時の社会的混乱（飢饉、疫病、モンゴル侵攻）は、邪教（念仏、禅など）のせいだと主張。法華経への帰依こそが国を救うと説いた政治的・宗教的宣言。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #fbbf24; font-size: 1.3rem;">『開目抄』(1272)</h4>
+                    <p style="margin-top: 1rem;">流罪中に執筆。自らを「法華経の行者」と位置づけ、迫害を受けることで法華経の真理を証明する「末法の法華経の行者」であることを宣言。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #fbbf24; font-size: 1.3rem;">『観心本尊抄』(1273)</h4>
+                    <p style="margin-top: 1rem;">「本尊」（礼拝の対象）として「曼荼羅」を規定。「南無妙法蓮華経」を中心に、諸仏・菩薩・神々を配置した独自の曼荼羅を創始。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Nichiren: Japanese Buddhist monk who established Nichiren Buddhism in the Kamakura period.
+                        Proclaimed the Lotus Sutra (Saddharma Pundarika Sutra) as the only true teaching and chanting
+                        "Nam-myoho-renge-kyo" (the title of the Lotus Sutra) as the sole practice for salvation in the
+                        degenerate age (Mappo). Strongly criticized other Buddhist sects (Nembutsu, Zen, Shingon),
+                        leading to repeated persecution and exile. His confrontational style and exclusive claims
+                        continue to influence millions through Nichiren Shoshu, Soka Gakkai, and other groups.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨 (Japanese)</h3>
+                    <p>鎌倉時代の日本の僧侶。法華経を唯一の正法と宣言し、「南無妙法蓮華経」という題目を唱えることが末法の世における唯一の救済手段であると主張。念仏・禅・真言などを「邪教」として激しく批判し、たびたび迫害・流罪を受けた。論争的なスタイルと排他的な主張は、日蓮宗・日蓮正宗・創価学会など多くの宗派・団体に影響を与え続けている。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-step"><span>🔓</span><span><strong>Step 1:
+                        打破した旧常識</strong><br>「すべての仏教宗派は等しく尊い」「それぞれの道で悟りに至れる」という調和的な仏教観を打破。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>💡</span><span><strong>Step 2: 提示した新パラダイム</strong><br>①法華経至上主義（他の経典・宗派は劣る
+                    or 邪教）②題目主義（「南無妙法蓮華経」を唱えるだけで成仏）③折伏（邪教を激しく破折する布教）④立正安国（正法で国を救う）。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-step"><span>📜</span><span><strong>Step 3:
+                        実装・証明</strong><br>『立正安国論』を幕府に提出、モンゴル襲来の予言的中、数度の迫害・流罪を耐え抜く。自らの受難を「法華経の行者の証拠」とした。</span></div>
+            <div class="synthesis-arrow">⬇️</div>
+            <div class="synthesis-result"><span>🎯</span><strong>Result:
+                    現代への実装</strong><br>日蓮宗、日蓮正宗、創価学会、顕正会など世界中に信者。政治・社会運動との結びつき（公明党など）。</div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">中心的な問い</h4>
+                <p style="font-size: 1.4rem; color: #fff;">「末法の世で、すべての人を救える唯一の教えは何か？」</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 0.5rem;">書き換えたコード</h4>
+
+                <p><strong>▼ 末法思想（Mappo）</strong></p>
+                <p>仏教には「正法→像法→末法」という時代区分があります。日蓮の時代は「末法」──釈迦の教えが衰退し、人々の資質も低下した時代。この絶望的な状況で有効な教えこそが「法華経の題目」だと日蓮は主張しました。
+                </p>
+
+                <div class="quote-box">
+                    <p>「末法の衆生をどう救えるか？──かつて中国の天台大師も『南無妙法蓮華経』と唱えたが、それは正法の時代だった。今、末法の我々がこれを唱えることこそ、真の実践である。」</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 五重の相対（教判）</strong></p>
+                <p>日蓮は、すべての仏教経典を「優劣」でランク付けしました。最終的に「法華経」が最高、中でも「本門」（法華経の後半）が究極、その核心が「題目」（南無妙法蓮華経）であるとした。</p>
+
+                <div class="insight-box">
+                    <p><strong>💡 IT風アナロジー：ファイルシステムの階層</strong></p>
+                    <p>すべての仏教経典は「フォルダ」。法華経は「ルートディレクトリ」。その中の「本門フォルダ」が最重要。「題目」はその「実行ファイル.exe」──これを起動（唱題）すれば、すべてのプログラム（功徳）が動く。
+                    </p>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 四箇格言（しかかくげん）</strong></p>
+                <p>「念仏無間、禅天魔、真言亡国、律国賊」──日蓮は、当時の主要宗派を「地獄行き」「悪魔」「国を滅ぼす」「国賊」と激しく批判しました。この排他的・対決的なスタイルが日蓮仏教の特徴であり、論争を呼び続けています。
+                </p>
+
+                <p style="margin-top: 1.5rem;"><strong>▼ 折伏（しゃくぶく）</strong></p>
+                <p>「邪教を穏やかに許容する（摂受）」のではなく、「邪教を激しく破折し、正法に導く（折伏）」ことを布教の基本としました。これが日蓮系教団の積極的な布教スタイルの源流です。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div>
+                    <h4 style="color: #fbbf24;">■ 題目（南無妙法蓮華経）</h4>
+                    <p>法華経の題名を唱える実践。これだけで成仏できるという究極的なシンプルさ。</p>
+                </div>
+                <div>
+                    <h4 style="color: #fbbf24;">■ 曼荼羅本尊</h4>
+                    <p>「南無妙法蓮華経」を中心に、諸仏・菩薩・神々を文字で配置した独自の本尊（礼拝対象）。</p>
+                </div>
+                <div>
+                    <h4 style="color: #fbbf24;">■ 立正安国</h4>
+                    <p>正しい教え（法華経）を国家レベルで採用すれば、災害や侵略が止むという政治的・宗教的ビジョン。</p>
+                </div>
+                <div>
+                    <h4 style="color: #fbbf24;">■ 折伏</h4>
+                    <p>邪教を激しく破折し、正法に導く対決的な布教スタイル。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <p><strong>法華経</strong>（すべての人が仏になれるという大乗仏教の経典）<br>
+                        <strong>天台智顗</strong>（中国天台宗の開祖、法華経の体系的解釈）<br>
+                        <strong>最澄</strong>（日本天台宗の開祖）
+                    </p>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <p><strong>日蓮宗</strong>（身延山久遠寺など）<br>
+                        <strong>日蓮正宗</strong>（大石寺）<br>
+                        <strong>創価学会</strong>（在家信者の団体、政治・教育活動）<br>
+                        <strong>顕正会</strong>（積極的折伏で知られる）
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー１：宗教の「一点突破」戦略</h4>
+                <p>スタートアップが「一つの機能に特化する」ことで成功するように、日蓮は「法華経の題目」という一点に集中しました。他の複雑な教義・修行を捨て、シンプルな実践で市場（末法の衆生）を獲得した。</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー２：APIの単純化</h4>
+                <p>従来の仏教は「複雑なAPI」──多くの経典、複雑な教義、厳しい修行。日蓮は「題目を唱える」という一つのエンドポイントで全機能（成仏）にアクセスできる「RESTful API」に再設計した。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1rem; color: var(--text-secondary);">アナロジー３：プロテスタント改革との類似</h4>
+                <p>マルティン・ルターが「聖書のみ」「信仰のみ」と主張して宗教改革を起こしたように、日蓮は「法華経のみ」「題目のみ」と主張した。既存の権威（他宗派）を激しく批判し、迫害を受けながらも自己の正当性を主張した点も類似している。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th>旧OS（平安仏教）</th>
+                        <th>日蓮 OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>救済の条件</td>
+                        <td>修行・学問・貴族のサポート</td>
+                        <td>題目を唱えるだけ（誰でも可能）</td>
+                    </tr>
+                    <tr>
+                        <td>宗派間の関係</td>
+                        <td>共存・融合（神仏習合など）</td>
+                        <td>排他的・対決的（四箇格言）</td>
+                    </tr>
+                    <tr>
+                        <td>政治との関係</td>
+                        <td>国家護持（鎮護国家）</td>
+                        <td>国家への批判と変革要求（立正安国）</td>
+                    </tr>
+                    <tr>
+                        <td>布教スタイル</td>
+                        <td>穏やかな教化</td>
+                        <td>激しい折伏</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: #fbbf24;">実践 (Installation)</h4>
+                <p><strong>創価学会</strong>：世界最大級の在家仏教団体。教育・文化・政治活動（公明党）を展開。<br>
+                    <strong>日蓮宗・日蓮正宗</strong>：伝統的な僧侶中心の宗派。<br>
+                    <strong>SGI（創価学会インターナショナル）</strong>：192カ国・地域に会員を持つグローバル組織。<br>
+                    <strong>平和・反核運動</strong>：日蓮系団体は平和運動に積極的に関与。
+                </p>
+            </div>
+            <div>
+                <h4 style="color: #b45309;">バグと副作用 (Limitations)</h4>
+                <p><strong>排他性・対立性</strong>：「他宗派は邪教」という主張が、社会的摩擦や家庭内対立を生むことがある。<br>
+                    <strong>強引な折伏</strong>：積極的な布教活動が、時に社会問題（強引な勧誘）として批判される。<br>
+                    <strong>政教分離の問題</strong>：創価学会と公明党の関係など、宗教と政治の密接な結びつきが議論を呼ぶ。<br>
+                    <strong>分派・対立</strong>：日蓮の正統解釈をめぐり、宗派間で激しい対立がある。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし日蓮が現代の「SNS布教」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「これは折伏の道具として極めて有効だ！」──日蓮は即座にその可能性に気づくでしょう。</p>
+                <p style="margin-top: 1rem;">
+                    「私の時代は、一人一人に直接会い、手紙を書き、幕府に嘆願書を提出した。それでも弾圧を受けた。しかし今、このTwitterやYouTubeとやらで、瞬時に何万人にも法華経の真理を伝えられるとは！
+                </p>
+                <p style="margin-top: 1rem;">
+                    しかし、注意せよ。<strong>「いいね」の数は信仰の深さではない。</strong> 題目を唱える実践（オフラインの修行）なしに、言葉だけでは成仏には至らない。
+                </p>
+                <p style="margin-top: 1rem;">
+                    そして、邪教の情報も同じ速度で広がる。ネットは正法と邪法が混在する『声聞界』のようなものだ。より激しく、より明確に、法華経の優位性を主張しなければならぬ！」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #b45309;">① 排他主義</h4>
+                    <p>「法華経以外は邪教」という主張は、宗教間の対話や平和的共存を困難にする。現代の宗教多元主義と相容れない側面がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #b45309;">② 歴史的予言の限界</h4>
+                    <p>「モンゴル襲来を予言した」とされるが、当時すでにモンゴルの脅威は知られており、予言というより分析に近いとの指摘も。</p>
+                </div>
+                <div>
+                    <h4 style="color: #b45309;">③ 解釈の多様性</h4>
+                    <p>日蓮の教えは多くの宗派に分裂しており、「正統な日蓮の教え」について各派が対立している。</p>
+                </div>
+                <div>
+                    <h4 style="color: #b45309;">④ 題目主義の単純化</h4>
+                    <p>「題目を唱えるだけで成仏」という主張が、仏教の深い教義や倫理的実践を軽視しているという批判もある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「南無妙法蓮華経」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「南無」は帰依する、「妙法蓮華経」は法華経の正式名称。「法華経に帰依します」という意味。日蓮は、この言葉を唱える（題目）ことが末法における唯一の成仏の方法だと説いた。</p>
+                </details>
+                <details>
+                    <summary>「四箇格言」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「念仏無間、禅天魔、真言亡国、律国賊」──念仏は地獄行き、禅は天魔、真言宗は国を滅ぼす、律宗は国賊、という激しい批判。</p>
+                </details>
+                <details>
+                    <summary>日蓮系教団が論争的である理由は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①他宗派を「邪教」と批判する排他性、②積極的な「折伏」布教、③政治との密接な関係（公明党など）、④正統解釈をめぐる内部対立。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #fbbf24; font-weight: 700;">題目（だいもく）</dt>
+                <dd>「南無妙法蓮華経」を唱えること。日蓮仏教の中心的実践。</dd>
+                <dt style="color: #fbbf24; font-weight: 700; margin-top: 1rem;">折伏（しゃくぶく）</dt>
+                <dd>邪教を激しく批判し、正法（法華経）に導く対決的な布教方法。</dd>
+                <dt style="color: #fbbf24; font-weight: 700; margin-top: 1rem;">立正安国（りっしょうあんこく）</dt>
+                <dd>正しい教え（法華経）を国家レベルで採用すれば、国が安泰になるという思想。</dd>
+                <dt style="color: #fbbf24; font-weight: 700; margin-top: 1rem;">末法（まっぽう）</dt>
+                <dd>釈迦の死後、正法→像法→末法と時代が進み、仏教が衰退する時代。日蓮はこの時代に法華経の題目が必要だと説いた。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | Nichiren</p>
+    </footer>
+</body>
+
+</html>
