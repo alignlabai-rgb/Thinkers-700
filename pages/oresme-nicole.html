@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニコル・オレーム | Thinkers 700</title>
+    <meta name="description" content="ニコル・オレームの思想を学ぶ。座標幾何学と天体運動論で科学革命の先駆となった14世紀フランスの偉大な中世科学者・司教。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), transparent);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #0ea5e9, #0284c7);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #38bdf8, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #38bdf8;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), transparent);
+            border-left: 4px solid #38bdf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #38bdf8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #38bdf8;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), transparent);
+            border: 2px solid #38bdf8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(14, 165, 233, 0.2);
+            color: #38bdf8;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">🔭 科学革命の先駆者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">数学OS</span>
+            <span class="os-tag">経済OS</span>
+        </div>
+        <h1>ニコル・オレーム</h1>
+        <p class="en-name">Nicole Oresme (c.1320-1382)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「地球は回転しているかもしれない」──座標幾何学を発明し、地動説を先取りし、貨幣論を展開した14世紀最大の知性
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「地球が自転しているという仮説は、天が動いているという仮説と物理的に区別できない。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『天と地について』(1377)</p>
+            </div>
+            <p>ニコル・オレームは、14世紀フランスのスコラ学者・司教であり、デカルト以前に座標系を考案し、コペルニクス以前に地球の自転を論じた「科学革命の先駆者」です。また、貨幣の価値と改鋳についての経済論も残し、経済学の始祖の一人とも評されます。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「動いているのは天か、地球か？ どちらの仮説も同じ現象を説明できる。」</strong></p>
+                <p>コペルニクスの200年前、オレームは「地球が回転している」可能性を真剣に論じた。もちろん彼はカトリック司教として最終的には聖書に従い天動説を選んだが、「科学的にはどちらの仮説も等しく成り立つ」と認めた。これは近代科学的思考の先駆だ。
+                </p>
+            </div>
+            <p>現代IT風に言えば、オレームは<strong>「グラフ機能を発明し、相対性の概念を先取りした中世のプログラマー」</strong>です。データを視覚化するという発想を14世紀に持っていた。彼を学ぶことは、科学革命がルネサンス以前から準備されていたことを知ることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #38bdf8; font-size: 1.3rem;">『質の形状について』（Tractatus de configurationibus qualitatum）
+                    </h4>
+                    <p style="margin-top: 1rem;">座標幾何学の萌芽。質（速度、温度など）の変化をグラフで表現する方法を提案。デカルトに先立つこと200年以上。「グラフ」の発明者とも言える。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #38bdf8; font-size: 1.3rem;">『天と地について』（Le Livre du ciel et du monde, 1377）</h4>
+                    <p style="margin-top: 1rem;">アリストテレスの『天体論』の注解・翻訳。地球の自転可能性を論じ、相対運動の概念を先取り。フランス語で書かれた科学書としても重要。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #38bdf8; font-size: 1.3rem;">『貨幣論』（De moneta, c.1360）</h4>
+                    <p style="margin-top: 1rem;">
+                        貨幣の価値と改鋳（貨幣の金属含有量を減らす操作）について論じた経済学の古典。貨幣は君主のものではなく共同体のものであり、改鋳は窃盗に等しいと批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Nicole Oresme: 14th-century French scholastic philosopher, Bishop of Lisieux. Invented graphical
+                        representation of qualities (proto-coordinate geometry), anticipating Descartes by 200+ years.
+                        Discussed Earth's possible rotation before Copernicus. Criticized currency debasement in his
+                        monetary treatise. Major precursor to the Scientific Revolution.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>14世紀フランスのスコラ学者、リジュー司教。質の変化をグラフ化する方法を発明（座標幾何学の先駆）、デカルトに200年以上先行。コペルニクス以前に地球自転の可能性を論じた。貨幣論で改鋳を批判。科学革命の重要な先駆者。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 直面した課題</strong><br>
+                        ・アリストテレス自然学の支配<br>
+                        ・質（速度・温度など）を数量化できない<br>
+                        ・天動説が「自明」とされていた
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・質の変化をグラフ（図形）で表現<br>
+                        ・地球自転の可能性を論理的に検討<br>
+                        ・貨幣は共同体のもの、改鋳は不正
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        パリ大学で教鞭、シャルル5世の顧問、リジュー司教。著作はルネサンス期に印刷され影響を与えた。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    座標幾何学・グラフ理論、科学革命の準備、経済学の萌芽、相対運動の概念
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #38bdf8; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「自然現象を数学的に表現し、論理的に分析できるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 質の形状（グラフの発明）</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「質の変化は、線分の長さの変化として図示できる。」
+                </div>
+                <p>オレームは、<strong>速度や温度などの「質」の変化を、横軸（時間や位置）と縦軸（質の強度）で表現する</strong>方法を考案した。これは現代のグラフ・座標系の先駆だ。デカルトが座標幾何学を確立する200年以上前のこと。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 地球自転の可能性</strong></p>
+                <table class="comparison-table" style="margin: 1.5rem 0;">
+                    <thead>
+                        <tr>
+                            <th>論点</th>
+                            <th>オレームの分析</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>落下する物体は真下に落ちる</td>
+                            <td>地球と一緒に回転しているから真下に見える</td>
+                        </tr>
+                        <tr>
+                            <td>天が1日1回転するのは非効率</td>
+                            <td>小さな地球が回転する方が「節約的」</td>
+                        </tr>
+                        <tr>
+                            <td>聖書は地球が静止していると言う</td>
+                            <td>最終的にはこれを理由に天動説を選択</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>オレームは、<strong>物理学的には地動説も天動説も等しく成り立つ</strong>と論じた。これは相対運動の概念の先取りだ。彼は信仰を理由に天動説を選んだが、「科学的には決定できない」と認めた点で革命的。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 貨幣論と改鋳批判</strong></p>
+                <p>中世ヨーロッパでは、王が貨幣の金属含有量を減らして（改鋳）利益を得ることが多かった。オレームはこれを批判：<strong>貨幣は君主のものではなく共同体のもの</strong>だ。改鋳は共同体からの窃盗に等しい。この議論は後の経済学・貨幣論に影響を与えた。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡
+                            IT的理解</strong>：オレームは「データの可視化」という発想を14世紀に持っていた。質の変化を図形で表現する──これはExcelのグラフ機能の原型だ。また、「絶対的な静止はない」という相対運動の概念は、アインシュタインの相対性理論にも繋がる発想。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #38bdf8;">
+                    <h4 style="color: #7dd3fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 質の形状（Configuration of
+                        Qualities）</h4>
+                    <p>速度・温度などの「質」の変化を、横軸と縦軸で表現する方法。グラフ・座標幾何学の先駆。データ可視化の始まり。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #0ea5e9;">
+                    <h4 style="color: #7dd3fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 平均速度定理（Mean Speed Theorem）
+                    </h4>
+                    <p>一様に変化する質の効果は、その平均値と等しい。ガリレオの落体の法則を先取り。「マートン規則」とも呼ばれる。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #38bdf8;">
+                    <h4 style="color: #7dd3fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 相対運動</h4>
+                    <p>「天が動いている」と「地球が動いている」は物理的に区別できない。運動は観測者に相対的。ガリレオ・アインシュタインを先取り。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #0ea5e9;">
+                    <h4 style="color: #7dd3fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 貨幣共同体論</h4>
+                    <p>貨幣は君主のものではなく共同体のもの。改鋳（金属含有量の削減）は共同体からの窃盗。近代的な貨幣論・財政論の先駆。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">アリストテレス</strong>：<br>
+                            自然学・天体論の基礎。オレームはこれを批判的に発展させた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">マートン学派</strong>：<br>
+                            オックスフォードの数学者・物理学者たち。平均速度定理の発見。オレームはこれを発展させグラフ化。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">ジャン・ビュリダン</strong>：<br>
+                            パリ大学の師。インペトゥス理論（慣性の先駆）を発展。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">コペルニクス</strong>：<br>
+                            地動説の確立。オレームの議論が道を開いた可能性。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">ガリレオ</strong>：<br>
+                            落体の法則、相対運動。オレームの平均速度定理を発展。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">デカルト</strong>：<br>
+                            座標幾何学の確立。オレームの「質の形状」を発展させた可能性。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #38bdf8;">近代経済学</strong>：<br>
+                            貨幣論の先駆。グレシャム、アダム・スミスへの影響。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #38bdf8; margin-bottom: 1rem;">アナロジー１：Excelグラフの発明</h4>
+                <p>オレームは、速度の変化を「図形」で表現した。横軸に時間、縦軸に速度。これは<strong>14世紀版のExcelグラフ</strong>だ。データを数字の羅列ではなく、視覚的に理解できる形にする。彼は「データ可視化」の創始者と言える。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #38bdf8; margin-bottom: 1rem;">アナロジー２：電車の中から見る景色</h4>
+                <p>電車の中から見ると、ホームが動いているように見える。ホームから見ると、電車が動いている。どちらが「本当に」動いているのか？
+                    <strong>運動は観測者に相対的</strong>だ──これがオレームが14世紀に気づいた洞察。アインシュタインの相対性理論の萌芽。</p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #38bdf8; margin-bottom: 1rem;">アナロジー３：仮想通貨とインフレ</h4>
+                <p>中世の王は金貨の金含有量を減らして儲けた。現代の中央銀行は紙幣を増刷して同じことをする。オレームの批判は現代にも通じる：<strong>通貨を増刷するのは、市民からの「隠れた」窃盗だ</strong>。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：中世科学 vs 近代科学</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>中世アリストテレス派</th>
+                        <th>オレーム（先駆者）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>方法</td>
+                        <td>言語的・論理的分析</td>
+                        <td><strong>数学的・図形的分析</strong></td>
+                    </tr>
+                    <tr>
+                        <td>質の扱い</td>
+                        <td>定性的記述</td>
+                        <td><strong>定量的・グラフ的表現</strong></td>
+                    </tr>
+                    <tr>
+                        <td>天文学</td>
+                        <td>天動説は自明</td>
+                        <td><strong>地動説も論理的に可能</strong></td>
+                    </tr>
+                    <tr>
+                        <td>仮説の扱い</td>
+                        <td>権威に依拠</td>
+                        <td><strong>論理的検討・比較</strong></td>
+                    </tr>
+                    <tr>
+                        <td>経済学</td>
+                        <td>道徳神学の一部</td>
+                        <td><strong>独立した分析対象</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>データを可視化する</strong>：数字の羅列ではなく、グラフ・図形で理解する。オレームが700年前に始めたこと。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「自明」を疑う</strong>：「みんなが信じているから」ではなく、論理的に検討する。天動説が「自明」だった時代に地動説を検討したオレームのように。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>通貨増刷の本質を理解する</strong>：インフレは「隠れた課税」である。オレームの貨幣論は現代にも通じる。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>過大評価への注意</strong>：オレームは「近代科学の創始者」ではなく「先駆者」。彼の仕事はルネサンス・科学革命で発展された。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>信仰との折り合い</strong>：オレームは司教として、最終的には聖書に従い天動説を選んだ。信仰と理性のバランス。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしオレームが現代の「ビッグデータ」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、700年後の君たちは、私が夢見たことを実現したのか。質の変化を図形で表現する──私はそれを手描きでやった。君たちは巨大な機械でやっているらしい。」</p>
+                <p style="margin-top: 1rem;">
+                    「しかし原理は変わらない。<strong>数字の羅列は人間の頭に入らない。だから図形にする</strong>。棒グラフ、折れ線グラフ、散布図──すべて私の『質の形状』の子孫だ。」</p>
+                <p style="margin-top: 1rem;">
+                    「そして私が問いたいのは、<strong>君たちはそのデータで何を問うているのか</strong>ということだ。私は『地球は回転しているか？』と問うた。権威が『天が動く』と言うからといって、論理的検討を止めなかった。」
+                </p>
+                <p style="margin-top: 1rem;">
+                    「データ可視化の道具は揃った。あとは<strong>正しい問いを立てる勇気</strong>だ。『みんなが信じているから』ではなく、『論理的に何が言えるか』を問え。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 信仰への譲歩</h4>
+                    <p>論理的には地動説が可能と認めながら、最終的には聖書を理由に天動説を選んだ。科学と宗教の妥協。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 実験の欠如</h4>
+                    <p>オレームの自然学は主に思考実験と論理分析。体系的な実験・観測はガリレオを待つ必要があった。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 影響の連続性問題</h4>
+                    <p>オレームの著作がデカルトやガリレオに直接影響したかは不明。独立発見の可能性もある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「質の形状」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        速度や温度などの「質」の変化を、横軸（時間・位置）と縦軸（質の強度）で図示する方法。グラフ・座標幾何学の先駆。14世紀版のデータ可視化。</p>
+                </details>
+                <details>
+                    <summary>オレームは地動説についてどう考えたか？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「地球が回転している」という仮説は、物理学的には「天が回転している」という仮説と区別できないと論じた。最終的には聖書を理由に天動説を選んだが、科学的には決定できないと認めた。</p>
+                </details>
+                <details>
+                    <summary>オレームの貨幣論の要点は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        貨幣は君主のものではなく共同体のもの。改鋳（金属含有量の削減）は共同体からの窃盗に等しい。現代のインフレ批判にも繋がる着想。</p>
+                </details>
+                <details>
+                    <summary>オレームが影響を与えた後世の科学者は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        コペルニクス（地動説）、ガリレオ（落体の法則・相対運動）、デカルト（座標幾何学）。ただし直接的影響か独立発見かは議論がある。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #38bdf8; font-weight: 700;">質の形状（Configuration of Qualities）</dt>
+                <dd>質の変化をグラフ化する方法。座標幾何学の先駆。データ可視化の始まり。</dd>
+                <dt style="color: #38bdf8; font-weight: 700; margin-top: 1rem;">平均速度定理（Mean Speed Theorem）</dt>
+                <dd>一様に加速する物体の移動距離は、平均速度で等速運動した場合と等しい。ガリレオの落体の法則の先駆。</dd>
+                <dt style="color: #38bdf8; font-weight: 700; margin-top: 1rem;">相対運動</dt>
+                <dd>運動は観測者に相対的。「天が動く」と「地球が動く」は物理的に区別できない。</dd>
+                <dt style="color: #38bdf8; font-weight: 700; margin-top: 1rem;">改鋳（Debasement）</dt>
+                <dd>貨幣の金属含有量を減らす操作。君主の収入源だったが、オレームはこれを窃盗と批判。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | ニコル・オレーム</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>岡倉天心 | Thinkers 700</title>
+    <meta name="description" content="岡倉天心の思想を学ぶ。『茶の本』で日本美学を世界に発信し、「アジアは一つ」と東洋文明の価値を説いた近代日本を代表する思想家・美術運動家。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #059669;
+            --accent-glow: rgba(5, 150, 105, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), transparent);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #059669, #047857);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #10b981;
+            border-bottom: 2px solid #10b981;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), transparent);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #10b981;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #10b981;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.2), transparent);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(5, 150, 105, 0.2);
+            color: #10b981;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">🍵 日本美学を世界に発信</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">芸術OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+        <h1>岡倉天心</h1>
+        <p class="en-name">Okakura Tenshin (Kakuzō) (1863-1913)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「茶道とは日常における美の礼拝」──『茶の本』で日本美学を世界に発信し、「アジアは一つ」と東洋文明の価値を説いた近代日本を代表する思想家
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「茶道とは日常生活の俗事のなかに存する美を崇拝することにもとづく一種の儀式である。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『茶の本』(1906)</p>
+            </div>
+            <p>岡倉天心は、明治時代の日本を代表する美術運動家・思想家です。東京美術学校（現・東京藝術大学）の設立に尽力し、日本美術院を創設。英文著作『茶の本』『東洋の理想』『日本の覚醒』で、日本と東洋の美学・思想を世界に発信しました。ボストン美術館の中国・日本美術部長も務め、東西文化の架け橋となりました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「西洋は完成を美とする。東洋は不完全さに美を見る。」</strong></p>
+                <p>西洋美学は完璧・左右対称・完成を美とする。しかし日本の茶道・華道・書道は「不完全の美」を愛でる。余白を残し、完成させない。なぜなら、人生とは完成に向かう旅であり、完成してしまえば終わりだからだ。この「不完全の美学」を天心は世界に伝えた。
+                </p>
+            </div>
+            <p>現代IT風に言えば、天心は<strong>「日本のUXデザイン哲学」</strong>を世界に発信した人です。「Less is
+                More」の美学、余白の重要性、完成させないことの価値。彼を学ぶことは、東洋的美意識の根底にある哲学を理解することです。</p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #10b981; font-size: 1.3rem;">『茶の本』（The Book of Tea, 1906）</h4>
+                    <p style="margin-top: 1rem;">
+                        天心の代表作。英語で書かれ、アメリカ・ヨーロッパで広く読まれた。茶道を通じて日本と東洋の美学・哲学を紹介。「不完全の美」「日常における美の礼拝」を説いた。現代でも世界中で読み継がれる古典。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #10b981; font-size: 1.3rem;">『東洋の理想』（The Ideals of the East, 1903）</h4>
+                    <p style="margin-top: 1rem;">「アジアは一つ」という有名な一節で始まる。アジア文明の統一性と価値を主張し、西洋中心主義に対抗。日本美術史をアジア文明の視点から描く。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #10b981; font-size: 1.3rem;">『日本の覚醒』（The Awakening of Japan, 1904）</h4>
+                    <p style="margin-top: 1rem;">日露戦争直前に出版。日本の近代化と伝統文化の両立を論じた。西洋に対して日本の立場を説明する「弁明の書」でもある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Okakura Tenshin (Kakuzō): Leading Japanese art theorist and cultural critic of the Meiji era.
+                        Founded Tokyo Fine Arts School and Japan Art Institute. His English works—"The Book of Tea,"
+                        "The Ideals of the East," "The Awakening of Japan"—introduced Japanese and Asian aesthetics to
+                        the West. Advocated "Asia is One" and the beauty of imperfection. Curator at Boston Museum of
+                        Fine Arts.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>明治時代を代表する美術運動家・思想家。東京美術学校・日本美術院の設立に貢献。英文著作『茶の本』『東洋の理想』で日本・東洋美学を世界に発信。「アジアは一つ」「不完全の美」を主張。ボストン美術館で東洋美術の紹介に尽力。東西文化の架け橋となった。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 直面した課題</strong><br>
+                        ・明治維新：西洋化の波、日本美術の軽視<br>
+                        ・フェノロサとの出会い：日本美術再評価の機運<br>
+                        ・東洋文明への誤解・軽視
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・日本美術の復興・保護<br>
+                        ・東洋美学の世界発信（英文著作）<br>
+                        ・「不完全の美」の哲学化
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        東京美術学校設立、日本美術院創設、ボストン美術館での東洋美術収集・展示、英文三部作の出版。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    ミニマリズム・無印良品・日本デザイン、マインドフルネス（茶道の精神）、ジャポニスム、東西文化対話
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #10b981; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「東洋と日本の美学は、西洋に何を教えうるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 茶道と「不完全の美」</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「茶道の本質は、不完全なものを崇拝することにある。すなわち、人生という不可解なるものの中で、何か可能なものを成し遂げようとする心優しき企てである。」
+                </div>
+                <p>西洋の美学は<strong>完璧・完成・対称</strong>を美とする。しかし日本の茶道は「不完全の美」を愛でる。茶碗は歪み、花は一輪、庭には余白がある。なぜなら、<strong>完成してしまえば成長が止まる</strong>。不完全さは、鑑賞者に想像の余地を残し、その余白を心で埋めることを求める。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 「アジアは一つ」</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「アジアは一つである。ヒマラヤが二つの巨大な文明──中国の孔子主義とインドのヴェーダ主義──を分かっているものの、その雪の障壁も、愛のための究極の普遍的なものを求めているアジア民族の広範な拡張を、一時たりとも遮ることはない。」
+                </div>
+                <p>天心は、アジアが文化的に一つの統一体であると主張した。仏教がインドから中国、日本へと伝わったように、アジアは精神的に繋がっている。西洋の物質主義・機械主義に対して、東洋の精神性・芸術性を対置する。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 日常における美の礼拝</strong></p>
+                <p>茶道は「日常生活の俗事のなかに存する美を崇拝する」儀式だ。高尚な芸術作品だけでなく、お茶を淹れる、花を生ける、部屋を掃除する──<strong>日常の所作を美に高める</strong>。これは、生活全体を芸術化する東洋的な発想。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡 IT的理解</strong>：天心の美学は「Less is
+                        More」「ミニマルデザイン」の先駆だ。余白を残す、完璧にしない、シンプルにする。無印良品・Apple・北欧デザインに流れるこの思想は、天心が世界に発信した日本美学と響き合う。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #10b981;">
+                    <h4 style="color: #34d399; font-size: 1.1rem; margin-bottom: 1rem;">■ 茶道（Tea）</h4>
+                    <p>単なる飲茶の作法ではなく、「日常における美の礼拝」。禅・道教・儒教の精神が融合した総合芸術。簡素・清浄・調和・尊敬を重んじる。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #059669;">
+                    <h4 style="color: #34d399; font-size: 1.1rem; margin-bottom: 1rem;">■ 不完全の美</h4>
+                    <p>西洋の完璧志向に対して、日本は「不完全」を美とする。茶碗の歪み、枯れ葉の風情、余白の美。完成させないことで、想像の余地を残す。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #10b981;">
+                    <h4 style="color: #34d399; font-size: 1.1rem; margin-bottom: 1rem;">■ アジア主義</h4>
+                    <p>「アジアは一つ」：アジア文明の統一性と価値を主張。仏教を通じた精神的連帯。西洋の物質主義に対抗する東洋の精神主義。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #059669;">
+                    <h4 style="color: #34d399; font-size: 1.1rem; margin-bottom: 1rem;">■ 和洋折衷</h4>
+                    <p>西洋を全否定するのではなく、東洋の精神を保ちながら西洋の技術を取り入れる。日本美術の「復興」と「近代化」の両立を目指した。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #10b981;">アーネスト・フェノロサ</strong>：<br>
+                            アメリカ人美術史家。日本美術の価値を天心に教えた師。共に日本美術の復興に尽力。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #10b981;">千利休</strong>：<br>
+                            茶道を大成した茶聖。「侘び茶」の精神を天心は世界に発信。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #10b981;">禅仏教・道教</strong>：<br>
+                            東洋の精神的基盤。天心の美学はこれらの思想に根ざす。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #10b981;">日本美術院</strong>：<br>
+                            天心が創設した美術団体。横山大観、下村観山ら日本画の巨匠を輩出。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #10b981;">ジャポニスム</strong>：<br>
+                            西洋における日本趣味。天心の著作が日本理解を深めた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #10b981;">ミニマリズム・禅デザイン</strong>：<br>
+                            「Less is More」の美学。天心が発信した東洋思想の現代的展開。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #10b981; margin-bottom: 1rem;">アナロジー１：UXデザインの「余白」</h4>
+                <p>天心の「不完全の美」「余白の美」は、現代のUXデザインに通じる。画面を情報で埋め尽くすのではなく、<strong>余白を残すことでユーザーの視線を誘導し、内容を際立たせる</strong>。Appleのミニマルデザインは、天心が世界に発信した東洋美学と響き合う。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #10b981; margin-bottom: 1rem;">アナロジー２：マインドフルネスと茶道</h4>
+                <p>現代のマインドフルネス（瞑想的気づき）は、茶道の精神と同じだ。お茶を淹れる行為に全神経を集中する。<strong>「今ここ」に存在する</strong>。天心が世界に発信した茶道の精神は、現代のウェルネス文化に流れ込んでいる。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #10b981; margin-bottom: 1rem;">アナロジー３：無印良品と天心</h4>
+                <p>無印良品は「これでいい」という満足を追求する。派手さや過剰さを排し、必要十分なものを美しく作る。これは天心の「不完全の美」「簡素の美」の現代的実装だ。</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：西洋美学 vs 東洋美学</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>西洋美学</th>
+                        <th>東洋美学（天心）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>美の基準</td>
+                        <td>完璧・対称・完成</td>
+                        <td><strong>不完全・非対称・余白</strong></td>
+                    </tr>
+                    <tr>
+                        <td>作品の位置</td>
+                        <td>美術館で鑑賞</td>
+                        <td><strong>日常生活の中に</strong></td>
+                    </tr>
+                    <tr>
+                        <td>人間と自然</td>
+                        <td>自然を支配</td>
+                        <td><strong>自然と調和</strong></td>
+                    </tr>
+                    <tr>
+                        <td>精神性</td>
+                        <td>宗教と芸術の分離</td>
+                        <td><strong>禅・道教・儒教の融合</strong></td>
+                    </tr>
+                    <tr>
+                        <td>目標</td>
+                        <td>傑作の創造</td>
+                        <td><strong>生活の芸術化</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「余白」を大切にする</strong>：仕事・デザイン・生活で、すべてを埋め尽くさない。余白があることで本質が際立つ。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>日常を芸術化する</strong>：お茶を淹れる、掃除をする、歩く──日常の所作に意識を向け、美しくする。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「不完全」を受け入れる</strong>：完璧を目指しすぎない。不完全さに美と成長の余地を見る。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>オリエンタリズム批判</strong>：西洋人向けに書かれた天心の著作は、「東洋を神秘化」しているという批判もある。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>アジア主義の政治利用</strong>：「アジアは一つ」という思想は、後に大東亜共栄圏の正当化に利用された側面がある。天心自身の責任ではないが、注意が必要。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし天心が現代の「デジタルデトックス」「スローライフ」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、君たちはスマートフォンに追われ、情報に溺れ、『デジタルデトックス』を求めているという。」</p>
+                <p style="margin-top: 1rem;">
+                    「私は100年前に言った。茶道とは<strong>『日常における美の礼拝』</strong>だと。お茶を淹れる──その行為に全神経を集中する。過去も未来もなく、ただ『今ここ』に存在する。これこそ君たちが求めている『デトックス』ではないか？」
+                </p>
+                <p style="margin-top: 1rem;">
+                    「しかし私が警告したいのは、茶道を『テクニック』や『体験サービス』に矮小化しないことだ。茶道の本質は、<strong>日常そのものを美しく生きる態度</strong>だ。週末に高級ホテルで茶道体験をするのではなく、毎朝のコーヒーを丁寧に淹れることだ。」
+                </p>
+                <p style="margin-top: 1rem;">「<strong>不完全を受け入れよ</strong>。完璧な人生などない。不完全だからこそ、成長し、味わい、美しい。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① オリエンタリズム批判</h4>
+                    <p>西洋人向けに「東洋」を神秘化・理想化しているという批判。ステレオタイプを強化していないか？</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② エリート主義</h4>
+                    <p>天心の美学は上流階級・知識人向けであり、庶民の生活とは遊離しているという批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ アジア主義の危険</h4>
+                    <p>「アジアは一つ」という思想は、日本によるアジア侵略の正当化に利用された。天心自身の意図とは別に、政治利用のリスクがあった。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>天心にとって「茶道」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「日常生活の俗事のなかに存する美を崇拝する一種の儀式」。単なる飲茶の作法ではなく、禅・道教・儒教が融合した総合芸術であり、生活の芸術化。</p>
+                </details>
+                <details>
+                    <summary>「不完全の美」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        西洋の完璧志向に対して、日本は「不完全」を美とする。茶碗の歪み、余白、完成させないこと。不完全さは想像の余地を残し、成長の可能性を示す。</p>
+                </details>
+                <details>
+                    <summary>「アジアは一つ」とはどういう意味か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        アジア文明の統一性と精神的連帯を主張する思想。仏教を通じた文化的繋がり。西洋の物質主義に対抗する東洋の精神主義を提唱。</p>
+                </details>
+                <details>
+                    <summary>天心の英文三部作とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        『東洋の理想』(1903)、『日本の覚醒』(1904)、『茶の本』(1906)。すべて英語で書かれ、日本と東洋の美学・思想を世界に発信した。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #10b981; font-weight: 700;">茶道（Teaism / The Way of Tea）</dt>
+                <dd>日常における美の礼拝。禅・道教・儒教が融合した総合芸術。生活の芸術化。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">不完全の美</dt>
+                <dd>完璧ではなく、歪み・余白・未完成に美を見る東洋的美学。「侘び」「寂び」と関連。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">「アジアは一つ」</dt>
+                <dd>アジア文明の統一性を主張するスローガン。『東洋の理想』の冒頭の一節。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">日本美術院</dt>
+                <dd>1898年に天心が創設した美術団体。横山大観ら日本画の巨匠を輩出。</dd>
+                <dt style="color: #10b981; font-weight: 700; margin-top: 1rem;">ジャポニスム</dt>
+                <dd>19〜20世紀に西洋で流行した日本趣味。天心の著作がこの理解を深めた。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | 岡倉天心</p>
+    </footer>
+</body>
+
+</html>
