@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エリノア・オストロム - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            --primary-light: #22d3ee;
+            --bg-dark: #0a1418;
+            --bg-card: #0f2027;
+            --text: #ecfeff;
+            --text-secondary: #a5f3fc;
+            --border: rgba(34, 211, 238, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: rgba(10, 20, 24, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #0891b2, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+        }
+
+        .os-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(34, 211, 238, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-light);
+        }
+
+        .section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quote-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .card {
+            background: #153035;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid var(--border);
+        }
+
+        .card h4 {
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .highlight h4 {
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .list {
+            list-style: none;
+        }
+
+        .list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .list li:last-child {
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: #153035;
+            color: var(--primary-light);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        .genealogy {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media(max-width:768px) {
+            .genealogy {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav"><a href="../index.html">← 一覧に戻る</a><span>Rank 401</span></nav>
+    <header class="header">
+        <div class="badge">現代アメリカ（1933-2012）🏆 ノーベル経済学賞</div>
+        <h1>エリノア・オストロム</h1>
+        <p class="subtitle">Elinor Ostrom</p>
+        <p class="subtitle">「コモンズの統治」を証明した女性初の経済学賞受賞者</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">経済OS</span>
+        </div>
+    </header>
+    <main class="container">
+        <div class="quote-box">
+            <p class="quote-text">「コモンズは、適切な制度設計により、荒廃することなく持続可能に管理できる」</p>
+            <p style="color:var(--text-secondary);margin-top:0.5rem;">— 『コモンズのガバナンス』より</p>
+        </div>
+        <section class="section">
+            <h2 class="section-title">🌟 オストロムとは</h2>
+            <p>政治学者・経済学者。「コモンズの悲劇」は不可避ではないことを実証的に示し、2009年に女性初のノーベル経済学賞を受賞。共有資源の自己統治理論を確立した。</p>
+            <div class="highlight">
+                <h4>💡 5歳児にもわかる説明</h4>
+                <p>みんなで使う公園や牧場は、誰かが独り占めしたり荒らしたりするかもしれないよね。でも、みんなでルールを作って守れば、ずっと仲良く使えるってことを証明した人だよ。</p>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">💻 IT視点での革新</h2>
+            <div class="cards">
+                <div class="card">
+                    <h4>分散型ガバナンス</h4>
+                    <p>中央集権でもプライベートでもない、コミュニティ自治型リソース管理</p>
+                </div>
+                <div class="card">
+                    <h4>デザイン・パターン</h4>
+                    <p>成功するコモンズの「8つの設計原理」＝ベストプラクティス集</p>
+                </div>
+                <div class="card">
+                    <h4>IADフレームワーク</h4>
+                    <p>制度分析と開発の標準化されたモデル＝UMLのような設計言語</p>
+                </div>
+                <div class="card">
+                    <h4>オープンソース類似</h4>
+                    <p>コモンズ理論はOSSコミュニティの運営原理と驚くほど一致</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">🧠 中核概念：政治OS v4.0</h2>
+            <div class="highlight">
+                <h4>📋 パッチノート：8つの設計原理</h4>
+                <ul class="list">
+                    <li><strong>明確な境界</strong>：誰がメンバーで、何がリソースか明確に定義</li>
+                    <li><strong>地域条件への適合</strong>：ルールは地域の状況に合わせて設計</li>
+                    <li><strong>集合的選択</strong>：ルールは利用者自身が参加して決定</li>
+                    <li><strong>モニタリング</strong>：ルール遵守を監視する仕組み</li>
+                    <li><strong>段階的制裁</strong>：違反には軽いものから重いものまで段階的に対応</li>
+                    <li><strong>紛争解決メカニズム</strong>：低コストで迅速な紛争解決手段</li>
+                    <li><strong>自治の承認</strong>：外部政府がコミュニティの自治を認める</li>
+                    <li><strong>入れ子構造</strong>：小規模から大規模まで階層的に組織化</li>
+                </ul>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">📜 時代背景</h2>
+            <div class="cards">
+                <div class="card">
+                    <h4>🌍 コモンズの悲劇</h4>
+                    <p>1968年ハーディンの論文。共有資源は必ず荒廃するとの悲観論が主流だった</p>
+                </div>
+                <div class="card">
+                    <h4>🏛️ 市場vs政府の二項対立</h4>
+                    <p>公共財は政府管理か私有化のどちらかという単純化された議論</p>
+                </div>
+                <div class="card">
+                    <h4>🔬 フィールドワーク</h4>
+                    <p>世界各地の成功事例を収集し、理論ではなく実証から出発</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="cards">
+                <div class="card">
+                    <h4>『コモンズのガバナンス』</h4>
+                    <p>1990年。共有資源の自己統治理論の集大成</p>
+                </div>
+                <div class="card">
+                    <h4>『社会的ジレンマを理解する』</h4>
+                    <p>IAD（制度分析と開発）フレームワークを体系化</p>
+                </div>
+                <div class="card">
+                    <h4>『知識コモンズ論』</h4>
+                    <p>デジタル時代のコモンズへの応用</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="genealogy">
+                <div>
+                    <h4>⬆️ 影響を受けた</h4>
+                    <ul class="list">
+                        <li>ヴィンセント・オストロム — 夫、多中心性理論</li>
+                        <li>ゲーム理論 — 協調の進化</li>
+                        <li>制度派経済学 — 制度がインセンティブを形成</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>⬇️ 影響を与えた</h4>
+                    <ul class="list">
+                        <li>クリエイティブ・コモンズ — デジタル著作権運動</li>
+                        <li>オープンソース運動 — コード共有の統治</li>
+                        <li>環境ガバナンス — 気候変動対策への応用</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">⚖️ 比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>観点</th>
+                        <th>オストロム</th>
+                        <th>ハーディン</th>
+                        <th>経済学主流派</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>コモンズの運命</td>
+                        <td>自己統治可能</td>
+                        <td>必ず荒廃（悲劇）</td>
+                        <td>私有化か政府管理</td>
+                    </tr>
+                    <tr>
+                        <td>方法論</td>
+                        <td>フィールドワーク</td>
+                        <td>理論的推論</td>
+                        <td>数学的モデル</td>
+                    </tr>
+                    <tr>
+                        <td>人間観</td>
+                        <td>条件次第で協調</td>
+                        <td>利己的</td>
+                        <td>合理的経済人</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="section">
+            <h2 class="section-title">🌊 後世への影響</h2>
+            <div class="cards">
+                <div class="card">
+                    <h4>🌐 デジタル・コモンズ</h4>
+                    <p>Wikipedia、OSS、クリエイティブ・コモンズの理論的基盤</p>
+                </div>
+                <div class="card">
+                    <h4>🌿 環境政策</h4>
+                    <p>気候変動、漁業、森林管理への多中心的ガバナンス適用</p>
+                </div>
+                <div class="card">
+                    <h4>🏘️ 都市計画</h4>
+                    <p>公共空間、コワーキング、シェアリングエコノミーの設計指針</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">🔍 批判と限界</h2>
+            <ul class="list">
+                <li><strong>スケールの問題</strong>：地域レベルの成功が地球規模に適用可能か不明確</li>
+                <li><strong>権力不均衡</strong>：コミュニティ内の権力格差を十分に扱っていない</li>
+                <li><strong>資本主義との緊張</strong>：市場圧力下でのコモンズ維持の困難さ</li>
+            </ul>
+        </section>
+        <section class="section">
+            <h2 class="section-title">🌐 現代的意義</h2>
+            <div class="cards">
+                <div class="card">
+                    <h4>プラットフォーム協同組合</h4>
+                    <p>UberやAirbnbに対抗する利用者所有型プラットフォーム</p>
+                </div>
+                <div class="card">
+                    <h4>DAO（分散型自律組織）</h4>
+                    <p>ブロックチェーン上のコモンズ統治実験</p>
+                </div>
+                <div class="card">
+                    <h4>気候行動</h4>
+                    <p>パリ協定の多中心的アプローチはオストロム理論に影響</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">💬 名言</h2>
+            <div class="quote-box" style="margin:0.5rem 0;">
+                <p class="quote-text">「世界には万能薬はない。どんな制度も、すべての場所で機能するわけではない」</p>
+            </div>
+            <div class="quote-box" style="margin:0.5rem 0;">
+                <p class="quote-text">「私たちは実験している人間から学ぶ必要がある」</p>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">📝 まとめ</h2>
+            <div class="highlight">
+                <p>オストロムは、「コモンズの悲劇」という悲観論を覆し、人々が自発的に協力して共有資源を持続可能に管理できることを実証した。8つの設計原理は、デジタル時代のコミュニティ運営から地球規模の環境ガバナンスまで、幅広い応用可能性を持つ。
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><a href="../index.html" style="color:var(--primary-light);">← 一覧に戻る</a>
+        <p style="margin-top:1rem;">© 2025 Thinkers 700</p>
+    </footer>
+</body>
+
+</html>

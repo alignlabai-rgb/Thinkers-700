@@ -4857,11 +4857,11 @@
     "name": "ヴィルフレド・パレート",
     "en_name": "Pareto, Vilfredo",
     "years": "20世紀イタリア",
-    "school": ["社会OS"],
-    "summary": "エリートの周流、パレート最適",
+    "school": ["社会OS", "経済OS"],
+    "summary": "エリートの周流、パレートの法則、パレート最適",
     "explanation": "ヴィルフレド・パレートは、昔の『社会OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはエリートの周流、パレート最適という新しい視点を持てるようになったんだ。",
     "contribution": "エリートの周流、パレート最適を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/pareto-vilfredo.html"
   },
   {
     "id": "P-406",
@@ -4869,11 +4869,11 @@
     "name": "デレク・パーフィット",
     "en_name": "Parfit, Derek",
     "years": "現代イギリス",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "倫理OS"],
     "summary": "理由と人格、非同一性問題",
     "explanation": "デレク・パーフィットは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは理由と人格、非同一性問題という新しい視点を持てるようになったんだ。",
     "contribution": "理由と人格、非同一性問題を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/parfit-derek.html"
   },
   {
     "id": "P-407",
@@ -4885,7 +4885,7 @@
     "summary": "あるものはある、一者",
     "explanation": "パルメニデスは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはあるものはある、一者という新しい視点を持てるようになったんだ。",
     "contribution": "あるものはある、一者を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/parmenides.html"
   },
   {
     "id": "P-408",
