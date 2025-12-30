@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荻生徂徠 | Thinkers 700</title>
+    <meta name="description" content="荻生徂徠の思想を学ぶ。古文辞学と『弁道』で朱子学を批判し、「礼楽刑政」の政治思想を展開した江戸中期最大の儒学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #a16207;
+            --accent-glow: rgba(161, 98, 7, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(161, 98, 7, 0.15), transparent);
+            border-bottom: 1px solid rgba(161, 98, 7, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #a16207, #854d0e);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #ca8a04, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ca8a04;
+            border-bottom: 2px solid #ca8a04;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(161, 98, 7, 0.1), transparent);
+            border-left: 4px solid #ca8a04;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #ca8a04;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #ca8a04;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(161, 98, 7, 0.2), transparent);
+            border: 2px solid #ca8a04;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(161, 98, 7, 0.2);
+            color: #ca8a04;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #ca8a04;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #ca8a04;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">江戸思想の革命児</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">儒学OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+        <h1>荻生徂徠</h1>
+        <p class="en-name">Ogyu Sorai (1666-1728)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「道とは先王の道なり」──古文辞学と『弁道』で朱子学を批判し、「礼楽刑政」の政治思想を展開した江戸中期最大の儒学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「道とは先王の道なり。先王の道とは、天下を安んずるの道なり。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『弁道』</p>
+            </div>
+            <p>荻生徂徠は、江戸中期（元禄〜享保期）を代表する儒学者であり、「古文辞学」を創始しました。当時支配的だった朱子学を批判し、古代中国の聖人（先王）たちが作った「道」──礼楽刑政（制度）──に立ち返ることを主張。個人の道徳修養より「制度設計」を重視する、実践的・政治的な儒学を展開しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「道」は人間が作った制度である。天に与えられた理ではない。</strong></p>
+                <p>朱子学は「道」を天理（自然の理法）と考えた。人は本来持っている天理を回復すべきだと。しかし徂徠は言う：「道」とは古代の聖人たちが制作した「礼楽刑政」──つまり制度だ。道は発見するものではなく、作るものだ。だから政治とは「制度を設計すること」だ。
+                </p>
+            </div>
+            <p>現代IT風に言えば、徂徠は<strong>「OSは神（天理）が与えたものではなく、先人が設計したもの」</strong>と考えた人です。だからOSは改良できるし、環境に合わせて設計すべきだ。彼を学ぶことは、制度設計の思想に触れることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ca8a04; font-size: 1.3rem;">『弁道』（べんどう）</h4>
+                    <p style="margin-top: 1rem;">
+                        徂徠の代表作。「道」とは先王が作った礼楽刑政であると主張し、朱子学の「天理」概念を批判。「道」を人為的・歴史的なものと捉える革命的な転回を示した。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ca8a04; font-size: 1.3rem;">『弁名』（べんめい）</h4>
+                    <p style="margin-top: 1rem;">『弁道』の姉妹編。儒学の基本概念（仁・義・礼・智など）を古典に基づいて再定義。朱子学的解釈を退け、古代の本来の意味に戻ることを主張。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ca8a04; font-size: 1.3rem;">『政談』（せいだん）</h4>
+                    <p style="margin-top: 1rem;">徳川吉宗に献上した政治改革論。武士の土着化、参勤交代批判など、当時としては大胆な提言を含む。理論と実践を結ぶ政策論。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Ogyu Sorai: Leading Confucian scholar of mid-Edo Japan. Founded "Kobunjigaku" (ancient
+                        phraseology school). Criticized Zhu Xi Neo-Confucianism. Argued that the "Way" is not natural
+                        principle (li) but institutions (ritual, music, punishment, governance) created by ancient
+                        sage-kings. Emphasized institutional design over individual moral cultivation. Major influence
+                        on political thought and later Japanese philosophy.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>江戸中期を代表する儒学者。「古文辞学」を創始。朱子学を批判し、「道」は天理ではなく先王が制作した「礼楽刑政」（制度）であると主張。個人の道徳修養より制度設計を重視。政治思想・日本思想史に多大な影響を与えた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「道」は天理（自然の理法）である（朱子学）<br>
+                        ・内面的な道徳修養が根本<br>
+                        ・宋明理学の解釈に従う
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・「道」は先王が制作した礼楽刑政（制度）<br>
+                        ・天下を安んずる（社会秩序）が目的<br>
+                        ・古典（六経）を古代中国語で直接読め
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        『弁道』『弁名』で理論を提示。将軍吉宗の政治顧問として『政談』を献上。蘐園学派を形成し多くの弟子を育成。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    制度設計思想、日本思想史研究、国学・蘭学への影響、政治思想史
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #ca8a04; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「『道』とは何か？ 天が与えた理か、人が作った制度か？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 「道」＝先王の道＝礼楽刑政</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「道とは先王の道なり。先王の道とは、天下を安んずるの道なり。」
+                </div>
+                <p>朱子学は「道」を天理──宇宙に内在する理法──と考えた。人の中にも天理があり、それを回復することが学問の目標だと。しかし徂徠は全く異なる解釈を示す：<strong>「道」とは古代の聖人たち（先王：堯・舜・禹など）が作った「礼楽刑政」──つまり制度だ</strong>。道は発見するものではなく、聖人たちが「制作」したものだ。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 内面から制度へ</strong></p>
+                <table class="comparison-table" style="margin: 1.5rem 0;">
+                    <thead>
+                        <tr>
+                            <th>朱子学</th>
+                            <th>徂徠学</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>内面の道徳修養が根本</td>
+                            <td><strong>制度設計が根本</strong></td>
+                        </tr>
+                        <tr>
+                            <td>「理」を窮める</td>
+                            <td><strong>「礼」を学ぶ</strong></td>
+                        </tr>
+                        <tr>
+                            <td>個人の完成</td>
+                            <td><strong>天下の安定</strong></td>
+                        </tr>
+                        <tr>
+                            <td>思弁的</td>
+                            <td><strong>実践的・政治的</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>朱子学は「まず自分の心を正せ、そうすれば天下は治まる」と考えた。しかし徂徠は言う：<strong>内面をいくら磨いても、制度が悪ければ社会は乱れる</strong>。政治とは「制度を設計すること」だ。良い制度があれば、普通の人も善く振る舞える。悪い制度では、聖人でも失敗する。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 古文辞学：古典を直接読め</strong></p>
+                <p>徂徠は、朱子学者たちが宋代の解釈に頼りすぎていると批判した。古典（六経：易経・書経・詩経・礼記・春秋・楽経）を、<strong>古代中国語で直接読め</strong>。そうすれば、本来の意味が見えてくる。宋明理学の「理」概念は、本来の儒学にはなかった後付けの解釈だ。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡
+                            IT的理解</strong>：徂徠は「OSは神（天理）が与えたものではなく、先人（先王）が設計したもの」と考えた。だからOSは改良できるし、時代と環境に合わせて設計すべきだ。直接古いドキュメント（古典）を読み、OSの本来の設計思想を理解せよ。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #ca8a04;">
+                    <h4 style="color: #eab308; font-size: 1.1rem; margin-bottom: 1rem;">■ 礼楽刑政（れいがくけいせい）</h4>
+                    <p>古代の聖人が「制作」した社会秩序のシステム。礼（儀礼・マナー）、楽（音楽・文化）、刑（刑罰・法）、政（統治・行政）。これが「道」の実体。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #854d0e;">
+                    <h4 style="color: #eab308; font-size: 1.1rem; margin-bottom: 1rem;">■ 先王の道</h4>
+                    <p>道は天に由来するのではなく、古代の聖王たち（堯・舜・禹・湯・文・武・周公）が創り出したもの。人為的・歴史的であり、変更可能。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #ca8a04;">
+                    <h4 style="color: #eab308; font-size: 1.1rem; margin-bottom: 1rem;">■ 古文辞学（こぶんじがく）</h4>
+                    <p>古典を古代中国語で直接読む学問。宋明理学の解釈に頼らず、原典に立ち返る。文献学・言語学的方法を重視。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #854d0e;">
+                    <h4 style="color: #eab308; font-size: 1.1rem; margin-bottom: 1rem;">■ 安天下（あんてんか）</h4>
+                    <p>「天下を安んずる」こと。社会の安定・秩序の維持。これが政治の目標であり、個人の道徳的完成ではない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ca8a04;">六経（りくけい）</strong>：<br>
+                            儒学の根本経典。孔子以前の聖人の道を伝える。徂徠はこれを直接読むことを主張。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ca8a04;">伊藤仁斎</strong>：<br>
+                            古義学の先駆者。朱子学批判の先輩。徂徠は仁斎を越えようとした。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ca8a04;">明代古文辞派</strong>：<br>
+                            李夢陽・王世貞ら。古典の文体を直接模倣する文学運動。徂徠に方法論的影響。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ca8a04;">蘐園学派</strong>：<br>
+                            徂徠の弟子たち（太宰春台、服部南郭など）。徂徠学を継承・発展。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ca8a04;">国学</strong>：<br>
+                            本居宣長らに方法論的影響。古典を直接読む文献学的姿勢。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ca8a04;">幕末維新思想</strong>：<br>
+                            制度変革の発想は幕末の改革思想に影響。丸山眞男が徂徠を「近代化の先駆」と評価。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #ca8a04; margin-bottom: 1rem;">アナロジー１：OSは設計されたもの</h4>
+                <p>朱子学は「OSは天（神）が与えたもの」と考えた。人の中にも天理（正しいOS）があり、それを回復すればよいと。しかし徂徠は言う：<strong>OSは先人（先王）が設計したもの</strong>だ。だから改良できるし、時代と環境に合わせて再設計すべきだ。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #ca8a04; margin-bottom: 1rem;">アナロジー２：マニュアル vs 設計ドキュメント</h4>
+                <p>朱子学は「内面を正せば社会は良くなる」と考えた。いわば「ユーザーマニュアルを読めばOK」。しかし徂徠は言う：<strong>問題はOSの設計そのものにある</strong>。ユーザーの心がけではなく、システムの設計書（礼楽刑政）を見直せ。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #ca8a04; margin-bottom: 1rem;">アナロジー３：原典を読め</h4>
+                <p>徂徠は「宋代の解釈に頼らず、古典を直接読め」と言った。現代風に言えば：<strong>StackOverflowのコピペではなく、公式ドキュメントを読め</strong>。二次情報に頼らず、一次資料に当たれ。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：朱子学 vs 徂徠学</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>朱子学</th>
+                        <th>徂徠学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>「道」とは</td>
+                        <td>天理（自然の理法）</td>
+                        <td><strong>先王が制作した礼楽刑政</strong></td>
+                    </tr>
+                    <tr>
+                        <td>道の由来</td>
+                        <td>天に由来（発見される）</td>
+                        <td><strong>聖人が制作（作られる）</strong></td>
+                    </tr>
+                    <tr>
+                        <td>学問の核心</td>
+                        <td>「理」を窮める</td>
+                        <td><strong>「礼」を学ぶ</strong></td>
+                    </tr>
+                    <tr>
+                        <td>政治の要諦</td>
+                        <td>君子の徳化（内面）</td>
+                        <td><strong>制度設計（外面）</strong></td>
+                    </tr>
+                    <tr>
+                        <td>目標</td>
+                        <td>個人の道徳的完成</td>
+                        <td><strong>天下を安んずる</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>制度を問え</strong>：問題が起きたとき、個人の心がけだけでなく「制度（システム）」の設計を問う。悪い制度は善人をも堕落させる。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>原典に当たれ</strong>：二次情報・解釈に頼らず、一次資料を読む習慣をつける。解釈のバイアスを排除する。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>実践を重視する</strong>：内面の思索だけでなく、具体的な制度・政策・仕組みを考える。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>道徳の軽視？</strong>：制度重視は、個人の道徳的責任を軽視する危険がある。「制度が悪いから」という責任転嫁。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>復古主義の限界</strong>：「先王の道」への回帰は、過去の理想化になりかねない。古代中国と江戸日本は違う。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(161, 98, 7, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし徂徠が「現代日本の働き方改革」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、日本人は働きすぎで苦しんでいるという。そして『意識を変えよ』『ワークライフバランスを考えよ』と言う。」</p>
+                <p style="margin-top: 1rem;">
+                    「しかし私に言わせれば、それは朱子学的発想だ。<strong>『心を正せば社会は良くなる』と思っている。しかし制度が悪ければ、心がけだけでは変わらない</strong>。」</p>
+                <p style="margin-top: 1rem;">
+                    「問題は『礼楽刑政』──つまり制度だ。残業規制、有給取得義務化、評価制度の変更──これらが『先王の道』だ。<strong>良い制度があれば、人は自然と良い働き方をする</strong>。悪い制度の中で『意識改革』を叫んでも、効果は限られる。」
+                </p>
+                <p style="margin-top: 1rem;">「もちろん、完璧な制度はない。だから常に『古典』──成功した事例──を学び、自国の状況に合わせて設計し直すのだ。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 復古主義の限界</h4>
+                    <p>「先王の道」は古代中国の制度。それを江戸日本にそのまま適用できるのか？ 時代と文化の違いが無視される危険。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 道徳の軽視</h4>
+                    <p>制度重視は、個人の道徳的責任を軽視しかねない。「制度が悪い」という責任転嫁の道を開く。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 政治権力への接近</h4>
+                    <p>将軍の顧問として政策提言を行ったが、権力に近すぎることへの批判もある。批判精神の欠如。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>徂徠にとって「道」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        古代の聖人たち（先王）が制作した「礼楽刑政」（制度）。天に由来する「理」ではなく、人が作った歴史的・人為的なもの。</p>
+                </details>
+                <details>
+                    <summary>朱子学と徂徠学の根本的な違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        朱子学は内面の道徳修養を重視し、徂徠学は制度設計を重視する。朱子学は「道」を天理（発見される）と見、徂徠学は「道」を先王の制作物（作られる）と見る。</p>
+                </details>
+                <details>
+                    <summary>「古文辞学」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> 古典を古代中国語で直接読む学問。宋明理学の解釈に頼らず、原典に立ち返る。文献学・言語学的方法を重視。
+                    </p>
+                </details>
+                <details>
+                    <summary>徂徠学が後世に与えた影響は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        蘐園学派の形成、国学への方法論的影響、幕末維新思想への制度変革の発想。丸山眞男は徂徠を「近代化の先駆」と評価した。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #ca8a04; font-weight: 700;">礼楽刑政（れいがくけいせい）</dt>
+                <dd>先王が制作した社会秩序のシステム。礼（儀礼）、楽（音楽）、刑（刑罰）、政（統治）。徂徠にとっての「道」の実体。</dd>
+                <dt style="color: #ca8a04; font-weight: 700; margin-top: 1rem;">先王の道</dt>
+                <dd>古代の聖王たちが創り出した統治システム。人為的・歴史的なものであり、変更可能。</dd>
+                <dt style="color: #ca8a04; font-weight: 700; margin-top: 1rem;">古文辞学（こぶんじがく）</dt>
+                <dd>古典を古代中国語で直接読む徂徠創始の学問。原典主義・文献学的方法。</dd>
+                <dt style="color: #ca8a04; font-weight: 700; margin-top: 1rem;">弁道（べんどう）</dt>
+                <dd>徂徠の代表作。「道」とは先王が制作した礼楽刑政であると主張。</dd>
+                <dt style="color: #ca8a04; font-weight: 700; margin-top: 1rem;">安天下（あんてんか）</dt>
+                <dd>「天下を安んずる」こと。社会秩序の維持。政治の目標。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | 荻生徂徠</p>
+    </footer>
+</body>
+
+</html>

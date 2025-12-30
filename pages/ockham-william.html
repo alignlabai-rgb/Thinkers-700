@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウィリアム・オブ・オッカム | Thinkers 700</title>
+    <meta name="description" content="ウィリアム・オブ・オッカムの思想を学ぶ。「オッカムの剃刀」と唯名論で中世哲学を革新し、近代科学の思考法への道を開いた中世最大の論理学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), transparent);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #6366f1, #4f46e5);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #818cf8, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #818cf8;
+            border-bottom: 2px solid #818cf8;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+            border-left: 4px solid #818cf8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #818cf8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #818cf8;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), transparent);
+            border: 2px solid #818cf8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #818cf8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #818cf8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">🪒 オッカムの剃刀の創始者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">神学OS</span>
+        </div>
+        <h1>ウィリアム・オブ・オッカム</h1>
+        <p class="en-name">William of Ockham (c.1287-1347)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「必要なく存在を増やすべからず」──「オッカムの剃刀」と唯名論で中世スコラ哲学を革新し、近代科学への道を開いた中世最大の論理学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「必要なく存在を増やすべからず。」（Entia non sunt multiplicanda praeter necessitatem）</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──「オッカムの剃刀」</p>
+            </div>
+            <p>ウィリアム・オブ・オッカムは、14世紀イングランドのフランシスコ会修道士・哲学者・神学者です。「オッカムの剃刀」と呼ばれる思考原理と「唯名論」で知られ、中世スコラ哲学を革新しました。教皇と対立して破門され、皇帝の庇護を受けながら政治理論も展開しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「シンプルな説明を好め。余計な存在を仮定するな。」</strong></p>
+                <p>説明に必要ないものは「剃刀」で削り落とせ。2つの仮説が同じ現象を説明するなら、単純な方を選べ。これが「オッカムの剃刀」だ。この原理は、中世神学の複雑な形而上学を切り落とし、近代科学の経験主義・実証主義への道を開いた。
+                </p>
+            </div>
+            <p>現代IT風に言えば、オッカムは<strong>「コードのシンプルさは美徳」</strong>という原則を中世に提唱した人です。必要のない抽象化やレイヤーを追加するな。問題を解決する最もシンプルな方法を選べ。彼を学ぶことは、思考の節約術を身につけることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #818cf8; font-size: 1.3rem;">『論理学大全』（Summa Logicae）</h4>
+                    <p style="margin-top: 1rem;">オッカムの論理学の集大成。唯名論（普遍は名前にすぎない）を展開し、中世論理学を革新。言語・意味・推論に関する分析は、現代分析哲学の先駆。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #818cf8; font-size: 1.3rem;">『命題注解』</h4>
+                    <p style="margin-top: 1rem;">ペトルス・ロンバルドゥスの『命題集』への注解。神学的問題を扱いながら、オッカム独自の哲学的立場を展開。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #818cf8; font-size: 1.3rem;">政治的著作群</h4>
+                    <p style="margin-top: 1rem;">教皇権批判、帝権擁護の政治論文。『教皇の権力についての八つの問い』など。教皇と皇帝の関係、教会と国家の分離を論じ、近代政治思想に影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>William of Ockham: 14th-century English Franciscan friar, philosopher, and theologian. Famous for
+                        "Ockham's Razor" (parsimony principle) and nominalism. Razor: "Entities should not be multiplied
+                        beyond necessity." Nominalism: universals are mere names, only individuals exist. Major
+                        influence on empiricism, modern science, and analytical philosophy.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>14世紀イングランドのフランシスコ会修道士・哲学者・神学者。「オッカムの剃刀」（節約原理）と唯名論で有名。剃刀：「必要なく存在を増やすべからず」。唯名論：普遍は名前にすぎず、存在するのは個物のみ。経験論・近代科学・分析哲学に多大な影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「普遍（馬性、人間性など）は実在する」（実在論）<br>
+                        ・複雑な形而上学的実体を仮定<br>
+                        ・神学と哲学の融合（信仰と理性の調和）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・普遍は名前にすぎない（唯名論）<br>
+                        ・説明に必要なものだけを仮定せよ（剃刀原理）<br>
+                        ・神学と哲学の分離（信仰は理性で証明できない）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        論理学・認識論を刷新。教皇と対立し破門されるも、思想は広まる。近代科学・経験論の源流に。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    科学的方法論（単純な仮説を優先）、分析哲学、言語哲学、プログラミングの簡潔さ原則
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #818cf8; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「普遍（人間性、馬性など）は本当に存在するのか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ オッカムの剃刀（Ockham's Razor）</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「多くのものでなされていることは、より少ないものでもなしうる。」<br>
+                    「必要なく存在を増やすべからず。」
+                </div>
+                <p>これは<strong>「節約原理」（Law of
+                        Parsimony）</strong>とも呼ばれる。同じ現象を説明する2つの仮説があるなら、単純な方を選べ。余計な存在・原因・力を仮定するな。これは証明ではなく方法論だが、科学的思考の基盤となった。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 唯名論（Nominalism）</strong></p>
+                <table class="comparison-table" style="margin: 1.5rem 0;">
+                    <thead>
+                        <tr>
+                            <th>実在論（Realism）</th>
+                            <th>唯名論（Nominalism）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>普遍（人間性、馬性）は実在する</td>
+                            <td>普遍は名前にすぎない</td>
+                        </tr>
+                        <tr>
+                            <td>個物はイデアの模倣（プラトン）</td>
+                            <td>存在するのは個物のみ</td>
+                        </tr>
+                        <tr>
+                            <td>形而上学的実体を仮定</td>
+                            <td>剃刀で削り落とす</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>「人間」という普遍は実在するのか？
+                    プラトン以来、多くの哲学者は「実在する」と考えた（実在論）。しかしオッカムは言う：<strong>存在するのは個々の人間だけ</strong>。「人間」という普遍は、我々が個々の人間に与えた「名前」にすぎない。これが唯名論だ。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 信仰と理性の分離</strong></p>
+                <p>トマス・アクィナスは「信仰と理性は調和する」と考えた。しかしオッカムは、<strong>神の存在は理性で証明できない</strong>と主張した。神を知るには信仰が必要であり、哲学・理性とは別領域だ。この分離は、宗教改革と近代科学の独立に道を開いた。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡 IT的理解</strong>：オッカムの剃刀は「KISS原則」（Keep It Simple, Stupid）や「YAGNI」（You Aren't Gonna Need
+                        It）に相当する。必要のない抽象化やレイヤーを追加するな。問題を解決する最もシンプルなコードを書け。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #818cf8;">
+                    <h4 style="color: #a5b4fc; font-size: 1.1rem; margin-bottom: 1rem;">■ オッカムの剃刀（Ockham's Razor）</h4>
+                    <p>「必要なく存在を増やすべからず」。同じ現象を説明するなら、より単純な仮説を選べ。科学的方法論の基盤。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #4f46e5;">
+                    <h4 style="color: #a5b4fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 唯名論（Nominalism）</h4>
+                    <p>普遍（人間性、馬性など）は実在せず、「名前」にすぎない。存在するのは個物のみ。形而上学の簡素化。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #818cf8;">
+                    <h4 style="color: #a5b4fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 心的言語（Mental Language）</h4>
+                    <p>思考は「心の中の言語」で行われる。概念は心的記号であり、個物を指示する。現代の計算主義的心理学を先取り。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #4f46e5;">
+                    <h4 style="color: #a5b4fc; font-size: 1.1rem; margin-bottom: 1rem;">■ 神の絶対的力能</h4>
+                    <p>神は何でもできる（論理的矛盾を除く）。自然法則も神の意志の産物であり、変更可能。この考えは科学革命に影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">アリストテレス</strong>：<br>
+                            論理学の基盤。しかしオッカムはアリストテレスの形而上学を唯名論で簡素化。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">ドゥンス・スコトゥス</strong>：<br>
+                            オッカムの先輩フランシスコ会士。彼の複雑な形而上学をオッカムは批判した。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">ピエール・アベラール</strong>：<br>
+                            12世紀の唯名論者・概念論者。オッカムは彼の路線を発展。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">イギリス経験論</strong>：<br>
+                            ロック、バークリー、ヒュームへの影響。個物重視、形而上学批判。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">宗教改革</strong>：<br>
+                            ルターはオッカム主義の影響を受けた。信仰と理性の分離。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">科学革命</strong>：<br>
+                            剃刀原理は科学的方法論の基盤に。ニュートンの「仮説を立てず」。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #818cf8;">分析哲学</strong>：<br>
+                            言語と論理の精密な分析。クワイン、グッドマンの現代唯名論。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #818cf8; margin-bottom: 1rem;">アナロジー１：コードのシンプルさは美徳</h4>
+                <p>プログラマーには「KISS原則」（Keep It Simple,
+                    Stupid）がある。必要のない抽象化やレイヤーを追加するな。問題を解決する最もシンプルなコードを書け。オッカムの剃刀は、<strong>700年前のKISS原則</strong>だ。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #818cf8; margin-bottom: 1rem;">アナロジー２：YAGNIとオーバーエンジニアリング</h4>
+                <p>「YAGNI」（You Aren't Gonna Need
+                    It）も同じ発想だ。「いつか必要になるかも」と機能を追加するな。<strong>現時点で必要な最小限を実装せよ</strong>。オッカムの剃刀は、思想界のYAGNI。「いつか説明に必要になるかも」と存在を仮定するな。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #818cf8; margin-bottom: 1rem;">アナロジー３：データベースの正規化</h4>
+                <p>データベース設計には「正規化」という概念がある。冗長なデータを排除し、最小限の構造にする。これも「必要なく存在を増やすべからず」という剃刀原理の適用だ。<strong>冗長な形而上学的実体を「正規化」して削ぎ落としたのがオッカム</strong>。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：実在論 vs 唯名論</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>実在論（トマス・アクィナス）</th>
+                        <th>唯名論（オッカム）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>普遍の存在</td>
+                        <td>実在する（形相として）</td>
+                        <td><strong>名前にすぎない</strong></td>
+                    </tr>
+                    <tr>
+                        <td>個物との関係</td>
+                        <td>普遍が先、個物はその例</td>
+                        <td><strong>個物のみが実在</strong></td>
+                    </tr>
+                    <tr>
+                        <td>形而上学</td>
+                        <td>豊かで複雑</td>
+                        <td><strong>剃刀で簡素化</strong></td>
+                    </tr>
+                    <tr>
+                        <td>信仰と理性</td>
+                        <td>調和・統合</td>
+                        <td><strong>分離</strong></td>
+                    </tr>
+                    <tr>
+                        <td>科学への道</td>
+                        <td>（間接的）</td>
+                        <td><strong>経験主義・実証主義へ</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>シンプルな説明を好む</strong>：複数の仮説があるとき、まずは単純な方を検討する。複雑な陰謀論より、単純な説明がしばしば正しい。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>不要な抽象化を避ける</strong>：コード・文章・組織設計で、必要のない層やカテゴリを追加しない。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「本当に必要か？」と問う</strong>：新機能、新概念、新役職を追加する前に、本当に必要か問う。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>過度の単純化</strong>：現実は複雑であり、単純な説明が常に正しいわけではない。剃刀は「好む」だけであり「証明」ではない。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>唯名論の限界</strong>：数学・論理学・科学法則など、「普遍」を想定した方が便利な領域もある。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしオッカムが「現代のAI・機械学習」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、君たちは『ニューラルネットワーク』なるものを作っている。何層ものレイヤー、何十億ものパラメータ。それで何かを学習すると言う。」</p>
+                <p style="margin-top: 1rem;">
+                    「しかし私の原則を思い出せ：<strong>『必要なく存在を増やすべからず』</strong>。そのモデルには本当にそんなに多くのパラメータが必要なのか？
+                    より小さなモデルでも同じ精度が出るなら、そちらを選ぶべきだ。」</p>
+                <p style="margin-top: 1rem;">
+                    「もちろん、複雑なモデルが必要な場合もある。しかし<strong>複雑さには正当化が必要だ</strong>。単に『大きければ良い』と考えるのは、剃刀原理に反する。」</p>
+                <p style="margin-top: 1rem;">「そして、そのAIが『知能』を持つと言う者がいる。しかし私は問う：<strong>『知能』という普遍は本当に存在するのか？</strong>
+                    それとも、それは個々の振る舞いに我々が与えた『名前』にすぎないのか？」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 過度の単純化</h4>
+                    <p>現実は複雑であり、単純な説明が常に正しいわけではない。剃刀は発見法であり、真理の保証ではない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 数学・科学への適用問題</h4>
+                    <p>数学では普遍（数、集合など）を想定した方が便利。唯名論を厳密に適用すると数学が困難に。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 「単純さ」の定義問題</h4>
+                    <p>何が「単純」かは自明ではない。仮説Aは存在を少なく仮定するが、仮説Bはメカニズムが単純かもしれない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「オッカムの剃刀」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        「必要なく存在を増やすべからず」。同じ現象を説明するなら、より単純な仮説を選ぶべきだという方法論的原則。節約原理とも。</p>
+                </details>
+                <details>
+                    <summary>「唯名論」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        普遍（人間性、馬性など）は実在せず、「名前」にすぎないという立場。存在するのは個々の人間、個々の馬だけ。実在論に対立。</p>
+                </details>
+                <details>
+                    <summary>オッカムが信仰と理性を分離した意義は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        神の存在は理性で証明できないとし、哲学・理性と信仰を別領域とした。これは宗教改革と近代科学の独立に道を開いた。</p>
+                </details>
+                <details>
+                    <summary>オッカムの剃刀はIT/プログラミングでどう適用される？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> KISS原則（Keep It Simple, Stupid）やYAGNI（You Aren't
+                        Gonna Need It）として。必要のない抽象化やレイヤーを追加せず、問題を解決する最もシンプルなコードを書く。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #818cf8; font-weight: 700;">オッカムの剃刀（Ockham's Razor）</dt>
+                <dd>「必要なく存在を増やすべからず」。節約原理。単純な説明を好む方法論。</dd>
+                <dt style="color: #818cf8; font-weight: 700; margin-top: 1rem;">唯名論（Nominalism）</dt>
+                <dd>普遍は名前にすぎず、存在するのは個物のみという立場。</dd>
+                <dt style="color: #818cf8; font-weight: 700; margin-top: 1rem;">実在論（Realism）</dt>
+                <dd>普遍は実在するという立場。プラトンのイデア論が典型。唯名論に対立。</dd>
+                <dt style="color: #818cf8; font-weight: 700; margin-top: 1rem;">普遍（Universal）</dt>
+                <dd>「人間性」「馬性」など、個物に共通する性質・本質。</dd>
+                <dt style="color: #818cf8; font-weight: 700; margin-top: 1rem;">心的言語（Mental Language）</dt>
+                <dd>思考は心の中の言語で行われるというオッカムの理論。概念は心的記号。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | ウィリアム・オブ・オッカム</p>
+    </footer>
+</body>
+
+</html>

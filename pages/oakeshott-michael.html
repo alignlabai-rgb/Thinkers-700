@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイケル・オークショット | Thinkers 700</title>
+    <meta name="description" content="マイケル・オークショットの思想を学ぶ。「政治における合理主義」批判で、伝統・慣習・実践知の重要性を説いた20世紀保守主義哲学の巨人。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #78716c;
+            --accent-glow: rgba(120, 113, 108, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(120, 113, 108, 0.15), transparent);
+            border-bottom: 1px solid rgba(120, 113, 108, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #78716c, #57534e);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #a8a29e, #d6d3d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #a8a29e;
+            border-bottom: 2px solid #a8a29e;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(120, 113, 108, 0.1), transparent);
+            border-left: 4px solid #a8a29e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #a8a29e;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #a8a29e;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(120, 113, 108, 0.2), transparent);
+            border: 2px solid #a8a29e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(120, 113, 108, 0.2);
+            color: #a8a29e;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #a8a29e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #a8a29e;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">20世紀保守主義哲学の巨人</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+        <h1>マイケル・オークショット</h1>
+        <p class="en-name">Michael Joseph Oakeshott (1901-1990)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「政治は船の航海であり、設計図ではない」──合理主義批判で伝統・慣習・実践知の重要性を説いた保守主義哲学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「政治とは、無限の海を航海する船である。港もなく、底もなく、出発点もなく、目的港もない。やるべきことはただ一つ、船を平らに保つことだけだ。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『政治における合理主義』(1962)</p>
+            </div>
+            <p>マイケル・オークショットは、20世紀イギリスを代表する政治哲学者であり、「政治における合理主義」を批判した保守主義思想の重鎮です。彼は、理論や設計図に基づいて社会を作り変えようとする「合理主義」を攻撃し、長い歴史の中で培われた伝統・慣習・実践知の価値を擁護しました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「すべてを最初から設計し直すことはできない。料理本だけでは料理はできない。」</strong></p>
+                <p>政治を「問題解決」のエンジニアリングだと考える人がいる。しかし社会は機械ではない。歴史の中で積み重ねられた知恵──慣習、伝統、暗黙知──を無視して「合理的」計画を押し付けると、かえって破壊を招く。料理本があっても、実際に調理して覚えた「カン」なしには美味しい料理は作れない。
+                </p>
+            </div>
+            <p>現代IT風に言えば、オークショットは<strong>「レガシーコードを尊重せよ」</strong>という人です。「全部書き直そう」という衝動は危険だ。既存のコード（伝統）には、なぜそうなっているか理由がある。それを理解せずにリファクタリングすると、予期せぬバグが生じる。彼を学ぶことは、変革の限界と漸進主義の知恵を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #a8a29e; font-size: 1.3rem;">『政治における合理主義』（1962）</h4>
+                    <p style="margin-top: 1rem;">
+                        オークショットの代表作。理論に基づいて社会を設計しようとする「合理主義」を批判。技術知（マニュアル化できる知識）と実践知（経験を通じてのみ得られる暗黙知）を区別し、政治には実践知が不可欠だと論じた。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #a8a29e; font-size: 1.3rem;">『経験とその諸様式』（1933）</h4>
+                    <p style="margin-top: 1rem;">初期の哲学的著作。経験を歴史・科学・実践・詩の諸様式に分け、それぞれの自律性を論じた。観念論的な枠組みだが、後の政治哲学の基盤となる。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #a8a29e; font-size: 1.3rem;">『人間行為論』（1975）</h4>
+                    <p style="margin-top: 1rem;">
+                        晩年の体系的著作。「シヴィル・アソシエーション」（法の支配に基づく市民結合）と「エンタープライズ・アソシエーション」（共通目的に基づく企業的結合）を区別し、前者が自由な社会の核心だと論じた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Michael Oakeshott: Leading 20th-century British political philosopher and conservative thinker.
+                        Criticized "rationalism in politics"—the attempt to design society based on abstract theory.
+                        Advocated for tradition, custom, and practical knowledge. Distinguished between "technical
+                        knowledge" (codifiable) and "practical knowledge" (tacit, acquired through experience). Major
+                        influence on conservative thought.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>20世紀イギリスを代表する政治哲学者・保守主義思想家。抽象理論で社会を設計しようとする「政治における合理主義」を批判。伝統・慣習・実践知を擁護。「技術知」（マニュアル化できる知識）と「実践知」（経験を通じてのみ得られる暗黙知）を区別し、政治には後者が不可欠と論じた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 批判した旧常識</strong><br>
+                        ・「理性で社会を完璧に設計できる」（啓蒙主義的合理主義）<br>
+                        ・「マニュアルがあれば誰でもできる」（技術知の過信）<br>
+                        ・「進歩は過去からの解放」（伝統軽視）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・政治には理論化できない「実践知」が不可欠<br>
+                        ・伝統・慣習には歴史を通じた知恵が蓄積されている<br>
+                        ・政治は航海であり、設計ではない
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        LSE（ロンドン・スクール・オブ・エコノミクス）で長年教鞭。エッセイ集で思想を発信。サッチャリズムには批判的だったが、保守主義全般に影響。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    保守主義思想、漸進的改革論、反ユートピア主義、暗黙知・実践知研究
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #a8a29e; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「政治において、理論と設計図はどこまで有効か？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 政治における合理主義批判</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「合理主義者とは、『料理本さえあれば誰でも料理できる』と信じる人だ。彼は伝統を無知の産物とみなし、経験を邪魔物とみなす。」
+                </div>
+                <p>オークショットは「合理主義」を攻撃する。合理主義者は、抽象的な原理から社会を再設計できると信じる。しかし社会は機械ではない。長い歴史の中で積み重ねられた知恵──なぜこの習慣があるのか、なぜこのルールなのか──を無視して「合理的」計画を押し付けると、かえって破壊を招く。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 技術知 vs 実践知</strong></p>
+                <table class="comparison-table" style="margin: 1.5rem 0;">
+                    <thead>
+                        <tr>
+                            <th>技術知（Technical Knowledge）</th>
+                            <th>実践知（Practical Knowledge）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>マニュアル化できる</td>
+                            <td>マニュアル化できない</td>
+                        </tr>
+                        <tr>
+                            <td>教科書で学べる</td>
+                            <td>経験を通じてのみ学べる</td>
+                        </tr>
+                        <tr>
+                            <td>レシピ</td>
+                            <td>料理人の「カン」</td>
+                        </tr>
+                        <tr>
+                            <td>合理主義者はこれだけで十分と考える</td>
+                            <td>オークショットはこれが不可欠と言う</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>料理本（技術知）だけでは美味しい料理は作れない。火加減、塩加減、タイミング──これらは料理人が長年の経験で体得した「実践知」だ。政治も同じ。憲法や政策マニュアル（技術知）だけでは統治できない。政治家・官僚・市民が歴史の中で培った知恵（実践知）が不可欠。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 政治は航海である</strong></p>
+                <p>政治を「問題解決のエンジニアリング」と考える人がいる。しかしオークショットにとって、<strong>政治は「無限の海を航海する船」</strong>である。出発港も目的港もない。確かな底もない。やるべきことは「船を平らに保つこと」──すなわち、社会の安定を維持しながら、状況に応じて舵を取ること。理想の港（ユートピア）を目指して猛進するのは危険だ。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡
+                            IT的理解</strong>：オークショットは「レガシーコードを尊重せよ」と言っている。「全部書き直そう」という衝動は危険だ。既存のコード（伝統）には、なぜそうなっているか理由がある。それを理解せずにリファクタリングすると、予期せぬバグ（社会的混乱）が生じる。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #a8a29e;">
+                    <h4 style="color: #d6d3d1; font-size: 1.1rem; margin-bottom: 1rem;">■ 合理主義（Rationalism）</h4>
+                    <p>抽象的原理から社会を設計できるという信念。オークショットはこれを「政治的な無知」と批判。フランス革命、共産主義、ナチズムはすべて合理主義の暴走。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #78716c;">
+                    <h4 style="color: #d6d3d1; font-size: 1.1rem; margin-bottom: 1rem;">■ シヴィル・アソシエーション</h4>
+                    <p>法の支配に基づく市民の結合。共通の「目的」ではなく、共通の「ルール」で結ばれる。自由な社会の本質。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #a8a29e;">
+                    <h4 style="color: #d6d3d1; font-size: 1.1rem; margin-bottom: 1rem;">■ エンタープライズ・アソシエーション</h4>
+                    <p>共通目的に基づく企業的結合。効率的だが、構成員を目的達成の手段にする危険がある。国家をこれに近づけると全体主義になる。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #78716c;">
+                    <h4 style="color: #d6d3d1; font-size: 1.1rem; margin-bottom: 1rem;">■ 保守主義的気質</h4>
+                    <p>イデオロギーではなく「気質」としての保守主義。「慣れ親しんだものを好み、変化に懐疑的」という性向。理論からではなく、生活から生まれる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #a8a29e;">エドマンド・バーク</strong>：<br>
+                            保守主義の父。フランス革命批判。オークショットはバークの伝統を20世紀に継承。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #a8a29e;">デイヴィッド・ヒューム</strong>：<br>
+                            経験論、理性への懐疑、慣習の重視。オークショットの認識論的基盤。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #a8a29e;">ヘーゲル</strong>：<br>
+                            初期の観念論的影響。しかしヘーゲルの歴史目的論は採用せず。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #a8a29e;">ロジャー・スクルートン</strong>：<br>
+                            オークショットの弟子世代の保守主義哲学者。美学・環境・保守主義を展開。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #a8a29e;">暗黙知研究</strong>：<br>
+                            マイケル・ポランニーの「暗黙知」と響き合い、経営学・教育学に影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #a8a29e;">反ユートピア主義</strong>：<br>
+                            理想社会を設計しようとする試みへの警戒。ハイエク、ポパーとも共鳴。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #a8a29e; margin-bottom: 1rem;">アナロジー１：レガシーコードと技術的負債</h4>
+                <p>IT業界では「レガシーコードを全部書き直そう」という誘惑がある。しかし賢明なエンジニアは知っている：<strong>既存のコードには、なぜそうなっているか理由がある</strong>。それを理解せずにリファクタリングすると、予期せぬバグが生じる。オークショットの伝統擁護も同じ発想だ。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #a8a29e; margin-bottom: 1rem;">アナロジー２：料理人とレシピ本</h4>
+                <p>レシピ本（技術知）があれば誰でも料理できるか？
+                    そうではない。火加減、塩加減、タイミング──これらは<strong>長年の経験で体得した「カン」</strong>だ。レシピには書けない。同様に、政治もマニュアル（憲法・法律）だけでは統治できない。実践を通じて培われた知恵が必要。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #a8a29e; margin-bottom: 1rem;">アナロジー３：船の航海</h4>
+                <p>オークショット自身のアナロジー。政治は<strong>「無限の海を航海する船」</strong>である。出発港（原初状態）も目的港（ユートピア）もない。やるべきことは「船を平らに保つこと」。嵐が来れば対応し、穏やかなら進み方を調整する。設計図に従って港を目指す航海ではない。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>合理主義OS</th>
+                        <th>オークショットOS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>知識観</td>
+                        <td>技術知だけで十分</td>
+                        <td><strong>実践知が不可欠</strong></td>
+                    </tr>
+                    <tr>
+                        <td>伝統の扱い</td>
+                        <td>無知の産物、障害</td>
+                        <td><strong>歴史を通じた知恵の蓄積</strong></td>
+                    </tr>
+                    <tr>
+                        <td>政治のモデル</td>
+                        <td>設計・エンジニアリング</td>
+                        <td><strong>航海・会話</strong></td>
+                    </tr>
+                    <tr>
+                        <td>変化の仕方</td>
+                        <td>革命的改造</td>
+                        <td><strong>漸進的調整</strong></td>
+                    </tr>
+                    <tr>
+                        <td>目標</td>
+                        <td>ユートピアの実現</td>
+                        <td><strong>安定の維持</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「なぜそうなっているか」を問う</strong>：変えたいルール・慣習があるとき、まず「なぜそうなっているか」を理解する。歴史的理由があるかもしれない。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>漸進的に変える</strong>：一度に全部変えようとせず、小さな変更から試す。結果を見て調整する。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>実践知を尊重する</strong>：マニュアルや理論だけでなく、現場の「ベテラン」の知恵を聴く。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>現状維持バイアス</strong>：「伝統だから」という理由で、不正義や差別を温存する危険。すべての伝統が良いわけではない。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>変化への抵抗</strong>：必要な改革すら「合理主義的」と退けてしまう危険。気候変動、技術変化には対応が必要。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(120, 113, 108, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしオークショットが「AI規制」の議論を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、君たちは『AI規制』を求めている。設計図を作り、法律を書き、AIを統制しようというわけだ。」</p>
+                <p style="margin-top: 1rem;">
+                    「しかし私が問いたいのは、<strong>君たちはAIが社会にどう根付くか、本当に理解しているのか？</strong>ということだ。理論家たちがホワイトボードで『あるべき規制』を設計している。しかし技術の実際の使われ方、社会への浸透の仕方は、誰にも予測できない。」
+                </p>
+                <p style="margin-top: 1rem;">
+                    「私の助言はこうだ：<strong>大規模な規制の前に、小さな実験をせよ</strong>。何が起きるか観察せよ。現場の知恵に耳を傾けよ。そして、航海のように──少しずつ舵を取れ。設計図を描いて一気に実装しようとするな。」
+                </p>
+                <p style="margin-top: 1rem;">「もちろん、何もしなくていいとは言わない。しかし<strong>『完璧な規制』を設計できるという傲慢は捨てるべきだ</strong>。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 現状維持バイアス</h4>
+                    <p>「伝統」の名のもとに、奴隷制・女性差別・人種差別も擁護されてきた。すべての伝統が良いわけではない。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 変化への対応不足</h4>
+                    <p>気候変動・技術革新・グローバル化など、急速な変化に「漸進主義」で対応できるのか疑問。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ エリート主義的傾向</h4>
+                    <p>「実践知を持つ者」とは誰か？ 結局はエリートの知恵を民衆より優先するのではないか。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「政治における合理主義」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        抽象的原理から社会を設計・改造できるという信念。オークショットはこれを批判し、伝統・慣習・実践知の重要性を主張した。</p>
+                </details>
+                <details>
+                    <summary>「技術知」と「実践知」の違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        技術知はマニュアル化できる知識（レシピ）。実践知は経験を通じてのみ得られる暗黙知（料理人のカン）。政治には両方が必要だが、合理主義者は技術知だけで十分と考えてしまう。</p>
+                </details>
+                <details>
+                    <summary>「政治は航海である」のポイントは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        政治には出発港（原初状態）も目的港（ユートピア）もない。やるべきことは「船を平らに保つ」こと──安定を維持しながら状況に応じて舵を取ること。</p>
+                </details>
+                <details>
+                    <summary>シヴィル・アソシエーションとは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        法の支配に基づく市民の結合。共通の「目的」ではなく、共通の「ルール」で結ばれる。これが自由な社会の本質。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #a8a29e; font-weight: 700;">合理主義（Rationalism）</dt>
+                <dd>抽象的原理から社会を設計できるという信念。オークショットの批判対象。</dd>
+                <dt style="color: #a8a29e; font-weight: 700; margin-top: 1rem;">技術知（Technical Knowledge）</dt>
+                <dd>マニュアル化できる知識。レシピ、法典など。</dd>
+                <dt style="color: #a8a29e; font-weight: 700; margin-top: 1rem;">実践知（Practical Knowledge）</dt>
+                <dd>経験を通じてのみ得られる暗黙知。料理人のカン、政治家の知恵。</dd>
+                <dt style="color: #a8a29e; font-weight: 700; margin-top: 1rem;">シヴィル・アソシエーション</dt>
+                <dd>法の支配に基づく市民結合。自由な社会の本質。</dd>
+                <dt style="color: #a8a29e; font-weight: 700; margin-top: 1rem;">エンタープライズ・アソシエーション</dt>
+                <dd>共通目的に基づく企業的結合。国家がこれになると全体主義に。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | マイケル・オークショット</p>
+    </footer>
+</body>
+
+</html>
