@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダグラス・ノース | Thinkers 700</title>
+    <meta name="description" content="ダグラス・ノースの思想を学ぶ。新制度派経済学の創始者として「制度」が経済発展を決定するという革命的視点を提示。ノーベル経済学賞受賞。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), transparent);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f59e0b;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), transparent);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">🏆 ノーベル経済学賞 1993</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+        <h1>ダグラス・ノース</h1>
+        <p class="en-name">Douglass Cecil North (1920-2015)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「制度が重要だ」──経済発展の鍵は技術ではなく「ゲームのルール」にあることを示した新制度派経済学の巨人
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「制度とは社会における『ゲームのルール』であり、人々のインセンティブを構造化する制約である。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『制度・制度変化・経済成果』(1990)</p>
+            </div>
+            <p>ダグラス・ノースは、経済学に「制度」という視点を持ち込み、なぜ国によって経済発展に大きな差が生じるのかを説明した経済学者です。従来の経済学は技術・資本・労働に注目していましたが、ノースは「ルール」こそが経済の成否を決めると主張しました。1993年にノーベル経済学賞を受賞。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「同じ人間、同じ資源でも、ルールが違えば結果は劇的に変わる。」</strong></p>
+                <p>なぜ北朝鮮と韓国で経済格差が生まれたのか？
+                    民族・文化・資源はほぼ同じだ。違うのは「制度」──所有権の保護、契約の執行、政治参加のルールなど。制度が適切なら繁栄し、悪ければ停滞する。これがノースの核心メッセージ。</p>
+            </div>
+            <p>現代IT風に言えば、ノースは<strong>「経済というゲームの『ルールエンジン』」</strong>を研究した人です。同じプレイヤーでも、ゲームのルール設定が変われば結果が変わる。彼を学ぶことは、社会システムの「ルール設計」の重要性を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f59e0b; font-size: 1.3rem;">『制度・制度変化・経済成果』（1990）</h4>
+                    <p style="margin-top: 1rem;">
+                        ノースの代表作にしてノーベル賞受賞の主根拠。制度を「ゲームのルール」と定義し、なぜ制度が経済発展を決定するかを理論化。取引コスト、所有権、インセンティブの関係を分析した制度経済学の古典。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f59e0b; font-size: 1.3rem;">『西洋世界の興隆』（1973）</h4>
+                    <p style="margin-top: 1rem;">経済史に制度的視点を持ち込んだ初期の代表作。なぜヨーロッパが世界経済の覇権を握ったかを、所有権制度の発展から説明。歴史研究に革命をもたらした。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f59e0b; font-size: 1.3rem;">『暴力と社会秩序』（2009）</h4>
+                    <p style="margin-top: 1rem;">
+                        晩年の集大成。人類史を「限定的アクセス秩序」（暴力の脅威で秩序維持）と「開放的アクセス秩序」（法の支配で秩序維持）の二類型で分析。経済発展・民主化・法の支配の関係を体系化。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Douglass North: Nobel laureate (1993) and founder of New Institutional Economics. Argued that
+                        institutions—"the rules of the game"—determine economic performance. Key concepts: transaction
+                        costs, property rights, path dependence. His work explained why some nations prosper while
+                        others stagnate, shifting focus from technology to institutional quality.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>新制度派経済学の創始者であり、1993年ノーベル経済学賞受賞。「制度」を社会の「ゲームのルール」と定義し、制度の質が経済発展を決定すると主張。取引コスト、所有権、経路依存性などを分析。なぜ国によって繁栄・停滞の差が生じるかを説明した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「経済成長の鍵は技術・資本・労働」（新古典派経済学）<br>
+                        ・「市場は自然に効率的に機能する」<br>
+                        ・「制度は経済分析に無関係」
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・制度（ゲームのルール）こそが経済成長を決定する<br>
+                        ・取引コストを下げる制度が経済を発展させる<br>
+                        ・制度は歴史的経路に依存して変化する（経路依存性）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        経済史研究（西洋世界の興隆）で理論を検証。発展途上国の制度改革への処方箋を提示。世界銀行・IMFの政策に影響。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    開発経済学（なぜ途上国は発展しないか）、法と経済学、比較制度分析、ブロックチェーン・スマートコントラクト（ルールの自動執行）
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #f59e0b; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「なぜ国によって経済発展に大きな差が生じるのか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 制度（Institutions）とは何か</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「制度とは社会における『ゲームのルール』であり、人々の相互作用を構造化する人為的制約である。」
+                </div>
+                <p>制度には二種類ある：<strong>フォーマルな制度</strong>（憲法、法律、所有権）と<strong>インフォーマルな制度</strong>（慣習、文化、信頼）。どちらも経済活動の「ルール」として機能し、人々のインセンティブを左右する。良い制度は「協力」を促し、悪い制度は「略奪」を促す。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 取引コスト（Transaction Costs）</strong></p>
+                <p>市場での取引には「コスト」がかかる。情報を集める、契約を結ぶ、契約が守られるか監視する──これらすべてにコストがかかる。このコストを下げる制度（裁判所、法律、信頼）があれば取引が活発になり、経済が発展する。逆に取引コストが高い社会は停滞する。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 経路依存性（Path Dependence）</strong></p>
+                <p>制度は簡単に変えられない。一度ある制度が確立すると、利害関係者がそれに適応し、変化に抵抗する。だから「悪い制度」が長期間続くことがある。かつての選択が現在を制約する──これが経路依存性。キーボードのQWERTY配列が効率的でないのに続いているのと同じ。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡
+                            IT的理解</strong>：制度は「オペレーティングシステム」だ。同じハードウェア（人間・資源）でも、OSが違えばパフォーマンスが変わる。腐ったOSを直さずにアプリ（政策）だけ入れ替えても無駄。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #fbbf24; font-size: 1.1rem; margin-bottom: 1rem;">■ 所有権（Property Rights）</h4>
+                    <p>経済発展の最も重要な制度。「自分のものは自分のものだ」と保障されれば、人は投資・改善・交換を行う。所有権が不安定なら、略奪を恐れて誰も投資しない。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #d97706;">
+                    <h4 style="color: #fbbf24; font-size: 1.1rem; margin-bottom: 1rem;">■ 契約執行（Contract Enforcement）
+                    </h4>
+                    <p>約束が守られると信頼できれば、見知らぬ人とも取引できる。裁判所、法律、そしてそれらへの信頼が「非人格的交換」（見知らぬ人との取引）を可能にする。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #fbbf24; font-size: 1.1rem; margin-bottom: 1rem;">■ 限定的/開放的アクセス秩序</h4>
+                    <p>ノースは社会を二類型に分けた：<br>
+                        ・<strong>限定的アクセス秩序</strong>：エリートが暴力を独占し、特権を分配して秩序維持。多くの発展途上国。<br>
+                        ・<strong>開放的アクセス秩序</strong>：法の支配、自由な参入・競争、経済的繁栄。先進国。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #d97706;">
+                    <h4 style="color: #fbbf24; font-size: 1.1rem; margin-bottom: 1rem;">■ 信念・イデオロギー</h4>
+                    <p>晩年のノースは「信念」の役割を強調した。人々がどんな「世界モデル」を持っているかが、彼らの行動と制度変化を左右する。経済は計算だけでなく、信念・文化・物語にも依存する。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f59e0b;">ロナルド・コース</strong>：<br>
+                            取引コスト経済学の創始者。「企業の本質」「社会的費用の問題」でノースに決定的影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f59e0b;">オリバー・ウィリアムソン</strong>：<br>
+                            取引コスト理論を組織論に発展。ノースとともに新制度派経済学を形成。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f59e0b;">マックス・ウェーバー</strong>：<br>
+                            資本主義と制度（プロテスタンティズム）の関係。比較制度分析の先駆。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f59e0b;">アセモグル＆ロビンソン</strong>：<br>
+                            『国家はなぜ衰退するのか』でノースの議論を発展。「包括的制度 vs 収奪的制度」。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f59e0b;">開発経済学</strong>：<br>
+                            「制度改革」が途上国支援の中心課題に。世界銀行・IMFの政策に影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #f59e0b;">ブロックチェーン思想</strong>：<br>
+                            「信頼なき信頼」をコードで実装。取引コストを技術で下げる発想はノース的。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #f59e0b; margin-bottom: 1rem;">アナロジー１：同じチームでもルールが違えば結果が変わる</h4>
+                <p>サッカーと野球では、同じ選手でも結果が変わる。なぜなら「ルール」が違うからだ。経済も同じ。同じ人間、同じ資源でも、ルール（制度）が違えば結果は劇的に変わる。北朝鮮と韓国の差は「制度の差」だ。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #f59e0b; margin-bottom: 1rem;">アナロジー２：制度はオペレーティングシステム</h4>
+                <p>制度は経済の<strong>OS（オペレーティングシステム）</strong>だ。同じハードウェア（人間・資源）でも、OSが腐っていればアプリ（政策）がうまく動かない。「OSを直せ」がノースのメッセージ。逆に、良いOSがあれば、少ない資源でも繁栄できる。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #f59e0b; margin-bottom: 1rem;">アナロジー３：ゲームのルールと審判</h4>
+                <p>市場経済はゲームだ。プレイヤー（企業・個人）がいて、ルール（法律・慣習）があり、審判（裁判所・政府）がいる。ルールがフェアで、審判が公正なら、プレイヤーは健全に競争する。ルールが不公正で審判が腐敗していれば、ゲームは崩壊する。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>新古典派経済学OS</th>
+                        <th>ノース（新制度派）OS</th>
+                        <th>現代への含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>経済発展の鍵</td>
+                        <td>技術・資本・労働</td>
+                        <td><strong>制度（ゲームのルール）</strong></td>
+                        <td>制度改革の優先</td>
+                    </tr>
+                    <tr>
+                        <td>取引の仮定</td>
+                        <td>コストゼロ</td>
+                        <td><strong>取引コストが存在する</strong></td>
+                        <td>プラットフォーム経済</td>
+                    </tr>
+                    <tr>
+                        <td>制度変化</td>
+                        <td>無視・外生的</td>
+                        <td><strong>経路依存的、歴史的</strong></td>
+                        <td>改革の困難さ理解</td>
+                    </tr>
+                    <tr>
+                        <td>人間観</td>
+                        <td>合理的経済人</td>
+                        <td><strong>限定合理性、信念に左右</strong></td>
+                        <td>行動経済学</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>問題分析で「ルール」を問う</strong>：何かがうまくいかないとき、個人の能力や資源だけでなく「ルール（制度）」を分析する。組織の失敗は、しばしばルールの失敗。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「取引コスト」を意識する</strong>：ビジネスで「なぜ取引がうまくいかないか」を考えるとき、取引コスト（情報・監視・執行）を分析する。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>制度設計に参加する</strong>：ルールは与えられたものではなく、変更可能なもの。自分が参加できる範囲で「より良いルール」を提案する。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>制度万能論への傾斜</strong>：すべてを制度で説明しようとすると、文化・地理・技術の役割を過小評価する危険がある。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>西洋中心主義</strong>：「開放的アクセス秩序」は西洋モデルであり、非西洋社会への適用には慎重さが必要。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしノースが現代の「Web3・ブロックチェーン」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「興味深い。君たちは『契約の自動執行』をコードで実装しようとしている。」</p>
+                <p style="margin-top: 1rem;">
+                    「私が言った取引コストの問題──相手を信頼できるか、契約は守られるか──を、技術で解決しようとしているわけだ。<strong>スマートコントラクトは、裁判所なしに契約を執行できる制度的革新だ</strong>。」
+                </p>
+                <p style="margin-top: 1rem;">
+                    「しかし忘れてはならない。フォーマルな制度（コード）だけでは不十分だ。インフォーマルな制度──信頼、文化、共有された価値観──がなければ、技術は社会に根付かない。</p>
+                <p style="margin-top: 1rem;">
+                    そして<strong>経路依存性</strong>も考えよ。既存の制度（銀行、政府、法律）には巨大な利害関係者がいる。彼らが抵抗すれば、技術だけでは突破できない。制度変革には、技術と政治の両方が必要だ。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 制度決定論への傾斜</h4>
+                    <p>すべてを制度で説明しようとすると、技術・文化・地理など他の要因を過小評価する危険。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 「良い制度」の定義問題</h4>
+                    <p>何が「良い制度」かは価値判断を含む。西洋型制度を普遍化することへの批判。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 制度変化の説明不足</h4>
+                    <p>なぜ・いつ・どのように制度が変化するかの説明は、ノース自身も認めるように不十分。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「制度」とは何か？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        社会における「ゲームのルール」。人々のインセンティブを構造化する人為的制約。フォーマル（法律、所有権）とインフォーマル（慣習、信頼）の両方を含む。</p>
+                </details>
+                <details>
+                    <summary>「取引コスト」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        市場取引に伴うコスト。情報収集、契約締結、契約執行の監視などにかかるコスト。これを下げる制度が経済を発展させる。</p>
+                </details>
+                <details>
+                    <summary>「経路依存性」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        かつての選択が現在を制約すること。一度確立した制度は、利害関係者が反対するため変更しにくい。悪い制度が長期間続く原因。</p>
+                </details>
+                <details>
+                    <summary>なぜ韓国と北朝鮮で経済格差が生じたか？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ノースの視点では「制度の違い」。韓国は所有権・契約執行・市場経済という制度を持ち、北朝鮮はそれらを持たない。同じ民族・資源でも、ルールが違えば結果が違う。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #f59e0b; font-weight: 700;">制度（Institution）</dt>
+                <dd>社会の「ゲームのルール」。人々の相互作用を構造化する人為的制約。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">取引コスト（Transaction Costs）</dt>
+                <dd>市場取引に伴うコスト。情報収集・契約・監視にかかる費用。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">経路依存性（Path Dependence）</dt>
+                <dd>かつての選択が現在を制約すること。制度変化の困難さの原因。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">所有権（Property Rights）</dt>
+                <dd>財産の所有・使用・処分に関する権利。経済発展の基盤。</dd>
+                <dt style="color: #f59e0b; font-weight: 700; margin-top: 1rem;">開放的/限定的アクセス秩序</dt>
+                <dd>社会類型。開放的は法の支配で繁栄、限定的は暴力独占で秩序維持。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | ダグラス・ノース</p>
+    </footer>
+</body>
+
+</html>

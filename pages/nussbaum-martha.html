@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マーサ・ヌスバウム | Thinkers 700</title>
+    <meta name="description" content="マーサ・ヌスバウムの思想を学ぶ。ケイパビリティ・アプローチと感情の哲学で、人間の尊厳と社会正義を追求する現代最高峰の哲学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #ec4899;
+            --accent-glow: rgba(236, 72, 153, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), transparent);
+            border-bottom: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #ec4899, #db2777);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #ec4899, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ec4899;
+            border-bottom: 2px solid #ec4899;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent);
+            border-left: 4px solid #ec4899;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #ec4899;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #ec4899;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), transparent);
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(236, 72, 153, 0.2);
+            color: #ec4899;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #ec4899;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #ec4899;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">ケイパビリティ・アプローチの旗手</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">政治OS</span>
+        </div>
+        <h1>マーサ・ヌスバウム</h1>
+        <p class="en-name">Martha Craven Nussbaum (1947-)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「尊厳ある人生に必要なものは何か？」──ケイパビリティ（潜在能力）と感情の哲学で人間の尊厳を追求する現代最高峰の哲学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「正義とは、すべての人が尊厳ある人生を送るための基本的ケイパビリティを持つことである。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『正義のフロンティア』</p>
+            </div>
+            <p>マーサ・ヌスバウムは、「ケイパビリティ・アプローチ」の発展と「感情の哲学」で知られる現代を代表する哲学者です。アマルティア・センと協力し、「GDPではなく、人々が何をできるか（ケイパビリティ）」で社会を評価すべきだと主張。感情・障害・動物の権利など、哲学が見落としてきた領域に光を当ててきました。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「お金があっても自由がなければ意味がない。自由があっても教育がなければ意味がない。」</strong></p>
+                <p>GDPで国を測るのは不十分だ。大事なのは、人々が実際に「何ができるか」──教育を受けられるか、健康に生きられるか、声を上げられるか、愛されるか。この「ケイパビリティ」こそが、尊厳ある人生の指標だ。
+                </p>
+            </div>
+            <p>現代IT風に言えば、ヌスバウムは<strong>「人間の尊厳というOSの要件定義」</strong>をした人です。最低限これらの機能（ケイパビリティ）がなければ、人間らしい生活を送れない──その10項目のリストを提案しました。彼女を学ぶことは、「良い社会とは何か」を根本から問い直すことです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ec4899; font-size: 1.3rem;">『正義のフロンティア』（2006）</h4>
+                    <p style="margin-top: 1rem;">
+                        ロールズの正義論を批判的に発展させた代表作。障害者・国際正義・動物の権利という三つの「フロンティア」にケイパビリティ・アプローチを適用。従来の契約論の限界を指摘。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ec4899; font-size: 1.3rem;">『感情の知性』（2001）</h4>
+                    <p style="margin-top: 1rem;">感情（とくに同情 compassion）が正義に不可欠であることを論じた大著。文学・心理学・哲学を横断し、感情が道徳的判断に果たす役割を分析。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #ec4899; font-size: 1.3rem;">『女性と人間開発』（2000）</h4>
+                    <p style="margin-top: 1rem;">インドの女性たちへのフィールドワークを基に、ケイパビリティ・アプローチを開発経済学・ジェンダー論に適用。「文化相対主義」への批判も含む。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Martha Nussbaum: Leading contemporary philosopher, developed the Capability Approach with Amartya
+                        Sen. Argues that justice requires guaranteeing 10 central human capabilities—from life and
+                        health to emotional connection and play. Also pioneered "philosophy of emotions," arguing
+                        emotions are cognitive and essential to moral judgment. Major influence on development
+                        economics, human rights, and political philosophy.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>現代を代表する哲学者。アマルティア・センとともにケイパビリティ・アプローチを発展させ、正義とは「すべての人が尊厳ある人生を送るための基本的能力を持つこと」と主張。10の中心的ケイパビリティを提案。感情の哲学でも先駆的業績。開発経済学・人権・政治哲学に多大な影響。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「GDPで国の発展を測る」（経済学的常識）<br>
+                        ・「感情は理性の邪魔」（哲学的偏見）<br>
+                        ・「正義は契約能力のある者のため」（ロールズの限界）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・発展はケイパビリティ（何ができるか）で測る<br>
+                        ・感情は認知的であり、正義に不可欠<br>
+                        ・障害者・動物・外国人も正義の対象
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        国連の人間開発指数（HDI）への影響。障害者権利条約への貢献。開発経済学・ジェンダー論・動物倫理への応用。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    国連・世界銀行の開発指標、障害者政策、動物福祉法、ジェンダー平等政策、教育改革
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #ec4899; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「すべての人の尊厳ある人生を保障するために、社会は何をすべきか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ ケイパビリティ・アプローチ（Capability Approach）</strong>
+                </p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「人間の発展を測る正しい尺度は、人々が何を持っているかではなく、何をできるか、何でありうるかである。」
+                </div>
+                <p>GDPや所得で発展を測るのは不十分だ。大事なのは、人々が実際に<strong>「何ができるか」「何でありうるか」</strong>──これを「ケイパビリティ（潜在能力）」と呼ぶ。お金があっても教育を受けられなければ、その人は「できる」ことが限られる。正義とは、すべての人が基本的ケイパビリティを持てるようにすること。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 10の中心的ケイパビリティ</strong></p>
+                <table class="comparison-table" style="margin: 1.5rem 0;">
+                    <tbody>
+                        <tr>
+                            <td><strong>1. 生命</strong></td>
+                            <td>寿命を全うする</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. 身体の健康</strong></td>
+                            <td>健康に生きる</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. 身体の保全</strong></td>
+                            <td>暴力から自由</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. 感覚・想像・思考</strong></td>
+                            <td>教育を受け想像し考える</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. 感情</strong></td>
+                            <td>愛し悲しみ怒る</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. 実践理性</strong></td>
+                            <td>善き生について批判的に考える</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7. 連帯</strong></td>
+                            <td>他者と共に生きる</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8. 他の種との関係</strong></td>
+                            <td>動物・自然と関わる</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9. 遊び</strong></td>
+                            <td>笑い、遊び、余暇を楽しむ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10. 環境への参加</strong></td>
+                            <td>政治参加、財産所有</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 感情の哲学</strong></p>
+                <p>感情は「理性の邪魔」ではない。感情は<strong>認知的</strong>であり、世界についての判断を含んでいる。悲しみは「何か大切なものを失った」という判断、怒りは「不正がなされた」という判断を含む。だから感情は道徳的判断に不可欠であり、正義のためには同情（compassion）を育てる必要がある。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #ec4899;">
+                    <h4 style="color: #f472b6; font-size: 1.1rem; margin-bottom: 1rem;">■ ケイパビリティ（Capability）</h4>
+                    <p>人が「何をできるか」「何でありうるか」という潜在能力。同じ資源を持っていても、障害・差別・抑圧によって「できること」が制限される人がいる。正義は、この「できること」を保障する。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #db2777;">
+                    <h4 style="color: #f472b6; font-size: 1.1rem; margin-bottom: 1rem;">■ 機能（Functioning）</h4>
+                    <p>「実際に行っている・なっている」こと。ケイパビリティは「潜在能力」、機能は「実現」。大事なのは機能そのものではなく、ケイパビリティ（選択肢）を持っていること。断食と飢餓は同じ「機能」だが、前者はケイパビリティがあり、後者はない。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #ec4899;">
+                    <h4 style="color: #f472b6; font-size: 1.1rem; margin-bottom: 1rem;">■ 文化相対主義批判</h4>
+                    <p>「伝統だから」という理由で女性差別や人権侵害を正当化することへの批判。普遍的な人間の尊厳があり、それは文化に還元できない。「何が良い生か」について批判的に考える能力を持つことこそが人間の尊厳。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #db2777;">
+                    <h4 style="color: #f472b6; font-size: 1.1rem; margin-bottom: 1rem;">■ 同情（Compassion）</h4>
+                    <p>他者の苦しみを見て「その人は悪くない」「私も同じ状況になりうる」と感じる感情。同情は他者の福祉に関心を持つ出発点であり、正義の感覚を育てる。文学・芸術はこの同情を育てる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ec4899;">アリストテレス</strong>：<br>
+                            「何が良い人生か」の探求、徳倫理学、感情の重視。ヌスバウムはアリストテレス研究者でもある。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ec4899;">アマルティア・セン</strong>：<br>
+                            ケイパビリティ・アプローチの共同創始者。ノーベル経済学賞受賞。ヌスバウムはセンと協力し発展させた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ec4899;">ジョン・ロールズ</strong>：<br>
+                            現代正義論の基盤。ヌスバウムはロールズを批判的に発展させた。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ec4899;">国連人間開発指数（HDI）</strong>：<br>
+                            GDPに代わる発展指標。所得・教育・健康を統合。ケイパビリティ・アプローチの影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ec4899;">障害者権利条約</strong>：<br>
+                            障害者の「ケイパビリティ」を保障するという発想。ヌスバウムの議論が影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #ec4899;">動物倫理</strong>：<br>
+                            動物も「ケイパビリティの主体」であるという主張。動物福祉法への影響。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #ec4899; margin-bottom: 1rem;">アナロジー１：OSのシステム要件</h4>
+                <p>10のケイパビリティは、人間という「OS」の<strong>最低限のシステム要件</strong>だ。メモリが足りなければOSは動かない。同様に、教育・健康・自由がなければ、人は人間らしく生きられない。正義とは、すべての人にこのシステム要件を満たすこと。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #ec4899; margin-bottom: 1rem;">アナロジー２：お金だけではアプリは動かない</h4>
+                <p>お金（所得）があっても、アプリ（能力）が動くとは限らない。OSがバグっていたり（差別）、ドライバーがなかったり（教育へのアクセス）、ハードが壊れていたり（健康問題）すれば、アプリは動かない。<strong>GDPを上げるだけでは不十分</strong>。ケイパビリティを見なければならない。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #ec4899; margin-bottom: 1rem;">アナロジー３：断食と飢餓の違い</h4>
+                <p>宗教的理由で断食する人と、食べ物がなくて飢える人。「今何も食べていない」という「機能」は同じ。しかし前者は「食べることができるのに選択して食べない」（ケイパビリティあり）、後者は「食べたくても食べられない」（ケイパビリティなし）。<strong>結果（機能）だけでなく、選択肢（ケイパビリティ）を見よ</strong>。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：GDP vs ケイパビリティ</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>GDP中心アプローチ</th>
+                        <th>ケイパビリティ・アプローチ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>発展の指標</td>
+                        <td>経済成長率</td>
+                        <td><strong>人々が何をできるか</strong></td>
+                    </tr>
+                    <tr>
+                        <td>評価対象</td>
+                        <td>平均所得</td>
+                        <td><strong>個々人のケイパビリティ</strong></td>
+                    </tr>
+                    <tr>
+                        <td>不平等の扱い</td>
+                        <td>平均に隠れて見えにくい</td>
+                        <td><strong>個々人の状況を見る</strong></td>
+                    </tr>
+                    <tr>
+                        <td>教育・健康</td>
+                        <td>経済成長の手段</td>
+                        <td><strong>それ自体が目的</strong></td>
+                    </tr>
+                    <tr>
+                        <td>感情・関係性</td>
+                        <td>測定対象外</td>
+                        <td><strong>中心的ケイパビリティ</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>政策評価に「ケイパビリティ」を使う</strong>：政策の効果を測るとき、GDPだけでなく「人々が何をできるようになったか」を問う。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>同情を育てる</strong>：文学・映画・芸術を通じて、他者の経験に触れ、同情の能力を育てる。これが正義の感覚の基盤になる。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「弱者」の声を聴く</strong>：障害者・女性・動物など、従来の正義論が見落としてきた存在に注目する。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「10のケイパビリティ」の普遍性問題</strong>：ヌスバウムのリストは西洋的・アリストテレス的価値観を反映しているという批判。普遍主義と多元主義のバランスが問われる。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>測定の困難さ</strong>：ケイパビリティは定量化しにくく、政策に組み込むには工夫が必要。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もしヌスバウムが「AI時代の労働の未来」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「AIが多くの仕事を代替し、人々は『労働』から解放されるという。しかし、それは本当に『良いこと』だろうか？」</p>
+                <p style="margin-top: 1rem;">
+                    「ケイパビリティ・アプローチから見れば、問題は『働くかどうか』ではなく、人々が尊厳ある生を送る能力を持てるかどうかだ。<strong>労働がなくなっても、教育・健康・連帯・遊び・政治参加といったケイパビリティは確保されなければならない</strong>。」
+                </p>
+                <p style="margin-top: 1rem;">
+                    「ベーシックインカムは良い一歩かもしれない。しかしお金だけでは不十分だ。人々が<strong>想像し、考え、愛し、創造する能力</strong>を育てる仕組みが必要だ。教育・芸術・コミュニティへの投資が、これまで以上に重要になる。」
+                </p>
+                <p style="margin-top: 1rem;">「そしてAI自体についても問う必要がある。AIは人々のケイパビリティを拡張するのか、制限するのか？
+                    <strong>テクノロジーの評価基準は、GDPではなくケイパビリティであるべきだ</strong>。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 普遍主義への批判</h4>
+                    <p>10のケイパビリティは「西洋的」「アリストテレス的」という批判。誰がそのリストを決めるのか？ という問題。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 測定の困難さ</h4>
+                    <p>ケイパビリティは「潜在能力」であり、直接測定しにくい。政策に組み込むには困難がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ センとの違い</h4>
+                    <p>センは具体的なリストを提示しないのに対し、ヌスバウムは10項目を提示。どちらが適切か議論がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">④ 資源配分への言及不足</h4>
+                    <p>「ケイパビリティを保障せよ」と言うが、限られた資源でどう優先順位をつけるかの議論は弱いという批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「ケイパビリティ」と「機能」の違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ケイパビリティは「何ができるか」という潜在能力、機能は「実際に何をしているか」。断食は機能として「食べていない」が、ケイパビリティ（食べられる）はある。飢餓は機能もケイパビリティもない。
+                    </p>
+                </details>
+                <details>
+                    <summary>なぜGDPでは不十分なのか？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        GDPは平均所得を測るが、人々が実際に「何をできるか」は見えない。同じ所得でも、教育へのアクセス、健康状態、差別の有無で「できること」は大きく異なる。</p>
+                </details>
+                <details>
+                    <summary>10のケイパビリティの例を3つ挙げよ</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ①生命（寿命を全うする）、②感覚・想像・思考（教育を受け考える）、③連帯（他者と共に生きる）など。全部で10項目ある。</p>
+                </details>
+                <details>
+                    <summary>感情はなぜ正義に重要なのか？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        感情は認知的であり、世界についての判断を含む。とくに「同情」は、他者の苦しみに関心を持つ出発点であり、正義の感覚を育てる。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #ec4899; font-weight: 700;">ケイパビリティ（Capability）</dt>
+                <dd>人が「何をできるか」「何でありうるか」という潜在能力。正義の評価基準。</dd>
+                <dt style="color: #ec4899; font-weight: 700; margin-top: 1rem;">機能（Functioning）</dt>
+                <dd>実際に行っている・なっていること。ケイパビリティの「実現」。</dd>
+                <dt style="color: #ec4899; font-weight: 700; margin-top: 1rem;">10の中心的ケイパビリティ</dt>
+                <dd>尊厳ある人生に不可欠な10項目：生命、健康、身体の保全、感覚・思考、感情、実践理性、連帯、他の種との関係、遊び、環境への参加。</dd>
+                <dt style="color: #ec4899; font-weight: 700; margin-top: 1rem;">同情（Compassion）</dt>
+                <dd>他者の苦しみを見て「その人は悪くない」「私も同じ状況になりうる」と感じる感情。正義の基盤。</dd>
+                <dt style="color: #ec4899; font-weight: 700; margin-top: 1rem;">人間開発指数（HDI）</dt>
+                <dd>GDPに代わる発展指標。所得・教育・健康を統合。ケイパビリティ・アプローチの影響を受けた。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | マーサ・ヌスバウム</p>
+    </footer>
+</body>
+
+</html>
