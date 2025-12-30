@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・ペイン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Cinzel:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ef4444;
+            --primary-light: #f87171;
+            --primary-dark: #991b1b;
+            --accent: #fbbf24;
+            --bg-dark: #110000;
+            --bg-card: #1a0a0a;
+            --text: #fef2f2;
+            --text-secondary: #fca5a5;
+            --border: rgba(239, 68, 68, 0.3);
+            --shadow: 0 10px 30px rgba(239, 68, 68, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(17, 0, 0, 0.9);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .header {
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, #300 0%, var(--bg-dark) 100%);
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary-dark);
+            color: #fff;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            transform: rotate(-2deg);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.2rem;
+            background: var(--primary-dark);
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(239, 68, 68, 0.1);
+            padding: 3rem;
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            color: #fff;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--accent);
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            transition: 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            background: #2a0f0f;
+            transform: translateX(10px);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .it-analogy {
+            background: #000;
+            border: 2px solid var(--primary);
+            padding: 3rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .it-analogy::after {
+            content: "CMD > _";
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            opacity: 0.3;
+            font-family: monospace;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .styled-list {
+            list-style: none;
+        }
+
+        .styled-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .styled-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="../index.html">← Thinkers 700 一覧</a>
+        <div>Rank 403</div>
+    </nav>
+
+    <header class="header">
+        <div class="rank-badge">CITIZEN OF THE WORLD</div>
+        <h1>トマス・ペイン</h1>
+        <p class="en-name">Thomas Paine (1737-1809)</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">🚩 言葉で世界をひっくり返した男</h2>
+            <p>トマス・ペインは、近代民主主義が誕生する瞬間に「ガソリン」を注ぎ込んだ火付け役です。彼のパンフレット『コモン・センス』は、当時のアメリカ入植者たちの迷いを一瞬で消し去り、独立への意志を爆発させました。彼は単なる理論家ではなく、専門用語を使わずに「街の人々の言葉」で革命を語った最初のグローバル・メッセンジャーでした。
+            </p>
+            <p>たとえるなら、ペインは**「王権神授説というプロプライエタリな巨大レガシーシステムに対して、民衆の力でオープンソース化を迫る『革命パッチ』を全世界に配布したハッカー」**です。彼の思想はアメリカ、フランス、そしてイギリスの既存システムを根底から揺るがしました。
+            </p>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 政治OSの核心：コモン・センス（常識）</h2>
+            <div class="quote-box">
+                <p class="quote-text">「政府は最良の状態においても『必要悪』であり、最悪の状態においては『耐え難い悪』である」</p>
+                <p class="quote-author">— 『コモン・センス』</p>
+            </div>
+            <p>ペインの中心的な問いは、**「なぜ一人の男が、他の多くの人々を支配する法的権利を持つのか？」**でした。彼は、王政というシステムが「神の意志」ではなく「征服者の暴力」によって始まったバグであることを暴きました。彼は「社会は我々の欲求によって生じ、政府は我々の邪悪さによって生じる」とし、政府の唯一の目的は「自由と安全」を確保することにあると再定義しました。
+            </p>
+            <div class="card">
+                <h3>📜 書き換えたソースコード</h3>
+                <ul class="styled-list">
+                    <li>`Permission.King = ReadWriteAll;` → ❌ Access Denied</li>
+                    <li>`Permission.People = ReadWriteAll;` → ✅ Public Domain Authorization</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. ITアナロジー -->
+        <section class="section">
+            <div class="it-analogy">
+                <h2>💻 IT視点：革命のパッチ・ディストリビューション</h2>
+                <div class="card">
+                    <h3>オープンソース・レボリューション</h3>
+                    <p>ペインは、難解なラテン語や法学用語を排除し、誰でも読める平易な英語で政治を語りました。これは、一握りの特権階級が独占していた「政治のソースコード」を公開し、民衆という「開発者コミュニティ」にフォークさせたことに相当します。
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>グローバル・パッチ</h3>
+                    <p>彼の活動範囲は英・米・仏にまたがりました。一箇所のローカルシステム（アメリカ）で開発された「権利のパッチ」を、別の脆弱なシステム（フランス）にも素早くデプロイ（配布）しようとした、初期のグローバル・アーキテクトと言えます。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 政治OS v1776 の新機能</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>✊ 人間の権利 (Rights of Man)</h3>
+                    <p>国家以前に人間に備わる「天賦的人権」を定義。王の許可なしに、人間は生まれながらにして管理者権限を持つ。</p>
+                </div>
+                <div class="card">
+                    <h3>🌍 世俗主義 (Secularism)</h3>
+                    <p>宗教と政治を分離。神学的な検証ではなく、合理的な「コモン・センス」で社会を論ずる。</p>
+                </div>
+                <div class="card">
+                    <h3>💰 社会保障の原型 (Agrarian Justice)</h3>
+                    <p>土地の所有者から徴収し、高齢者や貧困層に分配する「ベーシックインカム」に近い構想をすでに発表していた。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 思想の比較：王政 vs 共和制</h2>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>王政 (旧OS)</th>
+                    <th>ペインの共和制 (新OS)</th>
+                </tr>
+                <tr>
+                    <td>権威の源泉</td>
+                    <td>血筋、神権</td>
+                    <td>有権者の同意</td>
+                </tr>
+                <tr>
+                    <td>言語</td>
+                    <td>難解な専門用語（隠蔽）</td>
+                    <td>平易な日常語（公開）</td>
+                </tr>
+                <tr>
+                    <td>構造</td>
+                    <td>中央集権・階層型</td>
+                    <td>分散型・参加型</td>
+                </tr>
+                <tr>
+                    <td>目的</td>
+                    <td>権力の維持</td>
+                    <td>自由と安全の提供</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 5. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 パッチの副作用（限界）</h2>
+            <div class="card">
+                <ul class="styled-list">
+                    <li><strong>急進性のリスク</strong>：あまりに理想主義的で急進的だったため、フランス革命でも投獄され、アメリカでも死後は不遇な扱いを受けた（あまりにOSを刷新しすぎて互換性が失われた）。
+                    </li>
+                    <li><strong>ディイズムへの反発</strong>：キリスト教を厳しく批判したため、当時の敬虔な人々から激しい攻撃を受けた。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="qa-item">
+                <div class="question">『コモン・センス』ってそんなにすごかったの？</div>
+                <p>1776年当時、アメリカ全土で15万部以上売れたと言われています。人口比で言えば、現代だと数千万部の大ベストセラーに匹敵します。この一冊がなければ、アメリカは独立していなかったかもしれません。</p>
+            </div>
+            <div class="qa-item">
+                <div class="question">「世界市民」ってどういう意味ですか？</div>
+                <p>彼は「わが祖国は世界。わが宗教は善を行うこと」と述べました。どこかの国に忠誠を誓うのではなく、全人類の自由と人権を優先する姿勢を表しています。</p>
+            </div>
+        </section>
+
+        <!-- 7. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>トマス・ペインは、理性の力と言葉の力で、歴史の大きな歯車を回した思想家でした。彼は人々に「王という管理者は不要である」と教え、自分たちのシステムは自分たちでコードを書くべきだと呼びかけました。現代において「情報の民主化」や「分散型ガバナンス」を語るとき、私たちは250年前にペインが示した「常識」のアップデートを今もなお続けているのです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Common Sense is not so common.</p>
+    </footer>
+</body>
+
+</html>

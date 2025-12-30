@@ -43,22 +43,29 @@ htmlFiles.forEach(filename => {
         return;
     }
 
-    // Generate new OS tag HTML
-    const newTagsHtml = data.school.map((tag, i) => {
-        if (i === 0) {
-            return `<span class="os-tag">${tag}</span>`;
-        } else {
+    // Pattern 1: Legacy (header-section, tags before h1)
+    const legacyPattern = /(<header class="header-section">[\s\S]*?)(<span class="os-tag"[^>]*>[^<]+<\/span>\s*)+(\s*<h1>)/;
+
+    // Pattern 2: Rich (header, tags inside div.os-tags after h1/en-name)
+    const richPattern = /(<div class="os-tags">)([\s\S]*?)(<\/div>)/;
+
+    let newHtml = html;
+    let matched = false;
+
+    if (legacyPattern.test(html)) {
+        const formattedTags = data.school.map((tag, i) => {
+            if (i === 0) return `<span class="os-tag">${tag}</span>`;
             return `<span class="os-tag" style="margin-left: 0.5rem;">${tag}</span>`;
-        }
-    }).join('\n            ');
+        }).join('\n            ');
+        newHtml = html.replace(legacyPattern, `$1${formattedTags}\n            $3`);
+        matched = true;
+    } else if (richPattern.test(html)) {
+        const formattedTags = data.school.map(tag => `\n            <span class="os-tag">${tag}</span>`).join('');
+        newHtml = html.replace(richPattern, `$1${formattedTags}\n        $3`);
+        matched = true;
+    }
 
-    // Find and replace the OS tags section in the header
-    // Pattern: from first os-tag to the h1 tag
-    const osTagPattern = /(<header class="header-section">[\s\S]*?)(<span class="os-tag"[^>]*>[^<]+<\/span>\s*)+(\s*<h1>)/;
-
-    if (osTagPattern.test(html)) {
-        const newHtml = html.replace(osTagPattern, `$1${newTagsHtml}\n            $3`);
-
+    if (matched) {
         if (newHtml !== html) {
             fs.writeFileSync(filePath, newHtml, 'utf8');
             console.log(`Updated: ${filename} -> [${data.school.join(', ')}]`);

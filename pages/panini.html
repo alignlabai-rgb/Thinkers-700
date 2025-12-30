@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パーニニ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Recursive:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d97706;
+            --primary-light: #fbbf24;
+            --primary-dark: #78350f;
+            --accent: #fcd34d;
+            --bg-dark: #1a0f02;
+            --bg-card: #2d1b0a;
+            --text: #fffbeb;
+            --text-secondary: #fde68a;
+            --border: rgba(217, 119, 6, 0.3);
+            --code-bg: #110900;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: rgba(26, 15, 2, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .header {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #451a03 0%, var(--bg-dark) 100%);
+        }
+
+        .rank-badge {
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Recursive', sans-serif;
+            font-size: 3.5rem;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.2rem;
+            background: var(--primary-dark);
+            border-radius: 2px;
+            color: var(--accent);
+            border: 1px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-light);
+            padding-bottom: 0.5rem;
+            border-bottom: 3px double var(--primary);
+            width: fit-content;
+        }
+
+        .quote-box {
+            background: var(--code-bg);
+            padding: 3rem;
+            border-left: 8px solid var(--primary);
+            margin: 4rem 0;
+            font-family: monospace;
+            border-radius: 4px;
+        }
+
+        .quote-text {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 40px 40px 0;
+            border-color: transparent var(--primary) transparent transparent;
+            opacity: 0.5;
+        }
+
+        .card h3 {
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .it-analogy {
+            background: var(--code-bg);
+            padding: 3rem;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            margin: 4rem 0;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: #0f0;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .styled-list {
+            list-style: none;
+        }
+
+        .styled-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .styled-list li::before {
+            content: "λ";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="../index.html">← Thinkers 700 一覧</a>
+        <div>Rank 404</div>
+    </nav>
+
+    <header class="header">
+        <div class="rank-badge">PRIMEVAL ARCHITECT</div>
+        <h1>パーニニ</h1>
+        <p class="en-name">Pāṇini (c. 5th - 4th century BCE)</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">🕉️ 2500年前に「コンピュータ言語」を設計した天才</h2>
+            <p>パーニニは、古代インドの言語学者でありながら、実質的には人類史上最初の「プログラミング言語設計者」とも呼べる存在です。彼が書き上げた『アシュターディヤーイー（八編の書）』は、サンスクリット語という自然言語を、完全に形式化された「ルール」と「代数」によって記述しました。これは近代言語学の父ソシュールや、計算言語学の巨人ノーム・チョムスキーよりも遥か昔に、言語の深層ロジックを解明していたことを意味します。
+            </p>
+            <p>たとえるなら、パーニニは**「誰もマシンの仕組みを理解していなかった時代に、いきなり完全な文法チェック機能を備えたC言語のコンパイラを一人で書き上げた超絶プログラマー」**です。彼のアルゴリズム的思考は、現代のIT社会の文字通り「ルート（根）」に位置しています。
+            </p>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 言語OSの核心：形式文法の誕生</h2>
+            <div class="quote-box">
+                <p class="quote-text">// Pāṇini Meta-Rule: "vidhi" (rules) vs "paribhāṣā" (definitions)</p>
+                <p class="quote-text">「言語は、無限の文を生成できる有限のルール・セットである」</p>
+            </div>
+            <p>パーニニの中心的な問いは、**「どれほど膨大な言葉であっても、それを最小限のルール（関数）に圧縮できるか？」**というものでした。彼は約4000の短い「スートラ（格言的な規則）」によってサンスクリット語のすべてを記述しました。彼のシステムの特徴は、**「再帰的構造（Recursion）」**と**「メタ規則」**にあります。つまり、ルールを適用するためのルールまでもがシステムに組み込まれていたのです。
+            </p>
+            <div class="card">
+                <h3>📜 言語OSのソースコード（スートラ）</h3>
+                <ul class="styled-list">
+                    <li>`root + suffix = word_form` (関数の定義)</li>
+                    <li>`if conflict(rule_A, rule_B) -> apply rule_following` (メタ規則による衝突回避)</li>
+                    <li>`variable_substitution` (代数的な変数の置き換え)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. ITアナロジー -->
+        <section class="section">
+            <div class="it-analogy">
+                <h2>💻 IT視点：最初のコンパイル・アルゴリズム</h2>
+                <div class="card">
+                    <h3>BNF（バッカス・ナウア記法）の真の祖先</h3>
+                    <p>プログラミング言語の文法を定義するBNFは、実は「パーニニ・バッカス記法（PBNF）」と呼ばれるべきほどパーニニの影響を受けています。ジョン・バッカスが言語構造を定義しようとした際、彼を助けたのはパーニニの形式体系でした。
+                    </p>
+                </div>
+                <div class="code-block">
+                    &lt;sentence&gt; ::= &lt;root&gt; &lt;affix&gt; <br>
+                    // 2500年後の現在も、コンパイラはこの論理で動いている
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 言語OS v0.1 の実装された新機能</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔍 形式言語理論 (Formal Grammar)</h3>
+                    <p>曖昧さを一切排除した厳密な記述。マシンによる処理（パース）を可能にする論理基盤。</p>
+                </div>
+                <div class="card">
+                    <h3>♻️ 計算アルゴリズム</h3>
+                    <p>語根から単語を生成するプロセスを「導出」として定義。これは現代の数学的な関数適用と同じプロセスである。</p>
+                </div>
+                <div class="card">
+                    <h3>📦 モジュール化と圧縮</h3>
+                    <p>冗長さを極限まで削ぎ落とし、記憶しやすいように「略符（anubandha）」を使用。現代のデータ圧縮に近い発想。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 思想の比較：伝統と言語学</h2>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>旧来の言語観</th>
+                    <th>パーニニの言語OS</th>
+                </tr>
+                <tr>
+                    <td>言語の本質</td>
+                    <td>神秘的な響き、伝統</td>
+                    <td>代数的なルール、論理システム</td>
+                </tr>
+                <tr>
+                    <td>単語の生成</td>
+                    <td>ただ覚えるもの</td>
+                    <td>語根と接辞の関数合成による生成</td>
+                </tr>
+                <tr>
+                    <td>例外処理</td>
+                    <td>場当たり的な例外</td>
+                    <td>条件分岐とメタ規則による制御</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- 5. 影響力 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の派生（Export）</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>ノーム・チョムスキー</h3>
+                    <p>「パーニニの文法は、最初の生成文法である」と高く評価。現代言語学への最大の影響。</p>
+                </div>
+                <div class="card">
+                    <h3>情報科学</h3>
+                    <p>形式言語理論、コンパイラ設計、文字列処理アルゴリズムのすべてにパーニニの影がある。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="qa-item">
+                <div class="question">なぜ古代インドでこんな高度なことができたの？</div>
+                <p>古代インドでは「ヴェーダ（聖典）」を完璧に口承していく必要がありました。音を1ミリも違わずに伝えるため、音声を解剖する「音韻学」と「文法学」が科学レベルまで究められたのです。</p>
+            </div>
+            <div class="qa-item">
+                <div class="question">数学者ではないのですか？</div>
+                <p>厳密には言語学者ですが、彼の思考プロセスは今日の数学や計算理論そのものです。彼にとって言語とは「計算されるべきシステム」でした。</p>
+            </div>
+        </section>
+
+        <!-- 7. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>パーニニは、人類が「知性を記述する」ための最も強力なツールである言語に、最初の完璧なOSをインストールした人物です。彼がいなければ、サンスクリット語の保存も、近代言語学の誕生も、そしておそらく今日のプログラミング言語の進化も、まったく異なるものになっていたでしょう。私たちは、スマホでコードを書くたびに、知らず知らずのうちにパーニニが2500年前に定義した「文法」という名の魔法のリズムに乗っているのです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Logic is eternal Sanskrit.</p>
+    </footer>
+</body>
+
+</html>

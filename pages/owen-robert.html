@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ロバート・オーウェン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-light: #34d399;
+            --primary-dark: #064e3b;
+            --accent: #f59e0b;
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(16, 185, 129, 0.2);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary-dark);
+            color: var(--primary-light);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .os-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.2rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 5rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        /* Quote */
+        .quote-box {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 24px;
+            position: relative;
+            margin: 4rem 0;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-author {
+            color: var(--primary-light);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .quote-box::before {
+            content: "“";
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        /* Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Comparison Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--primary-light);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Highlight list */
+        .highlight-list {
+            list-style: none;
+        }
+
+        .highlight-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .highlight-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* IT Analogy Section */
+        .it-analogy {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #064e3b 100%);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--primary);
+            margin: 4rem 0;
+        }
+
+        .it-analogy h2 {
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Q&A */
+        .qa-item {
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .question {
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 5rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="../index.html">← Thinkers 700 一覧</a>
+        <div>Rank 402</div>
+    </nav>
+
+    <header class="header">
+        <div class="rank-badge">RANK 402</div>
+        <h1>ロバート・オーウェン</h1>
+        <p class="en-name">Robert Owen (1771-1858)</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">経済OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">🌟 なぜ今、オーウェンを学ぶのか？</h2>
+            <p>現代の私たちは「環境が人を作る」という言葉を当たり前のように使いますが、産業革命の真っ只中において、この思想を実践レベルで証明しようとしたのがロバート・オーウェンです。彼は、ブラック企業が当たり前だった時代に「従業員が幸福であれば、生産性は向上する」という、現代経営学の先駆けとなるパラダイムシフトを起こしました。
+            </p>
+            <p>たとえるなら、オーウェンは**「ブラックなレガシーコードを、開発者の幸福度を優先するクリーンコードへとリファクタリングしようとした最初のシステムアーキテクト」**です。彼の失敗と成功は、現代のウェルビーイングやESG投資の原点を見せてくれます。
+            </p>
+        </section>
+
+        <!-- 1. 性格形成論 -->
+        <section class="section">
+            <h2 class="section-title">🧠 社会OSの核心：性格形成論</h2>
+            <div class="quote-box">
+                <p class="quote-text">「いかなる性格も、適切な手段を用いれば、いかなる共同体に対しても、最悪のものから最善のものへと形成することができる」</p>
+                <p class="quote-author">— 『新社会観』</p>
+            </div>
+            <p>オーウェンの中心的な問いは、**「人間の善悪は、本能によるものか、それとも環境によるものか？」**というものでした。彼は「性格は人間が自分自身で作るのではなく、環境が人間に与えるものである」と断言しました。このOSアップデートにより、貧困や犯罪は個人の責任ではなく、社会システムのバグとして処理されるべきものとなりました。
+            </p>
+            <div class="card">
+                <h3>🛠️ 書き換えたコード（パラダイム）</h3>
+                <ul class="highlight-list">
+                    <li>IF 犯罪が発生 = 個人の処罰 → ❌ 旧OS</li>
+                    <li>IF 犯罪が発生 = 環境の改善（教育・住居・労働条件） → ✅ Owen OS</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 変革の3ステップ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 初期化 (Initialize)</h3>
+                    <p>劣悪な労働環境というバグを特定。5歳児の労働を禁止し、10時間労働制を導入。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 環境構築 (Configure)</h3>
+                    <p>ニューラナークに「性格形成学院」を設立。教育、医療、安価な食料供給というインフラを整備。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 実装 (Deploy)</h3>
+                    <p>生産性が向上し、事業も黒字化。理想社会のプロトタイプとして世界中に公開。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 IT視点で見ると？</h2>
+            <p>オーウェンのニューラナーク（理想の工場モデル）は、ソフトウェア開発における**「コンテナ化（Docker）」**のようなものです。</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Dockerとしてのニューラナーク</h3>
+                    <p>周囲の劣悪な社会環境（ホストOS）から隔離され、教育や福祉というライブラリが最適化された独立した実行環境（コンテナ）を構築しました。</p>
+                </div>
+                <div class="card">
+                    <h3>性格形成 = 環境構築スクリプト</h3>
+                    <p>「人間は環境の関数である」という考え方は、`UserConfig(environment)`という関数によって`UserCharacter`が決定されるというプログラミング的なアプローチでした。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能：社会OSのアップデート -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>👶 幼児教育 (Pre-school)</h3>
+                    <p>世界で最初の幼稚園に近い「性格形成学院」の幼児部を創設。早期の環境最適化を目指しました。</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 協同組合 (Cooperatives)</h3>
+                    <p>消費者が自ら運営するショップを設置。中間マージンを排除し、品質を保証する分散型経済モデル。</p>
+                </div>
+                <div class="card">
+                    <h3>📉 短縮労働時間</h3>
+                    <p>一日の労働時間を短縮しても、やる気のある労働者の方が高いアウトプットを出すことを実証。</p>
+                </div>
+                <div class="card">
+                    <h3>📊 サイレント・モニター</h3>
+                    <p>罰則ではなく、日々の行動を色付きの板で表示する「可視化システム」。現代のダッシュボードに近い手法。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="highlight-list">
+                        <li>ジェレミ・ベンサム（功利主義）</li>
+                        <li>啓蒙思想（環境決定論）</li>
+                        <li>ジョン・ロック（タブラ・ラサ）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="highlight-list">
+                        <li>カール・マルクス（空想的社会主義として）</li>
+                        <li>ロッチデール先駆者協同組合（生協の父）</li>
+                        <li>労働組合運動、教育・社会福祉の制度化</li>
+                        <li>ヘンリー・フォード（高賃金・短時間労働の思想）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 産業界の比較</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>当時の標準 (Laissez-faire)</th>
+                            <th>オーウェンの提案 (New Society)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>労働者の位置づけ</td>
+                            <td>消耗品、コストの一部</td>
+                            <td>生ける機械、投資すべき資産</td>
+                        </tr>
+                        <tr>
+                            <td>児童労働</td>
+                            <td>安価な労働力として推奨</td>
+                            <td>禁止、教育を最優先</td>
+                        </tr>
+                        <tr>
+                            <td>規律の維持</td>
+                            <td>体罰、恐怖政治</td>
+                            <td>可視化、環境による教育</td>
+                        </tr>
+                        <tr>
+                            <td>利益の配分</td>
+                            <td>資本家の独占</td>
+                            <td>福利厚生、教育への再投資</td>
+                        </tr>
+                        <tr>
+                            <td>社会観</td>
+                            <td>弱肉強食、自由競争</td>
+                            <td>相互扶助、協同組合体</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 バグ報告と限界</h2>
+            <div class="card">
+                <ul class="highlight-list">
+                    <li><strong>パターナリズム（父権主義）の罠</strong>：オーウェンが「良き管理者」として全てを決めるため、労働者の真の自律性が育ちにくい面があった。</li>
+                    <li><strong>スケールアップの失敗</strong>：アメリカでの実験村「ニューハーモニー」は、統治の混乱によりわずか数年で崩壊。</li>
+                    <li><strong>共産主義との乖離</strong>：後にマルクスからは、階級闘争を無視した「空想的（Utopian）」なアプローチであると批判された。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="qa-item">
+                <div class="question">「空想的社会主義」って悪口ですか？</div>
+                <p>マルクスやエンゲルスが自分たちの運動を「科学的」と呼ぶために使った言葉ですが、オーウェンの実践が空想（単なる夢）だったわけではありません。彼は実際にニューラナークを大成功させていました。</p>
+            </div>
+            <div class="qa-item">
+                <div class="question">資本家だったのに、なぜ労働者の味方をしたのですか？</div>
+                <p>彼は「幸福な人間の方が有能である」という合理的な計算を持っていました。善意だけでなく、経済的な合理性があることを証明しようとしたのです。</p>
+            </div>
+            <div class="qa-item">
+                <div class="question">オーウェンの影響はどこに残っていますか？</div>
+                <p>日本の「生協（コープ）」や、幼稚園の制度、8時間労働を求めるメーデーの起源、企業のCSR活動など、現代社会の至る所に彼のDNAが残っています。</p>
+            </div>
+        </section>
+
+        <!-- 9. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ロバート・オーウェンは、冷酷なマシーンのように動く産業社会の中で、「人間の尊厳」というモジュールの接続を試みた革命家でした。彼の試みは、時に理想に走り過ぎ「空想的」とされましたが、**「システム（環境）を改善すれば、アウトプット（人間）は必ず良くなる」**という彼の信念は、現代のデジタルトランスフォーメーションにおける組織文化の構築にも通じる不変の真理です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. All concepts containerized.</p>
+    </footer>
+</body>
+
+</html>
