@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イワン・パブロフ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=IBM+Plex+Sans+JP:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            /* Medical Blue */
+            --accent: #ef4444;
+            /* Alert Red (Conditioned Response) */
+            --bg: #f8fafc;
+            --bg-dark: #0f172a;
+            --text: #1e293b;
+            --text-sub: #64748b;
+            --border: #e2e8f0;
+            --grid-line: rgba(14, 165, 233, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .lab-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Lab Header */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: #fff;
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .header {
+            padding: 8rem 2rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            letter-spacing: -0.1rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--bg-dark);
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .os-tag {
+            background: var(--bg);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Stimulus Graph */
+        .stimulus-graph {
+            position: absolute;
+            right: -50px;
+            bottom: 20px;
+            width: 400px;
+            height: 150px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 8rem;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+            letter-spacing: 0.2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--bg-dark);
+            position: relative;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3.5rem;
+            border-left: 10px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .hero-text b {
+            color: var(--primary);
+        }
+
+        .quote-box {
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 4rem;
+            border-radius: 8px;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-box::after {
+            content: "REFLEX";
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 8rem;
+            opacity: 0.05;
+            font-weight: 900;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+        }
+
+        .quote-author {
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            text-align: right;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: 0.3s;
+            border-radius: 6px;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 0.5rem;
+        }
+
+        .it-analogy {
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 4rem;
+            border-radius: 12px;
+            margin: 8rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        th,
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--bg);
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .list-rich li {
+            margin-bottom: 1.5rem;
+            list-style: none;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .list-rich li::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 2px dashed var(--primary);
+            padding: 4rem;
+            margin: 6rem 0;
+            box-shadow: 20px 20px 0 var(--bg);
+        }
+
+        .thought-experiment h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--bg-dark);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 6rem;
+            border-top: 2px solid var(--border);
+            margin-top: 6rem;
+            color: var(--text-sub);
+            letter-spacing: 0.1rem;
+        }
+
+        /* Animation */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lab-grid"></div>
+    <nav class="nav">
+        <a href="../index.html">← CASE_STUDY / CONDITIONED_REFLEX</a>
+        <div style="color: var(--accent);" class="pulse">● LIVE MONITORING</div>
+    </nav>
+
+    <header class="container header">
+        <div class="rank">ID: P-412 / RANK: 412</div>
+        <h1>イワン・パブロフ</h1>
+        <p class="en-name">Ivan Pavlov (1849–1936)</p>
+        <div class="os-tags">
+            <span class="os-tag">心理OS</span>
+            <span class="os-tag">科学OS</span>
+        </div>
+        <svg class="stimulus-graph" viewBox="0 0 100 20">
+            <path d="M0,10 Q25,0 50,10 T100,10" fill="none" stroke="var(--primary)" stroke-width="0.5"
+                stroke-dasharray="2,2" />
+        </svg>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <span class="section-label">00_INITIAL_HYPOTHESIS</span>
+            <h2 class="section-title">私たちの行動は「プログラム」できるか？</h2>
+            <div class="hero-box">
+                <p>ベルを鳴らし、犬にエサを与える。これを繰り返すと、やがてベルの音を聞くだけで犬は唾液を流すようになる。あまりにも有名なこの実験を行ったパブロフは、単に「犬の習性」を発見したわけではありません。彼は、生命現象の中核にある<b>「学習と適応の物理的メカニズム」</b>を突き止めました。
+                </p>
+                <p>パブロフを学ぶことは、私たちの感情、癖、反射といったものが、いかに外部刺激との「ペアリング」によって構築されているかを知ることです。それは、自分自身を自由意志の主体としてだけでなく、<b>「アップデート可能なバイオ・コンピュータ」</b>として客観視する、科学的な自己認識の第一歩となります。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>パブロフは、<b>「生体システムにおける『イベント・リスニング（Event Listening）』の仕組みを解明した最高峰のシステム・デバッガー」</b>です。彼は、特定の入力（Input
+                        A）に対して特定の処理（Function B）が自動的に実行される「条件付きイベント・ハンドラ」が、いかに脳というハードウェア上に書き込まれるかを証明しました。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <span class="section-label">01_CORE_ARCHITECTURE</span>
+            <h2 class="section-title">心理OSの基底：条件反射 (Conditioned Reflex)</h2>
+            <div class="quote-box">
+                <p class="quote-text">「科学は、一つの結論から出発するのではなく、絶えざる観察と実験の積み重ねから生まれる」</p>
+                <p class="quote-author">— 1904年ノーベル生理学・医学賞受賞講演</p>
+            </div>
+            <p>パブロフの心理OSにおける最大の「コミット」は、目に見えない「心」を扱う代わりに、観測可能な「生理現象」として人間の行動を捉え直したことです。彼は、あらゆる適応行動を以下の2つのコンポーネントで定義しました。
+            </p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>🔔 条件刺激 (Conditioned Stimulus)</h3>
+                    <p>本来は無意味な刺激（ベルの音、光など）。「イベント通知」の役割を果たします。</p>
+                </div>
+                <div class="card">
+                    <h3>🍱 無条件刺激 (Unconditioned Stimulus)</h3>
+                    <p>本能的に反応を引き起こす刺激（エサなど）。「システム規定の命令」です。</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ 条件反射 (Conditioned Response)</h3>
+                    <p>学習の結果、条件刺激だけで発生するようになった反応。脳内の「新しい回路（プログラム）」の形成。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <span class="section-label">02_COMPILATION_PROCESS</span>
+            <h2 class="section-title">行動の「自動化」3フェーズ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. ペアリング (Pairing)</h3>
+                    <p>無関係な2つの事象を脳内で紐付けるフェーズ。いわゆる「関連付け（Association）」の書き込み。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 強化 (Reinforcement)</h3>
+                    <p>繰り返しペアリングを行うことで、バイオ・メモリ上の接続を固定化し、信頼性を高める。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 消去と自発的回復 (Extinction)</h3>
+                    <p>刺激を与えなくなると反応は消えるが（デリート）、しばらくすると復活する。これはデータが「非表示」になっているだけで「削除」されていないことを示唆する。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <span class="section-label">03_IT_CORRELATION_ANALYSIS</span>
+            <h2>💻 System Analysis: Biological Event Handling</h2>
+            <div class="grid">
+                <div class="card" style="background:#1e293b; color:#fff; border:none;">
+                    <h3>If-Then Logic (反応の構文)</h3>
+                    <p>「If (ベルが鳴る) Then (唾液を出す)」という論理を、訓練（Training）を通じて生体にハードコードするプロセスです。</p>
+                </div>
+                <div class="card" style="background:#1e293b; color:#fff; border:none;">
+                    <h3>Cache / Latent Learning</h3>
+                    <p>脳内の条件付けは、一度構築されるとキャッシュのように残り続けます。トラウマなどの強い負の条件付けは、優先度の高い「割り込み処理」として機能します。</p>
+                </div>
+                <div class="card" style="background:#1e293b; color:#fff; border:none;">
+                    <h3>Machine Learning (先行学習)</h3>
+                    <p>パブロフの実験は、現代のAI（機械学習）における「教師あり学習」そのものです。大量のラベル付きデータ（刺激＋正解）によってモデルを最適化するプロセスと酷似しています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <span class="section-label">04_NEW_FEATURES</span>
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>客観的心理学の確立</strong>：内観（自分の心を見る）ではなく、外部から測定可能な「行動」のみを扱う厳格なAPI。</li>
+                <li><strong>高次神経活動の解明</strong>：脳の大脳皮質における興奮と抑制のダイナミズムを、世界で初めて実験的に証明した。</li>
+                <li><strong>タイプ分類（気質論）</strong>：神経系統の強弱やバランスに基づいて、人（や動物）の性格を分類するプロファイリング機能。</li>
+                <li><strong>実験神経症の発見</strong>：矛盾した刺激（判別不能な楕円と円など）を与えることで、精神的な「システム・クラッシュ」が起きることを発見。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <span class="section-label">05_GENEALOGY_TRACING</span>
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>ルネ・デカルト（動物機械論、反射の概念）</li>
+                        <li>イワン・セチェノフ（『脳の反射』の著者。パブロフの精神的な師）</li>
+                        <li>クロード・ベルナール（実験医学の父）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>J.B.ワトソン（行動主義心理学の創始者。パブロフの影響を強く受けた）</li>
+                        <li>B.F.スキナー（オペラント条件付け：パブロフの理論をさらに発展）</li>
+                        <li>行動療法（恐怖症の治療など、条件付けを応用した医療）</li>
+                        <li>現代のマーケティング・デザイン（通知ドットや「いいね」による報酬回路の形成）</li>
+                        <li>脳科学・神経可塑性研究全般</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <span class="section-label">06_SYSTEM_COMPARISON</span>
+            <h2 class="section-title">⚖️ 学習モデルの比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>古典的条件付け（パブロフ）</th>
+                        <th>オペラント条件付け（スキナー）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>反応の性格</td>
+                        <td>受け身的・逃避的（反射）</td>
+                        <td>能動的・道具的（試行錯誤）</td>
+                    </tr>
+                    <tr>
+                        <td>学習のきっかけ</td>
+                        <td>刺激が先行（S → R）</td>
+                        <td>行動の結果による強化（R → S）</td>
+                    </tr>
+                    <tr>
+                        <td>主な対象</td>
+                        <td>自律神経系（唾液、震え、恐怖等）</td>
+                        <td>随意的行為（レバーを押す、勉強する等）</td>
+                    </tr>
+                    <tr>
+                        <td>ITアナロジー</td>
+                        <td>Event Observer / Trigger</td>
+                        <td>Game Loop / Reward Logic</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 応用と倫理 -->
+        <section class="section">
+            <span class="section-label">07_REAL_WORLD_DEPLOYMENT</span>
+            <h2 class="section-title">🛠️ 実装ガイドと限界</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>✅ 活用：良い「癖」のインストール</h3>
+                    <p>特定の音楽を聴いた後に必ず勉強を始める（20分）といった「ペアリング」を繰り返すことで、やる気に頼らない「自動実行モード」を構築できる。</p>
+                </div>
+                <div class="card" style="border-color: var(--accent);">
+                    <h3>⚠️ 警告：ダークパターン</h3>
+                    <p>現代のアプリ開発者はパブロフの知見を多用しています。スマートフォンの通知音や、無限スクロールによる刺激は、私たちの脳を「常に唾液を流す犬」のように依存状態へ条件付けてしまうリスク（バグ）があります。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <span class="section-label">08_SIMULATION_EXPERIMENT</span>
+            <h2 class="section-title">🔮 思考実験：AIと人間を区別する「ベル」</h2>
+            <div class="thought-experiment">
+                <p>もし将来、人間そっくりのアンドロイドが街に溢れた時、一瞬で「生身の人間」を見分けるためのベルをパブロフが鳴らすとしたらどうでしょう。AIは「ベルの音が鳴ったら唾液を出すフリをしろ」というロジックを完璧に実行できます。しかし、それはどこまでも『If-Then』の結果に過ぎません。
+                </p>
+                <p>パブロフの視点では、生物の真髄は「学習のプロセス（適応の痛みや遅延）」にあります。AIは即座に学習（重み更新）を完了しますが、生身の脳はタンパク質の結合を変え、回路を物理的に組み直す時間が必要です。つまり、「一瞬ですべてを学び取るAI」に対し、「過ちを繰り返し、少しずつ神経を繋ぎ変えていくパブロフの犬」のぎこちなさこそが、私たちが持つ生命の証（プルーフ・オブ・ライフ）なのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <span class="section-label">09_FREQUENTLY_ASKED_QUESTIONS</span>
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 700;">Q: 犬を虐待していたって本当ですか？</p>
+                    <p>当時の基準では科学的な実験とされていましたが、唾液を採取するために管を通すなど、現代の感覚からすると動物愛護上の問題がある手法は含まれていました。科学の歴史にある影として知っておく必要があります。
+                    </p>
+                </div>
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 700;">Q: 「パブロフの犬」という言葉、自分にも当てはまりますか？</p>
+                    <p>もちろんです。LINEの通知音を聞いて無意識にスマホを手に取るのは、現代における最も強力な古典的条件付けの一例です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <span class="section-label">10_FINAL_LOGS</span>
+            <h2 class="section-title">📝 結論</h2>
+            <p>イワン・パブロフは、私たちが神秘的なもの、神聖なものとして守りたかった「心」の動きの中に、物理的な回路の働きを見出しました。彼の発見した「条件反射」というコードは、教育、広告、そして私たち自身のセルフコントロールにおいても、逃れることのできない基底OSとして、今日も私たちの脳内で休むことなく実行され続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Status: CONDITIONED.</p>
+    </footer>
+</body>
+
+</html>

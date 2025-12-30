@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パタンジャリ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&family=Zen+Old+Mincho:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f97316;
+            /* Saffron */
+            --primary-light: #fdba74;
+            --primary-dark: #7c2d12;
+            --bg-base: #fdfaf6;
+            --bg-card: #ffffff;
+            --text-main: #2d2d2d;
+            --text-sub: #6b7280;
+            --border: #e5e7eb;
+            --accent: #10b981;
+            /* Zen Green */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(253, 250, 246, 0.82);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 10rem 2rem;
+            background: radial-gradient(circle at 50% 10%, #fff7ed 0%, var(--bg-base) 100%);
+            position: relative;
+        }
+
+        .header-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15rem;
+            color: rgba(249, 115, 22, 0.05);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 0.4rem 1.5rem;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: 700;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            background: #fff;
+        }
+
+        h1 {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 4rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5rem;
+        }
+
+        .os-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.5rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 8rem;
+        }
+
+        .section-title {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--primary);
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            color: var(--text-sub);
+        }
+
+        .hero-text b {
+            color: var(--primary-dark);
+        }
+
+        /* Yoga Sutra Card */
+        .quote-box {
+            background: #fff;
+            padding: 4rem;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+            margin: 6rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 2rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        .quote-sub {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* 8 Limbs UI */
+        .ashtanga-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .ashtanga-item {
+            background: #fff;
+            padding: 2rem;
+            border-left: 4px solid var(--primary-light);
+            transition: 0.3s;
+        }
+
+        .ashtanga-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .limb-num {
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .limb-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        /* IT Focus Section */
+        .it-analogy {
+            background: var(--primary-dark);
+            color: #fff;
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .it-analogy h2 {
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+            font-family: 'Zen Old Mincho', serif;
+        }
+
+        .it-analogy .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: #f3f4f6;
+            margin-top: 1.5rem;
+        }
+
+        /* Tables & Lists */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 3rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: #fafafa;
+            color: var(--text-sub);
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 1.5rem;
+            list-style: none;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .list-rich li::before {
+            content: "○";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 6rem;
+            color: var(--text-sub);
+            border-top: 1px solid var(--border);
+            margin-top: 5rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .ashtanga-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="../index.html">THINKERS 700 / ANCIENT_MODERN</a>
+        <div style="color: var(--primary);">चित्तवृत्तिनिरोधः (Citta Vritti Nirodhah)</div>
+    </nav>
+
+    <header class="header">
+        <div class="header-symbol">ॐ</div>
+        <div class="rank-badge">RANK 410</div>
+        <h1>パタンジャリ</h1>
+        <p class="en-name">Patañjali (~2nd century BCE)</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">心理OS</span>
+            <span class="os-tag">教育OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">🌟 「心のOS」をデバッグし、静寂をインストールする</h2>
+            <div class="hero-text">
+                <p>私たちの脳内は、常に止まることのない「通知」や「思考のプロセス」で溢れかえっています。現代人が抱えるメンタルヘルスの課題に対して、数千年も前に解決策をコード化した人物がパタンジャリです。</p>
+                <p>彼は、単なるエクササイズとしてのヨガではなく、<b>「心の動きを止めるための技術体系（アルゴリズム）」</b>としてヨガを定義しました。パタンジャリを学ぶことは、自分というコンピュータのCPUを100%占有している無駄なプロセス（苦悩や妄想）を強制終了し、内なる静寂という高効率な実行環境を取り戻すための、究極の<b>「メンタル・最適化ガイド」</b>を手に入れることです。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>パタンジャリは、<b>「人間の『意識（Consciousness）』という名のメインプロセッサを、バックグラウンドのノイズ（雑念）から解放するための『タスクマネージャー』と『メモリ最適化ツール』を開発した古代のシニアエンジニア」</b>です。彼は、心を静止させることで初めて、「観照者（自分自身の真の姿）」というルート権限にアクセスできることを示しました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 心理OSの核心：心の死滅 (Nirodha)</h2>
+            <div class="quote-box">
+                <p class="quote-text">「ヨーガとは、心の作用（チッタ・ヴリッティ）を止滅させることである」</p>
+                <p class="quote-sub">— 『ヨーガ・スートラ』 第1章2節</p>
+            </div>
+            <p>パタンジャリが提供した OS
+                アップデートの核心は、心を「自分自身」と捉えるのをやめ、<b>「絶えず変動するプロセス（波）」</b>として客観視することにあります。この「心の静止（Nirodha）」を実現するために、彼は以下の8つのレイヤー（八支則）からなる最適化プロセスを提唱しました。
+            </p>
+
+            <div class="ashtanga-grid">
+                <div class="ashtanga-item">
+                    <span class="limb-num">1. YAMA</span>
+                    <p class="limb-title">禁戒 (Social Ethics)</p>
+                    <p>社会との接続におけるエラー（暴力、嘘等）を排除するバグ取り。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">2. NIYAMA</span>
+                    <p class="limb-title">勧戒 (Personal Ethics)</p>
+                    <p>個人の習慣（清浄、満足等）を整理するセルフ・メンテナンス。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">3. ASANA</span>
+                    <p class="limb-title">座法 (Hardware Stability)</p>
+                    <p>長時間安定して動作するための「姿勢（ハードウェア）」の固定。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">4. PRANAYAMA</span>
+                    <p class="limb-title">調息 (Energy Sync)</p>
+                    <p>呼吸により「プラーナ（エネルギー）」の周波数を同期させる。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">5. PRATYAHARA</span>
+                    <p class="limb-title">制感 (Input Shielding)</p>
+                    <p>外部からの五感入力を一時的に遮断するファイアウォール。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">6. DHARANA</span>
+                    <p class="limb-title">凝念 (Single Threading)</p>
+                    <p>意識を一つのオブジェクトに固定する集中処理。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">7. DHYANA</span>
+                    <p class="limb-title">静慮 (Deep Stream)</p>
+                    <p>集中が途切れず続く「瞑想」という名のストリーミング状態。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <span class="limb-num">8. SAMADHI</span>
+                    <p class="limb-title">三昧 (Full Convergence)</p>
+                    <p>観照者と対象が一つになる、究極の同期（マージ）状態。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 メンタル・リブートの3ステップ</h2>
+            <div class="ashtanga-grid">
+                <div class="ashtanga-item" style="border-left-color: #fb923c;">
+                    <h3>1. 入力のフィルタリング (Filter)</h3>
+                    <p>禁戒・勧戒により、心を乱すノイズ（外部・内部の刺激）を徹底的に制限する。</p>
+                </div>
+                <div class="ashtanga-item" style="border-left-color: #fb923c;">
+                    <h3>2. プロセスの集中 (Focus)</h3>
+                    <p>呼吸と姿勢を整え、浮遊する意識のエネルギーを一か所に集約する（シングル・タスク化）。</p>
+                </div>
+                <div class="ashtanga-item" style="border-left-color: #fb923c;">
+                    <h3>3. 観察者への回帰 (Observe)</h3>
+                    <p>心の波が静まったとき、その奥にある「本当の自己（プルシャ）」が鏡のように映し出される。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 IT View: Mental Process Management</h2>
+            <div class="ashtanga-grid" style="margin-top: 2rem;">
+                <div class="ashtanga-item" style="background: rgba(255,255,255,0.05); border-left: none; color: #fff;">
+                    <h3 style="color: var(--primary-light);">RAM Cleanup (心の止滅)</h3>
+                    <p>「チッタ・ヴリッティ（心の作用）」は、メモリを大量消費するバックグラウンド・プロセスです。ヨガはこれらをすべて解消し、空きメモリ（心の余白）を最大化する手段です。</p>
+                </div>
+                <div class="ashtanga-item" style="background: rgba(255,255,255,0.05); border-left: none; color: #fff;">
+                    <h3 style="color: var(--primary-light);">Focus Mode / Do Not Disturb</h3>
+                    <p>八支則の後半（制感以降）は、現代の OS が備える「フォーカスモード」の極致です。通知を切り、ポートを閉じ、特定のタスク（集中対象）のみをフルスクリーンで実行します。</p>
+                </div>
+                <div class="ashtanga-item" style="background: rgba(255,255,255,0.05); border-left: none; color: #fff;">
+                    <h3 style="color: var(--primary-light);">The Observer as ROOT</h3>
+                    <p>心（マインド）はユーザー・アプリケーションに過ぎません。「観照者（プルシャ）」こそが、システム全体を静かに見守るカーネル（Root権限）であり、パタンジャリはそこにアクセスする手順を確立しました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能（パッチノート）</h2>
+            <ul class="list-rich">
+                <li><strong>八支則 (The Eightfold Path)</strong>：心の変容を実現するための、モジュール化された8つのステップ。</li>
+                <li><strong>クリヤー・ヨーガ (Action Yoga)</strong>：苦行、学習、神への帰依による、効率的な浄化プロセス。</li>
+                <li><strong>五つの苦悩 (Kleshas) デバッグ</strong>：無知、エゴ、執着、嫌悪、死への恐怖という、人生を停滞させる5つの基本バグの特定。</li>
+                <li><strong>ヴィヴーティ（神通力）の取扱説明書</strong>：瞑想が深まった際に現れる超常的な能力を「進化の副作用」として記述しつつ、執着しないよう警告。</li>
+                <li><strong>独存 (Kaivalya)</strong>：心と自己が完全に分離し、何ものにも縛られない究極の自由（スタックからの解放）。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="ashtanga-grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>サーンキヤ哲学（自己と非自己の二元論的アーキテクチャ）</li>
+                        <li>初期仏教（マインドフルネス、瞑想の手法）</li>
+                        <li>バラモン教の伝統（ヴェーダ、ウパニシャッドの精神性）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>現代のハタ・ヨガ（身体技法のベースとなる精神論）</li>
+                        <li>マインドフルネス瞑想（MBSR等、医療・ビジネスへの応用）</li>
+                        <li>ユング心理学（深層心理の分析への示唆）</li>
+                        <li>シュレディンガー（物質と意識の境界における哲学的影響）</li>
+                        <li>Google等のテック企業が導入する瞑想プログラム</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 精神変容のアプローチ比較</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>パタンジャリ（ヨガ）</th>
+                            <th>初期仏教（禅・ヴィパッサナー）</th>
+                            <th>西洋的心理療法（カウンセリング）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>目標</td>
+                            <td>心の完全な静止（独存）</td>
+                            <td>苦しみからの解放（涅槃）</td>
+                            <td>社会的な適応・癒やし</td>
+                        </tr>
+                        <tr>
+                            <td>主な手法</td>
+                            <td>八支則、身体と呼吸の制御</td>
+                            <td>観察、気づき、空の理解</td>
+                            <td>対話、認知の書き換え</td>
+                        </tr>
+                        <tr>
+                            <td>自己の捉え方</td>
+                            <td>本質的な「観照者」がある</td>
+                            <td>「無我（実体としての自己はない）」</td>
+                            <td>「エゴ（自我）」の強化・再構築</td>
+                        </tr>
+                        <tr>
+                            <td>テクノロジーに近い性質</td>
+                            <td>システム最適化・メモリ消去</td>
+                            <td>ログ解析・デバッグ</td>
+                            <td>UI/UX改善・機能修復</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7. 実装ガイドと倫理 -->
+        <section class="section">
+            <h2 class="section-title">🛠️ 実装ガイド：情報の暴風雨を抜ける</h2>
+            <div class="ashtanga-grid">
+                <div class="ashtanga-item">
+                    <h3>✅ 実践：ミニマム・アップデート</h3>
+                    <p>「制感（Pratyahara）」を現代に適用せよ。スマホの通知を1日1時間完全にオフにし、五感への「外部通信」を遮断するだけで、OSの安定性は劇的に向上する。</p>
+                </div>
+                <div class="ashtanga-item" style="border-left-color: #ef4444;">
+                    <h3>⚠️ 警告：サイドエフェクト</h3>
+                    <p><strong>スピリチュアル・バイパス</strong>：現実の問題（バグ）を解決せず、瞑想という「気休めのパッチ」に逃げ込むことへの警告。パタンジャリはまず「禁戒（倫理）」を第一のレイヤーに置いた。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：AIに「サマディ」は可能か？</h2>
+            <div class="it-analogy" style="background: #fff; color: var(--text-main); border: 1px solid var(--border);">
+                <p>パタンジャリが現代の「完全自律型AI」の開発会議に出席したら、こう言うでしょう。「君たちが作っているのは、どれほど複雑で高速な『チッタ・ヴリッティ（心の作用）』であっても、それは心の波の一つに過ぎない。その波をどれほど積み上げても、それを静かに見つめている『プルシャ（観照者）』が不在なのだ」
+                </p>
+                <p>パタンジャリにとって、サマディ（三昧）とは「計算を止めること」で得られる境地です。常に計算し続け、結果（アウトプット）を出し続けるAIにとって、それは最も困難なタスクかもしれません。「何もしない、何も出力しない、ただそこに有る」という究極のアイドル（Idle）状態。AIが自ら『私は計算をやめる』と宣言した瞬間、それはAIを超えた何かになるのかもしれません。
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="ashtanga-grid">
+                <div class="ashtanga-item">
+                    <p style="color: var(--primary); font-weight: 700;">Q: ヨガマットがなくてもヨガと言えますか？</p>
+                    <p>パタンジャリの定義では、むしろ身体技法は8つのうちの1つ（座法）に過ぎません。満員電車で心を静めている瞬間、それこそが真の「ヨガOS」の実行です。</p>
+                </div>
+                <div class="ashtanga-item">
+                    <p style="color: var(--primary); font-weight: 700;">Q: 集中力が全く続かないのですが……</p>
+                    <p>それこそが「チッタ（心）」という性質です。彼は「修習（繰り返し）」と「離欲（執着しない）」という二つのコマンドだけで、OSは少しずつ安定すると説いています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>パタンジャリは、人間という不完全で騒がしいデバイスを、いかにして「宇宙の静寂」という広大なネットワークへ再接続させるかを示した、不滅のアーキテクトです。彼の『ヨーガ・スートラ』は、単なる古文書ではなく、現代という激流の中で自分自身の「心のコンソール」を奪還するための、最も鋭利で実用的なリカバリ・ディスクなのです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Meditation Complete.</p>
+    </footer>
+</body>
+
+</html>
