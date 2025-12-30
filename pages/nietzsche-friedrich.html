@@ -4,123 +4,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フリードリヒ・ニーチェ | Thinkers 700</title>
+    <title>フリードリヒ・ニーチェ - 知のOSアップデート | Thinkers 700</title>
     <meta name="description" content="フリードリヒ・ニーチェの思想を学ぶ。超人、永劫回帰、力への意志、神の死。西洋哲学の根幹を揺るがした破壊と創造の哲学者。">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #1a1a2f;
-            --text-primary: #f0f0f5;
-            --text-secondary: #a0a0c0;
-            --accent: #ef4444;
-            --accent-secondary: #8b5cf6;
-            --accent-glow: rgba(239, 68, 68, 0.3);
-        }
-
-        * {
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1a 50%, #0a0a1f 100%);
+            font-family: 'Shippori Mincho', serif;
+            line-height: 1.9;
+            color: #ffffff;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
-
-        .container {
+        .detail-container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
-        header {
+        /* Pulse Animation for Special Badge */
+        @keyframes pulse-crimson {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 0 0 60px rgba(139, 92, 246, 0.5);
+            }
+        }
+
+        @keyframes text-glow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+            }
+
+            50% {
+                text-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 0 0 60px rgba(139, 92, 246, 0.4);
+            }
+        }
+
+        .special-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, #ef4444, #8b5cf6, #ef4444);
+            background-size: 200% 200%;
+            animation: pulse-crimson 2.5s infinite, gradient-shift 3s ease infinite;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes gradient-shift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .header-section {
             text-align: center;
+            margin-bottom: 6rem;
             padding: 4rem 2rem;
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(139, 92, 246, 0.1), transparent);
-            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+            border-bottom: 2px solid rgba(239, 68, 68, 0.3);
         }
 
-        .standard-banner {
-            display: inline-block;
-            background: linear-gradient(90deg, #ef4444, #8b5cf6);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .header-section h1 {
+            font-size: 4rem;
+            white-space: nowrap;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f87171, #a78bfa, #f87171);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-glow 3s ease infinite, gradient-shift 4s ease infinite;
         }
 
-        .os-tags-wrapper {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 0.5rem;
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 2.5rem;
+                white-space: normal;
+            }
         }
 
         .os-tag {
+            display: inline-block;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin: 1rem 0;
-            background: linear-gradient(90deg, #f87171, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .en-name {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #fca5a5;
+            margin: 0.25rem;
         }
 
         .section-card {
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 10, 20, 0.85);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 32px;
+            padding: 3.5rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
             color: #f87171;
-            border-bottom: 2px solid #ef4444;
-            padding-bottom: 0.5rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .quote-box {
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid #ef4444;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .insight-box {
-            background: rgba(139, 92, 246, 0.1);
-            border-left: 4px solid #8b5cf6;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 12px 12px 0;
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #ef4444, #8b5cf6, transparent);
         }
 
         .meta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         @media (max-width: 768px) {
@@ -131,33 +155,81 @@
 
         .meta-box h3 {
             font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            color: #fca5a5;
             text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+
+        .back-nav {
+            margin-bottom: 3rem;
+        }
+
+        .back-nav a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .back-nav a:hover {
+            color: #f87171;
         }
 
         .synthesis-step {
             display: flex;
-            gap: 1rem;
-            padding: 1rem;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
             background: rgba(239, 68, 68, 0.05);
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
+            border-radius: 12px;
+            border-left: 4px solid rgba(239, 68, 68, 0.3);
         }
 
         .synthesis-arrow {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            margin: 1rem 0;
             color: #ef4444;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
         }
 
         .synthesis-result {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(139, 92, 246, 0.15));
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(139, 92, 246, 0.2));
             border: 2px solid #ef4444;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
-            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .insight-box {
+            background: rgba(139, 92, 246, 0.15);
+            border-left: 6px solid #8b5cf6;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.15);
+            border-left: 6px solid #ef4444;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .quote-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 6px solid #ef4444;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+            font-size: 1.1rem;
         }
 
         .comparison-table {
@@ -175,26 +247,29 @@
 
         .comparison-table th {
             background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
         }
 
         details {
             background: rgba(255, 255, 255, 0.03);
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 1.5rem;
+            border-radius: 12px;
             margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         summary {
             cursor: pointer;
             color: #f87171;
             font-weight: 700;
+            font-size: 1.1rem;
         }
 
         footer {
             text-align: center;
             padding: 3rem;
-            color: var(--text-secondary);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0a0c0;
+            border-top: 1px solid rgba(239, 68, 68, 0.2);
         }
 
         a {
@@ -204,27 +279,51 @@
 
         a:hover {
             text-decoration: underline;
+            color: #fca5a5;
+        }
+
+        /* Spirit Transformation Styling */
+        .spirit-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .spirit-card h4 {
+            font-size: 1.5rem;
+            color: #f87171;
+            margin-bottom: 1rem;
+        }
+
+        .spirit-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
-        <div class="standard-banner">価値のハンマーを振るう者</div>
+    <div class="header-section">
+        <div class="back-nav"><a href="../index.html">← Thinkers 700 に戻る</a></div>
+        <div class="special-banner">✦ 特 別 編 ✦</div>
         <br>
-        <div class="os-tags-wrapper">
+        <div style="margin: 1rem 0;">
             <span class="os-tag">哲学OS</span>
             <span class="os-tag">倫理OS</span>
+            <span class="os-tag">心理OS</span>
         </div>
         <h1>フリードリヒ・ニーチェ</h1>
-        <p class="en-name">Nietzsche, Friedrich (1844 - 1900)</p>
-        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
-            「神は死んだ」──伝統的な価値をハンマーで破壊し、超人と永劫回帰という新たな地平を切り開いた哲学の爆弾
+        <p style="color: #c4b5fd; font-size: 1.1rem;">Nietzsche, Friedrich Wilhelm (1844 - 1900)</p>
+        <p
+            style="color: #fca5a5; margin-top: 1.5rem; font-size: 1.4rem; font-weight: 700; max-width: 700px; margin-left: auto; margin-right: auto;">
+            「神は死んだ」──伝統的な価値をハンマーで破壊し、<br>超人と永劫回帰という新たな地平を切り開いた哲学の爆弾
         </p>
-    </header>
+    </div>
 
-    <div class="container">
+    <div class="detail-container">
         <section class="section-card">
             <div class="section-title">0. この偉人を学ぶ意味</div>
             <div class="quote-box">
@@ -260,6 +359,80 @@
                     style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
                     <h4 style="color: #f87171; font-size: 1.3rem;">『善悪の彼岸』(1886)</h4>
                     <p style="margin-top: 1rem;">伝統的な哲学、特にプラトン以来の「真理への意志」を批判。「力への意志」という新概念を導入し、既存の道徳を超えた視座を模索。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f87171; font-size: 1.3rem;">『悦ばしき知識』(1882)</h4>
+                    <p style="margin-top: 1rem;">「神は死んだ」が初めて登場する著作。アフォリズム形式で、軽やかな文体の中に深い洞察を込める。永劫回帰の萌芽も見られる。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #f87171; font-size: 1.3rem;">『悲劇の誕生』(1872)</h4>
+                    <p style="margin-top: 1rem;">処女作。ギリシャ悲劇における「アポロ的なもの」（秩序・理性）と「ディオニュソス的なもの」（混沌・陶酔）の対立を分析。後の思想の原型が現れる。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 精神の三段変容 -->
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(139, 92, 246, 0.08));">
+            <div class="section-title">🐫🦁👶 精神の三段階変容</div>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                『ツァラトゥストラ』において、ニーチェは人間の精神が「超人」へと至る過程を三つの象徴的な変容として描いた。これは単なる比喩ではなく、自己超克の実践的指針でもある：</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="spirit-card">
+                    <div class="emoji">🐫</div>
+                    <h4>第一段階：ラクダ</h4>
+                    <p style="color: #fca5a5; font-weight: bold; margin-bottom: 0.5rem;">「汝なすべし」</p>
+                    <p>重荷を背負い、伝統・義務・道徳を忠実に守る段階。既存の価値を内面化し、砂漠の中を黙々と歩む。多くの人はここで止まる。</p>
+                </div>
+                <div class="spirit-card">
+                    <div class="emoji">🦁</div>
+                    <h4>第二段階：獅子</h4>
+                    <p style="color: #fca5a5; font-weight: bold; margin-bottom: 0.5rem;">「我欲す」</p>
+                    <p>ラクダが龍（「汝なすべし」という既存価値）に「否！」と叫ぶ。自由を勝ち取り、古い価値を破壊する。しかし獅子は新しい価値を「創造」できない。</p>
+                </div>
+                <div class="spirit-card">
+                    <div class="emoji">👶</div>
+                    <h4>第三段階：幼子</h4>
+                    <p style="color: #fca5a5; font-weight: bold; margin-bottom: 0.5rem;">「神聖なる肯定」</p>
+                    <p>破壊の後に訪れる「新しい始まり」。幼子は無垢で、遊び、肯定し、自らの回転する車輪として新たな価値を創造する。これが超人への道。</p>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top: 2rem;">
+                <p><strong>💡 IT風アナロジー：OSのアップグレードプロセス</strong></p>
+                <p>🐫 <strong>ラクダ</strong> = レガシーシステムの運用（古いOSを忠実に使い続ける）<br>
+                    🦁 <strong>獅子</strong> = システムの破棄決定（「このOSは使えない！」と叫ぶ）<br>
+                    👶 <strong>幼子</strong> = 新しいOSの自作（ゼロから自分の価値体系を設計）</p>
+            </div>
+        </section>
+
+        <!-- 名言集 -->
+        <section class="section-card">
+            <div class="section-title">💎 ニーチェ名言集</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div class="quote-box">
+                    <p>「怪物と戦う者は、その過程で自らも怪物にならないよう気をつけよ。深淵を覗くとき、深淵もまたこちらを覗いているのだ。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem; font-size: 0.9rem;">──『善悪の彼岸』</p>
+                </div>
+                <div class="quote-box">
+                    <p>「汝の敵を打ち負かすのではなく、汝の敵を汝の友に変えよ。汝の敵をも愛するならば、汝は真に強い。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem; font-size: 0.9rem;">──遺稿より</p>
+                </div>
+                <div class="quote-box">
+                    <p>「人間にとって最も価値あるものは、自分自身を克服することだ。これを知らない者は、自分自身でいることすらできない。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem; font-size: 0.9rem;">──『ツァラトゥストラ』</p>
+                </div>
+                <div class="quote-box">
+                    <p>「あなたを殺さないものは、あなたを強くする。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem; font-size: 0.9rem;">──『偶像の黄昏』</p>
+                </div>
+                <div class="quote-box">
+                    <p>「事実というものは存在しない。存在するのは解釈だけである。」</p>
+                    <p style="text-align: right; margin-top: 0.5rem; font-size: 0.9rem;">──遺稿より</p>
                 </div>
             </div>
         </section>
