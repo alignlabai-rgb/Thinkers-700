@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西田幾多郎 | Thinkers 700</title>
+    <meta name="description" content="西田幾多郎の思想を学ぶ。「善の研究」「純粋経験」「場所の論理」で西洋哲学と東洋思想を融合させた日本独自の哲学を創り上げた京都学派の創始者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), transparent);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #8b5cf6;
+            border-bottom: 2px solid #8b5cf6;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), transparent);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #8b5cf6;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), transparent);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #8b5cf6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">京都学派の創始者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+        <h1>西田幾多郎</h1>
+        <p class="en-name">Nishida Kitaro (1870-1945)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「善とは自己の深奥に沈めること」──西洋哲学と東洋の禅を融合させ、日本独自の哲学を創り上げた思索の巨人
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「経験するというのは事実そのままに知るの意である。全く自己の細工を棄てて、事実に従うて知るのである。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『善の研究』(1911)</p>
+            </div>
+            <p>西田幾多郎は、日本が初めて世界に送り出した独創的哲学者です。西洋の論理学・形而上学と、東洋の禅・仏教思想を融合させ、「純粋経験」「場所の論理」「絶対矛盾的自己同一」といった独自の概念を生み出しました。彼の『善の研究』は、日本人が書いた最初の本格的な哲学書として、今なお読み継がれています。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「主観」と「客観」は分離する前の状態がある。それが「純粋経験」だ。</strong></p>
+                <p>私たちは「自分（主観）が世界（客観）を見ている」と思っている。しかし、その区別は後から付けたものではないか？
+                    赤い花を見る瞬間、まだ「私」も「花」もない。ただ「赤さの経験」があるだけ。この分離以前の状態こそが、すべての出発点だと西田は言う。</p>
+            </div>
+            <p>現代IT風に言えば、西田は<strong>「哲学OSのカーネルを東洋思想で書き換えた」</strong>人です。西洋哲学の「主体がオブジェクトを認識する」というモデルを根本から問い直し、「認識」以前の「経験」そのものにアクセスしようとした。彼を学ぶことは、西洋的思考の前提を疑い、別の可能性を探ることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #8b5cf6; font-size: 1.3rem;">『善の研究』（1911）</h4>
+                    <p style="margin-top: 1rem;">
+                        日本人による最初の本格的哲学書。「純粋経験」を基盤に、認識論・倫理学・宗教哲学を統合。西洋の哲学用語を駆使しながらも、禅的な直接経験を哲学化した画期的著作。今も日本の大学で読まれる古典。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #8b5cf6; font-size: 1.3rem;">『働くものから見るものへ』（1927）</h4>
+                    <p style="margin-top: 1rem;">
+                        「場所」の概念を展開した中期の代表作。意識が「ある場所」の上に成り立つという発想。西洋の「主体」中心主義を超えて、「場所」こそが根源だとする視点の転換。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #8b5cf6; font-size: 1.3rem;">『哲学論文集』（1935-1945）</h4>
+                    <p style="margin-top: 1rem;">晩年の論文集。「絶対矛盾的自己同一」「行為的直観」など、西田哲学の最終形態を示す。難解だが、西田思想の深奥に触れる必読書。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Nishida Kitaro: Founder of the Kyoto School, Japan's first original philosopher. Developed
+                        concepts of "pure experience" (junsuikeiken), "logic of place" (basho no ronri), and "absolutely
+                        contradictory self-identity." Synthesized Western philosophy with Zen Buddhism to create a
+                        uniquely Japanese philosophical system. His "An Inquiry into the Good" remains foundational.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>京都学派の創始者であり、日本初の独創的哲学者。「純粋経験」「場所の論理」「絶対矛盾的自己同一」など独自の概念を展開。西洋哲学と禅仏教を融合し、日本独自の哲学体系を構築した。『善の研究』は日本哲学の古典として今も読み継がれる。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「日本人は哲学を輸入するだけで創造できない」<br>
+                        ・「西洋哲学こそ普遍的で東洋思想は神秘主義」<br>
+                        ・「主観と客観の二分法は哲学の出発点」
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・日本人も独創的哲学を創造できる<br>
+                        ・東洋と西洋を融合した新しい哲学体系が可能<br>
+                        ・主客分離以前の「純粋経験」こそが根源
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        『善の研究』で「純粋経験」を、後期著作で「場所の論理」「絶対矛盾的自己同一」を展開。京都学派を形成し、田辺元、三木清、久松真一、西谷啓治など後継者を育成。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    日本哲学の国際的認知、東西比較哲学、禅と認知科学の対話、マインドフルネス研究への示唆。
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #8b5cf6; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「西洋哲学の枠組みを使いながら、東洋の直接経験をいかに哲学的に表現するか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 純粋経験（じゅんすいけいけん）</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「経験するというのは事実そのままに知るの意である。全く自己の細工を棄てて、事実に従うて知るのである。」
+                </div>
+                <p>通常、私たちは「私（主観）が花（客観）を見ている」と考える。しかしこの主客の区別は、反省によって後から付け加えたものではないか？
+                    赤い花を見る瞬間、まだ「私」も「花」もない。ただ<strong>「赤さの経験」</strong>があるだけ。この分化以前の直接的経験を「純粋経験」と西田は呼んだ。これは禅の「無心」「没我」の状態を哲学的言語で表現したものとも言える。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 場所の論理（ばしょのろんり）</strong></p>
+                <p>西洋哲学は「主語」を中心に考える。「私は存在する」「花がある」──すべて主語から始まる。しかし西田は問う：その主語が「ある」ための<strong>「場所」</strong>は何か？
+                    意識は、それが成り立つ「場所」の上に存在する。この「場所」は、いわばオペレーティングシステムそのもの──すべてのプロセスを走らせる基盤である。</p>
+                <div class="insight-box">
+                    <p><strong>💡
+                            IT的理解</strong>：西洋哲学は「アプリケーション」（主体）を分析していた。西田は「OS」（場所）に注目した。アプリが動くにはOSが必要。意識が成り立つには「場所」が必要。
+                    </p>
+                </div>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 絶対矛盾的自己同一（ぜったいむじゅんてきじこどういつ）</strong></p>
+                <p>晩年の西田がたどり着いた概念。「多と一」「個と全体」「生と死」──これらは論理的には矛盾する。しかし現実では、矛盾するものが同時に成り立っている。これを「絶対矛盾的自己同一」と呼ぶ。例えば、私は「個人」であると同時に「人類の一員」である。この二つは矛盾するが、現実に同一のこの私において成り立っている。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #8b5cf6;">
+                    <h4 style="color: #a78bfa; font-size: 1.1rem; margin-bottom: 1rem;">■ 純粋経験（Pure Experience）</h4>
+                    <p>主観・客観の分離以前の直接的経験。反省によって「私」と「対象」に分かれるが、その分化以前の状態がすべての根源。禅の「無心」を哲学的に表現した概念。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #7c3aed;">
+                    <h4 style="color: #a78bfa; font-size: 1.1rem; margin-bottom: 1rem;">■ 場所（Basho / Place）</h4>
+                    <p>意識や存在が成り立つための「場」。述語的な視点から見た存在の基盤。主語ではなく場所こそが根源だという発想で、西洋の主体中心主義を転倒。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #8b5cf6;">
+                    <h4 style="color: #a78bfa; font-size: 1.1rem; margin-bottom: 1rem;">■ 絶対無（Absolute Nothingness）</h4>
+                    <p>「有」の根底にある「無」。ただの否定ではなく、すべてを包み込む「無限の開け」。禅仏教の「空」を哲学化したもの。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #7c3aed;">
+                    <h4 style="color: #a78bfa; font-size: 1.1rem; margin-bottom: 1rem;">■ 行為的直観（Acting Intuition）</h4>
+                    <p>認識は観照ではなく行為を通じてなされる。「見る」ことと「作る」ことは分離できない。芸術家が作品を作るとき、作品が作者を作る──この相互作用が行為的直観。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">ウィリアム・ジェームズ</strong>：<br>
+                            「純粋経験」の概念はジェームズの radical empiricism に着想を得た。心理学的アプローチの哲学化。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">新カント派</strong>：<br>
+                            ドイツ留学で学んだ認識論の枠組み。西田はこれを批判的に摂取し超克した。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">禅仏教</strong>：<br>
+                            若い頃からの座禅体験。「無」「空」の直接経験が純粋経験の源泉。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">ヘーゲル</strong>：<br>
+                            弁証法的思考、矛盾の統一という発想。「絶対矛盾的自己同一」はヘーゲルの止揚を東洋的に再解釈。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">京都学派</strong>：<br>
+                            田辺元、三木清、久松真一、西谷啓治など、西田の影響を受けた哲学者集団。日本独自の哲学伝統を形成。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">東西比較哲学</strong>：<br>
+                            西田哲学は、東洋と西洋を架橋する比較哲学の先駆けとなった。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">禅と認知科学の対話</strong>：<br>
+                            フランシスコ・ヴァレラなど認知科学者が西田的発想（enaction）に注目。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #8b5cf6;">マインドフルネス研究</strong>：<br>
+                            「純粋経験」は現代のマインドフルネス（気づき）研究と接続可能。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #8b5cf6; margin-bottom: 1rem;">アナロジー１：純粋経験としてのVR没入</h4>
+                <p>VRゲームに完全に没入している瞬間を想像しよう。そのとき、「自分」と「ゲーム世界」の区別を意識していない。ただ「ゲーム体験」がある。しかしふと我に返ると、「私がゲームをしている」と気づく。<strong>純粋経験とは、没入状態のこと</strong>。反省によって主客が分かれる。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #8b5cf6; margin-bottom: 1rem;">アナロジー２：場所としてのOS</h4>
+                <p>アプリケーション（主体・意識）が動くには、オペレーティングシステム（場所）が必要だ。西洋哲学は「アプリ」を分析していたが、西田は「OS」に注目した。<strong>アプリが動く「場所」こそが、アプリを可能にする根源だ</strong>。意識の「コンテンツ」ではなく、コンテンツを走らせる「コンテキスト」を問題にした。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #8b5cf6; margin-bottom: 1rem;">アナロジー３：波と海の自己同一</h4>
+                <p>波は海と「別物」だが、海なしには存在しない。波は「個」であり、海は「全体」。論理的には別だが、現実には同一のものだ。これが<strong>「絶対矛盾的自己同一」</strong>。私たちは「個人」であると同時に「人類」の一部。矛盾しているが、現実に同一のこの私において成り立っている。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>西洋近代哲学OS</th>
+                        <th>西田哲学OS</th>
+                        <th>現代への含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>出発点</td>
+                        <td>主体（コギト）</td>
+                        <td><strong>純粋経験（主客以前）</strong></td>
+                        <td>マインドフルネス</td>
+                    </tr>
+                    <tr>
+                        <td>存在の基盤</td>
+                        <td>実体・主語</td>
+                        <td><strong>場所・述語</strong></td>
+                        <td>環境・文脈重視</td>
+                    </tr>
+                    <tr>
+                        <td>矛盾の扱い</td>
+                        <td>排除すべきもの</td>
+                        <td><strong>現実に成り立つもの</strong></td>
+                        <td>複雑系・パラドックス</td>
+                    </tr>
+                    <tr>
+                        <td>無の意味</td>
+                        <td>否定・欠如</td>
+                        <td><strong>根源的開け（絶対無）</strong></td>
+                        <td>創造性の源泉</td>
+                    </tr>
+                    <tr>
+                        <td>認識の仕方</td>
+                        <td>観照・傍観</td>
+                        <td><strong>行為的直観</strong></td>
+                        <td>実践と理論の統合</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「純粋経験」を体験する</strong>：瞑想・座禅・マインドフルネスを通じて、主客が分離する前の「ただある」状態に触れる。思考を止め、「今ここ」を直接経験する。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「場所」の視点で問題を見直す</strong>：何かがうまくいかないとき、「主体」（自分・相手）を責めるのではなく、「場所」（環境・文脈・関係性）を分析する。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>矛盾を受け入れる</strong>：「AでありBでもある」状態を否定せず、両方を抱えたまま生きる。どちらかに決めなければならないという強迫を緩める。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>難解さ</strong>：西田の文章は非常に難解であり、初心者には挫折しやすい。入門書から始めることを推奨。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>戦時中の政治的言及</strong>：晩年、「大東亜共栄圏」に言及する文章もあり、政治利用された側面がある。思想の核心と政治的文脈を区別する必要がある。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card"
+            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし西田幾多郎が現代のAIブームを見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「興味深い。君たちは『人工知能』を作り、それが『意識を持つか』を問うている。」</p>
+                <p style="margin-top: 1rem;">「しかし、その問い方が既に間違っている。<strong>『主体』が『意識』を『持つ』という図式自体を問わなければならない</strong>。」</p>
+                <p style="margin-top: 1rem;">「私の言う『純粋経験』から見れば、AIは『経験している』のか？ 主客分離以前の直接性があるのか？ これは計算やデータ処理とは全く別の問題だ。」</p>
+                <p style="margin-top: 1rem;">「そして『場所』の問題がある。AIはどのような『場所』の上に成り立っているか？ サーバー？ データセンター？ それとも人間社会全体か？
+                    <strong>AIの『意識』を問うより、AIが成り立つ『場所』を問うべきではないか</strong>。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 文体の難解さ</h4>
+                    <p>西田の文章は悪名高いほど難解。造語・抽象概念が多く、専門家でも解釈が分かれる。アクセシビリティの問題。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 戦時中の政治的言及</h4>
+                    <p>晩年の論文で「世界新秩序」「日本的なるもの」への言及があり、大東亜共栄圏イデオロギーに利用された側面がある。思想の核心と政治的文脈の区別が必要。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 論理的整合性への疑問</h4>
+                    <p>「絶対矛盾的自己同一」は論理的に矛盾を肯定しており、分析哲学の観点からは問題視される。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">④ 神秘主義への傾斜</h4>
+                    <p>「純粋経験」「絶対無」は、厳密な論証というより神秘的体験の表現に近い。科学との接続が難しいという批判もある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「純粋経験」とは何？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        主観と客観に分離する前の直接的経験。反省によって「私」と「対象」に分かれるが、その分化以前の状態。禅の「無心」の哲学的表現。</p>
+                </details>
+                <details>
+                    <summary>「場所の論理」のポイントは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        西洋哲学は主語（主体）中心だが、西田は述語（場所）を根源と見た。意識や存在は、それが成り立つ「場所」の上にある。OSの上にアプリが動くように。</p>
+                </details>
+                <details>
+                    <summary>「絶対矛盾的自己同一」とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        論理的に矛盾するものが現実においては同一に成り立つこと。波と海、個人と人類、生と死──矛盾するが現実に共存している状態。</p>
+                </details>
+                <details>
+                    <summary>京都学派とは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> 西田とその弟子たちによる哲学者集団。田辺元、三木清、西谷啓治など。日本独自の哲学伝統を形成した。
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #8b5cf6; font-weight: 700;">純粋経験（じゅんすいけいけん）</dt>
+                <dd>主客分離以前の直接的経験。すべての哲学的思考の出発点。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">場所（ばしょ）</dt>
+                <dd>意識や存在が成り立つ「場」。述語的視点から見た根源的基盤。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">絶対無（ぜったいむ）</dt>
+                <dd>「有」の根底にある「無」。否定ではなく、すべてを包む開け。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">絶対矛盾的自己同一</dt>
+                <dd>矛盾するものが同一に成り立つこと。西田晩年の核心概念。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">行為的直観（こういてきちょっかん）</dt>
+                <dd>認識は行為を通じてなされる。見ることと作ることの統一。</dd>
+                <dt style="color: #8b5cf6; font-weight: 700; margin-top: 1rem;">京都学派（きょうとがくは）</dt>
+                <dd>西田を中心に形成された日本独自の哲学学派。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | 西田幾多郎</p>
+    </footer>
+</body>
+
+</html>

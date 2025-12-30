@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二宮尊徳 | Thinkers 700</title>
+    <meta name="description" content="二宮尊徳の思想を学ぶ。報徳思想と勤労・分度・推譲の教えで、荒廃した農村を復興させた江戸時代の偉大な実践哲学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #22c55e;
+            --accent-glow: rgba(34, 197, 94, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), transparent);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #22c55e;
+            border-bottom: 2px solid #22c55e;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), transparent);
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), transparent);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #22c55e;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #22c55e;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), transparent);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">報徳思想の創始者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+        <h1>二宮尊徳</h1>
+        <p class="en-name">Ninomiya Sontoku (1787-1856)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「積小為大」──小さな努力の積み重ねが大きな成果を生む。荒廃した農村を復興させた実践的道徳哲学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「道徳なき経済は犯罪であり、経済なき道徳は寝言である。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──二宮尊徳</p>
+            </div>
+            <p>二宮尊徳（通称「金次郎」）は、江戸時代後期の農政家・思想家です。貧しい農家に生まれながらも、自らの努力で学問を修め、独自の「報徳思想」を確立。荒廃した600以上の村を復興させた実績を持つ、行動する哲学者でした。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>道徳と経済は分離できない。両方なければ、社会は持続しない。</strong></p>
+                <p>「いいことをしたいが金がない」は言い訳。経済的基盤がなければ道徳は絵に描いた餅。しかし、金だけ追えば社会が崩壊する。この「道徳×経済」の統合が報徳思想の核心であり、SDGsやCSRの先駆けとも言える。
+                </p>
+            </div>
+            <p>現代IT風に言えば、二宮尊徳は<strong>「社会復興システムの設計者」</strong>です。入力（勤労）→処理（分度）→出力（推譲）という「報徳アルゴリズム」を設計し、破綻したコミュニティを再起動させた。彼を学ぶことは、持続可能な社会システムの原理を理解することです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #22c55e; font-size: 1.3rem;">『報徳記』（富田高慶 編）</h4>
+                    <p style="margin-top: 1rem;">
+                        弟子の富田高慶がまとめた尊徳の言行録。報徳思想の原典とされ、「勤労」「分度」「推譲」の教えが具体的エピソードとともに記録されている。尊徳の実践的知恵を学ぶ入門書。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #22c55e; font-size: 1.3rem;">『二宮翁夜話』</h4>
+                    <p style="margin-top: 1rem;">尊徳が弟子たちに語った教えをまとめたもの。「道徳と経済の一致」「自然と人為の調和」など、報徳思想の哲学的基盤が平易な言葉で説かれている。
+                    </p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #22c55e; font-size: 1.3rem;">村落復興の実績（600以上の村）</h4>
+                    <p style="margin-top: 1rem;">
+                        小田原藩、相馬藩など各地の荒廃した村々を実際に復興させた実績。理論だけでなく、実践によって思想を証明した点が二宮の最大の業績。「積小為大」の生きた証拠。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Ninomiya Sontoku: Edo-period agrarian reformer and moral philosopher. Developed "Hōtoku"
+                        (Repaying Virtue) philosophy integrating ethics and economics. Key principles: kinrō
+                        (diligence), bundo (moderation), suijō (yielding surplus to community). Restored over 600
+                        impoverished villages through practical application of his teachings. Pioneer of sustainable
+                        community development.</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>江戸後期の農政家・道徳思想家。道徳と経済を統合した「報徳思想」を創始。「勤労」（働くこと）、「分度」（収入に応じた節度ある生活）、「推譲」（余剰を社会に還元）の三原則で、600以上の荒廃した村落を復興。持続可能な社会発展のモデルを実践で示した。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 打破した旧常識</strong><br>
+                        ・「道徳と経済は別物」（儒教的建前主義）<br>
+                        ・「貧困は天命、諦めるしかない」（運命論）<br>
+                        ・「書物の学問こそ至高」（机上の学問偏重）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・道徳と経済は車の両輪（一円融合）<br>
+                        ・貧困は人為的原因があり、人為で克服できる<br>
+                        ・実践なき学問は無価値（行動による証明）
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        小田原藩服部家の再建、相馬藩の村落復興など、600以上の村を実際に立て直すことで思想を実証。明治以降、「報徳社」運動として全国に広がった。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    信用金庫・協同組合の精神的源流、CSR（企業の社会的責任）、SDGs（持続可能な開発目標）の日本的先駆け。渋沢栄一の「道徳経済合一説」にも影響。
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #22c55e; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「いかにして荒廃した共同体を、持続可能な形で復興させるか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 報徳思想（Hōtoku）の四大原則</strong></p>
+                <div style="display: grid; gap: 1.5rem; margin-top: 1rem;">
+                    <div
+                        style="padding: 1.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border-left: 4px solid #22c55e;">
+                        <h4 style="color: #4ade80; margin-bottom: 0.5rem;">① 至誠（しせい）</h4>
+                        <p>まごころを持って事に当たること。誠実さが信頼を生み、信頼が協力を生む。「天地の徳」に感謝し、誠をもって応える姿勢。</p>
+                    </div>
+                    <div
+                        style="padding: 1.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border-left: 4px solid #22c55e;">
+                        <h4 style="color: #4ade80; margin-bottom: 0.5rem;">② 勤労（きんろう）</h4>
+                        <p>働くことは苦役ではなく、天地の恵みに報いる行為。自らの力で価値を生み出し、社会に貢献する。「積小為大」──小さな努力の積み重ねが大きな成果を生む。</p>
+                    </div>
+                    <div
+                        style="padding: 1.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border-left: 4px solid #22c55e;">
+                        <h4 style="color: #4ade80; margin-bottom: 0.5rem;">③ 分度（ぶんど）</h4>
+                        <p>収入に応じた節度ある生活。「身の程」を知り、無駄遣いをしない。ただの節約ではなく、「自分の分を知る」という自己認識が基盤。</p>
+                    </div>
+                    <div
+                        style="padding: 1.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border-left: 4px solid #22c55e;">
+                        <h4 style="color: #4ade80; margin-bottom: 0.5rem;">④ 推譲（すいじょう）</h4>
+                        <p>分度によって生じた余剰を、他者や将来のために譲ること。「貯める」のではなく「回す」。これが共同体の持続可能性を生む鍵。</p>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 一円融合（いちえんゆうごう）</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「道徳なき経済は犯罪であり、経済なき道徳は寝言である。」
+                </div>
+                <p>道徳と経済を別物として分離するのは誤り。両者は「一円」（まん丸い一つの円）として融合している。利益追求だけでは社会が崩壊し、理想論だけでは飢え死にする。両方を統合することで、はじめて持続可能な社会が実現する。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 積小為大（せきしょういだい）</strong></p>
+                <p>「大きなことを成し遂げたければ、小さなことを積み重ねよ」。農村復興は一夜にして成らない。毎日の小さな努力──一本の苗木を植える、一畝の草を抜く、一銭を蓄える──の積み重ねが、やがて村全体を変える。これは現代の「カイゼン」「習慣の力」にも通じる。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #22c55e;">
+                    <h4 style="color: #4ade80; font-size: 1.1rem; margin-bottom: 1rem;">■ 報徳（ほうとく）</h4>
+                    <p>「徳に報いる」の意味。自然・先祖・社会から受けた恩恵に対して、自らの働きで恩返しする姿勢。ギブ・アンド・テイクというより、「受けた恩を次に回す」循環の思想。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #16a34a;">
+                    <h4 style="color: #4ade80; font-size: 1.1rem; margin-bottom: 1rem;">■ 五常講（ごじょうこう）</h4>
+                    <p>尊徳が創設した相互扶助組織。メンバーが少額ずつ出資し、困った人に無利子で貸し付ける。現代の信用金庫・マイクロファイナンスの先駆けとも言える仕組み。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #22c55e;">
+                    <h4 style="color: #4ade80; font-size: 1.1rem; margin-bottom: 1rem;">■ 仕法（しほう）</h4>
+                    <p>尊徳が開発した村落復興の方法論・計画。借金の整理、農地の再開発、水利施設の整備、住民の意識改革などを総合的に行う「パッケージ」。現代の「地方創生プログラム」に相当。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #16a34a;">
+                    <h4 style="color: #4ade80; font-size: 1.1rem; margin-bottom: 1rem;">■ 報徳社運動</h4>
+                    <p>明治以降、尊徳の教えを広めるために全国に設立された組織。地域の相互扶助、道徳教育、経済協力を推進。静岡県の大日本報徳社が現在も活動を続けている。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">儒教（朱子学）</strong>：<br>
+                            修身斉家治国平天下の理念。しかし尊徳は書斎の学問を超え、実践を重視した。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">神道</strong>：<br>
+                            天地の恵みへの感謝、自然との調和という発想。報徳の「徳に報いる」は神道的世界観と接続。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">仏教</strong>：<br>
+                            因果応報、利他の精神。「推譲」は菩薩行にも通じる。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">石田梅岩（石門心学）</strong>：<br>
+                            商人道徳と勤勉の思想。町人への道徳教育の先駆者。尊徳は農民に焦点を当てた。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">渋沢栄一</strong>：<br>
+                            「道徳経済合一説」「論語と算盤」。尊徳の思想を近代資本主義に接続した「日本資本主義の父」。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">信用金庫・協同組合運動</strong>：<br>
+                            五常講の発想は、信用金庫、農協、生協など日本の協同組合思想に影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">戦後の修身教育批判</strong>：<br>
+                            戦前の「二宮金次郎像」は勤勉教育のシンボルとして利用されたが、戦後は「軍国主義的」と批判も。尊徳思想の本質とは別の政治利用問題。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #22c55e;">CSR・SDGs</strong>：<br>
+                            「道徳と経済の統合」「持続可能な発展」という現代企業倫理の日本的源流。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #22c55e; margin-bottom: 1rem;">アナロジー１：村というシステムのリブート</h4>
+                <p>荒廃した村を<strong>クラッシュしたサーバー</strong>に例えよう。借金が溜まり、住民は逃げ出し、田畑は荒れ果てている。尊徳はこのシステムを「リブート」した。どうやって？
+                    まずカーネル（住民の心構え＝至誠）を書き換え、次にプロセス管理（勤労→分度→推譲のサイクル）を最適化し、メモリリーク（無駄遣い）を修正した。</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #22c55e; margin-bottom: 1rem;">アナロジー２：報徳アルゴリズム</h4>
+                <p><strong>勤労（入力）→ 分度（処理）→
+                        推譲（出力）</strong>。これを毎ターン回すのが「報徳アルゴリズム」だ。入力（働いて収入を得る）を適切に処理（収入に見合った支出に抑える）し、余剰を出力（共同体に還元）する。このループを回し続けることで、システム全体が安定成長する。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #22c55e; margin-bottom: 1rem;">アナロジー３：金次郎像とスマホ問題</h4>
+                <p>小学校の「二宮金次郎像」──薪を背負いながら本を読む少年。「歩きスマホ」につながるとして撤去論争も起きた。しかし本質は「いかなる状況でも学び続ける姿勢」。現代なら「通勤電車でPodcastを聴く」「隙間時間でオンライン講座を受ける」に置き換えられる。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>旧OS（江戸の常識）</th>
+                        <th>二宮尊徳 OS</th>
+                        <th>現代への含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>道徳と経済</td>
+                        <td>別々のもの（士農工商）</td>
+                        <td><strong>一円融合（両輪）</strong></td>
+                        <td>CSR、SDGs</td>
+                    </tr>
+                    <tr>
+                        <td>貧困の原因</td>
+                        <td>天命、運命</td>
+                        <td><strong>人為的原因（怠惰・浪費）</strong></td>
+                        <td>行動経済学的介入</td>
+                    </tr>
+                    <tr>
+                        <td>学問の価値</td>
+                        <td>書物を読むこと</td>
+                        <td><strong>実践で証明すること</strong></td>
+                        <td>PBL、アクティブラーニング</td>
+                    </tr>
+                    <tr>
+                        <td>余剰の扱い</td>
+                        <td>貯蓄・相続</td>
+                        <td><strong>推譲（社会に還元）</strong></td>
+                        <td>寄付文化、社会投資</td>
+                    </tr>
+                    <tr>
+                        <td>成功の方法</td>
+                        <td>一発逆転、幸運</td>
+                        <td><strong>積小為大（小さな積み重ね）</strong></td>
+                        <td>習慣の力、カイゼン</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「分度」を家計に適用する</strong>：収入の範囲内で生活し、無駄遣いを避ける。ただの節約ではなく「自分の分を知る」という自己認識が鍵。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「推譲」を習慣化する</strong>：収入の一部を寄付・投資・社会貢献に回す。「余ったら」ではなく「先に取り分けて」譲る。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「積小為大」で習慣を築く</strong>：大きな目標を小さなステップに分解し、毎日少しずつ実行する。一日10分の学習、一日一つの感謝など。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>自己責任論への転落</strong>：「貧困は怠惰のせい」という読み方は危険。尊徳は個人の努力だけでなく、共同体の相互扶助を重視した。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>戦前の政治利用</strong>：「二宮金次郎像」は戦前の勤勉教育・国家主義のシンボルとして利用された。尊徳思想と政治利用を区別する必要がある。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし二宮尊徳が現代の「地方消滅問題」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、私の時代と問題の構造は同じだな。若者が都市に流出し、村が荒廃し、高齢者だけが残る。」</p>
+                <p style="margin-top: 1rem;">
+                    「しかし、補助金をばらまくだけでは村は再生しない。<strong>住民自身の心が変わらなければ、いくら金を注いでも無駄だ</strong>。まず『至誠』──本気で村を立て直したいという誠意が必要だ。」
+                </p>
+                <p style="margin-top: 1rem;">「次に『分度』──その村の実力（人口、産業、資源）に見合った目標を立てる。東京のマネをしても意味がない。」</p>
+                <p style="margin-top: 1rem;">「そして『推譲』──成功した村は、得たノウハウを他の村に伝える。これが正の連鎖を生む。」</p>
+                <p style="margin-top: 1rem;">「<strong>『道徳なき経済は犯罪であり、経済なき道徳は寝言である』</strong>──この言葉の意味を、令和の政治家諸君はよく考えるがよい。」
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 自己責任論への転落</h4>
+                    <p>「貧困は怠惰のせい」という読み方は、構造的な貧困問題を無視する危険がある。尊徳は個人の努力を重視したが、同時に相互扶助の仕組みも作った。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 戦前の政治利用</h4>
+                    <p>「二宮金次郎像」は戦前の教育で勤勉・忍耐のシンボルとして利用され、国家主義・軍国主義と結びつけられた。尊徳自身の思想とは別に、政治利用された歴史がある。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 封建的秩序の受容</h4>
+                    <p>尊徳は封建的身分秩序を否定せず、その中での改良を目指した。革命的変革ではなく、既存秩序内での漸進的改善という限界がある。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「報徳」とはどういう意味？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong> 「徳に報いる」の意味。天地・自然・先祖・社会から受けた恩恵に対して、自らの働きで恩返しする姿勢。
+                    </p>
+                </details>
+                <details>
+                    <summary>「分度」と「節約」の違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        単なる節約は「少なく使う」こと。「分度」は「自分の分を知る」という自己認識を基盤とした、収入に見合った適切な生活。</p>
+                </details>
+                <details>
+                    <summary>「推譲」とは何を譲るのか？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        分度によって生じた余剰を、他者や将来のために譲ること。「貯める」のではなく「回す」ことで、共同体全体が持続可能になる。</p>
+                </details>
+                <details>
+                    <summary>「道徳なき経済は犯罪、経済なき道徳は寝言」の意味は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        道徳と経済は分離できない。利益だけ追えば犯罪的行為に堕し、理想論だけでは実現不可能な空論になる。両方の統合が必要。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #22c55e; font-weight: 700;">報徳（ほうとく）</dt>
+                <dd>「徳に報いる」。受けた恩恵への感謝と返礼の精神。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">至誠（しせい）</dt>
+                <dd>まごころ、誠実さ。すべての行動の基盤となる心構え。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">勤労（きんろう）</dt>
+                <dd>働くこと。天地の恵みに報いる行為としての労働。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">分度（ぶんど）</dt>
+                <dd>収入に応じた節度ある生活。「自分の分を知る」自己認識。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">推譲（すいじょう）</dt>
+                <dd>余剰を他者や将来に譲ること。共同体の持続可能性の鍵。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">積小為大（せきしょういだい）</dt>
+                <dd>「小を積みて大を為す」。小さな努力の積み重ねが大きな成果を生む。</dd>
+                <dt style="color: #22c55e; font-weight: 700; margin-top: 1rem;">一円融合（いちえんゆうごう）</dt>
+                <dd>道徳と経済が一つの円として融合している思想。分離は誤り。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | 二宮尊徳</p>
+    </footer>
+</body>
+
+</html>

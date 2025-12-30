@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西谷啓治 | Thinkers 700</title>
+    <meta name="description" content="西谷啓治の思想を学ぶ。『宗教とは何か』で虚無主義を超克し、「空」の立場から西洋のニヒリズムに応答した京都学派の宗教哲学者。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), transparent);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .standard-banner {
+            display: inline-block;
+            background: linear-gradient(90deg, #06b6d4, #0891b2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .os-tags-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .os-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(90deg, #06b6d4, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .en-name {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .section-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #06b6d4;
+            border-bottom: 2px solid #06b6d4;
+            padding-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);
+            border-left: 4px solid #06b6d4;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meta-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-box h3 {
+            color: #06b6d4;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .synthesis-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .synthesis-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .synthesis-step span:first-child {
+            font-size: 1.5rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), transparent);
+            border: 2px solid #06b6d4;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #06b6d4;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #06b6d4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.9rem;">← Thinkers 700 に戻る</a>
+        <div class="standard-banner">ニヒリズムと空の哲学者</div>
+        <br>
+        <div class="os-tags-wrapper">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+        <h1>西谷啓治</h1>
+        <p class="en-name">Nishitani Keiji (1900-1990)</p>
+        <p style="color: #e2e8f0; margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">
+            「空」によってニヒリズムを超える──西洋の虚無主義に仏教思想で応答した京都学派の宗教哲学者
+        </p>
+    </header>
+
+    <div class="container">
+        <section class="section-card">
+            <div class="section-title">0. この偉人を学ぶ意味</div>
+            <div class="quote-box">
+                <p>「虚無を通過することによってのみ、真の宗教的立場に達することができる。」</p>
+                <p style="text-align: right; margin-top: 0.5rem; font-weight: 700;">──『宗教とは何か』</p>
+            </div>
+            <p>西谷啓治は、西田幾多郎の弟子として京都学派を継承し、ニーチェやハイデガーの「ニヒリズム（虚無主義）」の問題に、仏教の「空（くう）」の思想で応答した宗教哲学者です。『宗教とは何か』は、東西思想の対話における20世紀最高傑作の一つとされます。
+            </p>
+            <div class="insight-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>💡 核心的洞察</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>「虚無」は通過点であり、終点ではない。虚無の底を破ることで「空」に至る。</strong></p>
+                <p>ニーチェが「神は死んだ」と宣言して以来、西洋は「すべては無意味だ」というニヒリズムに直面している。しかし西谷は言う：ニヒリズムに留まるな。虚無の「底を抜く」ことで、すべてを包む「空」の立場に至れる。虚無は否定だが、空は肯定だ。
+                </p>
+            </div>
+            <p>現代IT風に言えば、西谷は<strong>「虚無というシステム障害を空にバージョンアップする方法」</strong>を示した人です。西洋哲学が「意味喪失」というエラーで停止したとき、東洋の「空」という別のOSに切り替える道を示した。彼を学ぶことは、現代の虚無感・意味の危機への処方箋を得ることです。
+            </p>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">📚 主著・主業績ガイド</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #06b6d4; font-size: 1.3rem;">『宗教とは何か』（1961）</h4>
+                    <p style="margin-top: 1rem;">
+                        西谷の代表作であり、20世紀の東西比較宗教哲学の最高峰。ニヒリズムの問題を正面から受け止め、仏教の「空」の立場からその超克を試みる。英訳（Religion and
+                        Nothingness）で世界的に読まれている。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #06b6d4; font-size: 1.3rem;">『ニヒリズム』（1949）</h4>
+                    <p style="margin-top: 1rem;">ニーチェ・ハイデガーのニヒリズム論を詳細に分析した著作。西洋が直面する「意味喪失」の危機を診断し、その超克の可能性を探る。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                    <h4 style="color: #06b6d4; font-size: 1.3rem;">『禅と哲学』『空と即』</h4>
+                    <p style="margin-top: 1rem;">禅仏教と西洋哲学の対話を試みた論考群。「即」（～でありながら～である）という日本語の論理構造に着目し、西洋の二項対立を超える道を探る。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">1. 基本情報 & 要旨</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>Abstract (English)</h3>
+                    <p>Nishitani Keiji: Leading philosopher of the Kyoto School, disciple of Nishida Kitaro and
+                        Heidegger. Addressed Western nihilism through Buddhist concept of "śūnyatā" (emptiness). His
+                        "Religion and Nothingness" offers a profound East-West dialogue on meaning, nihilism, and
+                        religious experience. Argued that nihilism must be passed through, not avoided, to reach the
+                        "standpoint of śūnyatā."</p>
+                </div>
+                <div class="meta-box">
+                    <h3>要旨（日本語）</h3>
+                    <p>京都学派を代表する宗教哲学者。西田幾多郎・ハイデガーに師事。ニーチェ以来の西洋ニヒリズムに、仏教の「空」概念で応答した。主著『宗教とは何か』で、虚無主義を「通過」することで「空」の立場に至る道を示した。東西思想の対話における20世紀最高峰の一人。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">2. 変革の構造図 (Visual Synthesis)</div>
+            <div class="synthesis-container">
+                <div class="synthesis-step">
+                    <span>💥</span>
+                    <span><strong>Step 1: 直面した危機</strong><br>
+                        ・「神は死んだ」（ニーチェ）──西洋の価値体系崩壊<br>
+                        ・「すべては無意味だ」というニヒリズムの蔓延<br>
+                        ・「なぜ生きるのか」という問いへの応答喪失
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>🌅</span>
+                    <span><strong>Step 2: 提示した新パラダイム</strong><br>
+                        ・ニヒリズムを避けるな、「通過」せよ<br>
+                        ・虚無の「底を抜く」ことで「空」に至れる<br>
+                        ・「空」は否定ではなく、すべてを包む肯定
+                    </span>
+                </div>
+                <div class="synthesis-step">
+                    <span>📜</span>
+                    <span><strong>Step 3: 実装・証明</strong><br>
+                        『宗教とは何か』で体系化。ハイデガーとの対話、禅との接続、東西比較宗教哲学の確立。京都学派の宗教哲学的側面を深化。
+                    </span>
+                </div>
+                <div class="result-box">
+                    <strong>🎯 現代への実装</strong><br>
+                    意味喪失の時代への処方箋、マインドフルネスと虚無の超克、環境倫理（自己中心性の超克）、東西宗教間対話。
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">3. OSの核心 (Kernel)</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.8rem;">中心的な問い</h4>
+                <p style="font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                    「意味を喪失した時代に、いかにして宗教的立場を回復するか？」</p>
+            </div>
+            <div>
+                <h4 style="color: #60a5fa; font-size: 1.1rem; margin-bottom: 0.8rem;">書き換えたコード</h4>
+
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;"><strong>▼ 虚無（ニヒリズム）vs 空（シューニャター）</strong></p>
+                <table class="comparison-table" style="margin: 1.5rem 0;">
+                    <thead>
+                        <tr>
+                            <th>虚無（Nihilism）</th>
+                            <th>空（Śūnyatā）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>「すべては無意味だ」</td>
+                            <td>「すべては空であり、だからこそ意味がある」</td>
+                        </tr>
+                        <tr>
+                            <td>否定・絶望</td>
+                            <td>超越・肯定</td>
+                        </tr>
+                        <tr>
+                            <td>「何もない」（nothing）</td>
+                            <td>「固定的実体がない」（no-thingness）</td>
+                        </tr>
+                        <tr>
+                            <td>自己中心性の崩壊</td>
+                            <td>自己中心性からの解放</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>西谷は言う：虚無と空は似ているが、決定的に違う。虚無は「何もない」と絶望する。空は「固定的な実体がない」からこそ、すべてが相互連関して存在すると肯定する。虚無は閉じた扉、空は開かれた扉。</p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 「虚無の底を抜く」</strong></p>
+                <div class="quote-box" style="margin: 1rem 0;">
+                    「虚無を通過することによってのみ、真の宗教的立場に達することができる。」
+                </div>
+                <p>伝統的宗教は「虚無を避ける」ことで人を救おうとした。しかし近代以降、その回避は通用しなくなった。西谷は言う：虚無を避けるな。<strong>虚無の底まで降りていき、その「底を抜け」</strong>。すると、虚無の向こう側に「空」が開ける。虚無は終点ではなく、空への通過点。
+                </p>
+
+                <p style="font-size: 1.2rem; margin-top: 2rem;"><strong>▼ 自己中心性（self-centeredness）からの転回</strong></p>
+                <p>ニヒリズムの根本原因は「自己中心性」だと西谷は診断する。「私」を中心に世界を見るから、その「私」が揺らぐと世界全体が意味を失う。しかし「空」の立場では、「私」は固定的実体ではなく、縁起（相互連関）の中で成り立っている。この視点の転換が、ニヒリズム超克の鍵。
+                </p>
+
+                <div class="insight-box" style="margin-top: 2rem;">
+                    <p><strong>💡 IT的理解</strong>：虚無はシステムクラッシュ。「OSが停止しました」。空はリブート後の新しいOS。同じハードウェア上で、まったく違う動作が可能になる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">4. 新機能の解説 (Key Components)</div>
+            <div style="display: grid; gap: 2rem;">
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #06b6d4;">
+                    <h4 style="color: #22d3ee; font-size: 1.1rem; margin-bottom: 1rem;">■ 空（くう / Śūnyatā）</h4>
+                    <p>仏教の核心概念。「何もない」ではなく、「固定的実体がない」こと。すべては縁起（相互連関）によって成り立っており、独立した「もの」は存在しない。これは否定ではなく、相互連関への肯定。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #0891b2;">
+                    <h4 style="color: #22d3ee; font-size: 1.1rem; margin-bottom: 1rem;">■ 回互（えご / Circuminsessional
+                        interpenetration）</h4>
+                    <p>すべてが相互に浸透し合っている状態。AとBが別々に存在するのではなく、Aの中にBがあり、Bの中にAがある。主客、自他、聖俗の二項対立を超える発想。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #06b6d4;">
+                    <h4 style="color: #22d3ee; font-size: 1.1rem; margin-bottom: 1rem;">■ 即（そく）の論理</h4>
+                    <p>「AでありながらBである」という日本語の論理構造。「色即是空、空即是色」のように、矛盾するものが同時に成り立つ。西洋の排中律（AかBか）とは異なる思考様式。</p>
+                </div>
+                <div
+                    style="padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border-left: 4px solid #0891b2;">
+                    <h4 style="color: #22d3ee; font-size: 1.1rem; margin-bottom: 1rem;">■ 宗教の本質</h4>
+                    <p>西谷にとって宗教の本質は、教義や儀式ではなく、「自己中心性からの解放」「空の立場への転回」にある。これはキリスト教・仏教・イスラム教に共通する深層構造。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">5. 知の系譜 (Genealogy)</div>
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <h3>継承と思想のバトン (Roots)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">西田幾多郎</strong>：<br>
+                            京都大学での師。「純粋経験」「絶対無」の思想を継承し、宗教哲学に発展させた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">ハイデガー</strong>：<br>
+                            フライブルク留学で直接師事。ニヒリズム論、存在論を学び、東洋思想と接続。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">ニーチェ</strong>：<br>
+                            「神は死んだ」「ニヒリズム」の診断を真正面から受け止め、応答を試みた。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">禅仏教・華厳哲学</strong>：<br>
+                            「空」「縁起」「回互」など東洋の伝統思想を哲学的言語で表現。
+                        </li>
+                    </ul>
+                </div>
+                <div class="meta-box">
+                    <h3>派生と分岐 (Fruits)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">東西宗教間対話</strong>：<br>
+                            キリスト教神学者との対話（ティリッヒ、コブなど）。宗教多元主義の議論に影響。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">ディープ・エコロジー</strong>：<br>
+                            「自己中心性の超克」は環境倫理学に示唆を与える。生態系全体への拡張。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">上田閑照</strong>：<br>
+                            西谷の弟子であり、京都学派第三世代として「二重世界内存在」を展開。
+                        </li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: #06b6d4;">意味の危機への応答</strong>：<br>
+                            現代の「意味喪失」「虚無感」への処方箋として、西谷思想は再評価されている。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">6. 深層理解のアナロジー</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #06b6d4; margin-bottom: 1rem;">アナロジー１：虚無はシステムクラッシュ、空はリブート</h4>
+                <p>虚無主義は<strong>「ブルースクリーン（システム停止）」</strong>だ。「OSが停止しました。何も動きません」。しかし西谷は言う：電源を入れ直せ。すると新しいOSが起動する。それが「空」だ。同じハードウェア（この世界）上で、まったく違う意味体系が動き始める。
+                </p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 1.1rem; color: #06b6d4; margin-bottom: 1rem;">アナロジー２：「0」の発見のように</h4>
+                <p>古代ローマには「ゼロ」がなかった。「何もない」を数として認めなかった。しかしインド数学が「0」を発見したことで、数学は革命的に発展した。同様に、西洋は「虚無」を恐れて避けてきた。しかし<strong>「空」として受け入れることで、哲学は新たな地平を開く</strong>。
+                </p>
+            </div>
+            <div>
+                <h4 style="font-size: 1.1rem; color: #06b6d4; margin-bottom: 1rem;">アナロジー３：ネガとポジ</h4>
+                <p>虚無と空は、写真の<strong>ネガとポジ</strong>のようなもの。同じ構図だが、明暗が逆転している。虚無は「すべてが暗い」と見る。空は「暗さがあるからこそ明るさがある」と見る。どちらの見方を選ぶかで、体験される世界が変わる。
+                </p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">7. 座標軸：新旧OS分析</div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>西洋近代OS</th>
+                        <th>西谷OS（空の立場）</th>
+                        <th>現代への含意</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>「無」の扱い</td>
+                        <td>恐れ、避ける</td>
+                        <td><strong>通過し、受け入れる</strong></td>
+                        <td>死の受容、喪失への対処</td>
+                    </tr>
+                    <tr>
+                        <td>意味の源泉</td>
+                        <td>神・理性・進歩</td>
+                        <td><strong>空・縁起・回互</strong></td>
+                        <td>ポスト世俗主義</td>
+                    </tr>
+                    <tr>
+                        <td>自己の在り方</td>
+                        <td>自立した主体</td>
+                        <td><strong>縁起の中の自己</strong></td>
+                        <td>関係性・エコロジー</td>
+                    </tr>
+                    <tr>
+                        <td>二項対立</td>
+                        <td>AかBか</td>
+                        <td><strong>AでありながらB（即）</strong></td>
+                        <td>複雑系・両義性</td>
+                    </tr>
+                    <tr>
+                        <td>宗教の本質</td>
+                        <td>教義・信仰</td>
+                        <td><strong>自己中心性からの解放</strong></td>
+                        <td>トランスパーソナル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">8. 現代への応用と倫理</div>
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #60a5fa; margin-bottom: 1rem;">実践 (Installation)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「虚無を避けない」</strong>：意味喪失や絶望を感じたとき、それを押し殺さない。虚無の底まで降りていく勇気を持つ。そこに「底抜け」の可能性がある。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「自己中心性」を自覚する</strong>：苦しみの多くは「私」を中心にした見方から来る。「私」が縁起の中で成り立っていることを観想する。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>「即」の論理を使う</strong>：「どちらかに決めなければ」という強迫を緩める。「AでありながらB」という両立を探る。
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #ef4444; margin-bottom: 1rem;">副作用と注意点 (Side Effects)</h4>
+                <ul style="list-style: disc; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>難解さ</strong>：西谷の文章は非常に難解であり、専門的訓練なしには読解が困難。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>戦時中の発言</strong>：戦時中に「世界史の哲学」座談会に参加し、日本の戦争に哲学的正当化を与えたと批判される。
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>東洋優越主義への傾斜</strong>：「西洋のニヒリズムを東洋の空が救う」という図式が、東洋優越主義と受け取られる可能性。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent);">
+            <div class="section-title">9. 思考実験 (Simulation)</div>
+            <p><strong>もし西谷啓治が現代のSNS疲れと「意味の危機」を見たら？</strong></p>
+            <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px;">
+                <p>「なるほど、ニヒリズムは進行しているようだな。『いいね』の数を追いかけ、しかし満たされない。『映える』生活を演出し、しかし虚しい。」</p>
+                <p style="margin-top: 1rem;">
+                    「これは<strong>自己中心性の極致</strong>だ。『私』を中心に、すべてを『私』の価値に換算しようとしている。だからいつまでも満たされない。」</p>
+                <p style="margin-top: 1rem;">
+                    「しかし、この虚しさから逃げてはいけない。虚しさの底まで降りていくのだ。<strong>『いいね』がゼロでも、あなたは存在している。</strong>その存在は、あなたが作ったものではなく、縁起──無数の関係性──によって成り立っている。」
+                </p>
+                <p style="margin-top: 1rem;">「その気づきが『底抜け』だ。自己中心性が抜けたとき、あなたは初めて本当に『つながる』ことができる──数字としてではなく、存在として。」</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">10. 思想の限界と批判</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h4 style="color: #dc2626;">① 戦時中の政治的関与</h4>
+                    <p>「世界史の哲学」座談会で、日本の戦争に哲学的正当化を与えたと批判される。京都学派全体の戦争責任問題と関連。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">② 難解さと閉鎖性</h4>
+                    <p>西谷の文章は専門家以外にはほぼ読解不可能なほど難解。一般向けアクセシビリティの欠如。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">③ 東洋優越主義</h4>
+                    <p>「西洋のニヒリズムを東洋の空が救う」という図式は、オリエンタリズムの裏返しとも見える。</p>
+                </div>
+                <div>
+                    <h4 style="color: #dc2626;">④ 実証性の欠如</h4>
+                    <p>西谷の議論は経験的証拠に基づいておらず、哲学的思弁に留まる。科学との接続が弱い。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">11. 理解度チェック</div>
+            <div style="display: grid; gap: 1.5rem;">
+                <details>
+                    <summary>「虚無」と「空」の違いは？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        虚無は「すべては無意味だ」という否定・絶望。空は「固定的実体がない」という認識であり、だからこそ相互連関（縁起）によってすべてが成り立つという肯定。</p>
+                </details>
+                <details>
+                    <summary>「虚無の底を抜く」とはどういうこと？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        虚無を避けずに、その底まで降りていくこと。虚無の最深部を通過することで、その向こう側に「空」が開ける。虚無は終点ではなく通過点。</p>
+                </details>
+                <details>
+                    <summary>「自己中心性」とニヒリズムの関係は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ニヒリズムの原因は「私」を中心に世界を見る自己中心性。「私」が揺らぐと世界全体が意味を失う。空の立場では「私」は縁起の中で成り立ち、独立した実体ではないと理解する。</p>
+                </details>
+                <details>
+                    <summary>『宗教とは何か』の要点は？</summary>
+                    <p style="margin-top: 1rem;"><strong>答え:</strong>
+                        ニヒリズムを正面から受け止め、仏教の「空」の立場からその超克を試みた代表作。宗教の本質は教義ではなく「自己中心性からの解放」にあると主張。</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-title">12. 用語集</div>
+            <dl>
+                <dt style="color: #06b6d4; font-weight: 700;">空（くう / Śūnyatā）</dt>
+                <dd>「固定的実体がない」こと。すべては縁起によって成り立つ。否定ではなく、相互連関への肯定。</dd>
+                <dt style="color: #06b6d4; font-weight: 700; margin-top: 1rem;">虚無（ニヒリズム）</dt>
+                <dd>「すべては無意味だ」という立場。近代西洋が「神の死」後に直面した危機。</dd>
+                <dt style="color: #06b6d4; font-weight: 700; margin-top: 1rem;">回互（えご）</dt>
+                <dd>すべてが相互に浸透し合っている状態。Aの中にBがあり、Bの中にAがある。</dd>
+                <dt style="color: #06b6d4; font-weight: 700; margin-top: 1rem;">即（そく）の論理</dt>
+                <dd>「AでありながらBである」という東洋的論理。色即是空、空即是色。</dd>
+                <dt style="color: #06b6d4; font-weight: 700; margin-top: 1rem;">縁起（えんぎ）</dt>
+                <dd>すべては相互連関によって成り立っており、独立した実体は存在しない。仏教の根本教義。</dd>
+                <dt style="color: #06b6d4; font-weight: 700; margin-top: 1rem;">自己中心性</dt>
+                <dd>「私」を中心に世界を見る立場。ニヒリズムの根本原因であり、宗教的転回の障害。</dd>
+            </dl>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Thinkers 700 | 西谷啓治</p>
+    </footer>
+</body>
+
+</html>
