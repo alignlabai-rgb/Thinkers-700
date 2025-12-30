@@ -4977,11 +4977,11 @@
     "name": "フィロン",
     "en_name": "Philo of Alexandria",
     "years": "紀元前後エジプト",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "宗教OS"],
     "summary": "ロゴス論",
     "explanation": "フィロンは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはロゴス論という新しい視点を持てるようになったんだ。",
     "contribution": "ロゴス論、ユダヤ教とギリシア哲学の融合。後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/philo.html"
   },
   {
     "id": "P-416",
@@ -4989,11 +4989,11 @@
     "name": "ジャン・ピアジェ",
     "en_name": "Piaget, Jean",
     "years": "20世紀スイス",
-    "school": ["心理OS"],
+    "school": ["心理OS", "教育OS"],
     "summary": "発生的認識論、認知発達",
     "explanation": "ジャン・ピアジェは、昔の『心理OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは発生的認識論、認知発達という新しい視点を持てるようになったんだ。",
     "contribution": "発生的認識論、認知発達を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/piaget-jean.html"
   },
   {
     "id": "P-417",
@@ -5001,11 +5001,11 @@
     "name": "ピコ・デラ・ミランドラ",
     "en_name": "Pico della Mirandola",
     "years": "ルネサンス伊",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "宗教OS"],
     "summary": "人間の尊厳について",
     "explanation": "ピコ・デラ・ミランドラは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは人間の尊厳についてという新しい視点を持てるようになったんだ。",
     "contribution": "人間の尊厳についてを中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/pico-della-mirandola.html"
   },
   {
     "id": "P-418",
@@ -5013,11 +5013,11 @@
     "name": "アルヴィン・プランティンガ",
     "en_name": "Plantinga, Alvin",
     "years": "現代アメリカ",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "宗教OS"],
     "summary": "改革派認識論、自由意志による弁護",
     "explanation": "アルヴィン・プランティンガは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは改革派認識論、自由意志による弁護という新しい視点を持てるようになったんだ。",
     "contribution": "改革派認識論、自由意志による弁護を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/plantinga-alvin.html"
   },
   {
     "id": "P-419",
@@ -5025,11 +5025,11 @@
     "name": "プラトン",
     "en_name": "Plato",
     "years": "古代ギリシア",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "政治OS", "教育OS"],
     "summary": "イデア論、哲人王",
     "explanation": "プラトンは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはイデア論、哲人王という新しい視点を持てるようになったんだ。",
     "contribution": "イデア論、哲人王をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/plato.html"
   },
   {
     "id": "P-420",
@@ -5037,11 +5037,11 @@
     "name": "プロティノス",
     "en_name": "Plotinus",
     "years": "古代ローマ",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "宗教OS"],
     "summary": "流出説、一者",
     "explanation": "プロティノスは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは流出説、一者という新しい視点を持てるようになったんだ。",
     "contribution": "流出説、一者をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/plotinus.html"
   },
   {
     "id": "P-421",
