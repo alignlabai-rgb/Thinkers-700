@@ -5097,11 +5097,11 @@
     "name": "ポルピュリオス",
     "en_name": "Porphyry",
     "years": "3世紀ローマ",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "論理OS"],
     "summary": "イサゴーゲー",
     "explanation": "ポルピュリオスは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはイサゴーゲーという新しい視点を持てるようになったんだ。",
     "contribution": "イサゴーゲーをめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/porphyry.html"
   },
   {
     "id": "P-426",
@@ -5109,11 +5109,11 @@
     "name": "プロクルス",
     "en_name": "Proclus",
     "years": "古代ギリシア",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "宗教OS"],
     "summary": "新プラトン主義",
     "explanation": "プロクルスは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは新プラトン主義という新しい視点を持てるようになったんだ。",
     "contribution": "新プラトン主義をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/proclus.html"
   },
   {
     "id": "P-427",
@@ -5121,11 +5121,11 @@
     "name": "プロタゴラス",
     "en_name": "Protagoras",
     "years": "古代ギリシア",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "修辞学OS"],
     "summary": "人間尺度論",
     "explanation": "プロタゴラスは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは人間尺度論という新しい視点を持てるようになったんだ。",
     "contribution": "人間尺度論をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/protagoras.html"
   },
   {
     "id": "P-428",
