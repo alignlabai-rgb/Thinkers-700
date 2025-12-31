@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイケル・ポランニー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;700&family=Noto+Serif+JP:wght@700&family=Inconsolata:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3730a3;
+            /* Implicit Indigo */
+            --secondary: #94a3b8;
+            /* Tacit Silver */
+            --bg: #0f172a;
+            /* Deep Slate */
+            --text: #f1f5f9;
+            --border: #1e293b;
+            --highlight: #818cf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Spline Sans', 'Noto Serif JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Focus/Blur Graphic Background */
+        .blur-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, var(--primary) 0%, transparent 60%);
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Knowledge Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        .nav a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Tacit Header */
+        .header {
+            padding: 12rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 1px solid var(--highlight);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: grow 10s infinite;
+        }
+
+        @keyframes grow {
+            0% {
+                scale: 1;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                scale: 3;
+                opacity: 0;
+            }
+        }
+
+        .rank {
+            font-family: 'Inconsolata', monospace;
+            color: var(--secondary);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 5rem;
+            line-height: 1;
+            letter-spacing: -0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--highlight);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.4rem 1.4rem;
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            border-left: 8px solid var(--highlight);
+            padding-left: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .hero-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-text {
+            font-size: 1.35rem;
+            line-height: 2;
+        }
+
+        .hero-text b {
+            color: var(--highlight);
+        }
+
+        .quote-box {
+            border: 1px solid var(--highlight);
+            padding: 6rem;
+            margin: 8rem 0;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(129, 140, 248, 0.05));
+        }
+
+        .quote-text {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .quote-author {
+            font-family: 'Inconsolata', monospace;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.5s;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            border-color: var(--highlight);
+            background: rgba(55, 48, 163, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .it-analogy {
+            background: #000;
+            border-top: 4px solid var(--highlight);
+            padding: 6rem;
+            margin: 10rem 0;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        .it-analogy h2 {
+            font-family: 'Spline Sans', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+        }
+
+        th,
+        td {
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: rgba(129, 140, 248, 0.1);
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .list-rich li::before {
+            content: "⦿";
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-size: 1.2rem;
+        }
+
+        .thought-experiment {
+            background: radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.1), transparent);
+            border: 1px solid var(--border);
+            padding: 6rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.4rem;
+            color: var(--highlight);
+            margin-bottom: 2.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 6rem;
+            color: var(--secondary);
+            font-family: 'Inconsolata', monospace;
+        }
+
+        .focus-effect {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            margin: 4rem 0;
+        }
+
+        .focal-point {
+            width: 20px;
+            height: 20px;
+            background: var(--highlight);
+            border-radius: 50%;
+            box-shadow: 0 0 40px var(--highlight);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blur-bg"></div>
+    <nav class="nav">
+        <a href="../index.html">← TACIT_KNOWLEDGE / PERSONAL_PARTICIPATION</a>
+        <div>FROM_CENTRAL_TO_DISTRIBUTED_LOGIC</div>
+    </nav>
+
+    <header class="container header">
+        <div class="focus-ring"></div>
+        <div class="rank">OBJECT_ID: P-423 / EPISTEMOLOGY_OF_ACTION</div>
+        <h1>マイケル・ポランニー</h1>
+        <p class="en-name">Michael Polanyi (1891–1976)</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">科学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">私たちは、語れることよりもずっと多くを知っている</h2>
+            <div class="hero-box">
+                <p>「自転車の乗り方」を完璧な言葉（マニュアル）だけで教えられるでしょうか？
+                    おそらく不可能です。私たちは、自分たちが明確に言語化できる知識よりも、はるかに広大で深い能力を「無意識」のうちに使いこなしています。物理化学者から哲学者に転身したマイケル・ポランニーは、この言葉にできない知識を<b>「暗黙知（Tacit
+                        Knowledge）」</b>と名付け、知の構造を再定義しました。</p>
+                <p>ポランニーを学ぶことは、科学や技術を単なる「データの集積」ではなく、生きた人間の<b>「個人的な参与（Personal
+                        Participation）」</b>として捉え直すことです。彼の理論は、熟練の職人芸から、科学的発見の閃き、そして現代のAIにおけるディープラーニングのブラックボックス問題に至るまで、すべての「理解」の底流に流れるブラックボックスを解き明かすための鍵を与えてくれます。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>ポランニーは、<b>「マニュアル（明示知）という貧弱なリードミーファイルだけでは決して再現できない、エンジニアの長年の経験と直感によって最適化された『未ドキュメント化のソースコード』の価値を理論化したシステムアーキテクト」</b>です。彼は、知の本質は『シリアライズされたデータ』ではなく、『ランタイム（人間の身体と精神）』の中でしか実行できない暗黙のロジックにあると説きました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 認識OSの核心：暗黙の次元</h2>
+            <div class="quote-box">
+                <p class="quote-text">「われわれは語ることができる以上のことを知ることができる」</p>
+                <p class="quote-author">— 『暗黙知の次元』</p>
+            </div>
+            <p>ポランニーの知のモデルは、常に「中心」と「周辺」の二重構造を持っています。私たちが何かに集中しているとき、その背後には無数の「暗黙の前提」が働いています。</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>🔍 近接項と焦点項 (Proximal / Distal)</h3>
+                    <p>金槌で釘を打つとき、意識の焦点は「釘」にありますが、掌に伝わる「金槌の感触」を暗黙のうちに処理しています。この感触（近接項）が目標（焦点項）を支える構造を「からの思考」と呼びました。</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 個人的知識 (Personal Knowledge)</h3>
+                    <p>科学的客観性は、観察者の主観を排除することではなく、観察者が全責任を持って事象に深く「コミット」することから生まれる。知ることは一つの「行為」である。</p>
+                </div>
+                <div class="card">
+                    <h3>🧬 創発 (Emergentism)</h3>
+                    <p>複雑なシステムは、下部構造の法則（物理学）だけでは記述できない。上部構造が新たな境界条件を設定することで「生命」や「意味」が生まれる階層的宇宙観。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 知のプロセス -->
+        <section class="section">
+            <h2 class="section-title">🔄 習得のアルゴリズム：内面化への旅</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 身体化 (Indwelling)</h3>
+                    <p>道具や理論を、自分自身の身体の延長（体の一部）として扱い始める。ノイズだった感覚が、「意味」へと変わるプロセス。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 暗黙の統合 (Tacit Integration)</h3>
+                    <p>バラバラのデータ断片が、意識されないレベルで一つの「全体」として統合される。ゲシュタルト的な認識のジャンプ。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 意味の開示 (Disclosure)</h3>
+                    <p>統合された知識を通じて、世界の中に新しい真理や美しさが立ち現れる。個人的な発見が、普遍的な妥当性を獲得する瞬間。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Non-Serializable Logic</h2>
+            <div class="grid">
+                <div class="card" style="background:rgba(255,255,255,0.05); color:#fff; border:none;">
+                    <h3>Machine Learning Weights (暗黙知)</h3>
+                    <p>ディープラーニングの巨大な結合重み（Weights）は、何らかの判断をしていますが、その推論プロセスを人間にわかる言葉で説明することは困難です。これこそが、数理的に実装された現代の「暗黙知」です。
+                    </p>
+                </div>
+                <div class="card" style="background:rgba(255,255,255,0.05); color:#fff; border:none;">
+                    <h3>Firmware vs Documentation</h3>
+                    <p>明示知（ドキュメント）はいつでもコピー可能ですが、暗黙知（ハードウェアに密結合したファームウェアの微調整）は、その環境ごと「参与」しなければ移植できません。スキルの継承が難しい理由です。</p>
+                </div>
+                <div class="card" style="background:rgba(255,255,255,0.05); color:#fff; border:none;">
+                    <h3>Pointer Indirection (近接・焦点)</h3>
+                    <p>ポインタ（近接項）そのものを見つめていては、メモリ上の実体（焦点項）へは到達できません。知るプロセスは、常にポインタを「透過的」に扱い、その先のターゲットへと意識を向けるインダイレクトな処理です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>暗黙知の概念化</strong>：経験に基づく直感的理解を、科学的に無視できない「知の基盤」として公認させた。</li>
+                <li><strong>科学共和制 (Republic of
+                        Science)</strong>：科学の進歩は中央集権的な計画ではなく、個々の研究者の良心と相互批判による「自律的な調整」で進むとする自由な知のコミュニティ論。</li>
+                <li><strong>身体的認識論</strong>：知る主体は「純粋な理性の目」ではなく、重力や触覚を持った「身体」であることを哲学のど真ん中に据えた。</li>
+                <li><strong>意味の多層性</strong>：原子から分子へ、細胞から精神へと上がるにつれ、下位の法則には支配されない「意味」が立ち上がる階層構造の提示。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>ゲシュタルト心理学（知覚の全体性、統合）</li>
+                        <li>メルロ＝ポンティ（身体性の哲学との共鳴）</li>
+                        <li>科学的実在論（主観的でありながら、真理へとコミットする姿勢）</li>
+                        <li>ハンガリーの自由主義的知識人コミュニティ</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>野中郁次郎（SECIモデル：暗黙知と形式知の変換プロセス）</li>
+                        <li>トーマス・クーン（パラダイム論における「模範（エグゼンプラー）」の役割）</li>
+                        <li>認知科学・AI論（シンボル接地問題、ブラックボックス解析）</li>
+                        <li>教育学・看護学（臨床における経験知の価値再評価）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 「知のデプロイ形式」比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>明示知 (Explicit Knowledge)</th>
+                        <th>暗黙知 (Tacit Knowledge)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>形式</strong></td>
+                        <td>ドキュメント、数式、コード</td>
+                        <td>コツ、勘、長年の経験</td>
+                    </tr>
+                    <tr>
+                        <td><strong>伝達方法</strong></td>
+                        <td>ダウンロード、読書</td>
+                        <td>弟子入り、模倣、共同作業</td>
+                    </tr>
+                    <tr>
+                        <td><strong>特性</strong></td>
+                        <td>コンテキストフリー（どこでも使える）</td>
+                        <td>コンテキスト依存（文脈が必要）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Plain Text / JSON</td>
+                        <td>Trained Neural Model Binary</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 バグ報告と限界</h2>
+            <div class="card" style="border-right: 15px solid var(--highlight);">
+                <ul class="list-rich">
+                    <li><strong>神秘主義への懸念</strong>：「言葉にできない」ことを強調しすぎるあまり、不透明な「直感」が合理的な議論や批判を阻害する隠れ蓑になるリスク（ポパー等からの批判）。
+                    </li>
+                    <li><strong>科学的計画の拒絶</strong>：科学共和制の「自律」を重んじるあまり、社会的なニーズに基づいた戦略的・計画的な研究支援を軽視する傾向。</li>
+                    <li><strong>ブラックボックスの肯定</strong>：「どうやって知るか」の最終的な部分は結局説明不可能であるとするため、そこで分析がストップしてしまう「思考の停止」を招く恐れ。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし「匠の技」を100%デジタル化できたら、何が消えるか？</h2>
+            <div class="thought-experiment">
+                <p>超高性能なセンサーであらゆる動きを計測し、脳波やホルモンバランスまで完璧に記録・再生できる装置が開発されたとします。その装置を使えば、誰でも一瞬で「巨匠」の絵が描け、「伝説のシェフ」の料理が作れます。ポランニーはこの世界をどう見るでしょうか？
+                </p>
+                <p>彼は、「そこには一番大切な『個人的な参与』が欠けている」と言うに違いありません。ポランニーにとって知るとは、対象に自分自身を投げ出し、リスクを負って意味を発見するという、スリリングな冒険そのものです。結果としての出力データが同じでも、自分の身体を通じた「暗黙の統合」というプロセスを失ったとき、人間は世界を「知っている」のではなく、単に「世界というプログラムに操作されている」だけの存在に成り下がってしまうのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="color: var(--highlight); font-weight: 700;">Q: 暗黙知は「無意識」と同じですか？</p>
+                    <p>少し違います。フロイトの無意識が「抑圧」に注目するのに対し、ポランニーの暗黙知は「能力としての知の基盤」に注目しています。</p>
+                </div>
+                <div class="card">
+                    <p style="color: var(--highlight); font-weight: 700;">Q: 自転車の例以外に何がありますか？</p>
+                    <p>言葉を話すこと。文法のルールを意識せずとも、瞬時に意味の通じる文章を組み立てる能力は、強大な暗黙知の産物です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マイケル・ポランニーは、氷山の一角である「明示知」の下に隠された、巨大な知の本体である「暗黙知」を私たちが再発見するよう促しました。知るということは、対象を外部から解剖することではなく、対象の内側に住まい（身体化し）、自分の内なる沈黙の声と統合させる芸術的なプロセスです。論理やデータの海に溺れがちな現代において、自らの「暗黙の確信」を信じ、責任を持って世界に関与し続けること。ポランニーの哲学は、私たちが冷たい情報機械ではなく、温かい血の通った知恵の担い手であることを、静かに、しかし力強く宣言しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The Silent Depth of Knowledge.</p>
+    </footer>
+</body>
+
+</html>

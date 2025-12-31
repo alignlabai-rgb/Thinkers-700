@@ -5049,11 +5049,11 @@
     "name": "アンリ・ポアンカレ",
     "en_name": "Poincare, Henri",
     "years": "19世紀フランス",
-    "school": ["科学OS"],
+    "school": ["科学OS", "数学OS"],
     "summary": "規約主義、カオス理論の萌芽",
     "explanation": "アンリ・ポアンカレは、昔の『科学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは規約主義、カオス理論の萌芽という新しい視点を持てるようになったんだ。",
     "contribution": "規約主義、カオス理論の萌芽を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/poincare-henri.html"
   },
   {
     "id": "P-422",
@@ -5061,11 +5061,11 @@
     "name": "カール・ポランニー",
     "en_name": "Polanyi, Karl",
     "years": "20世紀ハンガリー",
-    "school": ["哲学OS"],
+    "school": ["社会OS", "経済OS", "哲学OS"],
     "summary": "大転換、埋め込み",
     "explanation": "カール・ポランニーは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは大転換、埋め込みという新しい視点を持てるようになったんだ。",
     "contribution": "大転換、埋め込みをめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/polanyi-karl.html"
   },
   {
     "id": "P-423",
@@ -5073,11 +5073,11 @@
     "name": "マイケル・ポランニー",
     "en_name": "Polanyi, Michael",
     "years": "20世紀ハンガリー/英",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "科学OS"],
     "summary": "暗黙知の次元",
     "explanation": "マイケル・ポランニーは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは暗黙知の次元という新しい視点を持てるようになったんだ。",
     "contribution": "暗黙知の次元をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/polanyi-michael.html"
   },
   {
     "id": "P-424",
@@ -5085,11 +5085,11 @@
     "name": "カール・ポパー",
     "en_name": "Popper, Karl",
     "years": "20世紀オーストリア",
-    "school": ["科学OS"],
+    "school": ["科学OS", "社会OS", "哲学OS"],
     "summary": "反証可能性、開かれた社会",
     "explanation": "カール・ポパーは、昔の『科学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは反証可能性、開かれた社会という新しい視点を持てるようになったんだ。",
     "contribution": "反証可能性、開かれた社会を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/popper-karl.html"
   },
   {
     "id": "P-425",

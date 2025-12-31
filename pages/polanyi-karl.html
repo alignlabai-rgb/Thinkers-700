@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カール・ポランニー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700;900&family=Noto+Serif+JP:wght@700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,900;1,9..144,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #92400e;
+            /* Earthy Amber */
+            --secondary: #134e4a;
+            /* Deep Social Teal */
+            --bg: #fdfaf6;
+            --text: #1e293b;
+            --border: #d6d3d1;
+            --accent: #ca8a04;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Noto Serif JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Organic Texture Overlay */
+        .texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Embedded Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(253, 250, 246, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1rem;
+        }
+
+        /* Hero Header */
+        .header {
+            background: #fff;
+            padding: 10rem 3rem;
+            border: 1px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 12px;
+            background: var(--primary);
+        }
+
+        .rank {
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: -0.2rem;
+            color: var(--secondary);
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .os-tag {
+            padding: 0.4rem 1.2rem;
+            background: var(--secondary);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 8rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: var(--primary);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 20px 20px 0 var(--secondary);
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            color: #334155;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .quote-box::after {
+            content: "“";
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            font-size: 10rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            text-align: right;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(146, 64, 14, 0.1);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-family: 'Fraunces', serif;
+        }
+
+        .it-analogy {
+            background: var(--primary);
+            color: #fff;
+            padding: 6rem;
+            margin: 10rem 0;
+            border-radius: 4px;
+        }
+
+        .it-analogy h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            color: var(--bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #fff;
+            font-family: 'Fraunces', serif;
+            letter-spacing: 0.1rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: white;
+            border: 2px solid var(--secondary);
+            padding: 6rem;
+            margin: 10rem 0;
+            outline: 10px solid var(--primary);
+            outline-offset: -30px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 8rem;
+            color: var(--secondary);
+            font-weight: 300;
+        }
+
+        .movement-graphic {
+            display: flex;
+            justify-content: space-around;
+            margin: 6rem 0;
+        }
+
+        .movement-arrow {
+            font-size: 4rem;
+            color: var(--primary);
+            animation: slide 2s infinite;
+        }
+
+        @keyframes slide {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(20px);
+            }
+        }
+
+        .reverse-arrow {
+            transform: rotate(180deg);
+            color: var(--secondary);
+            animation: slide-rev 2s infinite;
+        }
+
+        @keyframes slide-rev {
+
+            0%,
+            100% {
+                transform: rotate(180deg) translateX(0);
+            }
+
+            50% {
+                transform: rotate(180deg) translateX(20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-box {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="texture"></div>
+    <nav class="nav">
+        <a href="../index.html">← EMBEDDED_ECONOMY / SOCIAL_RECOVERY</a>
+        <div>SOCIETY_AS_KERNEL_v1.0</div>
+    </nav>
+
+    <header class="container header">
+        <div class="rank">OBJECT_ID: P-422 / POLITICAL_ECONOMY</div>
+        <h1>カール・ポランニー</h1>
+        <p class="en-name">Karl Polanyi (1886–1964)</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「市場」を社会の檻から解き放つな</h2>
+            <div class="hero-box">
+                <p>「経済は、社会という人間的な土壌から切り離して独立させることができるのか？」
+                    カール・ポランニーはこの問いに対し、痛烈な「NO」を突きつけました。彼は著書『大転換』において、土地や労働、貨幣をあたかも「商品」のように扱う<b>「市場社会」</b>の構築こそが、人間文化を破壊する致命的な設計ミスであることを証明しました。
+                </p>
+                <p>ポランニーを学ぶことは、私たちが当然だと思っている「経済ファースト」という現代のドミナントなOSを相対化することです。彼は、経済は本来、社会的な慣習や生存のルールの中に<b>「埋め込まれている（Embedded）」</b>べきものであると説きました。格差や環境破壊が深刻化する今、彼の「経済を再び社会の中に埋め戻す」という視座は、崩壊しかけた現代システムをリカバリするための、唯一の再起動ガイドとなります。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--secondary); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>ポランニーは、<b>「社会という安定したベース・オペレーティング・システム（OS）の上で動くはずの一つの『経済アプリ』が、勝手に管理者権限（Root）を奪い、システムのメモリ空間全体を私物化した挙句、他の重要な常駐アプリ（家族、コミュニティ、自然環境）を次々と強制終了（Kill）させている現状を告発したホワイトハッカー」</b>です。彼は、社会という『カーネル』を保護するために、経済を適切なコンテナに閉じ込めるべきだと主張しました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 社会OSの核心：埋め込みと二重の動き</h2>
+            <div class="quote-box">
+                <p class="quote-text">「市場経済の導入は、社会の全的な解体をもたらす。人間はその過程で、土地や自然から引き剥がされるのだ」</p>
+                <p class="quote-author">— 『大転換』</p>
+            </div>
+            <p>ポランニーのOSは、経済を「孤立した自律システム」としてではなく、「社会の一部」として再定義します。市場が暴走すれば、社会は自己防衛のために必ず反作用を起こすと彼は予測しました。</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>🌍 埋め込み (Embeddedness)</h3>
+                    <p>経済活動は本来、宗教、政治、社会関係の中の一部として機能していた。それが「自律的な市場」へと切り離されたことが、現代の悲劇の始まりである。</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 互酬・再分配・交換</h3>
+                    <p>経済の統合パターンは「市場の交換」だけではない。贈り物（互酬）や中央による分配（再分配）といった、非市場的なアルゴリズムを重視した。</p>
+                </div>
+                <div class="card">
+                    <h3>📦 実体経済学 (Substantivism)</h3>
+                    <p>希少性と合理性だけを追う「形式」経済学に対し、人間が自然や仲間と相互作用して生きる「実体」としての経済を分析の対象とした。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 二重の動き (Double Movement) -->
+        <section class="section">
+            <h2 class="section-title">🔄 システムの「二重の動き」アルゴリズム</h2>
+            <div class="movement-graphic">
+                <div class="movement-arrow">→</div>
+                <p style="font-weight: 900; color: var(--primary);">市場化の拡張<br>(Marketization)</p>
+                <div class="movement-arrow reverse-arrow">←</div>
+                <p style="font-weight: 900; color: var(--secondary);">社会の自己防衛<br>(Self-Protection)</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 市場の拡張 (Move)</h3>
+                    <p>救貧法（スピーナムランド制度）の廃止など、すべてを商品化しようとする自由主義的な突き上げ。システムの外出し。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 社会の反作用 (Counter-move)</h3>
+                    <p>労働組合、社会保障、環境規制など、市場から身を守るために社会が自然に生み出すパッチ。システムの埋め戻し。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 衝突の不可避性 (Crash)</h3>
+                    <p>この二つの動きが激突し、調和不能になったとき、社会はファシズムや大恐慌という致命的な「システムエラー」に沈む。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: The Social Kernel Protection</h2>
+            <div class="grid">
+                <div class="card" style="background:rgba(255,255,255,0.05); color:#fff; border:none;">
+                    <h3>Commodity Fiction (擬制商品)</h3>
+                    <p>労働を「労働力（人力）」、土地を「リソース」、貨幣を「データ」としてのみ扱うのは、本来のオブジェクトとは異なる情報の『キャスト（型変換）』です。この無理な型変換が、実行時のランタイムエラー（貧困、環境汚染）を招きます。
+                    </p>
+                </div>
+                <div class="card" style="background:rgba(255,255,255,0.05); color:#fff; border:none;">
+                    <h3>Middleware Separation</h3>
+                    <p>経済プログラムを、社会の安全な『ミドルウェア』層に配置していた時代から、経済が直接『ベアメタル（生態系）』に干渉するようになったのが産業革命以降の設計ミスです。</p>
+                </div>
+                <div class="card" style="background:rgba(255,255,255,0.05); color:#fff; border:none;">
+                    <h3>Containerization (社会的規制)</h3>
+                    <p>ポランニーの提案は、経済という強力だが危険なプロセスを、社会保障や民主的な規制という『コンテナ』の中に閉じ込め、他のシステム資源（人間性）を侵害させないようにすることです。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>擬制商品論 (False Commodities)</strong>：労働・土地・貨幣は生産のために「作られた」商品ではなく、本来別の生存目的を持つ存在であることを論究。</li>
+                <li><strong>社会の再発見</strong>：経済の背後に潜む「社会的なるもの（The Social）」を学問上の不動の基点として確立した。</li>
+                <li><strong>文明の崩壊分析</strong>：19世紀文明を支えた「勢力均衡、金本位制、自己調整的市場、自由主義国家」の四本柱がいかに自壊したかを歴史的に解明。</li>
+                <li><strong>非対称的平和</strong>：市場の拡大が自由を増やすのではなく、逆に社会の紐帯を壊し、権威主義を招くというパラドックスの指摘。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>アダム・スミス（原典への深い理解と、その誤読への批判）</li>
+                        <li>ロバート・オウエン（市場社会に対抗する「社会」の先駆者）</li>
+                        <li>文化人類学（マリノフスキー等の未開社会の研究。非市場経済の実証）</li>
+                        <li>アリストテレス（オイコノミアとクレマティスティケの区別）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>レヴィ・ストロース（贈与交換論、互酬性の受容）</li>
+                        <li>イマニュエル・ウォーラーステイン（世界システム論への布石）</li>
+                        <li>経済人類学（実体主義派の祖）</li>
+                        <li>現代のベーシックインカム、コモンズ思想</li>
+                        <li>MMT（現代貨幣理論）に通ずる、貨幣の非商品性への洞察</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 経済の「フレームワーク」比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>自己調整的市場 (Neo-liberalism)</th>
+                        <th>埋め込まれた経済 (Polanyian)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>経済の目的</strong></td>
+                        <td>利益と効用の最大化</td>
+                        <td>社会の統合と人間に生存の保証</td>
+                    </tr>
+                    <tr>
+                        <td><strong>労働の定義</strong></td>
+                        <td>商品（コスト）</td>
+                        <td>人間生活の一部（神聖な活動）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自然環境の扱い</strong></td>
+                        <td>外部資源、土地という不動産</td>
+                        <td>社会が依存する不可分な基盤</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Unrestricted Root Access</td>
+                        <td>Sandboxed / Permissioned Process</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 バグ報告と限界</h2>
+            <div class="card" style="border-right: 15px solid var(--primary);">
+                <ul class="list-rich">
+                    <li><strong>「共同体」への理想化</strong>：市場以前の社会を過度に調和的なものとして描きすぎているという歴史家・人類学者からの批判。</li>
+                    <li><strong>市場のダイナミズムの軽視</strong>：市場がもたらすイノベーションや効率性の向上という「ポジティブな副作用」への配慮が薄いとの指摘。</li>
+                    <li><strong>具体的設計の欠如</strong>：経済を社会に「埋め戻す」ための具体的な政治制度や設計図が、抽象的なスローガンに留まりがちな点。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし「友情」を商品化したら、何が壊れるか？</h2>
+            <div class="thought-experiment">
+                <p>想像してみてください。明日から、友人の悩みを聞く行為に、1分100円の「市場価格」がつくとします。親切にするごとに請求書を送り、逆に冷たくされたら違約金を請求できます。ポランニーは言うでしょう。「それはもはや友情（社会）ではなく、サービス契約（市場）である。そしてその瞬間、人々を結びつけていた『社会的な意味』というOSは完全にクラッシュする」と。
+                </p>
+                <p>私たちが労働力や環境、そして自分自身の一部を「商品」として売買するとき、これと同じことが起きています。効率性は上がるかもしれませんが、その取引の土台となっている「人間としての信頼」や「互いに支え合う感性」というコモンズが摩耗していくのです。ポランニーは、私たちがどのようなデータ（価値）を「売り物」にしてはならないのか、という最終的なセキュリティポリシーを策定するよう求めています。
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 700;">Q: 彼って共産主義者なんですか？</p>
+                    <p>いいえ。彼はマルクスの「経済決定論」にも批判的でした。彼が守りたかったのは国家権力ではなく、人々が作り出す豊かな「社会」そのものです。</p>
+                </div>
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 700;">Q: 「二重の動き」って今も起きてる？</p>
+                    <p>まさに起きています。グローバル化という市場の拡張に対し、ナショナリズムの台頭や環境運動など、形を変えた「社会の自己防衛」が世界中で噴出しています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>カール・ポランニーは、近代が忘却した「社会」という名の重力を、理論家として再発見しました。彼の『大転換』に残されたメッセージは明確です。経済は社会に奉仕すべきであって、その逆ではない。私たちは、市場という強力なアルゴリズムをコントロールし、人間を人間たらしめる「埋め込まれた」関係性を修復しなければなりません。経済という名の激流の中で、今一度、足元にある「社会」という大地の感触を取り戻すこと。そこに、ポランニーが託した21世紀への希望が埋まっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Embedding Economy into Life.</p>
+    </footer>
+</body>
+
+</html>
