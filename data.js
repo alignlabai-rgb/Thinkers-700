@@ -5130,26 +5130,26 @@
   {
     "id": "P-428",
     "rank": 428,
-    "name": "プルードン",
-    "en_name": "Proudhon, Pierre-Joseph",
+    "name": "ピエール＝ジョゼフ・プルードン",
+    "en_name": "Pierre-Joseph Proudhon",
     "years": "19世紀フランス",
-    "school": ["哲学OS"],
-    "summary": "所有とは盗み",
-    "explanation": "プルードンは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは所有とは盗みという新しい視点を持てるようになったんだ。",
-    "contribution": "所有とは盗みをめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "school": ["社会OS", "政治OS"],
+    "summary": "相互主義",
+    "explanation": "プルードンは、昔の『社会OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは相互主義という新しい視点を持てるようになったんだ。",
+    "contribution": "相互主義をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
+    "detail_page": "pages/proudhon.html"
   },
   {
     "id": "P-429",
     "rank": 429,
-    "name": "偽ディオニュシオス",
-    "en_name": "Pseudo-Dionysius",
+    "name": "偽ディオニュシオス・アレオパギタ",
+    "en_name": "Pseudo-Dionysius the Areopagite",
     "years": "5-6世紀シリア",
-    "school": ["宗教OS"],
-    "summary": "否定神学、天上位階論",
-    "explanation": "偽ディオニュシオスは、昔の『宗教OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは否定神学、天上位階論という新しい視点を持てるようになったんだ。",
-    "contribution": "否定神学、天上位階論を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "school": ["宗教OS", "哲学OS"],
+    "summary": "否定神学",
+    "explanation": "偽ディオニュシオス・アレオパギタは、昔の『宗教OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは否定神学という新しい視点を持てるようになったんだ。",
+    "contribution": "否定神学をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
+    "detail_page": "pages/pseudo-dionysius.html"
   },
   {
     "id": "P-430",
@@ -5161,19 +5161,19 @@
     "summary": "自然法と万民法",
     "explanation": "サミュエル・プーフェンドルフは、昔の『法OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは自然法と万民法という新しい視点を持てるようになったんだ。",
     "contribution": "自然法と万民法をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/pufendorf.html"
   },
   {
     "id": "P-431",
     "rank": 431,
     "name": "ヒラリー・パトナム",
-    "en_name": "Putnam, Hilary",
-    "years": "現代アメリカ",
-    "school": ["哲学OS"],
-    "summary": "水槽の脳、内在的実在論",
-    "explanation": "ヒラリー・パトナムは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは水槽の脳、内在的実在論という新しい視点を持てるようになったんだ。",
-    "contribution": "水槽の脳、内在的実在論を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "en_name": "Hilary Putnam",
+    "years": "20-21世紀アメリカ",
+    "school": ["哲学OS", "科学OS"],
+    "summary": "機能主義",
+    "explanation": "ヒラリー・パトナムは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは機能主義という新しい視点を持てるようになったんだ。",
+    "contribution": "機能主義をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
+    "detail_page": "pages/putnam.html"
   },
   {
     "id": "P-432",
