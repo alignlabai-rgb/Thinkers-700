@@ -5181,11 +5181,11 @@
     "name": "ピュロン",
     "en_name": "Pyrrho",
     "years": "古代ギリシア",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "精神OS"],
     "summary": "懐疑主義の祖、アタラクシア",
     "explanation": "ピュロンは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは懐疑主義の祖、アタラクシアという新しい視点を持てるようになったんだ。",
     "contribution": "懐疑主義の祖、アタラクシアを中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/pyrrho.html"
   },
   {
     "id": "P-433",
@@ -5193,11 +5193,11 @@
     "name": "ピタゴラス",
     "en_name": "Pythagoras",
     "years": "古代ギリシア",
-    "school": ["哲学OS"],
+    "school": ["数学OS", "哲学OS"],
     "summary": "万物は数なり",
     "explanation": "ピタゴラスは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは万物は数なりという新しい視点を持てるようになったんだ。",
     "contribution": "万物は数なりをめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/pythagoras.html"
   },
   {
     "id": "P-434",
@@ -5205,11 +5205,11 @@
     "name": "アドルフ・ケトレー",
     "en_name": "Quetelet, Adolphe",
     "years": "19世紀ベルギー",
-    "school": ["科学OS"],
+    "school": ["科学OS", "社会OS"],
     "summary": "社会物理学、平均人",
     "explanation": "アドルフ・ケトレーは、昔の『科学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは社会物理学、平均人という新しい視点を持てるようになったんだ。",
     "contribution": "社会物理学、平均人を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/quetelet.html"
   },
   {
     "id": "P-435",
