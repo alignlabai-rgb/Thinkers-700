@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アニバル・キハーノ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Noto+Sans+JP:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #78350f;
+            /* Earth Brown */
+            --secondary: #1e293b;
+            /* Oppression Grey */
+            --accent: #dc2626;
+            /* Resistance Red */
+            --bg: #fefce8;
+            /* Parchment Yellow */
+            --text: #0f172a;
+            --border: #451a03;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Matrix Decay Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, var(--secondary) 0px, var(--secondary) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(90deg, var(--secondary) 0px, var(--secondary) 1px, transparent 1px, transparent 20px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Power Protocol Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            border-bottom: 4px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        /* Decolonial Header */
+        .header {
+            background: #fff;
+            padding: 12rem 3rem;
+            border: 4px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "COLONIALITY";
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 15rem;
+            color: var(--primary);
+            opacity: 0.05;
+            transform: rotate(-10deg);
+        }
+
+        .rank {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.2rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.5rem;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            border-bottom: 15px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 5rem;
+            line-height: 0.8;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 2px solid var(--secondary);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 0;
+            border-right: 20px solid var(--accent);
+        }
+
+        .quote-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 var(--accent);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: #000;
+            color: #fff;
+            padding: 6rem;
+            margin: 10rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px dashed var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 2px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 900;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 10px solid var(--secondary);
+            padding: 6rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .thought-experiment::after {
+            content: "DECONSTRUCT";
+            position: absolute;
+            bottom: -1.5rem;
+            right: 2rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 2rem;
+            font-weight: 900;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-weight: 900;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            border-top: 4px solid var(--border);
+            margin-top: 10rem;
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 6rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="matrix-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← COLONIALITY_OF_POWER / EPISTEMIC_QUOTA</a>
+        <div>DECOLONIAL_ROOT_v4.35</div>
+    </nav>
+
+    <header class="container header">
+        <div class="rank">OBJECT_ID: P-435 / GLOBAL_SOUTH_ARCHITECT</div>
+        <h1>アニバル・キハーノ</h1>
+        <p class="en-name">Aníbal Quijano (1928–2018)</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">支配の「深層レイヤー」を暴く</h2>
+            <div class="hero-box">
+                <p>「植民地支配が国としては終わっても、なぜ世界には依然として支配と被支配の構造が残っているのか？」 ペルーの社会学者アニバル・キハーノは、この問いに対して<b>「権力の植民地性（Coloniality
+                        of Power）」</b>という強力な概念を提示しました。彼は、資本主義、人種という分類、そして知識のあり方そのものが、今なお植民地時代のコードによって駆動されていることを明らかにしました。
+                </p>
+                <p>キハーノを学ぶことは、自分たちが「正しい」と思わされている常識という名の<b>「パッチ」</b>を疑い、OSの根幹に潜む偏見をデバッグすることです。彼は、近代（モダン）と植民地性（コロニアリティ）をコインの裏表として捉え、ヨーロッパ中心主義的な知の枠組みを解体し、多様な知のあり方を再発見することを説きました。グローバルな不平等や差別が「バグ」ではなく「仕様」として組み込まれている現代社会において、彼の思想はシステムを根本から再構築するための不可欠なツールとなります。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--accent); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>キハーノは、<b>「世界を管理するグローバルな基幹システムにおいて、ソースコードの最深部に『特定の人種や地域を優遇・排除するドメイン制限』というハードコードされた差別ロジックを発見した、脱植民地化のシステム監査人」</b>です。彼は、表面的なUI（独立）を変えるだけでは不十分で、カーネル（知のあり方）そのものをリファクタリングする必要があると主張しました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 権力OSの核心：植民地性のマトリクス</h2>
+            <div class="quote-box">
+                <p class="quote-text">「人種という概念は、植民地支配の結果として発明された、最初のグローバルな精神的カテゴリーである」</p>
+                <p class="quote-author">— 『権力の植民地性と社会的分類』</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>⛓️ 権力の植民地性</h3>
+                    <p>植民地支配が形式的に終了した後も、人種や労働の組織化を通じて存続する支配構造。システムの「Legacyロジック」として機能し続ける。</p>
+                </div>
+                <div class="card">
+                    <h3>🌏 ユーロ中心主義</h3>
+                    <p>ヨーロッパの経験や知を、唯一の「普遍的なOS」として世界に強制すること。他地域の知を「非合理的」として排除するプロセス。</p>
+                </div>
+                <div class="card">
+                    <h3>✊ 脱植民地化 (Decoloniality)</h3>
+                    <p>欧米的な知の支配から離脱し、先住民やアフリカ系、アジア系の知を対等なものとして再結合する、知のパラダイム改革。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 支配のアーキテクチャ解体</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 人種的分類 (Classification)</h3>
+                    <p>人間を生物学的な「人種」というタグで分類し、権力構造のインデックスを作成する。これが支配の最も基底的なデータベースとなる。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 労働の搾取 (Capitalism)</h3>
+                    <p>人種的な分類に基づいて、ある人々には無償労働、ある人々には賃金労働を割り当てる、資本主義という名のグローバルな資源配分アルゴリズム。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 知の植民地化 (Epistemology)</h3>
+                    <p>被支配者の視念や文化を「野蛮」として抑圧し、支配者の言語と論理を唯一の正解（Master Branch）としてインストールする。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Refactoring the Imperial Stack</h2>
+            <div class="grid">
+                <div class="card"
+                    style="background:rgba(220, 38, 38, 0.1); color:#fff; border:1px solid var(--accent);">
+                    <h3>Algorithmic Bias</h3>
+                    <p>植民地性は、現代のAIに潜む人種偏見のようなものです。学習データ（歴史）自体に偏りがあるため、システムは自動的に特定のグループを不利に扱う結果（出力）を出し続けます。</p>
+                </div>
+                <div class="card"
+                    style="background:rgba(220, 38, 38, 0.1); color:#fff; border:1px solid var(--accent);">
+                    <h3>Root Access & Permissions</h3>
+                    <p>グローバル社会の権限設定において、欧米的な知のパラダイムが常に「Root権限」を持っています。脱植民地化とは、この権限を分散させ、複数の「管理者」が共存する環境を作ることです。</p>
+                </div>
+                <div class="card"
+                    style="background:rgba(220, 38, 38, 0.1); color:#fff; border:1px solid var(--accent);">
+                    <h3>Legacy Code Refactoring</h3>
+                    <p>近代社会という巨大なレガシーシステムにおいて、深層の差別ロジックを取り除くのは容易ではありません。しかし、コードを一行ずつ見直し、新しい依存関係（対等な関係）を定義することが不可欠です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>「植民地性」の概念化</strong>：単なる「植民地主義」という時代区分を超えた、現在進行形の支配メカニズムを定義した。</li>
+                <li><strong>グローバル・サウスの視点</strong>：周縁化された地域（ラテンアメリカ等）から、世界の歴史と未来を再定義する強力なレンズを提供。</li>
+                <li><strong>人種と資本主義の結合</strong>：資本主義が単なる経済システムではなく、人種差別なしには成立し得ないことを構造的に解明。</li>
+                <li><strong>境界的思考の奨励</strong>：西洋的な論理性と、それ以外の世界の知恵を対等に往復する、新しい知の運用スタイルの提唱。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>カール・マルクス（資本主義分析、階級闘争）</li>
+                        <li>イマニュエル・ウォーラーステイン（世界システム論）</li>
+                        <li>ホセ・カルロス・マリアテギ（ペルーのマルクス主義、先住民視点）</li>
+                        <li>フリードリヒ・ニーチェ（権力への意志、価値の転換）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>ヴァルター・ミニョーロ（脱植民地化の記号論・認識論）</li>
+                        <li>ボエンヴェントゥラ・デ・ソウザ・サントス（南の認識論）</li>
+                        <li>ポストコロニアル理論全体（サイード、ババ、スピヴァクらへの刺激）</li>
+                        <li>現代のBlack Lives Matterや先住民運動の理論的支柱</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 「近代（モダン）」の解釈比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>欧米中心的な近代観</th>
+                        <th>キハーノの脱植民地的近代観</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>近代とは</strong></td>
+                        <td>理教と科学による進歩、啓蒙</td>
+                        <td>植民地支配による略奪とセットの構造</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人種差別</strong></td>
+                        <td>近代への適応不足、過去の遺物</td>
+                        <td>近代システムの維持に不可欠な「仕様」</td>
+                    </tr>
+                    <tr>
+                        <td><strong>普遍性</strong></td>
+                        <td>欧米の知が世界全域に通用する</td>
+                        <td>欧米の知は「局所的なもの」の強制</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Successful Build / Deployment</td>
+                        <td>Systemic Malware / Hidden Exploits</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 バグ報告と限界</h2>
+            <div class="card" style="border-right: 15px solid var(--accent);">
+                <ul class="list-rich">
+                    <li><strong>理論の抽象性</strong>：支配構造の解体（脱植民地化）を説く一方で、具体的な政治・経済的な代替案（Orchestration）が不足しているという指摘。</li>
+                    <li><strong>「西洋」のステレオタイプ化</strong>：西洋知をあまりに一面的に「支配の道具」として捉えすぎ、その内部にある多様性や批判精神を軽視しているという批判。</li>
+                    <li><strong>ラテンアメリカ中心主義</strong>：他の地域（アフリカやアジア）の独自の経験や植民地性を、すべて彼のマトリクスに当てはめることへの困難。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし「標準」という言葉が世界から消えたら？</h2>
+            <div class="thought-experiment">
+                <p>私たちは無意識に「標準（Standard）」という言葉を使います。標準的なマナー、標準的な美、標準的な知性。しかしキハーノは問います。「その『標準』の基準を作ったのは誰か？」と。</p>
+                <p>もし明日、世界から「標準」という単語と概念が消えたとしたら、どうなるでしょうか。今まで「劣っている（Substandard）」とされてきたことが、単なる「違い（Difference）」に変わります。言語、衣服、考え方、あらゆるものがその地域の文脈において同等の価値を持ち始めます。あなたは、今の自分を形作っている「標準」という名のフィルターを外したとき、そこにある真の多様性を直視する準備ができていますか？
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 900;">Q: 植民地支配は過去のことじゃないの？</p>
+                    <p>軍事的な占領（植民地主義）は終わりましたが、キハーノは、その時に作られた「考え方の型（植民地性）」が今も私たちの脳内で稼働し続けていると言っています。アップデートが必要です。</p>
+                </div>
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 900;">Q: 欧米の科学を否定するの？</p>
+                    <p>否定するのではなく、「唯一の絶対的な正解」とする地位（特権）を疑うのです。他の文化が持つ科学や知恵と、対等な立場でダイアローグさせることを目指しています。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アニバル・キハーノは、私たちの知性のOSに深く、静かに、そして強力に埋め込まれた「権力のマトリクス」を可視化しました。彼の思想は、単なる政治的なスローガンではなく、私たちが世界を認識し、他者と関わる際の根本的な論理設定（コンフィギュレーション）を書き換えるためのものです。近代という物語の影に隠された「植民地性」というバグを正視し、多文化的な知の共生という新しいアーキテクチャへと移行すること。キハーノが遺したこの困難で壮大なミッションは、真に平等で開かれた未来のシステムを構築しようとする私たちの手によって、今まさに実装されるのを待っています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Decolonize the Matrix.</p>
+    </footer>
+</body>
+
+</html>

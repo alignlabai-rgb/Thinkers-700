@@ -5217,11 +5217,11 @@
     "name": "アニバル・キハーノ",
     "en_name": "Quijano, Anibal",
     "years": "現代ペルー",
-    "school": ["政治OS"],
+    "school": ["政治OS", "社会OS"],
     "summary": "権力の植民地性",
     "explanation": "アニバル・キハーノは、昔の『政治OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは権力の植民地性という新しい視点を持てるようになったんだ。",
     "contribution": "権力の植民地性をめぐる議論を切り拓き、後の研究・実践に広く参照される枠組みを提示し、現在も影響が大きい。",
-    "detail_page": null
+    "detail_page": "pages/quijano.html"
   },
   {
     "id": "P-436",
@@ -5229,11 +5229,11 @@
     "name": "W.V.O.クワイン",
     "en_name": "Quine, W.V.O.",
     "years": "20世紀アメリカ",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "数理OS"],
     "summary": "ホーリズム、翻訳の不確定性",
     "explanation": "W.V.O.クワインは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちはホーリズム、翻訳の不確定性という新しい視点を持てるようになったんだ。",
     "contribution": "ホーリズム、翻訳の不確定性を中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/quine.html"
   },
   {
     "id": "P-437",
@@ -5241,11 +5241,11 @@
     "name": "ラーマーヌジャ",
     "en_name": "Ramanuja",
     "years": "11-12世紀インド",
-    "school": ["哲学OS"],
+    "school": ["哲学OS", "宗教OS"],
     "summary": "制限不二一元論、バクティ",
     "explanation": "ラーマーヌジャは、昔の『哲学OS』をアップデートして、新しい考え方（OS）を作った人だよ。彼のおかげで、私たちは制限不二一元論、バクティという新しい視点を持てるようになったんだ。",
     "contribution": "制限不二一元論、バクティを中核に理論を展開し、後世の研究や議論の枠組みに影響を与えた。",
-    "detail_page": null
+    "detail_page": "pages/ramanuja.html"
   },
   {
     "id": "P-438",
