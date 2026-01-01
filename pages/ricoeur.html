@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポール・リクール - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Lora:ital,wght@0,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e1b4b;
+            /* Deep Indigo / Text Ink */
+            --secondary: #4338ca;
+            /* Hermeneutic Blue */
+            --accent: #991b1b;
+            /* Emotional Crimson */
+            --bg: #fafaf9;
+            /* Parchment White */
+            --text: #1c1917;
+            --border: #d4d4d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Layered Text Background */
+        .layered-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20rem;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Lora', serif;
+            font-style: italic;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Elegant/Layered Header */
+        .header {
+            background: #fff;
+            padding: 12rem 4rem;
+            border: 1px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(30, 27, 75, 0.05));
+        }
+
+        .rank {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+            letter-spacing: 0.5rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .en-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #78716c;
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.5rem 2rem;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-family: 'Lora', serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: "“";
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10rem;
+            opacity: 0.05;
+        }
+
+        .hero-box {
+            background: #fff;
+            border-top: 5px solid var(--primary);
+            border-bottom: 5px solid var(--primary);
+            padding: 6rem;
+            position: relative;
+            font-style: italic;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 2;
+            font-weight: 400;
+            color: var(--primary);
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+        }
+
+        .card {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 4rem 1rem;
+            position: relative;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .it-analogy {
+            background: #fff;
+            color: var(--text);
+            padding: 8rem;
+            margin: 10rem 0;
+            border: 1px solid var(--primary);
+            font-family: 'Lora', serif;
+            position: relative;
+        }
+
+        .it-analogy h2 {
+            color: var(--primary);
+            margin-bottom: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .it-card {
+            border-left: 2px solid var(--secondary);
+            padding-left: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .it-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .list-rich li {
+            margin-bottom: 3rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .list-rich li::before {
+            content: "§";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 2.5rem;
+            top: -0.5rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            padding: 6rem;
+            border: 1px solid var(--accent);
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .thought-experiment::after {
+            content: "HERMENEUTICS";
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.3rem;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            opacity: 0.4;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layered-bg">TEXT NARRATIVE IDENTITY MEMORY TEXT NARRATIVE</div>
+
+    <nav class="nav">
+        <a href="../index.html">← CONFLICT_OF_INTERPRETATIONS</a>
+        <div>NARRATIVE_KERNEL_v4.45</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-445 / THE_PHRASING_OF_IDENTITY</span>
+        <h1>ポール・リクール</h1>
+        <p class="en-name">Paul Ricoeur (1913–2005)</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">解釈学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「自分」というテクストを読み直す</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「自分とは何か？」という問いに対し、リクールは驚くべき答えを用意しました。私たちは、固まった物体ではなく、一生をかけて綴られる<b>『物語（ナラティブ）』</b>である。ポール・リクールは、人間を「解釈し続けるテクスト」として捉え、現象学、解釈学、そして分析哲学を横断する壮大な<b>『解釈学OS』</b>を構築しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    リクールを学ぶことは、人生の<b>「意味のバージョン管理」</b>を学ぶことです。彼は、過去の記憶や他者との関係性をバラバラなデータとしてではなく、一つの「物語的自己同一性（Narrative
+                    Identity）」として統合する手法を提示しました。フェイクと真実、虚構と現実が入り混じる現代において、私たちは自分の物語をいかに「正しく、かつ豊かに」編集し続けることができるか。彼の思想は、自己という名の「生きたテクスト」を読み解くための、高機能なライブラリを提供してくれます。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 3rem; background: var(--primary); color: #fff; border-radius: 0 100px 0 0;">
+                <h4>💡 たとえるなら</h4>
+                <p>リクールは、<b>「人間の自己意識という非構造化データを、過去・現在・未来というタイムスパンを通じて一つの『物語的ログ』としてパース（解析）し、そこに一貫した『意味（セマンティクス）』を生成し続ける、最高峰のセマンティック・パーサー」</b>です。彼の哲学は、人生というソースコードの「高度なコメントアウト」と「リファクタリング」そのものなのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 解釈学OSの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">「自分という人間は、自分の人生についての物語を語る人間に他ならない」</p>
+                <p class="quote-author">— 『時間と物語』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 物語的自己同一性</h3>
+                    <p>固定された肉体や性格（idem）ではなく、変化し続けながらも物語として一貫する自己（ipse）。自己を「編集可能なテクスト」として捉える。 </p>
+                </div>
+                <div class="card">
+                    <h3>🌀 解釈学的循環</h3>
+                    <p>全体を理解するには細部を知らねばならず、細部を理解するには全体を知らねばならない。理解が螺旋状に深まっていく再帰的なプロセス。 </p>
+                </div>
+                <div class="card">
+                    <h3>⚡ 解釈の葛藤</h3>
+                    <p>マルクス、ニーチェ、フロイトなどの「疑念の解釈学」と、伝統的な「信頼の解釈学」の衝突を、統合的な対話へと導く。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 自己解釈のブートシーケンス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 入力 (Pre-figuration)</h3>
+                    <p>日常の経験や記憶という「生データ」を収集。まだ整理されていない「出来事のパケット」。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 構成 (Con-figuration)</h3>
+                    <p>バラバラな出来事をプロットとして組み立てる。意味のないノイズを「物語（ナラティブ）」という構造にキャスト。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 出力 (Re-figuration)</h3>
+                    <p>構成された物語を読者（自分や他者）が受け取り、新しい生き方として実行環境にデプロイする。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Narrative Semantic Parser</h2>
+            <div class="it-card">
+                <h3>Version Control & Commit History</h3>
+                <p>「現在の自分」は過去の全コミットメッセージ（記憶）を統合した最新のHEADである。リクールの自己同一性は、単なる「現在の状態」ではなく「変更履歴全体が形成する文脈」そのものです。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Natural Language Processing (Semantic Parsing)</h3>
+                <p>表面的な文字列（出来事）から、その背後にある意図やコンテキストを抽出する。リクールの解釈学は、人生という非構造化データを構造化データ（意味）に変換するエンコーダーです。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Recursive Interpretation</h3>
+                <p>関数の実行結果が次の関数の引数になるように、一度行われた解釈が次の行動を規定・拡張していく再帰的な処理。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>隠喩の創造性機能</strong>：古い言葉を組み合わせ、全く新しい意味空間（セマンティック・ウェブ）を動的に生成する。</li>
+                <li><strong>記憶と忘却の管理モジュール</strong>：許しと和解のために、どのデータをアーカイブし、どのデータをパブリッシュすべきかの倫理的基準。</li>
+                <li><strong>他者性へのインターフェース</strong>：自分を他者のように読み、他者を自分の物語の一部として迎え入れる、高度な「共感的API」。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>エトムント・フッサール（現象学の基本フレーム）</li>
+                        <li>ガダマー、ハイデガー（解釈学の伝統）</li>
+                        <li>フロイト、マルクス（隠された意味の解読）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ナラティブ・ベイスト・メディスン（医療における物語）</li>
+                        <li>正義とケアの倫理学</li>
+                        <li>宗教哲学、歴史理論</li>
+                        <li>現代の自己啓発、コーチング理論</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 自己の定義比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>近代合理主義（デカルト）</th>
+                        <th>解釈学的自己（リクール）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>自己の本質</strong></td>
+                        <td>考える主体（定数）</td>
+                        <td>語られる物語（変数・関数）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>成立場所</strong></td>
+                        <td>内省による直接把握</td>
+                        <td>テクストや他者という「回り道」</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アクセス権</strong></td>
+                        <td>独占的権限 (Root)</td>
+                        <td>読み手による再構成 (Read/Write)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Primitive Data Type</td>
+                        <td>Dynamic Narrative Stream</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：人生の「編集者」</h2>
+            <div class="thought-experiment">
+                <h3>消去できないコミットログ</h3>
+                <p>あなたは過去に大きな失敗（バグ）をしました。それは削除（Delete）することも、なかったことにすること（Undo）もできません。近代的な合理性なら、それはただの「マイナスの値」です。しかし、リクールのOSを使えば、そのバグを「後に続く成功のための伏線」として物語の中にプロットし直すことができます。
+                </p>
+                <p>過去のデータは変わりませんが、その「解釈（メタデータ）」を変えることで、物語全体の色あいは完全に変わります。あなたは、自分の最悪の瞬間を、どんな「意味深い一章」へとリファクタリングしますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ポール・リクールは、人間が人生という巨大なテクストに「溺れる」のではなく、それを「自ら書き換える（再構成する）」ことができる存在であることを証明しました。彼の物語的自己同一性は、私たちが単なる情報処理の連鎖ではないこと、そして他者の物語を尊重することでしか自分自身の物語も完成しないことを教えてくれます。テクストの森を彷徨う現代のユーザーにとって、リクールの解釈学OSは、意味という名の光を導き出す、最も誠実で深淵なコンパスです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Narrative preserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョン・ロールズ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Outfit:wght@300;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            /* Justice Blue */
+            --secondary: #0f172a;
+            /* Midnight Justice */
+            --accent: #f59e0b;
+            /* Equity Amber */
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --veil: rgba(255, 255, 255, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* The Veil Background */
+        .veil-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, transparent 10%, var(--bg) 90%);
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Modern Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Rawls Header */
+        .header {
+            background: #fff;
+            padding: 12rem 3rem;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            border-radius: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .veil-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            background: var(--veil);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            letter-spacing: -0.2rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #64748b;
+            margin-bottom: 3rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.4rem 1.5rem;
+            background: var(--secondary);
+            color: var(--accent);
+            font-weight: 700;
+            border-radius: 100px;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            position: relative;
+            border-radius: 3rem;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+        }
+
+        .hero-text {
+            font-size: 1.6rem;
+            line-height: 1.7;
+            font-weight: 300;
+            letter-spacing: -0.02rem;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 5rem;
+            margin: 8rem 0;
+            border-radius: 2rem;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+
+        .quote-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: right;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 4rem;
+            border-radius: 2rem;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 3rem;
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .it-card {
+            border-left: 5px solid var(--accent);
+            padding-left: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 4rem;
+            background: #fff;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border-bottom: 1px solid #f1f5f9;
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--secondary);
+            font-weight: 900;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 2px solid var(--accent);
+            padding: 5rem;
+            border-radius: 3rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .thought-experiment::before {
+            content: "VEIL";
+            position: absolute;
+            top: -20px;
+            right: 40px;
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 0.5rem 2rem;
+            font-weight: 900;
+            border-radius: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.3;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 1.5rem;
+            }
+
+            .hero-box {
+                padding: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="veil-overlay"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ORIGINAL_POSITION / JUSTICE_AS_FAIRNESS</a>
+        <div>SANDBOXED_EQUITY_v2.0</div>
+    </nav>
+
+    <header class="container header">
+        <div class="veil-effect"></div>
+        <div class="header-content">
+            <span class="rank">OBJECT_ID: P-441 / THE_MODERN_JUSTICE</span>
+            <h1>ジョン・ロールズ</h1>
+            <p class="en-name">John Rawls (1921–2002)</p>
+            <div class="os-tags">
+                <span class="os-tag">倫理OS</span>
+                <span class="os-tag">政治OS</span>
+                <span class="os-tag">社会OS</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">究極の「公平な初期条件」を設計する</h2>
+            <div class="hero-box">
+                <p>「あなたがどんな社会に生まれるか、どんな能力を持つか、金持ちか貧乏か、その一切を知らない状態でルールを決めるとしたら、どんな社会を選ぶだろうか？」
+                    現代政治哲学の巨人、ジョン・ロールズはこの<b>『無知のヴェール』</b>という思考実験を通じて、正義を「予測可能な利益の分配」ではなく、システムの根幹にある<b>「公平な初期設定」</b>として再定義しました。
+                </p>
+                <p>ロールズを学ぶことは、社会を動かす<b>「正義のアルゴリズム」</b>を理解することです。彼は、功利主義（最大多数の最大幸福）がしばしば少数者を切り捨てるバグを抱えていることを指摘し、最も不遇な人々の状況を改善することを優先する「格差原理」を提唱しました。多様な価値観が衝突する現代において、私たちが共に生きるための「中立的なプロトコル」をどう記述するか。彼の思想は、バラバラな個人が「合意可能」な社会のソースコードを提示しています。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>ロールズは、<b>「ユーザーが自分の属性（スペック）を隠した状態で、すべてのプロセスにとって公平な『サンドボックス（環境隔離された遊び場）』での合意形成を義務付け、最もスペックの低い端末でも正常に動作することを保証する、最高レベルのシステム・アーキテクト」</b>です。彼の正義とは、不確実性に対する究極の『エラーハンドリング』なのです。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 倫理OSの核心：公正としての正義</h2>
+            <div class="quote-box">
+                <p class="quote-text">「正義は社会制度の第一の徳である。思想の体系にとっての真理がそうであるように」</p>
+                <p class="quote-author">— 『正義論』</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>🛡️ 無知のヴェール</h3>
+                    <p>自らの属性を知らない「原初状態」に立つことで、特定の利害に縛られない公平な判断を可能にするデバッグ用仮想環境。 </p>
+                </div>
+                <div class="card">
+                    <h3>⚖️ 公正としての正義</h3>
+                    <p>自由と平等が矛盾なく共存するための二つの原理。基本的人権の保証と、格差が許容されるための厳格な条件。 </p>
+                </div>
+                <div class="card">
+                    <h3>🧱 格差原理</h3>
+                    <p>社会の経済的格差は、それが「最も不遇な人々の利益を最大化する」場合にのみ正当化されるという、セーフティネットの論理。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 正義のアルゴリズム・ブートフロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 初期化 (Original Position)</h3>
+                    <p>全ユーザーの属性データをフラッシュし、中立なスタックを作成。環境変数をリセットする。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. ヴェールの適用 (Masking)</h3>
+                    <p>個別のインセンティブをマスキングし、全ユーザーを「不特定の他者」として扱う。個人情報を隠匿したゼロ知識証明的な状態。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 合意 (Execution)</h3>
+                    <p>最悪のケース（最貧困層への転落）を想定した「マキシミン戦略」に基づき、全体の基盤を底上げするルールをデプロイする。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: The Justice Sandbox</h2>
+            <div class="it-card">
+                <h3>Sandboxing & Isolation</h3>
+                <p>ロールズの「原初状態」は、プログラムを隔離された環境で動かすサンドボックスと同じです。現実世界の依存関係（利害）を遮断することで、システムの根底にあるクリーンなロジックだけを抽出します。</p>
+            </div>
+            <div class="it-card">
+                <h3>Zero-Knowledge Proofs</h3>
+                <p>誰の利益になるかは不明だが、そのルールが公正であることだけが証明される。正体を知らずとも信用が担保されるブロックチェーンのプロトコルに近い発想です。</p>
+            </div>
+            <div class="it-card">
+                <h3>Load Balancing (Fairness)</h3>
+                <p>リソースの分配において、特定のパケット（階層）に負荷が集中するのを防ぎ、最もスループットの低い経路がボトルネックにならないよう全体の効率を最適化するアルゴリズム。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>マキシミン原理の実装</strong>：利益の最大化ではなく、損失の最小化（ワーストケースの最大化）を正義の基準に据えた。</li>
+                <li><strong>反照的均衡 (Reflective Equilibrium)</strong>：理論と現実の感覚を交互に調整し、バグを修正しながら最適なポイントを見つけるチューニング手法。</li>
+                <li><strong>公共的理性 (Public Reason)</strong>：異なる宗教や信念を持つユーザー同士が、共通のAPI（政治的な言葉）で対話するためのインターフェースの提供。</li>
+                <li><strong>政治的リベラリズム</strong>：包括的な世界観を押し付けず、社会の運用ルール（OS）の公正さだけに焦点を当てる軽量なガバナンスモデル。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>イマヌエル・カント（自律、義務論、人間を手段としない）</li>
+                        <li>ジョン・ロック、ジャン＝ジャック・ルソー（社会契約説のリファクタリング）</li>
+                        <li>古典的なリベラリズム（個人の自由の尊重）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>ロナルド・ドウォーキン（権利の理論）</li>
+                        <li>ジョセフ・ラズ（完璧主義リベラリズムへの応答）</li>
+                        <li>マイケル・サンデル、アラスデア・マッキンタイア（批判としての共同体主義）</li>
+                        <li>現代の福祉国家論、ベーシックインカム議論、分配の正義</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 正義の設計モデル比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>功利主義 (Bentham/Mill)</th>
+                        <th>公正としての正義 (Rawls)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>最適化の目標</strong></td>
+                        <td>全体の総和の最大化 (Σ Happiness)</td>
+                        <td>底辺の厚生の最大化 (Maximin)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>少数者の扱い</strong></td>
+                        <td>全体利益のために犠牲にされうる</td>
+                        <td>基本的人権は決して侵害されない</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ルールの基準</strong></td>
+                        <td>結果の良さ (Efficient)</td>
+                        <td>手続きの公正さ (Fair)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Throughput Maximization</td>
+                        <td>Fail-Safe Integrity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 バグ報告と限界</h2>
+            <div class="card" style="border-bottom: 20px solid var(--accent);">
+                <ul class="list-rich">
+                    <li><strong>リソースコストの肥大</strong>：格差原理を厳格に適用すると、全体の成長性やインセンティブが削がれ、システム全体が停滞する（レッセフェール派からの指摘）。</li>
+                    <li><strong>無機質な人間観</strong>：ヴェールの向こう側にいる人間は「厚みのない抽象」であり、実際の歴史や文化、身体性（ハードウェア仕様）を無視している（共同体主義・フェミニズムからの批判）。
+                    </li>
+                    <li><strong>グローバル化への非対応</strong>：一国内の閉じたネットワークを想定しており、国境を越えた「分配の正義」の記述には拡張が必要。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：ヴェールのデバッグ</h2>
+            <div class="thought-experiment">
+                <p>今から新しいオンラインゲームの世界を作るとします。あなたは「魔王」か「勇者」か「村人A」か、どれになるか決まる前に、ゲームのルールを書かなければなりません。あなたは、勇者がすべてを総取りできる世界を作りますか？
+                    それとも、村人Aでもそこそこ楽しく暮らせる世界を作りますか？</p>
+                <p>ロールズは言います。「理性的であれば、あなたは必ず村人Aの状況が改善されるルールを選ぶはずだ。なぜなら、あなたが村人Aになる確率は非常に高いのだから」。この『公平性のヴェール』を被ったとき、あなたの政治的スタンスはどうアップデートされますか？
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 900;">Q: 平等って、みんな同じ給料ってこと？</p>
+                    <p>いいえ。格差があってもいいのです。ただし、その格差があることで「一番貧しい人の生活が、格差がないときよりも良くなる」場合に限ります。医師の給料が高いのは、それによって質の高い医療が貧しい人にも届くなら正義、という考え方です。
+                    </p>
+                </div>
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 900;">Q: 無知のヴェールは本当に可能？</p>
+                    <p>物理的には不可能ですが、思考の「ツール」です。法律や制度を作るとき、このフィルターを通すことで、個別の感情ではなく、システムの一貫性を守ることができます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジョン・ロールズは、バラバラな個人が「たった一つの正解」を共有できない時代に、それでも「これなら文句は言えない」という公正なプロトコルを見事に記述しました。彼の社会設計図は、弱者を守るという道徳的な勧善懲悪ではなく、私たちが自分が何者であるかを忘れたときに導き出される「合理的な計算」に基づいています。不確実な未来というヴェールの前で、誰もが尊厳を持って参加できる社会の初期設定。ロールズが残したこの正義のソースコードは、多様性と公平性が求められる現代のあらゆるガバナンスにおいて、今なお最も信頼に足るカーネルとなっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Justice encoded.</p>
+    </footer>
+</body>
+
+</html>

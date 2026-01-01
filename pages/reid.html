@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・リード - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;900&family=Public+Sans:wght@300;800&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #713f12;
+            /* Raw Earth */
+            --secondary: #1c1917;
+            /* Bedrock */
+            --accent: #ca8a04;
+            /* Harvest Sun */
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --border: #d6d3d1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Public Sans', 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .solid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: linear-gradient(45deg, var(--secondary) 25%, transparent 25%), linear-gradient(-45deg, var(--secondary) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--secondary) 75%), linear-gradient(-45deg, transparent 75%, var(--secondary) 75%);
+            background-size: 100px 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: #fff;
+            padding: 10rem 3rem;
+            border: 4px solid var(--secondary);
+            position: relative;
+            margin-top: 2rem;
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rank {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            letter-spacing: -0.1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 2rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 900;
+            border-radius: 0;
+            border: 2px solid var(--secondary);
+        }
+
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 4rem;
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(113, 63, 18, 0.05);
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 400;
+            color: var(--secondary);
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+        }
+
+        .quote-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Roboto Mono', monospace;
+            text-align: right;
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .card:hover {
+            border: 4px solid var(--primary);
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 var(--accent);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 900;
+            border-left: 8px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .it-analogy {
+            background: #000;
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Roboto Mono', monospace;
+            border: 10px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Public Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+
+        .it-analogy .card {
+            background: #111;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .it-analogy .card h3 {
+            color: var(--accent);
+        }
+
+        .list-rich li {
+            margin-bottom: 1.5rem;
+            list-style: none;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 4px double var(--secondary);
+            padding: 5rem;
+            margin: 10rem 0;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            border-top: 1px solid var(--border);
+            opacity: 0.5;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 6rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="solid-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← COMMON_SENSE_REALISM</a>
+        <div>BARE_METAL_REALITY_v1.0</div>
+    </nav>
+
+    <header class="container header">
+        <div class="header-content">
+            <span class="rank">OBJECT_ID: P-443 / THE_REALITY_HARDLINER</span>
+            <h1>トマス・リード</h1>
+            <p class="en-name">Thomas Reid (1710–1796)</p>
+            <div class="os-tags">
+                <span class="os-tag">哲学OS</span>
+                <span class="os-tag">認知OS</span>
+                <span class="os-tag">現実OS</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「感覚という直通回線」を信じる</h2>
+            <div class="hero-box">
+                <p>「目の前のリンゴは本当に存在するのか？」
+                    徹底した懐疑論に対し、トマス・リードは力強い<b>『常識の哲学』</b>で反撃しました。彼は、私たちの認知を、中間レイヤーを通さない<b>「直接的な接続」</b>として再定義しました。</p>
+                <div style="margin-top: 2rem; border-top: 2px solid var(--primary); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>リードは、<b>「仮想マシン（VM）による懐疑的なオーバーヘッドをすべて排除し、ハードウェアが提供する生データを直接読み取る『ベアメタル（Bare
+                            Metal）』こそが最も信頼できると喝破した、現実至上主義のエンジニア」</b>です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 常識OSの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">「私は、哲学者が何を言おうとも、自分の感覚を信じ、この世界が実在すると信じることを選ぶ」</p>
+                <p class="quote-author">— 『人間精神の探究』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🧩 常識 (Common Sense)</h3>
+                    <p>議論の余地なく誰もが持っている、思考の第一原理。これなしでは思考そのものがブートできない。 </p>
+                </div>
+                <div class="card">
+                    <h3>🔗 直接実在論</h3>
+                    <p>知覚は「観念（コピー）」を見ているのではなく、対象そのものをダイレクトに捉えている。 </p>
+                </div>
+                <div class="card">
+                    <h3>🛠️ 本能的確信</h3>
+                    <p>世界の実在は学問で証明するものではなく、OSにプリインストールされた工場出荷設定である。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 認知のダイレクト・パス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 知覚の開始</h3>
+                    <p>物理的な五感が外部オブジェクトに接触。中間レイヤー（観念）を生成せず、直接リンクを確立。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 本能的ブート</h3>
+                    <p>「これは実在する」という常識のプログラムが自動実行され、懐疑論の割り込みを遮断。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 現実の確定</h3>
+                    <p>得られたデータを「リアル」として確定させ、実生活（ランタイム）の処理に渡す。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Bare Metal</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Direct Memory Access</h3>
+                    <p>CPU（自己）を経由せず周辺機器からメモリへ直接データ転送するように、意識が世界を直接捉える仕組み。 </p>
+                </div>
+                <div class="card">
+                    <h3>BIOS Level Truth</h3>
+                    <p>後付けのアプリ（哲学）以前に、システムを立ち上げるために不可欠な基本入出力システムの信頼。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>懐疑論キラーパッチ</strong>：論理パズルではなく、実生活での有用性を真理の基準に。</li>
+                <li><strong>知覚の統合インターフェース</strong>：対象物と知覚データを分離しない一貫したアーキテクチャ。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>アリストテレス（実在論）</li>
+                        <li>D. ヒューム（対抗・反駁の対象として）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>スコットランド常識学派</li>
+                        <li>アメリカ独立宣言（コモン・センスの政治的応用）</li>
+                        <li>現代の分析形而上学</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：崖っぷちの常識</h2>
+            <div class="thought-experiment">
+                <h3>哲学的パラドックスの強制終了</h3>
+                <p>世界が幻だと言い張る哲学者がいても、目の前に深い崖が現れれば彼は必ず足を止めます。リードは言います。「どんなに複雑な論理も、崖の前で立ち止まるという『本能的なOSの命令』には勝てない」。あなたは、論理の緻密さと、常識の手応え、どちらを信じますか？
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>トマス・リードは、思考が高度になりすぎて足元が覚束なくなった哲学を「現実」という地面に繋ぎ止めた人物です。彼の常識OSは、中間プロセスのノイズに惑わされず、ハードウェア（世界）の鼓動を直接聴くための、最も堅牢な生存プロトコルを提供しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Real Reality verified.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランク・ラムゼイ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@200;900&family=Playfair+Display:ital,wght@1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            /* Probability Blue */
+            --secondary: #1e293b;
+            /* Deep Slate */
+            --accent: #e11d48;
+            /* Ramsey Rose */
+            --bg: #fdfdfd;
+            --text: #0f172a;
+            --border: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .graph-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #fff;
+            border-bottom: 2px solid var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .header {
+            background: #fff;
+            padding: 10rem 3rem;
+            border: 1px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header::after {
+            content: "K_6";
+            position: absolute;
+            right: 2rem;
+            bottom: -2rem;
+            font-size: 15rem;
+            font-style: italic;
+            color: var(--primary);
+            opacity: 0.05;
+            font-family: 'Playfair Display';
+        }
+
+        .rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.2rem;
+            text-transform: uppercase;
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: var(--secondary);
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.5rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .os-tag {
+            padding: 0.4rem 1.2rem;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        .section {
+            margin-top: 8rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            border-left: 15px solid var(--accent);
+            padding-left: 2rem;
+            display: block;
+            margin-bottom: 4rem;
+            line-height: 1;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 5rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+        }
+
+        .hero-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: #fff;
+            border: 2px solid var(--primary);
+            padding: 5rem;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: right;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        /* FIX: IT-Analogy card text color for visibility */
+        .it-analogy {
+            background: var(--primary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .it-analogy h2 {
+            color: #fff;
+            margin-bottom: 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        .it-analogy .card {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 5px solid #fff;
+        }
+
+        .it-analogy .card h3 {
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .list-rich li {
+            margin-bottom: 1.5rem;
+            list-style: none;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .list-rich li::before {
+            content: "Σ";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 900;
+            font-family: serif;
+        }
+
+        .thought-experiment {
+            background: #fff1f2;
+            border: 2px dashed var(--accent);
+            padding: 5rem;
+            margin: 8rem 0;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 6rem;
+            border-top: 1px solid var(--border);
+            margin-top: 6rem;
+            color: var(--secondary);
+            opacity: 0.5;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .ramsey-graph {
+            width: 100%;
+            height: 300px;
+            margin: 4rem 0;
+            background: #f1f5f9;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .edge {
+            position: absolute;
+            height: 1px;
+            background: var(--accent);
+            transform-origin: left center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="graph-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← RAMSEY_THEORY / SUBJECTive_PROBABILITY</a>
+        <div>NECESSARY_ORDER_v4.39</div>
+    </nav>
+
+    <header class="container header">
+        <div class="rank">OBJECT_ID: P-439 / THE_YOUNG_GENIUS</div>
+        <h1>フランク・ラムゼイ</h1>
+        <p class="en-name">Frank P. Ramsey (1903–1930)</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">数理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">完全なる「カオス」は存在しない</h2>
+            <div class="hero-box">
+                <p>「どんなにバラバラに見えるデータ群でも、十分に大きなサイズがあれば、そこには必ず一定の秩序（パターン）が現れる」。26歳という若さで世を去った天才フランク・ラムゼイは、数学における<b>「ラムゼイ理論」</b>を通じて、宇宙に潜む必然的な秩序の姿を証明しました。彼はまた、真理を「現実に対応するもの」としてではなく、私たちがどう行動し、どう賭けるかという<b>「主観的確率」</b>の側面から捉え直しました。
+                </p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--accent); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>ラムゼイは、<b>「混沌としたビッグデータの中から、数学的に回避不能な『法則性』をマイニングし、不完全な情報下での最適な意思決定アルゴリズムを設計した、伝説のクオンツ・ロジシャン」</b>です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 数理OSの核心：ラムゼイ理論</h2>
+            <div class="ramsey-graph">
+                <div class="node" style="top:20%; left:50%;"></div>
+                <div class="node" style="top:40%; left:80%;"></div>
+                <div class="node" style="top:70%; left:70%;"></div>
+                <div class="node" style="top:70%; left:30%;"></div>
+                <div class="node" style="top:40%; left:20%;"></div>
+                <div class="edge" style="top:20%; left:50%; width:150px; transform:rotate(30deg);"></div>
+                <div class="edge"
+                    style="top:20%; left:50%; width:150px; transform:rotate(150deg); background:var(--primary);"></div>
+            </div>
+            <div class="quote-box">
+                <p class="quote-text">「『Pは真である』と言うことは、単に『P』と言うことと何も変わらない」</p>
+                <p class="quote-author">— 『真理と確率』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📐 ラムゼイ理論</h3>
+                    <p>集合が十分に大きければ、どんなにランダムでも必ず特定のパターンが生じる必然性の証明。</p>
+                </div>
+                <div class="card">
+                    <h3>🎲 主観的確率</h3>
+                    <p>確率は頻度ではなく「確信の度合い」。ベイズ統計の哲覚的基礎。</p>
+                </div>
+                <div class="card">
+                    <h3>🔤 真理の冗長説</h3>
+                    <p>真理とはメタな属性ではなく命題そのものの肯定。徹底した効率主義。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Error Correction</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Bit-Error Correction</h3>
+                    <p>ノイズ混じりの信号から背後にある正しいデータを導き出す、究極の「復元ロジック」です。</p>
+                </div>
+                <div class="card">
+                    <h3>Probability AI</h3>
+                    <p>AIが「自信度」を数値化し行動を選択する強化学習の推論エンジンの核心です。</p>
+                </div>
+                <div class="card">
+                    <h3>Optimization</h3>
+                    <p>世代を超えて「いつどれだけ投資すべきか」という長期的最適化のソースコードです。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ラムゼイ・テスト</strong>：条件文の真偽を背景知識との整合性で確認するアルゴリズム。</li>
+                <li><strong>意思決定論の創始</strong>：確率を「計算」から「行動と期待」の科学へと転換。</li>
+                <li><strong>真理の脱神秘化</strong>：真理を崇高な対象ではなく論理的な演算記号へとリファクタリング。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 確率と真理のパラダイム</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>伝統的客観主義</th>
+                        <th>ラムゼイ主観主義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>確率の本質</strong></td>
+                        <td>事象の頻度</td>
+                        <td>確信の度合い</td>
+                    </tr>
+                    <tr>
+                        <td><strong>真理の基準</strong></td>
+                        <td>外部事実との一致</td>
+                        <td>行動の一貫性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Static Logs</td>
+                        <td>Bayes Engine</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：カオスの否定</h2>
+            <div class="thought-experiment">
+                <p>夜空の星をランダムに配置しても、私たちはそこに北斗七星を見つけてしまいます。それは錯覚ではなく、配置というシステム自体が持つ「数理的な宿命」です。あなたはこのランダムな世界の中に「必然の形」を見つけ出すことができますか？
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フランク・ラムゼイは、人類の推論OSに「秩序の必然性」パッチをインストールしました。彼の早すぎた知性は、データサイエンスやAIと共生する現代において、最もモダンなフレームワークを提供し続けています。</p>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project.</p>
+    </footer>
+</body>
+
+</html>

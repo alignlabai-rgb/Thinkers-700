@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャック・ランシエール - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Noto+Sans+JP:wght@400;900&family=Syne:wght@800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #be123c;
+            /* Radical Crimson */
+            --secondary: #000000;
+            /* Aesthetic Black */
+            --bg: #ffffff;
+            --text: #171717;
+            --accent: #4ade80;
+            /* Equality Green */
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .brutalist-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            transform: skewY(-1deg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .header {
+            background: var(--primary);
+            color: #fff;
+            padding: 15rem 3rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            transform: skewY(2deg);
+        }
+
+        .header-content {
+            transform: skewY(-2deg);
+        }
+
+        .rank {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 0.8;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.3rem;
+        }
+
+        .en-name {
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 900;
+        }
+
+        .section {
+            margin-top: 12rem;
+            border-top: 20px solid var(--secondary);
+            padding-top: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: #fff;
+            border: 15px solid var(--primary);
+            padding: 6rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .quote-box::after {
+            content: "EQUITY";
+            position: absolute;
+            top: -2rem;
+            left: 2rem;
+            background: var(--secondary);
+            color: #fff;
+            padding: 0.5rem 2rem;
+            font-family: 'Oswald';
+        }
+
+        .quote-text {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .quote-author {
+            font-family: 'Oswald', sans-serif;
+            text-align: right;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 10px solid var(--secondary);
+            padding: 3.5rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translate(-10px, -10px);
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 12rem 0;
+            border-left: 30px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            border: 5px solid var(--secondary);
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 2px solid var(--secondary);
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .list-rich li::before {
+            content: "!";
+            position: absolute;
+            left: 0;
+            width: 3rem;
+            height: 3rem;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        .thought-experiment {
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 6rem;
+            margin: 10rem 0;
+            transform: rotate(-1deg);
+        }
+
+        .thought-experiment h3 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            background: var(--secondary);
+            color: #fff;
+            margin-top: 10rem;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .header {
+                padding: 10rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="brutalist-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← IGNORANT_SCHOOLMASTER / PART_OF_NO_PART</a>
+        <div>REDISTRIBUTED_SENSIBLE_v4.40</div>
+    </nav>
+
+    <header class="container header">
+        <div class="header-content">
+            <div class="rank">OBJECT_ID: P-440 / RADICAL_EQUALIZER</div>
+            <h1>ジャック・ランシエール</h1>
+            <p class="en-name">Jacques Rancière (1940–)</p>
+            <div class="os-tags">
+                <span class="os-tag">哲学OS</span>
+                <span class="os-tag">政治OS</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「知的能力」の前提を破壊する</h2>
+            <div class="hero-box">
+                <p>すべての人間には等しい知的能力が備わっているという「知性の平等」を、教育のゴールではなく<b>「出発点」</b>に据えるべきだ。ランシエールは、社会のパーテーション（区切り）を疑います。</p>
+                <div style="margin-top: 2rem; border-top: 5px solid var(--primary); padding-top: 2rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>ランシエールは、<b>「ユーザー権限（RBAC）によって制限されたシステムにおいて、すべてのユーザーがデフォルトで『Root権限』を持っていることを宣言し、固定されたUI/UXを破壊して再配置しようとする、急進的なシステム・リアーキテクト」</b>です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 政治OSの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">「知性とは、ただ一つである。それは一人の人間が、自分と同じように一人の人間が作った言葉を理解する力である」</p>
+                <p class="quote-author">— 『無知な教師』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📢 感性の分有</h3>
+                    <p>社会において誰の声が聞こえるかを規定する境界線。秩序を支えるコンフィグ。</p>
+                </div>
+                <div class="card">
+                    <h3>👨‍🏫 無知な教師</h3>
+                    <p>自分が知らないことさえも、相手が自ら学ぶよう促す。知性の階層を完全に排除した教育。</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ 異議申し立て</h3>
+                    <p>既存の枠組みから溢れた「数えられていない者たち」が、自らを平等な主体として再構築するイベント。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Root Access</h2>
+            <div class="grid">
+                <div class="card" style="background:#fff; color:var(--secondary);">
+                    <h3>All Users are Root</h3>
+                    <p>管理者を介さず直接通信する「P2P」ネットワークのような平等の実装です。</p>
+                </div>
+                <div class="card" style="background:#fff; color:var(--secondary);">
+                    <h3>Unstructured Data</h3>
+                    <p>テーブルや肩書き（構造化データ）から漏れた「非構造化データ」がスキーマを強制的に書き換えるプロセスです。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 教育/社会のモデル</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>漸進的啓蒙</th>
+                        <th>ランシエールの等価性</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>教育の目的</strong></td>
+                        <td>パッチを少しずつ当てる</td>
+                        <td>最初からRootを開放する</td>
+                    </tr>
+                    <tr>
+                        <td><strong>教師の役割</strong></td>
+                        <td>マスター（知識伝達）</td>
+                        <td>アクティベーター（意志触媒）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ランシエールは、階層化された世界の「コンフィギュレーション」に冷や水を浴びせました。他人の知性を尊敬するのではなく「自分と同じだと確信する」という最も過激な平等のソースコードです。</p>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>PART OF NO PART</p>
+    </footer>
+</body>
+
+</html>

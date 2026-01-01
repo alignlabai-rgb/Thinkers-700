@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トム・レーガン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Josefin+Sans:wght@300;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            /* Forest Green */
+            --secondary: #1a2e05;
+            /* Deep Bark */
+            --accent: #d97706;
+            /* Biocentric Gold */
+            --bg: #fdfbf7;
+            --text: #1c1917;
+            --legal-gray: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header {
+            background: #fff;
+            padding: 12rem 3rem;
+            border: 1px solid #e7e5e4;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            border-radius: 0 100px 0 100px;
+            box-shadow: 10px 10px 0 rgba(21, 128, 61, 0.1);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rank {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--legal-gray);
+            margin-bottom: 3rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.4rem 1.5rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 4rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            border-radius: 4rem 4rem 0 4rem;
+            box-shadow: 20px 20px 0 var(--accent);
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: #fff;
+            border-left: 15px solid var(--primary);
+            padding: 5rem;
+            margin: 8rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .quote-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Space Mono', monospace;
+            text-align: right;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e7e5e4;
+            padding: 3rem;
+            border-radius: 2rem;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        /* Fix visibility for dark section */
+        .it-analogy {
+            background: #1c1917;
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Space Mono', monospace;
+            border-left: 20px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 3.5rem;
+        }
+
+        .it-analogy .card {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .it-analogy .card h3 {
+            color: var(--accent);
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li::before {
+            content: "🍃";
+            position: absolute;
+            left: 0;
+        }
+
+        .thought-experiment {
+            background: #f0fdf4;
+            border: 2px dashed var(--primary);
+            padding: 5rem;
+            border-radius: 2rem;
+            margin: 10rem 0;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.4;
+            font-family: 'Space Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CASE_FOR_ANIMAL_RIGHTS</a>
+        <div>BIOCENTRIC_OS_v1.0</div>
+    </nav>
+
+    <header class="container header">
+        <div class="header-content">
+            <span class="rank">OBJECT_ID: P-442 / THE_DEONTOLOGICAL_BIOAVOCATE</span>
+            <h1>トム・レーガン</h1>
+            <p class="en-name">Tom Regan (1938–2017)</p>
+            <div class="os-tags">
+                <span class="os-tag">法OS</span>
+                <span class="os-tag">倫理OS</span>
+                <span class="os-tag">生命科学OS</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「生命の主体」へ権限を開放する</h2>
+            <div class="hero-box">
+                <p>「動物は人間の利益のために利用されるだけの『資源』なのか、それとも独自の価値を持つ『生命の主体』なのか？」
+                    トム・レーガンは、動物倫理を単なる慈悲の問題から、厳格な法的・哲学的<b>「権利」</b>の問題へと引き上げました。彼は、自分自身の生活に関心を持ち、感情や記憶を持つすべての存在を一律に<b>『生命の主体
+                        (Subject-of-a-life)』</b>と定義しました。</p>
+                <div style="margin-top: 2rem; border-top: 1px solid var(--accent); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>レーガンは、<b>「人間という特定の『管理者アカウント』のみが所有していた特権的なアクセス権を、特定のスペック（意識・感情・記憶）をクリアしたすべての『ノード』に一律に等しく付与する、非人間中心的なネットワーク・プロトコルの提唱者」</b>です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 権利OSの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">「動物を正義の観点から扱うとは、彼らを資源としてではなく、固有の価値を持つ者として扱うことである」</p>
+                <p class="quote-author">— 『動物の権利の事件』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🐾 生命の主体</h3>
+                    <p>欲求、知覚、記憶、未来の感覚、満足感や苦痛を持つ存在。手段として利用されることは許されない。 </p>
+                </div>
+                <div class="card">
+                    <h3>🚫 全廃論</h3>
+                    <p>「ケージを空にする」。動物利用をリフォームするのではなく、システムをレガシーとして廃棄する変革。 </p>
+                </div>
+                <div class="card">
+                    <h3>⚖️ 固有の値</h3>
+                    <p>誰かの役に立つからではなく、存在自体が持つ価値。個体は等しく尊重されるべきソースコードである。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 権利拡張のブートシーケンス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 属性スキャニング</h3>
+                    <p>種に関わらず、意識、欲求、記憶などの「生命の主体」としての要件を満たしているかを確認。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 権利プロトコルの適用</h3>
+                    <p>要件を満たすすべての存在に、侵すべからざる「基本的権利」を付与。利用を「資源（モノ）」から「主体（人）」へとキャスト。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. システムの完全移行</h3>
+                    <p>動物実験や畜産などの「利用モデル」を完全に廃止し、共存モデルへと社会OSをリプレイス。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Hardware Abstraction</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Direct Rights Controller</h3>
+                    <p>人間か動物かの違いをデバイスドライバレベルで隠蔽し、共通の「生命」コマンドを受け入れるアーキテクチャ。 </p>
+                </div>
+                <div class="card">
+                    <h3>Non-Human Agent Rights</h3>
+                    <p>自律型AI（エージェント）が将来的に「主体性」を持った際、適用されるべき法的・倫理的サンドボックスのプロトタイプ。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>権利の義務論モデル</strong>：損得（功利）ではなく「あるべき姿（権利）」を最優先。</li>
+                <li><strong>「生命の主体」テスト</strong>：権利の有無を客観的な認知能力で判定する基準。</li>
+                <li><strong>ラディカルな全廃論の実装</strong>：部分的な「福祉」を認めず、根本的な変革を要求。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>I. カント（人間を手段としてのみならず...への動物拡張）</li>
+                        <li>権利論的リベラリズム</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>動物解放運動（全廃派の理論的支柱）</li>
+                        <li>環境倫理学、ヴィーガニズム</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 倫理プロトコルの比較</h2>
+            <div style="overflow-x: auto;">
+                <table
+                    style="width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border);">
+                    <thead>
+                        <tr style="background: var(--primary); color: #fff;">
+                            <th>項目</th>
+                            <th>動物福祉論 (Singer)</th>
+                            <th>レーガン権利論</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>目標</td>
+                            <td>苦痛の最小化</td>
+                            <td>利用の全廃</td>
+                        </tr>
+                        <tr>
+                            <td>倫理基盤</td>
+                            <td>功利主義</td>
+                            <td>義務論</td>
+                        </tr>
+                        <tr>
+                            <td>ITアナロジー</td>
+                            <td>QoS調整</td>
+                            <td>アクセス権剥奪</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：救命艇のデバッグ</h2>
+            <div class="thought-experiment">
+                <h3>究極のエラーハンドリング</h3>
+                <p>定員オーバーの救命艇で、人間と犬のどちらかを降ろさねばならないとき。レーガンは「犬を降ろすことは許容されるが、それは犬がモノだからではなく、人間の方が失われる将来の選択肢が多いという特定の優先順位に基づくだけだ」と説きます。この冷徹なまでのロジックを、あなたはどう受け止めますか？
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>トム・レーガンは、人間中心主義という最強の「デフォルト設定」に戦いを挑みました。彼の哲学は、生命を「リソース」として扱うOSのバグを修正し、地球上の全存在をピア（対等者）として迎え入れるための、最も急進的で一貫したコードです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Bio-Rights reserved.</p>
+    </footer>
+</body>
+
+</html>
