@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラモン・リュイ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&family=Noto+Sans+JP:wght@400;900&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d4af37;
+            /* Alchemical Gold */
+            --secondary: #451a03;
+            /* Deep Earth */
+            --accent: #991b1b;
+            /* Mystic Red */
+            --bg: #f5f5dc;
+            /* Parchment */
+            --text: #1c1917;
+            --border: #b45309;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'MedievalSharp', 'Noto Sans JP', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Llullian Circles Background */
+        .circles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Medieval Logic Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            border-bottom: 4px solid var(--primary);
+            font-family: 'Fira Code', monospace;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Alchemical Header */
+        .header {
+            background: #fff;
+            padding: 12rem 3rem;
+            border: 1px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: inset 0 0 100px rgba(180, 83, 9, 0.1);
+        }
+
+        .rank {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.5rem;
+            background: var(--secondary);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 0;
+            transform: rotate(-2deg);
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--secondary);
+            border-bottom: 6px double var(--primary);
+            display: inline-block;
+            margin-bottom: 5rem;
+            line-height: 1.1;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 15px 15px 0 var(--primary);
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            border-left: 20px solid var(--primary);
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: "✺";
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.3;
+        }
+
+        .quote-text {
+            font-size: 2.3rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: #000;
+            color: #fff;
+            padding: 6rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .it-analogy h2 {
+            color: var(--primary);
+            margin-bottom: 4rem;
+            font-family: 'MedievalSharp', serif;
+            font-size: 3.2rem;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--secondary);
+            font-weight: 900;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 3.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "⦿";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 4px dashed var(--border);
+            padding: 6rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            font-weight: 900;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            border-top: 2px solid var(--border);
+            margin-top: 10rem;
+            color: var(--secondary);
+            font-family: 'Fira Code', monospace;
+            opacity: 0.6;
+        }
+
+        /* Llull Circles Animation */
+        .llull-loader {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 4rem auto;
+        }
+
+        .circle {
+            position: absolute;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.6rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .c1 {
+            width: 200px;
+            height: 200px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .c2 {
+            width: 140px;
+            height: 140px;
+            top: 30px;
+            left: 30px;
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        .c3 {
+            width: 80px;
+            height: 80px;
+            top: 60px;
+            left: 60px;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 8rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circles-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ARS_MAGNA / COMPUTATIONAL_GENESIS</a>
+        <div>COMBINATORIAL_ENGINE_v1313</div>
+    </nav>
+
+    <header class="container header">
+        <div class="rank">OBJECT_ID: P-438 / COMPUTATION_GRANDFATHER</div>
+        <h1>ラモン・リュイ</h1>
+        <p class="en-name">Ramon Llull (1232–1316)</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ロジックを「機械」で生成する</h2>
+            <div class="hero-box">
+                <p>「人間の思考は、数学のように機械的な手順で導き出せるのではないか？」
+                    現代のコンピューターサイエンスから遡ること700年、中世スペインの哲学者ラモン・リュイ（ライムンドゥス・ルルス）は、すでにこの構想に辿り着いていました。彼は、真理を導き出すための体系<b>『結合術（アルス・マグナ）』</b>を考案し、それを物理的に回転する同心円盤の形（リュイの円）で具現化しました。
+                </p>
+                <p>リュイを学ぶことは、コンピュー計算の<b>「起源」</b>を知ることです。彼は、概念を記号に置き換え、それらを「組み合わせる」ことで未知の答えを導き出すという、現代のバイナリ演算やアルゴリズムの雛形を作りました。ライプニッツ、そして現代のAI理論に至るまで脈々と流れる「思考の機械化」という夢。宗教的な情熱と、驚くほど冷徹なロジックが融合した彼の思想は、デジタル時代の私たちが依拠している「論理という名のエンジン」の設計図を提示してくれます。
+                </p>
+                <div style="margin-top: 2rem; border-top: 2px solid var(--primary); padding-top: 1.5rem;">
+                    <h4>💡 たとえるなら</h4>
+                    <p>リュイは、<b>「真空管も半導体も存在しない時代に、木彫りの円盤とアルゴリズムだけで、思考を自動生成しようとした、人類史上最初のフルスタック・論理エンジニア」</b>です。彼は、哲学という非構造化データを、円盤回転という物理的な『演算プロセス』に変換することで、世界初のハードウェア・ロジックを実装しました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 結合OSの核心：思考の自動生成装置</h2>
+            <div class="llull-loader">
+                <div class="circle c1">BONITAS VIRTUS GLORIA</div>
+                <div class="circle c2">DEUS HOMO NATURA</div>
+                <div class="circle c3">TRINITAS</div>
+            </div>
+            <div class="quote-box">
+                <p class="quote-text">「この術を用いれば、精神が疲れることなく、論理的な真理を次々と発見することができる」</p>
+                <p class="quote-author">— 『アルス・マグナ（結合術）』</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>🌀 結合術 (Ars Magna)</h3>
+                    <p>基本概念（属性）を記号化し、それらを回転盤で組み合わせることで、あらゆる問いに対する答えを力学的に出力する手法。</p>
+                </div>
+                <div class="card">
+                    <h3>🔢 アルファベットの変換</h3>
+                    <p>「A=良」「B=偉大」「C=永遠」のように、概念に特定の「ID」を割り振り、記号の順列組み合わせとして議論を整理する。</p>
+                </div>
+                <div class="card">
+                    <h3>🛡️ 弁証の武器</h3>
+                    <p>論理の正しさを「計算（デモンストレーション）」として提示することで、宗教対話を合理的なレベルに引き上げようとした。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 論理演算のパイプライン</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 記号化 (Encoding)</h3>
+                    <p>複雑な神学的・哲学的概念をシンプルな文字列（AからKなど）にマッピングする。自然言語をデータ型に変換するプロセス。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 組み合わせ (Combination)</h3>
+                    <p>物理的な円盤を回転させ、複数の概念を重ね合わせる。これは現代のビット演算における「AND」や「OR」の原型。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 出力 (Computation)</h3>
+                    <p>形成された記号の列を読み解き、論理的な結論を得る。主観を廃した、純粋に「形式的」な思考の出力。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: The Mechanical Ancestor</h2>
+            <div class="grid">
+                <div class="card" style="background:#fff; color:var(--secondary); border:none;">
+                    <h3>Logic Gates (Hardware)</h3>
+                    <p>リュイの回転盤は、現代のCPU内部にあるロジックゲートの物理的な表現です。異なる信号（概念）が交差する位置で特定の出力（真理）が得られる仕組みそのものです。</p>
+                </div>
+                <div class="card" style="background:#fff; color:var(--secondary); border:none;">
+                    <h3>Brute Force Search</h3>
+                    <p>『全円盤の組み合わせを網羅する』という彼の発想は、現代の暗号解読や最適化問題で使われる「ブルートフォース（総当たり）」アルゴリズムの最も古い着想の一つです。</p>
+                </div>
+                <div class="card" style="background:#fff; color:var(--secondary); border:none;">
+                    <h3>Early Compilers</h3>
+                    <p>思想を記号に変換し、規則に従って処理するというプロセスは、ソースコードをマシン語に翻訳し、実行するコンパイラの論理構造を先取りしていました。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>概念の計量化</strong>：あやふやな言葉を「固定的なパラメータ」として定義し、客観的な操作を可能にした。</li>
+                <li><strong>思考の外部化</strong>：脳内での推論を「外部の物理的な装置（円盤）」で行う、ヒューマン・コンピュータ・インタラクションの創始。</li>
+                <li><strong>普遍言語の夢</strong>：異なる言語を話す人々が共有できる、記号に基づいた共通の思考プロトコル（グローバル・スタンダード）の提唱。</li>
+                <li><strong>学際的シミュレーション</strong>：神学、法律、医学、政治など、あらゆる領域の知識を「結合術」という単一のOSで横断的に扱おうとした。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div>
+                    <h3>継承したもの (Import)</h3>
+                    <ul class="list-rich">
+                        <li>アリストテレス（論理学、範疇論）</li>
+                        <li>イスラム教の神秘主義（スーフィズム）における「神の属性」の議論</li>
+                        <li>新プラトン主義（宇宙の階層構造）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>影響を与えたもの (Export)</h3>
+                    <ul class="list-rich">
+                        <li>G.W.ライプニッツ（普遍記号学、計算機の考案）</li>
+                        <li>ジョルダノ・ブルーノ（記憶術、リュイ主義の継承）</li>
+                        <li>アラン・チューリング、ジョン・フォン・ノイマン（計算機科学への遠き源流）</li>
+                        <li>現代の知識表現（ナレッジ・グラフ）やAIの推論エンジン</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 思考スタイルの比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>伝統的なスコラ哲学</th>
+                        <th>リュイの結合術</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>推論の道具</strong></td>
+                        <td>自然言語（本、議論）</td>
+                        <td>記号と機械（回転円盤）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>プロセスの透明性</strong></td>
+                        <td>主観的な解釈に依存</td>
+                        <td>客観的な「回転」の法則に依存</td>
+                    </tr>
+                    <tr>
+                        <td><strong>拡張性</strong></td>
+                        <td>記憶力の限界で頭打ち</td>
+                        <td>組み合わせ次第で無限に拡張可能</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Manual Documentation</td>
+                        <td>Programmable Logic Controller</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 限界と批判 -->
+        <section class="section">
+            <h2 class="section-title">🔍 バグ報告と限界</h2>
+            <div class="card" style="border-right: 15px solid var(--primary);">
+                <ul class="list-rich">
+                    <li><strong>意味の欠落</strong>：記号の組み合わせはできても、その中身の意味を真に理解しているわけではない（ジョン・サールの「中国語の部屋」問題の先取り）。</li>
+                    <li><strong>爆発的な組み合わせ</strong>：円盤が増えるにつれ「組み合わせの爆発」が起き、物理的な計算が困難になるスケーラビリティの壁。</li>
+                    <li><strong>ドメイン特化の呪い</strong>：特定のキリスト教的体系に基づいて設計されているため、全く異なる前提（OS）を持つ相手には機能しにくい。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし「真理」をガチャで引けるとしたら？</h2>
+            <div class="thought-experiment">
+                <p>リュイは、概念の円盤を回すだけで真理が見つかると信じていました。これは、現代の「生成AI（LLM）」がある種の「確率的な組み合わせ」によって、もっともらしい回答を出力しているのと驚くほど似ています。
+                </p>
+                <p>もし、あなたが「愛とは何か？」「宇宙の終わりはどうなるか？」という問いに対して、100枚の概念盤をランダムに回転させて出た答えが、どれほど論理的に完璧であっても、あなたはそれを信じるでしょうか？
+                    それとも、やはり「人間が汗をかいて考えたこと」に価値を置くでしょうか？ リュイは、機械が弾き出した答えこそが、主観の混じらない「神に近い真理」だと断言するでしょう。あなたにはその勇気がありますか？
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ よくある質問</h2>
+            <div class="grid">
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 700;">Q: 彼は本当にコンピューターを作ったの？</p>
+                    <p>電子的な回路は作りませんでしたが、紙や皮で作った「論理装置」を数多く制作しました。それは、今のコンピューターのソフトウェア的ロジックを物理的に具現化したものでした。</p>
+                </div>
+                <div class="card">
+                    <p style="color: var(--primary); font-weight: 700;">Q: なぜこれほど「組み合わせ」にこだわったの？</p>
+                    <p>神の属性は無限の組み合わせからなると信じていたからです。それを人間が理解可能なレベルで再現するための「最小の演算セット」が彼の円盤でした。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラモン・リュイは、700年以上前に「思考」を「計算」へと変換する魔法、あるいは科学を発見しました。彼の『結合術』は、論理的な推論を人間の気まぐれな解釈から引き剥がし、普遍的で客観的な「演算プロセス」へと移し替えました。その円盤が回転し始めてから、人類はライプニッツやバベッジを経て、現代のシリコン上の演算に至る長い旅を始めたのです。リュイの夢見た「すべての真理を出力する機械」は、今まさに人工知能という姿で私たちの目の前に現れようとしています。私たちはその円盤の最新バージョンを手に、さらなる未知の組み合わせを回し続けているのです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The Engine of Reason.</p>
+    </footer>
+</body>
+
+</html>
