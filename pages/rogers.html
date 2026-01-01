@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カール・ロジャーズ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Nunito:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #fb923c; /* Warm Peach / Growth */
+            --secondary: #7c2d12; /* Deep Soil */
+            --accent: #f472b6; /* Care Pink */
+            --bg: #fff7ed; /* Soft Canvas */
+            --text: #431407;
+            --glass: rgba(255, 255, 255, 0.6);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+        
+        /* Soft Blooming Background */
+        .bloom-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .circle-gradient { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: float 20s infinite alternate; }
+        .c1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; }
+        .c2 { width: 500px; height: 500px; background: var(--accent); bottom: -100px; right: -100px; animation-delay: -5s; }
+        @keyframes float { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--glass); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 2px solid rgba(251, 146, 60, 0.2); }
+        .nav a { color: var(--secondary); text-decoration: none; font-weight: 700; font-family: 'Outfit'; }
+
+        /* Humanistic Header */
+        .header { background: #fff; padding: 10rem 3rem; border-radius: 3rem; position: relative; margin-top: 2rem; overflow: hidden; box-shadow: 0 30px 60px rgba(124, 45, 18, 0.05); text-align: center; }
+        .header::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, var(--bg) 150%); }
+        .header-content { position: relative; z-index: 2; }
+        .rank { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--primary); font-weight: 700; margin-bottom: 1.5rem; display: block; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: 5rem; font-weight: 900; line-height: 1; margin-bottom: 1rem; color: var(--secondary); letter-spacing: -0.1rem; }
+        .en-name { font-size: 2rem; font-weight: 300; color: var(--primary); margin-bottom: 3.5rem; }
+        
+        .os-tags { display: flex; gap: 1rem; justify-content: center; }
+        .os-tag { padding: 0.5rem 2rem; background: var(--secondary); color: #fff; font-weight: 700; border-radius: 100px; font-size: 0.8rem; }
+
+        /* Sections */
+        .section { margin-top: 10rem; }
+        .section-title { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 900; color: var(--secondary); margin-bottom: 4rem; position: relative; display: inline-block; }
+        .section-title::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 10px; background: rgba(251, 146, 60, 0.3); z-index: -1; transform: skewX(-20deg); }
+
+        .hero-box { background: var(--glass); backdrop-filter: blur(15px); border: 2px solid #fff; padding: 5rem; border-radius: 4rem; position: relative; box-shadow: 0 40px 80px rgba(124, 45, 18, 0.1); }
+        .hero-text { font-size: 1.6rem; line-height: 1.8; font-weight: 400; color: var(--secondary); }
+        .hero-text b { color: var(--primary); font-weight: 900; }
+
+        .quote-box { background: #fff; border-right: 20px solid var(--primary); padding: 6rem; margin: 8rem 0; border-radius: 2rem 0 0 2rem; box-shadow: -20px 20px 50px rgba(0,0,0,0.02); }
+        .quote-text { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 600; line-height: 1.3; margin-bottom: 2rem; color: var(--secondary); }
+        .quote-author { font-family: 'JetBrains Mono', monospace; text-align: right; color: var(--primary); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; }
+        .card { background: #fff; padding: 4rem; border-radius: 3rem; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; border: 1px solid rgba(251, 146, 60, 0.1); }
+        .card:hover { transform: scale(1.05); box-shadow: 0 50px 100px rgba(251, 146, 60, 0.15); }
+        .card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 900; font-family: 'Outfit', sans-serif; }
+
+        .it-analogy { background: var(--secondary); color: #fff; padding: 8rem; margin: 10rem 0; font-family: 'JetBrains Mono', monospace; border-radius: 5rem; position: relative; overflow: hidden; }
+        .it-analogy h2 { color: var(--primary); margin-bottom: 4rem; font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 900; }
+        .it-card { background: rgba(255, 255, 255, 0.05); padding: 3rem; border-radius: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 3rem; }
+        .it-card h3 { color: var(--primary); margin-bottom: 1rem; }
+
+        table { width: 100%; border-collapse: separate; border-spacing: 0 1rem; margin-top: 4rem; }
+        th, td { padding: 2rem; text-align: left; background: #fff; }
+        th { font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: var(--secondary); }
+        td:first-child { border-radius: 2rem 0 0 2rem; font-weight: 900; color: var(--primary); }
+        td:last-child { border-radius: 0 2rem 2rem 0; }
+
+        .list-rich li { margin-bottom: 3rem; list-style: none; padding-left: 5rem; position: relative; font-size: 1.3rem; }
+        .list-rich li::before { content: "❤"; position: absolute; left: 0; color: var(--accent); font-size: 3rem; top: -0.5rem; }
+
+        .thought-experiment { background: #fff; border: 5px solid var(--primary); padding: 6rem; border-radius: 4rem; margin: 10rem 0; position: relative; }
+        .thought-experiment::after { content: "ACCEPTANCE"; position: absolute; top: -1.5rem; right: 3rem; background: var(--primary); color: #fff; padding: 0.5rem 2.5rem; font-weight: 900; border-radius: 1rem; }
+        .thought-experiment h3 { font-family: 'Outfit', sans-serif; font-size: 2.8rem; color: var(--secondary); margin-bottom: 2rem; }
+
+        .footer { text-align: center; padding: 10rem; opacity: 0.4; font-family: 'JetBrains Mono', monospace; }
+
+        @media (max-width: 768px) { h1 { font-size: 3.5rem; } .header { padding: 8rem 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="bloom-bg">
+        <div class="circle-gradient c1"></div>
+        <div class="circle-gradient c2"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← ON_BECOMING_A_PERSON</a>
+        <div>CLIENT_CENTERED_OS_v4.46</div>
+    </nav>
+
+    <header class="container header">
+        <div class="header-content">
+            <span class="rank">OBJECT_ID: P-446 / THE_HUMANISTIC_ARCHITECT</span>
+            <h1>カール・ロジャーズ</h1>
+            <p class="en-name">Carl Rogers (1902–1987)</p>
+            <div class="os-tags">
+                <span class="os-tag">心理OS</span>
+                <span class="os-tag">教育OS</span>
+                <span class="os-tag">対話OS</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「評価」を捨てて、「環境」を整える</h2>
+            <div class="hero-box">
+                <p class="hero-text">「人は、適切な環境さえ整えば、自ずと健やかに成長する力を持っている」。カール・ロジャーズは、従来の心理学が持っていた「医者（専門家）が患者（無知な者）を直す」という階層構造を解体し、<b>『来談者中心療法』</b>という革命的なOSを立ち上げました。彼は、成長の鍵はテクニックではなく、他者への<b>『無条件の肯定的関心』</b>という、システムのあり方そのものにあると説きました。</p>
+                <p class="hero-text" style="margin-top: 2rem;">ロジャーズを学ぶことは、人間関係の<b>「安全な通信プロトコル」</b>を構築することです。彼は、指示や批判という「割り込み処理」を排除し、相手の体験をありのままに受け止めることで、本人の自己修復能力を最大化させる手法を確立しました。不寛容な時代において、私たちが自分自身と他者をどう「アップデート」していくべきか。彼の思想は、心の深層にある自己実現のリソースを解放するための、最も暖かいソースコードを提供してくれます。</p>
+            </div>
+            <div style="margin-top: 4rem; padding: 3rem; background: var(--primary); color: #fff; border-radius: 4rem 4rem 0 4rem;">
+                <h4>💡 たとえるなら</h4>
+                <p>ロジャーズは、<b>「ユーザーを『修理が必要なデバイス』として扱うのではなく、システムが最適な『Safe Mode（保護環境）』を提供することで、ユーザー自身のカーネルが自動的に整合性チェックとエラー修復を行うことを支援する、究極の環境設計エンジニア」</b>です。彼のセラピーは、人間の可能性に対する『ノンブロッキング・リスニング』の実装なのです。</p>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 心理OSの核心：成長の三条件</h2>
+            <div class="quote-box">
+                <p class="quote-text">「不思議なパラドックスだが、自分自身をありのままに受け入れたときに初めて、自分を変えることができる」</p>
+                <p class="quote-author">— 『自分自身になること』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🤝 共感的理解</h3>
+                    <p>相手の内的世界を「あたかも自分のものであるかのように」感じ取ること。主観データの完全なる同期プロセス。 </p>
+                </div>
+                <div class="card">
+                    <h3>🌸 無条件の肯定的関心</h3>
+                    <p>相手に一切の条件をつけず、その存在を100%肯定すること。評価による「パケット損失」のない、純粋な受信。 </p>
+                </div>
+                <div class="card">
+                    <h3>✨ 自己一致 (Congruence)</h3>
+                    <p>聞き手自身が、自分の感情と自覚を一致させていること。システムに偽りのパラメータを混入させないための、誠実な整合性。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 自己実現のブートフロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 防衛解除 (Security Drop)</h3>
+                    <p>外部からの評価（ジャッジメント）を遮断することで、長年かけて構築された「防衛的なUI」を一時的にシャットダウンする。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 内部アクセス (Kernel Access)</h3>
+                    <p>否定される恐れがなくなったことで、普段は隠されている「本音の感情（生データ）」へアクセスが可能になる。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 有機的統合 (Integrate)</h3>
+                    <p>新しい発見を自分の一部として統合。バージョンアップされた「十分に機能する人間」へと再起動（リブート）する。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Empathetic Environment</h2>
+            <div class="it-card">
+                <h3>Safe Mode & Fail-Safe</h3>
+                <p>最小限の機能だけで起動し、システムの整合性を確認するSafe Modeのように、一切のプレッシャーを取り除いた環境こそが、人間の再構築には必要不可欠です。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Garbage Collection (Emotional)</h3>
+                <p>誰かに聞いてもらうことで、心の中に溜まった不要なメモリ（抑圧された感情）を安全にパージし、メモリリークのような精神的疲弊を防ぎます。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Non-Blocking I/O</h3>
+                <p>相手の言葉を遮らず、自分の意見（ブロッキング）を返さずに受信し続けることで、情報の流量を最大化し、相手のプロセスを停滞させません。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>自己実現傾向の発見</strong>：生命には自らを向上させようとする「デフォルトのプログラム」が備わっていることを発見した。</li>
+                <li><strong>エンカウンター・グループ</strong>：グループの中で本音の対話を行い、集団全体のセキュリティレベル（安心感）を高める手法の開発。</li>
+                <li><strong>評価からの解放</strong>：外部の評価（他人のものさし）ではなく、自分の内的な評価（自分の感性）で生きるためのライブラリ。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>オットー・ランク（意思療法の先駆）</li>
+                        <li>ジョン・デューイ（経験学習の影響）</li>
+                        <li>東洋思想（「無」や「あるがまま」の概念との親和性）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>コーチング、カウンセリング全般</li>
+                        <li>アドラー心理学（現代的な普及への影響）</li>
+                        <li>マズロー（自己実現理論の深化）</li>
+                        <li>NVC（非暴力コミュニケーション）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 心理アプローチの設計比較</h2>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th>精神分析（フロイト）</th><th>来談者中心（ロジャーズ）</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>支配権の所在</strong></td><td>分析家（ドクター）</td><td>来談者（クライエント）</td></tr>
+                    <tr><td><strong>作業の内容</strong></td><td>原因のデバッグ（診断）</td><td>環境の構築（承認）</td></tr>
+                    <tr><td><strong>時間の視点</strong></td><td>過去のログ（トラウマ）</td><td>現在の体験（プロセス）</td></tr>
+                    <tr><td><strong>ITアナロジー</strong></td><td>Deep Log Analysis</td><td>Ideal Development Environment (IDE)</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：評価のない空間</h2>
+            <div class="thought-experiment">
+                <h3>すべての評価パラメータの無効化</h3>
+                <p>スマートフォンのアプリが「使いにくい」と評価されることなく、ただその動作を温かく見守られるとします。そのアプリは、ユーザーに媚びるのをやめ、自分が本来どう動作したかったのかを思い出すかもしれません。</p>
+                <p>今、あなたの周囲にある「評価（いいね、順位、年収、学歴）」という全センサーを一瞬だけOFFにしてみてください。そこには、外部に合わせるためのUIではない、あなたの本物の魂（システム）が見えませんか？ あなたが「ただのあなた」としてそこにいることを許されたとき、最初に出力する一言は何ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>カール・ロジャーズは、人間の心という最も複雑なシステムには、マニュアル（指示）よりも栄養（愛情豊かな環境）が必要であることを証明しました。彼の心理OSは、他者をコントロールしようとする傲慢さを捨て、ただ隣に寄り添うことの「エンジニアリングとしての正しさ」を教えてくれます。自分を信じるのが難しいこの時代、ロジャーズが残した「無条件の肯定」というプロトコルは、私たちが再び自分自身の物語を愛するための、最も確かな再起動の手順書です。</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Empathy implemented.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アンリ・ド・サン＝シモン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f59e0b;
+            /* Industrial Gold */
+            --secondary: #1e3a5f;
+            /* Factory Blue */
+            --accent: #dc2626;
+            /* Revolution Red */
+            --bg: #f5f5f0;
+            --text: #1f2937;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Industrial Grid Background */
+        .industrial-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+            background-image: repeating-linear-gradient(0deg, var(--secondary) 0px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, var(--secondary) 0px, transparent 1px, transparent 40px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border-bottom: 5px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 900;
+        }
+
+        /* Utopian Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0f2942 100%);
+            color: #fff;
+            padding: 12rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "INDUSTRIE";
+            position: absolute;
+            bottom: -3rem;
+            right: -2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18rem;
+            opacity: 0.08;
+            color: var(--primary);
+        }
+
+        .rank {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            font-weight: 400;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--primary);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2rem;
+            background: var(--primary);
+            color: var(--secondary);
+            font-weight: 900;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4.5rem;
+            color: var(--secondary);
+            margin-bottom: 5rem;
+            border-left: 15px solid var(--primary);
+            padding-left: 2rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 15px 15px 0 var(--primary);
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--secondary);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+        }
+
+        .quote-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .quote-author {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: right;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 8px solid var(--primary);
+            padding: 3rem;
+            transition: 0.3s;
+            box-shadow: 5px 5px 0 var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 var(--primary);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: #0f172a;
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            border: 5px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--primary);
+            margin-bottom: 4rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            text-align: center;
+            letter-spacing: 0.1rem;
+        }
+
+        .it-card {
+            border: 1px solid #334155;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: #1e293b;
+        }
+
+        .it-card h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 2px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #fff;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2.5rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li::before {
+            content: "⚙️";
+            position: absolute;
+            left: 0;
+            font-size: 2rem;
+            top: -0.3rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 5px solid var(--secondary);
+            padding: 6rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            opacity: 0.5;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .header {
+                padding: 8rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="industrial-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← NOUVEAU_CHRISTIANISME</a>
+        <div>INDUSTRIAL_UTOPIA_v4.55</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-455 / THE_INDUSTRIAL_PROPHET</span>
+        <h1>アンリ・ド・サン＝シモン</h1>
+        <p class="en-name">Henri de Saint-Simon (1760–1825)</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">経済OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「産業者」が世界を動かす</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「世界を動かすのは王侯貴族ではなく、<b>『産業者（industriels）』</b>である」。アンリ・ド・サン＝シモンは、フランス革命後の混乱を見据え、科学者、技術者、銀行家、労働者といった<b>「生産に従事する人々」</b>こそが社会の真の支配者となるべきだと主張しました。彼は、怠惰な貴族階級を「蜂の群れに巣食うドローン（雄蜂）」と呼び、政治をテクノクラート（技術官僚）の手に委ねることを夢見た、近代社会主義の父の一人です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    サン＝シモンを学ぶことは、<b>「誰が社会システムを設計すべきか」</b>という問いに向き合うことです。彼は、政治と宗教を科学と産業に置き換えることで、貧困と戦争のない「黄金時代」を実現できると考えました。彼の思想は、マルクス主義からテクノクラシー、そして現代のプラットフォーム資本主義まで、驚くほど広範な影響を与えています。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--secondary); color: #fff; clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);">
+                <h4 style="color: var(--primary);">💡 たとえるなら</h4>
+                <p>サン＝シモンは、<b>「社会という名の旧式オペレーティングシステム（王制・貴族制）を、科学と産業を核とした新しいカーネル（Industriel
+                        OS）に完全リプレースしようとした、壮大なシステム・アーキテクト」</b>です。彼のビジョンは、コードを書く人（産業者）がルールを決めるべきだという、一種のメリトクラシー（能力主義）の原型なのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 社会OSの核心：産業主義</h2>
+            <div class="quote-box">
+                <p class="quote-text">「人間による人間の統治は、事物の管理に取って代わられるだろう」</p>
+                <p class="quote-author">— サン＝シモン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🏭 産業者の支配</h3>
+                    <p>科学者、技術者、芸術家、銀行家、労働者など、社会の生産に貢献するすべての人々を「産業者」と呼び、彼らによる社会設計を提唱。 </p>
+                </div>
+                <div class="card">
+                    <h3>👑 有閑階級の批判</h3>
+                    <p>何も生産しない王侯貴族や軍人を「怠惰な寄生者」として批判。彼らが社会から消えても何も変わらないが、産業者がいなくなれば社会は崩壊すると主張。 </p>
+                </div>
+                <div class="card">
+                    <h3>✝️ 新しいキリスト教</h3>
+                    <p>宗教を科学と結びつけ、貧困層の救済を最優先の目的とする「新キリスト教」を提唱。来世ではなく現世での幸福を目指す。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 産業社会へのトランジション</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 旧体制の解体 (Deprecate)</h3>
+                    <p>王や貴族、聖職者といった旧来の支配層を、生産に貢献しないレガシー・コンポーネントとして段階的に廃止する。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 新カーネルの実装 (Implement)</h3>
+                    <p>科学アカデミーや産業評議会を新しい統治システム（カーネル）として導入。専門家による意思決定を中央化。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 全体最適化 (Optimize)</h3>
+                    <p>社会全体をひとつの「ファクトリー」として捉え、資源配分と労働を合理的に最適化。福祉の最大化を目指す。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Technocracy Kernel</h2>
+            <div class="it-card">
+                <h3>Meritocratic Access Control</h3>
+                <p>社会システムへのアクセス権限（権力）は、血統や財産ではなく、生産への「貢献度」（能力と実績）によって付与されるべきという思想。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Central Planning Algorithm</h3>
+                <p>市場の「見えざる手」に任せるのではなく、専門家（科学者・技術者）が社会全体のリソース配分を計算・計画するという発想。計画経済の原型。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Platform as Government</h3>
+                <p>国家は、政治的な闘争の場ではなく、効率的なサービス提供（福祉、教育、インフラ）を行うための「プラットフォーム」であるべきという考え。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>テクノクラシーの構想</strong>：政治家ではなく、科学者や技術者が社会の意思決定を行うべきという「専門家支配」のモデルを初めて体系化。</li>
+                <li><strong>銀行の社会的役割</strong>：資本を社会的に有用な事業に融通するための中央銀行・公共投資銀行の構想。後のサン＝シモン主義者がスエズ運河建設に関与。</li>
+                <li><strong>ポジティブ・サイエンス</strong>：社会を自然科学と同様に研究・改善できる対象と見なす「実証主義（ポジティヴィズム）」への道を開いた（弟子コントが継承）。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>フランス革命（旧体制批判のコンテクスト）</li>
+                        <li>啓蒙思想（理性による社会改良）</li>
+                        <li>ニュートン物理学（科学的世界観）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>オーギュスト・コント（実証主義・社会学の父）</li>
+                        <li>カール・マルクス（階級闘争論への影響）</li>
+                        <li>テクノクラシー運動（20世紀アメリカ）</li>
+                        <li>現代のプラットフォーム資本主義批評</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 社会統治モデルの比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>旧体制（アンシャン・レジーム）</th>
+                        <th>サン＝シモン主義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>支配者の資格</strong></td>
+                        <td>血統、土地所有</td>
+                        <td>生産への貢献、科学的知識</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社会の目的</strong></td>
+                        <td>秩序の維持、王の栄光</td>
+                        <td>最下層の物質的改善</td>
+                    </tr>
+                    <tr>
+                        <td><strong>意思決定</strong></td>
+                        <td>宮廷の政治</td>
+                        <td>産業評議会（専門家会議）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Hardcoded Legacy System</td>
+                        <td>Technocratic Microservices</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし「産業者」だけが投票できたら</h2>
+            <div class="thought-experiment">
+                <h3>テクノクラシーの光と影</h3>
+                <p>想像してみてください。明日から、選挙権が「社会に生産的に貢献している人」にだけ与えられることになりました。基準は、科学者、エンジニア、医師、教師、農業従事者、工場労働者のように「具体的な成果物」を生み出す職業であること。
+                </p>
+                <p>一方、政治家、評論家、株のトレーダー、そして「ただ資産を持っているだけの人」には投票資格がありません。このルールは社会をより良くするでしょうか？
+                    それとも、新たな「産業貴族」を生み出し、そうでない人々を排除する危険な格差社会を招くでしょうか？
+                    サン＝シモンのビジョンは、テクノロジー企業が社会を支配するかのような現代において、どのような意味を持つでしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アンリ・ド・サン＝シモンは、近代社会主義とテクノクラシーの両方に種を蒔いた、デュアルブートの思想家です。彼の産業主義OSは、怠惰な特権階級を批判し、科学と労働によってすべての人（特に最貧困層）を幸福にするという壮大なビジョンを持っていました。しかしその一方で、「専門家支配」という彼のモデルは、民主主義や多様な価値観とどう折り合いをつけるかという難問も残しました。シリコンバレーの天才たちが「世界をより良くする」と語るとき、私たちはサン＝シモンの夢と、その未解決のバグを思い出す必要があるのかもしれません。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Industrie Sans Frontières.</p>
+    </footer>
+</body>
+
+</html>

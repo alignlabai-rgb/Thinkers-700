@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マルキ・ド・サド - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&family=Oswald:wght@200;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #991b1b;
+            /* Blood Red */
+            --secondary: #000000;
+            /* Obsidian Black */
+            --accent: #450a0a;
+            /* Darkest Marrow */
+            --bg: #050505;
+            --text: #d1d5db;
+            --border: #7f1d1d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Visceral Background */
+        .visceral-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .red-blur {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            to {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            font-family: 'Fira Code', monospace;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Sovereignty Header */
+        .header {
+            background: #000;
+            padding: 12rem 3rem;
+            border: 1px solid var(--border);
+            position: relative;
+            margin-top: 2rem;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            right: -10%;
+            top: -10%;
+            width: 40%;
+            height: 120%;
+            background: var(--primary);
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: block;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 6rem;
+            font-weight: 900;
+            line-height: 0.8;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 5px 5px 0 var(--primary);
+        }
+
+        .en-name {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: var(--primary);
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 2.5rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 0;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            transition: 0.3s;
+        }
+
+        .os-tag:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 6rem;
+            border-bottom: 8px solid var(--primary);
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .hero-box {
+            background: #0a0a0a;
+            border: 1px solid var(--primary);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 15px 15px 0 var(--accent);
+        }
+
+        .hero-box::after {
+            content: "TRANSHUMAN_STRESS_TEST";
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+            opacity: 0.5;
+            font-size: 0.7rem;
+        }
+
+        .hero-text {
+            font-size: 1.6rem;
+            line-height: 1.7;
+            font-weight: 200;
+            color: #f3f4f6;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            position: relative;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .quote-text {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 4rem;
+        }
+
+        .card {
+            background: #050505;
+            border: 1px solid #1f1f1f;
+            padding: 4rem 3rem;
+            position: relative;
+            transition: 0.5s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            font-weight: 200;
+            letter-spacing: 0.05rem;
+        }
+
+        .it-analogy {
+            background: #000;
+            color: #fff;
+            padding: 10rem 5rem;
+            margin: 12rem 0;
+            font-family: 'Fira Code', monospace;
+            border: 2px solid var(--primary);
+            -webkit-mask-image: linear-gradient(black 80%, transparent);
+        }
+
+        .it-analogy h2 {
+            color: var(--primary);
+            margin-bottom: 5rem;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 4.5rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border-left: 10px solid var(--primary);
+            padding-left: 3rem;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .it-card::before {
+            content: "!";
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            color: var(--primary);
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        .it-card h3 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5rem;
+            background: #000;
+            border: 1px solid var(--border);
+        }
+
+        th,
+        td {
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 3rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.3rem;
+            font-weight: 200;
+        }
+
+        .list-rich li::before {
+            content: "☠";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 2.5rem;
+            top: -0.2rem;
+        }
+
+        .thought-experiment {
+            background: #000;
+            border: 4px solid var(--primary);
+            padding: 8rem;
+            margin: 15rem 0;
+            position: relative;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 12rem;
+            opacity: 0.3;
+            font-family: 'Fira Code', monospace;
+            filter: grayscale(1);
+            letter-spacing: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .header {
+                padding: 8rem 2rem;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="visceral-bg">
+        <div class="red-blur" style="top: 20%; left: -10%;"></div>
+        <div class="red-blur" style="bottom: 10%; right: -15%;"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← JUSTINE_OU_LES_MALHEURS_DE_LA_VERTU</a>
+        <div>MORAL_STRESS_TESTER_v4.53</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-453 / THE_DIVINE_MARQUIS</span>
+        <h1>マルキ・ド・サド</h1>
+        <p class="en-name">Donatien Alphonse François de Sade (1740–1814)</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">文学OS</span>
+            <span class="os-tag">心理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">理性を極限まで「暴走」させる</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「自然は破壊を欲している。ならば、我々の欲望を制限するものは何もない」。マルキ・ド・サド（サド侯爵）は、啓蒙時代の「理性」をその極点まで突き詰め、道徳や法を完全に踏み越えた<b>『絶対的放縦』</b>のロジックを構築しました。彼は、快楽と痛みを数学的なまでに冷徹に分析し、人間性の最深部にある暗黒の欲望をシステム化しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    サドを学ぶことは、人間というシステムの<b>「極限デバッグ」</b>を経験することです。彼は、「善」という名の不確かなセキュリティプロトコルを完全にバイパスし、欲望だけを唯一のコマンドとして実行したときに何が起きるかを記述し続けました。フーコーやバタイユ、ラカンといった現代思想家が彼を避けて通れなかったのは、サドが文明という名の「インターフェース」の下に隠された、残酷で力強い「カーネル」を暴き出したからです。
+                </p>
+            </div>
+            <div
+                style="margin-top: 5rem; padding: 4rem; background: var(--secondary); border: 2px solid var(--primary); color: var(--primary); font-weight: 900; text-align: center; font-size: 1.5rem;">
+                <h4>💡 たとえるなら</h4>
+                <p>サドは、<b>「社会のセキュリティ・脆弱性を指摘するために、あえて最悪のランサムウェア（絶対的放縦）を自らの身体とペンで実行し続け、既存の道徳OSがどこまで負荷（欲望）に耐えられるかを実証した、史上最も苛烈なペネトレーション・テスター」</b>です。彼の思想は、理性の限界というファイアウォールを突破するための、暗黒のスクリプトなのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 欲望OSの核心：絶対的主権</h2>
+            <div class="quote-box">
+                <p class="quote-text">「もし法が唯一の幸福であり、犯罪だけが法に反するなら、常に犯罪を求めることこそが幸福への唯一の道である」</p>
+                <p class="quote-author">— 『ジュスティーヌ、あるいは美徳の不幸』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🕯️ 理性の極北</h3>
+                    <p>感情や道徳に基づかない、純粋な論理性による「悪」の正当化。理性は欲望の僕であり、欲望を最大化するための計算機である。 </p>
+                </div>
+                <div class="card">
+                    <h3>⛓️ 自然の破壊性</h3>
+                    <p>自然界において「創造」は「破壊」を前提とする。ゆえに、他者を傷つけ、破壊することは、自然の摂理に最も忠実なアクションである。 </p>
+                </div>
+                <div class="card">
+                    <h3>🎭 主権的個体</h3>
+                    <p>他者を単なる「オブジェクト」や「リソース」として扱い、自らの意志のみを絶対的なコマンドとして実行する超越的個体の確立。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 欲望のバースト・プロセス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 抑圧の検知 (Detection)</h3>
+                    <p>教育、宗教、法によってインストールされた「美徳」という名の外部プラグインを特定し、無効化する。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 閾値の突破 (Breakthrough)</h3>
+                    <p>禁忌（タブー）とされる領域へアクセスし、道徳的アラートを無視して行動を実行（エクスプロイト）。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 純粋実行 (Infinite Execution)</h3>
+                    <p>社会の外部に構築された隔離空間（ソドムの城など）において、欲望の無限連鎖（ループ）を記述・実行する。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Moral Stress Test</h2>
+            <div class="it-card">
+                <h3>Denial of Service (DDoS) on Morality</h3>
+                <p>あまりにも過激で、あまりにも大量の「悪」を記述し続けることで、既存の道徳OSの処理能力を飽和させ、システムをクラッシュさせる行為。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Root Privilege Escalation</h3>
+                <p>すべての社会的制約を回避し、システムの全権限（Root）を取得して、自分以外のすべてのデータを「削除可能」なリソースと見なす主権性。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Infinite Loop of Desire</h3>
+                <p>ひとつの欲望の充足が次のより強い欲望を引き金を引く。終了条件（Exit Condition）のない再帰的な欲望の関数呼び出し。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>冷徹な解剖学</strong>：肉体と精神を単なる「物質的な反応」として記述し、神秘性を剥ぎ取った唯物論的インターフェース。</li>
+                <li><strong>サディズムの構造化</strong>：権力関係における「能動性」と「受動性」を、システム上のロール（役割）として定義した。</li>
+                <li><strong>孤独の主権</strong>：他者との共感を完全に切断することで、自分一人の世界の中に「宇宙」を構築するスタンドアロン・モード。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ラ・メトリー（『人間機械論』の唯物論）</li>
+                        <li>啓蒙思想（ルソーやヴォルテールの「理性」への過激な応答）</li>
+                        <li>マキャヴェッリ（権力のリアリズム）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ミシェル・フーコー（監獄、セクシュアリティの分析）</li>
+                        <li>ジョルジュ・バタイユ（「蕩尽」と「エロティシズム」）</li>
+                        <li>ジャック・ラカン（「サドはカントと共にある」という定式化）</li>
+                        <li>超越主義、シュルレアリスム、現代アート全般</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 思想の実行モード比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>通常の市民社会OS</th>
+                        <th>サドの絶対放縦OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>他者の定義</strong></td>
+                        <td>共存すべきユーザー</td>
+                        <td>消費されるべきリソース</td>
+                    </tr>
+                    <tr>
+                        <td><strong>行動原理</strong></td>
+                        <td>社会的合意と法</td>
+                        <td>個人の情欲と論理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>最終目的</strong></td>
+                        <td>システムの安定（幸福）</td>
+                        <td>システムの飽和（法悦）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Standard User Permissions</td>
+                        <td>God Mode / Kernel Access</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし法が「欲望の計算」だったら</h2>
+            <div class="thought-experiment">
+                <h3>犯罪の完全な正当化</h3>
+                <p>あなたは、この世で最も冷徹な数学者であり、同時に最も強い欲望を持つ権力者だとします。あるリソースを破壊することが、あなたの計算上、最も高い「快楽のスループット」を出すと証明されました。</p>
+                <p>サドは言います。「理性がそれを良しとするなら、なぜためらうのか？」。あなたは、自分だけのサーバー（城）の中で、外界のアップデートを遮断し、自分だけの「絶対的アルゴリズム」を最優先で実行しますか？
+                    そこで叫ぶ人々の声は、あなたにとって「データのノイズ」以上の意味を持ちますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マルキ・ド・サドは、理性が持つ「闇の側面」を全開にした、人類史上最も危険な思想家です。彼のOSは、私たちが普段「人間性」という美しいパッケージで包み隠している、剥き出しの意志と計算の残酷さを突きつけます。彼の言葉は、読む者を不快にさせ、拒絶反応を引き起こしますが、それこそが彼が仕掛けた「最強のバグ報告」なのです。サドを直視することは、私たちが自分たちのOSを動かしている「欲望」という名の燃料の正体を知ること。恐ろしくも魅力的な、その劇毒のロジックは、今後も理性の境界線を激しく叩き続けるでしょう。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Danger: SADE_LEVEL_ACCESS.</p>
+    </footer>
+</body>
+
+</html>

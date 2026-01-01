@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マレー・ロスバード - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Montserrat:wght@400;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #facc15;
+            /* Liberty Gold */
+            --secondary: #000000;
+            /* Anarchy Black */
+            --accent: #ffffff;
+            /* Sovereignty White */
+            --bg: #0a0a0a;
+            --text: #e5e7eb;
+            --border: #262626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Blockchain Node Background */
+        .network-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Sovereignty Header */
+        .header {
+            background: var(--secondary);
+            padding: 12rem 3rem;
+            border: 1px solid var(--primary);
+            position: relative;
+            margin-top: 2rem;
+            text-align: center;
+            border-radius: 0;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 95% 100%, 0% 100%);
+        }
+
+        .rank {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .en-name {
+            font-family: 'Antic Didone', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.5rem 2rem;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: -50px;
+            width: 40px;
+            height: 10px;
+            background: var(--primary);
+        }
+
+        .hero-box {
+            background: #171717;
+            border-left: 15px solid var(--primary);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 20px 20px 0 #000;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #000;
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            transform: skewY(-2deg);
+        }
+
+        .quote-text {
+            font-family: 'Antic Didone', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Space Mono', monospace;
+            text-align: right;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #171717;
+            border: 1px solid var(--border);
+            padding: 4rem 2.5rem;
+            position: relative;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            background: #1a1a1a;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Space Mono', monospace;
+            border: 5px solid var(--primary);
+            position: relative;
+        }
+
+        .it-analogy h2 {
+            color: var(--primary);
+            margin-bottom: 4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .it-card {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .it-card h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #000;
+            border: 1px solid var(--primary);
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li::before {
+            content: "₿";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 2.5rem;
+            top: -0.5rem;
+            font-family: serif;
+        }
+
+        .thought-experiment {
+            background: #171717;
+            border: 2px dashed var(--primary);
+            padding: 6rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .thought-experiment::before {
+            content: "NAP_VERIFIED";
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            background: var(--primary);
+            color: #000;
+            padding: 0.2rem 1.5rem;
+            font-family: 'Space Mono';
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            opacity: 0.4;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="network-bg">
+        <svg width="100%" height="100%">
+            <defs>
+                <pattern id="nodes" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="2" fill="#facc15" />
+                    <line x1="10" y1="10" x2="90" y2="90" stroke="#facc15" stroke-width="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#nodes)" />
+        </svg>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← FOR_A_NEW_LIBERTY</a>
+        <div>P2P_SOVEREIGNTY_OS_v4.48</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-448 / THE_ANARCHO_CAPITALIST</span>
+        <h1>マレー・ロスバード</h1>
+        <p class="en-name">Murray Rothbard (1926–1995)</p>
+        <div class="os-tags">
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">自由OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">中央集権を「シャットダウン」する</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「国家とは、強奪を正当化する巨大な独占企業に過ぎない」。マレー・ロスバードは、個人の絶対的な自由と私有財産権を突き詰め、国家という中間業者を一切排除した<b>『無政府資本主義（アナルコ・キャピタリズム）』</b>という極限の自由OSを提唱しました。彼は、すべての公共サービスは市場の自由な契約によって置き換え可能であると主張しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ロスバードを学ぶことは、社会を<b>「P2P（ピア・ツー・ピア）」</b>で再構築するロジックを学ぶことです。彼は、他者への加害を禁じる「非侵害の原理（NAP）」という唯一のプロトコルさえあれば、中央サーバー（国家）なしで世界は回ることを示しました。Web3やボランタリズム（自発主義）に関心がある現代人にとって、ロスバードの思想は、真の「自己所有権」を取り戻すための最もラジカルなドキュメントです。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 3rem; background: var(--primary); color: #000; font-weight: 900;">
+                <h4>💡 たとえるなら</h4>
+                <p>ロスバードは、<b>「世界中を不透明なルールで支配する巨大な中央サーバー（国家OS）を完全停止させ、すべてのノード（個人）が『秘密鍵（自己所有権）』を自ら管理し、自由なAPI（自由契約）のみで接続される完全分散型エコシステムを構想した、史上最強のネットワーク・アナーキスト」</b>です。彼の理論は、政治におけるブロックチェーンの先駆けとも言えるものです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 自由OSの核心：NAPプロトコル</h2>
+            <div class="quote-box">
+                <p class="quote-text">「国家は、法の適用を独占することで、住民から富を奪う合法的な略奪機関である」</p>
+                <p class="quote-author">— 『新自由主義宣言』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🛡️ 非侵害の原理 (NAP)</h3>
+                    <p>他者の身体や正当に取得した財産に対して、最初に暴力を振るう（Initiation of force）ことを禁じる唯一絶対のセキュリティ・ルール。 </p>
+                </div>
+                <div class="card">
+                    <h3>🏗️ 自己所有権</h3>
+                    <p>自分の身体と、自らの労働によって得たものは、自分だけの「秘密鍵」で管理されるべき絶対的なプライベート・プロパティである。 </p>
+                </div>
+                <div class="card">
+                    <h3>⚡ ボランタリズム</h3>
+                    <p>すべての社会関係は「自発的な合意」のみに基づくべきであり、強制的な参加（納税など）はシステムのエラーと見なす。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 分散型社会のブートシーケンス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 権限の回収 (De-centralize)</h3>
+                    <p>国家が独占している警察、裁判、通貨発行などの「管理権限」をすべてユーザー（民間市場）へ解放する。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 自由契約の実装 (P2P Contract)</h3>
+                    <p>あらゆるサービスを自由な契約書（スマートコントラクトの雛形）に基づき、P2Pで直接やり取りする。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 自律稼働 (Self-Governance)</h3>
+                    <p>国家というオーバーヘッドが消え、競争によって質が向上。システムは純粋な市場原理のみで安定稼働を開始する。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Decentralized Voluntarism</h2>
+            <div class="it-card">
+                <h3>Decentralized Autonomous Organizations (DAOs)</h3>
+                <p>ルールがコードに書き込まれ、中央の管理者がいなくても自律的に運営される組織。ロスバードが描いた社会は、まさに物理空間におけるDAOの集合体です。 </p>
+            </div>
+            <div class="it-card">
+                <h3>End-to-End Encryption</h3>
+                <p>国家（中間者）によるパケット監視や検閲を認めず、個人間のやり取りをプロパティ（通信）レベルで完全に保護するロスバード的自己所有権のデジタル版。 </p>
+            </div>
+            <div class="it-card">
+                <h3>The 51% Attack (State Tyranny)</h3>
+                <p>ロスバードは民主主義を「51%による49%への不正な書き換え（略奪）」と批判しました。彼は少数の正当な権利を多数決から守る不変のプロトコルを求めました。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>私的警察・裁判サービス</strong>：国家が独占する「暴力と正義」を、競争を伴う民間アプリケーションとして再定義した。</li>
+                <li><strong>法定通貨のシャットダウン</strong>：中央銀行によるリソース（通貨価値）の希釈をバグとし、金（ゴールド）などの現物ベースのハード・マネーを推奨。</li>
+                <li><strong>所有権の「ホーミステッド」方式</strong>：誰も使っていなかったリソースに、自らの労働をミックスすることで所有権（ユニークID）を発生させる仕組み。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ルートヴィヒ・フォン・ミーゼス（オーストリア学派経済学）</li>
+                        <li>ベンジャミン・タッカー（個人主義的無政府主義）</li>
+                        <li>フレデリック・バスティア（自由主義哲学）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>現代のリバタリアニズム（黄金期の理論的支柱）</li>
+                        <li>サイファーパンク運動（暗号による自由の追求）</li>
+                        <li>ビットコイン/ブロックチェーン思想の源流</li>
+                        <li>アゴリズム（Counter-Economics）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 社会構造のプロトコル比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>民主主義的社会OS</th>
+                        <th>ロスバードの分散OS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>中央サーバー</strong></td>
+                        <td>国家（集中管理）</td>
+                        <td>なし（純粋なP2P）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>リソース調達</strong></td>
+                        <td>強制的な課金（税金）</td>
+                        <td>自発的な決済（利用料）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>紛争解決</strong></td>
+                        <td>国の独占裁判所</td>
+                        <td>合意による民間仲裁所</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Client-Server Model</td>
+                        <td>Fully Decentralized P2P</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：国家という「偽造サーバー」</h2>
+            <div class="thought-experiment">
+                <h3>強制アップデートの拒否</h3>
+                <p>ある朝、世界中のすべての警察と裁判所が「民営化されています。サービスが必要なら契約してください」と発表し、国家としての機能が完全に停止したとします。代わりに、あなたは自分の「自己所有権（秘密鍵）」を使って、信頼できるセキュリティ会社を選び、合意されたルールの中でのみ生活することになります。
+                </p>
+                <p>あなたは、この「究極の自由」という名の自己責任に耐えられますか？ それとも、ルールを勝手に決めてくれるけれど、富を一部抜き取っていく「巨大な管理人（国家）」が恋しくなりますか？
+                    誰にも支配されない世界で、あなたが最初にマージする「自由な契約」は何ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マレー・ロスバードは、自由を「程度の問題」ではなく「0か1か」の論理現象として定義し直しました。彼の思想は、国家という最大のバグを取り除いたあとの、人間の純粋な自律性と協力の美しさを描いています。分散化が加速するデジタル時代において、ロスバードの「NAP（非侵害）」というシンプル極まりないプロトコルは、私たちが真に自立したノードとして連帯するための、最も強力なバックボーンであり続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Sovereignty signed.</p>
+    </footer>
+</body>
+
+</html>

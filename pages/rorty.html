@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リチャード・ローティ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Work+Sans:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #a855f7;
+            /* Cyber Purple */
+            --secondary: #18181b;
+            /* Tool Black */
+            --accent: #22d3ee;
+            /* Ironist Cyan */
+            --bg: #0f172a;
+            /* Slate Dark */
+            --text: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Neon Tool Background */
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            border-bottom: 2px solid var(--primary);
+            font-family: 'Fira Code', monospace;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Pragmatist Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary), #2d064d);
+            padding: 12rem 4rem;
+            border: 4px solid var(--primary);
+            position: relative;
+            margin-top: 2rem;
+            text-align: left;
+            box-shadow: 15px 15px 0 var(--accent);
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+            border-left: 10px solid var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -0.3rem;
+        }
+
+        .en-name {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--primary);
+            margin-bottom: 3.5rem;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.5rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 900;
+            border-radius: 0;
+            font-size: 0.8rem;
+            transform: skewX(-15deg);
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            border-bottom: 8px solid var(--primary);
+            display: inline-block;
+        }
+
+        .hero-box {
+            background: rgba(168, 85, 247, 0.1);
+            border: 2px solid var(--primary);
+            padding: 5rem;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .quote-box {
+            background: #fff;
+            color: var(--secondary);
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            transform: rotate(-1deg);
+            box-shadow: 10px 10px 0 var(--primary);
+        }
+
+        .quote-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--primary);
+            padding: 3.5rem;
+            transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .it-analogy {
+            background: #000;
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-left: 30px solid var(--primary);
+            border-right: 30px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid #333;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            background: #0a0a0a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li::before {
+            content: ">_";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 900;
+            font-family: 'Fira Code';
+        }
+
+        .thought-experiment {
+            background: var(--primary);
+            color: #fff;
+            padding: 6rem;
+            margin: 10rem 0;
+            border-radius: 0 100px 0 100px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            opacity: 0.3;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 6rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="neon-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PHILOSOPHY_AND_THE_MIRROR_OF_NATURE</a>
+        <div>IRONIST_TOOLKIT_v4.47</div>
+    </nav>
+
+    <header class="container header">
+        <div class="rank">OBJECT_ID: P-447 / THE_LIBERAL_IRONIST</div>
+        <h1>リチャード・ローティ</h1>
+        <p class="en-name">Richard Rorty (1931–2007)</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">真理を「追究」するのをやめ、「使いこなす」</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「哲学は『鏡』のように世界を正しく映し出す必要はない。それは単なる<b>『使いやすい道具』</b>であればいいんだ」。リチャード・ローティは、2000年以上続いてきた「心理＝客観的な正解」という執着を解体し、言葉を新しい目的、より良い未来を築くための<b>『記述のツール』</b>として再定義しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ローティを学ぶことは、思考の<b>「スクリプト化」</b>を学ぶことです。彼は、揺るがない正解を求める「基礎付け主義」というバグを削除し、言葉のバージョンを常に更新し続ける「連帯」と「アイロニー」の姿勢を提唱しました。多様な正義が衝突する現代において、私たちはどう合意形成をすべきか。彼の思想は、他人の痛みに敏感になりながら、自分の信条を軽やかに持ち続けるための、最強の柔軟なフレームワークを提供してくれます。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 3rem; border-left: 20px solid var(--accent); background: var(--secondary);">
+                <h4>💡 たとえるなら</h4>
+                <p>ローティは、<b>「世界にたった一つの『コンパイル済みの静的な正解（バイナリ）』があるという幻想を捨て、状況に応じてコードを書き換え（リファクタリング）、常に動作し続ける（役に立つ）ことを最優先する、超ベテランのスクリプト・エンジニア」</b>です。彼の真理とは、実行速度が速くてバグが少ない『優秀なライブラリ』のようなものなのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OSの核心 -->
+        <section class="section">
+            <h2 class="section-title">🧠 哲学OSの核心：プラグマティズム</h2>
+            <div class="quote-box">
+                <p class="quote-text">「真理とは、それを信じることで私たちが得をする、優れた道具のことだ」</p>
+                <p class="quote-author">— 『偶然性・アイロニー・連帯』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🎭 自由主義的アイロニスト</h3>
+                    <p>自分が最も大切にしている価値観（最終的な語彙）でさえも、単なる偶然の産物であると認め、それを軽やかに疑い続ける姿勢。 </p>
+                </div>
+                <div class="card">
+                    <h3>🛠️ ツールとしての言語</h3>
+                    <p>言葉は世界を表現するものではなく、世界に介入し、自分たちの目的を達成するための道具である。 </p>
+                </div>
+                <div class="card">
+                    <h3>🤝 最小限の連帯</h3>
+                    <p>共通の真理を信じることではなく、「他人の痛み」に対して敏感になることだけを共通のプロトコルとする社会。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 記述の再定義 (Redescription)</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 旧記述の廃棄</h3>
+                    <p>「本質」「真理」「神」といった、もはや役に立たなくなった、あるいは重すぎるレガシーな語彙（レガシーコード）を特定する。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 新記述の提案</h3>
+                    <p>「役に立つか」「面白いか」「誰かを傷つけないか」を基準に、新しい言葉の組み合わせを試作（プロトタイピング）。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 意味のデプロイ</h3>
+                    <p>新しい「語り方」が社会で共有され、人々の行動や感情が良い方向に変われば、そのスクリプトは成功（マージ）される。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Pragmatic Scripting</h2>
+            <div class="it-card">
+                <h3>Scripting Languages vs Compiled Languages</h3>
+                <p>厳格な型定義とコンパイルが必要な「絶対的真理」ではなく、実行時に動的に型が決まり、状況に応じてさっと書き換えられるスクリプト言語の柔軟性がローティの思想です。 </p>
+            </div>
+            <div class="it-card">
+                <h3>API Versioning & Deprecation</h3>
+                <p>「真理」とは、現時点で最も安定して動作しているAPIバージョンであり、より優れたバージョン（新しい記述）が現れれば、古いものは自然と非推奨（Deprecated）になります。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Code Refactoring</h3>
+                <p>機能は変えずに、内部構造をより分かりやすく美しく書き直すように、世界そのものは変えずとも、「世界の語り方」を変えることで理解を効率化します。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>基礎付け主義の解体</strong>：思考の土台に「絶対的な正解」を置く必要性をなくした軽量なアーキテクチャ。</li>
+                <li><strong>自己創造のライブラリ</strong>：自分自身のアイデンティティさえも、自由に「再記述（書き直し）」し続けていいという許可。</li>
+                <li><strong>民族中心主義のポジティブな活用</strong>：無理に普遍的であろうとせず、まずは自分たちの身近な連帯（コミュニティ）から合意を広げていく。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ジョン・デューイ（プラグマティズムの継承）</li>
+                        <li>フリードリヒ・ニーチェ（価値の相対化）</li>
+                        <li>ルートヴィヒ・ウィトゲンシュタイン（言語ゲーム）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ネオ・プラグマティズムの興隆</li>
+                        <li>現代のポストモダン政治理論</li>
+                        <li>文学批評、法社会学</li>
+                        <li>文化の多様性（マルチカルチャリズム）への理論的支援</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 思想の実行環境比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>伝統的メタ哲学（鏡）</th>
+                        <th>ローティのプラグマティズム（道具）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>真理の本質</strong></td>
+                        <td>客観的事実の反映</td>
+                        <td>便利な行動のツール</td>
+                    </tr>
+                    <tr>
+                        <td><strong>言葉の役割</strong></td>
+                        <td>世界を写し取る (Mapping)</td>
+                        <td>世界を操作する (Scripting)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アイデンティティ</strong></td>
+                        <td>本質を見つける (Discovering)</td>
+                        <td>物語を書き直す (Creating)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Deep Metadata Sync</td>
+                        <td>High-Level Scripting Library</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：最終的な語彙</h2>
+            <div class="thought-experiment">
+                <h3>アイロニーのデバッグ</h3>
+                <p>あなたが「絶対に正しい」と信じている言葉（自由、愛、正義、あるいは成功、利己心）を一つ選んでください。ローティは言います。「その言葉は、たまたまあなたがその文化に生まれ、その本を読んだから持っているだけの『偶然の持ち物』ではないか？」
+                </p>
+                <p>このように自分の信念を冷ややかに見つめる「アイロニー」を持ちながら、それでも他者が苦しんでいるときに「助けよう」と連帯することは可能でしょうか？
+                    究極の根拠（真理）がない世界で、あなたはそれでも誰かのために自分の「ツール（言葉）」を振るいますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>リチャード・ローティは、哲学を「真理という名の牢獄」から「連帯という名の広場」へと連れ出しました。彼のネオ・プラグマティズムは、私たちが互いに異なる言葉（スクリプト）を使いながらも、同じ「痛み」を感じる存在として共生するための、最も自由で人間味のあるインターフェースです。正解がないことを嘆くのではなく、自分たちの物語をより面白く、より優しく書き換えていく。ローティが残したアイロニストの道具箱は、不確実な未来をサバイブするための勇気を与えてくれます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Irony as a Service.</p>
+    </footer>
+</body>
+
+</html>

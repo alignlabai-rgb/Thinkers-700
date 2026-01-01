@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ギルバート・ライル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #334155;
+            /* Hardware Slate */
+            --secondary: #0f172a;
+            /* Machine Black */
+            --accent: #22d3ee;
+            /* Ghostly Cyan */
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --border: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Ghostly UI Background */
+        .ghost-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .ghost-effect {
+            position: absolute;
+            border: 1px solid var(--accent);
+            opacity: 0.2;
+            pointer-events: none;
+            animation: flickering 4s infinite;
+        }
+
+        @keyframes flickering {
+            0% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.1;
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Hardware Header */
+        .header {
+            background: #fff;
+            padding: 12rem 4rem;
+            border: 4px solid var(--primary);
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(var(--accent) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+        }
+
+        .en-name {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--primary);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.5rem 1.5rem;
+            background: var(--secondary);
+            color: var(--accent);
+            font-weight: 700;
+            border: 1px solid var(--accent);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5rem;
+            border-bottom: 10px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        .hero-box::before {
+            content: "// DEBUG_INFO";
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-family: 'Fira Code', monospace;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 400;
+            color: var(--primary);
+        }
+
+        .hero-text b {
+            color: var(--secondary);
+            font-weight: 700;
+            background: rgba(34, 211, 238, 0.2);
+            border-radius: 4px;
+            padding: 0 5px;
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 6rem;
+            margin: 8rem 0;
+            position: relative;
+            border-left: 20px solid var(--accent);
+        }
+
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 var(--accent);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .it-analogy {
+            background: #000;
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+            border-radius: 2rem;
+            border: 4px double var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .it-card {
+            border-left: 2px solid var(--primary);
+            padding-left: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+            border: 2px solid var(--primary);
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.2rem;
+            font-size: 0.9rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.25rem;
+        }
+
+        .list-rich li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 900;
+            font-family: 'Fira Code';
+            font-size: 2rem;
+            top: -0.2rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 10px solid var(--secondary);
+            padding: 6rem;
+            margin: 10rem 0;
+            border-radius: 0 100px 0 0;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ghost-bg">
+        <div class="ghost-effect" style="top: 10%; left: 5%; width: 200px; height: 150px;"></div>
+        <div class="ghost-effect" style="bottom: 15%; right: 10%; width: 300px; height: 100px;"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← THE_CONCEPT_OF_MIND</a>
+        <div>CATEGORY_DEBUGGER_v4.51</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-451 / THE_MIND_RE-ARCHITECT</span>
+        <h1>ギルバート・ライル</h1>
+        <p class="en-name">Gilbert Ryle (1900–1976)</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">認知OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「機械の中の幽霊」をバグとして修正する</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「心という別の『何か』が、体の内部で操縦しているわけではない」。ギルバート・ライルは、デカルト以来の「心身二元論」を、言葉の使い方が引き起こした致命的なロジックエラー<b>『範疇過誤（カテゴリー・ミステイク）』</b>として告発しました。彼は、心を実体ではなく、<b>「行動のパターンや傾向」</b>として捉え直しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ライルを学ぶことは、概念の<b>「階層ミス」</b>をデバッグすることです。彼は、「大学」という建物群を見て歩いた後に「じゃあ、大学そのものはどこにあるの？」と問うような間違いが、精神に対する私たちの理解に潜んでいると指摘しました。AIや意識の議論が白熱する現代において、私たちは「知能」や「心」を物理的なハードウェアとは別の「幽霊」として探してはいないか。彼の思想は、不適切な概念のリンクを切り離し、システムをありのままに記述するための、強力なリファクタリング・ツールを提供してくれます。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 3rem; background: var(--secondary); color: var(--accent); font-family: 'Fira Code', monospace;">
+                <h4>💡 たとえるなら</h4>
+                <p>ライルは、<b>「ハードウェアの動作ログ（行動）を解析せずに、システムの背後に実体のない『ゴースト・プロセス』が存在すると仮定してしまう、設計レベルのドキュメンテーションミスを指摘した、最高レベルのコードレビュアー」</b>です。彼の哲学は、精神という名のインターフェースを、実装レベル（実在的行動）から正しく定義し直すための、概念的な仕様変更なのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 認知OSの核心：範疇過誤</h2>
+            <div class="quote-box">
+                <p class="quote-text">「精神とは、ある特定の種類のもの（実体）ではなく、ある特定の挙動（パフォーマンス）のことである」</p>
+                <p class="quote-author">— 『心の概念』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>👻 機械の中の幽霊</h3>
+                    <p>「体という物理的な機械の中に、非物質的な心が住んでいる」というドグマへの批判。これをライルは、言葉が混同されたバグと呼んだ。 </p>
+                </div>
+                <div class="card">
+                    <h3>❌ 範疇過誤 (Category Mistake)</h3>
+                    <p>ある概念を、それが属さない別の論理的カテゴリーに分類してしまうエラー。精神を「実体」カテゴリーに入れてしまったことが混乱の元。 </p>
+                </div>
+                <div class="card">
+                    <h3>📋 傾向的属性</h3>
+                    <p>ある人が「賢い」とは、その人の脳内に何かがあるのではなく、特定の状況で「賢い答えを出す傾向がある」というプロパティ（属性）のこと。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 概念リファクタリングのフロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 動作確認 (Behavior Scan)</h3>
+                    <p>「精神的な働き」とされる出来事をスキャン。それは実際にはどんな「行動」や「発言」として出力されているかを記録する。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 層の分離 (Layer Separation)</h3>
+                    <p>個別の事象（ログ）と、それらをまとめる記述（クラス名）を分離。「心」は個別の事象の「集まり」を指す名前である。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 定義の書き換え (Redefine)</h3>
+                    <p>精神を物質とは別の「物」として定義するのをやめ、行動の「モード（やり方）」としてコードを書き換える。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Abstraction Debugging</h2>
+            <div class="it-card">
+                <h3>Abstraction Leaks (抽象化の漏れ)</h3>
+                <p>「システム（大学）」という抽象クラスと、その「実装（各学部ビル）」を混同して、システムそのものを物理的なパーツとして探してしまうエラー。ライルの範疇過誤はまさにこれです。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Virtual Machine vs Host Hardware</h3>
+                <p>VM（心）が物理ホスト（体）上で動いているからといって、ホストの部品をどれだけ分解してもVMという「実体」が見つかるわけではありません。それは実行されている「プロセス・状態」です。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Dangling Pointers (概念の迷子)</h3>
+                <p>もはや存在しない、あるいは物理的に対応していない「実体」というメモリ領域を参照し続けている概念的なダングリングポインタ。ライルはこれをすべて無効化（Null）しました。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>を知ること (Knowing-how)
+                        の再評価</strong>：論理的な知識（Knowing-that）以前に、身体的なスキル（やり方を知っていること）を「知性」の基盤として実装した。</li>
+                <li><strong>記述の厚み (Thick Description) への示唆</strong>：単なる瞬きと「目配せ」の違い（意味の解釈）を、行動の文脈（階層）から読み解く視点。</li>
+                <li><strong>日常言語へのパッチ</strong>：難解な専門用語を排し、私たちが普段使っている言葉を丁寧に整理することで哲学的な問題を解決する軽量フレームワーク。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>L. ウィトゲンシュタイン（日常言語哲学の強い影響）</li>
+                        <li>行動主義心理学（現象としての行動への注目）</li>
+                        <li>プラトン、アリストテレス（知の本質の再検討）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>D. デネット（意識の解明における機能主義）</li>
+                        <li>C. ギアツ（文化人類学における「厚い記述」）</li>
+                        <li>現代の認知科学・AI理論（身体性、機能主義）</li>
+                        <li>分析哲学における心の哲学の潮流</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 精神アーキテクチャの比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>デカルト二元論（幽霊モデル）</th>
+                        <th>ライルの論理的行動主義（実装モデル）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>心の本質</strong></td>
+                        <td>非物質的な実体（Ghost）</td>
+                        <td>行動の属性・傾向（Method）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>体との接続</strong></td>
+                        <td>松果体などの「橋渡し」が必要</td>
+                        <td>カテゴリーが違うので接続は不要</td>
+                    </tr>
+                    <tr>
+                        <td><strong>観測方法</strong></td>
+                        <td>内省（プライベートな覗き見）</td>
+                        <td>行動の記述（公開されたログ）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Out-of-Process Controller</td>
+                        <td>Interface & Method Implementation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：どこにある「大学」？</h2>
+            <div class="thought-experiment">
+                <h3>カテゴリーのバグ探し</h3>
+                <p>あなたは大学の見学に来ました。図書館を見せてもらい、研究室を回り、学生食堂で食事をし、グラウンドを見ました。案内が終わった後、あなたは尋ねます。「建物は分かりましたが、肝心の『大学』はどこにあるんですか？」
+                </p>
+                <p>案内人は困惑します。「あなたが今見たものすべてが合わさったのが大学ですよ」。あなたが探している「大学」という独立したパーツはどこにもありません。それは「構成要素」の関係を指す名前だからです。今、あなたが「自分の心」だと感じている、脳のどこかにあるはずの「操縦席」も、これと同じ間違いではないでしょうか？
+                </p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ギルバート・ライルは、精神という深淵な謎を「言葉の整理整頓」という極めて実戦的な手法で解明しようとしました。彼のOSは、私たちを「体という牢獄に閉じ込められた幽霊」という呪縛から解放し、日々の行動や生き方そのものが私たちの「精神」そのものであるという、健康的で現実的な視点を提示しています。私たちが「自分らしさ」という実体のない幽霊を追いかけて迷走するとき、ライルのカテゴリー・デバッガーは、自分の足元にある「行動」という実直な実装に目を向けるよう促してくれます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. No ghost found in the source code.</p>
+    </footer>
+</body>
+
+</html>

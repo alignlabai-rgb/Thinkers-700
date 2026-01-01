@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイケル・サンデル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;700;900&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Harvard Purple */
+            --secondary: #1e1b4b;
+            /* Deep Midnight */
+            --accent: #f59e0b;
+            /* Civic Gold */
+            --bg: #fafafa;
+            --text: #1f2937;
+            --border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Lecture Hall Background */
+        .lecture-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .lecture-row {
+            position: absolute;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Justice Header */
+        .header {
+            background: linear-gradient(180deg, var(--secondary) 0%, #312e81 100%);
+            color: #fff;
+            padding: 12rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "JUSTICE";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Crimson Pro', serif;
+            font-size: 20rem;
+            opacity: 0.05;
+            color: #fff;
+            font-style: italic;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 5.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 30px;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--primary);
+            margin: 1.5rem auto 0;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.1);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid #4c1d95;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: #312e81;
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2.5rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 2rem;
+            top: -0.3rem;
+        }
+
+        .thought-experiment {
+            background: linear-gradient(135deg, #f3e8ff 0%, #fef3c7 100%);
+            border: 2px solid var(--primary);
+            padding: 6rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lecture-bg">
+        <div class="lecture-row" style="top: 20%; left: 10%; width: 80%;"></div>
+        <div class="lecture-row" style="top: 35%; left: 5%; width: 90%;"></div>
+        <div class="lecture-row" style="top: 50%; left: 8%; width: 84%;"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← THE_TYRANNY_OF_MERIT</a>
+        <div>JUSTICE_LECTURE_v4.56</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-456 / THE_PUBLIC_PHILOSOPHER</span>
+        <h1>マイケル・サンデル</h1>
+        <p class="en-name">Michael Sandel (1953–)</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「正義」とは何かを、共に問う</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「市場は、あらゆるものを売り買いしてよいのか？」「あなたは自分の成功が100%自分の努力のおかげだと言えるか？」マイケル・サンデルは、ハーバード大学の名物講義「Justice」で知られる、現代を代表する<b>「パブリック・フィロソファー（公共知識人）」</b>です。彼は、私たちが普段深く考えずに受け入れている社会の仕組みについて、鋭い問いを投げかけ、<b>「コミュニタリアニズム」</b>の立場から、個人の自由だけでなく共同体の絆や共通善の重要性を説いています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    サンデルを学ぶことは、<b>「自分が当たり前だと思っている価値観をデバッグする」</b>体験です。彼は、リベラリズム（自由主義）やリバタリアニズム（市場万能主義）の限界を指摘し、「能力主義」の暗い側面（成功者の傲慢と敗者への侮蔑）を鋭く批判します。格差と分断が深刻化する現代において、彼の思想は、民主主義と市民社会のOSを再起動するための必須パッチを提供しています。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--secondary); color: #fff; border-radius: 20px;">
+                <h4 style="color: var(--accent);">💡 たとえるなら</h4>
+                <p>サンデルは、<b>「個人の自由とパフォーマンスを最大化することに最適化されすぎた現代社会のOSが、『共通善』や『連帯』といった重要なシステムコールを無視しているというバグを指摘し、コミュニティという名のミドルウェアを再インストールすることを促す、思想界のシニア・アーキテクト」</b>です。彼の講義は、私たち一人ひとりがソースコードを見直すためのライブ・コードレビューなのです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 政治OSの核心：共同体と共通善</h2>
+            <div class="quote-box">
+                <p class="quote-text">「能力主義は、私たちを謙虚にするよりも、傲慢にさせてきた」</p>
+                <p class="quote-author">— 『実力も運のうち 能力主義は正義か？』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🏛️ コミュニタリアニズム</h3>
+                    <p>個人の権利だけでなく、共同体への帰属意識、共通の価値観、市民的美徳が民主社会の健全性にとって不可欠であるという立場。 </p>
+                </div>
+                <div class="card">
+                    <h3>📉 能力主義の批判</h3>
+                    <p>「成功は自分の努力のおかげ」という信念が、勝者には傲慢を、敗者には屈辱を生み、社会の分断を深めていると指摘。 </p>
+                </div>
+                <div class="card">
+                    <h3>🚫 市場の道徳的限界</h3>
+                    <p>健康、教育、政治参加など、市場原理で売り買いすべきでないものがあるという主張。「お金で買えるもの」には限界があるべき。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 公共哲学のディスカッション・フロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 問いの提示 (Prompt)</h3>
+                    <p>「臓器売買は許されるか？」「徴兵制は公正か？」など、道徳的直観を揺さぶる具体的な問いを投げかける。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 論拠の探求 (Explore)</h3>
+                    <p>功利主義（最大幸福）、自由主義（権利）、徳倫理学（共通善）といった複数の思想フレームワークから議論を深める。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 自己省察 (Reflect)</h3>
+                    <p>聴衆（私たち）自身が、自分の前提や価値観を問い直し、より健全な公共的判断力を養う。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Civic OS Patch</h2>
+            <div class="it-card">
+                <h3>Community as Middleware</h3>
+                <p>個人（User）とシステム（State）の間に、コミュニティという「ミドルウェア」を挟むことで、孤立と疎外を防ぎ、社会全体のレスポンスを安定させる設計思想。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Meritocracy as Single Point of Failure</h3>
+                <p>「能力のある者が報われる」という単一の評価基準（SPOF）に依存しすぎると、そこから外れた人々がシステムから切り離される脆弱性を生む。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Market Scope Limitation</h3>
+                <p>市場というAPIは強力だが、すべてのドメイン（領域）にアクセス権限を与えるべきではない。健康、教育、政治などはファイアウォールで保護すべき。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>公共哲学の復権</strong>：哲学を象牙の塔から解放し、市民がテレビやYouTubeで参加できる開かれた対話（パブリック・ディスコース）の場を創出。</li>
+                <li><strong>リベラリズム批判</strong>：「国家は善悪の価値判断をすべきでない」というリベラルな中立性を批判し、共同体の価値について語り合う必要性を主張。</li>
+                <li><strong>謙虚さの政治</strong>：成功を「自分の手柄」とする傲慢さを戒め、幸運や社会環境への感謝に基づく「謙虚さ（Humility）」を民主主義の徳として提唱。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>アリストテレス（徳倫理学、市民的共和主義）</li>
+                        <li>カント（道徳哲学、義務論）</li>
+                        <li>アラスデア・マッキンタイア（共同体主義）</li>
+                        <li>チャールズ・テイラー（承認の政治）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>公共哲学の世界的な普及</li>
+                        <li>能力主義（メリトクラシー）批判の潮流</li>
+                        <li>市場の道徳的限界を問う議論</li>
+                        <li>民主主義教育への実践的貢献</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 正義論のモデル比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ロールズ（リベラリズム）</th>
+                        <th>サンデル（コミュニタリアニズム）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>正義の基礎</strong></td>
+                        <td>個人の権利と公正な手続き</td>
+                        <td>共同体の価値と共通善</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自己の捉え方</strong></td>
+                        <td>目的を選ぶ自由な主体</td>
+                        <td>物語と共同体に埋め込まれた存在</td>
+                    </tr>
+                    <tr>
+                        <td><strong>国家の役割</strong></td>
+                        <td>善に対して中立</td>
+                        <td>共通善について議論する場</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Stateless, Neutral API</td>
+                        <td>Stateful, Value-Driven Service</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：あなたの成功は「あなたのもの」か？</h2>
+            <div class="thought-experiment">
+                <h3>能力主義の影</h3>
+                <p>あなたは難関大学に合格し、希望の企業に就職できました。あなたは言います。「自分が努力したからだ」。確かに、あなたは寝る間を惜しんで勉強しました。</p>
+                <p>しかしサンデルは問います。「その努力する能力は、どこから来たのですか？ 勉強できる環境を与えてくれた両親は？ あなたの才能を見出してくれた教師は？
+                    そもそも、あなたがその社会に生まれたこと自体は、あなたの功績ですか？」</p>
+                <p>もし成功が完全に自己責任なら、失敗もまた完全に自己責任になります。職を失い、ホームレスになった人は「努力が足りなかった」だけなのでしょうか？
+                    私たちは、互いに何を「分かち合う」べきで、その連帯の根拠はどこにあるのでしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マイケル・サンデルの倫理OSは、「自由」を最高の価値とする現代社会の死角を照らし出します。彼の講義は、能力主義の傲慢、市場の侵食、共同体の瓦解といった現代民主主義の脆弱性を指摘し、私たちに「共通善とは何か」を共に考えるよう促します。シリコンバレーから政治の世界まで、「勝者が全てを手にする」ロジックが蔓延する今、サンデルの「謙虚さの政治」は、分断した社会を再接続するための最も重要なプロトコルの一つなのかもしれません。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Justice: What's the Right Thing to Do?</p>
+    </footer>
+</body>
+
+</html>
