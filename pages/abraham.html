@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アブラハム - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ca8a04;
+            /* Covenant Gold */
+            --secondary: #422006;
+            /* Desert Dark */
+            --accent: #facc15;
+            /* Promise Light */
+            --highlight: #fef9c3;
+            /* Faith Glow */
+            --bg: #1c1100;
+            /* Deep Patriarch */
+            --text: #fef9c3;
+            --border: #a16207;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Desert Background */
+        .desert-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(202, 138, 4, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(250, 204, 21, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Abraham Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✡";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #a16207 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(202, 138, 4, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(202, 138, 4, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Covenant Section */
+        .covenant-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .covenant-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .religions {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .religion {
+            text-align: center;
+        }
+
+        .religion span {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✡";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="desert-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← COVENANT</a>
+        <div>FAITH_v5.86</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-586 / THE_PATRIARCH</span>
+        <h1>アブラハム</h1>
+        <p class="en-name">Abraham / Ibrāhīm</p>
+        <p class="catchphrase">「信仰の父」——40億人が共有する精神的祖先</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">一神教OS</span>
+            <span class="os-tag">契約OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">契約一神教</h2>
+            <div class="hero-box">
+                <p class="hero-text">アブラハム（ヘブライ語：アブラハム、アラビア語：イブラーヒーム）は、ユダヤ教、キリスト教、イスラム教——いわゆる「アブラハムの宗教」の共通の祖先とされる人物です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    アブラハムの核心的意義——<b>神との「契約（ベリート / 'Ahd）」に基づく一神教の原型</b>。信仰によって故郷を離れ、約束の地へ向かった。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    世界人口の半分以上（40億人以上）がアブラハムの宗教的遺産の中で生きています。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アブラハムの契約は、<b>「神人間のAPI契約——片方が義務を果たせば、他方は約束を履行する。信仰と従順が入力、祝福と子孫が出力。これが3つの宗教の共通インターフェース」</b>という、宗教的関係の原型。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. アブラハムの宗教 -->
+        <section class="covenant-section">
+            <h2>🙏 アブラハムの宗教</h2>
+            <div class="religions">
+                <div class="religion">
+                    <span>✡️</span>
+                    <h3>ユダヤ教</h3>
+                    <p>約16百万人</p>
+                </div>
+                <div class="religion">
+                    <span>✝️</span>
+                    <h3>キリスト教</h3>
+                    <p>約24億人</p>
+                </div>
+                <div class="religion">
+                    <span>☪️</span>
+                    <h3>イスラム教</h3>
+                    <p>約19億人</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem;">
+                世界人口の54%以上<br>
+                共通の精神的祖先
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アブラハムの物語</h2>
+            <div class="quote-box">
+                <p class="quote-text">あなたの国、あなたの親族、あなたの父の家を離れ、わたしが示す地へ行きなさい。</p>
+                <p class="quote-author">— 創世記 12:1</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📜 召命</h3>
+                        <p>ウル（メソポタミア）から約束の地カナンへ。神の呼びかけに応じて旅立つ。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 契約</h3>
+                        <p>神との契約。子孫は星の数のように多くなる。土地と祝福の約束。</p>
+                </div>
+                <div class="card">
+                    <h3">🔪 イサクの犠牲</h3>
+                        <p>アケダー（束縛）。息子を犠牲にせよとの試練。信仰の究極的テスト。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍👦 イシュマエルとイサク</h3>
+                        <p>2人の息子。イシュマエルはアラブ人の、イサクはイスラエル人の祖先とされる。</p>
+                </div>
+                <div class="card">
+                    <h3">✂️ 割礼</h3>
+                        <p>契約のしるし。神とアブラハムの契約の身体的印。</p>
+                </div>
+                <div class="card">
+                    <h3">🕋 カアバ（イスラム）</h3>
+                        <p>イスラムでは、アブラハム（イブラーヒーム）とイシュマエルがカアバを建設したとされる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 3つの伝統 -->
+        <section class="section">
+            <h2 class="section-title">🔄 三宗教でのアブラハム</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">✡️ ユダヤ教</h3>
+                        <p>族長の筆頭。イスラエル民族の祖。契約の開始者。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ キリスト教</h3>
+                        <p>信仰の模範。「信仰によって義とされた」（ローマ4章）。霊的祖先。</p>
+                </div>
+                <div class="card">
+                    <h3">☪️ イスラム教</h3>
+                        <p>ハニーフ（純粋な一神教徒）。ムスリムでもユダヤ人でもなく、神に従う者。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 バハイ教</h3>
+                        <p>神の顕示者の一人。進歩的啓示の連鎖の中の一環。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Covenant</h2>
+            <div class="it-card">
+                <h3">Covenant as API Contract</h3>
+                    <p>契約はAPI契約。神と人間の間のインターフェース仕様。入力（信仰）と出力（祝福）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Abraham as Fork Point</h3>
+                    <p>アブラハムはフォークポイント。一つのルートから3つの宗教がブランチ。共通のコードベース。</p>
+            </div>
+            <div class="it-card">
+                <h3">Circumcision as Version Tag</h3>
+                    <p>割礼はバージョンタグ。契約のメンバーであることを示すマーカー。</p>
+            </div>
+            <div class="it-card">
+                <h3">Faith as Trust</h3>
+                    <p>信仰は信頼（トラスト）。証拠なしに約束を信じる。HTTPS証明書のように。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>契約一神教</strong>：神との双務的関係。</li>
+                <li><strong>信仰による義</strong>：行為ではなく信仰。</li>
+                <li><strong>約束の地</strong>：土地と民族の約束。</li>
+                <li><strong>普遍的祝福</strong>：「すべての民族が祝福される」。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 信仰の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>メソポタミア宗教</li>
+                            <li>原始一神教？</li>
+                            <li>古代中東の契約概念</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>モーセ、イスラエル</li>
+                            <li>イエス、教会</li>
+                            <li>ムハンマド、イスラム共同体</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 三宗教の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ユダヤ教</th>
+                        <th>キリスト教</th>
+                        <th>イスラム教</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>アブラハムの役割</strong></td>
+                        <td>族長の筆頭</td>
+                        <td>信仰の模範</td>
+                        <td>ハニーフ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>継承者</strong></td>
+                        <td>イサク→ヤコブ</td>
+                        <td>イエスを通じて</td>
+                        <td>イシュマエル</td>
+                    </tr>
+                    <tr>
+                        <td><strong>契約の焦点</strong></td>
+                        <td>律法</td>
+                        <td>恵み</td>
+                        <td>服従</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>厳密型</td>
+                        <td>動的型</td>
+                        <td>プロトコル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：共通の祖先</h2>
+            <div class="thought-experiment">
+                <h3">40億人の遺産</h3>
+                    <p>ユダヤ教徒、キリスト教徒、ムスリムはすべてアブラハムを祖先とする。</p>
+                    <p>世界人口の過半数。</p>
+                    <p>同じ物語を共有している。</p>
+                    <p>しかし、歴史は対立と暴力に満ちている。</p>
+                    <p>十字軍、宗教戦争、中東紛争——</p>
+                    <p>なぜ「兄弟」が争うのか？</p>
+                    <p>共通の祖先への言及は平和を促進するか、対立を激化させるか？</p>
+                    <p>「誰が正統な後継者か」という争い。</p>
+                    <p>アブラハムは統一のシンボルか、分裂の源か？</p>
+                    <p>宗教間対話は可能か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        共通の祖先は平和をもたらしますか、それとも争いを？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アブラハムは、ユダヤ教、キリスト教、イスラム教——世界人口の54%以上が信じる「アブラハムの宗教」の共通の祖先です。神との契約、信仰による義、約束の地——これらの概念はアブラハムの物語に起源を持ちます。歴史的人物かどうかは学問的議論がありますが、その宗教的・文化的影響は計り知れません。3つの伝統がそれぞれ異なる形でアブラハムを解釈しながらも、共通の精神的遺産を共有しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Father of faith.</p>
+    </footer>
+</body>
+
+</html>

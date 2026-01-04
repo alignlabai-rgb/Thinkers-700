@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アッシジのフランチェスコ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #65a30d;
+            /* Franciscan Brown-Green */
+            --secondary: #1a2e05;
+            /* Nature Dark */
+            --accent: #a3e635;
+            /* Creation Light */
+            --highlight: #ecfccb;
+            /* Poverty Glow */
+            --bg: #0f1a03;
+            /* Deep Humility */
+            --text: #ecfccb;
+            --border: #4d7c0f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .nature-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(101, 163, 13, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(163, 230, 53, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #65a30d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🕊️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.15;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #4d7c0f 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(101, 163, 13, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(101, 163, 13, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Canticle Section */
+        .canticle-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #65a30d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .canticle-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .creation-icons {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🕊️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nature-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← POVERTY</a>
+        <div>FRANCIS_v5.96</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-596 / THE_POOR_LITTLE_ONE</span>
+        <h1>アッシジのフランチェスコ</h1>
+        <p class="en-name">Francis of Assisi (c. 1181–1226)</p>
+        <p class="catchphrase">「貧しい小さき者」——清貧と被造物への愛</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">清貧OS</span>
+            <span class="os-tag">自然OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">清貧とフランシスコ会</h2>
+            <div class="hero-box">
+                <p class="hero-text">アッシジのフランチェスコは、13世紀イタリアの聖人であり、フランシスコ会の創設者です。富裕な商人の息子から「清貧の騎士」へ。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    フランチェスコの革命——<b>完全な清貧、被造物すべてへの愛、キリストの生涯の文字通りの模倣</b>。教会改革への挑戦ではなく、福音の生き方。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「太陽の賛歌」でイタリア文学の先駆け。聖痕を受けた最初の人物とされる。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    フランチェスコの生き方は、<b>「究極のミニマリズム——依存関係ゼロ、外部ライブラリなし、純粋なコア機能のみ。オーバーヘッドを完全に排除。すべてを手放して本質だけを残す」</b>という、精神的リファクタリング。
+                </p>
+            </div>
+        </section>
+
+        <!-- 太陽の賛歌 -->
+        <section class="canticle-section">
+            <h2>🌞 太陽の賛歌（被造物の讃歌）</h2>
+            <div class="creation-icons">🌞 🌙 🌊 🔥 🌍</div>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+                「兄弟なる太陽よ、讃えられよ」<br>
+                「姉妹なる月よ、讃えられよ」<br>
+                「兄弟なる風よ、姉妹なる水よ」<br>
+                「兄弟なる火よ、姉妹なる母なる大地よ」<br>
+                <br>
+                すべての被造物が神を讃える——<br>
+                イタリア語文学の最古の作品の一つ
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 フランチェスコの霊性</h2>
+            <div class="quote-box">
+                <p class="quote-text">主よ、私を平和の道具としてください。<br>憎しみのあるところに愛を。</p>
+                <p class="quote-author">— 「平和の祈り」（フランチェスコに帰される）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>💰 清貧</h3>
+                    <p>完全な清貧。何も所有しない。乞食として生きる。「貧しさの貴婦人」への愛。</p>
+                </div>
+                <div class="card">
+                    <h3">🐦 被造物</h3>
+                        <p>動物への説教。すべての被造物を兄弟姉妹と呼ぶ。環境保護の守護聖人。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 聖痕</h3>
+                        <p>1224年、ラ・ヴェルナ山で聖痕を受ける。キリストの傷を体に。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 フランシスコ会</h3>
+                        <p>托鉢修道会。第一会（男性）、第二会（クララ会）、第三会（在俗）。</p>
+                </div>
+                <div class="card">
+                    <h3">☮️ 平和</h3>
+                        <p>十字軍の中、スルタンと対話。暴力ではなく対話。</p>
+                </div>
+                <div class="card">
+                    <h3">🎄 プレゼピオ</h3>
+                        <p>1223年、グレッチオで最初の馬小屋の情景を再現（キリスト降誕の飼い葉桶）。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Minimalism</h2>
+            <div class="it-card">
+                <h3>Poverty as Zero Dependencies</h3>
+                <p>清貧は依存関係ゼロ。外部リソースなし。完全に自己完結。</p>
+            </div>
+            <div class="it-card">
+                <h3">Franciscan Order as Open Source</h3>
+                    <p>フランシスコ会はオープンソース。誰でも参加可能。フォークも許容（第一会、第二会、第三会）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Canticle as API for Nature</h3>
+                    <p>太陽の賛歌は自然へのAPI。すべての被造物と通信。</p>
+            </div>
+            <div class="it-card">
+                <h3">Dialogue with Sultan as Diplomacy</h3>
+                    <p>スルタンとの対話は外交API。敵対モードではなく協力モード。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>清貧</strong>：完全な物質的放棄。</li>
+                <li><strong>被造物への愛</strong>：すべての自然との友愛。</li>
+                <li><strong>フランシスコ会</strong>：托鉢修道会の創設。</li>
+                <li><strong>太陽の賛歌</strong>：イタリア文学の先駆け。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>福音書</li>
+                        <li>初期教会の清貧</li>
+                        <li>修道院伝統</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>フランシスコ会神学</li>
+                            <li>環境倫理</li>
+                            <li>教皇フランシスコ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：すべてを手放す</h2>
+            <div class="thought-experiment">
+                <h3">所有なしの生</h3>
+                    <p>フランチェスコは文字通りすべてを手放した。</p>
+                    <p>服さえ父に返し、裸で去った。</p>
+                    <p>これは狂気か、それとも悟りか？</p>
+                    <p>現代の「ミニマリズム」は同じ精神か？</p>
+                    <p>物質的所有は精神的貧困をもたらすか？</p>
+                    <p>テクノロジーへの依存はどうか？</p>
+                    <p>デジタルデトックスはフランチェスコ的か？</p>
+                    <p>完全な手放しは——自由か、それとも別の依存か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        すべてを手放すことで何を得られますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アッシジのフランチェスコ（c.
+                1181-1226）は、13世紀イタリアの聖人であり、フランシスコ会の創設者です。富裕な商人の息子から完全な清貧の生活に転じ、「太陽の賛歌」で被造物すべてを兄弟姉妹と呼びました。キリストの生涯を文字通り模倣し、聖痕を受けた最初の人物とされます。托鉢修道会を創設し、十字軍の中でもスルタンとの対話を試みました。環境保護の守護聖人とされ、現教皇フランシスコはこの聖人にちなんで名乗りました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. In poverty, freedom.</p>
+    </footer>
+</body>
+
+</html>

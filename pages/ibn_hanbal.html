@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アフマド・イブン・ハンバル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c2d12;
+            /* Tradition Brown */
+            --secondary: #431407;
+            /* Hadith Dark */
+            --accent: #ea580c;
+            /* Steadfast Orange */
+            --highlight: #fed7aa;
+            /* Text Glow */
+            --bg: #1c0f07;
+            /* Deep Tradition */
+            --text: #fed7aa;
+            --border: #9a3412;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .hanbali-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 45, 18, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(234, 88, 12, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📿";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #9a3412 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 45, 18, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 45, 18, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mihna Section */
+        .mihna-section {
+            background: linear-gradient(135deg, #000 0%, #7c2d12 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .mihna-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📿";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hanbali-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HADITH</a>
+        <div>IBN_HANBAL_v6.08</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-608 / THE_STEADFAST</span>
+        <h1>アフマド・イブン・ハンバル</h1>
+        <p class="en-name">Aḥmad ibn Ḥanbal (780–855)</p>
+        <p class="catchphrase">「不屈のイマーム」——拷問に屈しなかった伝承主義者</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">ハディースOS</span>
+            <span class="os-tag">伝統OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">ハンバリー法学派と伝承主義</h2>
+            <div class="hero-box">
+                <p class="hero-text">アフマド・イブン・ハンバルは、9世紀バグダードの法学者、ハディース学者であり、イスラム法学四大学派の一つハンバリー学派の創始者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    イブン・ハンバルの歴史的業績——<b>『ムスナド』に約3万のハディースを収録。ミフナ（審問）で拷問されても、クルアーンが被造物であるという教義を受け入れることを拒否</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    理性より伝承を重視。後にイブン・タイミーヤ、ワッハーブ派に影響。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    イブン・ハンバルの姿勢は、<b>「ソースコードへの忠実——抽象化や解釈より、オリジナルのテキストを優先。フレームワークより生データ。ドキュメントが全て」</b>という、伝承至上主義。
+                </p>
+            </div>
+        </section>
+
+        <!-- ミフナ -->
+        <section class="mihna-section">
+            <h2>⛓️ ミフナ（審問）</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+                マアムーン・カリフの宗教政策<br>
+                「クルアーンは被造物」と認めよ<br>
+                アフマドは拒否<br>
+                投獄、鞭打ち、拷問<br>
+                それでも屈しなかった<br>
+                「私に証拠を見せよ——クルアーンかスンナから」
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 イブン・ハンバルの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">弱いハディースであっても、個人の意見よりまし。</p>
+                <p class="quote-author">— アフマド・イブン・ハンバル</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📚 ムスナド</h3>
+                    <p>約3万のハディースを収録。イスラム最大級のハディース集。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 伝承主義</h3>
+                        <p>理性より伝承を優先。ラアイ（個人的意見）を極力避ける。</p>
+                </div>
+                <div class="card">
+                    <h3">⛓️ ミフナ</h3>
+                        <p>拷問されても信念を曲げず。「不屈のイマーム」。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 革新反対</h3>
+                        <p>ビドア（革新）への強い反対。預言者の道に忠実に。</p>
+                </div>
+                <div class="card">
+                    <h3">🔒 厳格主義</h3>
+                        <p>四大学派で最も厳格とされる。</p>
+                </div>
+                <div class="card">
+                    <h3">📍 影響</h3>
+                        <p>イブン・タイミーヤ、ワッハーブ派、サウジアラビア。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Source</h2>
+            <div class="it-card">
+                <h3>Hadith as Source Code</h3>
+                <p>ハディースはソースコード。抽象化より原典。</p>
+            </div>
+            <div class="it-card">
+                <h3">Musnad as Database</h3>
+                    <p>ムスナドはデータベース。3万件の信頼できるレコード。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mihna as Security Audit</h3>
+                    <p>ミフナはセキュリティ監査。権力からの圧力に耐える。</p>
+            </div>
+            <div class="it-card">
+                <h3">No Bid'a as No Breaking Changes</h3>
+                    <p>ビドア禁止は破壊的変更禁止。後方互換性の維持。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ハンバリー学派</strong>：伝承重視の法学。</li>
+                <li><strong>ムスナド</strong>：巨大ハディース集。</li>
+                <li><strong>ミフナ抵抗</strong>：信念を曲げない姿勢。</li>
+                <li><strong>伝承主義</strong>：理性より伝承。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>シャーフィイー</li>
+                        <li>ハディース学者たち</li>
+                        <li>初期サラフ</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>イブン・タイミーヤ</li>
+                            <li>ワッハーブ派</li>
+                            <li>サラフィー主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：殉教と妥協</h2>
+            <div class="thought-experiment">
+                <h3">曲げない信念</h3>
+                    <p>イブン・ハンバルは拷問を受けた。</p>
+                    <p>一言「クルアーンは被造物」と言えば解放された。</p>
+                    <p>しかし彼は拒んだ。</p>
+                    <p>これは賢明か、それとも頑固か？</p>
+                    <p>妥協すれば命は助かる——</p>
+                    <p>しかし、原則を失う。</p>
+                    <p>現代でも——</p>
+                    <p>仕事で、信念と利益が衝突する時——</p>
+                    <p>どこまで妥協すべきか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        信念を曲げるべき時はありますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アフマド・イブン・ハンバル（780-855）は、9世紀バグダードの法学者、ハディース学者であり、イスラム法学四大学派の一つハンバリー学派の創始者です。『ムスナド』に約3万のハディースを収録し、ミフナ（審問）で拷問されても「クルアーンは被造物」という教義を拒否して信念を曲げませんでした。理性より伝承を重視し、後にイブン・タイミーヤ、ワッハーブ派、現代のサラフィー主義に影響を与えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Source over abstraction.</p>
+    </footer>
+</body>
+
+</html>

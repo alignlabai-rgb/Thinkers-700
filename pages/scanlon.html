@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・スキャンロン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;700;900&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0369a1; /* Contract Blue */
+            --secondary: #0c4a6e; /* Deep Negotiation */
+            --accent: #84cc16; /* Agreement Green */
+            --bg: #f0f9ff;
+            --text: #1e293b;
+            --border: #bae6fd;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Nunito Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; overflow-x: hidden; }
+        
+        /* Contract Lines Background */
+        .contract-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.03; pointer-events: none; }
+        .contract-line { position: absolute; width: 100%; height: 1px; background: var(--primary); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--secondary); color: #fff; position: sticky; top: 0; z-index: 100; font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+        .nav a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+        /* Contractualist Header */
+        .header { background: linear-gradient(135deg, var(--secondary) 0%, #164e63 100%); color: #fff; padding: 12rem 4rem; position: relative; margin-top: 2rem; overflow: hidden; }
+        .header::before { content: "≈"; position: absolute; bottom: -3rem; right: 10%; font-size: 25rem; opacity: 0.05; color: #fff; }
+        .rank { font-family: 'Fira Code', monospace; font-size: 1rem; color: var(--accent); letter-spacing: 0.3rem; margin-bottom: 2rem; display: block; }
+        h1 { font-family: 'Source Serif 4', serif; font-size: 5rem; font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
+        .en-name { font-family: 'Source Serif 4', serif; font-size: 2rem; font-weight: 400; font-style: italic; color: var(--accent); margin-bottom: 4rem; }
+        
+        .os-tags { display: flex; gap: 1rem; }
+        .os-tag { padding: 0.6rem 2rem; background: var(--primary); color: #fff; font-weight: 700; font-size: 0.8rem; border-radius: 5px; }
+
+        /* Sections */
+        .section { margin-top: 10rem; }
+        .section-title { font-family: 'Source Serif 4', serif; font-size: 3.5rem; font-weight: 700; color: var(--secondary); margin-bottom: 5rem; }
+        .section-title::after { content: ""; display: block; width: 80px; height: 4px; background: var(--accent); margin-top: 1rem; }
+
+        .hero-box { background: #fff; border: 2px solid var(--border); padding: 5rem; position: relative; border-radius: 10px; }
+        .hero-text { font-size: 1.4rem; line-height: 2; font-weight: 300; }
+        .hero-text b { color: var(--primary); font-weight: 700; }
+
+        .quote-box { background: var(--primary); color: #fff; padding: 7rem; margin: 8rem 0; position: relative; border-radius: 15px; }
+        .quote-text { font-family: 'Source Serif 4', serif; font-size: 2.5rem; font-weight: 400; line-height: 1.4; margin-bottom: 2rem; font-style: italic; }
+        .quote-author { font-family: 'Fira Code', monospace; text-align: right; color: var(--accent); font-size: 1.1rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; }
+        .card { background: #fff; border: 1px solid var(--border); padding: 3rem; border-radius: 10px; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(3, 105, 161, 0.1); border-color: var(--primary); }
+        .card h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 900; }
+
+        .it-analogy { background: var(--secondary); color: #fff; padding: 8rem; margin: 10rem 0; font-family: 'Fira Code', monospace; border-radius: 15px; }
+        .it-analogy h2 { color: var(--accent); margin-bottom: 4rem; font-family: 'Source Serif 4', serif; font-size: 4rem; text-align: center; font-style: italic; }
+        .it-card { border: 1px solid #0ea5e9; padding: 3rem; margin-bottom: 3rem; background: rgba(14, 165, 233, 0.1); border-radius: 10px; }
+        .it-card h3 { color: var(--accent); font-size: 1.8rem; margin-bottom: 1.5rem; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 4rem; background: #fff; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 1.5rem; border: 1px solid var(--border); text-align: left; }
+        th { background: var(--secondary); color: #fff; font-weight: 700; }
+
+        .list-rich li { margin-bottom: 2rem; list-style: none; padding-left: 4rem; position: relative; font-size: 1.15rem; }
+        .list-rich li::before { content: "✓"; position: absolute; left: 0; font-size: 1.8rem; color: var(--accent); font-weight: 700; }
+
+        .thought-experiment { background: linear-gradient(135deg, #f0f9ff 0%, #ecfccb 100%); border: 2px solid var(--primary); padding: 5rem; margin: 10rem 0; border-radius: 15px; }
+        .thought-experiment h3 { font-family: 'Source Serif 4', serif; font-size: 2.8rem; color: var(--secondary); margin-bottom: 2rem; }
+
+        .footer { text-align: center; padding: 8rem; opacity: 0.5; font-family: 'Fira Code', monospace; }
+
+        @media (max-width: 768px) { h1 { font-size: 3.5rem; } .header { padding: 8rem 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="contract-bg">
+        <div class="contract-line" style="top: 15%;"></div>
+        <div class="contract-line" style="top: 30%;"></div>
+        <div class="contract-line" style="top: 45%;"></div>
+        <div class="contract-line" style="top: 60%;"></div>
+        <div class="contract-line" style="top: 75%;"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← WHAT_WE_OWE_TO_EACH_OTHER</a>
+        <div>CONTRACTUALISM_v4.61</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-461 / THE_CONTRACTUALIST</span>
+        <h1>トマス・スキャンロン</h1>
+        <p class="en-name">Thomas M. Scanlon (1940–)</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">私たちは互いに何を負うのか</h2>
+            <div class="hero-box">
+                <p class="hero-text">「私たちは互いに何を負っているのか（What We Owe to Each Other）」——この問いを書名にした著作で知られるT.M.スキャンロンは、現代道徳哲学における<b>「契約主義（Contractualism）」</b>の最も影響力のある理論家です。彼の問いは、「なぜある行為が『間違っている』と言えるのか」という道徳の根本に迫ります。</p>
+                <p class="hero-text" style="margin-top: 2rem;">スキャンロンの答えはこうです。ある行為が道徳的に間違っているのは、その行為を許容する原理が、<b>「合理的に拒否できない（reasonably reject）」という基準を満たさない</b>からだ。つまり、すべての人が「これは受け入れられる」と合意できるような原理に基づかない行為は、道徳的に問題がある。これは「みんなが納得できるルールか？」を道徳の基準にする考え方です。</p>
+                <p class="hero-text" style="margin-top: 2rem;">スキャンロンを学ぶことは、<b>「道徳を『神の命令』でも『最大幸福の計算』でもなく、『互いに説明責任を負う理性的存在者同士の合意』として捉える」</b>視点を得ることです。AIの倫理設計、組織のコンプライアンス、国際的な規範形成——あらゆる場面で「誰もが合理的に拒否できない原理は何か」という問いは力を持っています。</p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--secondary); color: #fff; border-radius: 10px;">
+                <h4 style="color: var(--accent);">💡 たとえるなら</h4>
+                <p>スキャンロンは、<b>「道徳というコードベースの正当性を、『全ステークホルダーがコードレビューで合理的にRejectしないこと』に求める、倫理学界のプルリクエスト審査官」</b>です。一人でもReasonable Rejectがあれば、そのコミットは不正当。全員が「まあ、これなら受け入れられる」と言えるまで議論を続けるのが道徳的合意のプロセスです。</p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 契約主義の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">ある行為が道徳的に間違っているのは、その行為を許容する原理が、共通の合意を求める人々によって合理的に拒否されうる場合である。</p>
+                <p class="quote-author">— 『私たちは互いに何を負うのか』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📜 契約主義（Contractualism）</h3>
+                    <p>道徳的正当性を、仮想的な合意に基づいて判断する理論。「誰も合理的に拒否できない原理」こそが道徳的に正しい原理。 </p>
+                </div>
+                <div class="card">
+                    <h3>🚫 合理的拒否可能性</h3>
+                    <p>ある原理を受け入れることで最も不利益を被る人が、その原理を「合理的に」拒否できるかどうかが判断基準。 </p>
+                </div>
+                <div class="card">
+                    <h3>🤝 相互的説明責任</h3>
+                    <p>道徳的関係は、互いに自分の行為を正当化し、説明する責任を負う関係。「なぜそうしたのか」を説明できなければならない。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 道徳的判断のフロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 原理の提案 (Propose)</h3>
+                    <p>ある行為を許容または禁止する原理を提案する。「嘘をついてはならない」「約束は守るべき」など。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 立場の検討 (Consider)</h3>
+                    <p>その原理が適用されるすべての人の立場を検討する。誰が最も不利益を被るか、誰が最も反対する理由を持つか。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 拒否可能性テスト (Test)</h3>
+                    <p>最も不利益を被る人が、その原理を「合理的に」拒否できるかどうかを判断する。合理的な拒否理由がなければ、その原理は正当化される。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Moral Code Review</h2>
+            <div class="it-card">
+                <h3>Pull Request Model</h3>
+                <p>道徳的原理は、コードベースへの変更提案（PR）のようなもの。マージされる前に、すべてのステークホルダーのコードレビューを通過しなければならない。「Reasonable Reject」があればマージ不可。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Stakeholder-Weighted Veto</h3>
+                <p>功利主義が「総合スコア」で判断するのに対し、契約主義は「最も反対する理由を持つ個人」に拒否権を与える。誰か一人でも合理的に拒否できれば、その原理は不正当。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Reasonableness as Linter</h3>
+                <p>「合理性」は、拒否理由の妥当性を検証するリンターのようなもの。単なる好みや利己的な理由は「Unreasonable」としてフィルタリングされる。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>非功利主義的契約論</strong>：ロールズの社会契約論を道徳全般に拡張しつつ、功利主義的な「総量計算」を避ける個人尊重のフレームワーク。</li>
+                <li><strong>道徳的動機の説明</strong>：なぜ人は道徳的に行動しようとするのか？ 互いに正当化できる原理に従いたいという動機それ自体が道徳的動機。</li>
+                <li><strong>責任論への応用</strong>：「責めること」の意味と正当性を、相互的説明責任の観点から分析。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イマヌエル・カント（普遍化可能性、人格の尊重）</li>
+                        <li>ジョン・ロールズ（正義論、社会契約）</li>
+                        <li>W.D.ロス（一見義務、直観主義）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>現代の規範倫理学における契約主義の発展</li>
+                        <li>AIの倫理設計における合意形成モデル</li>
+                        <li>グローバルな規範形成の正当化理論</li>
+                        <li>責任と非難の哲学的分析</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 倫理理論の比較</h2>
+            <table>
+                <thead>
+                    <tr><th>項目</th><th>功利主義</th><th>カント倫理学</th><th>スキャンロンの契約主義</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>正しさの基準</strong></td><td>総幸福の最大化</td><td>普遍化可能な格律</td><td>合理的に拒否できない原理</td></tr>
+                    <tr><td><strong>個人の扱い</strong></td><td>総量の一部</td><td>目的自体</td><td>拒否権を持つ主体</td></tr>
+                    <tr><td><strong>方法論</strong></td><td>計算</td><td>定言命法テスト</td><td>仮想的合意</td></tr>
+                    <tr><td><strong>ITアナロジー</strong></td><td>Max Aggregation</td><td>Universal Rule Check</td><td>PR Review with Veto</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：合理的に拒否できるか？</h2>
+            <div class="thought-experiment">
+                <h3>トロッコ問題・再考</h3>
+                <p>暴走するトロッコが5人の作業員に向かっている。あなたがレバーを引けば、トロッコは側線に逸れ、そこにいる1人が死ぬが、5人は助かる。</p>
+                <p>功利主義者は言う。「5人の命 > 1人の命。レバーを引くべき」。</p>
+                <p>スキャンロンはどう考えるか？ 「5人を助けるために1人を犠牲にする」という原理を、その1人は合理的に拒否できるだろうか？ 一方で、「レバーを引かない」という原理を、5人は合理的に拒否できるだろうか？</p>
+                <p>スキャンロンの契約主義は、単純に数を比較するのではなく、<b>それぞれの立場から見た「反対する理由の強さ」</b>を比較する。1人が死ぬことへの反対理由と、5人が死ぬことへの反対理由、どちらがより「合理的に拒否できる」ものか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>T.M.スキャンロンの契約主義は、道徳を「神の命令」でも「幸福の計算」でもなく、<b>「互いに説明責任を負う理性的存在者同士の合意」</b>として捉えます。「誰も合理的に拒否できない原理」という基準は、個々人の尊厳を守りながら、共同生活のルールを正当化する強力なフレームワークです。AIの意思決定アルゴリズム、企業の倫理規定、国際的な人権基準——あらゆる場面で「これは誰もが受け入れられるルールか？」と問うスキャンロンの視点は、現代社会の道徳的インフラを設計するための不可欠なツールとなっています。</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. What We Owe to Each Other.</p>
+    </footer>
+</body>
+</html>

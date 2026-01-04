@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>バアル・シェム・トーヴ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            /* Hasidic Purple */
+            --secondary: #1e1b4b;
+            /* Joy Dark */
+            --accent: #c4b5fd;
+            /* Spirit Light */
+            --highlight: #ede9fe;
+            /* Devekut Glow */
+            --bg: #0c0a1d;
+            /* Deep Mysticism */
+            --text: #ede9fe;
+            --border: #7c3aed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .spirit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(196, 181, 253, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #8b5cf6 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✨";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.15;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Joy Section */
+        .joy-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #8b5cf6 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .joy-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .joy-icons {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="spirit-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HASIDISM</a>
+        <div>BESHT_v5.93</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-593 / THE_MASTER_OF_THE_GOOD_NAME</span>
+        <h1>バアル・シェム・トーヴ</h1>
+        <p class="en-name">Baal Shem Tov / Israel ben Eliezer (c. 1700–1760)</p>
+        <p class="catchphrase">「善き名の主」——喜びと神秘の革命</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">神秘OS</span>
+            <span class="os-tag">ハシドOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">ハシディズム創始</h2>
+            <div class="hero-box">
+                <p class="hero-text">バアル・シェム・トーヴ（BeShT、「善き名の主」）は、18世紀東欧のユダヤ教神秘主義運動「ハシディズム」の創始者です。本名はイスラエル・ベン・エリエゼル。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ベシュトの革命的教え——<b>神への奉仕は喜びと熱狂で行うべき。学問のないユダヤ人も、誠実な祈りで神に近づける</b>。エリート主義への挑戦。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ポーランド・ウクライナの貧しいユダヤ人コミュニティで爆発的に広まった。今日でもハシディズムは数百万の信者を持つ。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ベシュトの教えは、<b>「UXの革命——複雑なシステムを誰でも使えるように。エキスパートだけでなくすべてのユーザーのために。喜びを最優先」</b>という、アクセシビリティの民主化。
+                </p>
+            </div>
+        </section>
+
+        <!-- 喜び -->
+        <section class="joy-section">
+            <h2>💃 喜びで神に仕える</h2>
+            <div class="joy-icons">🎵 🙏 💃 ✨</div>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                悲しみは神からの分離<br>
+                喜びは神との結合<br>
+                歌い、踊り、祈る<br>
+                すべてが神への奉仕
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ベシュトの教え</h2>
+            <div class="quote-box">
+                <p class="quote-text">神はどこにでもいる。どこにでもだ。</p>
+                <p class="quote-author">— バアル・シェム・トーヴ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>✨ デヴェクート</h3>
+                    <p>神への密着・一体化。日常のすべての行為で神と結びつく。</p>
+                </div>
+                <div class="card">
+                    <h3">😊 シムハー</h3>
+                        <p>喜び。神への奉仕は喜びで行うべき。悲しみは罪。</p>
+                </div>
+                <div class="card">
+                    <h3">🎵 ニグン</h3>
+                        <p>言葉のない歌。メロディで魂を高揚させる。ハシディズムの音楽伝統。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍👧‍👦 ツァディク</h3>
+                        <p>義人・レベ。霊的リーダーが信者と神を仲介。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 遍在</h3>
+                        <p>神はどこにでもいる。俗なるものの中にも神聖がある。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 愛</h3>
+                        <p>神への愛、ユダヤ人同胞への愛。すべての基盤。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Democratization</h2>
+            <div class="it-card">
+                <h3>Joy as UX</h3>
+                <p>喜びはUX。ユーザー体験を最優先。使いにくいシステムは悪いシステム。</p>
+            </div>
+            <div class="it-card">
+                <h3">Tzaddik as API Gateway</h3>
+                    <p>ツァディクはAPIゲートウェイ。一般ユーザーと複雑なバックエンドを仲介。</p>
+            </div>
+            <div class="it-card">
+                <h3">Devekut as Connection</h3>
+                    <p>デヴェクートはコネクション。常にサーバーと接続状態を維持。</p>
+            </div>
+            <div class="it-card">
+                <h3">Nigun as Non-Verbal Protocol</h3>
+                    <p>ニグンは非言語プロトコル。言葉なしでメッセージを伝達。音楽API。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ハシディズム</strong>：民衆向け神秘主義運動。</li>
+                <li><strong>喜びの強調</strong>：悲しみから喜びへ。</li>
+                <li><strong>ツァディク制度</strong>：カリスマ的霊的指導者。</li>
+                <li><strong>神の遍在</strong>：どこにでも神聖がある。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ルリアニック・カバラ</li>
+                        <li>ユダヤ神秘主義</li>
+                        <li>民間信仰</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>リュバビッチ</li>
+                            <li>サトマール</li>
+                            <li>ブレスロフ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：エリートから民衆へ</h2>
+            <div class="thought-experiment">
+                <h3>知識の民主化</h3>
+                <p>タルムード学習には何十年もかかる。</p>
+                <p>貧しいユダヤ人には時間も教育もない。</p>
+                <p>彼らは二流のユダヤ人なのか？</p>
+                <p>ベシュトは言った：違う。</p>
+                <p>誠実な祈りは学問に勝る。</p>
+                <p>これは反知性主義か、それとも民主化か？</p>
+                <p>現代のテクノロジーも同様——</p>
+                <p>コードを書けない人もアプリを使える。</p>
+                <p>ノーコード・ローコードは劣っているのか？</p>
+                <p>専門知識なしでもアクセスできることの価値は？</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    専門知識なしでもアクセスできることの価値は？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>バアル・シェム・トーヴ（c.
+                1700-1760）は、18世紀東欧で「ハシディズム」を創始したユダヤ教神秘主義者です。神への奉仕は喜びと熱狂で行うべきであり、学問のないユダヤ人も誠実な祈りで神に近づけると教えました。デヴェクート（神への密着）、シムハー（喜び）、ツァディク（義人）などの概念を中心に、ユダヤ教の霊性を民衆に開放。ポーランド・ウクライナで爆発的に広まり、今日でも数百万のハシディズム信者がいます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Joy in service.</p>
+    </footer>
+</body>
+
+</html>

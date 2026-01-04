@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャマールッディーン・アフガーニー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Islamic Green */
+            --secondary: #064e3b;
+            /* Revolution Dark */
+            --accent: #34d399;
+            /* Light Reform */
+            --highlight: #d1fae5;
+            /* Unity Glow */
+            --bg: #022c22;
+            /* Deep Solidarity */
+            --text: #d1fae5;
+            --border: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Islamic Background */
+        .islamic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(52, 211, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(5, 150, 105, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Revolutionary Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☪️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #10b981 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Pan-Islam Section */
+        .panislam-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .panislam-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .panislam-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .panislam-box {
+            padding: 2rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+        }
+
+        .panislam-center {
+            padding: 3rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☪️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="islamic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PAN_ISLAMISM</a>
+        <div>AFGHANI_v6.52</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-652 / THE_REVOLUTIONARY_REFORMER</span>
+        <h1>ジャマールッディーン・アフガーニー</h1>
+        <p class="en-name">Jamāl al-Dīn al-Afghānī (1838–1897)</p>
+        <p class="catchphrase">「西洋に対抗するために、イスラム世界は団結せよ」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">イスラムOS</span>
+            <span class="os-tag">革命OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">近代イスラム改革の起点</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ジャマールッディーン・アフガーニーは、19世紀のイスラム世界で最も影響力のある改革思想家の一人です。イラン（あるいはアフガニスタン）出身とされ、エジプト、インド、パリ、イスタンブールを旅しながら、イスラム世界の覚醒と近代化を訴えました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「パン・イスラム主義」</b>——西洋帝国主義に対抗するためにイスラム世界は団結すべき。国境を超えた宗教的・政治的連帯。オスマン帝国のカリフを中心とした統一。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    同時に<b>「イスラムと近代化の両立」</b>を主張——イスラムは科学と矛盾しない。本来のイスラムに立ち返れば、近代的発展は可能。西洋の技術を取り入れつつ、イスラムのアイデンティティを保て。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アフガーニーは、<b>「フェデレーテッド・システムの提唱者——分散していたイスラム諸国を単一のフェデレーションに統合しようとした。各ノード（国家）は独自性を保ちつつ、共通プロトコル（イスラム）で通信。西洋という競合システムに対抗するための連邦アーキテクチャ」</b>を設計しようとしました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. パン・イスラム主義 -->
+        <section class="panislam-section">
+            <h2>🌍 パン・イスラム主義のビジョン</h2>
+            <div class="panislam-diagram">
+                <div class="panislam-box">
+                    <p>🇪🇬 エジプト</p>
+                </div>
+                <div class="panislam-box">
+                    <p>🇮🇷 ペルシア</p>
+                </div>
+                <div class="panislam-box">
+                    <p>🇮🇳 インド</p>
+                </div>
+                <div class="panislam-center">
+                    <p>イスラム連帯<br>統一ウンマ</p>
+                </div>
+                <div class="panislam-box">
+                    <p>🇹🇷 オスマン</p>
+                </div>
+                <div class="panislam-box">
+                    <p>🇦🇫 中央アジア</p>
+                </div>
+                <div class="panislam-box">
+                    <p>🌍 北アフリカ</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                国境を超えて、言語を超えて、民族を超えて——イスラムという共通のアイデンティティで西洋帝国主義に対抗する。これがアフガーニーのビジョンでした。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アフガーニー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">イスラムは理性と科学の宗教である。本来のイスラムに立ち返れば、西洋に劣らぬ文明を築ける。</p>
+                <p class="quote-author">— アフガーニー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌍 パン・イスラム主義</h3>
+                    <p>イスラム世界の政治的統一。西洋帝国主義への対抗。宗教的・文化的連帯を政治運動へ。オスマン帝国のカリフを中心に。</p>
+                </div>
+                <div class="card">
+                    <h3>⚔️ 反植民地主義</h3>
+                    <p>イギリス帝国のエジプト・インド支配を批判。フランスの北アフリカ支配を批判。西洋は敵であると同時に学ぶべき対象。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 イスラムと科学</h3>
+                        <p>イスラムは科学と矛盾しない。中世のイスラム科学の黄金期を思い出せ。衰退は本来のイスラムからの逸脱が原因。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 教育改革</h3>
+                        <p>近代的教育の導入。宗教教育と世俗教育の統合。エジプトのアズハル大学での活動。</p>
+                </div>
+                <div class="card">
+                    <h3">🗞️ メディア活動</h3>
+                        <p>パリで『固い絆』紙を発行。知識人ネットワークの形成。ムハンマド・アブドゥとの協力。</p>
+                </div>
+                <div class="card">
+                    <h3">🌀 謎めいた経歴</h3>
+                        <p>出自は不明確。イラン人？アフガン人？シーア派？スンニ派？複数のアイデンティティを使い分けた。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 西洋との対話と対決 -->
+        <section class="section">
+            <h2 class="section-title">🔄 西洋との対話と対決</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. ルナンとの論争</h3>
+                    <p>1883年、フランスの東洋学者エルネスト・ルナンが「イスラムは科学と相容れない」と主張。アフガーニーは反論：イスラムは科学を奨励する宗教であり、衰退は後世の逸脱が原因。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 西洋技術の選択的受容</h3>
+                    <p>西洋の技術・科学は学ぶべき。しかし西洋の価値観をそのまま受け入れる必要はない。「西洋化」ではなく「イスラム的近代化」を。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 政治的活動</h3>
+                    <p>エジプトでウラービー運動を支援。イランでタバコ・ボイコットを煽動。オスマン帝国でスルタンに助言。どこでも疑われ、追放された。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 遺産と批判</h3>
+                    <p>弟子ムハンマド・アブドゥを通じてイスラム改革主義に影響。しかし後にイスラム主義過激派にも援用された。手段としての宗教利用？</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Islamic Federation</h2>
+            <div class="it-card">
+                <h3>Pan-Islamism as Federated System</h3>
+                <p>パン・イスラム主義はフェデレーテッド・システム。各国（ノード）は独自のバージョンを維持しつつ、共通プロトコル（イスラム）で通信。中央集権（オスマン・カリフ制）でゆるやかに統合。</p>
+            </div>
+            <div class="it-card">
+                <h3>Anti-Colonialism as Firewall</h3>
+                <p>反植民地主義はファイアウォール。西洋からの攻撃（植民地化）をブロック。しかし必要なパケット（技術・科学）は選択的に通す。</p>
+            </div>
+            <div class="it-card">
+                <h3>Islamic Modernization as Refactoring</h3>
+                <p>イスラム的近代化はレガシーシステムのリファクタリング。古いコードベース（伝統イスラム）を維持しながら、新機能（近代化）を追加。全面書き換え（西洋化）ではない。</p>
+            </div>
+            <div class="it-card">
+                <h3>Al-Urwa al-Wuthqa as Newsletter API</h3>
+                <p>『固い絆』紙はニュースレターAPI。パリからイスラム世界へ情報を配信。知識人ノードをネットワーク化。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『固い絆』（アル＝ウルワ・アル＝ウスカー）</strong>：パリで発行した汎イスラム新聞。18号のみだが影響力絶大。</li>
+                <li><strong>ルナン論争への反論</strong>：イスラムと科学の両立可能性を主張。</li>
+                <li><strong>パン・イスラム主義の理論化</strong>：宗教的連帯を政治運動へ。</li>
+                <li><strong>反植民地主義の枠組み</strong>：第三世界解放運動の先駆け。</li>
+                <li><strong>イスラム改革主義の起点</strong>：弟子アブドゥを通じてサラフィー主義へ。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イブン・タイミーヤ（サラフ思想）</li>
+                        <li>シーア派哲学</li>
+                        <li>西洋啓蒙思想</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ムハンマド・アブドゥ</li>
+                        <li>ラシード・リダー</li>
+                        <li>ムスリム同胞団</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ イスラム改革者の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>アフガーニー</th>
+                        <th>アブドゥ</th>
+                        <th>リダー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>活動時期</strong></td>
+                        <td>19世紀後半</td>
+                        <td>19-20世紀</td>
+                        <td>20世紀前半</td>
+                    </tr>
+                    <tr>
+                        <td><strong>核心</strong></td>
+                        <td>パン・イスラム主義</td>
+                        <td>イスラム神学改革</td>
+                        <td>サラフィー主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>対西洋</strong></td>
+                        <td>対決＋選択的受容</td>
+                        <td>対話＋調和</td>
+                        <td>対決＋復古</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政治的傾向</strong></td>
+                        <td>革命的</td>
+                        <td>改良的</td>
+                        <td>原理主義的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>フェデレーション</td>
+                        <td>API互換性</td>
+                        <td>レガシー復元</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：近代化とアイデンティティ</h2>
+            <div class="thought-experiment">
+                <h3>イスラムと近代化は両立するか</h3>
+                <p>アフガーニーは主張しました：イスラムは本来科学的であり、近代化と矛盾しない。西洋の技術を取り入れつつ、イスラムのアイデンティティを保てる。これは可能でしょうか？</p>
+                <p style="margin-top: 1.5rem;">
+                    肯定者は言います：日本は明治維新で西洋技術を取り入れつつ独自性を保った。トルコのエルドアンは「民主主義とイスラムは両立する」と主張した。マレーシアやUAEは近代的かつイスラム的だ。</p>
+                <p style="margin-top: 1.5rem;">
+                    否定者は言います：近代化は必然的に世俗化を伴う。科学的思考と宗教的権威は緊張関係にある。アタテュルクのトルコは『急進的世俗化』でしか近代化できなかった。</p>
+                <p style="margin-top: 1.5rem;">
+                    アフガーニー自身の矛盾もあります：彼はルナンへの反論で「イスラムは科学的」と主張しましたが、同じ反論で「すべての宗教は最終的には科学に克服される」とも書きました。彼は信者だったのか、それとも宗教を政治的手段として利用したのか？
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    今日、この問いはなお未解決です。イスラム主義、世俗主義、「イスラム的民主主義」——さまざまな答えが試みられています。アフガーニーの問いは、イスラム世界の知識人が今も格闘する問いです。</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    近代化は西洋化を意味しますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジャマールッディーン・アフガーニー（1838-1897）は、19世紀のイスラム改革運動の中心人物であり、パン・イスラム主義と反植民地主義の先駆者です。エジプト、インド、パリ、イスタンブールを旅しながら、イスラム世界の統一と覚醒を訴えました。「イスラムは科学と矛盾しない」と主張し、西洋の技術を取り入れつつイスラムのアイデンティティを保つ「イスラム的近代化」を提唱しました。パリで発行した『固い絆』紙は知識人ネットワークを形成し、弟子ムハンマド・アブドゥを通じてイスラム改革主義に決定的影響を与えました。しかし彼の遺産は複雑です——穏健な改革派から過激なイスラム主義者まで、さまざまな運動が彼を援用しました。近代イスラム政治思想の起点として、アフガーニーは今日もなお重要な参照点です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Unity of the Ummah.</p>
+    </footer>
+</body>
+
+</html>

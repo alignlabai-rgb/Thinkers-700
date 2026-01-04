@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョセフ・スミス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ca8a04;
+            /* Gold */
+            --secondary: #422006;
+            /* Sacred Dark */
+            --accent: #facc15;
+            /* Light Gold */
+            --highlight: #fef9c3;
+            /* Revelation Glow */
+            --bg: #1c1502;
+            /* Deep Zion */
+            --text: #fef9c3;
+            --border: #eab308;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .smith-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(202, 138, 4, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(250, 204, 21, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📜";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #eab308 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(202, 138, 4, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(202, 138, 4, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-section {
+            background: linear-gradient(135deg, #000 0%, #ca8a04 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .vision-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📜";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="smith-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← RESTORATION</a>
+        <div>SMITH_v6.34</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-634 / THE_PROPHET</span>
+        <h1>ジョセフ・スミス</h1>
+        <p class="en-name">Joseph Smith Jr.（1805–1844）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「回復の預言者」——末日聖徒運動の創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">回復OS</span>
+            <span class="os-tag">預言OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">末日聖徒運動の創始</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ジョセフ・スミスは、19世紀アメリカの宗教指導者であり、モルモン書を翻訳し末日聖徒イエス・キリスト教会を創設しました。「第二次大覚醒」の時代に、どの教会も真実を持っていないという啓示を受けたと主張しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スミスの歴史的業績——<b>モルモン書を「翻訳」して出版。1830年に教会を設立。新しい神権の回復を主張。数多くの啓示を受ける</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    1844年、暴徒に殺害され38歳で殉教。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>スミスの「回復」は、<b>「オリジナルのソースコードへの復帰——初代教会（v1.0）が失われ、既存の教会はすべてフォーク版。真のオリジナルを復元し、新しいリリースを出す」</b>という、宗教的リストア。
+                </p>
+            </div>
+        </section>
+
+        <section class="vision-section">
+            <h2>✨ 最初の示現（1820年）</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                ニューヨーク州パルマイラの森<br>
+                どの教会に入るべきか祈る<br>
+                二人の輝く存在が現れた<br>
+                「どの教会にも入るな」<br>
+                「すべてが間違っている」<br>
+                これが「回復」の始まり
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 スミスの教え</h2>
+            <div class="quote-box">
+                <p class="quote-text">私たちは、聖書が正しく翻訳されているかぎり、それが神の言葉であると信じる。</p>
+                <p class="quote-author">— 信仰箇条</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📖 モルモン書</h3>
+                        <p>古代アメリカの預言者の記録。「もう一つの証」。</p>
+                </div>
+                <div class="card">
+                    <h3">✨ 回復</h3>
+                        <p>使徒時代の教会の回復。失われた真理の復活。</p>
+                </div>
+                <div class="card">
+                    <h3">👼 天使モロナイ</h3>
+                        <p>金版の埋まる場所を示した天使。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 神殿</h3>
+                        <p>神殿儀式の回復。死者のためのバプテスマ。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 神権</h3>
+                        <p>アロン神権とメルキゼデク神権の回復。</p>
+                </div>
+                <div class="card">
+                    <h3">🌎 シオン</h3>
+                        <p>アメリカにシオン（ユートピア）を建設。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Restoration</h2>
+            <div class="it-card">
+                <h3>Restoration as Reboot</h3>
+                <p>回復はリブート。システムを初期状態に戻す。</p>
+            </div>
+            <div class="it-card">
+                <h3">Book of Mormon as New Module</h3>
+                    <p>モルモン書は新モジュール。聖書に追加される新機能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Priesthood as Authorization</h3>
+                    <p>神権は権限。正当な操作権を付与。</p>
+            </div>
+            <div class="it-card">
+                <h3">Temple as Secure Process</h3>
+                    <p>神殿は安全な処理。特別な儀式を実行。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>モルモン書</strong>：新しい聖典。</li>
+                <li><strong>回復の教義</strong>：原始教会への復帰。</li>
+                <li><strong>神殿儀式</strong>：死者のための働き。</li>
+                <li><strong>継続的啓示</strong>：預言者を通じた啓示。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>プロテスタント</li>
+                        <li>第二次大覚醒</li>
+                        <li>アメリカ辺境精神</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>末日聖徒教会</li>
+                            <li>モルモン文化</li>
+                            <li>新宗教運動</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：啓示の正当性</h2>
+            <div class="thought-experiment">
+                <h3">私的啓示を信じるべきか</h3>
+                    <p>スミスは「示現」を受けたと主張した。</p>
+                    <p>しかし私的体験を——</p>
+                    <p>他者はどうやって検証するか？</p>
+                    <p>信者にとっては真実。</p>
+                    <p>批判者にとっては詐欺か幻覚。</p>
+                    <p>宗教的体験の「証拠」とは何か？</p>
+                    <p>内的確信か、外的検証か？</p>
+                    <p>ムハンマドの啓示も同じ問題を持つ。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        私的な宗教体験は客観的に検証できますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジョセフ・スミス（1805-1844）は、19世紀アメリカの宗教指導者であり、末日聖徒イエス・キリスト教会の創設者です。1820年の「最初の示現」で啓示を受け、1830年にモルモン書を出版して教会を設立。使徒時代の教会の「回復」を主張し、神殿儀式、神権、継続的啓示などの教義を確立しました。1844年に暴徒に殺害され殉教。現在、全世界で1700万人以上の信者を持つ教会の礎を築きました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Restoration of all things.</p>
+    </footer>
+</body>
+
+</html>

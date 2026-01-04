@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>バリー・コモナー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16a34a;
+            /* Ecology Green */
+            --secondary: #14532d;
+            /* Environment Dark */
+            --accent: #4ade80;
+            /* Life Light */
+            --highlight: #dcfce7;
+            /* Nature Glow */
+            --bg: #052e16;
+            /* Earth Deep */
+            --text: #dcfce7;
+            --border: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Ecology Background */
+        .eco-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(22, 163, 74, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(74, 222, 128, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Commoner Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16a34a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌍";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #22c55e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(22, 163, 74, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Four Laws Section */
+        .laws-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16a34a 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .laws-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .laws-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .law-box {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        .law-box h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌍";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="eco-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ECOLOGY</a>
+        <div>CIRCLE_v5.71</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-571 / THE_BIOLOGIST_ACTIVIST</span>
+        <h1>バリー・コモナー</h1>
+        <p class="en-name">Barry Commoner (1917–2012)</p>
+        <p class="catchphrase">「生態学の4法則」——環境運動の父</p>
+        <div class="os-tags">
+            <span class="os-tag">環境OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">科学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">すべてはつながっている</h2>
+            <div class="hero-box">
+                <p class="hero-text">バリー・コモナーは、アメリカの生物学者・環境活動家であり、現代環境運動の創始者の一人です。1970年『タイム』誌の表紙を飾り「環境運動の父」と呼ばれました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    コモナーの核心的主張——<b>環境問題は技術の問題ではなく、社会・経済システムの問題</b>。資本主義的生産様式が環境破壊の根本原因。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「生態学の4法則」——シンプルで力強い原則。今も環境教育の基本。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    コモナーの環境思想は、<b>「地球をクローズドシステム（閉鎖系）として分析——廃棄物はゴミ箱に消えるのではなく、システム内で循環する。メモリリークは最終的にシステムクラッシュを招く」</b>という、地球OSのシステム分析。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 4法則 -->
+        <section class="laws-section">
+            <h2>🌍 生態学の4法則</h2>
+            <div class="laws-grid">
+                <div class="law-box">
+                    <h4>1. すべてはつながっている</h4>
+                    <p style="font-size: 0.95rem;">Everything is connected to everything else</p>
+                </div>
+                <div class="law-box">
+                    <h4>2. すべてはどこかへ行く</h4>
+                    <p style="font-size: 0.95rem;">Everything must go somewhere</p>
+                </div>
+                <div class="law-box">
+                    <h4>3. 自然が一番よく知っている</h4>
+                    <p style="font-size: 0.95rem;">Nature knows best</p>
+                </div>
+                <div class="law-box">
+                    <h4>4. タダ飯はない</h4>
+                    <p style="font-size: 0.95rem;">There is no such thing as a free lunch</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 コモナー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">環境危機は、生態系と近代技術の間の深刻な不適合を反映している。</p>
+                <p class="quote-author">— バリー・コモナー『The Closing Circle』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔗 相互連関</h3>
+                        <p>すべてはつながっている。一つの介入が全体に波及。生態系は複雑ネットワーク。</p>
+                </div>
+                <div class="card">
+                    <h3">♻️ 閉鎖系</h3>
+                        <p>地球は閉鎖系。廃棄物は「消える」のではなく移動する。循環または蓄積。</p>
+                </div>
+                <div class="card">
+                    <h3">🏭 技術批判</h3>
+                        <p>戦後の合成化学（プラスチック、農薬、洗剤）が問題の根源。自然のサイクルと不適合。</p>
+                </div>
+                <div class="card">
+                    <h3">💰 資本主義批判</h3>
+                        <p>利潤追求が環境を外部化。コストを自然と将来世代に転嫁。システム的問題。</p>
+                </div>
+                <div class="card">
+                    <h3">☢️ 核実験反対</h3>
+                        <p>1950年代から核実験反対運動。放射性降下物の研究。科学者の社会的責任。</p>
+                </div>
+                <div class="card">
+                    <h3">🗳️ 政治参加</h3>
+                        <p>1980年大統領選に出馬（市民党）。環境問題の政治化。社会変革の必要性。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 著作 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Science and Survival (1966)</h3>
+                        <p>科学技術と生存の問題。核の脅威。科学者の社会的責任を論じた。</p>
+                </div>
+                <div class="card">
+                    <h3">The Closing Circle (1971)</h3>
+                        <p>閉じた円——生態学の4法則を提示。環境危機の根本原因を分析。ベストセラー。</p>
+                </div>
+                <div class="card">
+                    <h3">The Poverty of Power (1976)</h3>
+                        <p>エネルギー危機と資本主義。石油依存経済の批判。再生可能エネルギーへの転換。</p>
+                </div>
+                <div class="card">
+                    <h3">Making Peace with the Planet (1990)</h3>
+                        <p>地球との和解。20年間の環境政策の失敗。根本的なシステム変革の必要性。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Closed System</h2>
+            <div class="it-card">
+                <h3">Earth as Closed System</h3>
+                    <p>地球は閉鎖系。/dev/null は存在しない。すべての出力は入力になる。循環か蓄積。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pollution as Memory Leak</h3>
+                    <p>汚染はメモリリーク。解放されないリソースが蓄積。最終的にシステムクラッシュ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ecosystem as Complex Network</h3>
+                    <p>生態系は複雑ネットワーク。一つのノード変更が全体に伝播。予測困難。</p>
+            </div>
+            <div class="it-card">
+                <h3">Capitalism as Resource-Ignorant Algorithm</h3>
+                    <p>資本主義はリソース無視アルゴリズム。メモリ使用量を無視して高速化を追求。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>生態学の4法則</strong>：環境思考の基本原則。</li>
+                <li><strong>閉鎖系思考</strong>：廃棄物は消えない。</li>
+                <li><strong>社会経済批判</strong>：技術ではなくシステムの問題。</li>
+                <li><strong>科学者の活動</strong>：科学と政治の接続。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>レイチェル・カーソン</li>
+                            <li>マルクス経済学</li>
+                            <li>生態学</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アースデイ運動</li>
+                            <li>環境社会主義</li>
+                            <li>持続可能性概念</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 環境思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>コモナー</th>
+                        <th>エーリック</th>
+                        <th>ロムボルグ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>原因</strong></td>
+                        <td>技術・経済</td>
+                        <td>人口</td>
+                        <td>誇張</td>
+                    </tr>
+                    <tr>
+                        <td><strong>解決</strong></td>
+                        <td>システム変革</td>
+                        <td>人口抑制</td>
+                        <td>市場</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政治</strong></td>
+                        <td>左派</td>
+                        <td>テクノクラート</td>
+                        <td>自由市場</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>リファクタリング</td>
+                        <td>スケールダウン</td>
+                        <td>楽観</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：成長か環境か</h2>
+            <div class="thought-experiment">
+                <h3">経済成長と環境保護</h3>
+                    <p>コモナーは問います：資本主義と環境保護は両立するか？</p>
+                    <p>利潤追求はより多くの生産を求める。</p>
+                    <p>しかし地球の資源は有限。</p>
+                    <p>「グリーン成長」は解決策か、それとも矛盾語法か？</p>
+                    <p>デカップリング（経済成長と環境負荷の分離）は可能か？</p>
+                    <p>批判者は言う：技術革新が解決する。</p>
+                    <p>コモナーは答えた：技術は問題の原因であり解決ではない。</p>
+                    <p>しかし社会主義国家も環境を破壊した——ソ連のアラル海など。</p>
+                    <p>問題は資本主義特有か、それとも産業社会一般か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        経済成長と環境保護は両立できますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>バリー・コモナーは、アメリカの生物学者・環境活動家であり、現代環境運動の創始者の一人です。「生態学の4法則」——すべてはつながっている、すべてはどこかへ行く、自然が一番よく知っている、タダ飯はない——はシンプルで力強い環境思考の原則です。コモナーは環境問題を技術的問題ではなく社会経済的問題として捉え、資本主義的生産様式の根本的変革を求めました。科学者として社会問題に取り組む姿勢は、今日の環境科学者にも影響を与えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Everything is connected.</p>
+    </footer>
+</body>
+
+</html>

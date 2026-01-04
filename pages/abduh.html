@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ムハンマド・アブドゥフ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0369a1;
+            /* Reform Blue */
+            --secondary: #0c4a6e;
+            /* Al-Azhar Dark */
+            --accent: #38bdf8;
+            /* Light Reason */
+            --highlight: #e0f2fe;
+            /* Enlightenment Glow */
+            --bg: #082f49;
+            /* Deep Cairo */
+            --text: #e0f2fe;
+            --border: #0ea5e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Reform Background */
+        .reform-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(3, 105, 161, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Reformist Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0369a1 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📖";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(3, 105, 161, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(3, 105, 161, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Ijtihad Section */
+        .ijtihad-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0369a1 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .ijtihad-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .ijtihad-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .ijtihad-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 320px;
+        }
+
+        .quran-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .reason-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .maslaha-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .ijtihad-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📖";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reform-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← IJTIHAD</a>
+        <div>ABDUH_v6.53</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-653 / THE_GRAND_MUFTI</span>
+        <h1>ムハンマド・アブドゥフ</h1>
+        <p class="en-name">Muḥammad ʿAbduh (1849–1905)</p>
+        <p class="catchphrase">「イスラムは理性と調和する——イジュティハードの門を開け」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">改革OS</span>
+            <span class="os-tag">理性OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">イスラム改革主義の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ムハンマド・アブドゥフは、エジプトのイスラム学者であり、近代イスラム改革主義の最も重要な理論家の一人です。アズハル大学で教育を受け、後にエジプトの大ムフティー（最高法官）となりました。師アフガーニーの政治的急進主義から距離を置き、教育と法改革を通じた漸進的改革を追求しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「イジュティハードの再開」</b>——独自の法解釈の門を再び開くこと。イスラム法は固定されたものではなく、時代に応じて再解釈可能。理性と啓示は調和する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    同時に<b>「マスラハ（公益）」</b>の重視——法解釈において公共の利益を考慮すべき。形式的な法適用より、法の精神と目的を考えよ。近代社会の要請に応じた柔軟な解釈を。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アブドゥフは、<b>「レガシーシステムのAPIリファクタリング——古いコードベース（イスラム法）を捨てるのではなく、新しいインターフェース（イジュティハード）を設計して近代的ニーズに対応。後方互換性（伝統との連続性）を保ちつつ、新機能（近代的解釈）を追加」</b>しようとしました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. イジュティハードの図式 -->
+        <section class="ijtihad-section">
+            <h2>🔓 イジュティハードの再開</h2>
+            <div class="ijtihad-diagram">
+                <div class="ijtihad-box quran-box">
+                    <p>📖 クルアーン・スンナ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">根本典拠</p>
+                </div>
+                <div class="ijtihad-arrow">↓</div>
+                <div class="ijtihad-box reason-box">
+                    <p>🧠 理性（アクル）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">独自の解釈努力</p>
+                </div>
+                <div class="ijtihad-arrow">↓</div>
+                <div class="ijtihad-box maslaha-box">
+                    <p>⚖️ マスラハ（公益）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">時代に適応した法</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                伝統的な法学者は「イジュティハードの門は閉じた」と言った。アブドゥフはこれを否定し、時代に応じた新しい解釈の必要性を主張した。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アブドゥフ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">イスラムは理性の宗教である。盲従ではなく、理解に基づく信仰を。</p>
+                <p class="quote-author">— ムハンマド・アブドゥフ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔓 イジュティハード</h3>
+                    <p>独自の法解釈努力。過去の法学者への盲従（タクリード）を批判。根本典拠に立ち返り、現代的課題に応答せよ。</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 理性と啓示</h3>
+                    <p>理性（アクル）と啓示（ワヒー）は調和する。イスラムは理性的宗教。科学と矛盾しない。</p>
+                </div>
+                <div class="card">
+                    <h3>⚖️ マスラハ</h3>
+                    <p>公益・公共の利益。法解釈において社会の福祉を考慮。形式より精神を重視。</p>
+                </div>
+                <div class="card">
+                    <h3">🎓 教育改革</h3>
+                        <p>アズハル大学の近代化。宗教教育と世俗教育の統合。近代的知識の導入。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 クルアーン解釈</h3>
+                        <p>『クルアーン注釈』で新しい解釈方法を提示。弟子リダーが完成。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 大ムフティー</h3>
+                        <p>1899年エジプト大ムフティーに就任。法的見解（ファトワー）で改革を実践。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 伝統と改革の間 -->
+        <section class="section">
+            <h2 class="section-title">🔄 伝統と改革の間</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. アフガーニーとの関係</h3>
+                    <p>師アフガーニーとパリで『固い絆』紙を発行。しかしアフガーニーの政治的急進主義から距離を置き、教育と法改革を通じた漸進的改革を追求した。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 伝統主義者との対立</h3>
+                    <p>アズハルの保守派は改革に抵抗。「近代主義は異端」という批判。アブドゥフは伝統への敬意を保ちつつ革新を試みた。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 世俗主義者との差異</h3>
+                    <p>アタテュルクのような急進的世俗化は拒否。イスラムを捨てるのではなく、イスラムの中から改革を。宗教と近代の調和。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 遺産の分裂</h3>
+                    <p>弟子のラシード・リダーはより保守的なサラフィー主義へ。他方、世俗的自由主義者もアブドゥフを援用。遺産は多様に解釈された。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Islamic Reform</h2>
+            <div class="it-card">
+                <h3>Ijtihad as API Refactoring</h3>
+                <p>イジュティハードはAPIリファクタリング。古いインターフェースを維持しつつ、新しいメソッドを追加。後方互換性を保ちながら機能拡張。</p>
+            </div>
+            <div class="it-card">
+                <h3>Maslaha as User-Centered Design</h3>
+                <p>マスラハはユーザー中心設計。法（システム）は人間（ユーザー）の利益のためにある。技術的正しさより実用性を重視。</p>
+            </div>
+            <div class="it-card">
+                <h3>Reason as Debugging Tool</h3>
+                <p>理性はデバッグツール。伝統的解釈のバグ（誤りや時代遅れ）を特定し修正。盲従はバグを放置すること。</p>
+            </div>
+            <div class="it-card">
+                <h3>Taqlid as Legacy Lock-in</h3>
+                <p>盲従（タクリード）はレガシーロックイン。古いコードに縛られて新機能を追加できない。イジュティハードはロックインからの解放。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『神の唯一性の書』（リサーラト・アル＝タウヒード）</strong>：イスラム神学の近代的再解釈。</li>
+                <li><strong>クルアーン注釈（タフスィール・アル＝マナール）</strong>：リダーと共著。近代的解釈方法。</li>
+                <li><strong>法的見解（ファトワー）</strong>：利息、保険、服装など近代的問題への回答。</li>
+                <li><strong>アズハル大学改革</strong>：カリキュラム近代化の試み。</li>
+                <li><strong>イジュティハード論</strong>：独自解釈の正当性を理論化。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>アフガーニー（師）</li>
+                        <li>イブン・タイミーヤ</li>
+                        <li>ムウタズィラ派（理性主義）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ラシード・リダー</li>
+                        <li>イスラム近代主義</li>
+                        <li>ムスリム同胞団（間接的）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ イスラム改革の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>アブドゥフ</th>
+                        <th>アフガーニー</th>
+                        <th>アタテュルク</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>漸進的改革</td>
+                        <td>政治的動員</td>
+                        <td>急進的世俗化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>イスラムの地位</strong></td>
+                        <td>中心的維持</td>
+                        <td>政治手段化</td>
+                        <td>周縁化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>理性の役割</strong></td>
+                        <td>啓示と調和</td>
+                        <td>啓示を補完</td>
+                        <td>啓示に優位</td>
+                    </tr>
+                    <tr>
+                        <td><strong>西洋との関係</strong></td>
+                        <td>選択的受容</td>
+                        <td>対決＋学習</td>
+                        <td>全面的採用</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>APIリファクタリング</td>
+                        <td>フェデレーション</td>
+                        <td>フルリプレイス</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：改革の限界</h2>
+            <div class="thought-experiment">
+                <h3>イスラム的近代主義は成功したか</h3>
+                <p>アブドゥフは「イスラムと近代は調和できる」と主張しました。理性と啓示、科学と信仰、伝統と改革——すべてを両立させようとした。これは成功したでしょうか？</p>
+                <p style="margin-top: 1.5rem;">
+                    肯定者は言います：アブドゥフの遺産はイスラム世界の知識人に生き続けている。穏健なイスラム主義者、イスラム的民主主義者——多くがアブドゥフを参照する。改革派ウラマー（学者）の基盤を作った。</p>
+                <p style="margin-top: 1.5rem;">
+                    否定者は言います：アブドゥフの弟子リダーはより保守的なサラフィー主義へ向かった。アブドゥフの「理性」は選択的——都合の良い部分だけ近代化。結局、イスラム世界は世俗化か原理主義かの二極化に陥った。中道は失敗した。
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    より深い問いがあります：「イスラム的近代」とは何か？西洋の近代を模倣しつつイスラムのラベルを貼ることか？それとも独自の近代を創出することか？アブドゥフは後者を目指したが、成功したとは言い難い。</p>
+                <p style="margin-top: 1.5rem;">
+                    今日もこの問いは未解決です。イスラム世界の知識人は、伝統と近代、信仰と理性、東と西の間で格闘し続けています。アブドゥフの夢——「イスラム的近代」——が実現するかどうか、それはこれからの世代が答える問いです。
+                </p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    「イスラム的近代」は可能ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ムハンマド・アブドゥフ（1849-1905）は、エジプトのイスラム学者であり、近代イスラム改革主義の最も重要な理論家の一人です。師アフガーニーの政治的急進主義から距離を置き、教育と法改革を通じた漸進的改革を追求しました。「イジュティハードの門を再び開け」——独自の法解釈を復活させ、理性と公益（マスラハ）を重視した柔軟な解釈を可能に。1899年にエジプト大ムフティーとなり、改革を実践しました。『神の唯一性の書』でイスラム神学を再解釈し、弟子リダーと共にクルアーン注釈を著しました。しかし彼の遺産は分裂しました——穏健な近代主義者から保守的なサラフィー主義者まで、さまざまな運動が彼を祖として仰ぎます。伝統と近代、理性と信仰の調和を目指したアブドゥフの試みは、今日のイスラム世界がなお格闘する問いの出発点です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Open the gate of Ijtihad.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ルートヴィヒ・ウィトゲンシュタイン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #64748b;
+            /* Logical Gray */
+            --secondary: #1e293b;
+            /* Vienna Dark */
+            --accent: #94a3b8;
+            /* Game Light */
+            --highlight: #e2e8f0;
+            /* Clarity Glow */
+            --bg: #0f172a;
+            /* Tractatus Deep */
+            --text: #e2e8f0;
+            --border: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Logic Background */
+        .logic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(100, 116, 139, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(148, 163, 184, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Wittgenstein Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #64748b 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "∴";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #475569 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(100, 116, 139, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(100, 116, 139, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Two Philosophies */
+        .two-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #64748b 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .two-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .two-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .philosophy-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 280px;
+            flex: 1;
+        }
+
+        .early-box {
+            background: #0891b2;
+            border: 3px solid #22d3ee;
+        }
+
+        .late-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "∴";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LANGUAGE_GAME</a>
+        <div>TRACTATUS_v5.48</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-548 / THE_PHILOSOPHER'S_PHILOSOPHER</span>
+        <h1>ルートヴィヒ・ウィトゲンシュタイン</h1>
+        <p class="en-name">Ludwig Wittgenstein (1889–1951)</p>
+        <p class="catchphrase">「語りえぬものについては、沈黙せねばならない」</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">二つの哲学</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ルートヴィヒ・ウィトゲンシュタインは、20世紀最大の哲学者の一人であり、分析哲学の巨人です。驚くべきことに、彼は自身の主著を二度出版し、二度目で最初の考えを否定しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    前期ウィトゲンシュタイン——<b>『論理哲学論考』</b>。言語は世界の「像」である。言語の限界が世界の限界。語りえぬものについては沈黙。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    後期ウィトゲンシュタイン——<b>『哲学探究』</b>。言語は「ゲーム」である。意味は使用である。家族的類似性。私的言語の不可能性。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウィトゲンシュタインは、<b>「前期：言語はフォーマル言語——構文と意味論が厳密に対応。後期：言語はDSL（ドメイン特化言語）の集合——コンテキストと使用パターンで意味が決まる。『意味は使用』はまさに『ドキュメントよりコード』」</b>と分析した、言語哲学のアーキテクト改革者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 二つの哲学 -->
+        <section class="two-section">
+            <h2>📚 前期 vs 後期</h2>
+            <div class="two-diagram">
+                <div class="philosophy-box early-box">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">📐 前期（論考）</p>
+                    <p style="font-size: 0.9rem;">言語＝世界の像</p>
+                    <p style="font-size: 0.9rem;">論理形式の一致</p>
+                    <p style="font-size: 0.9rem;">語りえぬものは沈黙</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">ITアナロジー：<b>フォーマル言語</b></p>
+                </div>
+                <div class="philosophy-box late-box">
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">🎮 後期（探究）</p>
+                    <p style="font-size: 0.9rem;">言語＝ゲーム</p>
+                    <p style="font-size: 0.9rem;">意味＝使用</p>
+                    <p style="font-size: 0.9rem;">家族的類似性</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">ITアナロジー：<b>DSL集合</b></p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                ウィトゲンシュタインは自らの哲学を根本から転換させた。両方とも20世紀哲学に甚大な影響を与えた。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウィトゲンシュタイン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">語りえぬものについては、沈黙せねばならない。</p>
+                <p class="quote-author">— 『論理哲学論考』命題7（1921年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📐 像理論</h3>
+                        <p>Picture Theory。命題は事態の像（ピクチャー）。言語と世界は論理形式を共有。前期の核心。</p>
+                </div>
+                <div class="card">
+                    <h3">🎮 言語ゲーム</h3>
+                        <p>Language Game。言語は多様なゲームの集合。ルールは文法ではなく使用。後期の核心。</p>
+                </div>
+                <div class="card">
+                    <h3">🔧 意味は使用</h3>
+                        <p>Meaning as Use。言葉の意味は辞書にはない。実際の使用パターンが意味を決定する。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍👩‍👧‍👦 家族的類似性</h3>
+                        <p>Family Resemblance。「ゲーム」に共通の本質はない。重なり合う類似性のネットワーク。</p>
+                </div>
+                <div class="card">
+                    <h3">🔒 私的言語論</h3>
+                        <p>Private Language Argument。純粋に私的な言語は不可能。意味には公共的な規準が必要。</p>
+                </div>
+                <div class="card">
+                    <h3">🪰 哲学は治療</h3>
+                        <p>Philosophy as Therapy。哲学的問題は言語の誤用から生じる。言語を「休ませる」ことで解消。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 論考 -->
+        <section class="section">
+            <h2 class="section-title">🔄 『論理哲学論考』の構造</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 世界は事実の総体</h3>
+                        <p>世界は「もの」ではなく「事実」から成る。事実は事態の成立。</p>
+                </div>
+                <div class="card">
+                    <h3">2-3. 思考と像</h3>
+                        <p>思考は事実の論理的像。命題は事態の像。言語と世界は形式を共有。</p>
+                </div>
+                <div class="card">
+                    <h3">4-5. 命題と論理</h3>
+                        <p>命題は要素命題の真理関数。論理は世界を「映す」。</p>
+                </div>
+                <div class="card">
+                    <h3">6-7. 倫理と沈黙</h3>
+                        <p>倫理、美、宗教——語りえぬもの。「語りえぬものについては沈黙」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Language as Code</h2>
+            <div class="it-card">
+                <h3">Early: Language as Formal Language</h3>
+                    <p>前期：言語はフォーマル言語。構文と意味論が厳密に対応。BNF文法のような形式的体系。</p>
+            </div>
+            <div class="it-card">
+                <h3">Late: Language as DSL Collection</h3>
+                    <p>後期：言語はDSL（ドメイン特化言語）の集合。コンテキストごとに異なる「ゲーム」。意味は使用で決まる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Meaning as Use → Documentation as Code</h3>
+                    <p>「意味は使用」は「ドキュメントよりコード」。抽象的定義より、実際の使い方が真実。</p>
+            </div>
+            <div class="it-card">
+                <h3">Family Resemblance as Duck Typing</h3>
+                    <p>家族的類似性はダックタイピング。共通のインターフェースを「定義」せず、振る舞いで判断。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『論理哲学論考』</strong>：言語と世界の関係。1921年。</li>
+                <li><strong>『哲学探究』</strong>：言語ゲーム。死後出版。1953年。</li>
+                <li><strong>像理論</strong>：前期の言語哲学。</li>
+                <li><strong>意味は使用</strong>：後期の核心テーゼ。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>フレーゲ（論理学）</li>
+                            <li>ラッセル（論理原子論）</li>
+                            <li>ショーペンハウアー</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ウィーン学団</li>
+                            <li>日常言語学派</li>
+                            <li>分析哲学全般</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 言語哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>前期ウィトゲンシュタイン</th>
+                        <th>後期ウィトゲンシュタイン</th>
+                        <th>ソシュール</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>言語観</strong></td>
+                        <td>世界の像</td>
+                        <td>ゲーム</td>
+                        <td>記号体系</td>
+                    </tr>
+                    <tr>
+                        <td><strong>意味</strong></td>
+                        <td>指示</td>
+                        <td>使用</td>
+                        <td>差異</td>
+                    </tr>
+                    <tr>
+                        <td><strong>本質</strong></td>
+                        <td>論理形式</td>
+                        <td>家族的類似性</td>
+                        <td>構造</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>フォーマル</td>
+                        <td>DSL</td>
+                        <td>差分</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：甲虫の箱</h2>
+            <div class="thought-experiment">
+                <h3">私的言語は可能か</h3>
+                    <p>全員が「甲虫」と呼ぶものを箱に入れて持っているとしよう。</p>
+                    <p>しかし誰も他人の箱を覗くことはできない。</p>
+                    <p>あなたの「甲虫」と私の「甲虫」は同じものか？</p>
+                    <p>ウィトゲンシュタインのポイント：「痛み」のような私的経験も同じ状況。</p>
+                    <p>しかし私たちは「痛み」について話す。どうやって？</p>
+                    <p>答え：「痛み」の意味は私的経験への指示ではない。公共的な使用パターンが意味を決定する。</p>
+                    <p>純粋に私的な言語——誰も検証できない——は意味を持たない。</p>
+                    <p>言語は本質的に公共的。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「痛み」と私の「痛み」は同じですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ルートヴィヒ・ウィトゲンシュタインは、20世紀最大の哲学者の一人であり、分析哲学の二つの転換点を作りました。前期『論理哲学論考』では言語は世界の「像」であり、「語りえぬものについては沈黙」と結論。後期『哲学探究』では自らを批判し、言語は「ゲーム」であり「意味は使用」と主張。家族的類似性、私的言語の不可能性——これらの洞察はプログラミング言語設計からAI研究まで、現代の技術思想にも影響を与えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Whereof one cannot speak, thereof one must be silent.</p>
+    </footer>
+</body>
+
+</html>

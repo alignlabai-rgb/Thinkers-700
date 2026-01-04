@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルフレッド・シュッツ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            /* Lifeworld Indigo */
+            --secondary: #1e1b4b;
+            /* Deep Consciousness */
+            --accent: #a5b4fc;
+            /* Meaning Light */
+            --highlight: #e0e7ff;
+            /* Everyday Glow */
+            --bg: #0f0d1a;
+            /* Pre-reflective Depth */
+            --text: #e0e7ff;
+            --border: #3730a3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        /* Lifeworld Background */
+        .lifeworld-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 40% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 70%, rgba(165, 180, 252, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Phenomenological Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #312e81 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌍";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.35rem;
+            line-height: 2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Layers of Lifeworld Diagram */
+        .layers-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #312e81 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .layers-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .layers-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .layer-box {
+            padding: 2rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .layer-1 {
+            background: var(--primary);
+            width: 100%;
+        }
+
+        .layer-2 {
+            background: #4f46e5;
+            width: 85%;
+        }
+
+        .layer-3 {
+            background: #6366f1;
+            width: 70%;
+        }
+
+        .layer-4 {
+            background: #818cf8;
+            width: 55%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "🌍";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lifeworld-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DER_SINNHAFTE_AUFBAU_DER_SOZIALEN_WELT</a>
+        <div>PHENOMENOLOGICAL_SOCIOLOGY_v4.70</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-470 / DER_PHÄNOMENOLOGE_DES_ALLTAGS</span>
+        <h1>アルフレッド・シュッツ</h1>
+        <p class="en-name">Alfred Schütz (1899–1959)</p>
+        <p class="catchphrase">「生活世界とは、私たちが当然視している日常の現実である」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">心理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">日常を哲学する</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    私たちは毎日、無数の「当たり前」の中で生きています。挨拶の仕方、電車の乗り方、お金の使い方——これらをいちいち考えることなく、私たちは社会生活を営んでいます。アルフレッド・シュッツは、この「当たり前の世界」——<b>生活世界（Lebenswelt）</b>——を社会学の中心に据えた思想家です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    銀行員として働きながら独学で哲学を学んだシュッツは、フッサールの現象学とマックス・ウェーバーの理解社会学を統合しました。彼の問いはこうです。<b>「社会的世界はどのようにして『意味を持った』ものとして経験されるのか？」</b>——人々が互いを理解し、協調行動を取り、社会秩序を維持できるのはなぜか。その答えは、「類型化」「相互主観性」「手の届く範囲」といった概念に結晶化されました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シュッツを学ぶことは、<b>「なぜコミュニケーションは可能なのか」「なぜ私たちは他者の行動を予測できるのか」</b>を根底から理解することです。UX設計、AI対話システム、異文化理解——「人間がどのように世界を意味づけるか」を問うあらゆる分野で、シュッツの洞察は不可欠の参照点となっています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>シュッツは、<b>「社会とは、参加者全員が暗黙のうちに共有する『プロトコル』によって動作している分散システムである。このプロトコルは明文化されておらず、参加者は『それが何であるか』を意識せずに遵守している」</b>と指摘した、社会システムのプロトコル分析者です。彼の仕事は、この暗黙のプロトコルをリバースエンジニアリングすることでした。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 生活世界の層 -->
+        <section class="layers-section">
+            <h2>🌍 生活世界の構造</h2>
+            <div class="layers-diagram">
+                <div class="layer-box layer-1">
+                    <p>日常生活世界（Alltagswelt）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">自然的態度で当然視される「至高の現実」</p>
+                </div>
+                <div class="layer-box layer-2">
+                    <p>手の届く範囲（Reichweite）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">直接経験・操作可能な世界</p>
+                </div>
+                <div class="layer-box layer-3">
+                    <p>類型化された知識</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">パターン認識・カテゴリー</p>
+                </div>
+                <div class="layer-box layer-4">
+                    <p>相互主観性</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">他者と共有された意味</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                私たちは「自然的態度」で生活世界を当然視し、その中で類型化された知識を使い、他者との相互主観的な理解を構築している。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 現象学的社会学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">社会的世界とは、意味を付与された世界であり、その意味は行為者自身によって構成される。</p>
+                <p class="quote-author">— 『社会的世界の意味構成』（1932年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌍 生活世界（Lebenswelt）</h3>
+                    <p>私たちが「自然的態度」で当然視している日常世界。科学や哲学に先立つ、前反省的な経験の領域。社会学はここから出発すべき。</p>
+                </div>
+                <div class="card">
+                    <h3>📦 類型化（Typification）</h3>
+                    <p>私たちは世界を「類型」——パターン、カテゴリー——によって把握する。「郵便配達人」「レストラン」「挨拶」——これらは類型化された知識。</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 相互主観性</h3>
+                    <p>私の経験と他者の経験は異なるが、私たちは「同じ世界」を共有していると仮定する。この「視点の互換性」が社会的理解の基盤。</p>
+                </div>
+                <div class="card">
+                    <h3>📍 手の届く範囲（Reichweite）</h3>
+                    <p>直接経験・操作可能な世界が基準。そこから「以前手が届いた範囲」「いずれ届く範囲」「他者の範囲」へと世界は拡張される。</p>
+                </div>
+                <div class="card">
+                    <h3">⏰ 時間意識</h3>
+                        <p>社会的行為は未来志向的。「動機の動機（目的）」と「原因の動機（過去からの規定）」を区別。行為の意味は時間的構造を持つ。</p>
+                </div>
+                <div class="card">
+                    <h3>🎭 多元的現実</h3>
+                    <p>日常世界だけが「現実」ではない。夢、遊び、科学、宗教——それぞれが異なる「意味領域」。日常は「至高の現実」として特権的地位を持つ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 理解のプロセス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 自然的態度（Natural Attitude）</h3>
+                    <p>日常生活において、私たちは世界の存在を疑わない。「エポケー（判断停止）」を行わず、世界を当然のものとして受け入れる。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 類型的把握</h3>
+                    <p>目の前の対象を「類型」によって把握する。「これは本屋だ」「この人は店員だ」——過去の経験から形成されたパターンを適用。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 視点の互換性</h3>
+                    <p>他者も「私と同じように」世界を経験していると仮定する。立場を入れ替えても、同じ類型が適用されると期待する。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 相互理解の達成</h3>
+                    <p>共有された類型と互換性の仮定に基づき、コミュニケーションと協調行動が可能になる。社会秩序はこの相互理解から生まれる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Society as Shared Protocol</h2>
+            <div class="it-card">
+                <h3>Lifeworld as Shared Runtime Environment</h3>
+                <p>生活世界は、すべての社会的アプリケーションが動作する共有ランタイム環境。参加者はこの環境を「当然」として扱い、その存在を意識しない。OSが見えないように、生活世界も見えない基盤。</p>
+            </div>
+            <div class="it-card">
+                <h3>Typification as Pattern Matching</h3>
+                <p>類型化は機械学習のパターン認識に似ている。「この入力パターンはカテゴリーXに属する」と判定。人間は膨大な類型（学習済みモデル）を持ち、瞬時に分類を行う。</p>
+            </div>
+            <div class="it-card">
+                <h3>Intersubjectivity as API Contract</h3>
+                <p>相互主観性はAPIコントラクトに似ている。「私が送るリクエストを、あなたはこう解釈する」という暗黙の合意。この合意がなければ、通信は成立しない。</p>
+            </div>
+            <div class="it-card">
+                <h3>Natural Attitude as Production Mode</h3>
+                <p>自然的態度は「本番環境モード」。デバッグ情報は非表示、エラーハンドリングは最小限、パフォーマンス優先。日常生活では「なぜ」を問わずに動作する。</p>
+            </div>
+            <div class="it-card">
+                <h3>Multiple Realities as Sandboxed Environments</h3>
+                <p>多元的現実はサンドボックス環境。夢、遊び、芸術——それぞれ異なるルールで動作する隔離環境。日常世界は「本番」、他は「ステージング」や「テスト」。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>現象学的社会学の確立</strong>：フッサールの現象学をウェーバーの理解社会学と統合し、新たな社会学パラダイムを創出。</li>
+                <li><strong>生活世界の分析</strong>：日常的知識の構造を精緻に分析。「手の届く範囲」「類型化」「レリヴァンス（関連性）」などの概念装置を開発。</li>
+                <li><strong>相互主観性の理論</strong>：「視点の互換性」と「類型の一致性」によって相互理解がいかに可能かを説明。</li>
+                <li><strong>多元的現実論</strong>：日常世界を「至高の現実」としつつ、夢・遊び・芸術・科学など複数の「意味領域」を認める枠組み。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>エドムント・フッサール（現象学、生活世界）</li>
+                        <li>マックス・ウェーバー（理解社会学、行為の意味）</li>
+                        <li>アンリ・ベルクソン（時間意識、持続）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ピーター・バーガー＆トーマス・ルックマン（知識社会学）</li>
+                        <li>ハロルド・ガーフィンケル（エスノメソドロジー）</li>
+                        <li>ユルゲン・ハーバーマス（生活世界とシステム）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 社会学パラダイムの比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シュッツ</th>
+                        <th>デュルケーム</th>
+                        <th>ウェーバー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>分析の出発点</strong></td>
+                        <td>生活世界・主観的意味</td>
+                        <td>社会的事実</td>
+                        <td>社会的行為</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社会秩序の源泉</strong></td>
+                        <td>相互主観的理解</td>
+                        <td>集合意識</td>
+                        <td>正統性への信念</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法論</strong></td>
+                        <td>現象学的記述</td>
+                        <td>実証主義</td>
+                        <td>理解社会学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>共有プロトコル分析</td>
+                        <td>システム構造分析</td>
+                        <td>ユーザー意図分析</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：異世界からの来訪者</h2>
+            <div class="thought-experiment">
+                <h3>あなたは火星人に説明できるか</h3>
+                <p>火星から人間の観察者がやってきたと想像してください。彼らは「カフェ」という現象を観察しています。人間たちが建物に入り、座り、何かを飲み、紙片（お金）を渡して去っていく。</p>
+                <p>シュッツならこう問うでしょう。「火星人がこの行為を『理解する』とはどういうことか？」</p>
+                <p>外的な行動の記述——「液体を摂取する」「紙片を交換する」——だけでは理解にはなりません。「お金を払う」「くつろぐ」「友人と会う」という意味を把握しなければ、カフェを理解したことにはならない。しかしこの「意味」は、私たちが生活世界の中で獲得した類型によって構成されています。
+                </p>
+                <p>AIに「カフェで過ごす」とはどういうことかを説明するとき、私たちは同じ問題に直面します。</p>
+                <p
+                    style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    あなたの「当たり前」を、どうやって説明しますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アルフレッド・シュッツは、社会学の視線を「客観的な社会構造」から「主観的な意味経験」へと向け直した思想家でした。「生活世界」「類型化」「相互主観性」といった概念は、私たちがいかにして「共通の世界」を構築し、その中で互いを理解しているかを明らかにします。彼の洞察は、知識社会学、エスノメソドロジー、会話分析といった後続の研究に決定的な影響を与えました。AI対話システム、UX設計、異文化コミュニケーション——「人間がどのように世界を意味づけるか」を問うあらゆる分野で、シュッツの現象学的社会学は、技術の背後にある「人間」を理解するための不可欠な視座を提供しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Die Welt des täglichen Lebens ist die fraglos gegebene Wirklichkeit.
+        </p>
+    </footer>
+</body>
+
+</html>

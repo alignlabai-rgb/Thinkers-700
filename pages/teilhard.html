@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テイヤール・ド・シャルダン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Cosmic Orange */
+            --secondary: #1c1917;
+            /* Evolution Dark */
+            --accent: #f59e0b;
+            /* Omega Gold */
+            --highlight: #fef3c7;
+            /* Noosphere Glow */
+            --bg: #0c0a09;
+            /* Universe Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(180, 83, 9, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Evolutionary Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "Ω";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Omega Evolution */
+        .evolution-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .evolution-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .evolution-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .evolution-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 250px;
+        }
+
+        .geosphere-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .biosphere-box {
+            background: #0369a1;
+            border: 2px solid #0ea5e9;
+        }
+
+        .noosphere-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .omega-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .evolution-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "Ω";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cosmic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← OMEGA_POINT</a>
+        <div>NOOSPHERE_v5.13</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-513 / THE_COSMIC_EVOLUTIONIST</span>
+        <h1>テイヤール・ド・シャルダン</h1>
+        <p class="en-name">Pierre Teilhard de Chardin (1881–1955)</p>
+        <p class="catchphrase">「すべては複雑化と意識化へ向かう——オメガ点へ」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">進化OS</span>
+            <span class="os-tag">宇宙OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">精神圏への進化</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ピエール・テイヤール・ド・シャルダンは、フランスのイエズス会士・古生物学者であり、進化論とキリスト教を統合しようとした神秘的思想家です。北京原人の発見に関わった科学者であると同時に、壮大な宇宙論的ビジョンを展開しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    テイヤールの核心概念は<b>「オメガ点」</b>——宇宙進化の最終目標点。物質から生命へ、生命から意識へ、そして意識から超意識へ。宇宙は複雑化と内面化の方向へ向かっている。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>「精神圏（ノウスフェア）」</b>——生物圏の上に形成される「思考の層」。人類の知性が地球を覆う。インターネットを予見したとも言われます。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    テイヤールは、<b>「宇宙は巨大なコンピュータの進化。ハードウェア（物質）からソフトウェア（生命）へ、そして分散ネットワーク（精神圏）へ。最終的にすべてのノードは統合され、単一の超意識OS（オメガ点）へ収束する」</b>と描いた、宇宙進化のシステム設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 進化の階層 -->
+        <section class="evolution-section">
+            <h2>Ω 宇宙進化の階層</h2>
+            <div class="evolution-diagram">
+                <div class="evolution-box omega-box">
+                    <p>Ω オメガ点</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Omega Point</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">意識の収束</p>
+                </div>
+                <div class="evolution-arrow">↑</div>
+                <div class="evolution-box noosphere-box">
+                    <p>🧠 精神圏</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Noosphere</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">思考の層</p>
+                </div>
+                <div class="evolution-arrow">↑</div>
+                <div class="evolution-box biosphere-box">
+                    <p>🌿 生物圏</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Biosphere</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">生命の層</p>
+                </div>
+                <div class="evolution-arrow">↑</div>
+                <div class="evolution-box geosphere-box">
+                    <p>🌍 地球圏</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Geosphere</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">物質の層</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                物質から生命へ、生命から精神へ。進化は複雑化と意識化の方向へ向かう。最終的にすべてはオメガ点で統合される。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 テイヤール思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">物質の内部には、最初から何かが存在していた——精神の萌芽が。</p>
+                <p class="quote-author">— 『現象としての人間』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">Ω オメガ点</h3>
+                        <p>宇宙進化の最終収束点。すべての意識が統合される頂点。キリスト教の終末論と進化論の統合。「宇宙的キリスト」。</p>
+                </div>
+                <div class="card">
+                    <h3">🧠 精神圏（ノウスフェア）</h3>
+                        <p>生物圏の上に形成される思考の層。人類の知性活動が地球を覆う。ヴェルナツキーと独立に提唱。</p>
+                </div>
+                <div class="card">
+                    <h3">📈 複雑化の法則</h3>
+                        <p>進化は複雑化の増大へ向かう。複雑化するほど意識が高まる（複雑性＝意識の法則）。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 宇宙論的キリスト</h3>
+                        <p>キリストは宇宙進化の頂点。オメガ点＝宇宙的キリスト。進化は神へと向かう。</p>
+                </div>
+                <div class="card">
+                    <h3">🦴 古生物学者として</h3>
+                        <p>北京原人（シナントロプス）の発見に関与。科学者と神秘家の二重性。</p>
+                </div>
+                <div class="card">
+                    <h3">⛪ 教会との緊張</h3>
+                        <p>進化論を肯定したためカトリック教会から出版禁止に。主著は死後に出版。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 精神圏とインターネット -->
+        <section class="section">
+            <h2 class="section-title">🔄 精神圏とインターネット</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 思考の層</h3>
+                        <p>精神圏とは、地球を覆う「思考の層」。生物圏が生命を覆うように、精神圏は知性を覆う。</p>
+                </div>
+                <div class="card">
+                    <h3">2. グローバル意識</h3>
+                        <p>人類の知性活動は相互につながり、地球規模の意識を形成する。個別の精神がネットワーク化。</p>
+                </div>
+                <div class="card">
+                    <h3">3. インターネットの予見？</h3>
+                        <p>1950年代に書かれたテイヤールの精神圏概念は、インターネットを予見したとも言われる。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 批判と限界</h3>
+                        <p>しかしインターネットは分断も生む。精神圏は自動的に統合へ向かうのか？楽観的すぎる？</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Universe as Evolving System</h2>
+            <div class="it-card">
+                <h3">Omega Point as System Convergence</h3>
+                    <p>オメガ点はシステム収束。分散していたプロセスが最終的に統合され、単一の超意識OSへ。バージョンの究極アップデート。</p>
+            </div>
+            <div class="it-card">
+                <h3">Noosphere as Global Network</h3>
+                    <p>精神圏はグローバルネットワーク。個別のノード（人間の知性）が相互接続し、分散知能を形成。インターネットはハードウェア的実現。</p>
+            </div>
+            <div class="it-card">
+                <h3">Complexification as System Evolution</h3>
+                    <p>複雑化はシステム進化。単純なプログラムから複雑なアプリケーションへ。より多くの機能、より高い抽象度。意識は「内部ログ」の深化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Cosmic Christ as Ultimate Integration</h3>
+                    <p>宇宙的キリストは究極の統合。すべてのモジュールが一つのシステムへ。分散処理から統一OS（キリスト教的一元論）へ。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『現象としての人間』</strong>：宇宙進化論の主著。オメガ点、精神圏。</li>
+                <li><strong>『神的環境』</strong>：霊的著作。日常生活と神秘。</li>
+                <li><strong>精神圏概念</strong>：思考の層。インターネットの予見的概念。</li>
+                <li><strong>進化論とキリスト教の統合</strong>：科学と信仰の対話の試み。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ベルクソン（創造的進化）</li>
+                            <li>ダーウィン（進化論）</li>
+                            <li>キリスト教神秘主義</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ニューエイジ運動</li>
+                            <li>トランスヒューマニズム</li>
+                            <li>インターネット論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 進化論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>テイヤール</th>
+                        <th>ダーウィン</th>
+                        <th>ベルクソン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>進化の方向</strong></td>
+                        <td>オメガ点へ収束</td>
+                        <td>方向なし（適応）</td>
+                        <td>創造的多様化</td>
+                    </tr>
+                    <tr>
+                        <td><strong>宗教との関係</strong></td>
+                        <td>統合</td>
+                        <td>中立/緊張</td>
+                        <td>間接的肯定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>意識の地位</strong></td>
+                        <td>進化の目標</td>
+                        <td>副産物</td>
+                        <td>生命の本質</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>システム収束</td>
+                        <td>遺伝的アルゴリズム</td>
+                        <td>創発的システム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：進化に目的はあるか</h2>
+            <div class="thought-experiment">
+                <h3">オメガ点は科学か信仰か</h3>
+                    <p>テイヤールは進化に方向と目的があると主張しました。宇宙はオメガ点——意識の究極的統合——へ向かっている。これは科学的主張でしょうか、それとも信仰でしょうか？</p>
+                    <p>批判者は言います：ダーウィン的進化には目的がない。適応と自然選択は方向を持たない。「複雑化」が自動的に起こるという証拠はない。テイヤールは進化論を誤解している。</p>
+                    <p>擁護者は言います：テイヤールは科学を「拡張」している。物理学に還元できない「内面性」の次元がある。意識の増大は観察可能なトレンドだ。</p>
+                    <p>また問います：インターネットは精神圏の実現か？人類の知性がネットワーク化しているのは事実。しかし統合と対立のどちらが起こっているか？テイヤールの楽観主義は21世紀に妥当か？</p>
+                    <p>もしAIが超人間的知性に達したら、それはオメガ点の一形態か？人間を超えた意識の出現——テイヤールのビジョンの技術的実現？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        宇宙はどこへ向かっていると思いますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>テイヤール・ド・シャルダンは、進化論とキリスト教を統合しようとした神秘的思想家です。「オメガ点」——宇宙進化の最終収束点——という壮大なビジョンを提示し、「精神圏」という概念でグローバルな知性ネットワークを予見しました。古生物学者として北京原人の発見に関わりながら、神秘家として宇宙論的キリスト論を展開しました。カトリック教会との緊張の中で生涯を送り、主著は死後に出版されました。ニューエイジ運動、トランスヒューマニズム、インターネット論——テイヤールの影響は多岐にわたります。賛否両論あれど、進化と目的、科学と信仰の対話において、テイヤールは避けて通れない存在です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Everything that rises must converge.</p>
+    </footer>
+</body>
+
+</html>

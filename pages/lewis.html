@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.S.ルイス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Narnia Purple */
+            --secondary: #2e1065;
+            /* Wardrobe Dark */
+            --accent: #a78bfa;
+            /* Magic Light */
+            --highlight: #ede9fe;
+            /* Aslan Glow */
+            --bg: #0f0320;
+            /* Deep Fantasy */
+            --text: #ede9fe;
+            --border: #5b21b6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .narnia-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🦁";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #5b21b6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.2);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Wardrobe Section */
+        .wardrobe-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .wardrobe-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🦁";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="narnia-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← NARNIA</a>
+        <div>LEWIS_v6.04</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-604 / THE_MERE_CHRISTIAN</span>
+        <h1>C.S.ルイス</h1>
+        <p class="en-name">C.S. Lewis (1898–1963)</p>
+        <p class="catchphrase">「衣装だんすの向こう」——想像力によるキリスト教弁証</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">文学OS</span>
+            <span class="os-tag">弁証OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">キリスト教倫理の大衆的再提示</h2>
+            <div class="hero-box">
+                <p class="hero-text">C.S.ルイス（クライヴ・ステープルズ・ルイス）は、20世紀イギリスの文学者、神学者、キリスト教弁証家です。オックスフォードとケンブリッジの教授。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ルイスの歴史的業績——<b>『ナルニア国物語』で物語を通じてキリスト教真理を伝達。『キリスト教の精髄』で大衆向け弁証</b>。無神論者から回心。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    インクリングス（トールキンとの文学グループ）のメンバー。想像力と理性の統合。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ルイスの弁証は、<b>「福音のUXデザイン——複雑な神学を親しみやすいインターフェースで提供。物語という最高のユーザー体験」</b>という、真理のアクセシビリティ。
+                </p>
+            </div>
+        </section>
+
+        <!-- ナルニア -->
+        <section class="wardrobe-section">
+            <h2>🚪 衣装だんすの向こうへ</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+                ナルニア国物語（1950-56）<br>
+                7冊の児童文学<br>
+                1億部以上販売<br>
+                アスラン＝キリストの象徴<br>
+                「想像力のバプテスマ」
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ルイスの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">私は他のすべての光によって読書をするように、太陽光線によって読書をするのではない。私は太陽を信じるのは、それを見るからではなく、それによって他のすべてを見るからだ。
+                </p>
+                <p class="quote-author">— C.S.ルイス</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📚 ナルニア国物語</h3>
+                    <p>7巻の児童文学。物語を通じてキリスト教真理を伝達。アスラン。</p>
+                </div>
+                <div class="card">
+                    <h3">📻 キリスト教の精髄</h3>
+                        <p>BBC放送から書籍化。大衆向けキリスト教弁証の傑作。</p>
+                </div>
+                <div class="card">
+                    <h3">😈 悪魔の手紙</h3>
+                        <p>ベテラン悪魔が新人悪魔に人間誘惑法を教える書簡形式。</p>
+                </div>
+                <div class="card">
+                    <h3">💔 悲しみを見つめて</h3>
+                        <p>妻ジョイの死後の悲嘆の記録。信仰と苦難の正直な対話。</p>
+                </div>
+                <div class="card">
+                    <h3">🌌 宇宙三部作</h3>
+                        <p>SF小説。沈黙の惑星を出て、ペレランドラ、サルカンドラの姿。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 インクリングス</h3>
+                        <p>トールキン、チャールズ・ウィリアムズとの文学グループ。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: UX</h2>
+            <div class="it-card">
+                <h3>Story as UX</h3>
+                <p>物語はUX。複雑な概念を体験可能に。ユーザーフレンドリー。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mere Christianity as API Docs</h3>
+                    <p>『キリスト教の精髄』はAPIドキュメント。必要最小限で明確。</p>
+            </div>
+            <div class="it-card">
+                <h3">Aslan as Interface</h3>
+                    <p>アスランはインターフェース。キリストへのアクセスポイント。</p>
+            </div>
+            <div class="it-card">
+                <h3">Wardrobe as Portal</h3>
+                    <p>衣装だんすはポータル。別世界への入口。フレーム遷移。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ナルニア</strong>：物語によるキリスト教教育。</li>
+                <li><strong>大衆弁証</strong>：アカデミズムを超えて。</li>
+                <li><strong>想像力の神学</strong>：理性と想像力の統合。</li>
+                <li><strong>悲嘆の神学</strong>：苦しみの正直な克服。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>G.K.チェスタトン</li>
+                        <li>ジョージ・マクドナルド</li>
+                        <li>中世文学</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>現代キリスト教弁証</li>
+                            <li>ファンタジー文学</li>
+                            <li>ティモシー・ケラー</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：三つのジレンマ</h2>
+            <div class="thought-experiment">
+                <h3">狂人か、嘘つきか、神の子か</h3>
+                    <p>ルイスの有名な「三つのジレンマ」：</p>
+                    <p>イエスは自分を神と呼んだ。</p>
+                    <p>これは三つの可能性しかない——</p>
+                    <p>1. 彼は狂人だった（Lunatic）</p>
+                    <p>2. 彼は嘘つきだった（Liar）</p>
+                    <p>3. 彼は本当に主だった（Lord）</p>
+                    <p>「偉大な道徳教師」という中間選択肢はない。</p>
+                    <p>この論証は有効か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        イエスについて、あなたはどう答えますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>C.S.ルイス（1898-1963）は、20世紀イギリスの文学者、キリスト教弁証家です。無神論者からキリスト者に回心し、『ナルニア国物語』で物語を通じてキリスト教真理を伝達。『キリスト教の精髄』でBBC放送を書籍化し、大衆向け弁証の傑作を生みました。トールキンとのインクリングスで想像力と信仰を探求。オックスフォードとケンブリッジで教え、アカデミズムと大衆の両方に届く稀有な思想家でした。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Further up and further in!</p>
+    </footer>
+</body>
+
+</html>

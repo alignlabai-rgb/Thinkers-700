@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李滉（退渓） - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #065f46;
+            /* Scholar Green */
+            --secondary: #022c22;
+            /* Bamboo Dark */
+            --accent: #10b981;
+            /* Light Jade */
+            --highlight: #d1fae5;
+            /* Virtue Glow */
+            --bg: #021a14;
+            /* Deep Study */
+            --text: #d1fae5;
+            --border: #059669;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .toegye-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(6, 95, 70, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #065f46 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📚";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(6, 95, 70, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(6, 95, 70, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .joseon-section {
+            background: linear-gradient(135deg, #000 0%, #065f46 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .joseon-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📚";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toegye-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← NEO-CONFUCIANISM</a>
+        <div>TOEGYE_v6.46</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-646 / THE_SCHOLAR</span>
+        <h1>李滉（退渓）</h1>
+        <p class="en-name">Yi Hwang / Toegye（1501–1570）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「朝鮮朱子学の大成者」——四端七情論と修養倫理</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">朱子学OS</span>
+            <span class="os-tag">修養OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">朝鮮朱子学を体系化</h2>
+            <div class="hero-box">
+                <p class="hero-text">李滉（号は退渓）は、朝鮮王朝を代表する儒学者であり、朱子学を朝鮮で体系化しました。心性論と修養倫理を深化させ、四端七情論争で李珥（栗谷）と対峙しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    李滉の歴史的業績——<b>『聖学十図』を著す。四端七情論を展開。陶山書院を開く。日本の儒学にも影響</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    韓国の1000ウォン紙幣に肖像。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>李滉の朱子学は、<b>「OSのローカライズ——中国のOS（朱子学）を朝鮮向けにカスタマイズ。心性の問題を深堀りして、地域に適したバージョンを開発」</b>という、儒教の朝鮮化。</p>
+            </div>
+        </section>
+
+        <section class="joseon-section">
+            <h2>💭 四端七情論</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                四端——惻隠・羞悪・辞譲・是非<br>
+                （仁義礼智の芽生え）<br><br>
+                七情——喜・怒・哀・懼・愛・悪・欲<br>
+                （人間の自然な感情）<br><br>
+                退渓は言った——<br>
+                「四端は理が発し、七情は気が発す」<br>
+                道徳感情と自然感情は起源が異なる
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 退渓の思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">敬を持して義を集む。これ聖学の要なり。</p>
+                <p class="quote-author">— 李滉</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">💭 四端七情論</h3>
+                        <p>理発説。四端は理が発動する。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 聖学十図</h3>
+                        <p>朱子学の要点を10の図で説明。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 敬</h3>
+                        <p>心を集中する修養法。敬を中心に据える。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 陶山書院</h3>
+                        <p>安東に開いた書院。学問の聖地。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 主理論</h3>
+                        <p>理を重視。気より理が根本。</p>
+                </div>
+                <div class="card">
+                    <h3">🎓 教育</h3>
+                        <p>弟子を育成。朝鮮儒学の基礎を築く。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Neo-Confucianism</h2>
+            <div class="it-card">
+                <h3">Zhu Xi as Original Codebase</h3>
+                    <p>朱熹はオリジナルコードベース。退渓はフォーク版を開発。</p>
+            </div>
+            <div class="it-card">
+                <h3">Li (理) as Firmware</h3>
+                    <p>理はファームウェア。システムの根本原理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Qi (気) as Runtime</h3>
+                    <p>気はランタイム。実際の動作を担う。</p>
+            </div>
+            <div class="it-card">
+                <h3">Gyeong (敬) as Debug Mode</h3>
+                    <p>敬はデバッグモード。心を点検し集中させる。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>四端七情論</strong>：道徳感情の起源。</li>
+                <li><strong>聖学十図</strong>：朱子学の図解。</li>
+                <li><strong>敬の修養</strong>：心の集中法。</li>
+                <li><strong>朝鮮儒学</strong>：地域化された儒教。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>朱熹</li>
+                        <li>程朱学派</li>
+                        <li>孟子</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>朝鮮儒学</li>
+                            <li>日本儒学</li>
+                            <li>韓国文化</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：理と気</h2>
+            <div class="thought-experiment">
+                <h3">道徳感情の起源は何か</h3>
+                    <p>退渓は言った——</p>
+                    <p>「四端は理が発す」</p>
+                    <p>道徳感情には純粋な根拠がある。</p>
+                    <p>栗谷は反論した——</p>
+                    <p>「気が発し、理がこれに乗る」</p>
+                    <p>すべては気の働きである。</p>
+                    <p>道徳感情は特別か？</p>
+                    <p>それとも自然感情の一種か？</p>
+                    <p>この論争は今日まで続く。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        道徳は自然に還元できますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>李滉（1501-1570、号は退渓）は、朝鮮王朝を代表する儒学者であり、朱子学を朝鮮で体系化しました。四端七情論で「理発説」を主張し、李珥（栗谷）と論争。『聖学十図』で朱子学の要点を図解し、陶山書院で弟子を育成しました。朝鮮儒学の基礎を築き、日本の儒学にも影響を与えました。韓国の1000ウォン紙幣に肖像が描かれています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Li precedes Qi.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ティモシー・ウィリアムソン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            /* Knowledge Blue */
+            --secondary: #1e3a8a;
+            /* Oxford Dark */
+            --accent: #60a5fa;
+            /* Modal Light */
+            --highlight: #dbeafe;
+            /* Epistemology Glow */
+            --bg: #0f172a;
+            /* Analytic Deep */
+            --text: #dbeafe;
+            --border: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Knowledge Background */
+        .knowledge-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(29, 78, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(96, 165, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Williamson Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1d4ed8 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "◇";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(29, 78, 216, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(29, 78, 216, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Knowledge First */
+        .knowledge-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1d4ed8 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .knowledge-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .knowledge-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .knowledge-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .traditional-box {
+            background: #64748b;
+            border: 3px solid #94a3b8;
+        }
+
+        .knowledge-first-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .arrow-down {
+            font-size: 2rem;
+            color: var(--highlight);
+            transform: rotate(90deg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "◇";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="knowledge-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← KNOWLEDGE_FIRST</a>
+        <div>MODAL_LOGIC_v5.46</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-546 / THE_KNOWLEDGE_THEORIST</span>
+        <h1>ティモシー・ウィリアムソン</h1>
+        <p class="en-name">Timothy Williamson (1955–)</p>
+        <p class="catchphrase">「知識は第一的——信念から知識を導くのではなく、知識から始める」</p>
+        <div class="os-tags">
+            <span class="os-tag">認識OS</span>
+            <span class="os-tag">形而上OS</span>
+            <span class="os-tag">論理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">知識第一主義</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ティモシー・ウィリアムソンは、現代分析哲学を代表するイギリスの哲学者であり、オックスフォード大学ワイカム論理学教授を務めました。認識論と様相論理学で革新的な仕事をしています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウィリアムソンの核心的洞察——<b>知識は第一的である</b>。伝統的認識論は「信念＋正当化＋真理＝知識」と分析してきた。しかしウィリアムソンは逆転させる：知識は基本的で、分析不可能。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「曖昧性」——曖昧な言葉にも明確な境界がある。しかし私たちはそれを知ることができない。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウィリアムソンは、<b>「知識はプリミティブ型——IntやStringのように、他から導出されない基本型。従来の認識論は知識をオブジェクトとして分解しようとしたが、それは不可能」</b>と分析した、認識論のタイプシステム設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 知識第一 -->
+        <section class="knowledge-section">
+            <h2>📚 伝統的認識論 vs 知識第一主義</h2>
+            <div class="knowledge-diagram">
+                <div class="knowledge-box traditional-box">
+                    <p>伝統的認識論</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">信念 + 正当化 + 真理 = 知識</p>
+                    <p style="font-size: 0.85rem;">知識を分析・還元</p>
+                </div>
+                <span class="arrow-down">→</span>
+                <div class="knowledge-box knowledge-first-box">
+                    <p>知識第一主義</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">知識は基本的・分析不可能</p>
+                    <p style="font-size: 0.85rem;">知識から他概念を説明</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                ゲティア問題で「正当化された真なる信念」は崩壊した。知識は分析できない——それ自体が基本的。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウィリアムソン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">知識は最も一般的な事実的心的状態である。</p>
+                <p class="quote-author">— 『知識とその限界』（2000年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📚 知識第一</h3>
+                        <p>Knowledge First。知識は基本的概念。信念や証拠を知識から説明する。逆ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">🔲 曖昧性</h3>
+                        <p>Vagueness。境界事例がある言葉も、実際には明確な境界がある。しかし私たちはそれを知れない。</p>
+                </div>
+                <div class="card">
+                    <h3">◇ 様相論理学</h3>
+                        <p>Modal Logic。必然性と可能性の論理。形而上学的様相。反事実的条件法。</p>
+                </div>
+                <div class="card">
+                    <h3">🔍 証拠＝知識</h3>
+                        <p>E=K。あなたの証拠はあなたが知っていることである。単純だが革命的なテーゼ。</p>
+                </div>
+                <div class="card">
+                    <h3">📏 反分析主義</h3>
+                        <p>すべての概念が分析可能とは限らない。知識は基本的。これ以上分解できない。</p>
+                </div>
+                <div class="card">
+                    <h3">🎯 反例外主義</h3>
+                        <p>哲学は特別ではない。科学と同じ方法論。理論間の比較、証拠による評価。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 曖昧性 -->
+        <section class="section">
+            <h2 class="section-title">🔄 曖昧性の認識論</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. ソリテス・パラドックス</h3>
+                        <p>砂山パラドックス。1粒を取っても砂山。しかし何度も繰り返すと砂山ではなくなる。どこで？</p>
+                </div>
+                <div class="card">
+                    <h3">2. 認識論的解決</h3>
+                        <p>ウィリアムソンの答え：境界は実際にある。しかし私たちはそれを「知る」ことができない。</p>
+                </div>
+                <div class="card">
+                    <h3">3. マージン・オブ・エラー</h3>
+                        <p>誤差の余地。知識には安全性が必要。わずかに違う状況でも正しくなければ知識ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 多値論理の拒否</h3>
+                        <p>「少し真」「かなり真」を認めない。二値論理を維持。しかし知識の限界を認める。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Knowledge as Primitive Type</h2>
+            <div class="it-card">
+                <h3">Knowledge as Primitive</h3>
+                    <p>知識はプリミティブ型。int, boolean, stringのように、他から導出されない。オブジェクトとして分解しようとしても失敗する。</p>
+            </div>
+            <div class="it-card">
+                <h3">E=K as Type Equality</h3>
+                    <p>E=Kは型の等価。Evidence型とKnowledge型は同一。証拠を別の型として定義しようとするとバグる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Vagueness as Floating Point Error</h3>
+                    <p>曖昧性は浮動小数点誤差。精密な値があるが、私たちの「計算」では正確に表現できない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Modal Logic as Type System</h3>
+                    <p>様相論理学は型システム。必然＝すべての可能世界で真、可能＝ある可能世界で真。型チェック。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『知識とその限界』</strong>：知識第一主義の主著。2000年。</li>
+                <li><strong>『曖昧性』</strong>：認識論的アプローチ。1994年。</li>
+                <li><strong>『様相論理学入門』</strong>：様相の形而上学。2013年。</li>
+                <li><strong>反例外主義</strong>：哲学方法論。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ソール・クリプキ</li>
+                            <li>G.E.ムーア</li>
+                            <li>オックスフォード日常言語学派</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>知識第一認識論</li>
+                            <li>様相形而上学</li>
+                            <li>分析的方法論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 認識論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウィリアムソン</th>
+                        <th>ゲティア</th>
+                        <th>ゴールドマン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>知識観</strong></td>
+                        <td>基本的</td>
+                        <td>問題を提起</td>
+                        <td>信頼性主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>分析</strong></td>
+                        <td>不可能</td>
+                        <td>不十分</td>
+                        <td>因果的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>証拠</strong></td>
+                        <td>E=K</td>
+                        <td>—</td>
+                        <td>感覚</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>プリミティブ</td>
+                        <td>バグ報告</td>
+                        <td>プロセス</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：あなたは何を「知っている」か</h2>
+            <div class="thought-experiment">
+                <h3">ゲティア問題を超えて</h3>
+                    <p>あなたが「知っている」と思っていることは、本当に知識ですか？</p>
+                    <p>伝統的答え：信じていて、正当化されていて、真であれば、知識。</p>
+                    <p>ゲティアの反例：偶然正しかっただけでは知識ではない。</p>
+                    <p>ウィリアムソンの答え：知識を分析しようとすること自体が間違い。</p>
+                    <p>知識は「信念＋α」ではない。知識は基本的な心的状態。</p>
+                    <p>これは直観に反するかもしれない：知識とは何か、説明できないのか？</p>
+                    <p>しかしウィリアムソンは問います：「赤とは何か」を説明できますか？ある概念は基本的。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「知識」は分析可能ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ティモシー・ウィリアムソンは、「知識第一主義」と「様相の形而上学」で知られる現代分析哲学の代表的な哲学者です。伝統的認識論が「信念＋正当化＋真理＝知識」と分析してきたのに対し、ウィリアムソンは逆転させました：知識は基本的で分析不可能。「E=K」——証拠とは知識である。曖昧性については認識論的アプローチを提唱：境界は実際にあるが、私たちはそれを知ることができない。様相論理学でも重要な貢献をし、「反例外主義」として哲学は科学と同じ方法論を使うべきだと主張しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Knowledge is first.</p>
+    </footer>
+</body>
+
+</html>

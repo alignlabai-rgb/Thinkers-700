@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ルドルフ・ブルトマン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;
+            /* Demythologize Teal */
+            --secondary: #134e4a;
+            /* Kerygma Dark */
+            --accent: #2dd4bf;
+            /* Light Faith */
+            --highlight: #ccfbf1;
+            /* Existential Glow */
+            --bg: #042f2e;
+            /* Deep Scripture */
+            --text: #ccfbf1;
+            --border: #14b8a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Kerygma Background */
+        .kerygma-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(45, 212, 191, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(15, 118, 110, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Bultmann Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0f766e 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📜";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #14b8a6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(15, 118, 110, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(15, 118, 110, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Demythologization Section */
+        .demyth-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0f766e 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .demyth-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .demyth-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .demyth-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 220px;
+        }
+
+        .demyth-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .box-myth {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .box-kerygma {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📜";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .demyth-flow {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kerygma-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DEMYTHOLOGIZATION</a>
+        <div>BULTMANN_v6.72</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-672 / THE_DEMYTHOLOGIZER</span>
+        <h1>ルドルフ・ブルトマン</h1>
+        <p class="en-name">Rudolf Bultmann (1884–1976)</p>
+        <p class="catchphrase">「非神話化——神話的言語の背後にある実存的メッセージを解放する」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">実存OS</span>
+            <span class="os-tag">解釈学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">非神話化の神学者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ルドルフ・ブルトマンは、20世紀ドイツの新約聖書学者・神学者であり、「非神話化（Entmythologisierung）」を提唱しました。聖書の神話的言語を現代人に意味あるものとして解釈する方法論を確立。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「非神話化」</b>——聖書の奇跡、復活、昇天などの「神話」を、字義通りに信じる必要はない。重要なのはその背後にある「ケリュグマ（宣教のメッセージ）」。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ブルトマンは<b>ハイデガーの実存主義</b>を神学に応用。信仰とは、歴史的事実への同意ではなく、「本来的実存」への決断。神の言葉との出会いにおける自己変革。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ブルトマンは、<b>「聖書のリファクタリング——レガシーコード（神話的言語）をそのまま使うのではなく、現代の実行環境（科学的世界観）で動くようにリライト。機能（ケリュグマ）は保持しながら、実装（神話）を更新」</b>する方法を提唱しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 非神話化 -->
+        <section class="demyth-section">
+            <h2>🔄 非神話化のプロセス</h2>
+            <div class="demyth-flow">
+                <div class="demyth-box box-myth">
+                    <p>🏛️ 神話</p>
+                    <p style="font-size: 0.85rem;">奇跡・復活・昇天<br>古代的世界観</p>
+                </div>
+                <div class="demyth-arrow">→</div>
+                <div class="demyth-box box-kerygma">
+                    <p>📢 ケリュグマ</p>
+                    <p style="font-size: 0.85rem;">実存的メッセージ<br>本来的自己への呼びかけ</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                神話を「除去」するのではなく、「解釈」する——実存的意味を抽出。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ブルトマン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">電灯やラジオを使い、病気には医学を頼る現代人が、新約聖書の神話的世界観を信じることはできない。</p>
+                <p class="quote-author">— ルドルフ・ブルトマン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔄 非神話化</h3>
+                        <p>聖書の神話的要素を実存的に解釈。奇跡や復活は字義通りではなく、信仰の内的変革を表す。</p>
+                </div>
+                <div class="card">
+                    <h3">📢 ケリュグマ</h3>
+                        <p>福音の核心的メッセージ。歴史的イエスではなく、宣教されたキリスト。信仰の対象はケリュグマ。</p>
+                </div>
+                <div class="card">
+                    <h3">🧍 実存的解釈</h3>
+                        <p>ハイデガーの実存分析を応用。信仰とは本来的実存への決断。「被投性」と「投企」。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 様式史的批評</h3>
+                        <p>福音書の文学形式を分析。個々の物語の「生活の座（Sitz im Leben）」を特定。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 歴史的イエス</h3>
+                        <p>歴史的イエスについてはほとんど知りえない。重要なのは「イエスが信じた」ことではなく、「イエスにおいて信じる」こと。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 ヨハネ福音書</h3>
+                        <p>ヨハネ福音書の注解で有名。ヨハネの「上から」「下から」を実存的に解釈。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 神話と科学 -->
+        <section class="section">
+            <h2 class="section-title">🔬 神話と現代科学</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 世界観の衝突</h3>
+                        <p>新約聖書は三層宇宙（天・地・地下）を前提。悪霊、奇跡、昇天——現代科学と矛盾。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 神話の機能</h3>
+                        <p>神話は科学的説明ではなく、実存的意味の表現。死と生、罪と救い、疎外と和解。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 解釈の必要性</h3>
+                        <p>現代人が信仰するには解釈が必要。神話をそのまま信じるよう強制するのは「サクリフィキウム・インテレクトゥス」（知性の犠牲）。</p>
+                </div>
+                <div class="card">
+                    <h3">4. ケリュグマの解放</h3>
+                        <p>非神話化は福音を破壊するのではなく、解放する。現代人がアクセス可能に。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Demythologization</h2>
+            <div class="it-card">
+                <h3">Myth as Legacy Code</h3>
+                    <p>神話はレガシーコード。古代の実行環境（世界観）で書かれた。現代環境では直接実行できない。リファクタリングが必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Kerygma as Core Function</h3>
+                    <p>ケリュグマはコア機能。実装（神話）は変わっても、機能（救済のメッセージ）は保持。インターフェースと実装の分離。</p>
+            </div>
+            <div class="it-card">
+                <h3">Interpretation as Transpilation</h3>
+                    <p>解釈はトランスパイル。古い言語（神話）を新しい言語（実存的カテゴリー）に変換。意味は保持。</p>
+            </div>
+            <div class="it-card">
+                <h3">Faith as Runtime Decision</h3>
+                    <p>信仰はランタイム決断。静的（歴史的事実）ではなく動的（今ここでの決断）。毎回の「呼び出し」で更新される。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>『新約聖書と神話論』（1941）</strong>：非神話化プログラムの提唱。</li>
+                <li><strong>『ヨハネ福音書注解』</strong>：実存的解釈の模範。</li>
+                <li><strong>『新約聖書神学』（1948-53）</strong>：ケリュグマ中心の神学。</li>
+                <li><strong>様式史的批評</strong>：聖書学の主要方法論に。</li>
+                <li><strong>ハイデガー実存主義の神学応用</strong>：後続の神学者に影響。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ハイデガー</li>
+                            <li>歴史的聖書批評</li>
+                            <li>リベラル神学</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>新解釈学</li>
+                            <li>世俗神学</li>
+                            <li>物語神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 聖書解釈の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ブルトマン</th>
+                        <th>保守的神学</th>
+                        <th>リベラル神学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>奇跡</strong></td>
+                        <td>実存的に解釈</td>
+                        <td>字義通り</td>
+                        <td>否定／削除</td>
+                    </tr>
+                    <tr>
+                        <td><strong>復活</strong></td>
+                        <td>ケリュグマの核心</td>
+                        <td>肉体的事実</td>
+                        <td>象徴／神話</td>
+                    </tr>
+                    <tr>
+                        <td><strong>歴史的イエス</strong></td>
+                        <td>ほぼ不可知</td>
+                        <td>福音書通り</td>
+                        <td>再構成可能</td>
+                    </tr>
+                    <tr>
+                        <td><strong>信仰の基盤</strong></td>
+                        <td>ケリュグマへの応答</td>
+                        <td>聖書の無謬性</td>
+                        <td>道徳的教え</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>リファクタリング</td>
+                        <td>レガシー保守</td>
+                        <td>機能削除</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：復活は歴史的事実か</h2>
+            <div class="thought-experiment">
+                <h3">空の墓</h3>
+                    <p>キリスト教の核心的主張：イエスは死んで三日目に復活した。ブルトマンはこれをどう解釈するのか？</p>
+                    <p style="margin-top: 1.5rem;">保守的立場：復活は歴史的事実。空の墓は証拠。肉体的にイエスは蘇った。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ブルトマン：歴史的検証の対象ではない。「復活した」というケリュグマは、弟子たちの信仰の表現。重要なのは、この宣教を聞いて、今ここで決断すること。</p>
+                    <p style="margin-top: 1.5rem;">批判者は言う：これは福音を骨抜きにしている。復活が事実でなければ、キリスト教は虚偽。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ブルトマンは答える：「事実」へのこだわりこそ近代的偏見。古代人は「何が起こったか」ではなく「何を意味するか」を問うていた。復活の意味は、死を超えた新しい生への招き。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        復活を「信じる」とはどういうことですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ルドルフ・ブルトマン（1884-1976）は、20世紀ドイツの新約聖書学者・神学者であり、「非神話化」を提唱しました。聖書の奇跡や復活を字義通りに信じる必要はない——重要なのは背後にある「ケリュグマ（宣教のメッセージ）」。ハイデガーの実存主義を神学に応用し、信仰を「本来的実存への決断」として再解釈しました。「電灯やラジオを使う現代人が、新約聖書の神話的世界観を信じることはできない」——しかし福音は破壊されるのではなく、解放される。様式史的批評で福音書の文学形式を分析し、『ヨハネ福音書注解』は実存的解釈の模範となりました。非神話化は激しい論争を呼びましたが、現代の聖書解釈に決定的な影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Kerygma beyond myth.</p>
+    </footer>
+</body>
+
+</html>

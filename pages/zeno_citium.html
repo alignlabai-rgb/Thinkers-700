@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゼノン（キティオン） - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0369a1;
+            /* Stoic Blue */
+            --secondary: #0c4a6e;
+            /* Stoa Dark */
+            --accent: #38bdf8;
+            /* Ataraxia Light */
+            --highlight: #e0f2fe;
+            /* Virtue Glow */
+            --bg: #0a1929;
+            /* Portico Deep */
+            --text: #e0f2fe;
+            --border: #0284c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Stoic Background */
+        .stoic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(3, 105, 161, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Zeno Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0369a1 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🏛️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(3, 105, 161, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(3, 105, 161, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stoic Diagram */
+        .stoic-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0369a1 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .stoic-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .stoic-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stoic-box {
+            padding: 2rem 2rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .logic-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .physics-box {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        .ethics-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🏛️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stoic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← STOICISM</a>
+        <div>STOA_POIKILE_v5.54</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-554 / THE_FOUNDER_OF_STOICISM</span>
+        <h1>ゼノン（キティオン）</h1>
+        <p class="en-name">Zeno of Citium (c. 334–262 BCE)</p>
+        <p class="catchphrase">「自然に従って生きよ」——ストア派の創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">論理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ストア派</h2>
+            <div class="hero-box">
+                <p class="hero-text">ゼノンは、キトス（現在のキプロス島）出身の哲学者であり、ストア派の創始者です。アテネの「彩色柱廊」（ストア・ポイキレ）で教えたことから、この名が生まれました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ストア派の核心的主張——<b>徳のみが善であり、徳は知識である</b>。外的な出来事は「無関心なもの」（アディアフォラ）。感情は判断の誤りから生じる。自然に従って理性的に生きることが幸福。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ストア派は後にセネカ、エピクテトス、マルクス・アウレリウスへと発展。今も広く読まれる実践哲学。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ゼノンは、<b>「人生のエラーハンドリング設計者——外部イベント（運命）はコントロール不能。しかし内部状態（判断・反応）はコントロール可能。例外処理を適切に設計せよ」</b>と教えた、心理システムのレジリエンスアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ストア哲学の三部門 -->
+        <section class="stoic-section">
+            <h2>🏛️ ストア哲学の三部門</h2>
+            <div class="stoic-diagram">
+                <div class="stoic-box logic-box">
+                    <p>🧠</p>
+                    <p>論理学</p>
+                    <p style="font-size: 0.8rem;">正しく考える</p>
+                </div>
+                <div class="stoic-box physics-box">
+                    <p>🌍</p>
+                    <p>自然学</p>
+                    <p style="font-size: 0.8rem;">世界を理解する</p>
+                </div>
+                <div class="stoic-box ethics-box">
+                    <p>⚖️</p>
+                    <p>倫理学</p>
+                    <p style="font-size: 0.8rem;">正しく生きる</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                哲学は卵に似ている：論理学は殻、自然学は白身、倫理学は黄身——これがストア派の比喩。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ゼノン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">自然に従って生きよ。</p>
+                <p class="quote-author">— キティオンのゼノン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌿 自然に従う</h3>
+                        <p>Live according to nature。宇宙は理性（ロゴス）で貫かれている。それに従うことが幸福。</p>
+                </div>
+                <div class="card">
+                    <h3">✨ 徳のみが善</h3>
+                        <p>Only virtue is good。健康、富、名声は「無関心なもの」。徳だけが真の善。</p>
+                </div>
+                <div class="card">
+                    <h3">😌 アパテイア</h3>
+                        <p>Apatheia。情念からの自由。感情は判断の誤り。正しい判断が平静をもたらす。</p>
+                </div>
+                <div class="card">
+                    <h3">🌐 コスモポリタニズム</h3>
+                        <p>世界市民。すべての人間は理性を共有する。国境を超えた人類共同体。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 プネウマ</h3>
+                        <p>Pneuma。世界を貫く活動的な火・息。物質的一元論。汎神論的傾向。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 運命</h3>
+                        <p>Fate。すべては決定されている。しかし自分の判断は自分のもの。受け入れと責任。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 制御の二分法 -->
+        <section class="section">
+            <h2 class="section-title">🔄 制御の二分法</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 制御可能なもの</h3>
+                        <p>自分の判断、意見、欲求、反応——これらは「我々のもの」。ここに集中せよ。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 制御不能なもの</h3>
+                        <p>健康、財産、評判、他人の行動——これらは「我々のものでない」。執着するな。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 無関心なもの</h3>
+                        <p>Adiaphora。外的な出来事は「道徳的に無関心」。善でも悪でもない。好ましいか否かのみ。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 実践的知恵</h3>
+                        <p>制御可能と不能を区別する知恵。これがストア的平静の源。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Mind as Error Handler</h2>
+            <div class="it-card">
+                <h3">External Events as Uncontrolled Input</h3>
+                    <p>外部イベントは制御不能なインプット。ネットワーク障害、ユーザー行動——予測不能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Judgment as Event Handler</h3>
+                    <p>判断はイベントハンドラー。入力に対してどう反応するかは自分次第。ロジックを設計せよ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Apatheia as Graceful Degradation</h3>
+                    <p>アパテイアはグレースフル・デグラデーション。障害時も安定動作。パニックしない設計。</p>
+            </div>
+            <div class="it-card">
+                <h3">Logos as Universal API</h3>
+                    <p>ロゴスは普遍的API。宇宙全体が共有するインターフェース。自然に従う＝APIを正しく使う。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ストア派創設</strong>：ストア・ポイキレで教授。</li>
+                <li><strong>三部門哲学</strong>：論理学・自然学・倫理学。</li>
+                <li><strong>制御の二分法</strong>：制御可能と不能の区別。</li>
+                <li><strong>コスモポリタニズム</strong>：世界市民の理念。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ソクラテス</li>
+                            <li>キュニコス派</li>
+                            <li>ヘラクレイトス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>セネカ</li>
+                            <li>エピクテトス</li>
+                            <li>マルクス・アウレリウス</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ ヘレニズム哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ストア派</th>
+                        <th>エピクロス派</th>
+                        <th>懐疑派</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>目標</strong></td>
+                        <td>アパテイア</td>
+                        <td>アタラクシア</td>
+                        <td>エポケー</td>
+                    </tr>
+                    <tr>
+                        <td><strong>善</strong></td>
+                        <td>徳</td>
+                        <td>快楽</td>
+                        <td>判断中止</td>
+                    </tr>
+                    <tr>
+                        <td><strong>宇宙</strong></td>
+                        <td>目的論的</td>
+                        <td>原子論</td>
+                        <td>不可知</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>エラー処理</td>
+                        <td>最適化</td>
+                        <td>null</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：何が本当にあなたのものか</h2>
+            <div class="thought-experiment">
+                <h3">制御の境界</h3>
+                    <p>ストア派は問います：何が本当にあなたのものか？</p>
+                    <p>あなたの健康——病気や事故で失われる可能性がある。</p>
+                    <p>あなたの財産——盗まれたり、経済危機で消える可能性がある。</p>
+                    <p>あなたの評判——他人の判断次第で変わる。</p>
+                    <p>では何が残るか？</p>
+                    <p>あなたの判断——出来事をどう解釈するか。</p>
+                    <p>あなたの反応——出来事にどう応答するか。</p>
+                    <p>これだけが「完全にあなたのもの」だとストア派は言う。</p>
+                    <p>外的出来事に執着するのをやめ、内的な態度に集中する——これが自由への道。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたがコントロールできるものは何ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ゼノン（キティオン）は、ストア派の創始者として知られる古代ギリシアの哲学者です。アテネの「彩色柱廊」（ストア・ポイキレ）で教え、その名が学派名となりました。「自然に従って生きよ」——宇宙を貫く理性（ロゴス）に従うことが幸福。徳のみが善であり、外的な出来事は「無関心なもの」。制御可能なもの（自分の判断）と制御不能なもの（外部の出来事）を区別する——この洞察は現代のCBT（認知行動療法）にも影響を与えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Live according to nature.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウィルフリド・セラーズ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Conceptual Cyan */
+            --secondary: #0c1929;
+            /* Manifold Black */
+            --accent: #22d3ee;
+            /* Given Light */
+            --highlight: #cffafe;
+            /* Framework Glow */
+            --bg: #030712;
+            /* Space of Reasons */
+            --text: #e0f2fe;
+            --border: #164e63;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Conceptual Framework Background */
+        .framework-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 40%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Epistemic Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0e2638 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "💭";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0e7490 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Myth of Given Diagram */
+        .myth-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0e2638 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .myth-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .myth-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .myth-box {
+            padding: 3rem 5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .given-box {
+            background: #dc2626;
+            border: 3px solid #ef4444;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .framework-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+        }
+
+        .myth-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "💭";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="framework-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← EMPIRICISM_AND_PHILOSOPHY_OF_MIND</a>
+        <div>CONCEPTUAL_FRAMEWORK_v4.72</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-472 / THE_MYTH_DESTROYER</span>
+        <h1>ウィルフリド・セラーズ</h1>
+        <p class="en-name">Wilfrid Sellars (1912–1989)</p>
+        <p class="catchphrase">「所与の神話を批判することが、経験論の核心を攻撃することである」</p>
+        <div class="os-tags">
+            <span class="os-tag">心理OS</span>
+            <span class="os-tag">認識OS</span>
+            <span class="os-tag">言語OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">「見たまま」は嘘</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「私は赤いリンゴを見ている」——この単純な知覚報告は、哲学的に何を意味するでしょうか。伝統的経験論は、こうした感覚経験が知識の「土台」——それ自体で確実であり、他のすべての知識の基盤となる「所与（the
+                    Given）」——だと考えてきました。ウィルフリド・セラーズは1956年の論文「経験論と心の哲学」で、この<b>「所与の神話」</b>を徹底的に批判しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    セラーズによれば、「赤いものを見ている」という報告ですら、概念的枠組みに依存しています。「赤」という概念を持っていなければ、私たちはリンゴを「赤い」とは認識できません。知覚は<b>「概念的に負荷されている」</b>のです。知識には「直接与えられる」土台はなく、すべての認識は<b>「理由の空間」</b>——概念間の推論的関係のネットワーク——の中で成立する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    セラーズを学ぶことは、<b>「純粋な経験」「直接的知覚」という素朴な考えを問い直すこと</b>です。AI、認知科学、科学哲学——「表象」や「知識」とは何かを問うあらゆる分野で、セラーズの洞察は今も根本的な問いを突きつけています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>セラーズは、<b>「知識に『生データ』は存在しない。すべての入力はすでに前処理（概念化）されている。『所与』とは、まるでOSを介さずにハードウェアに直接アクセスできるかのような幻想だ」</b>と主張した、認識論のミドルウェア理論家です。彼は「直接知覚」というAPIは存在せず、すべてが概念フレームワークというランタイム上でのみ動作することを示しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 所与の神話 -->
+        <section class="myth-section">
+            <h2>🚫 所与の神話の批判</h2>
+            <div class="myth-diagram">
+                <div class="myth-box given-box">
+                    <p>❌ 所与（the Given）</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">「概念以前の」直接経験</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">知識の確実な土台——という神話</p>
+                </div>
+                <div class="myth-arrow">↓ 実際は ↓</div>
+                <div class="myth-box framework-box">
+                    <p>✅ 概念的枠組み</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">すべての認識は概念に負荷されている</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">知識は「理由の空間」の中で成立</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「赤いリンゴが見える」という知覚報告でさえ、「赤」「リンゴ」「見る」という概念を前提としている。概念なしの「純粋経験」という考えは神話である。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 認識論の革命</h2>
+            <div class="quote-box">
+                <p class="quote-text">知識とは、何かを主張する際に、その主張を正当化できる立場にあることである。</p>
+                <p class="quote-author">— 「経験論と心の哲学」（1956年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🚫 所与の神話</h3>
+                    <p>「直接経験」が知識の確実な土台であるという伝統的経験論の前提を批判。すべての認識は概念的に媒介されており、「純粋な所与」は存在しない。</p>
+                </div>
+                <div class="card">
+                    <h3>📐 理由の空間</h3>
+                    <p>知識は因果関係ではなく「理由」の問題。信念は他の信念との推論的関係によって正当化される。この規範的ネットワークが「理由の空間」。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 科学的イメージ vs 顕在的イメージ</h3>
+                        <p>日常的世界像（色、音、固体）と科学的世界像（原子、電磁波）の対立。両者をいかに統合するかが哲学の課題。</p>
+                </div>
+                <div class="card">
+                    <h3">🧠 心理学的唯名論</h3>
+                        <p>心的状態（信念、欲求など）は内的エピソードではなく、行動傾向と推論的役割によって規定される。「内観」の特権性を否定。</p>
+                </div>
+                <div class="card">
+                    <h3">🗣️ 言語共同体</h3>
+                        <p>概念は言語共同体の中で獲得される。「赤い」の意味は、その使用規則（いつ「赤い」と言うか、何が帰結するか）によって決まる。</p>
+                </div>
+                <div class="card">
+                    <h3">🎭 機能的役割意味論</h3>
+                        <p>概念の意味はその推論的役割——他の概念との関係、行為への帰結——によって構成される。意味は「頭の中」にはない。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 所与から理由の空間へ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 伝統的経験論</h3>
+                        <p>感覚印象（sense impressions）が知識の土台。これが「与えられる」（given）ものであり、解釈や推論に先立つ。確実性の源泉。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 神話の暴露</h3>
+                        <p>セラーズは「所与」を批判。感覚状態が「知識」であるためには、それが概念的に分節化されていなければならない。純粋な所与は「知識」ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 概念的負荷</h3>
+                        <p>「赤いリンゴを見ている」という報告は、すでに「赤」「リンゴ」「見る」という概念を前提としている。知覚は概念的に負荷されている。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 理由の空間</h3>
+                        <p>知識は「理由の空間」——概念間の推論的・規範的関係のネットワーク——の中でのみ成立する。孤立した「所与」は知識にならない。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: No Raw Data Access</h2>
+            <div class="it-card">
+                <h3">Myth of Given as Raw Pointer Illusion</h3>
+                    <p>「所与の神話」は、OSを介さずにハードウェアに直接アクセスできるという幻想に似ている。実際にはすべてのデータアクセスはドライバ（概念フレームワーク）を経由する。「生データ」は存在しない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Space of Reasons as Type System</h3>
+                    <p>理由の空間は強い型システムに似ている。命題は他の命題との関係（型の互換性、推論規則）によって「意味」を持つ。孤立した値に意味はない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Conceptual Loading as Preprocessing</h3>
+                    <p>すべての入力は前処理（概念化）される。センサー入力（感覚）はすでにパーサー（概念枠組み）を通過してからアプリケーション層（意識）に届く。</p>
+            </div>
+            <div class="it-card">
+                <h3">Manifest vs Scientific Image as UI vs Backend</h3>
+                    <p>顕在的イメージはユーザーインターフェース、科学的イメージはバックエンド。ユーザーは「ボタン」を見るが、実際には「関数呼び出し」が起きている。両者の整合性が課題。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>所与の神話批判</strong>：経験論の中核的前提を覆し、知識の「土台主義」を根本から問い直した。</li>
+                <li><strong>理由の空間</strong>：知識を因果ではなく規範的・推論的関係として再定義。ブランダムらの推論主義に影響。</li>
+                <li><strong>二つのイメージ</strong>：日常的世界像と科学的世界像の関係という問題を定式化。科学哲学の中心課題に。</li>
+                <li><strong>機能的役割意味論</strong>：意味を概念の推論的役割として分析。認知科学と言語哲学の接点。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>イマヌエル・カント（概念と経験の統合）</li>
+                            <li>ルートヴィヒ・ウィトゲンシュタイン（言語ゲーム）</li>
+                            <li>論理実証主義（そしてその批判）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ロバート・ブランダム（推論主義）</li>
+                            <li>ジョン・マクダウェル（心と世界）</li>
+                            <li>リチャード・ローティ（ネオプラグマティズム）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 認識論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>セラーズ</th>
+                        <th>伝統的経験論</th>
+                        <th>カント</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>知識の基盤</strong></td>
+                        <td>理由の空間（推論的関係）</td>
+                        <td>感覚所与</td>
+                        <td>経験＋概念</td>
+                    </tr>
+                    <tr>
+                        <td><strong>純粋経験</strong></td>
+                        <td>存在しない（神話）</td>
+                        <td>知識の源泉</td>
+                        <td>盲目（概念なしでは）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>概念の役割</strong></td>
+                        <td>認識を構成</td>
+                        <td>経験を整理</td>
+                        <td>経験を統一</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>No Raw Data</td>
+                        <td>Direct Memory Access</td>
+                        <td>OS Mediation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：色盲者と「赤」</h2>
+            <div class="thought-experiment">
+                <h3">あなたの「赤」は私の「赤」か</h3>
+                    <p>メアリーは生まれつき色盲で、白黒の世界で育ちました。しかし彼女は色彩科学の専門家であり、「赤」についてあらゆる科学的事実——波長、網膜の反応、脳の処理——を知っています。</p>
+                    <p>ある日、メアリーは治療を受けて色が見えるようになります。初めて赤いトマトを見たとき、彼女は新しい何かを「学んだ」のでしょうか。</p>
+                    <p>この「メアリーの部屋」（フランク・ジャクソンの思考実験）に対して、セラーズ的視点はどう応答するでしょうか。セラーズなら、メアリーが新たに獲得したのは「事実」ではなく、「赤い」という概念の新たな推論的役割——つまり、「この感覚状態を『赤い』と報告する」能力——だと言うかもしれません。
+                    </p>
+                    <p>「赤の経験」は、概念的枠組みの中での位置づけなしには、知識とはなりえないのです。</p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「経験」は、概念なしで存在できますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ウィルフリド・セラーズの「所与の神話」批判は、20世紀後半の認識論・心の哲学に革命をもたらしました。「純粋経験」が知識の土台であるという経験論の根本前提を覆し、すべての認識が概念的に負荷されていることを示しました。「理由の空間」という概念は、知識を因果ではなく規範的・推論的関係として再定義し、ブランダムやマクダウェルの推論主義に直接影響を与えました。AIが「知覚」や「理解」を行うと言われる現代において、「概念なしの認識は可能か」「機械は理由の空間に参加できるか」というセラーズの問いは、かつてないほど実践的な意味を持っています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The Given is a myth.</p>
+    </footer>
+</body>
+
+</html>

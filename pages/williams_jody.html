@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョディ・ウィリアムズ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Peace Red */
+            --secondary: #450a0a;
+            /* Campaign Dark */
+            --accent: #f87171;
+            /* Light Action */
+            --highlight: #fecaca;
+            /* Nobel Glow */
+            --bg: #1c0505;
+            /* Deep Activism */
+            --text: #fecaca;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Peace Background */
+        .peace-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(248, 113, 113, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Activist Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☮️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Model Section */
+        .model-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .model-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .model-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .model-box {
+            padding: 2rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .model-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .box-ngo {
+            background: #0369a1;
+            border: 2px solid #38bdf8;
+        }
+
+        .box-media {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .box-treaty {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☮️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .model-flow {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="peace-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← BAN_LANDMINES</a>
+        <div>WILLIAMS_v6.65</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-665 / THE_CAMPAIGNER</span>
+        <h1>ジョディ・ウィリアムズ</h1>
+        <p class="en-name">Jody Williams (1950–)</p>
+        <p class="catchphrase">「市民社会は国家を動かせる——地雷を禁止せよ」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">平和OS</span>
+            <span class="os-tag">市民社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">市民社会のパワー</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ジョディ・ウィリアムズは、アメリカの政治活動家であり、地雷禁止国際キャンペーン（ICBL）の創設者・元調整役です。1997年、ICBLと共にノーベル平和賞を受賞。市民社会が国際条約を成立させた歴史的事例を主導しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心概念は<b>「市民社会外交」</b>——外交は政府だけのものではない。NGO、活動家、メディア、一般市民が連携すれば、国際規範を変えられる。地雷禁止条約はその証拠。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    <b>対人地雷</b>は「不発弾」として紛争後も残り、民間人を殺傷し続ける。年間2万人以上が被害。ウィリアムズはこの「非人道的兵器」を国際法で禁止する運動を率いました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウィリアムズは、<b>「国際政治のオープンソース・プロジェクト管理者——従来の外交はプロプライエタリ（政府独占）。ICBLはOSS（オープンソース）的に、世界中のコントリビューター（NGO）を調整し、プルリクエスト（条約案）をマージ（批准）させた」</b>人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 市民社会外交モデル -->
+        <section class="model-section">
+            <h2>🌐 市民社会外交モデル</h2>
+            <div class="model-flow">
+                <div class="model-box box-ngo">
+                    <p>🏢 NGO連合</p>
+                    <p style="font-size: 0.85rem;">1000以上の団体</p>
+                </div>
+                <div class="model-arrow">+</div>
+                <div class="model-box box-media">
+                    <p>📺 メディア</p>
+                    <p style="font-size: 0.85rem;">ダイアナ妃の訪問</p>
+                </div>
+                <div class="model-arrow">→</div>
+                <div class="model-box box-treaty">
+                    <p>📜 条約成立</p>
+                    <p style="font-size: 0.85rem;">164カ国批准</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                米・露・中は批准していないが、条約は国際規範を変えた。地雷の使用・生産は「恥」になった。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウィリアムズ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">私たちは政府を待たなかった。自分たちで動いた。そして世界を変えた。</p>
+                <p class="quote-author">— ジョディ・ウィリアムズ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>☮️ 地雷禁止</h3>
+                    <p>対人地雷は非人道的兵器。紛争後も民間人を殺傷。完全禁止が唯一の解決策。</p>
+                </div>
+                <div class="card">
+                    <h3>🏢 NGOの力</h3>
+                    <p>市民社会は国家を動かせる。ICBLは1000以上のNGOの連合体。分散型ネットワーク。</p>
+                </div>
+                <div class="card">
+                    <h3">📺 メディア戦略</h3>
+                        <p>ダイアナ妃のアンゴラ訪問が世界的注目を集めた。セレブリティの力。可視化。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 オタワ条約</h3>
+                        <p>1997年に成立。対人地雷の使用・生産・貯蔵を禁止。164カ国が批准（2024年）。</p>
+                </div>
+                <div class="card">
+                    <h3">🏆 ノーベル平和賞</h3>
+                        <p>1997年、ICBLと共に受賞。市民社会運動が国際的に認められた。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 継続する活動</h3>
+                        <p>地雷後もクラスター爆弾、自律型兵器（キラーロボット）の禁止運動を主導。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 地雷問題 -->
+        <section class="section">
+            <h2 class="section-title">💣 対人地雷の問題</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 無差別性</h3>
+                        <p>地雷は敵味方を区別しない。紛争終結後も地中に残り、民間人——特に農民、子供——を殺傷。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 永続性</h3>
+                        <p>地雷は何十年も危険なまま残る。カンボジア、アンゴラなど、紛争後も被害が続く国々。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 除去の困難</h3>
+                        <p>埋設は簡単だが除去は困難で高コスト。1つの地雷を除去するのに1000ドル以上かかることも。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 開発の阻害</h3>
+                        <p>地雷原は農地として使えない。難民の帰還を阻む。経済発展を妨げる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Civil Society Diplomacy</h2>
+            <div class="it-card">
+                <h3">ICBL as Open Source Project</h3>
+                    <p>ICBLはオープンソースプロジェクト。世界中のNGO（コントリビューター）が分散的に貢献。中央のコーディネーター（ウィリアムズ）がマージを調整。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ottawa Treaty as RFC</h3>
+                    <p>オタワ条約はRFC（Request for Comments）。国際社会に提案され、議論され、批准（採用）された。インターネット標準化プロセスに似ている。</p>
+            </div>
+            <div class="it-card">
+                <h3">Media as Amplifier</h3>
+                    <p>メディアはアンプリファイア。ダイアナ妃というインフルエンサーがシグナルを増幅し、バイラルに拡散。</p>
+            </div>
+            <div class="it-card">
+                <h3">Non-signatories as Legacy Systems</h3>
+                    <p>米・露・中は未批准——レガシーシステム。新しい標準（条約）に移行していないが、規範の圧力は受けている。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>地雷禁止国際キャンペーン（ICBL）</strong>：1992年設立。1000以上のNGO連合。</li>
+                <li><strong>オタワ条約（1997）</strong>：対人地雷を禁止する国際条約。</li>
+                <li><strong>ノーベル平和賞（1997）</strong>：ICBLと共同受賞。</li>
+                <li><strong>クラスター爆弾禁止条約（2008）</strong>：同様のモデルで実現。</li>
+                <li><strong>キラーロボット禁止キャンペーン</strong>：自律型致死兵器システムへの次の挑戦。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>赤十字国際委員会</li>
+                            <li>人道法</li>
+                            <li>市民運動の伝統</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>市民社会外交モデル</li>
+                            <li>クラスター爆弾禁止</li>
+                            <li>キラーロボット議論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 外交アプローチの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウィリアムズ</th>
+                        <th>従来の外交</th>
+                        <th>国連</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>主体</strong></td>
+                        <td>市民社会</td>
+                        <td>国家</td>
+                        <td>国際機関</td>
+                    </tr>
+                    <tr>
+                        <td><strong>プロセス</strong></td>
+                        <td>ボトムアップ</td>
+                        <td>トップダウン</td>
+                        <td>多国間協議</td>
+                    </tr>
+                    <tr>
+                        <td><strong>スピード</strong></td>
+                        <td>5年で条約</td>
+                        <td>数十年</td>
+                        <td>様々</td>
+                    </tr>
+                    <tr>
+                        <td><strong>大国の参加</strong></td>
+                        <td>不要</td>
+                        <td>必須</td>
+                        <td>重要</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>オープンソース</td>
+                        <td>プロプライエタリ</td>
+                        <td>コンソーシアム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：禁止の力</h2>
+            <div class="thought-experiment">
+                <h3">大国なしの条約</h3>
+                    <p>オタワ条約には米国、ロシア、中国が参加していません。世界最大の軍事大国が批准していない条約に、どんな意味があるのでしょうか？</p>
+                    <p style="margin-top: 1.5rem;">批判者は言う：執行力がない。大国が使い続ければ条約は紙切れ。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ウィリアムズは答える：規範の力。条約が成立すれば、地雷使用は「恥」になる。大国も世論を無視できない。実際、米国も対人地雷の使用を事実上停止している（条約に署名していないにもかかわらず）。
+                    </p>
+                    <p style="margin-top: 1.5rem;">これは興味深い問いを提起します：法的拘束力と規範的影響力、どちらが重要か？</p>
+                    <p style="margin-top: 1.5rem;">
+                        核兵器禁止条約（2017年）も同様のモデルを採用しました。核保有国は参加していませんが、核兵器を「非合法化」することで規範を変えようとしています。</p>
+                    <p style="margin-top: 1.5rem;">市民社会は世界を変えられるのか？ウィリアムズの答えはイエス——ただし、一夜にしてではなく、持続的な圧力によって。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        市民の連帯は国家を動かせますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジョディ・ウィリアムズ（1950-）は、アメリカの政治活動家であり、地雷禁止国際キャンペーン（ICBL）の創設者です。1997年、ICBLと共にノーベル平和賞を受賞しました。「市民社会は国家を動かせる」——この信念のもと、世界中の1000以上のNGOを連携させ、わずか5年でオタワ条約を成立させました。米・露・中は批准していませんが、条約は地雷使用を「恥」にし、規範を変えました。ダイアナ妃のアンゴラ訪問というメディア戦略も効果的でした。地雷後はクラスター爆弾禁止条約（2008年）、そして今は自律型兵器（キラーロボット）の禁止に取り組んでいます。ウィリアムズは「市民社会外交」のモデルを確立し——政府を待たず、自ら動き、世界を変える——このアプローチは今日も有効です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Citizens can change the world.</p>
+    </footer>
+</body>
+
+</html>

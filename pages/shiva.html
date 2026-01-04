@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヴァンダナ・シヴァ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #84cc16;
+            /* Seed Green */
+            --secondary: #365314;
+            /* Earth Dark */
+            --accent: #a3e635;
+            /* Life Light */
+            --highlight: #ecfccb;
+            /* Biodiversity Glow */
+            --bg: #1a2e05;
+            /* Forest Deep */
+            --text: #ecfccb;
+            --border: #65a30d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Ecofeminism Background */
+        .ecofem-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(132, 204, 22, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(163, 230, 53, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Shiva Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #84cc16 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌱";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #65a30d 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(132, 204, 22, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(132, 204, 22, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Seed Satyagraha Section */
+        .seed-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #84cc16 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .seed-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .seed-icon {
+            font-size: 8rem;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ecofem-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ECOFEMINISM</a>
+        <div>NAVDANYA_v5.72</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-572 / THE_SEED_KEEPER</span>
+        <h1>ヴァンダナ・シヴァ</h1>
+        <p class="en-name">Vandana Shiva (1952–)</p>
+        <p class="catchphrase">「種子は生命であり、知識であり、自由」——エコフェミニストの闘士</p>
+        <div class="os-tags">
+            <span class="os-tag">環境OS</span>
+            <span class="os-tag">フェミニズムOS</span>
+            <span class="os-tag">脱植民地OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">種子の自由</h2>
+            <div class="hero-box">
+                <p class="hero-text">ヴァンダナ・シヴァは、インドの物理学者・環境活動家・エコフェミニストであり、グローバリゼーション批判と種子の権利運動で知られます。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シヴァの核心的主張——<b>種子は生命の源であり、企業や特許の対象ではない</b>。GMO種子と知的財産権による「種子の植民地化」への抵抗。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ナヴダーニャ（9つの種子）——シヴァが設立した種子保存・有機農業運動。生物多様性の保護。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    シヴァの思想は、<b>「種子をオープンソースソフトウェアとして守る——プロプライエタリ（特許）種子による農民の『ベンダーロックイン』に抵抗。生命のソースコードは人類共有財産」</b>という、生物多様性のオープンソース運動。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 種子サティヤグラハ -->
+        <section class="seed-section">
+            <h2>🌱 ナヴダーニャ（種子の自由）</h2>
+            <div class="seed-icon">🌾</div>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                ナヴダーニャ = 9つの種子<br>
+                1991年設立。122の種子銀行。<br>
+                500種以上の米の在来種を保存。<br>
+                農民の種子主権を守る運動。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 シヴァ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">種子の支配は食糧の支配を意味し、それは生命の支配を意味する。</p>
+                <p class="quote-author">— ヴァンダナ・シヴァ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌱 種子の権利</h3>
+                        <p>種子は生命であり共有財産。特許は不当。「種子サティヤグラハ」——ガンジー的非暴力抵抗。</p>
+                </div>
+                <div class="card">
+                    <h3">🌿 生物多様性</h3>
+                        <p>単一栽培への批判。多様性こそ強靭性の源。在来種の保存。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 GMO批判</h3>
+                        <p>遺伝子組み換え作物への反対。モンサント批判。農民の種子依存を生む。</p>
+                </div>
+                <div class="card">
+                    <h3">♀️ エコフェミニズム</h3>
+                        <p>自然と女性の搾取のつながり。家父長制と資本主義と環境破壊は一体。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 グローバリゼーション批判</h3>
+                        <p>WTO、TRIPS協定批判。「バイオパイラシー」——南の知識の北による搾取。</p>
+                </div>
+                <div class="card">
+                    <h3">🇮🇳 脱植民地思想</h3>
+                        <p>西洋の「開発」概念を批判。伝統的知識の価値。ガンジーの継承者。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 著作 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Staying Alive (1988)</h3>
+                        <p>生き続けること——女性、エコロジー、開発。エコフェミニズムの古典。</p>
+                </div>
+                <div class="card">
+                    <h3">Biopiracy (1997)</h3>
+                        <p>バイオパイラシー——伝統的知識の搾取。TRIPS協定批判。知的財産権の問題。</p>
+                </div>
+                <div class="card">
+                    <h3">Stolen Harvest (2000)</h3>
+                        <p>盗まれた収穫——グローバル食糧システム批判。企業支配への抵抗。</p>
+                </div>
+                <div class="card">
+                    <h3">Earth Democracy (2005)</h3>
+                        <p>地球民主主義——草の根からのグローバリゼーション。オルタナティブな世界像。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Open Source Life</h2>
+            <div class="it-card">
+                <h3">Seed as Open Source</h3>
+                    <p>種子はオープンソース。農民は何千年も自由に複製・改良してきた。特許は著作権トロール。</p>
+            </div>
+            <div class="it-card">
+                <h3">GMO as Proprietary Lock-in</h3>
+                    <p>GMOはプロプライエタリ・ロックイン。ターミネーター種子——自己複製不可。ベンダー依存。</p>
+            </div>
+            <div class="it-card">
+                <h3">Biopiracy as IP Theft</h3>
+                    <p>バイオパイラシーは知財窃盗。伝統的知識をリバースエンジニアリングして特許取得。</p>
+            </div>
+            <div class="it-card">
+                <h3">Biodiversity as Redundancy</h3>
+                    <p>生物多様性は冗長性。システム障害時のフェイルオーバー。単一化は単一障害点。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>種子の権利</strong>：生命は特許対象ではない。</li>
+                <li><strong>ナヴダーニャ</strong>：種子銀行運動。</li>
+                <li><strong>エコフェミニズム</strong>：自然と女性の解放の連帯。</li>
+                <li><strong>食糧主権</strong>：地域の食糧自給。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>マハトマ・ガンジー</li>
+                            <li>レイチェル・カーソン</li>
+                            <li>チプコ運動</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>種子の自由運動</li>
+                            <li>反グローバリゼーション</li>
+                            <li>食糧主権運動</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 環境思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シヴァ</th>
+                        <th>コモナー</th>
+                        <th>緑の革命</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>問題</strong></td>
+                        <td>企業支配</td>
+                        <td>技術・資本主義</td>
+                        <td>飢餓</td>
+                    </tr>
+                    <tr>
+                        <td><strong>解決</strong></td>
+                        <td>在来種・有機</td>
+                        <td>システム変革</td>
+                        <td>高収量種</td>
+                    </tr>
+                    <tr>
+                        <td><strong>視点</strong></td>
+                        <td>南・女性</td>
+                        <td>社会構造</td>
+                        <td>テクノクラート</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>オープンソース</td>
+                        <td>リファクタリング</td>
+                        <td>商用ソフト</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：種子は誰のものか</h2>
+            <div class="thought-experiment">
+                <h3">知的財産と生命</h3>
+                    <p>シヴァは問います：種子を「発明」として特許できるか？</p>
+                    <p>企業は言う：GMOは研究投資の成果。特許保護なしには開発できない。</p>
+                    <p>シヴァは答える：種子は何千年も農民が改良してきた。企業は「発見」しただけ。</p>
+                    <p>しかし問いは深まる：遺伝子配列の「発明」と「発見」の境界はどこか？</p>
+                    <p>ソフトウェアでも同じ議論がある：アルゴリズムは発明か発見か？</p>
+                    <p>知的財産権なしにイノベーションは可能か？</p>
+                    <p>オープンソース運動は「可能」と答えた。</p>
+                    <p>しかし農業とソフトウェアは同じか？</p>
+                    <p>食糧安全保障と知財権のバランスはどこにあるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        種子に特許を認めるべきですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ヴァンダナ・シヴァは、インドの物理学者・環境活動家・エコフェミニストであり、「種子の自由」運動の中心人物です。種子は生命であり共有財産——GMOと特許による「種子の植民地化」に抵抗。ナヴダーニャ（9つの種子）運動を通じて122の種子銀行を設立し、500種以上の在来米を保存。エコフェミニズムの視点から、自然と女性の搾取のつながりを分析し、グローバリゼーションへのオルタナティブを提示し続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Seeds are life, seeds are freedom.</p>
+    </footer>
+</body>
+
+</html>

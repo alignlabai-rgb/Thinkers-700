@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アル＝ハッラージュ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9333ea;
+            /* Mystic Purple */
+            --secondary: #581c87;
+            /* Sufi Dark */
+            --accent: #c084fc;
+            /* Light Truth */
+            --highlight: #f3e8ff;
+            /* Ecstasy Glow */
+            --bg: #2e1065;
+            /* Deep Union */
+            --text: #f3e8ff;
+            --border: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Mystic Background */
+        .mystic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(192, 132, 252, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(147, 51, 234, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Hallaj Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #9333ea 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔥";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(147, 51, 234, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(147, 51, 234, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Ana al-Haqq Section */
+        .haqq-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #9333ea 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .haqq-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .haqq-arabic {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .haqq-translation {
+            font-size: 2rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Martyrdom Box */
+        .martyrdom-box {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            border: 3px solid #f87171;
+            padding: 4rem;
+            margin: 4rem 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .martyrdom-box h4 {
+            color: #fecaca;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .haqq-arabic {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mystic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ANA_AL_HAQQ</a>
+        <div>HALLAJ_v6.74</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-674 / THE_SUFI_MARTYR</span>
+        <h1>アル＝ハッラージュ</h1>
+        <p class="en-name">Al-Hallaj / Mansur al-Hallaj (c.858–922)</p>
+        <p class="catchphrase">「アナ・アル＝ハック——私は真理である」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">神秘主義OS</span>
+            <span class="os-tag">殉教OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">スーフィーの殉教者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    マンスール・アル＝ハッラージュは、イスラム神秘主義（スーフィズム）の最も論争的で影響力のある人物の一人です。「アナ・アル＝ハック（私は真理/神である）」という言葉で知られ、922年にバグダードで処刑されました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「ファナー（神への消滅）」</b>——修行者の自我が神の中に消滅し、神と一体化する。ハッラージュはこの合一体験を公に語り、それが冒涜とみなされた。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ハッラージュは<b>殉教</b>を選んだ——逃亡も撤回もせず、自らの体験の真実性を主張して死んだ。この殉教はスーフィー精神の象徴となった。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ハッラージュは、<b>「プライベートAPIを公開してしまったデベロッパー——神秘体験（内部実装）は秘密にすべきとされていた。ハッラージュはそれをパブリックに公開し、システム管理者（宗教権威）から
+                        fatal error として処理された」</b>人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. アナ・アル＝ハック -->
+        <section class="haqq-section">
+            <h2>🔥 最も論争的な一言</h2>
+            <p class="haqq-arabic">أنا الحق</p>
+            <p class="haqq-translation">「アナ・アル＝ハック——私は真理（神）である」</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「ハック（真理）」はアッラーの名の一つ。これを自己に帰すことは、正統派から見れば冒涜（クフル）。
+            </p>
+        </section>
+
+        <!-- Martyrdom Box -->
+        <div class="container">
+            <div class="martyrdom-box">
+                <h4">⚠️ 殉教</h4>
+                    <p>922年3月26日、バグダード。ハッラージュは鞭打ち、四肢切断、磔、斬首、火刑に処された。処刑前、彼は神に感謝し、自らを殺す者たちを赦すよう神に祈ったと伝えられる。</p>
+            </div>
+        </div>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ハッラージュ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">私を殺せ、友よ。私の死の中にこそ、私の生がある。</p>
+                <p class="quote-author">— アル＝ハッラージュ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔥 ファナー（消滅）</h3>
+                        <p>自我が神の中に消滅する体験。「私」はもはや存在せず、神だけが存在する。だから「私は真理である」と言える。</p>
+                </div>
+                <div class="card">
+                    <h3">💕 神への愛</h3>
+                        <p>ハッラージュの神秘主義は愛に根ざす。恐れではなく愛で神に近づく。愛する者は愛される者と一つになる。</p>
+                </div>
+                <div class="card">
+                    <h3">📢 公開の神秘</h3>
+                        <p>他のスーフィーは神秘体験を秘密にした。ハッラージュは公に語った。「秘密を明かす」ことが罪とされた。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 殉教の選択</h3>
+                        <p>逃亡も撤回もせず、自らの真実を主張して死んだ。殉教は最高の証しとなった。</p>
+                </div>
+                <div class="card">
+                    <h3">🕌 正統派との衝突</h3>
+                        <p>法学者、政治家から異端視された。神秘体験は私的であるべきとする伝統への挑戦。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 詩と言葉</h3>
+                        <p>ハッラージュの詩は神への愛と合一を歌う。アラビア語とペルシア語の神秘詩に影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 神との合一 -->
+        <section class="section">
+            <h2 class="section-title">🌊 神との合一の諸解釈</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 字義通りの解釈</h3>
+                        <p>正統派法学者は「私は神である」を文字通りに解釈。これは冒涜であり、死刑に値する。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 神秘主義的解釈</h3>
+                        <p>スーフィーは「ファナー」として解釈。自我が消滅した状態で語ったのは「神ご自身」。ハッラージュ個人ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 酩酊と覚醒</h3>
+                        <p>神秘家は「酩酊（スクル）」と「覚醒（サフウ）」を区別。ハッラージュは酩酊状態で語った。覚醒したジュナイドは沈黙を守った。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 現代的解釈</h3>
+                        <p>心理学的には「変性意識状態」。哲学的には「主客の消滅」。宗教的には「神秘的合一」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Mystical Union</h2>
+            <div class="it-card">
+                <h3">Fana as Process Merge</h3>
+                    <p>ファナーはプロセスのマージ。個人プロセス（自我）が神プロセスに併合される。別々のPIDが一つになる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ana al-Haqq as Root Access</h3>
+                    <p>「私は真理である」はルートアクセスの宣言。神の権限で語っている。しかしこれは不正アクセスとみなされた。</p>
+            </div>
+            <div class="it-card">
+                <h3">Secret as Private API</h3>
+                    <p>神秘体験はプライベートAPI。内部的に使うものであり、外部に公開すべきではない。ハッラージュはこれを破った。</p>
+            </div>
+            <div class="it-card">
+                <h3">Martyrdom as Exception Handling</h3>
+                    <p>殉教は最終的な例外処理。システムエラー（異端）として処理されたが、ハッラージュのメッセージはログに残り、後世に影響。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>スーフィー殉教の象徴</strong>：愛のために死ぬ究極のモデル。</li>
+                <li><strong>神秘詩への影響</strong>：ルーミー、アッタール、ハーフィズら後継者。</li>
+                <li><strong>ルイ・マシニョンの研究</strong>：20世紀フランスの東洋学者による再評価。</li>
+                <li><strong>神学的議論</strong>：神との合一の可能性と限界についての永続的問い。</li>
+                <li><strong>文学・芸術</strong>：詩、音楽、演劇でハッラージュは題材に。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>初期スーフィズム</li>
+                            <li>ジュナイド</li>
+                            <li>クルアーン</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ルーミー</li>
+                            <li>イブン・アラビー</li>
+                            <li>ペルシア神秘詩</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 神秘主義の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ハッラージュ</th>
+                        <th>ジュナイド</th>
+                        <th>正統派</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>神との合一</strong></td>
+                        <td>公に語る</td>
+                        <td>秘密にする</td>
+                        <td>否定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アプローチ</strong></td>
+                        <td>酩酊（スクル）</td>
+                        <td>覚醒（サフウ）</td>
+                        <td>法の遵守</td>
+                    </tr>
+                    <tr>
+                        <td><strong>結末</strong></td>
+                        <td>殉教</td>
+                        <td>平穏な死</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td><strong>評価</strong></td>
+                        <td>論争的</td>
+                        <td>尊敬される</td>
+                        <td>正統</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：秘密を語るべきか</h2>
+            <div class="thought-experiment">
+                <h3">神秘と沈黙</h3>
+                    <p>あなたが言葉に表せない深い体験——神との合一、宇宙との一体感、自我の消滅——をしたとします。それを他者に語るべきでしょうか？</p>
+                    <p style="margin-top: 1.5rem;">ジュナイドは沈黙を選んだ。「神秘は秘密にすべき」——語れば誤解される。ハッラージュは語った。「真実は隠せない」——沈黙は真実への裏切り。
+                    </p>
+                    <p style="margin-top: 1.5rem;">両者とも正しいかもしれません。神秘体験は私的であり、言葉では十分に伝えられない。しかし、語らなければ他者はその可能性すら知らない。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ハッラージュの悲劇は、語ることのコストを示しています。誤解、迫害、死。しかし彼の言葉は1100年後の今日も響いている。沈黙していたら、私たちはハッラージュを知らなかった。</p>
+                    <p style="margin-top: 1.5rem;">体験を語ることは、常に誤解のリスクを伴う。しかし沈黙は、体験そのものを消滅させるかもしれない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        語りえぬものについて、語るべきですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アル＝ハッラージュ /
+                マンスール・アル＝ハッラージュ（c.858-922）は、イスラム神秘主義（スーフィズム）の最も論争的で影響力のある人物の一人です。「アナ・アル＝ハック（私は真理/神である）」——この一言が彼の運命を決めました。神との合一体験（ファナー）を公に語ったことは、正統派から冒涜とみなされ、922年にバグダードで処刑されました。しかし殉教は彼を永遠にした。「私を殺せ、友よ。私の死の中にこそ、私の生がある」——この詩句はスーフィー精神の象徴となりました。ルーミー、イブン・アラビー、アッタールら後継者に影響を与え、20世紀にはルイ・マシニョンによって再評価されました。神との合一は可能か？それを語るべきか？——ハッラージュは今日もこの問いを投げかけています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Ana al-Haqq.</p>
+    </footer>
+</body>
+
+</html>

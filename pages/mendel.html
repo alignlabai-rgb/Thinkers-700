@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グレゴール・メンデル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16a34a;
+            /* Pea Green */
+            --secondary: #14532d;
+            /* Monastery Dark */
+            --accent: #4ade80;
+            /* Gene Light */
+            --highlight: #dcfce7;
+            /* Heredity Glow */
+            --bg: #052e16;
+            /* Garden Deep */
+            --text: #dcfce7;
+            --border: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Genetics Background */
+        .genetics-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(22, 163, 74, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(74, 222, 128, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Mendel Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16a34a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌱";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #22c55e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(22, 163, 74, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Punnett Square Section */
+        .punnett-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16a34a 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .punnett-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .punnett-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 0;
+            justify-content: center;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .punnett-cell {
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .punnett-header {
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="genetics-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← GENETICS</a>
+        <div>PEA_v5.75</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-575 / THE_MONK_SCIENTIST</span>
+        <h1>グレゴール・メンデル</h1>
+        <p class="en-name">Gregor Mendel (1822–1884)</p>
+        <p class="catchphrase">「修道院の庭で生命の法則を発見」——遺伝学の父</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">遺伝OS</span>
+            <span class="os-tag">情報OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">遺伝の法則</h2>
+            <div class="hero-box">
+                <p class="hero-text">グレゴール・メンデルは、オーストリア帝国（現チェコ）のアウグスティノ会修道士であり、遺伝学の父と呼ばれています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    メンデルの核心的発見——<b>形質は離散的な単位（現在の「遺伝子」）として遺伝する</b>。エンドウ豆の交配実験。分離の法則、独立の法則。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    1866年に発表された論文は生前ほとんど注目されず、1900年に「再発見」。近代遺伝学の基礎となりました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    メンデルの遺伝法則は、<b>「生命を情報として理解——形質はアナログではなくデジタル（離散的単位）。遺伝はビットの継承。DNAはソースコード」</b>という、生命の情報理論的解釈の先駆け。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. パネットの方形 -->
+        <section class="punnett-section">
+            <h2>🧬 メンデルの法則（パネットの方形）</h2>
+            <div class="punnett-grid">
+                <div class="punnett-cell punnett-header"></div>
+                <div class="punnett-cell punnett-header">A</div>
+                <div class="punnett-cell punnett-header">a</div>
+                <div class="punnett-cell punnett-header">A</div>
+                <div class="punnett-cell" style="background: #16a34a;">AA</div>
+                <div class="punnett-cell" style="background: #22c55e;">Aa</div>
+                <div class="punnett-cell punnett-header">a</div>
+                <div class="punnett-cell" style="background: #22c55e;">Aa</div>
+                <div class="punnett-cell" style="background: #fbbf24; color: #000;">aa</div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem;">
+                優性 : 劣性 = 3 : 1<br>
+                形質は「混合」ではなく「分離」する
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 メンデル遺伝学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">私の時代は必ず来る。</p>
+                <p class="quote-author">— グレゴール・メンデル（晩年の言葉とされる）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📊 統計的手法</h3>
+                        <p>数千のエンドウ豆を交配し、数学的に分析。科学における統計の先駆的使用。</p>
+                </div>
+                <div class="card">
+                    <h3">🔀 分離の法則</h3>
+                        <p>対立遺伝子は配偶子形成時に分離する。各親から1つずつ受け継ぐ。</p>
+                </div>
+                <div class="card">
+                    <h3">🎲 独立の法則</h3>
+                        <p>異なる形質は独立して遺伝する（連鎖がない限り）。</p>
+                </div>
+                <div class="card">
+                    <h3">👑 優性と劣性</h3>
+                        <p>優性形質は劣性形質を隠す。しかし劣性遺伝子は消えない。</p>
+                </div>
+                <div class="card">
+                    <h3">🌱 エンドウ豆</h3>
+                        <p>実験材料として理想的。7つの形質：種子の形、色、花の色など。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 1866年論文</h3>
+                        <p>「植物雑種に関する研究」。生前は無視。死後16年で「再発見」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 再発見 -->
+        <section class="section">
+            <h2 class="section-title">🔄 1900年の再発見</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">ド・フリース（オランダ）</h3>
+                        <p>突然変異説。独自に法則を発見後、メンデルの先行発見を知る。</p>
+                </div>
+                <div class="card">
+                    <h3">コレンス（ドイツ）</h3>
+                        <p>メンデルの論文を確認し、優先権を認める。</p>
+                </div>
+                <div class="card">
+                    <h3">チェルマク（オーストリア）</h3>
+                        <p>同時期に類似の結論に到達。メンデルを「遺伝学の父」と認定。</p>
+                </div>
+                <div class="card">
+                    <h3">なぜ無視された？</h3>
+                        <p>ダーウィンの連続的変異と矛盾。統計的手法が未成熟。時代を先取り。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Digital Life</h2>
+            <div class="it-card">
+                <h3">Gene as Bit</h3>
+                    <p>遺伝子はビット。形質はアナログではなくデジタル（離散的）。1または0。</p>
+            </div>
+            <div class="it-card">
+                <h3">Inheritance as Copy</h3>
+                    <p>遺伝はコピー。親のソースコードを子にコピー。突然変異はバグ（または新機能）。</p>
+            </div>
+            <div class="it-card">
+                <h3">DNA as Source Code</h3>
+                    <p>DNAはソースコード。タンパク質は実行ファイル。細胞はランタイム。</p>
+            </div>
+            <div class="it-card">
+                <h3">Dominant as Override</h3>
+                    <p>優性は上書き。劣性遺伝子は存在するが表現型に現れない。隠れたコメント。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>遺伝の法則</strong>：形質の離散的継承。</li>
+                <li><strong>統計的生物学</strong>：大量データの分析。</li>
+                <li><strong>遺伝子概念の基盤</strong>：後のDNA発見への道。</li>
+                <li><strong>生命の情報理論</strong>：生命をコードとして理解。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>リンネ（分類学）</li>
+                            <li>確率論</li>
+                            <li>ダーウィン（進化論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ワトソン＆クリック（DNA）</li>
+                            <li>分子生物学</li>
+                            <li>遺伝子工学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 遺伝観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>メンデル（離散）</th>
+                        <th>ダーウィン（連続）</th>
+                        <th>ラマルク（獲得形質）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>形質</strong></td>
+                        <td>離散的</td>
+                        <td>連続的</td>
+                        <td>可変</td>
+                    </tr>
+                    <tr>
+                        <td><strong>遺伝</strong></td>
+                        <td>不変の単位</td>
+                        <td>混合</td>
+                        <td>獲得可能</td>
+                    </tr>
+                    <tr>
+                        <td><strong>進化</strong></td>
+                        <td>組み換え</td>
+                        <td>選択</td>
+                        <td>努力</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>デジタル</td>
+                        <td>アナログ</td>
+                        <td>ユーザー入力</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：生命は情報か</h2>
+            <div class="thought-experiment">
+                <h3">デジタルな生命</h3>
+                    <p>メンデルは発見しました：形質は「混合」ではなく「分離」する。</p>
+                    <p>これは生命がデジタル（離散的）であることを意味する。</p>
+                    <p>DNAは4文字のコード（A, T, G, C）。</p>
+                    <p>生命はプログラムである——この比喩はどこまで正確か？</p>
+                    <p>コンピュータプログラムと生命の違いは？</p>
+                    <p>生命は自己複製する。コンピュータウイルスも自己複製する。</p>
+                    <p>生命は進化する。機械学習も「進化」する。</p>
+                    <p>しかし意識は？感覚は？目的は？</p>
+                    <p>遺伝子は「利己的」か？ドーキンスはそう言った。</p>
+                    <p>生命を「情報の継承」として完全に理解できるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        生命はプログラムと同じですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>グレゴール・メンデルは、オーストリア帝国の修道士であり、遺伝学の父と呼ばれています。修道院の庭でエンドウ豆を交配し、統計的に分析。形質が「混合」ではなく「分離」することを発見しました。分離の法則、独立の法則、優性と劣性——これら「メンデルの法則」は1866年に発表されましたが生前は無視され、1900年に「再発見」されました。生命を離散的な情報の継承として理解する枠組みは、後のDNA発見、分子生物学、遺伝子工学の基盤となりました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. My time will come.</p>
+    </footer>
+</body>
+
+</html>

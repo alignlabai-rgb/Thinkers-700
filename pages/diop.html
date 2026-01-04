@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チェイク・アンタ・ジョップ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d97706;
+            /* African Gold */
+            --secondary: #451a03;
+            /* Nile Dark */
+            --accent: #fbbf24;
+            /* Light Kemet */
+            --highlight: #fef3c7;
+            /* Pyramid Glow */
+            --bg: #1c0a00;
+            /* Deep Africa */
+            --text: #fef3c7;
+            --border: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* African Background */
+        .african-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(217, 119, 6, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Afrocentric Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #d97706 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🏛️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #f59e0b 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(217, 119, 6, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(217, 119, 6, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Kemet Section */
+        .kemet-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #d97706 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .kemet-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .kemet-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .kemet-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 320px;
+        }
+
+        .kemet-top {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .kemet-middle {
+            background: #0369a1;
+            border: 2px solid #38bdf8;
+        }
+
+        .kemet-bottom {
+            background: #15803d;
+            border: 2px solid #22c55e;
+        }
+
+        .kemet-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🏛️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="african-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← AFROCENTRISM</a>
+        <div>DIOP_v6.58</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-658 / THE_PHARAOH_OF_HISTORY</span>
+        <h1>チェイク・アンタ・ジョップ</h1>
+        <p class="en-name">Cheikh Anta Diop (1923–1986)</p>
+        <p class="catchphrase">「古代エジプトは黒人文明だった——アフリカ史を書き換えよ」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">歴史OS</span>
+            <span class="os-tag">脱植民地化OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">アフリカ史観の革命</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    チェイク・アンタ・ジョップは、セネガルの歴史家・物理学者・人類学者であり、アフリカ中心主義的歴史観の最も重要な理論家です。植民地主義的な歴史学を根本から批判し、アフリカ文明の復権を主張しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心的主張は<b>「古代エジプト＝黒人文明」</b>——古代エジプト人は黒人アフリカ人であり、エジプト文明はアフリカ文明である。ギリシャ文明はエジプトから学んだ。したがってヨーロッパ文明の源流はアフリカにある。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    この主張は<b>「植民地主義的知識体系への挑戦」</b>を意味する——19世紀以降の西洋歴史学はアフリカを「歴史なき大陸」とした。ジョップはこれを覆し、アフリカに誇りある歴史を取り戻そうとした。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ジョップは、<b>「歴史のソースコードを再コンパイル——西洋が書いた歴史プログラムにはバグ（偏見）が埋め込まれていた。ジョップは原典（考古学的・言語学的証拠）に戻り、アフリカ視点でリファクタリング。出力結果が根本的に変わる」</b>ことを示しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ケメト（古代エジプト）の連続性 -->
+        <section class="kemet-section">
+            <h2>🏛️ 文明の流れを逆転する</h2>
+            <div class="kemet-diagram">
+                <div class="kemet-box kemet-top">
+                    <p>🏛️ ケメト（古代エジプト）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">黒人アフリカ文明</p>
+                </div>
+                <div class="kemet-arrow">↓</div>
+                <div class="kemet-box kemet-middle">
+                    <p>🏛️ ギリシャ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">エジプトから学んだ</p>
+                </div>
+                <div class="kemet-arrow">↓</div>
+                <div class="kemet-box kemet-bottom">
+                    <p>🌍 ヨーロッパ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">ギリシャから継承</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                従来の歴史学は「ギリシャの奇跡」を強調した。ジョップはその源流をエジプトに求め、エジプトはアフリカだと主張した。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ジョップ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">アフリカの過去を知ることなしに、アフリカの未来を築くことはできない。</p>
+                <p class="quote-author">— チェイク・アンタ・ジョップ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🏛️ 古代エジプト黒人起源説</h3>
+                        <p>古代エジプト人は黒人アフリカ人。壁画、ミイラ、言語学的証拠。ウォロフ語とエジプト語の類似性。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 アフリカ文化統一性</h3>
+                        <p>サハラ以南アフリカとエジプトは連続している。人種的・文化的断絶はない。「二つのアフリカ」説を否定。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 脱植民地化</h3>
+                        <p>西洋の歴史学は植民地主義的。アフリカを「歴史なき大陸」とした。ジョップはこれに反論。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 学際的方法</h3>
+                        <p>歴史学、言語学、人類学、物理学——多分野を横断。メラニン量の測定、放射性炭素年代測定など。</p>
+                </div>
+                <div class="card">
+                    <h3">🎓 教育と文化</h3>
+                        <p>アフリカ人のためのアフリカ史教育を。ダカール大学（現シェイク・アンタ・ジョップ大学）での活動。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 論争</h3>
+                        <p>主流の歴史学・エジプト学からは批判も。しかしアフリカ系ディアスポラには大きな影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. パラダイムシフト -->
+        <section class="section">
+            <h2 class="section-title">🔄 歴史学のパラダイムシフト</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 従来の歴史観</h3>
+                        <p>ヘーゲル：「アフリカは世界史の一部ではない」。19世紀以降、アフリカは「暗黒大陸」とされた。文明は外部（エジプト、アラブ、ヨーロッパ）からもたらされたと。</p>
+                </div>
+                <div class="card">
+                    <h3">2. ジョップの逆転</h3>
+                        <p>文明の流れを逆転。エジプトはアフリカ。ギリシャはエジプトから学んだ。ヨーロッパ文明の源流はアフリカ。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 証拠と方法</h3>
+                        <p>言語学（ウォロフ語とエジプト語）、人類学（骨格分析）、物理学（メラニン測定）。学際的アプローチ。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 受容と批判</h3>
+                        <p>主流学界からは批判。しかし1974年カイロ・シンポジウムでは一定の評価。アフロセントリズムの基盤に。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Decolonizing History</h2>
+            <div class="it-card">
+                <h3">History as Codebase</h3>
+                    <p>歴史はコードベース。西洋が書いたコードにはバイアス（バグ）が埋め込まれている。ジョップはソースを監査し、リファクタリング。</p>
+            </div>
+            <div class="it-card">
+                <h3">Afrocentrism as Fork</h3>
+                    <p>アフロセントリズムはフォーク。ユーロセントリズムのメインブランチから分岐し、別の視点でプロジェクトを再構築。</p>
+            </div>
+            <div class="it-card">
+                <h3">Kemet as Root Commit</h3>
+                    <p>ケメト（古代エジプト）はルートコミット。西洋はこれを隠蔽したが、ジョップはgit logを遡って発見。</p>
+            </div>
+            <div class="it-card">
+                <h3">Decolonization as Code Review</h3>
+                    <p>脱植民地化はコードレビュー。植民地主義的前提を特定し、批判的にレビュー。マージリクエストを拒否。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『黒人諸民族の文化的統一性』（1959）</strong>：アフリカ文化の連続性を主張。</li>
+                <li><strong>『ネグロ・アフリカ文明とエジプト文明』</strong>：古代エジプト黒人起源説の論証。</li>
+                <li><strong>1974年カイロ・シンポジウム</strong>：UNESCOの場で古代エジプト人の人種について議論。</li>
+                <li><strong>メラニン測定法</strong>：古代ミイラのメラニン量を科学的に分析。</li>
+                <li><strong>言語学的研究</strong>：ウォロフ語とエジプト語の語彙・文法的類似性。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>マーカス・ガーヴィー</li>
+                            <li>W.E.B.デュボイス</li>
+                            <li>アフリカ独立運動</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アフロセントリズム</li>
+                            <li>マーティン・バナール</li>
+                            <li>アフリカ系ディアスポラ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 歴史観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ジョップ</th>
+                        <th>ユーロセントリズム</th>
+                        <th>バナール</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>古代エジプト</strong></td>
+                        <td>黒人アフリカ文明</td>
+                        <td>地中海・近東文明</td>
+                        <td>アフロ・アジア的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ギリシャとの関係</strong></td>
+                        <td>エジプトが源流</td>
+                        <td>独自の発展</td>
+                        <td>エジプト・フェニキアから</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アフリカ観</strong></td>
+                        <td>文明の源泉</td>
+                        <td>周縁・未開</td>
+                        <td>重要な貢献</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法論</strong></td>
+                        <td>学際的</td>
+                        <td>文献中心</td>
+                        <td>言語学・考古学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>リファクタリング</td>
+                        <td>レガシーコード</td>
+                        <td>マージリクエスト</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：誰が歴史を書くか</h2>
+            <div class="thought-experiment">
+                <h3">歴史の所有権</h3>
+                    <p>古代エジプト人は「何人」だったか——この問いは単なる学術的問いではありません。アイデンティティ、誇り、そして現在の政治に関わる問いです。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ジョップは言う：古代エジプト人は黒人アフリカ人だった。壁画、ミイラ、言語が証明する。西洋はこれを隠蔽した。なぜなら、黒人が偉大な文明を築いたという事実は植民地主義に都合が悪いから。</p>
+                    <p style="margin-top: 1.5rem;">
+                        批判者は言う：「黒人」「白人」という現代のカテゴリーを古代に適用するのは嫌悪史観。古代エジプト人は多様であり、単一の人種に還元できない。科学的証拠も一義的ではない。</p>
+                    <p style="margin-top: 1.5rem;">
+                        しかしより深い問いがあります：なぜ古代エジプト人の人種が重要なのか？なぜこの問いに人々は強い感情を抱くのか？それは、過去の歴史が現在のアイデンティティを形作るから。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ジョップの真の功績は、特定の結論よりも、「誰が歴史を書いてきたか」という問いを提起したことかもしれません。もし歴史が常に勝者によって書かれてきたなら、私たちは何を見落としているでしょうか？
+                    </p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        誰が歴史を書く権利を持っていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>チェイク・アンタ・ジョップ（1923-1986）は、セネガルの歴史家・物理学者であり、アフリカ中心主義的歴史観の最も重要な理論家です。「古代エジプトは黒人文明である」という主張を通じて、植民地主義的な歴史学を根本から批判しました。ギリシャ文明の源流をエジプトに求め、エジプトはアフリカであると主張することで、「ヨーロッパ文明の源流はアフリカにある」という逆転の図式を提示。言語学、人類学、物理学——多分野を横断する学際的方法で自説を論証しようとしました。主流学界からは批判も受けましたが、アフリカ系ディアスポラには大きな影響を与え、アフロセントリズムの思想的基盤となりました。ダカール大学は現在シェイク・アンタ・ジョップ大学と名付けられています。「誰が歴史を書くか」——ジョップはこの根本的な問いを提起した、歴史学の革命家でした。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Africa is the cradle of civilization.</p>
+    </footer>
+</body>
+
+</html>

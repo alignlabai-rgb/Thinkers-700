@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>朱熹（朱子） - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #991b1b;
+            /* Confucian Red */
+            --secondary: #450a0a;
+            /* Li Dark */
+            --accent: #fca5a5;
+            /* Qi Light */
+            --highlight: #fee2e2;
+            /* Song Glow */
+            --bg: #1a0505;
+            /* Neo-Confucian Deep */
+            --text: #fee2e2;
+            --border: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Confucian Background */
+        .confucian-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(153, 27, 27, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(252, 165, 165, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Zhu Xi Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #991b1b 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "理";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #dc2626 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(153, 27, 27, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(153, 27, 27, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Li-Qi Diagram */
+        .li-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #991b1b 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .li-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .li-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .li-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .li-principle {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .qi-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "理";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confucian-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← NEO_CONFUCIANISM</a>
+        <div>LI_QI_v5.57</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-557 / THE_SYSTEMATIZER</span>
+        <h1>朱熹（朱子）</h1>
+        <p class="en-name">Zhu Xi (1130–1200)</p>
+        <p class="catchphrase">「理と気——東アジア思想を700年支配した体系」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">儒教OS</span>
+            <span class="os-tag">宋学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">朱子学</h2>
+            <div class="hero-box">
+                <p class="hero-text">朱熹（しゅき/チューシー）は、南宋時代の儒学者であり、「朱子学」（宋明理学）を大成しました。東アジアの思想・教育・政治を700年以上支配した体系。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    朱子学の核心——<b>理と気</b>。理は普遍的な法則・原理。気は物質的な素材・エネルギー。すべてのものは理と気の結合。人間も例外ではない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「格物致知」——物事を窮めて知を致す。経験的探究と道徳的修養の統合。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    朱子学は、<b>「儒教のフレームワーク・リファクタリング——散乱していたAPIを統一。理（仕様）と気（実装）を分離。『四書集注』はAPIドキュメント。科挙はこのAPIの認定試験」</b>という、東アジア思想のエンタープライズ・アーキテクチャ。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 理気二元論 -->
+        <section class="li-section">
+            <h2>理気二元論</h2>
+            <div class="li-diagram">
+                <div class="li-box li-principle">
+                    <p style="font-size: 2rem;">理</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">普遍的法則・原理</p>
+                    <p style="font-size: 0.85rem;">形而上・不変</p>
+                </div>
+                <div style="font-size: 3rem; color: var(--highlight);">+</div>
+                <div class="li-box qi-box">
+                    <p style="font-size: 2rem;">気</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">物質・エネルギー</p>
+                    <p style="font-size: 0.85rem;">形而下・変化</p>
+                </div>
+                <div style="font-size: 3rem; color: var(--highlight);">=</div>
+                <div class="li-box" style="background: #059669; border-color: #34d399;">
+                    <p style="font-size: 2rem;">万物</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">個々の存在</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 朱子学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">理は一だが、分かれて万殊となる。</p>
+                <p class="quote-author">— 朱熹</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">理</h3>
+                        <p>Li（理）。普遍的な法則・原理。形而上のもの。「太極」は最高の理。</p>
+                </div>
+                <div class="card">
+                    <h3">気</h3>
+                        <p>Qi（気）。物質的な素材・エネルギー。形而下のもの。清濁があり、人の気質を決める。</p>
+                </div>
+                <div class="card">
+                    <h3">格物致知</h3>
+                        <p>Gewu Zhizhi。物を窮めて知を致す。経験的探究。一つ一つの物の理を研究。</p>
+                </div>
+                <div class="card">
+                    <h3">性即理</h3>
+                        <p>人間の本性は理である。本来善だが、気質の影響を受ける。修養で本性を回復。</p>
+                </div>
+                <div class="card">
+                    <h3">四書</h3>
+                        <p>『大学』『中庸』『論語』『孟子』。朱子が注釈し、儒教の正典として確立。科挙の試験科目。</p>
+                </div>
+                <div class="card">
+                    <h3">居敬窮理</h3>
+                        <p>敬を保ち、理を窮める。内面的修養と知的探究の両立。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 影響 -->
+        <section class="section">
+            <h2 class="section-title">🔄 朱子学の影響</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 科挙</h3>
+                        <p>朱子の『四書集注』が科挙の公式テキストに。700年間、東アジアのエリートを選抜。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 朝鮮</h3>
+                        <p>李氏朝鮮の国家イデオロギー。退渓李滉など朝鮮朱子学の発展。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 日本</h3>
+                        <p>江戸幕府の官学。林羅山。しかし後に批判も（伊藤仁斎、荻生徂徠）。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 批判</h3>
+                        <p>陽明学（王陽明）との対立。「心即理」vs「性即理」。近代の批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Li as Specification, Qi as Implementation</h2>
+            <div class="it-card">
+                <h3">Li as Interface/Specification</h3>
+                    <p>理はインターフェース。普遍的な仕様。すべてのクラスが実装すべき抽象的定義。</p>
+            </div>
+            <div class="it-card">
+                <h3">Qi as Concrete Implementation</h3>
+                    <p>気は具体的実装。実際のバイト、物質。個々のインスタンスの「素材」。</p>
+            </div>
+            <div class="it-card">
+                <h3">Four Books as API Documentation</h3>
+                    <p>四書はAPIドキュメント。公式リファレンス。科挙は認定試験。</p>
+            </div>
+            <div class="it-card">
+                <h3">Gewu as Unit Testing</h3>
+                    <p>格物致知はユニットテスト。個々のケースを検証して、普遍的法則（理）を発見。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>理気二元論</strong>：形而上学の体系化。</li>
+                <li><strong>『四書集注』</strong>：儒教正典の確立。</li>
+                <li><strong>格物致知</strong>：経験的探究の方法論。</li>
+                <li><strong>居敬窮理</strong>：修養と研究の統合。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>孔子・孟子</li>
+                            <li>周敦頤・程顥・程頤</li>
+                            <li>仏教・道教（批判的吸収）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>科挙制度</li>
+                            <li>朝鮮朱子学</li>
+                            <li>日本儒学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 宋明理学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>朱子学</th>
+                        <th>陽明学</th>
+                        <th>古学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>核心</strong></td>
+                        <td>性即理</td>
+                        <td>心即理</td>
+                        <td>原典回帰</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>格物致知</td>
+                        <td>致良知</td>
+                        <td>考証学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>傾向</strong></td>
+                        <td>知識主義</td>
+                        <td>実践主義</td>
+                        <td>文献主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>仕様駆動</td>
+                        <td>テスト駆動</td>
+                        <td>リバースエンジニア</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：理は実在するか</h2>
+            <div class="thought-experiment">
+                <h3">普遍と個別</h3>
+                    <p>朱子は「理」が実在すると考えました。</p>
+                    <p>すべての馬に共通する「馬の理」、すべての人間に共通する「人の理」。</p>
+                    <p>これはプラトンのイデアに似ています。</p>
+                    <p>しかし批判者は問います：「理」は単なる概念ではないか？</p>
+                    <p>陽明学は反論：理は心の外にない。心即理。</p>
+                    <p>現代の議論：普遍（universals）は実在するか？</p>
+                    <p>プログラミングで言えば：インターフェースは「実在」するか？</p>
+                    <p>コードとして書かれているが、実行されるのは具体的な実装だけ。</p>
+                    <p>しかしインターフェースなしには設計できない——「機能的」には実在する。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「理」は発見されるものですか、発明されるものですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>朱熹は、南宋時代の儒学者であり、「朱子学」を大成しました。理（普遍的法則）と気（物質的素材）の二元論、「格物致知」（物を窮めて知を致す）、『四書集注』による儒教正典の確立——これらの業績は、科挙制度を通じて東アジアの思想・教育・政治を700年以上支配しました。朝鮮、日本、ベトナムにも広まり、東アジア文明の知的基盤を形成しました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Li and Qi, Principle and Material.</p>
+    </footer>
+</body>
+
+</html>

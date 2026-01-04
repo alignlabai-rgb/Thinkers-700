@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベルトルト・ブレヒト - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #71717a;
+            /* Stage Gray */
+            --secondary: #27272a;
+            /* Theater Dark */
+            --accent: #a1a1aa;
+            /* Light Curtain */
+            --highlight: #e4e4e7;
+            /* Alienation Glow */
+            --bg: #18181b;
+            /* Deep Stage */
+            --text: #e4e4e7;
+            --border: #52525b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .brecht-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(113, 113, 122, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(161, 161, 170, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #71717a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🎭";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #52525b 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(113, 113, 122, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(113, 113, 122, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .veffekt-section {
+            background: linear-gradient(135deg, #000 0%, #71717a 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .veffekt-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🎭";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="brecht-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← EPIC THEATER</a>
+        <div>BRECHT_v6.39</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-639 / THE_ALIENATOR</span>
+        <h1>ベルトルト・ブレヒト</h1>
+        <p class="en-name">Bertolt Brecht（1898–1956）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「異化効果の発明者」——演劇を批判的思考の装置に</p>
+        <div class="os-tags">
+            <span class="os-tag">演劇OS</span>
+            <span class="os-tag">批判OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">叙事詩的演劇と異化効果</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ベルトルト・ブレヒトは、20世紀ドイツの劇作家、演出家、詩人であり、「叙事詩的演劇」と「異化効果」（Verfremdungseffekt）によって演劇を革命しました。観客が感情に溺れず、批判的に考えることを求めました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ブレヒトの歴史的業績——<b>『三文オペラ』『肝っ玉おっ母とその子供たち』『ガリレイの生涯』などを創作。ベルリナー・アンサンブルを主宰</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    亡命生活を経て東ベルリンに戻る。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4">💡 たとえるなら</h4>
+                    <p>ブレヒトの異化効果は、<b>「UIのデバッグモード——普段は隠れているシステムの仕組みを見せる。『これは劇だ』と示すことで、現実も『変えられる』と気づかせる」</b>という、意識化の技法。
+                    </p>
+            </div>
+        </section>
+
+        <section class="veffekt-section">
+            <h2>🔍 異化効果（Verfremdungseffekt）</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                「当たり前」を「奇妙」に見せる<br>
+                慣れ親しんだものを距離を置いて見る<br>
+                感情移入を断ち切る<br>
+                「これは演技だ」と観客に思い出させる<br>
+                批判的思考を促す<br>
+                「世界は変えられる」と気づかせる
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ブレヒトの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">芸術は現実を反映する鏡ではない。現実を形作るハンマーである。</p>
+                <p class="quote-author">— ベルトルト・ブレヒト</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🎭 叙事詩的演劇</h3>
+                        <p>物語るのではなく、示す。感情より思考を促す。</p>
+                </div>
+                <div class="card">
+                    <h3">🔍 異化効果</h3>
+                        <p>見慣れたものを奇妙に見せる。批判的距離を取る。</p>
+                </div>
+                <div class="card">
+                    <h3">⚙️ ゲストゥス</h3>
+                        <p>社会的態度を身体で示す。行為の社会的意味。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 教訓劇</h3>
+                        <p>学びを目的とした劇。観客も参加者。</p>
+                </div>
+                <div class="card">
+                    <h3">☭ マルクス主義</h3>
+                        <p>社会変革を目指す。階級意識を高める。</p>
+                </div>
+                <div class="card">
+                    <h3">🎵 音楽</h3>
+                        <p>クルト・ヴァイルとの協働。『三文オペラ』。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Alienation</h2>
+            <div class="it-card">
+                <h3">V-Effect as Debug Mode</h3>
+                    <p>異化効果はデバッグモード。システムの内部構造を表示。</p>
+            </div>
+            <div class="it-card">
+                <h3">Epic Theater as Documentation</h3>
+                    <p>叙事詩的演劇はドキュメンテーション。説明しながら実行。</p>
+            </div>
+            <div class="it-card">
+                <h3">Gestus as API Call</h3>
+                    <p>ゲストゥスはAPIコール。社会的関係を明示的に呼び出す。</p>
+            </div>
+            <div class="it-card">
+                <h3">Critical Distance as Code Review</h3>
+                    <p>批判的距離はコードレビュー。離れて見ることで問題を発見。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>叙事詩的演劇</strong>：新しい演劇形式。</li>
+                <li><strong>異化効果</strong>：批判的思考の技法。</li>
+                <li><strong>ゲストゥス</strong>：社会的身振り。</li>
+                <li><strong>教訓劇</strong>：学びの演劇。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>マルクス</li>
+                        <li>ロシア・フォルマリズム</li>
+                        <li>中国演劇</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>政治演劇</li>
+                            <li>ポスト・ドラマ演劇</li>
+                            <li>批判理論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：芸術と変革</h2>
+            <div class="thought-experiment">
+                <h3">芸術は世界を変えられるか</h3>
+                    <p>ブレヒトは言った——</p>
+                    <p>「芸術は現実を形作るハンマーである」</p>
+                    <p>しかし彼の劇を見た人々は——</p>
+                    <p>世界を変えたか？</p>
+                    <p>東ドイツの体制は——</p>
+                    <p>ブレヒト自身を抑圧しようとした。</p>
+                    <p>芸術家は革命家になれるか？</p>
+                    <p>それとも芸術は娯楽に過ぎないか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        演劇は社会を変える力を持ちますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ベルトルト・ブレヒト（1898-1956）は、20世紀ドイツの劇作家であり、「叙事詩的演劇」と「異化効果」によって演劇を革命しました。観客が感情に溺れず批判的に考えることを求め、『三文オペラ』『肝っ玉おっ母』『ガリレイの生涯』などを創作。芸術を社会変革の道具として捉え、政治演劇、ポスト・ドラマ演劇、批判理論に大きな影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Art is not a mirror but a hammer.</p>
+    </footer>
+</body>
+
+</html>

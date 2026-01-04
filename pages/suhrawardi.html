@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スフラワルディー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Illumination Gold */
+            --secondary: #1c1917;
+            /* Persian Dark */
+            --accent: #f59e0b;
+            /* Light Radiance */
+            --highlight: #fef3c7;
+            /* Ishraq Glow */
+            --bg: #0c0a09;
+            /* Darkness Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Illumination Background */
+        .light-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(180, 83, 9, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Radiant Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☀️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Light Hierarchy */
+        .light-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .light-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .light-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .light-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .nur-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .angel-box {
+            background: #f59e0b;
+            color: var(--bg);
+            border: 2px solid var(--highlight);
+            opacity: 0.8;
+        }
+
+        .soul-box {
+            background: #d97706;
+            border: 2px solid var(--accent);
+            opacity: 0.6;
+        }
+
+        .body-box {
+            background: #92400e;
+            border: 2px solid var(--border);
+            opacity: 0.4;
+        }
+
+        .light-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☀️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="light-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HIKMAT_AL_ISHRAQ</a>
+        <div>PHILOSOPHY_OF_ILLUMINATION_v5.04</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-504 / THE_MASTER_OF_ILLUMINATION</span>
+        <h1>スフラワルディー</h1>
+        <p class="en-name">Shahab al-Din Suhrawardi (1154–1191)</p>
+        <p class="catchphrase">「光こそ実在の根源である——闇は光の欠如にすぎない」</p>
+        <div class="os-tags">
+            <span class="os-tag">イスラームOS</span>
+            <span class="os-tag">神秘OS</span>
+            <span class="os-tag">形而上OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">照明哲学（イシュラーク）</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    シャハーブッディーン・スフラワルディーは、12世紀ペルシアの神秘哲学者であり、<b>照明哲学（ヒクマト・アル・イシュラーク）</b>の創始者です。36歳の若さでアレッポで処刑されましたが、その短い生涯でイスラーム哲学に革命をもたらしました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スフラワルディーは、アリストテレス的なイスラーム哲学（イブン・スィーナーに代表される）を批判し、古代ペルシアのゾロアスター教の光の教えと、プラトン主義、そして神秘主義（スーフィズム）を融合させました。「実在とは光である」——光は階層構造をなし、「光の光（Nur
+                    al-Anwar）」すなわち神から流出して、天使、魂、物質へと下降する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スフラワルディーを学ぶことは、<b>「光」という比喩を通じて実在を理解する別のパラダイム</b>に触れることです。西洋哲学とは異なるペルシア・イスラームの知的伝統。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スフラワルディーは、<b>「実在とはエネルギー伝達のネットワーク。最高のソース（光の光）から、ルーター（天使）を経由して、エンドポイント（物質）へと『光＝実在』が流れていく。暗闇は信号の不在、存在の欠如」</b>と説いた、形而上学のネットワークエンジニアです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 光の階層 -->
+        <section class="light-section">
+            <h2>☀️ 光の階層（アンワール）</h2>
+            <div class="light-diagram">
+                <div class="light-box nur-box">
+                    <p>☀️ 光の光</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Nur al-Anwar</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">純粋光＝神</p>
+                </div>
+                <div class="light-arrow">↓ 流出</div>
+                <div class="light-box angel-box">
+                    <p>👼 天使的光</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Anwar Qahira</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">支配する光</p>
+                </div>
+                <div class="light-arrow">↓ 流出</div>
+                <div class="light-box soul-box">
+                    <p>💫 魂の光</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Anwar Mudabbira</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">管理する光</p>
+                </div>
+                <div class="light-arrow">↓ 流出</div>
+                <div class="light-box body-box">
+                    <p>🪨 物質界</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Barzakh</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">障壁＝暗闇</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                神（光の光）から光が流出し、天使、魂へと伝達される。物質界は「バルザフ（障壁）」——光の不在としての暗闇。救済は光への上昇。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 スフラワルディー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">すべてが光から流出し、光へと還る。光こそ実在の本質であり、闇は光の欠如にすぎない。</p>
+                <p class="quote-author">— 『照明哲学』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">☀️ 光の形而上学</h3>
+                        <p>実在の根本原理は「光（ヌール）」。光は自己顕現的——自らを照らし、他を照らす。暗闇は実在ではなく、光の欠如。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 イシュラーク</h3>
+                        <p>「照明」「東方」を意味する。論理的推論だけでなく、直観的・照明的認識を重視。神秘体験と哲学の統合。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 ゾロアスター的要素</h3>
+                        <p>古代ペルシアの光と闇の二元論を継承。ただし一元論的に再解釈——光のみが実在。闇は欠如。</p>
+                </div>
+                <div class="card">
+                    <h3">👼 天使論</h3>
+                        <p>光の階層としての天使。各天体に天使が対応。アフラ・マズダ（ゾロアスター教の主神）の影響。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 想像界</h3>
+                        <p>アラム・アル・ミサール——現実と精神の中間にある「想像界」。預言者のヴィジョンはここに現れる。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 殉教</h3>
+                        <p>36歳でアレッポで処刑。正統派ウラマー（イスラーム学者）との対立。「殺された導師」の称号。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 三つの知恵の統合</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. ペルシアの知恵</h3>
+                        <p>ゾロアスター教の光と闘の教え。アフラ・マズダ（善神）とアーリマン（悪神）。スフラワルディーは一元論的に再解釈。</p>
+                </div>
+                <div class="card">
+                    <h3">2. ギリシアの知恵</h3>
+                        <p>プラトン、新プラトン主義。イデア、流出論。「プラトンの知恵」としてギリシア哲学を継承。</p>
+                </div>
+                <div class="card">
+                    <h3">3. イスラームの神秘</h3>
+                        <p>スーフィズムの神秘体験。論理的推論と神秘的直観の統合。「知恵の愛好者」としての哲学者。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 照明哲学の誕生</h3>
+                        <p>三つの伝統を融合した「イシュラーク」。イブン・スィーナーのアリストテレス主義に対抗する新たなパラダイム。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Reality as Light Network</h2>
+            <div class="it-card">
+                <h3">Light as Energy/Information Flow</h3>
+                    <p>光はエネルギー/情報の流れ。神（光の光）がソース。天使がルーター/リピーター。魂がエンドポイント。物質界は信号が届きにくい「暗いゾーン」。</p>
+            </div>
+            <div class="it-card">
+                <h3">Darkness as Null/Absence</h3>
+                    <p>暗闇は光の欠如——実在ではない。ITで言えばnullや空文字列。存在しないのではなく、値がないだけ。悪とは善の不在。</p>
+            </div>
+            <div class="it-card">
+                <h3">Angelic Hierarchy as Network Topology</h3>
+                    <p>天使の階層はネットワークトポロジー。光の光からのルーティング。各レベルが中継と処理を行う。分散アーキテクチャ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Illumination as Direct Access</h3>
+                    <p>イシュラーク（照明的認識）は直接アクセス。論理的推論はAPI呼び出し（間接的）。神秘体験はカーネル直接アクセス（直接的）。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『照明哲学（ヒクマト・アル・イシュラーク）』</strong>：光の形而上学の体系化。主著。</li>
+                <li><strong>光のオントロジー</strong>：実在の根本原理としての光。新プラトン主義の独自の発展。</li>
+                <li><strong>想像界</strong>：現実と精神の中間領域。預言と神秘体験の場所。</li>
+                <li><strong>ペルシア・プラトニズム</strong>：ゾロアスター教とプラトン主義の融合。独自の伝統の創設。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>プラトン（イデア論）</li>
+                            <li>新プラトン主義（流出論）</li>
+                            <li>ゾロアスター教（光と闇）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>イシュラーク学派</li>
+                            <li>モッラー・サドラー</li>
+                            <li>ペルシア哲学の復興</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ イスラーム哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スフラワルディー</th>
+                        <th>イブン・スィーナー</th>
+                        <th>イブン・ルシュド</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>主要概念</strong></td>
+                        <td>光</td>
+                        <td>存在</td>
+                        <td>知性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ギリシア的源泉</strong></td>
+                        <td>プラトン</td>
+                        <td>アリストテレス</td>
+                        <td>アリストテレス</td>
+                    </tr>
+                    <tr>
+                        <td><strong>認識方法</strong></td>
+                        <td>照明・直観</td>
+                        <td>論証</td>
+                        <td>論証</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ネットワーク流</td>
+                        <td>データモデル</td>
+                        <td>ロジック</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：闇の存在論</h2>
+            <div class="thought-experiment">
+                <h3">悪は実在するか</h3>
+                    <p>「悪」は実在するでしょうか？それとも、善の不在にすぎないのでしょうか？</p>
+                    <p>スフラワルディーの光の哲学によれば、暗闇は「実在しない」。暗闇は光の欠如であり、独立した存在ではない。同様に、悪は善の欠如であり、独立した力ではない。</p>
+                    <p>これはゾロアスター教の二元論（善と悪の戦い）の一元論的再解釈です。アフラ・マズダ（光/善）だけが真に実在し、アーリマン（闇/悪）は光の不在にすぎない。</p>
+                    <p>ITで言えば：nullは「値がない」のであって、「nullという値がある」のではない。暗闇は「光がない」のであって、「暗闇という実体がある」のではない。</p>
+                    <p>しかし批判もあります。悪を「実在しない」と言えば、悪の責任が軽くなるのでは？暗闘が「ただの光の欠如」なら、なぜそれはこれほど強力に感じられるのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        暗闇は「実在」しますか？それとも「不在」ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>スフラワルディーの照明哲学は、「光」を実在の根本原理とする独自のパラダイムを確立しました。古代ペルシアのゾロアスター教、プラトン、神秘主義を融合し、イブン・スィーナーのアリストテレス主義に対抗する新たな伝統を創設しました。「光の光」からの流出、天使的光の階層、想像界——これらの概念はイスラーム哲学に革命をもたらしました。36歳での殉教後も、彼の思想はイシュラーク学派として継承され、モッラー・サドラーを経て現代まで影響を与えています。光と闇という比喩を通じて、存在、認識、救済を統合的に理解する——スフラワルディーは西洋哲学とは異なるアプローチを示しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. In the Light of Lights.</p>
+    </footer>
+</body>
+
+</html>

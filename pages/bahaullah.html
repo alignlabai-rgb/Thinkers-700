@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>バハーウッラー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Unity Cyan */
+            --secondary: #164e63;
+            /* Divine Dark */
+            --accent: #22d3ee;
+            /* Light Blue */
+            --highlight: #cffafe;
+            /* Revelation Glow */
+            --bg: #082f49;
+            /* Deep Unity */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .bahaullah-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✴️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .unity-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .unity-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✴️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bahaullah-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← UNITY</a>
+        <div>BAHAULLAH_v6.31</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-631 / THE_GLORY_OF_GOD</span>
+        <h1>バハーウッラー</h1>
+        <p class="en-name">Bahá'u'lláh（1817–1892）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「神の栄光」——バハーイー教創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">統一OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">バハーイー教の創始</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    バハーウッラー（「神の栄光」の意）は、19世紀ペルシアの宗教指導者であり、バハーイー教の創始者です。貴族の家に生まれましたが、バーブの教えに従い、40年間の追放と投獄を経て、新しい宗教の基礎を築きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    バハーウッラーの歴史的業績——<b>人類の統一を説く。すべての宗教は一つの源から来ると主張。世界平和、男女平等、普遍教育を提唱</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    現在、世界中に約500万人の信者。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>バハーウッラーの教えは、<b>「宗教のAPI統合——異なる宗教『システム』は同じ神からの異なるバージョン。すべてを統合する普遍的インターフェース」</b>という、宗教間互換性。</p>
+            </div>
+        </section>
+
+        <section class="unity-section">
+            <h2>🌍 三つの統一</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; text-align: left;">
+                <strong>神の統一：</strong>すべての宗教は一つの神から<br>
+                <strong>宗教の統一：</strong>すべての宗教は同じ真理の異なる表現<br>
+                <strong>人類の統一：</strong>すべての人間は一つの家族
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 バハーウッラーの教え</h2>
+            <div class="quote-box">
+                <p class="quote-text">地球は一つの国であり、人類はその市民である。</p>
+                <p class="quote-author">— バハーウッラー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌍 人類統一</h3>
+                        <p>すべての人間は一つ。国家・人種・宗教の壁を超える。</p>
+                </div>
+                <div class="card">
+                    <h3">✴️ 宗教統一</h3>
+                        <p>すべての宗教は一つの源から。進歩的啓示。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 男女平等</h3>
+                        <p>男女は平等。鳥の二つの翼。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 普遍教育</h3>
+                        <p>すべての人に教育を。男女を問わず。</p>
+                </div>
+                <div class="card">
+                    <h3">🕊️ 世界平和</h3>
+                        <p>戦争の廃止。国際機構の設立。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 科学と宗教</h3>
+                        <p>科学と宗教の調和。両者は真理の二面。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Unity</h2>
+            <div class="it-card">
+                <h3>Religions as Versions</h3>
+                <p>宗教はバージョン。同じソースの異なるリリース。</p>
+            </div>
+            <div class="it-card">
+                <h3">Progressive Revelation as Updates</h3>
+                    <p>進歩的啓示はアップデート。時代に応じた新機能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Unity as Integration</h3>
+                    <p>統一は統合。異なるシステムを一つに。</p>
+            </div>
+            <div class="it-card">
+                <h3">World Order as Architecture</h3>
+                    <p>世界秩序はアーキテクチャ。グローバルなシステム設計。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>人類統一</strong>：グローバル・コミュニティ。</li>
+                <li><strong>宗教統一</strong>：進歩的啓示。</li>
+                <li><strong>男女平等</strong>：普遍的価値として。</li>
+                <li><strong>世界平和</strong>：国際秩序の構想。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>バーブ教</li>
+                        <li>イスラム教</li>
+                        <li>諸宗教の伝統</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>バハーイー教</li>
+                            <li>宗教間対話</li>
+                            <li>グローバル倫理</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：宗教は統一可能か</h2>
+            <div class="thought-experiment">
+                <h3">すべての宗教は一つ？</h3>
+                    <p>バハーウッラーは言った——</p>
+                    <p>「すべての宗教は一つの源から」</p>
+                    <p>しかし宗教間には矛盾がある——</p>
+                    <p>三位一体 vs 厳格な一神教</p>
+                    <p>輪廻 vs 復活</p>
+                    <p>これらは「同じ真理」か？</p>
+                    <p>それとも本質的に異なるか？</p>
+                    <p>違いは「付随的」で本質は「共通」？</p>
+                    <p>あるいは違いこそが本質？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        すべての宗教は本当に一つですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>バハーウッラー（1817-1892）は、19世紀ペルシアの宗教指導者であり、バハーイー教の創始者です。「神の栄光」を意味するその名の通り、人類の統一、宗教の統一、神の統一を説きました。40年間の追放と投獄を経ながら、世界平和、男女平等、普遍教育、科学と宗教の調和を提唱。現在500万人以上の信者を持ち、宗教間対話とグローバル倫理に影響を与え続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The earth is but one country.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アミルカル・カブラル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16a34a;
+            /* Liberation Green */
+            --secondary: #14532d;
+            /* Forest Dark */
+            --accent: #fbbf24;
+            /* Africa Gold */
+            --highlight: #fef3c7;
+            /* Hope Glow */
+            --bg: #052e16;
+            /* Jungle Deep */
+            --text: #fef3c7;
+            --border: #22c55e;
+            --red: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Liberation Background */
+        .liberation-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(22, 163, 74, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Cabral Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16a34a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #22c55e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(22, 163, 74, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Culture Section */
+        .culture-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #16a34a 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .culture-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="liberation-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LIBERATION</a>
+        <div>PAIGC_v5.74</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-574 / THE_THEORIST_FIGHTER</span>
+        <h1>アミルカル・カブラル</h1>
+        <p class="en-name">Amílcar Cabral (1924–1973)</p>
+        <p class="catchphrase">「文化は抵抗の武器」——解放思想の理論家</p>
+        <div class="os-tags">
+            <span class="os-tag">脱植民地OS</span>
+            <span class="os-tag">文化OS</span>
+            <span class="os-tag">革命OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">歴史への回帰</h2>
+            <div class="hero-box">
+                <p class="hero-text">アミルカル・カブラルは、ギニアビサウ・カーボベルデの独立運動指導者であり、20世紀最も重要な反植民地思想家の一人です。農学者から革命家へ。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    カブラルの核心的主張——<b>解放とは「歴史への回帰」</b>。植民地主義は被支配民族から歴史を奪った。文化的抵抗なくして真の解放なし。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    PAIGC（ギニア・カーボベルデ独立アフリカ党）を創設し、ポルトガルとの独立戦争を指導。独立の直前（1973年）に暗殺されました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    カブラルの思想は、<b>「文化をオペレーティングシステムとして再起動——植民地主義はOSを上書きした。解放とは元のOSの復元ではなく、新しい統合OSのビルド」</b>という、文化的ブートストラップ。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 文化と解放 -->
+        <section class="culture-section">
+            <h2>🎭 文化は抵抗の武器</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto; color: var(--highlight);">
+                「被抑圧民族にとって<br>
+                最も重要な行為は<br>
+                文化的なものである」
+            </p>
+            <p style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.9;">
+                植民地主義は文化を抑圧した。<br>
+                解放運動は文化を復活させる。<br>
+                文化なき独立は新植民地主義。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 カブラル思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">我々が戦っているのは、単に植民地主義を打倒するためではなく、我々の人民に正義と進歩をもたらすためである。</p>
+                <p class="quote-author">— アミルカル・カブラル</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🎭 文化</h3>
+                        <p>文化は抵抗の武器。植民地主義は文化を抑圧した。解放には文化の復興が不可欠。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 歴史への回帰</h3>
+                        <p>Return to the source。植民地支配は歴史を奪った。解放は自らの歴史を取り戻すこと。</p>
+                </div>
+                <div class="card">
+                    <h3">🧠 小ブルジョワジーの自殺</h3>
+                        <p>知識人は民衆と合流し、自らの階級的特権を放棄すべき。理論と実践の一致。</p>
+                </div>
+                <div class="card">
+                    <h3">🌾 農学者として</h3>
+                        <p>植民地の農業構造を分析。抑圧の物質的基盤を理解。理論は現実から出発。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ ゲリラ戦</h3>
+                        <p>PAIGCを指導。農村から都市へ。教育・医療を解放区で提供。二重権力の構築。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 アフリカ主義</h3>
+                        <p>アフリカ民族主義ではなく人民の解放。人種ではなく階級。普遍的解放の視点。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 著作 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要著作・演説</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Return to the Source (1973)</h3>
+                        <p>源泉への回帰——文化とアフリカ解放。文化論の集大成。</p>
+                </div>
+                <div class="card">
+                    <h3">Unity and Struggle (1979)</h3>
+                        <p>統一と闘争——演説・論文集。革命理論と実践。</p>
+                </div>
+                <div class="card">
+                    <h3">国民解放と文化 (1970)</h3>
+                        <p>ハーバード大学での講演。文化と解放の不可分性を論じる。</p>
+                </div>
+                <div class="card">
+                    <h3">武器としての理論</h3>
+                        <p>「真実を語れ、弱点を隠すな」。誠実な自己批判の革命倫理。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Cultural Bootstrap</h2>
+            <div class="it-card">
+                <h3">Colonialism as OS Overwrite</h3>
+                    <p>植民地主義はOSの上書き。元の文化システムを抑圧し、植民地OSをインストール。</p>
+            </div>
+            <div class="it-card">
+                <h3">Return to Source as Recovery</h3>
+                    <p>「源泉への回帰」はリカバリー。しかし単なる復元ではなく、新しいビルド。</p>
+            </div>
+            <div class="it-card">
+                <h3">Petty Bourgeoisie Suicide as Privilege Drop</h3>
+                    <p>小ブルジョワジーの自殺は特権の放棄。rootからuserへ降格。民衆と同じ権限で動作。</p>
+            </div>
+            <div class="it-card">
+                <h3">Culture as Operating System</h3>
+                    <p>文化はOS。アプリケーション（政治・経済）はOSの上で動く。OSなき解放は不完全。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>文化的解放</strong>：政治独立を超えて。</li>
+                <li><strong>歴史への回帰</strong>：自らの主体性の回復。</li>
+                <li><strong>知識人の民衆化</strong>：理論と実践の一致。</li>
+                <li><strong>解放区戦略</strong>：二重権力の構築。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>フランツ・ファノン</li>
+                            <li>マルクス主義</li>
+                            <li>毛沢東（ゲリラ戦）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ギニアビサウ独立</li>
+                            <li>ポストコロニアル理論</li>
+                            <li>文化研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 解放思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>カブラル</th>
+                        <th>ファノン</th>
+                        <th>ンクルマ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>文化</td>
+                        <td>暴力/心理</td>
+                        <td>統一</td>
+                    </tr>
+                    <tr>
+                        <td><strong>階級</strong></td>
+                        <td>農民中心</td>
+                        <td>ルンペン</td>
+                        <td>国民全体</td>
+                    </tr>
+                    <tr>
+                        <td><strong>知識人</strong></td>
+                        <td>自己否定</td>
+                        <td>批判的</td>
+                        <td>指導的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>OS復元</td>
+                        <td>システム再起動</td>
+                        <td>統合プラットフォーム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：文化なき独立</h2>
+            <div class="thought-experiment">
+                <h3">植民地の遺産</h3>
+                    <p>カブラルは問いました：政治的独立だけで十分か？</p>
+                    <p>多くのアフリカ諸国は独立した。しかし。</p>
+                    <p>旧宗主国の言語を公用語とする。教育制度を引き継ぐ。経済は依存のまま。</p>
+                    <p>これは「新植民地主義」か、それとも「現実的選択」か？</p>
+                    <p>文化的脱植民地化はどこまで可能か？</p>
+                    <p>言語を変えれば意識は変わるか？</p>
+                    <p>しかし「純粋な」伝統文化への回帰は幻想ではないか？</p>
+                    <p>カブラルは言った：回帰は「復元」ではなく「創造」。</p>
+                    <p>過去と現在を統合した新しい文化の構築。</p>
+                    <p>これは今日のポストコロニアル研究の中心問題でもある。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        文化的独立なくして真の独立はありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アミルカル・カブラルは、ギニアビサウ・カーボベルデの独立運動指導者であり、20世紀最も重要な反植民地思想家の一人です。「文化は抵抗の武器」「歴史への回帰」——政治的独立だけでなく文化的解放を訴えました。農学者としての分析力、革命家としての実践力、理論家としての洞察力を兼ね備えた稀有な人物。1973年に暗殺されましたが、その思想はポストコロニアル研究、文化研究に大きな影響を与え続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Tell no lies, claim no easy victories.</p>
+    </footer>
+</body>
+
+</html>

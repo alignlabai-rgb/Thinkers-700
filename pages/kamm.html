@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランシス・カム - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Ethics Violet */
+            --secondary: #4c1d95;
+            /* Deep Duty */
+            --accent: #a78bfa;
+            /* Light Trolley */
+            --highlight: #ede9fe;
+            /* Moral Glow */
+            --bg: #2e1065;
+            /* Deep Norm */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Ethics Background */
+        .ethics-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Kamm Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Trolley Section */
+        .trolley-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .trolley-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .trolley-emoji {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+
+        .trolley-question {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ethics-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← NORMATIVE_ETHICS</a>
+        <div>KAMM_v7.02</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-702 / THE_TROLLEY_ANALYST</span>
+        <h1>フランシス・カム</h1>
+        <p class="en-name">Frances Kamm (1945–)</p>
+        <p class="catchphrase">「道徳的直観を体系化し、原理を発見する」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">義務論OS</span>
+            <span class="os-tag">規範OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">規範倫理学の精緻化</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    フランシス・カムは、アメリカの哲学者であり、現代規範倫理学の最も精緻な分析者の一人です。ハーバード大学教授。トロッコ問題やその変種を通じて、道徳判断の構造を解明。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心は<b>「ケース分析」</b>——具体的な思考実験を通じて道徳的直観を検討し、その背後にある原理を発見する。無数のトロッコ問題の変種を分析。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    もう一つの核心は<b>「義務論的制約」</b>——功利主義的な「最大幸福」ではなく、行為自体の道徳性に注目。「手段として使う」ことへの制約。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    カムは、<b>「道徳OSの単体テスト・エンジニア——トロッコ問題とその変種という単体テストを大量に実行し、道徳的直観（期待される出力）と原理（コード）の整合性を検証」</b>する人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. トロッコ問題 -->
+        <section class="trolley-section">
+            <h2>🚃 核心テーマ</h2>
+            <p class="trolley-emoji">🚃💨 ➡️ 👤👤👤👤👤</p>
+            <p class="trolley-question">暴走トロッコが5人を殺そうとしている。レバーを引けば別の線路に逸らせるが、そこには1人がいる。レバーを引くべきか？</p>
+            <p style="margin-top: 2rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+                カムはこの問題と無数の変種を分析し、私たちの道徳的直観の構造を解明する
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 カム思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">道徳的直観を真剣に受け止め、それを説明する原理を発見することが哲学の仕事である。</p>
+                <p class="quote-author">— フランシス・カム</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🚃 トロッコ問題分析</h3>
+                        <p>トロッコ問題とその変種を詳細に分析。なぜレバーは許容され、突き落としは禁じられるか。</p>
+                </div>
+                <div class="card">
+                    <h3">📐 DDE（二重結果の原理）</h3>
+                        <p>意図された害と予見された害の区別。手段としての害と副作用としての害。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ PPH（許容される害の原理）</h3>
+                        <p>Principle of Permissible Harm。カムの独自原理。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 ケース分析</h3>
+                        <p>具体的な思考実験を通じて直観を検討。変数を一つずつ変えて原理を特定。</p>
+                </div>
+                <div class="card">
+                    <h3">🏥 生命倫理学</h3>
+                        <p>安楽死、臓器移植、希少資源の配分。実践的問題への応用。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 『非結果主義の道徳性』</h3>
+                        <p>Morality, Mortality (2冊)。主著。義務論的制約の体系的分析。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. トロッコ問題の変種 -->
+        <section class="section">
+            <h2 class="section-title">🔄 トロッコ問題の変種</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">スイッチ・ケース</h3>
+                        <p>レバーを引いて1人の線路に逸らす。多くの人が「許容される」と判断。</p>
+                </div>
+                <div class="card">
+                    <h3">フットブリッジ・ケース</h3>
+                        <p>太った人を橋から突き落として止める。多くの人が「許容されない」と判断。</p>
+                </div>
+                <div class="card">
+                    <h3">ループ・ケース</h3>
+                        <p>逸らした線路がループして戻る。1人がいなければ5人は助からない。</p>
+                </div>
+                <div class="card">
+                    <h3">カムの分析</h3>
+                        <p>これらの違いを説明する原理は何か？——手段、副作用、接触、意図の区別。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Ethics</h2>
+            <div class="it-card">
+                <h3">Trolley Cases as Unit Tests</h3>
+                    <p>トロッコ問題は単体テスト。道徳原理（コード）の正確性を検証。</p>
+            </div>
+            <div class="it-card">
+                <h3">Intuitions as Expected Output</h3>
+                    <p>道徳的直観は期待される出力。原理がこれを生成すべき。</p>
+            </div>
+            <div class="it-card">
+                <h3">PPH as Algorithm</h3>
+                    <p>許容される害の原理はアルゴリズム。入力（ケース）から出力（判断）を生成。</p>
+            </div>
+            <div class="it-card">
+                <h3">Variations as Edge Cases</h3>
+                    <p>トロッコの変種はエッジケース。アルゴリズムの限界と例外を特定。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>トロッコ問題の精緻化</strong>：無数の変種を体系的に分析。</li>
+                <li><strong>PPH</strong>：許容される害の原理の定式化。</li>
+                <li><strong>義務論の発展</strong>：カント的倫理学の現代的展開。</li>
+                <li><strong>生命倫理学</strong>：実践的問題への応用。</li>
+                <li><strong>分析的方法</strong>：ケース分析による道徳哲学。</li>
+            </ul>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 規範倫理学者の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>立場</th>
+                        <th>核心</th>
+                        <th>トロッコへの答え</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>功利主義者</strong></td>
+                        <td>結果主義</td>
+                        <td>最大幸福</td>
+                        <td>常にレバーを引く</td>
+                    </tr>
+                    <tr>
+                        <td><strong>カム</strong></td>
+                        <td>義務論</td>
+                        <td>PPH</td>
+                        <td>ケースによる</td>
+                    </tr>
+                    <tr>
+                        <td><strong>トムソン</strong></td>
+                        <td>義務論</td>
+                        <td>権利</td>
+                        <td>ケースによる</td>
+                    </tr>
+                    <tr>
+                        <td><strong>フット</strong></td>
+                        <td>徳倫理</td>
+                        <td>DDE</td>
+                        <td>意図による</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：レバーと突き落とし</h2>
+            <div class="thought-experiment">
+                <h3">なぜ違うのか</h3>
+                    <p>多くの人は、トロッコのレバーを引くことは許容されると感じるが、人を突き落とすことは許容されないと感じる。結果は同じ（1人死んで5人助かる）なのに。</p>
+                    <p style="margin-top: 1.5rem;">功利主義者は困惑する：結果が同じなら、道徳的にも同じはず。これは「直観の誤り」か？</p>
+                    <p style="margin-top: 1.5rem;">カムの分析：違いは「手段として使う」かどうか。突き落としでは、その人の身体を物理的に使う。レバーでは、逸らした結果として巻き込まれる。
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        しかし「ループ・ケース」を考えよう：レバーで逸らすが、線路がループしていて、1人がいなければトロッコは戻って5人を殺す。この場合、1人は「手段」ではないか？</p>
+                    <p style="margin-top: 1.5rem;">カムの答え：より精緻な原理が必要。接触、力の方向、意図の構造——細部が道徳的に関係する。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        レバーを引くことと突き落とすこと——あなたにとって何が違いますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フランシス・カム（1945-）は、アメリカの哲学者であり、現代規範倫理学の最も精緻な分析者の一人です。トロッコ問題とその無数の変種を通じて、道徳的直観の背後にある原理を発見しようとする。二重結果の原理（DDE）を精緻化し、独自の「許容される害の原理」（PPH）を定式化。レバーを引くことと人を突き落とすこと——なぜ直観的に違うのか？手段、副作用、接触、意図の構造を分析。『非結果主義の道徳性』（Morality,
+                Mortality）は主著。義務論的倫理学の現代的発展に決定的貢献をした、道徳哲学の重要な思想家です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Analyze the case.</p>
+    </footer>
+</body>
+
+</html>

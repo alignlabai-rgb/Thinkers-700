@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エレノア・ルーズベルト - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            /* UN Blue */
+            --secondary: #1e3a8a;
+            /* Dignity Dark */
+            --accent: #3b82f6;
+            /* Rights Light */
+            --highlight: #dbeafe;
+            /* Declaration Glow */
+            --bg: #0a1628;
+            /* Deep Humanity */
+            --text: #dbeafe;
+            --border: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .eleanor-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(29, 78, 216, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1d4ed8 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌍";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(29, 78, 216, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(29, 78, 216, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .udhr-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1d4ed8 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .udhr-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌍";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="eleanor-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HUMAN RIGHTS</a>
+        <div>ELEANOR_ROOSEVELT_v6.25</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-625 / THE_FIRST_LADY_OF_THE_WORLD</span>
+        <h1>エレノア・ルーズベルト</h1>
+        <p class="en-name">Eleanor Roosevelt（1884–1962）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「世界のファーストレディ」——世界人権宣言の推進者</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">人権OS</span>
+            <span class="os-tag">外交OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">世界人権宣言の推進</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    エレノア・ルーズベルトは、アメリカ第32代大統領フランクリン・D・ルーズベルトの妻であり、人権活動家、外交官です。夫の死後も活動を続け、国連人権委員会の初代委員長として世界人権宣言の採択を主導しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    エレノアの歴史的業績——<b>1948年世界人権宣言の採択を主導。「世界のファーストレディ」と称される。人権の普遍性を確立</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    トルーマン大統領曰く「世界のファーストレディ」。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>エレノアの業績は、<b>「人権の国際標準化——異なる国家『システム』間で共通のプロトコル（世界人権宣言）を策定。人類共通のAPIを定義」</b>という、普遍的価値のグローバル実装。</p>
+            </div>
+        </section>
+
+        <section class="udhr-section">
+            <h2>📜 世界人権宣言（1948）</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; text-align: left;">
+                第1条：すべての人間は、生れながらにして自由であり、かつ、尊厳と権利とについて平等である。<br><br>
+                48か国が賛成、棄権8、反対0で採択<br>
+                法的拘束力はないが、道徳的権威<br>
+                「人類の良心の共通基準」
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 エレノアの活動</h2>
+            <div class="quote-box">
+                <p class="quote-text">人権はどこから始まるのでしょう？小さな場所から——あまりにも小さくて地図には載らない場所から。</p>
+                <p class="quote-author">— エレノア・ルーズベルト</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌍 人権委員会</h3>
+                        <p>国連人権委員会の初代委員長（1946-52）。宣言策定を主導。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 世界人権宣言</h3>
+                        <p>1948年12月10日採択。30条からなる人権の基準。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 調停者</h3>
+                        <p>東西冷戦下、多様な意見をまとめる調停者。</p>
+                </div>
+                <div class="card">
+                    <h3">✍️ コラムニスト</h3>
+                        <p>「My Day」を26年間執筆。日常から政治まで。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 国内活動</h3>
+                        <p>公民権、女性権、労働者権を擁護。</p>
+                </div>
+                <div class="card">
+                    <h3">👑 ファーストレディ</h3>
+                        <p>最も活動的なファーストレディ。公の発言を続けた。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Rights</h2>
+            <div class="it-card">
+                <h3>UDHR as Protocol</h3>
+                <p>世界人権宣言はプロトコル。国際間の共通ルール。</p>
+            </div>
+            <div class="it-card">
+                <h3">Commission as Working Group</h3>
+                    <p>人権委員会はワーキンググループ。多様な参加者が協力。</p>
+            </div>
+            <div class="it-card">
+                <h3">Consensus as Merge Request</h3>
+                    <p>採択はマージリクエスト。異なるブランチを統合。</p>
+            </div>
+            <div class="it-card">
+                <h3">Moral Authority as Soft Power</h3>
+                    <p>道徳的権威はソフトパワー。強制力なくとも影響力。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>世界人権宣言</strong>：普遍的人権の基準。</li>
+                <li><strong>人権委員会</strong>：国際的議論の場。</li>
+                <li><strong>人権の普遍性</strong>：文化を超えた価値。</li>
+                <li><strong>外交的リーダーシップ</strong>：調停と統合。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>人権宣言（1789）</li>
+                        <li>ウィルソン主義</li>
+                        <li>進歩主義</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>国際人権法</li>
+                            <li>人権条約</li>
+                            <li>現代人権運動</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：普遍的人権</h2>
+            <div class="thought-experiment">
+                <h3">人権は本当に普遍的か</h3>
+                    <p>世界人権宣言は「普遍的」と謳う。</p>
+                    <p>しかし批判もある——</p>
+                    <p>「西洋的価値観の押し付けでは？」</p>
+                    <p>個人主義 vs 共同体主義</p>
+                    <p>自由権 vs 社会権</p>
+                    <p>文化相対主義者は問う——</p>
+                    <p>「すべての文化に適用できる普遍的価値があるか？」</p>
+                    <p>しかしエレノアは信じた——</p>
+                    <p>人間の尊厳は普遍的だと。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        普遍的な人権は存在しますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>エレノア・ルーズベルト（1884-1962）は、アメリカ第32代大統領の妻であり、人権活動家、外交官です。国連人権委員会の初代委員長として1948年世界人権宣言の採択を主導し、「世界のファーストレディ」と称されました。東西冷戦下で多様な意見をまとめ、人権の普遍性を確立。国際人権法、人権条約、現代人権運動の基盤を築きました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Human rights begin in small places.</p>
+    </footer>
+</body>
+
+</html>

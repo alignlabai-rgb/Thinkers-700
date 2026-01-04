@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チャールズ・マリク - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Philosophy Purple */
+            --secondary: #2e1065;
+            /* Thought Dark */
+            --accent: #a78bfa;
+            /* Dignity Light */
+            --highlight: #ede9fe;
+            /* Being Glow */
+            --bg: #0f0720;
+            /* Deep Foundation */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .malik-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔱";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .person-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .person-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔱";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="malik-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HUMAN RIGHTS</a>
+        <div>CHARLES_MALIK_v6.28</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-628 / THE_PHILOSOPHER</span>
+        <h1>チャールズ・マリク</h1>
+        <p class="en-name">Charles Habib Malik（1906–1987）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「人権の哲学者」——UDHRの哲学的基礎づけ</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">人権OS</span>
+            <span class="os-tag">外交OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">UDHRの哲学的基礎づけ</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    チャールズ・マリクは、レバノンの哲学者、外交官であり、世界人権宣言の起草に哲学的深みを与えた人物です。ハイデガーとホワイトヘッドに学んだ現象学者であり、国連人権委員会の報告者を務めました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    マリクの歴史的業績——<b>人権の形而上学的基礎を主張。「人間の尊厳」の哲学的意味を明確化。個人の権利を強調</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    1948年国連総会議長代行として宣言採択を主導。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>マリクの貢献は、<b>「人権システムの型定義——『人間』『尊厳』『権利』とは何かを哲学的に定義。曖昧な概念を厳密な仕様に変換」</b>という、人権の哲学的基盤。</p>
+            </div>
+        </section>
+
+        <section class="person-section">
+            <h2>🧑 「人間」とは何か</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                人間は単なる物質ではない<br>
+                人間は単なる社会の部品ではない<br>
+                人間は理性と良心を持つ<br>
+                人間は絶対的な尊厳を持つ<br>
+                この尊厳は国家が与えるものではない<br>
+                人間であること自体に由来する
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 マリクの哲学</h2>
+            <div class="quote-box">
+                <p class="quote-text">人権の基礎は人間の本性そのものにある。政府がそれを創り出すのではなく、認識するのである。</p>
+                <p class="quote-author">— チャールズ・マリク</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔱 形而上学</h3>
+                        <p>人権の哲学的基礎。人間の本性に根ざす権利。</p>
+                </div>
+                <div class="card">
+                    <h3">🧑 人格主義</h3>
+                        <p>個人の不可侵性。集団より個人を優先。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 現象学</h3>
+                        <p>ハイデガー、ホワイトヘッドに学ぶ。存在論的アプローチ。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 共産主義批判</h3>
+                        <p>集団主義的人権観を批判。個人の自由を擁護。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ キリスト教</h3>
+                        <p>ギリシア正教の伝統。信仰と理性の統合。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 国連総会</h3>
+                        <p>1948年国連総会議長代行。宣言採択を主導。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Philosophy</h2>
+            <div class="it-card">
+                <h3>Person as Type</h3>
+                <p>「人間」は型定義。人権システムの基本データ型。</p>
+            </div>
+            <div class="it-card">
+                <h3">Dignity as Property</h3>
+                    <p>「尊厳」はプロパティ。人間型に内在する属性。</p>
+            </div>
+            <div class="it-card">
+                <h3">Rights as Interface</h3>
+                    <p>「権利」はインターフェース。人間と社会の相互作用を定義。</p>
+            </div>
+            <div class="it-card">
+                <h3">Foundation as Core Library</h3>
+                    <p>哲学的基礎はコアライブラリ。すべての機能がこれに依存。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>哲学的基礎</strong>：人権の形而上学。</li>
+                <li><strong>人格主義</strong>：個人の不可侵性。</li>
+                <li><strong>共産主義批判</strong>：集団主義への対抗。</li>
+                <li><strong>国連リーダーシップ</strong>：宣言採択を主導。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ハイデガー</li>
+                        <li>ホワイトヘッド</li>
+                        <li>ギリシア正教</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>人権の哲学</li>
+                            <li>人格主義</li>
+                            <li>中東キリスト教思想</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：権利の基礎</h2>
+            <div class="thought-experiment">
+                <h3">権利はどこから来るか</h3>
+                    <p>マリクは問うた——権利の基礎は何か？</p>
+                    <p>法律が権利を与えるのか？</p>
+                    <p>それとも法律以前に権利があるのか？</p>
+                    <p>もし法律が権利を与えるなら——</p>
+                    <p>法律を変えれば権利はなくなる。</p>
+                    <p>ナチスは「合法的に」人権を奪った。</p>
+                    <p>しかしそれは「間違っていた」。</p>
+                    <p>なぜ間違っていたと言えるか？</p>
+                    <p>法律を超えた基準がなければ——</p>
+                    <p>「間違い」とは言えない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        権利は法律より先にありますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>チャールズ・マリク（1906-1987）は、レバノンの哲学者、外交官であり、世界人権宣言の起草に哲学的深みを与えました。ハイデガーとホワイトヘッドに学んだ現象学者として、人権の形而上学的基礎を主張し、「人間の尊厳」の哲学的意味を明確化。個人の権利を強調して共産主義的集団主義を批判しました。1948年国連総会議長代行として宣言採択を主導し、人権の哲学的基盤を確立しました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The philosophical foundation.</p>
+    </footer>
+</body>
+
+</html>

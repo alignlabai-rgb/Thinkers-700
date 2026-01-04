@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シッティング・ブル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #92400e;
+            /* Earth Brown */
+            --secondary: #451a03;
+            /* Lakota Dark */
+            --accent: #d97706;
+            /* Buffalo Gold */
+            --highlight: #fef3c7;
+            /* Prairie Glow */
+            --bg: #1c0a00;
+            /* Deep Plains */
+            --text: #fef3c7;
+            --border: #b45309;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Plains Background */
+        .plains-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(217, 119, 6, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(146, 64, 14, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Lakota Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #92400e 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🦬";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b45309 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(146, 64, 14, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(146, 64, 14, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #92400e 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .timeline-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .timeline-year {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🦬";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="plains-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LAKOTA</a>
+        <div>SITTING_BULL_v6.66</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-666 / THE_MEDICINE_MAN</span>
+        <h1>シッティング・ブル</h1>
+        <p class="en-name">Sitting Bull / Tȟatȟáŋka Íyotake (c.1831–1890)</p>
+        <p class="catchphrase">「私は最後のインディアンだ。私の後に来る者はいない」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">先住民OS</span>
+            <span class="os-tag">抵抗OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">先住民抵抗の象徴</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    シッティング・ブル（タタンカ・イヨタケ）は、19世紀のハンクパパ・ラコタ族のホーリーマン（聖者）、族長であり、アメリカ先住民抵抗運動の最も象徴的な指導者です。1876年のリトルビッグホーンの戦いでカスター将軍を破った連合軍を率いた人物として知られています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「土地との一体性」</b>——土地は所有するものではなく、すべての生命が共有するもの。大地は母であり、売ることはできない。バッファローは兄弟であり、殺し尽くしてはならない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シッティング・ブルは<b>「異なる世界観の衝突」</b>を体現——個人所有vs.共有、自然支配vs.自然との調和、進歩vs.循環。彼の抵抗は軍事的だけでなく、存在論的・霊的なものでした。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    シッティング・ブルは、<b>「異なるOSの衝突——西洋の『所有・支配・進歩OS』と先住民の『共有・調和・循環OS』の互換性のないシステム。シッティング・ブルは自分のOSを守ろうとしたが、ハードウェア（土地・バッファロー）を奪われた」</b>人物でした。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. タイムライン -->
+        <section class="timeline-section">
+            <h2>📅 シッティング・ブルの生涯</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">c.1831</div>
+                    <div class="timeline-content">現サウスダコタ州で生まれる。ハンクパパ・ラコタ族。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1868</div>
+                    <div class="timeline-content">フォート・ララミー条約でブラックヒルズがラコタに保障される。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1874</div>
+                    <div class="timeline-content">カスターがブラックヒルズで金を発見。白人が殺到。条約破棄。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1876</div>
+                    <div class="timeline-content">リトルビッグホーンの戦い。カスター将軍と第7騎兵隊を撃破。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1877</div>
+                    <div class="timeline-content">カナダに亡命。追撃を逃れる。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1881</div>
+                    <div class="timeline-content">投降。居留地に収容される。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1890</div>
+                    <div class="timeline-content">12月15日、逮捕中に射殺される。59歳。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 シッティング・ブルの世界観</h2>
+            <div class="quote-box">
+                <p class="quote-text">私が知っているのは、この土地は私たちのものだということだ。白人には土地の境界線を引く権利などない。</p>
+                <p class="quote-author">— シッティング・ブル</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌍 土地との一体性</h3>
+                        <p>土地は所有するものではなく、すべての生命が共有するもの。大地は母。人間は土地の一部であり、土地の主人ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">🦬 バッファロー</h3>
+                        <p>バッファローはラコタの生命線。食料、衣服、住居。白人がバッファローを殺し尽くしたことは、文化の破壊。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 幻視</h3>
+                        <p>リトルビッグホーンの前、シッティング・ブルはサンダンスで幻視を受けた。「兵士が空から落ちてくる」——勝利の予言。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 抵抗</h3>
+                        <p>条約を破り土地を奪う白人への武力抵抗。しかし圧倒的な軍事力の前に最終的には敗北。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 霊性</h3>
+                        <p>ワカン・タンカ（大いなる神秘）への信仰。すべてはつながっている。人間、動物、植物、大地。</p>
+                </div>
+                <div class="card">
+                    <h3">💀 最期</h3>
+                        <p>ゴースト・ダンス運動への参加を恐れた当局により、逮捕中に射殺。殉教者となる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. リトルビッグホーン -->
+        <section class="section">
+            <h2 class="section-title">⚔️ リトルビッグホーンの戦い</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 背景</h3>
+                        <p>1868年の条約でブラックヒルズはラコタに保障されていた。1874年、カスターが金を発見。白人が殺到し条約は破られた。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 連合</h3>
+                        <p>シッティング・ブル、クレイジー・ホースらがラコタ、シャイアン、アラパホの連合軍を結成。数千人規模。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 戦い</h3>
+                        <p>1876年6月25日、カスター将軍は分散した部隊で攻撃。先住民連合軍に包囲され、カスターと約260人が全滅。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 結末</h3>
+                        <p>軍事的勝利だったが、戦略的敗北。米軍は復讐に燃え、大規模な討伐を開始。先住民は追い詰められていく。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Worldview Collision</h2>
+            <div class="it-card">
+                <h3">Two Incompatible Operating Systems</h3>
+                    <p>西洋OS：土地は所有物、自然は資源、進歩は線形。ラコタOS：土地は共有、自然は親族、時間は循環。互換性なし。</p>
+            </div>
+            <div class="it-card">
+                <h3">Treaties as Deprecated APIs</h3>
+                    <p>条約は「約束されたAPI」だったが、白人は一方的に非推奨化（deprecate）。先住民のシステムは動作しなくなった。</p>
+            </div>
+            <div class="it-card">
+                <h3">Buffalo as Critical Dependency</h3>
+                    <p>バッファローはラコタ・システムの重要な依存関係。白人がこの依存関係を削除（殺戮）したため、システム全体がクラッシュ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Resistance as Firewall</h3>
+                    <p>シッティング・ブルの抵抗はファイアウォール。侵入を阻止しようとしたが、リソース（人口、武器）の圧倒的差で突破された。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>リトルビッグホーンの勝利</strong>：アメリカ先住民による最も有名な軍事的勝利。</li>
+                <li><strong>抵抗の象徴</strong>：植民地主義への抵抗の永続的シンボル。</li>
+                <li><strong>環境主義への影響</strong>：土地との一体性という思想は現代エコロジーに影響。</li>
+                <li><strong>先住民権利運動</strong>：AIM（アメリカン・インディアン・ムーブメント）などの精神的先駆者。</li>
+                <li><strong>スタンディング・ロック</strong>：2016年のパイプライン抗議は彼の足跡で行われた。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">根</h3>
+                        <ul class="list-rich">
+                            <li>ラコタの伝統</li>
+                            <li>ワカン・タンカ信仰</li>
+                            <li>平原インディアンの生活様式</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">枝</h3>
+                        <ul class="list-rich">
+                            <li>先住民権利運動</li>
+                            <li>環境主義</li>
+                            <li>脱植民地化理論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 世界観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シッティング・ブル</th>
+                        <th>西洋近代</th>
+                        <th>現代エコロジー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>土地</strong></td>
+                        <td>共有・神聖</td>
+                        <td>個人所有・商品</td>
+                        <td>公共財</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自然</strong></td>
+                        <td>親族</td>
+                        <td>資源</td>
+                        <td>システム</td>
+                    </tr>
+                    <tr>
+                        <td><strong>時間</strong></td>
+                        <td>循環</td>
+                        <td>線形・進歩</td>
+                        <td>持続可能性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人間</strong></td>
+                        <td>自然の一部</td>
+                        <td>自然の主人</td>
+                        <td>管理者</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>分散型</td>
+                        <td>中央集権型</td>
+                        <td>ハイブリッド</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もう一つの道</h2>
+            <div class="thought-experiment">
+                <h3">土地は売れるのか</h3>
+                    <p>「大地を売る？それは空を売るのと同じだ。空をどうやって売るのか？」——シッティング・ブルの言葉は、根本的な問いを投げかけます。</p>
+                    <p style="margin-top: 1.5rem;">
+                        西洋法では、土地は所有権の対象。買い、売り、区分する。これは「当然」のように見えますが、人類史の大部分では、土地を個人が所有するという概念は存在しませんでした。</p>
+                    <p style="margin-top: 1.5rem;">
+                        先住民の視点：人間は土地の一部であり、土地は人間のものではない。大地は母であり、母を売ることはできない。この視点を「原始的」と呼ぶのは簡単ですが——</p>
+                    <p style="margin-top: 1.5rem;">
+                        気候変動、生態系崩壊、持続不可能な消費。西洋の「進歩」は限界に達しているように見えます。シッティング・ブルの世界観には、私たちが学ぶべきものがあるのではないでしょうか？</p>
+                    <p style="margin-top: 1.5rem;">
+                        もちろん、単純なロマン主義には注意が必要です。しかし「異なる世界観が存在しうる」という認識自体が重要です。現在の在り方は唯一の在り方ではない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        土地は所有できるものですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>シッティング・ブル /
+                タタンカ・イヨタケ（c.1831-1890）は、ハンクパパ・ラコタ族のホーリーマンであり、アメリカ先住民抵抗運動の象徴的指導者です。1876年のリトルビッグホーンの戦いでカスター将軍を破った連合軍の精神的指導者として知られています。「土地は共有であり、所有するものではない」「大地は母であり、売ることはできない」——彼の世界観は西洋近代の所有・支配・進歩観と根本的に異なりました。1890年、ゴースト・ダンス運動への参加を恐れた当局により逮捕中に射殺され、59歳で生涯を終えました。彼の遺産は今日も生きています——先住民権利運動、環境主義、そして2016年のスタンディング・ロック抗議（彼の足跡で行われた）に。「もう一つの世界は可能である」——シッティング・ブルは、この可能性を体現した人物でした。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Another world is possible.</p>
+    </footer>
+</body>
+
+</html>

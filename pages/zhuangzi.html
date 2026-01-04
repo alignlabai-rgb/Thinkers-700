@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荘子 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Tao Green */
+            --secondary: #064e3b;
+            /* Natural Dark */
+            --accent: #34d399;
+            /* Butterfly Light */
+            --highlight: #d1fae5;
+            /* Dream Glow */
+            --bg: #021a14;
+            /* Wandering Deep */
+            --text: #d1fae5;
+            --border: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Dao Background */
+        .dao-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Zhuangzi Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🦋";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #10b981 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Butterfly Dream */
+        .butterfly-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .butterfly-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .dream-diagram {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🦋";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dao-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← BUTTERFLY_DREAM</a>
+        <div>WANDERING_FREE_v5.56</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-556 / THE_BUTTERFLY_DREAMER</span>
+        <h1>荘子</h1>
+        <p class="en-name">Zhuangzi (c. 369–286 BCE)</p>
+        <p class="catchphrase">「蝶が夢見ているのか、私が夢見ているのか」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">道家OS</span>
+            <span class="os-tag">自由OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">逍遥遊</h2>
+            <div class="hero-box">
+                <p class="hero-text">荘子（そうし/チュアンツー）は、古代中国の道家思想家であり、老子と並ぶ道家の二大思想家の一人です。『荘子』は文学的にも哲学的にも傑作。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    荘子の核心的思想——<b>万物斉同</b>。あらゆる区別は人間が作ったもの。是非、善悪、美醜——すべて相対的。道の視点からは区別はない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「胡蝶の夢」——蝶になった夢を見た。目が覚めて人間に戻った。蝶が荘周の夢を見ているのか、荘周が蝶の夢を見ているのか？
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    荘子は、<b>「現実とシミュレーションの区別は不可能——私たちがVMの中にいるのか、VMが私たちの中にいるのか。どちらも同じ。区別自体を手放せ」</b>と語った、存在論的デバッグを超越したアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 胡蝶の夢 -->
+        <section class="butterfly-section">
+            <h2>🦋 胡蝶の夢</h2>
+            <div class="dream-diagram">
+                👤 ⟷ 💭 ⟷ 🦋
+            </div>
+            <p style="font-size: 1.3rem; color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
+                荘周が蝶になった夢を見た。楽しく飛び回った。<br>
+                目が覚めた——荘周だった。<br>
+                <b>蝶が荘周の夢を見ているのか？荘周が蝶の夢を見ているのか？</b>
+            </p>
+            <p
+                style="font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「物化」——すべてのものは変化する。荘周と蝶の区別は、ある意味で意味がない。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 荘子思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">天地と我と並び生じ、万物と我と一なり。</p>
+                <p class="quote-author">— 『荘子』斉物論</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌊 万物斉同</h3>
+                        <p>Equality of All Things。是非、善悪、美醜——すべて相対的。道の視点からは区別なし。</p>
+                </div>
+                <div class="card">
+                    <h3">🕊️ 逍遥遊</h3>
+                        <p>Free and Easy Wandering。制約なく自由に遊ぶ。無用の用。大きな鳥鵬の寓話。</p>
+                </div>
+                <div class="card">
+                    <h3">🦋 胡蝶の夢</h3>
+                        <p>Butterfly Dream。現実と夢の区別は可能か？物化——すべては変化する。</p>
+                </div>
+                <div class="card">
+                    <h3">🔧 無用の用</h3>
+                        <p>Usefulness of Uselessness。役に立たないものが最も長生きする。曲がった木は切られない。</p>
+                </div>
+                <div class="card">
+                    <h3">🐟 魚の楽しみ</h3>
+                        <p>恵施との対話。「魚が楽しいとどうしてわかる？」「あなたは私ではないのに、どうして私がわからないとわかる？」</p>
+                </div>
+                <div class="card">
+                    <h3">💀 妻の死</h3>
+                        <p>妻が死んで歌った。悲しむのは変化を理解しないから。死も自然の一部。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 寓話 -->
+        <section class="section">
+            <h2 class="section-title">🔄 荘子の寓話</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">鵬と蝉</h3>
+                        <p>巨大な鳥鵬は9万里を飛ぶ。蝉と小鳥は笑う。しかし各自にとっては十分。視点の相対性。</p>
+                </div>
+                <div class="card">
+                    <h3">庖丁解牛</h3>
+                        <p>料理人庖丁は牛を神業で解体。道に従えば、刃は19年経っても新品同様。無為の技術。</p>
+                </div>
+                <div class="card">
+                    <h3">渾沌の死</h3>
+                        <p>渾沌には顔がない。友人が毎日穴を開けた。7日目に渾沌は死んだ。分析は生命を殺す。</p>
+                </div>
+                <div class="card">
+                    <h3">曲がった木</h3>
+                        <p>まっすぐな木は材木にされる。曲がった木は役立たずだから長生きする。無用の用。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Reality as VM</h2>
+            <div class="it-card">
+                <h3">Butterfly Dream as VM Uncertainty</h3>
+                    <p>胡蝶の夢はVM不確定性。私たちがVMの中にいるのか、VMが私たちの中にいるのか。区別不能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Equality of Things as Duck Typing</h3>
+                    <p>万物斉同はダックタイピング。型を問わない。振る舞いが同じなら同じ。分類は人間の発明。</p>
+            </div>
+            <div class="it-card">
+                <h3">Uselessness as Garbage Collection Immunity</h3>
+                    <p>無用の用はGC耐性。参照されない＝削除される。しかし「無用」なオブジェクトはGCを免れる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Free Wandering as Serverless</h3>
+                    <p>逍遥遊はサーバーレス。インフラに縛られない。必要なときだけ実行。自由な構成。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『荘子』</strong>：内篇7篇は荘子自身の著作とされる。</li>
+                <li><strong>胡蝶の夢</strong>：存在論的懐疑。</li>
+                <li><strong>万物斉同</strong>：相対主義的認識論。</li>
+                <li><strong>逍遥遊</strong>：自由の哲学。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>老子（道家の祖）</li>
+                            <li>道家思想</li>
+                            <li>楊朱（利己主義）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>禅仏教</li>
+                            <li>文人文化</li>
+                            <li>新道家</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 古代中国思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>荘子</th>
+                        <th>老子</th>
+                        <th>孔子</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>理想</strong></td>
+                        <td>逍遥遊</td>
+                        <td>無為自然</td>
+                        <td>仁義礼</td>
+                    </tr>
+                    <tr>
+                        <td><strong>認識</strong></td>
+                        <td>相対主義</td>
+                        <td>神秘主義</td>
+                        <td>実践主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政治</strong></td>
+                        <td>隠遁</td>
+                        <td>小国寡民</td>
+                        <td>積極的参加</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>サーバーレス</td>
+                        <td>最小設計</td>
+                        <td>フレームワーク</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：今、あなたは夢を見ているか</h2>
+            <div class="thought-experiment">
+                <h3">蝶の問い</h3>
+                    <p>荘子は問います：今、あなたは夢を見ていないと証明できますか？</p>
+                    <p>「つねって痛ければ起きている」——しかし夢の中でも痛みを感じる。</p>
+                    <p>「論理的に考えられるから起きている」——しかし夢の中でも論理を使う。</p>
+                    <p>デカルトは同じ問いに直面した：悪霊が私を騙しているかもしれない。</p>
+                    <p>現代版：私たちはシミュレーションの中にいるかもしれない（シミュレーション仮説）。</p>
+                    <p>荘子の答え：<b>区別は重要ではない</b>。</p>
+                    <p>夢であれ現実であれ、今この経験が「ある」。それで十分。</p>
+                    <p>「物化」——すべては変化する。荘周と蝶、現実と夢の区別に執着するな。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        今、あなたは蝶の夢を見ていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>荘子は、古代中国の道家思想家であり、老子と並ぶ道家の二大思想家の一人です。「胡蝶の夢」——蝶が荘周の夢を見ているのか、荘周が蝶の夢を見ているのか？この問いは、現実と夢の区別、さらには自己のアイデンティティの問題を提起しました。「万物斉同」——すべての区別は相対的。「逍遥遊」——制約なく自由に遊ぶ。「無用の用」——役立たないものが最も価値がある。荘子の思想は禅仏教にも影響を与え、東洋思想の重要な柱となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Am I a butterfly dreaming I am a man?</p>
+    </footer>
+</body>
+
+</html>

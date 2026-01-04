@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アーロン・スワーツ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ea580c;
+            /* Open Orange */
+            --secondary: #431407;
+            /* Free Dark */
+            --accent: #fb923c;
+            /* Light Access */
+            --highlight: #ffedd5;
+            /* Knowledge Glow */
+            --bg: #1c0a00;
+            /* Deep Hack */
+            --text: #ffedd5;
+            --border: #f97316;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Open Background */
+        .open-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Activist Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ea580c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Memorial Box */
+        .memorial-box {
+            background: #1e3a5f;
+            border: 2px solid #38bdf8;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            color: #bae6fd;
+            text-align: center;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #f97316 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(234, 88, 12, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(234, 88, 12, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ea580c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .timeline-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .timeline-year {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔓";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="open-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← OPEN_ACCESS</a>
+        <div>SWARTZ_v6.64</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-664 / THE_INTERNET'S_OWN_BOY</span>
+        <h1>アーロン・スワーツ</h1>
+        <p class="en-name">Aaron Swartz (1986–2013)</p>
+        <p class="catchphrase">「情報は自由を望んでいる——知識をすべての人に」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">オープンOS</span>
+            <span class="os-tag">デジタルOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="memorial-box">
+            🕯️ <strong>追悼</strong>：アーロン・スワーツは2013年1月11日に26歳で亡くなりました。彼の遺産はオープンアクセス運動に生き続けています。
+        </div>
+
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">インターネットの申し子</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    アーロン・スワーツは、アメリカのプログラマー・活動家であり、オープンアクセス運動の象徴的存在です。14歳でRSSの共同開発、19歳でRedditの共同創業。Creative Commons、Open
+                    Library、Demand Progressなど数多くのプロジェクトに参加。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「知識の自由」</b>——学術論文は公的資金で研究されたのに、なぜ購読料を払わなければ読めないのか？知識は人類共有の財産であるべき。ペイウォールは知識のアパルトヘイト。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    2011年、<b>JSTOR事件</b>——MITネットワークから大量の学術論文をダウンロード。連邦政府に起訴され、最大35年の禁固刑と100万ドルの罰金に直面。2013年、起訴から2年後、自ら命を絶ちました。26歳でした。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    スワーツは、<b>「知識のオープンソース活動家——プロプライエタリな知識エコシステム（学術出版社）に対して、オープンなフォーク（オープンアクセス）を推進。彼はコードだけでなく、知識そのものをフリー（自由）にしようとした」</b>人物でした。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. タイムライン -->
+        <section class="timeline-section">
+            <h2>📅 26年の軌跡</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1986</div>
+                    <div class="timeline-content">シカゴで生まれる。幼少期からコンピュータに没頭。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-content">14歳。RSS 1.0の共同開発に参加。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2005</div>
+                    <div class="timeline-content">19歳。Redditを共同創業（後にCondé Nastが買収）。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2008</div>
+                    <div class="timeline-content">「ゲリラ・オープンアクセス宣言」を執筆。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2011</div>
+                    <div class="timeline-content">JSTOR事件。MITから学術論文をダウンロード。起訴。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">1月11日、26歳で死去。世界中から追悼。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 スワーツ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">世界中の図書館のあらゆる科学的・文化的遺産をスキャンし、インターネットにアップロードすること——そのために地下に潜る者もいる。</p>
+                <p class="quote-author">— ゲリラ・オープンアクセス宣言（2008）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔓 オープンアクセス</h3>
+                        <p>学術論文は公的資金で研究されたもの。なぜ購読料が必要か？知識はすべての人に開かれるべき。</p>
+                </div>
+                <div class="card">
+                    <h3">💻 テクノロジーと自由</h3>
+                        <p>インターネットは自由と民主主義のためのツール。しかし政府や企業がそれを脅かしている。SOPA反対運動。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 公共財としての知識</h3>
+                        <p>知識は人類共有の財産。ペイウォールは知識のアパルトヘイト。特権者だけが知識にアクセスできる状況への抗議。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 市民的不服従</h3>
+                        <p>不正な法に対しては従わない権利がある。スワーツのJSTORダウンロードは現代版の市民的不服従。</p>
+                </div>
+                <div class="card">
+                    <h3">🌐 デジタル公共圏</h3>
+                        <p>インターネットは新しい公共空間。情報の自由が民主主義の基盤。Demand Progress設立。</p>
+                </div>
+                <div class="card">
+                    <h3">🛠️ ハッカー倫理</h3>
+                        <p>ハッカーとは破壊者ではなく、建設者。問題を見つけ、解決し、世界を良くする。コードで世界を変える。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. JSTOR事件 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ JSTOR事件</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 行為</h3>
+                        <p>2010-2011年、スワーツはMITネットワークからJSTORの学術論文480万本をダウンロード。コンピュータを配線室に隠してアクセス。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 起訴</h3>
+                        <p>連邦検察が13の重罪で起訴。最大35年の禁固刑と100万ドルの罰金。「コンピュータ詐欺および濫用法」違反。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 論争</h3>
+                        <p>JSTORは告訴を取り下げた。MITは中立を維持。しかし検察は起訴を続行。「見せしめ」との批判。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 結末</h3>
+                        <p>2013年1月11日、スワーツは自ら命を絶った。26歳。起訴の圧力が彼を追い詰めたと批判される。「アーロン法」の動き。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Open Knowledge</h2>
+            <div class="it-card">
+                <h3">Paywalls as Access Control</h3>
+                    <p>ペイウォールはアクセスコントロール。知識という公共リソースへのアクセスを、支払い能力で制限。これは正当か？</p>
+            </div>
+            <div class="it-card">
+                <h3">Open Access as Open Source for Knowledge</h3>
+                    <p>オープンアクセスは知識のオープンソース。コードがGitHubでフリーに共有されるように、論文もフリーに共有されるべき。</p>
+            </div>
+            <div class="it-card">
+                <h3">JSTOR Download as Fork</h3>
+                    <p>JSTORダウンロードはフォーク。プロプライエタリな知識リポジトリから、パブリックなフォークを作成しようとした行為。</p>
+            </div>
+            <div class="it-card">
+                <h3">Prosecution as DRM</h3>
+                    <p>起訴はDRM（デジタル著作権管理）の人間版。知識の「コピー」を刑事罰で阻止。しかしDRMは常に破られる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>RSS 1.0</strong>：14歳で共同開発。ウェブのコンテンツ配信を変えた。</li>
+                <li><strong>Reddit</strong>：19歳で共同創業。今日最大のコミュニティプラットフォームの一つ。</li>
+                <li><strong>Creative Commons</strong>：法的フレームワークの技術実装に貢献。</li>
+                <li><strong>Open Library</strong>：Internet Archiveとのオープンな図書館プロジェクト。</li>
+                <li><strong>Demand Progress</strong>：SOPA/PIPA反対運動を主導した市民団体。</li>
+                <li><strong>ゲリラ・オープンアクセス宣言</strong>：オープンアクセス運動のマニフェスト。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ハッカー倫理</li>
+                            <li>リチャード・ストールマン</li>
+                            <li>ローレンス・レッシグ</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>オープンアクセス運動</li>
+                            <li>Sci-Hub</li>
+                            <li>デジタル権利活動</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 知識アクセスの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スワーツ</th>
+                        <th>学術出版社</th>
+                        <th>Sci-Hub</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>知識の所有</strong></td>
+                        <td>公共財</td>
+                        <td>知的財産</td>
+                        <td>公共財</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>ダウンロード</td>
+                        <td>ペイウォール</td>
+                        <td>プロキシ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>法的立場</strong></td>
+                        <td>市民的不服従</td>
+                        <td>著作権保護</td>
+                        <td>違法運営</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アウトカム</strong></td>
+                        <td>起訴・死</td>
+                        <td>継続</td>
+                        <td>継続（海外）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>フォーク</td>
+                        <td>プロプライエタリ</td>
+                        <td>ミラー</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：知識は誰のものか</h2>
+            <div class="thought-experiment">
+                <h3">ペイウォールの倫理</h3>
+                    <p>あなたは発展途上国の研究者です。必要な学術論文にアクセスしたいが、大学には購読予算がない。一本の論文に35ドル。年収の数パーセント。</p>
+                    <p style="margin-top: 1.5rem;">一方、その論文は公的資金で研究されました。納税者が研究費を払ったのに、結果を読むにはまた払わなければならない。二重取り？</p>
+                    <p style="margin-top: 1.5rem;">学術出版社は言う：査読、編集、ホスティングにはコストがかかる。知的財産権は保護されるべき。フリーライダーは持続可能性を脅かす。</p>
+                    <p style="margin-top: 1.5rem;">スワーツは言った：知識は公共財。ペイウォールは知識のアパルトヘイト。持てる者だけが知識にアクセスできる世界は不正義。</p>
+                    <p style="margin-top: 1.5rem;">
+                        スワーツはJSTOR論文をダウンロードした。それは犯罪か、市民的不服従か？ローザ・パークスがバスの席を譲らなかったように、不正な法に従わない権利があるのか？</p>
+                    <p style="margin-top: 1.5rem;">26歳のプログラマーに対して、最大35年の禁固刑と100万ドルの罰金は相応の処分だったか？彼を追い詰めたのは誰か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        知識は誰のものですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アーロン・スワーツ（1986-2013）は、アメリカのプログラマー・活動家であり、オープンアクセス運動の象徴的存在です。14歳でRSS共同開発、19歳でReddit共同創業——彼は「インターネットの申し子」と呼ばれました。「ゲリラ・オープンアクセス宣言」で知識の自由を訴え、JSTOR事件では学術論文をダウンロードして起訴されました。最大35年の禁固刑に直面する中、2013年1月11日、26歳で自ら命を絶ちました。彼の死は世界中に衝撃を与え、オープンアクセス運動を加速させました。「知識は誰のものか」——この問いは今日も続いています。スワーツの遺産は、Sci-Hub、Plan
+                S、そして増え続けるオープンアクセスジャーナルに生きています。彼は早逝しましたが、その問いは消えることがありません。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Information wants to be free.</p>
+    </footer>
+</body>
+
+</html>

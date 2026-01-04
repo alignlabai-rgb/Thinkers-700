@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シモーヌ・ヴェイユ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Affliction Violet */
+            --secondary: #2e1065;
+            /* Gravity Dark */
+            --accent: #a78bfa;
+            /* Grace Light */
+            --highlight: #ede9fe;
+            /* Attention Glow */
+            --bg: #1a0a2e;
+            /* Mystical Deep */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Mystical Background */
+        .mystical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Weil Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✝";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Gravity Diagram */
+        .gravity-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .gravity-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .gravity-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .force-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .gravity-box {
+            background: #dc2626;
+            border: 3px solid #f87171;
+        }
+
+        .grace-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .arrow-down {
+            font-size: 3rem;
+            color: #dc2626;
+        }
+
+        .arrow-up {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✝";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mystical-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← GRAVITY_AND_GRACE</a>
+        <div>ATTENTION_v5.39</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-539 / THE_MYSTIC_PHILOSOPHER</span>
+        <h1>シモーヌ・ヴェイユ</h1>
+        <p class="en-name">Simone Weil (1909–1943)</p>
+        <p class="catchphrase">「注意力こそが祈りの最も純粋な形である」</p>
+        <div class="os-tags">
+            <span class="os-tag">神秘OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">重力と恩寵</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    シモーヌ・ヴェイユは、20世紀フランスの哲学者・神秘家・社会活動家です。ユダヤ人でありながらキリスト教に深く惹かれ、工場労働者として働き、スペイン内戦に参加し、34歳で早世しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヴェイユの核心的洞察——<b>「重力」と「恩寵」の対比</b>。人間は自然に低きに流れる（重力）。しかし神の恩寵だけが人間を引き上げる。不幸への注意力が、神への道を開く。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「根をもつこと」——近代社会は人間から根を引き抜いた。土地、共同体、伝統——失われた「根」を取り戻すことが必要。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ヴェイユは、<b>「人間のデフォルト状態は『重力』——エラーに向かって落下する。『恩寵』は外部からの例外ハンドリング。『注意力』はデバッグモード——苦しみに注目することでバグの原因が見える」</b>と分析した、魂のデバッガーです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 重力と恩寵 -->
+        <section class="gravity-section">
+            <h2>⬇️⬆️ 重力と恩寵</h2>
+            <div class="gravity-diagram">
+                <div>
+                    <div class="force-box gravity-box">
+                        <p>⬇️ 重力</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Pesanteur</p>
+                        <p style="font-size: 0.8rem;">自我、欲望、支配</p>
+                    </div>
+                    <p class="arrow-down" style="margin-top: 1rem;">↓</p>
+                </div>
+                <div>
+                    <p class="arrow-up" style="margin-bottom: 1rem;">↑</p>
+                    <div class="force-box grace-box">
+                        <p>⬆️ 恩寵</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Grâce</p>
+                        <p style="font-size: 0.8rem;">神の愛、自己放棄</p>
+                    </div>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                自然法則は下へ引く。恩寵だけが上へ引き上げる。人間の努力では不十分。神の介入が必要。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ヴェイユ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">注意力こそが祈りの最も純粋な形である。</p>
+                <p class="quote-author">— 『重力と恩寵』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⬇️ 重力</h3>
+                        <p>Pesanteur。自然法則。自我の膨張、支配欲、低きに流れる傾向。人間のデフォルト状態。</p>
+                </div>
+                <div class="card">
+                    <h3">⬆️ 恩寵</h3>
+                        <p>Grâce。神の愛。人間を引き上げる超自然的な力。自己放棄によってのみ受け取れる。</p>
+                </div>
+                <div class="card">
+                    <h3">👁️ 注意力</h3>
+                        <p>Attention。自我を空にして対象に向かう。祈りの本質。学習の核心。他者への愛。</p>
+                </div>
+                <div class="card">
+                    <h3">😢 不幸</h3>
+                        <p>Malheur。単なる苦しみではない。魂を打ち砕く不幸。しかしここに神との出会いがある。</p>
+                </div>
+                <div class="card">
+                    <h3">🌱 根をもつこと</h3>
+                        <p>Enracinement。土地、共同体、伝統への帰属。近代化がこれを破壊した。回復が必要。</p>
+                </div>
+                <div class="card">
+                    <h3">🎭 脱創造</h3>
+                        <p>Décréation。自我を消す。神に場所を空ける。創造の逆プロセス。自己放棄。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 社会批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 労働と社会</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 工場労働</h3>
+                        <p>哲学教師だったヴェイユは工場で働いた。労働の苦しみを身体で知る。抑圧の現実。</p>
+                </div>
+                <div class="card">
+                    <h3">2. スペイン内戦</h3>
+                        <p>共和国側で参加。しかし暴力の連鎖に幻滅。革命の理想と暴力の矛盾。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 抑圧の分析</h3>
+                        <p>抑圧の普遍的メカニズムを分析。マルクス主義を超えて。権力そのものの問題。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 根こぎ</h3>
+                        <p>Déracinement。植民地主義、工業化、戦争——人間は根を失った。精神的な飢餓。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Soul as Exception Handler</h2>
+            <div class="it-card">
+                <h3">Gravity as Default Behavior</h3>
+                    <p>重力はデフォルトの振る舞い。プログラムしなくても、システムは低きに流れる。エントロピー増大。</p>
+            </div>
+            <div class="it-card">
+                <h3">Grace as External Interrupt</h3>
+                    <p>恩寵は外部割り込み。ユーザー（神）からの介入。プログラム内からは発生しない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Attention as Debug Mode</h3>
+                    <p>注意力はデバッグモード。通常の実行を停止し、状態を注意深く観察する。問題の本質が見える。</p>
+            </div>
+            <div class="it-card">
+                <h3">Rootedness as Dependency Injection</h3>
+                    <p>根をもつことは依存性注入。共同体、伝統、土地——外部から注入されるコンテキスト。なければ動かない。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『重力と恩寵』</strong>：死後出版されたアフォリズム集。</li>
+                <li><strong>『根をもつこと』</strong>：社会哲学の遺作。</li>
+                <li><strong>注意力の哲学</strong>：祈りと学習の本質。</li>
+                <li><strong>脱創造</strong>：自我を消す神秘主義的実践。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>プラトン（善のイデア）</li>
+                            <li>マルクス（労働疎外）</li>
+                            <li>十字架のヨハネ（神秘主義）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アルベール・カミュ</li>
+                            <li>アイリス・マードック</li>
+                            <li>解放の神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 神秘思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ヴェイユ</th>
+                        <th>キルケゴール</th>
+                        <th>マイスター・エックハルト</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>不幸・注意力</td>
+                        <td>跳躍・不安</td>
+                        <td>離脱・合一</td>
+                    </tr>
+                    <tr>
+                        <td><strong>神への道</strong></td>
+                        <td>自己放棄</td>
+                        <td>跳躍</td>
+                        <td>離脱</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社会観</strong></td>
+                        <td>批判的</td>
+                        <td>個人中心</td>
+                        <td>超越的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>デバッグ</td>
+                        <td>例外処理</td>
+                        <td>初期化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：不幸への注意</h2>
+            <div class="thought-experiment">
+                <h3">苦しみに意味はあるか</h3>
+                    <p>ヴェイユは極端な禁欲生活を送り、自らを苦しめました。34歳で衰弱死。</p>
+                    <p>これは病的か、それとも深い真理への道か？</p>
+                    <p>ヴェイユの主張：不幸に注意を向けることで、神の愛が見える。苦しむ者と共にいることで、神に近づく。</p>
+                    <p>しかし問いがあります：</p>
+                    <p>苦しみを求めることは、苦しんでいる人々への連帯か、それとも自己陶酔か？</p>
+                    <p>「重力」から逃れるために、なぜ「恩寵」だけが道なのか？人間の努力に価値はないのか？</p>
+                    <p>ヴェイユの過激さは、現代の「ウェルネス」文化への挑戦でもあります：快適さを求めることは、何を逃しているか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        不幸に注意を向けることで、何が見えますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>シモーヌ・ヴェイユは、「重力と恩寵」「根をもつこと」「注意力」の思想で知られる20世紀フランスの哲学者・神秘家です。人間は自然に低きに流れる（重力）が、神の恩寵だけが引き上げてくれる。不幸への注意力こそが祈りの最も純粋な形。工場労働者として働き、スペイン内戦に参加し、34歳で早世——その生涯は思想の体現でした。カミュ、アイリス・マードックに影響を与え、現代においても「注意力」「根をもつこと」の概念は鮮烈な問いを投げかけます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Gravity and grace.</p>
+    </footer>
+</body>
+
+</html>

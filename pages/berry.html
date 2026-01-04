@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウェンデル・ベリー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #166534;
+            /* Farm Green */
+            --secondary: #14532d;
+            /* Deep Earth */
+            --accent: #4ade80;
+            /* Light Growth */
+            --highlight: #dcfce7;
+            /* Land Glow */
+            --bg: #052e16;
+            /* Deep Soil */
+            --text: #dcfce7;
+            --border: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Farm Background */
+        .farm-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(74, 222, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(22, 101, 52, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Berry Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #166534 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌾";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #22c55e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(22, 101, 52, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(22, 101, 52, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Land Ethics Section */
+        .land-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #166534 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .land-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .land-quote {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌾";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="farm-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← AGRARIAN_ETHICS</a>
+        <div>BERRY_v6.97</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-697 / THE_FARMER_POET</span>
+        <h1>ウェンデル・ベリー</h1>
+        <p class="en-name">Wendell Berry (1934–)</p>
+        <p class="catchphrase">「地球を食べ尽くそうとしている経済は、狂気である」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">土地倫理OS</span>
+            <span class="os-tag">共同体OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">農夫にして詩人</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ウェンデル・ベリーは、アメリカの農夫、詩人、エッセイスト、小説家であり、土地倫理と共同体主義の現代最重要の思想家の一人です。ケンタッキー州の家族農場で実際に農業を営みながら執筆。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心は<b>「土地との関係」</b>——人間は土地の一部であり、土地を搾取する対象ではない。持続可能な農業と地域共同体が健全な社会の基盤。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    近代産業文明、グローバル経済、消費主義への根本的批判。「大きいことはよいことだ」への「小さいことは美しい」という対抗。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ベリーは、<b>「社会OSのダウングレード提唱者——巨大クラウド（グローバル経済）ではなく、ローカルサーバー（地域共同体）での持続可能な運用を主張。最新OSではなく、土地に根ざした安定版」</b>を推奨する人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 土地倫理 -->
+        <section class="land-section">
+            <h2>🌍 核心の信念</h2>
+            <p class="land-quote">「土地を傷つけることなしには食べることはできないが、土地をより良くしながら食べることはできる」</p>
+            <p style="margin-top: 3rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+                持続可能性は抽象的理念ではなく、具体的な農業実践
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ベリー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">健全な文化とは、その土地の世話をすることを知っている地域共同体の文化である。</p>
+                <p class="quote-author">— ウェンデル・ベリー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌾 土地倫理</h3>
+                        <p>土地は資源ではなく共同体の一員。レオポルドの土地倫理を実践的に発展。</p>
+                </div>
+                <div class="card">
+                    <h3">🏡 地域共同体</h3>
+                        <p>健全な社会の基盤は地域共同体。グローバル経済は共同体を破壊する。</p>
+                </div>
+                <div class="card">
+                    <h3">🚜 持続可能な農業</h3>
+                        <p>工業的農業への批判。土壌を回復させる農業。次世代への責任。</p>
+                </div>
+                <div class="card">
+                    <h3">🏭 産業主義批判</h3>
+                        <p>「大きいことはよいこと」への反論。効率は搾取を隠す言葉。</p>
+                </div>
+                <div class="card">
+                    <h3">✍️ 詩と農業</h3>
+                        <p>詩人として、小説家として、エッセイストとして。言葉と土地の両方を耕す。</p>
+                </div>
+                <div class="card">
+                    <h3">💻 テクノロジー批判</h3>
+                        <p>コンピュータを使わない。技術は問題を解決するより多くの問題を生む。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要著作 -->
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">The Unsettling of America (1977)</h3>
+                        <p>『アメリカの動揺』。産業的農業と文化の崩壊。</p>
+                </div>
+                <div class="card">
+                    <h3">What Are People For? (1990)</h3>
+                        <p>『人間は何のために』。人間の目的についてのエッセイ集。</p>
+                </div>
+                <div class="card">
+                    <h3">The Gift of Good Land (1981)</h3>
+                        <p>『良き土地の贈り物』。農業と文化のエッセイ。</p>
+                </div>
+                <div class="card">
+                    <h3">Poetry</h3>
+                        <p>多数の詩集。土地と労働と愛についての詩。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Local</h2>
+            <div class="it-card">
+                <h3">Local Community as Edge Computing</h3>
+                    <p>地域共同体はエッジコンピューティング。中央クラウドに依存せず、ローカルで処理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sustainable Farming as Clean Code</h3>
+                    <p>持続可能な農業はクリーンコード。技術的負債を次世代に残さない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Industrial Agriculture as Bloatware</h3>
+                    <p>工業的農業はブロートウェア。効率的に見えて、リソース（土壌）を消耗。</p>
+            </div>
+            <div class="it-card">
+                <h3">Community as Open Source</h3>
+                    <p>共同体はオープンソース。知識と実践を共有し、共同で維持。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>農本主義</strong>：小規模持続可能農業の思想的支柱。</li>
+                <li><strong>環境運動</strong>：土地倫理を実践で示す。</li>
+                <li><strong>地域経済</strong>：ローカル経済の重要性を主張。</li>
+                <li><strong>文学</strong>：70冊以上の著作——詩、エッセイ、小説。</li>
+                <li><strong>生き方としての思想</strong>：自ら農業を営みながら思想を展開。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>アルド・レオポルド</li>
+                            <li>ヘンリー・ソロー</li>
+                            <li>E.F.シューマッハー</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>ローカルフード運動</li>
+                            <li>持続可能農業</li>
+                            <li>農本主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 環境・共同体思想家</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心</th>
+                        <th>アプローチ</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ベリー</strong></td>
+                        <td>土地倫理</td>
+                        <td>農業実践</td>
+                        <td>詩と農</td>
+                    </tr>
+                    <tr>
+                        <td><strong>レオポルド</strong></td>
+                        <td>土地倫理</td>
+                        <td>生態学</td>
+                        <td>野生保護</td>
+                    </tr>
+                    <tr>
+                        <td><strong>シューマッハー</strong></td>
+                        <td>小さいことは美しい</td>
+                        <td>経済学</td>
+                        <td>適正技術</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ソロー</strong></td>
+                        <td>自然との共生</td>
+                        <td>超越主義</td>
+                        <td>ウォールデン</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：ローカルに生きる</h2>
+            <div class="thought-experiment">
+                <h3">グローバルかローカルか</h3>
+                    <p>ベリーは言う：グローバル経済は地域共同体を破壊する。安い輸入品は地元の農家を潰し、コミュニティを解体する。</p>
+                    <p style="margin-top: 1.5rem;">批判者は問う：しかしグローバル経済は貧困を削減した。安い商品は低所得者を助ける。ローカル主義は贅沢ではないか？</p>
+                    <p style="margin-top: 1.5rem;">ベリーの答え：短期的効率は長期的破壊を隠す。土壌は枯渇し、共同体は消え、スキルは失われる。真のコストは見えていない。</p>
+                    <p style="margin-top: 1.5rem;">さらなる問い：すべてをローカルにすることは可能か？8億人を養うのにローカル農業は十分か？</p>
+                    <p style="margin-top: 1.5rem;">ベリーは認める：全てをローカルにはできない。しかし、できる限りローカルに。依存を減らし、レジリエンスを高める。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたはどこまでローカルに生きることができますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ウェンデル・ベリー（1934-）は、アメリカの農夫、詩人、エッセイスト、小説家であり、土地倫理と共同体主義の現代最重要の思想家の一人です。ケンタッキー州の家族農場で実際に農業を営みながら70冊以上の著作を執筆。土地は資源ではなく共同体の一員——持続可能な農業と地域共同体が健全な社会の基盤。産業主義、グローバル経済、消費主義への根本的批判。レオポルド、ソロー、シューマッハーの系譜に立ち、ローカルフード運動、持続可能農業に影響。思想を語るだけでなく、自ら土地を耕しながら生きる——言葉と行為の一致が彼の最大の説得力です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Eat locally, think sustainably.</p>
+    </footer>
+</body>
+
+</html>

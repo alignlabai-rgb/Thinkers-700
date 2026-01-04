@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トマス・ア・ケンピス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #78716c;
+            /* Humble Brown */
+            --secondary: #1c1917;
+            /* Monastery Dark */
+            --accent: #a8a29e;
+            /* Parchment Light */
+            --highlight: #e7e5e4;
+            /* Devotion Glow */
+            --bg: #0c0a09;
+            /* Deep Silence */
+            --text: #e7e5e4;
+            --border: #57534e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .humble-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(120, 113, 108, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(168, 162, 158, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78716c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📿";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #57534e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(120, 113, 108, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(120, 113, 108, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Bestseller Section */
+        .bestseller-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78716c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .bestseller-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📿";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="humble-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← IMITATION</a>
+        <div>KEMPIS_v5.98</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-598 / THE_HUMBLE_WRITER</span>
+        <h1>トマス・ア・ケンピス</h1>
+        <p class="en-name">Thomas à Kempis (c. 1380–1471)</p>
+        <p class="catchphrase">「キリストにならいて」——聖書に次ぐベストセラー</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">霊性OS</span>
+            <span class="os-tag">謙遜OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">内面倫理の規範化</h2>
+            <div class="hero-box">
+                <p class="hero-text">トマス・ア・ケンピスは、15世紀低地諸国（オランダ）の修道士であり、『キリストにならいて』（De Imitatione Christi）の著者とされます。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    この書の歴史的影響——<b>聖書に次いで最も読まれたキリスト教書籍。500以上の翻訳。内面的敬虔の手引き</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    デヴォティオ・モデルナ（新しい敬虔）運動の産物。外面的儀式より内面的変容を強調。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    『キリストにならいて』は、<b>「究極のチュートリアル——内面生活のステップバイステップガイド。実践的で、すぐに使える。600年間のロングセラー。史上最長寿のドキュメント」</b>という、霊性のマニュアル。
+                </p>
+            </div>
+        </section>
+
+        <!-- ベストセラー -->
+        <section class="bestseller-section">
+            <h2>📚 聖書に次ぐベストセラー</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+                1418年頃執筆<br>
+                500以上の言語に翻訳<br>
+                6000以上の写本が現存<br>
+                600年間読み継がれる<br>
+                イグナチオ、ルター、ウェスレーも愛読
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ケンピスの教え</h2>
+            <div class="quote-box">
+                <p class="quote-text">虚栄は虚栄、神を愛し神にのみ仕えること以外はすべて虚栄。</p>
+                <p class="quote-author">— トマス・ア・ケンピス『キリストにならいて』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 キリストにならいて</h3>
+                    <p>4巻構成。内面生活の手引き。実践的霊性。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 謙遜</h3>
+                        <p>自己認識と謙遜の強調。「自分を低く見よ」。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 世俗離脱</h3>
+                        <p>世の栄光からの離脱。「一隅で静かに過ごす」。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 内面生活</h3>
+                        <p>外面的儀式より内面的変容。心の修練。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ キリスト中心</h3>
+                        <p>キリストの模倣が霊的生活の核心。</p>
+                </div>
+                <div class="card">
+                    <h3">📿 デヴォティオ・モデルナ</h3>
+                        <p>「新しい敬虔」運動。共同生活兄弟団。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Manual</h2>
+            <div class="it-card">
+                <h3>Imitation as Tutorial</h3>
+                <p>『ならいて』はチュートリアル。実践的で、すぐに使える内面生活のガイド。</p>
+            </div>
+            <div class="it-card">
+                <h3">600 Years as LTS</h3>
+                    <p>600年のロングセラーは究極のLTS（Long Term Support）。時代を超えた互換性。</p>
+            </div>
+            <div class="it-card">
+                <h3">Humility as Debugging</h3>
+                    <p>謙遜はデバッグ。自己のバグを認識し、修正する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Inner Life as Core Logic</h3>
+                    <p>内面生活はコアロジック。UIより内部実装が重要。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>キリストにならいて</strong>：内面霊性のマニュアル。</li>
+                <li><strong>謙遜の強調</strong>：自己認識の重要性。</li>
+                <li><strong>実践的霊性</strong>：理論より実践。</li>
+                <li><strong>普遍的訴求</strong>：宗派を超えた影響。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ゲルト・グローテ</li>
+                        <li>デヴォティオ・モデルナ</li>
+                        <li>修道院伝統</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>イグナチオ・ロヨラ</li>
+                            <li>プロテスタント敬虔主義</li>
+                            <li>現代霊性</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：600年のロングセラー</h2>
+            <div class="thought-experiment">
+                <h3">時代を超える価値</h3>
+                    <p>『キリストにならいて』は600年間読まれている。</p>
+                    <p>技術書の寿命は数年。</p>
+                    <p>この差はなぜ生まれるか？</p>
+                    <p>人間の内面は600年間変わらないか？</p>
+                    <p>あるいは、この書が普遍的真理を捉えているか？</p>
+                    <p>今日書かれるものが600年後に読まれる可能性は？</p>
+                    <p>長寿命のコンテンツの条件は何か？</p>
+                    <p>トレンドを追うことと普遍性を追求することの違い——</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        600年後に読まれるものを書けますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>トマス・ア・ケンピス（c.
+                1380-1471）は、15世紀オランダの修道士であり、『キリストにならいて』の著者とされます。聖書に次いで最も読まれたキリスト教書籍であり、500以上の言語に翻訳されました。デヴォティオ・モデルナ運動の産物として、外面的儀式より内面的変容を強調。謙遜、世俗離脱、キリストの模倣を説き、イグナチオ・ロヨラからジョン・ウェスレーまで、宗派を超えて600年間読み継がれています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Imitate Christ.</p>
+    </footer>
+</body>
+
+</html>

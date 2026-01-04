@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程頤 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c2d12;
+            /* Li Brown */
+            --secondary: #431407;
+            /* Deep Principle */
+            --accent: #ea580c;
+            /* Light Fire */
+            --highlight: #fed7aa;
+            /* Reason Glow */
+            --bg: #1c0a00;
+            /* Deep Study */
+            --text: #fed7aa;
+            --border: #c2410c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Li Background */
+        .li-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(234, 88, 12, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(124, 45, 18, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Cheng Yi Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔥";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #c2410c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 45, 18, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 45, 18, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Li Section */
+        .li-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .li-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .li-char {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .li-meaning {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        /* Gewu Section */
+        .gewu-section {
+            margin-top: 4rem;
+        }
+
+        .gewu-process {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .gewu-step {
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .gewu-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .gewu-process {
+                flex-direction: column;
+            }
+
+            .gewu-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="li-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LI_GEWU</a>
+        <div>CHENG_YI_v6.88</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-688 / YICHUAN_THE_YOUNGER_CHENG</span>
+        <h1>程頤</h1>
+        <p class="en-name">Cheng Yi / Yichuan 伊川 (1033–1107)</p>
+        <p class="catchphrase">「性即理なり」——人間の本性は天理そのもの</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">理OS</span>
+            <span class="os-tag">朱子学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">伊川先生——二程の弟</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    程頤（字は正叔、号は伊川先生）は、北宋の儒学者であり、兄の程顥とともに「二程」と呼ばれ、宋代理学（程朱学）の基礎を築きました。後の朱熹は程頤を特に継承。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「理」</b>——万物の根本原理。「性即理」（人間の本性は天理そのもの）。理を認識する方法として「格物窮理」を提唱。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    程頤は兄より<b>分析的・学問的</b>なアプローチを重視。朱熹の「朱子学」はこの路線を発展させました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    程頤は、<b>「儒学OSに『理』フレームワークを設計——『格物窮理』という学習アルゴリズムを定義。事物を研究し、その理を窮めることで知識を蓄積。朱熹がこのフレームワークを完成」</b>させた人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 理 -->
+        <section class="li-section">
+            <h2>🔥 核心概念</h2>
+            <p class="li-char">理</p>
+            <p class="li-meaning">万物の根本原理・天理</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「性即理」——人間の本性は天理そのもの。<br>
+                天理を認識し、私欲を去ることが道徳の道。
+            </p>
+        </section>
+
+        <!-- 格物窮理 -->
+        <section class="section gewu-section">
+            <h2 class="section-title">📚 格物窮理</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">事物を研究し、その理を窮める——知識の獲得プロセス</p>
+            <div class="gewu-process">
+                <div class="gewu-step">格物</div>
+                <span class="gewu-arrow">→</span>
+                <div class="gewu-step">窮理</div>
+                <span class="gewu-arrow">→</span>
+                <div class="gewu-step">致知</div>
+                <span class="gewu-arrow">→</span>
+                <div class="gewu-step">誠意</div>
+                <span class="gewu-arrow">→</span>
+                <div class="gewu-step">修身</div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 程頤思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">涵養には敬を用い、進学には致知に在り。</p>
+                <p class="quote-author">— 程頤</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔥 理（リ）</h3>
+                        <p>万物の根本原理。天理。事物の「所以然」（そうである理由）。理を認識することが学問の目標。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 格物窮理</h3>
+                        <p>事物を研究し（格物）、その理を窮める（窮理）。帰納的・分析的な知識獲得の方法。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 性即理</h3>
+                        <p>人間の本性は天理そのもの。私欲を去り、本性を回復すれば聖人に至る。</p>
+                </div>
+                <div class="card">
+                    <h3">🧘 敬</h3>
+                        <p>心を一つに集中し、散乱を防ぐ。「涵養には敬を用い」——日常の心の持ち方。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 易伝</h3>
+                        <p>『周易』に対する程頤の注釈。「伊川易伝」。朱熹に継承される。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 厳格な人格</h3>
+                        <p>「秋霜烈日の如し」と称された厳格な人格。兄の「春風」との対照。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 二程の比較 -->
+        <section class="section">
+            <h2 class="section-title">👬 二程兄弟</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">程顥（兄・明道）</h3>
+                        <p>体験・直観を重視。「仁」中心。温和な人格。心学の源流。</p>
+                </div>
+                <div class="card">
+                    <h3">程頤（弟・伊川）</h3>
+                        <p>分析・窮理を重視。「理」中心。厳格な人格。朱子学の源流。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Li</h2>
+            <div class="it-card">
+                <h3">Li as Universal Pattern</h3>
+                    <p>理はユニバーサル・パターン。すべてのオブジェクト（事物）に内在する設計原理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Gewu as Data Collection</h3>
+                    <p>格物はデータ収集。事物を研究し、パターン（理）を抽出。帰納的学習。</p>
+            </div>
+            <div class="it-card">
+                <h3">Qiongli as Pattern Recognition</h3>
+                    <p>窮理はパターン認識。データから法則を発見。天理の認識。</p>
+            </div>
+            <div class="it-card">
+                <h3">Xing Ji Li as Native API</h3>
+                    <p>「性即理」——人間にはネイティブAPIとして天理が組み込まれている。アクセスすれば真理を知れる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>理の哲学</strong>：宋明理学の中核概念。</li>
+                <li><strong>格物窮理</strong>：儒学的認識論の方法。</li>
+                <li><strong>性即理</strong>：人間の本性と天理の同一性。</li>
+                <li><strong>朱子学の源流</strong>：朱熹が直接継承。</li>
+                <li><strong>東アジアへの影響</strong>：日本・韓国・ベトナムの儒学。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">師</h3>
+                        <ul class="list-rich">
+                            <li>周敦頤</li>
+                            <li>孔子・孟子</li>
+                            <li>張載（同時代）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響</h3>
+                        <ul class="list-rich">
+                            <li>朱熹（直接継承）</li>
+                            <li>東アジア儒学</li>
+                            <li>日本朱子学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 朱子学と陽明学</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>朱子学（程頤→朱熹）</th>
+                        <th>陽明学（程顥→王陽明）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>核心</strong></td>
+                        <td>理</td>
+                        <td>良知</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>格物窮理</td>
+                        <td>致良知</td>
+                    </tr>
+                    <tr>
+                        <td><strong>知行関係</strong></td>
+                        <td>先知後行</td>
+                        <td>知行合一</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アプローチ</strong></td>
+                        <td>外→内（分析的）</td>
+                        <td>内→外（直観的）</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：知識は外から、内から</h2>
+            <div class="thought-experiment">
+                <h3">格物窮理 vs 致良知</h3>
+                    <p>程頤は「格物窮理」——外界の事物を研究して理を認識する。王陽明は「致良知」——心の内なる良知を発揮する。真の知識はどこから来るか？</p>
+                    <p style="margin-top: 1.5rem;">
+                        程頤の立場：私たちは生まれながらに天理を持つが、それは「暗い鏡」のようなもの。学問によって磨かなければ明らかにならない。だから読書と研究が必要。</p>
+                    <p style="margin-top: 1.5rem;">王陽明の批判：程朱学は「支離決裂」——外に理を求めて心を忘れている。百年の読書より一念の覚醒。街頭の庶民でも聖人になれる。</p>
+                    <p style="margin-top: 1.5rem;">この論争は西洋哲学の「合理論 vs 経験論」に似ています。デカルト的な内なる明証性か、ベーコン的な帰納的研究か。</p>
+                    <p style="margin-top: 1.5rem;">朱熹は両者の統合を試みました：「敬を持して理を窮む」——内面の集中と外面の研究の両方が必要。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        真の知識は外からの学習か、内なる覚醒か？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>程頤（1033-1107）は、北宋の儒学者であり、兄の程顥とともに「二程」と呼ばれ、宋代理学（程朱学）の基礎を築きました。彼の核心概念は「理」——万物の根本原理。「性即理」（人間の本性は天理そのもの）。理を認識する方法として「格物窮理」——事物を研究し、その理を窮める——を提唱。兄より分析的・学問的なアプローチを重視し、後の朱熹「朱子学」の直接の源流となりました。「秋霜烈日の如き」厳格な人格で知られ、「春風の如き」兄との対照を成しました。東アジア儒学に長期的影響を与えた、宋明理学の偉大な建築家です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Investigate things to extend knowledge.</p>
+    </footer>
+</body>
+
+</html>

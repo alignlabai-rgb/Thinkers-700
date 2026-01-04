@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルトゥル・ショーペンハウアー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;700;900&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1c1917;
+            /* Void Black */
+            --secondary: #292524;
+            /* Shadow Stone */
+            --accent: #7c3aed;
+            /* Will Purple */
+            --highlight: #c4b5fd;
+            /* Pale Violet */
+            --bg: #0c0a09;
+            /* Abyss */
+            --text: #e7e5e4;
+            --border: #44403c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Blind Will Background */
+        .will-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--primary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Pessimistic Header */
+        .header {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌑";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e1b4b 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .quote-box::before {
+            content: "«";
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            font-size: 8rem;
+            opacity: 0.1;
+            font-family: 'Crimson Text', serif;
+            color: var(--accent);
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--primary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--highlight);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--highlight);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Will Diagram */
+        .will-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .will-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .will-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .will-box {
+            padding: 3rem 5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .will-core {
+            background: var(--accent);
+            font-size: 1.8rem;
+            padding: 4rem 6rem;
+        }
+
+        .will-layer {
+            background: var(--secondary);
+            border: 2px solid var(--accent);
+            width: 80%;
+        }
+
+        .will-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚫";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="will-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DIE_WELT_ALS_WILLE_UND_VORSTELLUNG</a>
+        <div>PESSIMISM_KERNEL_v4.67</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-467 / DER_PHILOSOPH_DES_PESSIMISMUS</span>
+        <h1>アルトゥル・ショーペンハウアー</h1>
+        <p class="en-name">Arthur Schopenhauer (1788–1860)</p>
+        <p class="catchphrase">「生きることは苦しむことである。生き延びることは、苦しみに意味を見出すことである」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">美学OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">世界の暗い真実を見つめる</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    西洋哲学史において、ショーペンハウアーほど徹底的に「人生は苦しい」と主張した哲学者はいません。啓蒙主義の楽観論が支配した19世紀初頭、彼は真正面からこう宣言しました——<b>「生への意志（Wille
+                        zum
+                        Leben）」こそが世界の本質</b>であり、それは盲目的で、決して満たされることのない欲望である。私たちが経験する苦しみは、単に不運や環境のせいではなく、<b>存在そのものの本質的構造</b>なのだと。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    主著『意志と表象としての世界』（1818年）で、ショーペンハウアーはカントの「物自体」を「意志」と同一視しました。私たちが知覚する世界は「表象」——脳が構成したイメージ——に過ぎない。しかしその背後には、<b>盲目的に生きようとする宇宙的意志</b>が存在し、すべての生物を貫いている。この意志は満たされることがなく、私たちは永遠に欲望と退屈の間を揺れ動く。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ショーペンハウアーを学ぶことは、<b>「幸福の追求」という現代社会の大前提を根底から問い直すこと</b>です。彼の影響は、ニーチェ、フロイト、ワーグナー、ウィトゲンシュタインに及び、仏教哲学との驚くべき類似性を持っています。苦しみを直視することでしか得られない、逆説的な平安があります。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>ショーペンハウアーは、<b>「人間のOSは『意志（Will）』という停止不可能なバックグラウンドプロセスによって動かされている。このプロセスは無限ループで欲求を生成し続け、CPU（意識）はそれを処理し続けるが、決してタスク完了には至らない」</b>と診断した、人間性のシステム監査者です。唯一の「解放」は、芸術的観照や禁欲によってこのプロセスを一時停止させることです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 意志の図式 -->
+        <section class="will-section">
+            <h2>🌀 世界の二重構造</h2>
+            <div class="will-diagram">
+                <div class="will-box will-layer">
+                    <p>表象（Vorstellung）</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">私たちが知覚する世界</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">時間・空間・因果律によって構造化</p>
+                </div>
+                <div class="will-arrow">↓ 背後に ↓</div>
+                <div class="will-box will-core">
+                    <p>意志（Wille）</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">世界の本質・物自体</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">盲目的・非合理・飽くなき衝動</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                表象は意志の「客体化」であり、意志は一つであるが、表象の世界では多様な個体として現れる。すべての生物は同じ宇宙的意志の表れである。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ペシミズムの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人生は欲望と退屈の間を振り子のように揺れ動く。</p>
+                <p class="quote-author">— 『意志と表象としての世界』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌀 生への意志</h3>
+                    <p>世界の本質は「意志」——盲目的で、目的なく、飽くことなく生きようとする衝動。すべての生物を貫く宇宙的力。理性はこの意志の道具に過ぎない。</p>
+                </div>
+                <div class="card">
+                    <h3>🔄 苦しみの必然性</h3>
+                    <p>欲望が満たされれば退屈、満たされなければ苦痛。この二つの間を永遠に往復する。幸福とは「苦しみの一時的不在」に過ぎない。</p>
+                </div>
+                <div class="card">
+                    <h3>🎭 表象としての世界</h3>
+                    <p>私たちが知覚する世界は脳が構成した「表象」。時間・空間・因果律は認識の形式であり、物自体には属さない。カント哲学の徹底化。</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 芸術による救済</h3>
+                    <p>芸術的観照の瞬間、私たちは意志から解放される。特に音楽は意志そのものの直接的表現であり、最高の芸術。束の間の涅槃。</p>
+                </div>
+                <div class="card">
+                    <h3>🧘 意志の否定</h3>
+                    <p>恒久的救済は「意志の否定」による。禁欲・共感・聖者の境地。生への意志を静めることで、苦しみから解放される。仏教的解脱との類似。</p>
+                </div>
+                <div class="card">
+                    <h3>💔 共感の倫理</h3>
+                    <p>すべての生物は同じ意志の表れ。他者の苦しみは自分の苦しみ。この認識から生まれる共感（Mitleid）こそが道徳の基盤。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 解放への道</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 意志への隷属（Default State）</h3>
+                    <p>日常的意識の状態。欲望に駆り立てられ、その充足と欠乏の間を往復。「幸福」を追い求めるが、決して到達しない。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 認識による距離化</h3>
+                    <p>意志の本質を哲学的に認識する。自分の苦しみが個人的不運ではなく、存在の構造であることを理解。第一段階の解放。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 芸術的観照</h3>
+                    <p>美や芸術に没頭する瞬間、意志が一時停止する。「純粋な認識主体」となり、欲望から解放される。ただし一時的。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 意志の否定（Verneinung）</h3>
+                    <p>禁欲・共感・聖者的生活により、意志を恒久的に静める。生への意志を否定することで、苦しみの輪廻から脱出。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Will as Background Daemon</h2>
+            <div class="it-card">
+                <h3>Will as Non-Terminable Process</h3>
+                <p>「意志」はシステムの起動時から動作し、ユーザー（意識）がkillできないdaemonプロセス。このプロセスは無限ループで「欲求」を生成し続け、その処理がCPUリソース（注意・エネルギー）を消費し続ける。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>Representation as UI Layer</h3>
+                <p>表象（Vorstellung）はユーザーインターフェース。実際のシステム（意志）は見えず、UIを通じてのみ世界を操作できる。UIのデザイン（時間・空間・因果律）はOSに組み込まれており変更不可。</p>
+            </div>
+            <div class="it-card">
+                <h3>Suffering as Permanent Bug</h3>
+                <p>苦しみはシステムのバグではなく、仕様。欲望生成ループは「終了条件」を持たないため、タスクが完了することはない。パッチを当てても（欲望を一つ満たしても）、新たなタスクが即座にキューに追加される。</p>
+            </div>
+            <div class="it-card">
+                <h3>Art as Read-Only Mode</h3>
+                <p>芸術的観照は、システムを一時的に「読み取り専用モード」にする。書き込み操作（欲望追求）が一時停止し、CPUは純粋な観察に専念できる。ただしこのモードは長時間維持できない。</p>
+            </div>
+            <div class="it-card">
+                <h3>Denial of Will as System Shutdown</h3>
+                <p>意志の否定は、意図的なシステムシャットダウン。daemonプロセスを停止させることで、欲望生成ループから完全に脱出。仏教のNirvana.exit()と機能的に等価。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>意志の形而上学</strong>：カントの「物自体」を「意志」と同一視し、主意主義（Voluntarism）を確立。理性至上主義への根本的批判。</li>
+                <li><strong>非合理主義的人間観</strong>：理性は意志の道具に過ぎないとし、人間の非合理的側面を強調。フロイトの無意識論の先駆。</li>
+                <li><strong>共感の倫理学</strong>：カントの義務論を批判し、共感（Mitleid）を道徳の基盤として提示。すべての生物への同情。</li>
+                <li><strong>美学論</strong>：芸術を意志からの解放として位置づけ、特に音楽を最高の芸術として評価。ワーグナーへの影響。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イマヌエル・カント（物自体、超越論的観念論）</li>
+                        <li>プラトン（イデア論）</li>
+                        <li>インド哲学・仏教（マーヤー、涅槃）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>フリードリヒ・ニーチェ（力への意志、反転的継承）</li>
+                        <li>ジークムント・フロイト（無意識、欲動）</li>
+                        <li>リヒャルト・ワーグナー（音楽思想）</li>
+                        <li>ルートヴィヒ・ウィトゲンシュタイン（初期倫理思想）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ ペシミズムの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ショーペンハウアー</th>
+                        <th>ニーチェ</th>
+                        <th>仏教</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>苦しみの原因</strong></td>
+                        <td>意志（生への衝動）</td>
+                        <td>弱さ・受動性</td>
+                        <td>執着・渇愛</td>
+                    </tr>
+                    <tr>
+                        <td><strong>解放の方法</strong></td>
+                        <td>意志の否定</td>
+                        <td>意志の肯定・力への意志</td>
+                        <td>八正道・悟り</td>
+                    </tr>
+                    <tr>
+                        <td><strong>理性の位置づけ</strong></td>
+                        <td>意志の道具</td>
+                        <td>意志の症状</td>
+                        <td>解脱の手段</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>System Shutdown</td>
+                        <td>Daemon Optimization</td>
+                        <td>Enlightenment.exe</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：あなたが望むすべてを得たら</h2>
+            <div class="thought-experiment">
+                <h3>完璧な日曜日の午後</h3>
+                <p>想像してください。あなたの欲望がすべて満たされた状態を。お金は十分にあり、健康で、愛する人に囲まれ、仕事は成功し、社会的地位も手に入れた。今、日曜日の午後3時。</p>
+                <p>ショーペンハウアーはこう問います——その後、何が起こるか？</p>
+                <p>おそらく、あなたは「退屈」を感じ始めるでしょう。何かをしたくなる。新しい目標、新しい欲望を探し始める。あるいは、現在の幸福が失われることへの不安を感じる。</p>
+                <p>これがショーペンハウアーの洞察です。幸福とは「欲望の充足」ではありません。欲望が一時的に静まった状態に過ぎず、すぐに新たな欲望が生まれる。私たちは「幸福を得る」のではなく、「苦しみが一時的に止む」経験をしているだけなのです。
+                </p>
+                <p
+                    style="background: var(--accent); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    あなたは「何も欲しくない」状態を想像できますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アルトゥル・ショーペンハウアーの哲学は、西洋の楽観主義的伝統への根本的な挑戦でした。「意志」という非合理的な力が世界の本質であり、苦しみは存在の構造的特徴であるという主張は、フロイトの無意識論、ニーチェの力への意志、そして現代の反出生主義にまで影響を与えています。彼の処方箋——芸術的観照と意志の否定——は、仏教の涅槃と驚くほど類似しており、東西思想の橋渡しともなりました。「幸福の追求」が現代社会の主要なイデオロギーである今、ショーペンハウアーの問い——「そもそも幸福は可能なのか」——は、これまで以上に鋭い批判的視座を提供しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Das Leben ist eine mißliche Sache.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エルンスト・ユンガー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #374151;
+            /* Steel Gray */
+            --secondary: #1f2937;
+            /* Deep Iron */
+            --accent: #9ca3af;
+            /* Light Storm */
+            --highlight: #e5e7eb;
+            /* War Glow */
+            --bg: #111827;
+            /* Deep Trenches */
+            --text: #e5e7eb;
+            --border: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Steel Background */
+        .steel-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(156, 163, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(55, 65, 81, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Jünger Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #374151 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚔️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6b7280 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(55, 65, 81, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(55, 65, 81, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Worker Section */
+        .worker-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #374151 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .worker-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .worker-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .worker-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚔️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="steel-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← STORM_OF_STEEL</a>
+        <div>JUNGER_v6.96</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-696 / THE_STORM_SOLDIER</span>
+        <h1>エルンスト・ユンガー</h1>
+        <p class="en-name">Ernst Jünger (1895–1998)</p>
+        <p class="catchphrase">「私は危険に身をさらすとき、最も生きていると感じる」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">戦争OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">鉄の嵐の中で</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    エルンスト・ユンガーは、20世紀ドイツの作家・思想家であり、第一次世界大戦の従軍経験から技術と近代に対する独自の思想を展開しました。102歳まで生き、激動の20世紀を見つめ続けた稀有な存在。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「労働者」（Der Arbeiter）</b>——近代の本質は「総動員」。人間は労働者として、技術体制に組み込まれる。ブルジョワ個人主義の終焉。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    『鉄の嵐の中で』（1920）は第一次世界大戦の戦場体験を美的に描いた問題作。戦争の恐怖ではなく、その壮絶さと高揚を描写。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ユンガーは、<b>「近代技術社会OSの予言的診断者——すべてが『総動員』（Total
+                        Mobilization）というプロセスに巻き込まれる。人間はノードとしてシステムに組み込まれ、個人は消失する」</b>と描いた人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 労働者 -->
+        <section class="worker-section">
+            <h2>⚙️ 核心概念</h2>
+            <p class="worker-title">Der Arbeiter</p>
+            <p class="worker-subtitle">労働者——新しい人間類型</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                労働者は階級ではなく、技術時代の新しい人間類型。<br>
+                個人主義は終わり、集団としての動員が始まる。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ユンガー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">痛みは、存在の真正性を証明する最後の証人である。</p>
+                <p class="quote-author">— エルンスト・ユンガー『痛みについて』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚙️ 労働者</h3>
+                        <p>『労働者』（1932）。ブルジョワ個人主義の終焉。技術時代の新しい人間類型。</p>
+                </div>
+                <div class="card">
+                    <h3">🪖 総動員</h3>
+                        <p>社会全体が戦争・生産に動員される。平和と戦争の区別が消失。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 鉄の嵐</h3>
+                        <p>『鉄の嵐の中で』（1920）。塹壕戦の体験。戦争の美学的描写。7回負傷。</p>
+                </div>
+                <div class="card">
+                    <h3">🌲 森の通過者</h3>
+                        <p>『森の通過者』（1951）。全体主義への抵抗。内面の自由への撤退。</p>
+                </div>
+                <div class="card">
+                    <h3">💊 薬物実験</h3>
+                        <p>LSD、メスカリンなどの体験を記録。意識の拡張への関心。</p>
+                </div>
+                <div class="card">
+                    <h3">🦋 昆虫学</h3>
+                        <p>昆虫収集家としても知られる。精密な観察。新種を発見。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要著作 -->
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">In Stahlgewittern (1920)</h3>
+                        <p>『鉄の嵐の中で』。第一次世界大戦の戦場体験記。</p>
+                </div>
+                <div class="card">
+                    <h3">Der Arbeiter (1932)</h3>
+                        <p>『労働者』。技術時代の人間と社会の分析。</p>
+                </div>
+                <div class="card">
+                    <h3">Auf den Marmorklippen (1939)</h3>
+                        <p>『大理石の断崖にて』。全体主義への寓話的批判。</p>
+                </div>
+                <div class="card">
+                    <h3">Der Waldgang (1951)</h3>
+                        <p>『森の通過者』。全体主義時代の内面的抵抗。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Mobilization</h2>
+            <div class="it-card">
+                <h3">Total Mobilization as System Integration</h3>
+                    <p>総動員はシステム統合。すべてのコンポーネントが一つの目的に統合される。</p>
+            </div>
+            <div class="it-card">
+                <h3">Worker as Node</h3>
+                    <p>労働者はネットワークのノード。個々のアイデンティティより、システム内の機能が重要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Forest Passage as Offline Mode</h3>
+                    <p>森の通過者はオフラインモード。システムから離脱し、内面の自律性を保持。</p>
+            </div>
+            <div class="it-card">
+                <h3">Technology as OS</h3>
+                    <p>技術はOS。人間はその上で動くアプリケーション。OSが変われば人間も変わる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>戦争文学</strong>：第一次世界大戦文学の代表作。</li>
+                <li><strong>技術批判</strong>：近代技術社会への深い洞察。</li>
+                <li><strong>保守革命</strong>：ワイマール期の思想運動。</li>
+                <li><strong>ハイデガーとの交流</strong>：哲学的対話。</li>
+                <li><strong>長寿</strong>：102歳まで生き、3つの世紀を見た。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>ニーチェ</li>
+                            <li>戦争体験</li>
+                            <li>ドイツ観念論</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">交流・影響</h3>
+                        <ul class="list-rich">
+                            <li>ハイデガー</li>
+                            <li>カール・シュミット</li>
+                            <li>戦後保守思想</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 20世紀ドイツの思想家</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心テーマ</th>
+                        <th>技術観</th>
+                        <th>政治的立場</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ユンガー</strong></td>
+                        <td>労働者・総動員</td>
+                        <td>運命として受容</td>
+                        <td>保守革命→距離</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ハイデガー</strong></td>
+                        <td>存在・技術</td>
+                        <td>危険と可能性</td>
+                        <td>ナチ加担→沈黙</td>
+                    </tr>
+                    <tr>
+                        <td><strong>シュミット</strong></td>
+                        <td>決断・主権</td>
+                        <td>中立化批判</td>
+                        <td>ナチ法学者</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アドルノ</strong></td>
+                        <td>啓蒙の弁証法</td>
+                        <td>文化産業批判</td>
+                        <td>批判理論・左派</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：戦争の美学</h2>
+            <div class="thought-experiment">
+                <h3">『鉄の嵐の中で』の問い</h3>
+                    <p>ユンガーは戦争の恐怖を描いたが、同時にその崇高さ、高揚、連帯も描いた。これは戦争礼賛か？それとも正直な記録か？</p>
+                    <p style="margin-top: 1.5rem;">
+                        批判者は言う：戦争を美的に描くことは、暴力を正当化する。若者を戦場に駆り立てる危険がある。レマルクの『西部戦線異状なし』こそ正しい戦争文学だ。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ユンガーの立場：私は見たままを書いた。戦争には恐怖がある。しかし同時に、危険の中での高揚、仲間との絆、生と死の境界での覚醒もある。これを否定することは、嘘をつくことだ。</p>
+                    <p style="margin-top: 1.5rem;">問い：極限状況の「美」を描くことは許されるか？それは状況の正当化になるか、それとも人間の複雑さの承認か？</p>
+                    <p style="margin-top: 1.5rem;">ユンガーは後年、『大理石の断崖にて』で暴政への批判を書いた。戦争礼賛者から距離を置いた。しかし『鉄の嵐』は変わらない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        暴力の中の「美」を描くことは、暴力の正当化ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>エルンスト・ユンガー（1895-1998）は、20世紀ドイツの作家・思想家であり、102歳まで生きて激動の世紀を見つめ続けた稀有な存在です。『鉄の嵐の中で』（1920）は第一次世界大戦の戦場体験を美的に描いた問題作。『労働者』（1932）は技術時代の新しい人間類型を描き、「総動員」——社会全体が技術体制に組み込まれる——を予言。『森の通過者』（1951）は全体主義への内面的抵抗を説いた。ハイデガー、シュミットとの交流も知られる。戦争礼賛者か深い観察者か——評価が分かれる20世紀最も問題的な作家の一人です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. In storms of steel.</p>
+    </footer>
+</body>
+
+</html>

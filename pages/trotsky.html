@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レフ・トロツキー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b91c1c;
+            /* Revolution Red */
+            --secondary: #1c1917;
+            /* Soviet Dark */
+            --accent: #ef4444;
+            /* Permanent Red */
+            --highlight: #fef2f2;
+            /* Movement Glow */
+            --bg: #0c0a09;
+            /* Workers Deep */
+            --text: #fef2f2;
+            --border: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Revolution Background */
+        .revolution-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(185, 28, 28, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Revolutionary Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚔️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #dc2626 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(185, 28, 28, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(185, 28, 28, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Revolution Theory */
+        .revolution-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .revolution-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .revolution-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .revolution-box {
+            padding: 2rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .national-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .arrow-box {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .world-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚔️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .revolution-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="revolution-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PERMANENT_REVOLUTION</a>
+        <div>FOURTH_INTERNATIONAL_v5.20</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-520 / THE_REVOLUTIONARY</span>
+        <h1>レフ・トロツキー</h1>
+        <p class="en-name">Leon Trotsky (1879–1940)</p>
+        <p class="catchphrase">「革命は永続する——一国では完結しない」</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">革命OS</span>
+            <span class="os-tag">マルクスOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">永続革命</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    レフ・トロツキーは、ロシア革命の指導者の一人であり、赤軍の創設者、「永続革命論」の提唱者です。レーニンとともに1917年のボルシェヴィキ革命を成功に導きましたが、レーニン死後、スターリンとの権力闘争に敗れ、亡命生活を余儀なくされました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    トロツキーの核心的思想——<b>永続革命論</b>。遅れた国でも社会主義革命は可能だが、一国内では完結しない。資本主義世界全体への拡大なしに、社会主義建設は不可能。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「一国社会主義」を唱えるスターリンへの対抗として、第四インターナショナルを創設。1940年、メキシコ亡命中にスターリンの刺客に暗殺されました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    トロツキーは、<b>「革命はグローバル・デプロイメント。一つのサーバー（国）でベータ版を起動しても、全システム（世界資本主義）を更新しなければ、古い環境との互換性問題で動作不能になる。スターリンの『一国社会主義』はオフライン・モードでの運用——持続不可能」</b>と主張した、革命のグローバリストです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 永続革命論 -->
+        <section class="revolution-section">
+            <h2>⚔️ 永続革命論</h2>
+            <div class="revolution-diagram">
+                <div class="revolution-box national-box">
+                    <p>🏴 民族解放</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.3rem;">ブルジョア的課題</p>
+                </div>
+                <div class="arrow-box">→</div>
+                <div class="revolution-box" style="background: #059669; border-color: #34d399;">
+                    <p>⚔️ プロレタリア革命</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.3rem;">社会主義的課題</p>
+                </div>
+                <div class="arrow-box">→</div>
+                <div class="revolution-box world-box">
+                    <p>🌍 世界革命</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.3rem;">永続・拡大</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                遅れた国でのブルジョア民主主義革命は、プロレタリア革命へと連続し、世界革命へと永続する。段階論を否定。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 トロツキー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">革命は一国の内部で始まるが、国際的場面でのみ完結しうる。</p>
+                <p class="quote-author">— 『永続革命論』（1930年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚔️ 永続革命</h3>
+                        <p>革命には「段階」がない。民主主義革命から社会主義革命へ、一国から世界へ——連続的に進む。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 世界革命</h3>
+                        <p>社会主義は一国では完結しない。資本主義世界市場との矛盾。国際的拡大なしに変質は不可避。</p>
+                </div>
+                <div class="card">
+                    <h3">📉 結合発展</h3>
+                        <p>遅れた国は先進国の技術を「飛び越え」導入できる。しかしこれは独自の矛盾を生む——農村と都市の断絶。</p>
+                </div>
+                <div class="card">
+                    <h3">🏴 堕落した労働者国家</h3>
+                        <p>ソ連は「堕落した労働者国家」。官僚層が寄生。スターリン主義は革命の裏切り。政治革命が必要。</p>
+                </div>
+                <div class="card">
+                    <h3">🔴 第四インターナショナル</h3>
+                        <p>1938年創設。スターリン主義に対抗する革命的マルクス主義の国際組織。トロツキー派の結集。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 文学・文化論</h3>
+                        <p>『文学と革命』。芸術の自律性を認めつつ、革命的文化を展望。党派的芸術を強制しない。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. スターリン vs トロツキー -->
+        <section class="section">
+            <h2 class="section-title">🔄 一国社会主義 vs 永続革命</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. スターリンの主張</h3>
+                        <p>「一国社会主義」——ソ連単独で社会主義建設が可能。国際革命を待つ必要はない。国内に集中。</p>
+                </div>
+                <div class="card">
+                    <h3">2. トロツキーの批判</h3>
+                        <p>孤立したソ連は資本主義世界市場に包囲される。経済的・軍事的圧力で変質は不可避。官僚支配の温床。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 政治的帰結</h3>
+                        <p>スターリンが勝利。トロツキーは追放、亡命。1940年暗殺。「一国社会主義」が公式ドクトリンに。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 歴史の評価</h3>
+                        <p>1991年ソ連崩壊。トロツキーの予言は一定の正しさを証明したか？一国社会主義の限界？</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Revolution as Global Deployment</h2>
+            <div class="it-card">
+                <h3">Revolution as Global Update</h3>
+                    <p>革命はグローバル・アップデート。一つのサーバー（国）だけを更新しても、他のサーバー（資本主義世界）との互換性問題が発生。全システム更新が必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Socialism in One Country as Offline Mode</h3>
+                    <p>一国社会主義はオフライン・モード。ネットワーク（世界市場）から切断されても動作するつもりだが、同期なしでは陳腐化は必至。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bureaucracy as Technical Debt</h3>
+                    <p>官僚制は技術的負債。革命の「迅速リリース」後、コードの整理（民主主義）なしに放置すると、システムは硬直化。リファクタリング（政治革命）が必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Fourth International as Open Source Fork</h3>
+                    <p>第四インターナショナルはオープンソース・フォーク。メインブランチ（コミンテルン）がスターリン主義に汚染されたため、クリーンなフォークを作成。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>永続革命論</strong>：段階論の否定、世界革命への連続。</li>
+                <li><strong>結合発展論</strong>：遅れた国の「飛び越え」と矛盾。</li>
+                <li><strong>第四インターナショナル</strong>：反スターリン主義の国際組織。</li>
+                <li><strong>赤軍の創設</strong>：内戦勝利の軍事組織化。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>マルクス（唯物史観）</li>
+                            <li>レーニン（前衛党論）</li>
+                            <li>パルヴス（永続革命の先駆）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>トロツキズム諸派</li>
+                            <li>新左翼（一部）</li>
+                            <li>独立的マルクス主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ マルクス主義の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>トロツキー</th>
+                        <th>スターリン</th>
+                        <th>ローザ・ルクセンブルク</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>革命の範囲</strong></td>
+                        <td>世界革命</td>
+                        <td>一国社会主義</td>
+                        <td>世界革命</td>
+                    </tr>
+                    <tr>
+                        <td><strong>党の役割</strong></td>
+                        <td>前衛党</td>
+                        <td>党＝国家</td>
+                        <td>自発性重視</td>
+                    </tr>
+                    <tr>
+                        <td><strong>民主主義</strong></td>
+                        <td>労働者民主主義</td>
+                        <td>党独裁</td>
+                        <td>大衆民主主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>グローバル・デプロイ</td>
+                        <td>オフライン・モード</td>
+                        <td>分散型ネットワーク</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：永続革命と21世紀</h2>
+            <div class="thought-experiment">
+                <h3">トロツキーの予言は当たったか</h3>
+                    <p>1991年、ソ連は崩壊しました。トロツキーは「一国社会主義」の限界を予言していた——この崩壊は彼の正しさを証明したのでしょうか？</p>
+                    <p>トロツキー派は言います：スターリン主義は革命の「熱力学的死」を招いた。官僚制の硬直化、世界市場からの孤立、民主主義の欠如——すべてトロツキーが警告した通り。</p>
+                    <p>批判者は言います：永続革命論自体がユートピア的。世界同時革命は実現しなかった。資本主義は予想以上に弾力的だった。</p>
+                    <p>21世紀のグローバル化は、トロツキーの問題設定を再び提起する。一国だけの政策変更は限界がある——気候変動、金融危機、パンデミック。「一国」解決は可能か？</p>
+                    <p>しかし「世界革命」の形式は変わりうる。暴力革命か改革か？国際協調か連鎖的変革か？トロツキーの問いは残る——グローバルな問題にローカルな解決は十分か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        グローバルな変革は可能でしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>レフ・トロツキーは、ロシア革命の指導者として、「永続革命論」でマルクス主義革命理論に独自の貢献をしました。革命は一国内で始まるが、世界革命へと永続しなければ完結しない——スターリンの「一国社会主義」への根本的批判です。赤軍の創設者、『文学と革命』の著者、第四インターナショナルの創設者——多面的な活動家・理論家でした。スターリンとの権力闘争に敗れ、亡命、そして暗殺という悲劇的最期。1991年のソ連崩壊は、彼の警告の一面を証明したとも言えます。グローバル化時代の今日、「一国」解決の限界を問うトロツキーの問題提起は、なお意義を持っています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The revolution continues.</p>
+    </footer>
+</body>
+
+</html>

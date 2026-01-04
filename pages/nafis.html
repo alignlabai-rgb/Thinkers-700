@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イブン・アル＝ナフィス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ef4444;
+            /* Blood Red */
+            --secondary: #450a0a;
+            /* Heart Dark */
+            --accent: #f87171;
+            /* Circulation Light */
+            --highlight: #fecaca;
+            /* Pulse Glow */
+            --bg: #1c0505;
+            /* Deep Vein */
+            --text: #fecaca;
+            --border: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Circulation Background */
+        .blood-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Ibn al-Nafis Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ef4444 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "❤️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #dc2626 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(239, 68, 68, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Circulation Section */
+        .circulation-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ef4444 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .circulation-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 1.2rem;
+        }
+
+        .flow-box {
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "❤️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blood-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MEDICINE</a>
+        <div>BLOOD_v5.85</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-585 / THE_HEART_DISCOVERER</span>
+        <h1>イブン・アル＝ナフィス</h1>
+        <p class="en-name">Ibn al-Nafis (1213–1288)</p>
+        <p class="catchphrase">「血液は肺を通る」——ハーヴェイの350年前に肺循環を発見</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">医学OS</span>
+            <span class="os-tag">イスラムOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">肺循環の発見</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    アラー・アッディーン・アブル・ハサン・アリー・イブン・アビー・ハズム・アル＝カラシー・アル＝ディマシュキー（イブン・アル＝ナフィス）は、13世紀シリア・エジプトのアラブの医学者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    イブン・アル＝ナフィスの核心的発見——<b>血液は心臓の右側から肺を通って左側に循環する（肺循環）</b>。ガレノスの「心臓隔壁に穴がある」という1000年続いた誤りを正しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウィリアム・ハーヴェイが血液循環を「発見」する350年前に、イブン・アル＝ナフィスは肺循環を正確に記述していました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    イブン・アル＝ナフィスの発見は、<b>「システムのデータフロー解析——血液はクローズドループで循環、肺はガス交換のサブシステム。心臓はポンプ（2つの独立チャンバー）」</b>という、人体システムの正確なアーキテクチャ理解。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 肺循環 -->
+        <section class="circulation-section">
+            <h2>🫀 肺循環（小循環）</h2>
+            <div class="flow-diagram">
+                <div class="flow-box">右心室</div>
+                <span>→</span>
+                <div class="flow-box">肺動脈</div>
+                <span>→</span>
+                <div class="flow-box">肺（ガス交換）</div>
+                <span>→</span>
+                <div class="flow-box">肺静脈</div>
+                <span>→</span>
+                <div class="flow-box">左心房</div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem;">
+                ガレノスの誤り：心臓隔壁に穴がある<br>
+                イブン・アル＝ナフィスの訂正：血液は肺を通って循環<br>
+                ハーヴェイより350年早い
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 イブン・アル＝ナフィスの医学</h2>
+            <div class="quote-box">
+                <p class="quote-text">血液は心臓の右側から肺を経て左側に到達する。心室の間に直接の通路はない。</p>
+                <p class="quote-author">— イブン・アル＝ナフィス『カーヌーン注釈』より（意訳）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🫁 肺循環の発見</h3>
+                        <p>血液は右心室→肺→左心房へ。心室間の隔壁に穴はない。ガレノス批判。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 イブン・シーナー批判</h3>
+                        <p>『医学典範（カーヌーン）』の注釈で誤りを指摘。権威を恐れず観察に基づく。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 解剖学的観察</h3>
+                        <p>宗教的制約の中での観察。動物解剖と論理的推論を組み合わせ。</p>
+                </div>
+                <div class="card">
+                    <h3">💉 冠動脈</h3>
+                        <p>心臓自体への血液供給も記述。心臓は自身の栄養を必要とする。</p>
+                </div>
+                <div class="card">
+                    <h3">🏥 マンスーリー病院</h3>
+                        <p>カイロのマンスーリー病院長。イスラム世界最大の病院の一つ。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 多作</h3>
+                        <p>医学、法学、神学など110以上の著作。ほとんどが散逸。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 著作 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">医学典範注釈</h3>
+                        <p>イブン・シーナーの『カーヌーン』への注釈。肺循環の記述はここに。</p>
+                </div>
+                <div class="card">
+                    <h3">包括的医学書</h3>
+                        <p>80巻の医学百科事典を計画。300巻に達したとも。部分的に現存。</p>
+                </div>
+                <div class="card">
+                    <h3">ヒポクラテス格言注釈</h3>
+                        <p>ギリシア医学の批判的検討。古典の単なる踏襲ではなく。</p>
+                </div>
+                <div class="card">
+                    <h3">神学的著作</h3>
+                        <p>預言者の伝記小説など。医学だけでなく多分野に通じる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Circulatory System</h2>
+            <div class="it-card">
+                <h3">Blood as Data Flow</h3>
+                    <p>血液はデータフロー。心臓はポンプ（プロセッサ）、血管はパイプライン。</p>
+            </div>
+            <div class="it-card">
+                <h3">Lung as Transform Module</h3>
+                    <p>肺は変換モジュール。入力（静脈血）を処理して出力（動脈血）に変換。CO2→O2。</p>
+            </div>
+            <div class="it-card">
+                <h3">Heart Septum as Isolation</h3>
+                    <p>心室隔壁はアイソレーション。右系統と左系統は分離。ガレノスはショートカットがあると誤解。</p>
+            </div>
+            <div class="it-card">
+                <h3">Closed Loop as Persistence</h3>
+                    <p>循環は閉ループ。血液は消費されず再利用される。持続的なシステム。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>肺循環</strong>：血液は肺を通って循環。</li>
+                <li><strong>ガレノス批判</strong>：権威への盲従を拒否。</li>
+                <li><strong>観察的医学</strong>：経験に基づく知識。</li>
+                <li><strong>冠動脈認識</strong>：心臓自体への血液供給。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ガレノス（批判的に）</li>
+                            <li>イブン・シーナー</li>
+                            <li>ヒポクラテス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ミゲル・セルベト</li>
+                            <li>レアルド・コロンボ</li>
+                            <li>ウィリアム・ハーヴェイ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 血液循環理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>イブン・アル＝ナフィス</th>
+                        <th>ガレノス</th>
+                        <th>ハーヴェイ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>時代</strong></td>
+                        <td>13世紀</td>
+                        <td>2世紀</td>
+                        <td>17世紀</td>
+                    </tr>
+                    <tr>
+                        <td><strong>肺循環</strong></td>
+                        <td>発見</td>
+                        <td>誤り</td>
+                        <td>確認</td>
+                    </tr>
+                    <tr>
+                        <td><strong>全身循環</strong></td>
+                        <td>示唆</td>
+                        <td>なし</td>
+                        <td>完成</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>部分実装</td>
+                        <td>バグ</td>
+                        <td>完全実装</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：失われた発見</h2>
+            <div class="thought-experiment">
+                <h3">知識の断絶</h3>
+                    <p>イブン・アル＝ナフィスは1288年に死去した。</p>
+                    <p>彼の発見は350年間ヨーロッパに知られなかった。</p>
+                    <p>ハーヴェイ（1628年）は独自に循環を「再発見」した。</p>
+                    <p>なぜ知識は失われたのか？</p>
+                    <p>言語の壁（アラビア語）。政治的断絶。植民地主義以前の交流不足。</p>
+                    <p>もしイブン・アル＝ナフィスの著作が翻訳されていたら？</p>
+                    <p>医学史は数世紀早く進歩していたかもしれない。</p>
+                    <p>同様に、今日「失われている」知識はあるか？</p>
+                    <p>先住民の知識、非英語圏の研究、忘れられた発見——</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        どれだけの知識が言語や文化の壁で失われていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>イブン・アル＝ナフィスは、13世紀のアラブの医学者であり、肺循環を発見しました。血液は心臓の右側から肺を通って左側に循環する——ガレノスの「心室隔壁に穴がある」という1000年続いた誤りを正しました。ウィリアム・ハーヴェイの『心臓の運動について』（1628年）の350年前です。彼の著作は20世紀にようやく再発見され、非西洋医学史の重要な節点として認められています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. 350 years before Harvey.</p>
+    </footer>
+</body>
+
+</html>

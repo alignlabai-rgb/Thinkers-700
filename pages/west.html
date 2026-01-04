@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コーネル・ウェスト - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c2d12;
+            /* Prophetic Brown */
+            --secondary: #1c1917;
+            /* Soul Dark */
+            --accent: #f97316;
+            /* Justice Orange */
+            --highlight: #fed7aa;
+            /* Hope Glow */
+            --bg: #0a0908;
+            /* Blues Deep */
+            --text: #fed7aa;
+            --border: #ea580c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Prophetic Background */
+        .prophetic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 45, 18, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* West Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ea580c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 45, 18, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 45, 18, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Prophetic Diagram */
+        .prophetic-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .prophetic-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .prophetic-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .prophetic-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .tradition-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .critique-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .hope-box {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="prophetic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PROPHETIC_PRAGMATISM</a>
+        <div>RACE_MATTERS_v5.40</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-540 / THE_PROPHETIC_VOICE</span>
+        <h1>コーネル・ウェスト</h1>
+        <p class="en-name">Cornel West (1953–)</p>
+        <p class="catchphrase">「預言者的プラグマティズム——正義のために声を上げる」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">宗教OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">預言者的プラグマティズム</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    コーネル・ウェストは、現代アメリカを代表する公共知識人であり、「預言者的プラグマティズム」の提唱者です。アフリカ系アメリカ人の経験、キリスト教、マルクス主義、プラグマティズムを統合した独自の思想を展開しています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウェストの核心的主張——<b>哲学は正義のために戦う武器である</b>。象牙の塔に閉じこもるのではなく、社会の苦しみに応答する。預言者のように、権力に真実を語る。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    『人種の問題』——アメリカにおける人種問題を哲学的に分析。ニヒリズムへの抵抗としての愛と希望。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウェストは、<b>「哲学はバグレポートではない——それはパッチを当てる実践である。アカデミアのサンドボックスではなく、本番環境（社会）で動作するコードを書け。預言者はアラートを上げるが、同時に修正も提案する」</b>と主張する、社会のフルスタック・アクティビストです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 預言者的プラグマティズム -->
+        <section class="prophetic-section">
+            <h2>✊ 預言者的プラグマティズムの三要素</h2>
+            <div class="prophetic-diagram">
+                <div class="prophetic-box tradition-box">
+                    <p>📚</p>
+                    <p>伝統</p>
+                    <p style="font-size: 0.85rem;">黒人教会・ブルース</p>
+                </div>
+                <div class="prophetic-box critique-box">
+                    <p>⚡</p>
+                    <p>批判</p>
+                    <p style="font-size: 0.85rem;">権力への挑戦</p>
+                </div>
+                <div class="prophetic-box hope-box">
+                    <p>🌱</p>
+                    <p>希望</p>
+                    <p style="font-size: 0.85rem;">変革への信仰</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                預言者的プラグマティズム：伝統に根差しながら、権力を批判し、希望を持って行動する。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウェスト思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">正義は愛が公の場で行動するときの姿である。</p>
+                <p class="quote-author">— コーネル・ウェスト</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✊ 預言者的</h3>
+                        <p>旧約聖書の預言者のように、権力に真実を語る。不正義を告発し、変革を求める。</p>
+                </div>
+                <div class="card">
+                    <h3">🔧 プラグマティズム</h3>
+                        <p>デューイ、ジェイムズの系譜。理論ではなく実践。結果で判断。民主主義の実験。</p>
+                </div>
+                <div class="card">
+                    <h3">🎵 ブルース</h3>
+                        <p>アフリカ系アメリカ人の苦しみと抵抗の表現。悲劇を認めつつ、希望を失わない。</p>
+                </div>
+                <div class="card">
+                    <h3">⛪ 黒人教会</h3>
+                        <p>解放の伝統。マーティン・ルーサー・キング・ジュニアの遺産。愛と正義の結合。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 民主主義</h3>
+                        <p>根源的民主主義。手続きではなく、実質的な参加と平等。経済的民主主義も含む。</p>
+                </div>
+                <div class="card">
+                    <h3">💀 ニヒリズム</h3>
+                        <p>アフリカ系アメリカ人コミュニティを脅かすニヒリズム。絶望への抵抗としての愛。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 人種の問題 -->
+        <section class="section">
+            <h2 class="section-title">🔄 人種の問題</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 黒人のニヒリズム</h3>
+                        <p>貧困、暴力、絶望——希望の喪失。しかしこれは道徳的・精神的な問題でもある。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 市場の侵食</h3>
+                        <p>市場原理がコミュニティを破壊。すべてが商品に。連帯の喪失。物質主義の蔓延。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 愛の政治</h3>
+                        <p>ニヒリズムへの応答は「愛」。センチメンタルではなく、正義を求める愛。行動する愛。</p>
+                </div>
+                <div class="card">
+                    <h3">4. リーダーシップ</h3>
+                        <p>草の根リーダーシップの必要。上からではなく、下からの変革。コミュニティの力。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Philosophy as Direct Action</h2>
+            <div class="it-card">
+                <h3">Prophetic Voice as Alert System</h3>
+                    <p>預言者の声はアラートシステム。不正義（バグ）を検出し、警告を発する。ログに残すだけでなく、actionableなアラート。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pragmatism as Agile Development</h3>
+                    <p>プラグマティズムはアジャイル開発。完璧な計画より、動くプロダクト。イテレーションで改善。結果で判断。</p>
+            </div>
+            <div class="it-card">
+                <h3">Blues as Error Logging</h3>
+                    <p>ブルースはエラーログ。苦しみを記録し、共有する。しかし単なるログではなく、レジリエンスの表現。</p>
+            </div>
+            <div class="it-card">
+                <h3">Love as Maintenance Mode</h3>
+                    <p>愛はメンテナンスモード。システム（コミュニティ）を維持し、修復する。放置すれば崩壊する。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『人種の問題』</strong>：アメリカの人種問題を分析。1993年。</li>
+                <li><strong>預言者的プラグマティズム</strong>：デューイとキングを統合。</li>
+                <li><strong>公共知識人</strong>：メディア、政治への積極的参加。</li>
+                <li><strong>ブルースの哲学</strong>：悲劇と希望の弁証法。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジョン・デューイ</li>
+                            <li>マーティン・ルーサー・キング</li>
+                            <li>アントニオ・グラムシ</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>Black Lives Matter</li>
+                            <li>公共哲学</li>
+                            <li>進歩主義政治</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ アメリカ思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウェスト</th>
+                        <th>ローティ</th>
+                        <th>ロールズ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>正義・愛</td>
+                        <td>アイロニー</td>
+                        <td>公正</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>預言者的</td>
+                        <td>会話的</td>
+                        <td>手続的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>宗教</strong></td>
+                        <td>中心的</td>
+                        <td>私的</td>
+                        <td>排除</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>アラート</td>
+                        <td>リファクタ</td>
+                        <td>アーキテクチャ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：知識人の役割</h2>
+            <div class="thought-experiment">
+                <h3">哲学者は社会に影響を与えるべきか</h3>
+                    <p>ウェストは「公共知識人」として活動しています。テレビ出演、政治運動、音楽アルバム——従来の哲学者像とは異なります。</p>
+                    <p>批判もあります：</p>
+                    <p>学術的厳密さの欠如？——アカデミアは彼を「軽い」と見なすことも。</p>
+                    <p>パフォーマンス？——公共活動は思想の深さを犠牲にしていないか？</p>
+                    <p>しかしウェストは問います：象牙の塔に閉じこもることが哲学か？社会の苦しみに無関心な知識人に価値はあるか？</p>
+                    <p>ソクラテスもアゴラで議論した。哲学は本来、公共的なものだったのでは？</p>
+                    <p>今日、多くの社会問題——人種、格差、環境——は専門知を必要としています。哲学者はどこにいるべきか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        知識人は社会にコミットすべきですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>コーネル・ウェストは、「預言者的プラグマティズム」の提唱者として、アフリカ系アメリカ人の経験、キリスト教、マルクス主義、プラグマティズムを統合する現代アメリカの公共知識人です。哲学は正義のために戦う武器であり、象牙の塔ではなく社会の中で実践されるべき。『人種の問題』ではニヒリズムへの抵抗としての「愛」を説きました。ブルースと黒人教会の伝統に根差しながら、権力に真実を語る——ウェストの「預言者的」姿勢は、知識人の役割について根本的な問いを投げかけます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Justice is what love looks like in public.</p>
+    </footer>
+</body>
+
+</html>

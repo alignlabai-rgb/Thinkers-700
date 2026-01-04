@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランシスコ・デ・ビトリア - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c2d12;
+            /* Law Brown */
+            --secondary: #292524;
+            /* Salamanca Dark */
+            --accent: #ea580c;
+            /* Justice Orange */
+            --highlight: #ffedd5;
+            /* International Glow */
+            --bg: #1c1917;
+            /* Spain Deep */
+            --text: #ffedd5;
+            --border: #c2410c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Law Background */
+        .law-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 45, 18, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* International Law Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #c2410c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 45, 18, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 45, 18, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* International Law */
+        .law-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .law-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .law-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .law-box {
+            padding: 2rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .natural-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .nations-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .peoples-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="law-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← IUS_GENTIUM</a>
+        <div>INTERNATIONAL_LAW_v5.29</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-529 / THE_FATHER_OF_INTERNATIONAL_LAW</span>
+        <h1>フランシスコ・デ・ビトリア</h1>
+        <p class="en-name">Francisco de Vitoria (c.1483–1546)</p>
+        <p class="catchphrase">「万民法——すべての民族に適用される普遍的な法」</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">神学OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">国際法の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    フランシスコ・デ・ビトリアは、16世紀スペインの神学者・法学者であり、「国際法の父」と称されます。サラマンカ大学の教授として、スペインによる新大陸征服の正当性を問い、万民法（ius
+                    gentium）の基礎を築きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ビトリアの核心的主張——<b>先住民にも自然権がある</b>。キリスト教徒でなくても、人間として権利を持つ。征服者は彼らの権利を尊重しなければならない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また「正戦論」を精緻化し、戦争の正当性の条件を明確化。グロティウスに先駆ける国際法思想の先駆者です。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ビトリアは、<b>「万民法は国際プロトコル——すべてのノード（国家）が従うべき共通ルール。先住民も同じプロトコルに参加する権利がある。一方的な接続拒否（征服）は正当化できない」</b>と主張した、国際法のプロトコル設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 万民法 -->
+        <section class="law-section">
+            <h2>⚖️ 法の三層構造</h2>
+            <div class="law-diagram">
+                <div class="law-box natural-box">
+                    <p>🌿 自然法</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ius Naturale</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">すべての人間に</p>
+                </div>
+                <div class="law-box nations-box">
+                    <p>🌐 万民法</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ius Gentium</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">すべての民族間に</p>
+                </div>
+                <div class="law-box peoples-box">
+                    <p>🏛️ 市民法</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ius Civile</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">特定の国家内に</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                自然法はすべての人間に適用。万民法は国家間の関係を規律。市民法は個別国家のルール。ビトリアは万民法を発展させた。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ビトリア思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">インディオたちは、スペイン人が到着する以前から、公私において真の主人であった。</p>
+                <p class="quote-author">— 『インディオについて』（1539年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚖️ 万民法</h3>
+                        <p>ius gentium。すべての民族に適用される国際法。自然理性から導かれる。国家間の関係を規律。</p>
+                </div>
+                <div class="card">
+                    <h3">🌿 自然権</h3>
+                        <p>先住民にも自然権がある。キリスト教徒でなくても人間として権利を持つ。普遍的人権の萌芽。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 正戦論</h3>
+                        <p>戦争の正当性の条件を精緻化。正当な原因、正当な権威、正当な意図。無差別攻撃の禁止。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 征服批判</h3>
+                        <p>スペインの新大陸征服を批判。教皇の「寄贈」は無効。異教は征服の正当な理由にならない。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 交通の自由</h3>
+                        <p>ius communicationis。すべての民族は交流する権利を持つ。貿易、旅行、布教の自由。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ サラマンカ学派</h3>
+                        <p>スペイン・スコラ学の中心。自然法、経済学、国際法を発展。ドミニコ会の学者たち。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 新大陸征服批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 征服の正当性を問う</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 教皇の寄贈</h3>
+                        <p>教皇アレクサンデル6世は新大陸をスペインに「寄贈」。しかしビトリアは批判：教皇に世界を分配する権限はない。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 異教は理由にならない</h3>
+                        <p>インディオが異教徒だから征服してよいとは言えない。信仰は強制できない。自発的改宗のみ有効。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 先住民の主権</h3>
+                        <p>インディオたちはスペイン人到来以前から「真の主人」だった。土地、財産、政治的自律の権利を持つ。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 限定的正当化</h3>
+                        <p>ただし交通の自由が侵害されるなら、自衛として戦争は正当化される——微妙なバランス。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Law as International Protocol</h2>
+            <div class="it-card">
+                <h3">Ius Gentium as Internet Protocol</h3>
+                    <p>万民法はインターネット・プロトコル。すべてのノード（国家）が従うべき共通ルール。接続するためにはプロトコルを守る必要がある。</p>
+            </div>
+            <div class="it-card">
+                <h3">Natural Rights as Universal API</h3>
+                    <p>自然権はユニバーサルAPI。すべての人間（ユーザー）がアクセスできる基本機能。宗教、民族を問わない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Just War as Firewall Rules</h3>
+                    <p>正戦論はファイアウォール・ルール。どのような「攻撃」が許容されるかを定義。無差別攻撃（DDoS）は禁止。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ius Communicationis as Open Network</h3>
+                    <p>交通の自由はオープンネットワーク。すべてのノードが接続する権利を持つ。閉鎖的ネットワーク（鎖国）への批判。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>万民法の発展</strong>：国家間の関係を規律する法の体系化。</li>
+                <li><strong>『インディオについて』</strong>：先住民の権利を論じた古典。</li>
+                <li><strong>正戦論の精緻化</strong>：戦争の正当性の条件を明確化。</li>
+                <li><strong>自然権の普遍化</strong>：キリスト教徒でなくても権利を持つ。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>トマス・アクィナス（スコラ学）</li>
+                            <li>アリストテレス（自然法）</li>
+                            <li>ローマ法</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>グロティウス（国際法）</li>
+                            <li>スアレス（形而上学）</li>
+                            <li>近代人権思想</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 国際法思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ビトリア</th>
+                        <th>グロティウス</th>
+                        <th>ラス・カサス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>万民法</td>
+                        <td>国際法の体系</td>
+                        <td>先住民擁護</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>スコラ学的</td>
+                        <td>人文主義的</td>
+                        <td>論争・告発</td>
+                    </tr>
+                    <tr>
+                        <td><strong>戦争観</strong></td>
+                        <td>正戦論</td>
+                        <td>正戦論の発展</td>
+                        <td>平和的伝道</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>プロトコル設計</td>
+                        <td>標準化</td>
+                        <td>バグレポート</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：普遍的人権の起源</h2>
+            <div class="thought-experiment">
+                <h3">先住民の権利は誰が守ったか</h3>
+                    <p>16世紀、スペインは新大陸を「発見」し、征服しました。当時のヨーロッパ人にとって、インディオは「野蛮人」でした。</p>
+                    <p>しかしビトリアは問いました：彼らにも権利があるのではないか？</p>
+                    <p>これは自明ではありませんでした。当時の常識——教皇は世界を分配できる。異教徒はキリスト教に従うべき。征服は文明化の使命。</p>
+                    <p>ビトリアの反論：教皇に世界を分配する権限はない。異教は征服の理由にならない。インディオたちも自然法の下で権利を持つ。</p>
+                    <p>これは近代人権思想の萌芽でした。すべての人間が——民族や宗教を問わず——権利を持つという考え。</p>
+                    <p>今日の問い：普遍的人権は西洋の産物か、それとも人類共通の価値か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「人権」はどこから来たのでしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フランシスコ・デ・ビトリアは、「国際法の父」としてサラマンカ学派を率い、万民法（ius
+                gentium）の基礎を築いた16世紀スペインの神学者・法学者です。スペインによる新大陸征服の正当性を問い、先住民にも自然権があると主張しました。教皇の「寄贈」を批判し、異教は征服の理由にならないと論じた。正戦論を精緻化し、交通の自由を提唱。グロティウスに先駆ける国際法思想の先駆者であり、普遍的人権思想の萌芽を示しました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Rights for all.</p>
+    </footer>
+</body>
+
+</html>

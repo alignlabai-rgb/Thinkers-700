@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ローザ・パークス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7f1d1d;
+            /* Courage Red */
+            --secondary: #450a0a;
+            /* Dignity Dark */
+            --accent: #ef4444;
+            /* Light Resistance */
+            --highlight: #fecaca;
+            /* Freedom Glow */
+            --bg: #1a0505;
+            /* Deep Justice */
+            --text: #fecaca;
+            --border: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .parks-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(127, 29, 29, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(239, 68, 68, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7f1d1d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🚌";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #dc2626 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(127, 29, 29, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(127, 29, 29, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bus-section {
+            background: linear-gradient(135deg, #000 0%, #7f1d1d 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .bus-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊🏿";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parks-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CIVIL RIGHTS</a>
+        <div>ROSA_PARKS_v6.36</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-636 / THE_MOTHER</span>
+        <h1>ローザ・パークス</h1>
+        <p class="en-name">Rosa Louise McCauley Parks（1913–2005）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「公民権運動の母」——座り続けるという抵抗</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">公民権OS</span>
+            <span class="os-tag">抵抗OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">モンゴメリー・バス・ボイコット</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ローザ・パークスは、20世紀アメリカの公民権活動家であり、1955年12月1日、バスで白人に席を譲ることを拒否したことで逮捕されました。この行動がモンゴメリー・バス・ボイコットの引き金となりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    パークスの歴史的業績——<b>381日間のバス・ボイコット。人種隔離法に対する非暴力抵抗。公民権運動の象徴。アメリカの法と倫理の変革</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    米国議会から「公民権運動の母」の称号を授けられる。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>パークスの行動は、<b>「システムのバグを報告する——不正なコード（人種隔離法）に対して『これは間違っている』と宣言。一人のレポートが大規模なパッチ（公民権法）につながる」</b>という、市民的不服従。
+                </p>
+            </div>
+        </section>
+
+        <section class="bus-section">
+            <h2>🚌 1955年12月1日</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                アラバマ州モンゴメリー<br>
+                クリーブランド・アベニュー・バス<br>
+                白人優先席が満員になった<br>
+                運転手：「立って、席を譲れ」<br>
+                パークス：「いいえ」<br>
+                逮捕——人種隔離法違反<br>
+                しかしこの「いいえ」が——<br>
+                381日間のボイコットを引き起こし——<br>
+                最高裁判決で人種隔離を違憲と断じた
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 パークスの行動哲学</h2>
+            <div class="quote-box">
+                <p class="quote-text">人々はいつも私が席を譲らなかったのは疲れていたからだと言う。しかし私が疲れていたのは——屈服することに疲れていたのだ。</p>
+                <p class="quote-author">— ローザ・パークス</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✊🏿 尊厳</h3>
+                        <p>人間としての尊厳を主張。二級市民であることを拒否。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 非暴力</h3>
+                        <p>暴力なき抵抗。座り続けるという静かな力。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 市民的不服従</h3>
+                        <p>不正な法には従わない。良心に従う。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 連帯</h3>
+                        <p>黒人コミュニティが団結。ボイコットを成功させた。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 NAACP</h3>
+                        <p>全米黒人地位向上協会の活動家。偶発ではなく準備。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 法の変革</h3>
+                        <p>最高裁が人種隔離を違憲と判断。法律を変えた。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Resistance</h2>
+            <div class="it-card">
+                <h3">No as Input Validation</h3>
+                    <p>「いいえ」は入力検証。不正なリクエストを拒否。</p>
+            </div>
+            <div class="it-card">
+                <h3">Boycott as Denial of Service</h3>
+                    <p>ボイコットはDoS。システムへのアクセスを拒否。</p>
+            </div>
+            <div class="it-card">
+                <h3">Court as Patch</h3>
+                    <p>最高裁判決はパッチ。バグ（違憲法）を修正。</p>
+            </div>
+            <div class="it-card">
+                <h3">Civil Rights as Upgrade</h3>
+                    <p>公民権法はアップグレード。システム全体を更新。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>バス・ボイコット</strong>：381日間の連帯。</li>
+                <li><strong>人種隔離違憲判決</strong>：法の変革。</li>
+                <li><strong>公民権運動</strong>：全国的運動の契機。</li>
+                <li><strong>象徴としての力</strong>：静かな勇気。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ガンジー非暴力</li>
+                        <li>NAACP</li>
+                        <li>黒人教会</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>公民権運動</li>
+                            <li>キング牧師</li>
+                            <li>世界の人権運動</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：小さな行動の力</h2>
+            <div class="thought-experiment">
+                <h3">一人の行動は世界を変えるか</h3>
+                    <p>パークスはただ座っていただけ。</p>
+                    <p>殴り込みでも、爆弾でもない。</p>
+                    <p>ただ「いいえ」と言っただけ。</p>
+                    <p>しかしこの「いいえ」が——</p>
+                    <p>381日間のボイコットになり——</p>
+                    <p>最高裁判決になり——</p>
+                    <p>公民権法になった。</p>
+                    <p>小さな行動は無意味か？</p>
+                    <p>それとも雪崩の最初の石か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        一人の「いいえ」は世界を変えられますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ローザ・パークス（1913-2005）は、アメリカの公民権活動家であり「公民権運動の母」と称されます。1955年12月1日、アラバマ州モンゴメリーのバスで白人に席を譲ることを拒否し逮捕。この行動が381日間のモンゴメリー・バス・ボイコットを引き起こし、最高裁はバスの人種隔離を違憲と判断しました。マーティン・ルーサー・キング・ジュニアの全国的活動の契機となり、1964年公民権法への道を開きました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The first lady of civil rights.</p>
+    </footer>
+</body>
+
+</html>

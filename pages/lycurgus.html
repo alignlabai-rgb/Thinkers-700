@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リュクルゴス（スパルタ） - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #78350f;
+            /* Spartan Bronze */
+            --secondary: #451a03;
+            /* Shield Dark */
+            --accent: #d97706;
+            /* Light Spear */
+            --highlight: #fef3c7;
+            /* Discipline Glow */
+            --bg: #1c0a02;
+            /* Deep Laconia */
+            --text: #fef3c7;
+            --border: #b45309;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .lycurgus-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(120, 53, 15, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(217, 119, 6, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🛡️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b45309 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(120, 53, 15, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(120, 53, 15, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sparta-section {
+            background: linear-gradient(135deg, #000 0%, #78350f 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .sparta-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🛡️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lycurgus-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SPARTA</a>
+        <div>LYCURGUS_v6.43</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-643 / THE_LAWGIVER</span>
+        <h1>リュクルゴス（スパルタ）</h1>
+        <p class="en-name">Lycurgus of Sparta（伝説・紀元前9世紀頃？）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「伝説の立法者」——スパルタ社会を設計した男</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">軍事OS</span>
+            <span class="os-tag">社会設計OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">スパルタの立法者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    リュクルゴスは、古代スパルタの伝説的立法者です。実在したかどうかは不明ですが、スパルタの独特な社会制度——徹底した共同体主義、軍事訓練、厳格な規律——の創始者として伝えられています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    リュクルゴスの歴史的業績——<b>スパルタの憲法（レトラ）を制定。アゴーゲー（教育制度）を確立。クリプテイア（秘密任務）を導入。財産の平等化</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    プラトン、アリストテレスも彼を賞賛した。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>リュクルゴスの社会設計は、<b>「OSの完全カスタマイズ——個人よりも国家、自由よりも規律。すべてのプロセスが軍事目的に最適化された専用OS」</b>という、徹底した社会工学。</p>
+            </div>
+        </section>
+
+        <section class="sparta-section">
+            <h2>⚔️ スパルタの掟</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                「盾を持って帰れ、さもなくば盾の上で」<br>
+                — スパルタの母が息子に言う言葉<br><br>
+                勝利するか、死ぬか<br>
+                臆病者には居場所がない<br>
+                個人より国家<br>
+                自由よりも規律<br>
+                これがスパルタの道
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 リュクルゴスの制度</h2>
+            <div class="quote-box">
+                <p class="quote-text">スパルタの壁は、その市民の胸にある。</p>
+                <p class="quote-author">— リュクルゴスに帰された言葉</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📜 レトラ</h3>
+                        <p>スパルタの憲法。書かれていない不文律。</p>
+                </div>
+                <div class="card">
+                    <h3">👦 アゴーゲー</h3>
+                        <p>7歳から国家が教育。厳格な軍事訓練。</p>
+                </div>
+                <div class="card">
+                    <h3">🍽️ シュシティア</h3>
+                        <p>共同食事。王も平民も一緒に食べる。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 財産平等</h3>
+                        <p>土地を平等に分配。贅沢の禁止。</p>
+                </div>
+                <div class="card">
+                    <h3">🗡️ クリプテイア</h3>
+                        <p>若者の秘密任務。ヘロット（農奴）の監視。</p>
+                </div>
+                <div class="card">
+                    <h3">👴 ゲルシア</h3>
+                        <p>長老会。60歳以上の元老による統治。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Military State</h2>
+            <div class="it-card">
+                <h3">Sparta as Dedicated Server</h3>
+                    <p>スパルタは専用サーバー。単一目的（軍事）に最適化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Agoge as Bootcamp</h3>
+                    <p>アゴーゲーはブートキャンプ。全員が同じトレーニング。</p>
+            </div>
+            <div class="it-card">
+                <h3">Equality as Load Balancing</h3>
+                    <p>財産平等は負荷分散。リソースを均等に配分。</p>
+            </div>
+            <div class="it-card">
+                <h3">Discipline as Protocol</h3>
+                    <p>規律はプロトコル。すべての行動に厳格なルール。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>アゴーゲー</strong>：国家による教育。</li>
+                <li><strong>シュシティア</strong>：共同食事。</li>
+                <li><strong>財産平等</strong>：土地分配。</li>
+                <li><strong>軍国主義</strong>：全市民が戦士。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>デルフォイ神託</li>
+                        <li>クレタの制度</li>
+                        <li>ドーリア人伝統</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>プラトン『国家』</li>
+                            <li>共和主義</li>
+                            <li>全体主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：自由か秩序か</h2>
+            <div class="thought-experiment">
+                <h3">スパルタは理想社会か</h3>
+                    <p>プラトンはスパルタを賞賛した。</p>
+                    <p>規律、平等、共同体——</p>
+                    <p>しかしそこには——</p>
+                    <p>個人の自由はなかった。</p>
+                    <p>芸術も哲学も発展しなかった。</p>
+                    <p>ヘロット（農奴）は抑圧された。</p>
+                    <p>スパルタは強かったが——</p>
+                    <p>人間らしい社会だったか？</p>
+                    <p>自由と秩序、どちらが重要か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        スパルタ的社会は理想ですか、それとも悪夢ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>リュクルゴス（伝説的、紀元前9世紀頃？）は、古代スパルタの伝説的立法者です。実在したかは不明ですが、スパルタの独特な社会制度——アゴーゲー（教育）、シュシティア（共同食事）、財産平等——の創始者として伝えられています。徹底した共同体主義と軍事規律による社会設計は、プラトンやアリストテレスに影響を与え、後の共和主義や全体主義の源流となりました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Come back with your shield or on it.</p>
+    </footer>
+</body>
+
+</html>

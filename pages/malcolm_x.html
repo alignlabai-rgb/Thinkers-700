@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マルコムX - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Fire Red */
+            --secondary: #450a0a;
+            /* Power Dark */
+            --accent: #f87171;
+            /* Light Flame */
+            --highlight: #fecaca;
+            /* Liberation Glow */
+            --bg: #1a0505;
+            /* Deep Revolution */
+            --text: #fecaca;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .malcolm-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊🏿";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .x-section {
+            background: linear-gradient(135deg, #000 0%, #dc2626 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .x-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊🏿";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="malcolm-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LIBERATION</a>
+        <div>MALCOLM_X_v6.38</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-638 / THE_X</span>
+        <h1>マルコムX</h1>
+        <p class="en-name">Malcolm X / El-Hajj Malik El-Shabazz（1925–1965）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「必要ならいかなる手段によっても」——自己決定と構造批判</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">解放OS</span>
+            <span class="os-tag">批判OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">人種差別の構造批判</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    マルコムXは、アメリカの公民権活動家、ネイション・オブ・イスラムのスポークスマンであり、人種差別の構造的批判と黒人の自己決定を主張しました。キング牧師の非暴力とは異なるアプローチで闘いました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    マルコムXの歴史的業績——<b>「自己防衛は暴力ではない」と主張。黒人の誇りと自己決定を説く。晩年はイスラムへの巡礼で人種観を変容</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    1965年2月21日、暗殺。39歳。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>マルコムXの批判は、<b>「システムの根本的な設計批判——パッチでは不十分。システム自体が差別的に設計されている。リファクタリングではなくリビルドが必要」</b>という、構造的分析。</p>
+            </div>
+        </section>
+
+        <section class="x-section">
+            <h2>❌ なぜ「X」か</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                「リトル」は奴隷主の名前<br>
+                祖先の本当の名前は失われた<br>
+                「X」は失われたアフリカの名前<br>
+                「X」は未知数<br>
+                「X」は拒絶——白人が付けた名前の拒絶<br>
+                「X」は可能性——新しいアイデンティティ
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 マルコムXの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">私は暴力を主張していない。自己防衛を主張している。白人が自分自身を守る権利があるなら、黒人も同じ権利がある。</p>
+                <p class="quote-author">— マルコムX</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✊🏿 自己決定</h3>
+                        <p>黒人コミュニティの自治。統合より分離。</p>
+                </div>
+                <div class="card">
+                    <h3">🛡️ 自己防衛</h3>
+                        <p>自己防衛は暴力ではない。攻撃されたら反撃する権利。</p>
+                </div>
+                <div class="card">
+                    <h3">🔍 構造批判</h3>
+                        <p>人種差別は個人の問題ではなくシステムの問題。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 パン・アフリカニズム</h3>
+                        <p>アフリカ系世界の連帯。国際的視野。</p>
+                </div>
+                <div class="card">
+                    <h3">🕌 イスラム</h3>
+                        <p>ネイション・オブ・イスラム。晩年は正統派イスラムへ。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 変容</h3>
+                        <p>メッカ巡礼後、人種観を変容。白人も同胞となりうる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Critique</h2>
+            <div class="it-card">
+                <h3">Racism as Architecture</h3>
+                    <p>人種差別はアーキテクチャ。設計段階で埋め込まれている。</p>
+            </div>
+            <div class="it-card">
+                <h3">Self-Defense as Firewall</h3>
+                    <p>自己防衛はファイアウォール。攻撃をブロック。</p>
+            </div>
+            <div class="it-card">
+                <h3">X as Rename</h3>
+                    <p>Xはリネーム。レガシーな名前を置き換え。</p>
+            </div>
+            <div class="it-card">
+                <h3">Transformation as Refactoring</h3>
+                    <p>変容はリファクタリング。コードの根本的書き換え。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>構造的人種差別批判</strong>：システムとしての差別。</li>
+                <li><strong>黒人の誇り</strong>：Black is Beautiful。</li>
+                <li><strong>自己決定</strong>：コミュニティの自治。</li>
+                <li><strong>思想的変容</strong>：晩年の普遍主義。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>マーカス・ガーヴェイ</li>
+                        <li>ネイション・オブ・イスラム</li>
+                        <li>正統派イスラム</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ブラック・パワー</li>
+                            <li>ブラック・パンサー党</li>
+                            <li>批判的人種理論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：統合か分離か</h2>
+            <div class="thought-experiment">
+                <h3">キングかマルコムか</h3>
+                    <p>キング牧師は統合を説いた。</p>
+                    <p>マルコムXは自己決定を説いた。</p>
+                    <p>統合——抑圧者と共に生きる。</p>
+                    <p>分離——独自のコミュニティを築く。</p>
+                    <p>どちらが正しいか？</p>
+                    <p>統合は同化を意味するか？</p>
+                    <p>分離は隔離を肯定するか？</p>
+                    <p>二人は対立していたのか？</p>
+                    <p>それとも補完し合っていたのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        統合と分離、どちらが解放への道ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マルコムX（1925-1965）は、アメリカの公民権活動家であり、人種差別の構造的批判と黒人の自己決定を主張しました。「自己防衛は暴力ではない」「必要ならいかなる手段によっても」というスローガンで知られ、キング牧師とは異なるアプローチで闘いました。晩年はメッカ巡礼を経て人種観を変容させ、人種を超えた連帯の可能性を認めました。1965年暗殺。ブラック・パワー運動、批判的人種理論に大きな影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. By any means necessary.</p>
+    </footer>
+</body>
+
+</html>

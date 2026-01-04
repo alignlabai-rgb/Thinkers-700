@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニール・ポストマン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* TV Purple */
+            --secondary: #2e1065;
+            /* Screen Dark */
+            --accent: #a78bfa;
+            /* Light Static */
+            --highlight: #ede9fe;
+            /* Media Glow */
+            --bg: #0f0720;
+            /* Deep Broadcast */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .postman-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📺";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amusing-section {
+            background: linear-gradient(135deg, #000 0%, #7c3aed 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .amusing-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📺";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="postman-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MEDIA ECOLOGY</a>
+        <div>POSTMAN_v6.40</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-640 / THE_CRITIC</span>
+        <h1>ニール・ポストマン</h1>
+        <p class="en-name">Neil Postman（1931–2003）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「愉しみながら死んでいく」——メディア批判の先駆者</p>
+        <div class="os-tags">
+            <span class="os-tag">メディアOS</span>
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">批判OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">メディア・エコロジー</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ニール・ポストマンは、アメリカのメディア理論家、文化批評家であり、テレビやデジタルメディアが公共的理性を侵食していると警告しました。『愉しみながら死んでいく』は現代メディア批判の古典です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ポストマンの歴史的業績——<b>メディア・エコロジーを確立。テレビ文化を「公共的議論の娯楽化」として批判。技術決定論に警鐘を鳴らす</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ニューヨーク大学で教育・コミュニケーション学部長を務めた。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>ポストマンのメディア批判は、<b>「UIがUXを決定する——コンテンツより『どうやって見せるか』が重要。テレビというUIは、すべてを娯楽というUXに変換してしまう」</b>という、メディア形式の決定力。
+                </p>
+            </div>
+        </section>
+
+        <section class="amusing-section">
+            <h2>💀 愉しみながら死んでいく</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                オーウェルは恐れた——本が禁止されることを<br>
+                ハクスリーは恐れた——本を読みたがる人がいなくなることを<br><br>
+                オーウェルは恐れた——真実が隠されることを<br>
+                ハクスリーは恐れた——真実が無関係なものになることを<br><br>
+                私たちは愉したがっている間に——<br>
+                考える力を失っていく
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ポストマンの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">メディアに追従するとき、私たちは自覚しないままに、その形式が要求する世界観を受け入れる。</p>
+                <p class="quote-author">— ニール・ポストマン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📺 テレビ批判</h3>
+                        <p>テレビはすべてを娯楽に変える。ニュースも政治も。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 活字文化</h3>
+                        <p>印刷物は論理的思考を促す。テレビは破壊する。</p>
+                </div>
+                <div class="card">
+                    <h3">🌿 メディア・エコロジー</h3>
+                        <p>メディアは環境。私たちを形作る。</p>
+                </div>
+                <div class="card">
+                    <h3">👶 子供時代の消失</h3>
+                        <p>テレビが子供と大人の境界を消す。</p>
+                </div>
+                <div class="card">
+                    <h3">🛠️ テクノポリー</h3>
+                        <p>技術が文化を支配する社会。人間が従属。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 教育</h3>
+                        <p>教育もエンターテイメント化される危険。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Media</h2>
+            <div class="it-card">
+                <h3">Medium as OS</h3>
+                    <p>メディアはOS。コンテンツ（アプリ）の動作を規定。</p>
+            </div>
+            <div class="it-card">
+                <h3">TV as Entertainment Layer</h3>
+                    <p>テレビは娯楽レイヤー。すべてのデータを娯楽に変換。</p>
+            </div>
+            <div class="it-card">
+                <h3">Print as Logic Engine</h3>
+                    <p>印刷物は論理エンジン。線形的思考を促す。</p>
+            </div>
+            <div class="it-card">
+                <h3">Technopoly as Lock-in</h3>
+                    <p>テクノポリーはロックイン。技術への依存が脱出不能に。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>メディア・エコロジー</strong>：新しい学問分野。</li>
+                <li><strong>娯楽化批判</strong>：公共的理性の危機。</li>
+                <li><strong>テクノポリー</strong>：技術支配社会。</li>
+                <li><strong>子供時代の消失</strong>：境界の崩壊。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>マクルーハン</li>
+                        <li>オルダス・ハクスリー</li>
+                        <li>ジャック・エリュール</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>デジタル批判</li>
+                            <li>SNS批判</li>
+                            <li>スクリーンタイム問題</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：今日のメディア</h2>
+            <div class="thought-experiment">
+                <h3">ソーシャルメディアはテレビより悪いか</h3>
+                    <p>ポストマンはテレビを批判した。</p>
+                    <p>しかし今日、私たちは——</p>
+                    <p>スマートフォンを見ている。</p>
+                    <p>TikTok、Instagram、Twitter——</p>
+                    <p>テレビより短い、より断片的な。</p>
+                    <p>ポストマンは2003年に亡くなった。</p>
+                    <p>彼が今日のメディアを見たら——</p>
+                    <p>何と言っただろうか？</p>
+                    <p>テレビは「まだマシ」だったのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        SNS時代の私たちは、愉しみながら死んでいますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ニール・ポストマン（1931-2003）は、アメリカのメディア理論家であり、メディア・エコロジーの創始者の一人です。『愉しみながら死んでいく』でテレビ文化を批判し、公共的議論がエンターテイメント化されていると警告。『テクノポリー』で技術支配社会を分析しました。マクルーハンの後継者として、メディアが思考を形作ることを示し、今日のデジタル批判、SNS批判の源流となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Amusing ourselves to death.</p>
+    </footer>
+</body>
+
+</html>

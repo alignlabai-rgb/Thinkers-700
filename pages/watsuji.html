@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>和辻哲郎 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #65a30d;
+            /* Fudo Green */
+            --secondary: #1a2e05;
+            /* Nature Dark */
+            --accent: #a3e635;
+            /* Climate Lime */
+            --highlight: #ecfccb;
+            /* Wind Glow */
+            --bg: #0f1a07;
+            /* Japan Deep */
+            --text: #ecfccb;
+            --border: #84cc16;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Climate Background */
+        .climate-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(101, 163, 13, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(163, 230, 53, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Fudo Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #65a30d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "風";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #84cc16 100%);
+            color: var(--bg);
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(101, 163, 13, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(101, 163, 13, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Fudo Diagram */
+        .fudo-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #65a30d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .fudo-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .fudo-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .fudo-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .monsoon-box {
+            background: #0ea5e9;
+            border: 3px solid #38bdf8;
+        }
+
+        .desert-box {
+            background: #f59e0b;
+            border: 3px solid #fcd34d;
+        }
+
+        .meadow-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="climate-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← 風土</a>
+        <div>CLIMATE_ETHICS_v5.36</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-536 / THE_CLIMATE_PHILOSOPHER</span>
+        <h1>和辻哲郎</h1>
+        <p class="en-name">Watsuji Tetsurō (1889–1960)</p>
+        <p class="catchphrase">「風土——人間存在は気候的・風土的に規定される」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">風土OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">風土の哲学</h2>
+            <div class="hero-box">
+                <p class="hero-text">和辻哲郎は、『風土』と『倫理学』で知られる近代日本を代表する哲学者・倫理学者です。人間存在の「間柄」的構造を強調し、風土が文化と人間性を形成すると主張しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    和辻の核心的洞察——<b>人間は「間柄的存在」である</b>。個人ではなく関係の中で人間を理解する。また風土（気候、地理）が人間の精神と文化を形成する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    モンスーン型、砂漠型、牧場型——三類型の風土が異なる人間類型と文化を生み出す。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    和辻は、<b>「人間は環境から環境変数を受け取るプロセス——風土はconfig.envファイル。モンスーン、砂漠、牧場は異なる設定。同じソースコードでも、環境によって異なる振る舞いをする」</b>と分析した、文化の環境論者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 風土三類型 -->
+        <section class="fudo-section">
+            <h2>🌍 風土の三類型</h2>
+            <div class="fudo-diagram">
+                <div class="fudo-box monsoon-box">
+                    <p>🌧️</p>
+                    <p>モンスーン型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">受容的・忍従的</p>
+                    <p style="font-size: 0.8rem;">アジア</p>
+                </div>
+                <div class="fudo-box desert-box">
+                    <p>🏜️</p>
+                    <p>砂漠型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">戦闘的・服従的</p>
+                    <p style="font-size: 0.8rem;">中東</p>
+                </div>
+                <div class="fudo-box meadow-box">
+                    <p>🌿</p>
+                    <p>牧場型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">合理的・能動的</p>
+                    <p style="font-size: 0.8rem;">ヨーロッパ</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                風土は人間の精神と文化を形成する。モンスーンの湿潤は受容性を、砂漠の過酷さは絶対性を、牧場の温和さは合理性を育てる。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 和辻思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間とは「人と人との間」——個人ではなく間柄である。</p>
+                <p class="quote-author">— 『倫理学』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌍 風土</h3>
+                        <p>気候、地形、植生——自然環境が人間の精神と文化を形成。風土的な自己了解。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 間柄</h3>
+                        <p>人間は「人と人との間」。個人ではなく関係の中で存在する。倫理学の基本概念。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 人間学</h3>
+                        <p>人間＝人（個人）と間（関係）の二重性。社会と個人の弁証法。西洋個人主義への批判。</p>
+                </div>
+                <div class="card">
+                    <h3">🏯 日本精神史</h3>
+                        <p>『古寺巡礼』『日本精神史研究』。日本文化の美的・精神的特質を探求。</p>
+                </div>
+                <div class="card">
+                    <h3">🎭 面</h3>
+                        <p>能面の研究。表情を消すことで普遍的な感情を表現。日本美学の分析。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 倫理学</h3>
+                        <p>『倫理学』全三巻。間柄的存在としての人間を基礎にした独自の倫理学体系。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ハイデガー批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ハイデガーとの対話</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 『存在と時間』の影響</h3>
+                        <p>和辻はハイデガーに学んだ。しかし批判も。ハイデガーは時間を重視しすぎて空間を軽視した。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 時間から空間へ</h3>
+                        <p>ハイデガー：時間性が人間存在の根本。和辻：空間性（風土）も同様に根本的。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 個人から間柄へ</h3>
+                        <p>ハイデガー：現存在は孤立的。和辻：人間は本質的に間柄的。関係が先立つ。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 日本的視点</h3>
+                        <p>西洋哲学に日本的視点を導入。風土、間柄——日本の生活経験から哲学を構築。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Human as Environment-Dependent Process</h2>
+            <div class="it-card">
+                <h3">Fudo as Environment Variables</h3>
+                    <p>風土は環境変数（env）。同じソースコードでも、環境によって異なる振る舞いをする。モンスーン、砂漠、牧場は異なるconfig。</p>
+            </div>
+            <div class="it-card">
+                <h3">Aidagara as Network</h3>
+                    <p>間柄はネットワーク。人間はノードではなくエッジ（関係）として存在する。関係のパターンが人間を定義。</p>
+            </div>
+            <div class="it-card">
+                <h3">Culture as Compiled Output</h3>
+                    <p>文化はコンパイル結果。ソースコード（人間の潜在性）と環境変数（風土）から生成される。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ethics as Protocol</h3>
+                    <p>倫理はプロトコル。間柄の中での正しい振る舞いを規定。文化によってプロトコルは異なる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『風土』</strong>：風土と文化の関係を分析。1935年。</li>
+                <li><strong>『倫理学』</strong>：間柄的人間学に基づく倫理学体系。</li>
+                <li><strong>『古寺巡礼』</strong>：日本美術・建築の美学的分析。</li>
+                <li><strong>間柄的存在論</strong>：西洋個人主義への日本的代替。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ハイデガー（存在論）</li>
+                            <li>ヘーゲル（弁証法）</li>
+                            <li>仏教思想</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>日本哲学</li>
+                            <li>環境哲学</li>
+                            <li>文化人類学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>和辻</th>
+                        <th>ハイデガー</th>
+                        <th>西田幾多郎</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>間柄・風土</td>
+                        <td>現存在・時間</td>
+                        <td>場所・無</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人間観</strong></td>
+                        <td>関係的</td>
+                        <td>孤独的</td>
+                        <td>矛盾的自己</td>
+                    </tr>
+                    <tr>
+                        <td><strong>空間</strong></td>
+                        <td>風土的</td>
+                        <td>時間が優位</td>
+                        <td>場所的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>環境変数</td>
+                        <td>プロセス</td>
+                        <td>フレームワーク</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：風土決定論か</h2>
+            <div class="thought-experiment">
+                <h3">風土は運命か</h3>
+                    <p>和辻の風土論は時に「決定論的」と批判されます。</p>
+                    <p>モンスーン地域の人々は受容的で、砂漠地域の人々は戦闘的——これは一般化しすぎか？</p>
+                    <p>しかし和辻の意図は別にありました：</p>
+                    <p>風土は「運命」ではなく「自己了解の仕方」。人間は風土を通じて自己を理解する。</p>
+                    <p>また風土は変化する。技術、都市化、グローバル化——現代人はどのような「風土」に生きているか？</p>
+                    <p>エアコンの効いたオフィス、SNSでつながるグローバル・ネットワーク——新しい「風土」が生まれているのか？</p>
+                    <p>和辻の問いは今も有効です：私たちは環境にどのように規定され、どのように環境を変えていくか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたはどのような「風土」に生きていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>和辻哲郎は、『風土』と『倫理学』で知られる近代日本を代表する哲学者です。人間存在の「間柄」的構造を強調し、風土（気候、地理）が文化と人間性を形成すると主張しました。モンスーン型、砂漠型、牧場型——三類型の風土が異なる人間類型を生み出す。ハイデガーの時間中心主義を批判し、空間（風土）の重要性を強調。西洋個人主義への日本的代替として「間柄」概念を提示しました。『古寺巡礼』『日本精神史研究』など、日本文化の美的・精神的探求も重要な業績です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Between self and climate.</p>
+    </footer>
+</body>
+
+</html>

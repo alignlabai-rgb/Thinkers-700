@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨセフ・カロ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Halakha Green */
+            --secondary: #022c22;
+            /* Law Dark */
+            --accent: #34d399;
+            /* Code Light */
+            --highlight: #d1fae5;
+            /* Standard Glow */
+            --bg: #011612;
+            /* Deep Order */
+            --text: #d1fae5;
+            --border: #047857;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .law-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #047857 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Table Section */
+        .table-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .table-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .four-parts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .part {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="law-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HALAKHA</a>
+        <div>CODE_v5.92</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-592 / THE_CODIFIER</span>
+        <h1>ヨセフ・カロ</h1>
+        <p class="en-name">Joseph Caro / Yosef Karo (1488–1575)</p>
+        <p class="catchphrase">「整えられた食卓」——ユダヤ法の標準化</p>
+        <div class="os-tags">
+            <span class="os-tag">法律OS</span>
+            <span class="os-tag">ユダヤOS</span>
+            <span class="os-tag">体系OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">シュルハン・アルーフ</h2>
+            <div class="hero-box">
+                <p class="hero-text">ヨセフ・ベン・エフライム・カロは、16世紀のユダヤ教の最も重要な法学者の一人であり、『シュルハン・アルーフ』（整えられた食卓）の著者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    カロの歴史的業績——<b>ユダヤ法（ハラハー）を体系的に整理し、標準化した法典を作成</b>。今日まで正統派ユダヤ教の権威的参照。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スペインから追放後、オスマン帝国領のツファット（サファド）で活動。カバリスト（神秘主義者）でもあった。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    シュルハン・アルーフは、<b>「ユダヤ法のAPIリファレンス——複雑なタルムードの議論を整理し、実践的な結論だけを提供。開発者向けのクイックスタートガイド」</b>という、法の民主化。
+                </p>
+            </div>
+        </section>
+
+        <!-- 4部門 -->
+        <section class="table-section">
+            <h2>📚 シュルハン・アルーフの4部門</h2>
+            <div class="four-parts">
+                <div class="part">
+                    <h4>オラハ・ハイーム</h4>
+                    <p>日常生活の法<br>祈り・安息日・祭日</p>
+                </div>
+                <div class="part">
+                    <h4>ヨレ・デア</h4>
+                    <p>知識の教え<br>食物規定・誓い・喪</p>
+                </div>
+                <div class="part">
+                    <h4>エヴェン・ハエゼル</h4>
+                    <p>助けの石<br>婚姻・離婚</p>
+                </div>
+                <div class="part">
+                    <h4>ホシェン・ミシュパット</h4>
+                    <p>正義の胸当て<br>民事法・裁判</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.1rem;">
+                「食卓」の比喩：法が整然と並べられている<br>
+                必要なものをすぐに見つけられる
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 カロの著作</h2>
+            <div class="quote-box">
+                <p class="quote-text">私は三つの柱——リフ、マイモニデス、アシェル——の多数決に従う。</p>
+                <p class="quote-author">— ヨセフ・カロの方法論</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 シュルハン・アルーフ</h3>
+                    <p>1565年出版。4部門。ユダヤ法の標準コード。今日まで権威。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 ベイト・ヨシェフ</h3>
+                        <p>トゥール（法典）への包括的注解。シュルハン・アルーフの源泉。</p>
+                </div>
+                <div class="card">
+                    <h3">🗣️ マギッド・メシャリム</h3>
+                        <p>天使からの啓示日記。神秘主義的側面。</p>
+                </div>
+                <div class="card">
+                    <h3">🔯 ツファット</h3>
+                        <p>16世紀カバラの中心地で活動。ルリアニック・カバラの同時代。</p>
+                </div>
+                <div class="card">
+                    <h3">✡️ セファルディ</h3>
+                        <p>スペイン系ユダヤ人の伝統。アシュケナジ版（マパー）が追加された。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 追放後</h3>
+                        <p>1492年スペイン追放。ポルトガル、トルコを経てツファットへ。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Codification</h2>
+            <div class="it-card">
+                <h3>Shulchan Aruch as API Reference</h3>
+                <p>シュルハン・アルーフはAPIリファレンス。議論なしの結論。クイックルックアップ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Beit Yosef as Source Code</h3>
+                    <p>ベイト・ヨシェフはソースコード。すべての議論と推論の詳細。</p>
+            </div>
+            <div class="it-card">
+                <h3">4 Sections as Modules</h3>
+                    <p>4部門はモジュール。日常、食物、婚姻、民事——関心の分離。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mapah as Fork</h3>
+                    <p>マパー（イセルレスの追記）はフォーク。アシュケナジ向けにローカライズ。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>シュルハン・アルーフ</strong>：ユダヤ法の標準コード。</li>
+                <li><strong>4部門構成</strong>：体系的なモジュール化。</li>
+                <li><strong>実践重視</strong>：議論なしの結論。</li>
+                <li><strong>権威の統一</strong>：ディアスポラ全体で参照。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>マイモニデス</li>
+                        <li>ヤコブ・ベン・アシェル（トゥール）</li>
+                        <li>リフ、ロシュ</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>モーシェ・イセルレス（マパー）</li>
+                            <li>正統派ユダヤ教全体</li>
+                            <li>現代のハラハー</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：標準化の代償</h2>
+            <div class="thought-experiment">
+                <h3>議論 vs 結論</h3>
+                <p>タルムードは議論で満ちている。</p>
+                <p>シュルハン・アルーフは結論だけを与える。</p>
+                <p>これは効率化か、それとも知的impoverishmentか？</p>
+                <p>標準化は統一をもたらすが、多様性を失わせる。</p>
+                <p>ソフトウェアも同様——</p>
+                <p>フレームワークは開発を加速するが、</p>
+                <p>「なぜそうするか」を考えなくなる。</p>
+                <p>ベストプラクティスに従うだけで良いのか？</p>
+                <p>それとも、根拠を理解すべきか？</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    結論だけを知れば十分ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ヨセフ・カロ（1488-1575）は、16世紀のユダヤ教の最も重要な法学者の一人です。『シュルハン・アルーフ』（整えられた食卓）でユダヤ法（ハラハー）を4部門に体系化し、今日まで正統派ユダヤ教の権威的参照として使われています。タルムードの複雑な議論を整理し、実践的な結論だけを提供——法の民主化。スペイン追放後、オスマン帝国領のツファットで活動し、カバラの神秘主義者でもありました。モーシェ・イセルレスがアシュケナジ向けの追記（マパー）を加え、ディアスポラ全体で使われる標準となりました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The set table.</p>
+    </footer>
+</body>
+
+</html>

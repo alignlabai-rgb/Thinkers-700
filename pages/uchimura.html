@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内村鑑三 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #312e81;
+            /* Faith Indigo */
+            --secondary: #1e1b4b;
+            /* Japan Deep */
+            --accent: #6366f1;
+            /* Two J's Purple */
+            --highlight: #e0e7ff;
+            /* Christianity Glow */
+            --bg: #0f0e24;
+            /* Mukyokai Dark */
+            --text: #e0e7ff;
+            --border: #4f46e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Faith Background */
+        .faith-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(49, 46, 129, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Japanese Christian Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #312e81 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✝";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(49, 46, 129, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(49, 46, 129, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Two J's */
+        .two-j-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #312e81 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .two-j-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .two-j-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .j-box {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .jesus-box {
+            background: #dc2626;
+            border: 4px solid #f87171;
+        }
+
+        .japan-box {
+            background: #312e81;
+            border: 4px solid var(--accent);
+        }
+
+        .j-letter {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .j-label {
+            font-size: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✝";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .two-j-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="faith-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MUKYOKAI</a>
+        <div>TWO_J_v5.22</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-522 / THE_JAPANESE_CHRISTIAN</span>
+        <h1>内村鑑三</h1>
+        <p class="en-name">Uchimura Kanzo (1861–1930)</p>
+        <p class="catchphrase">「二つのJ——JesusとJapan——を愛す」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">思想OS</span>
+            <span class="os-tag">日本OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">無教会主義</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    内村鑑三は、近代日本を代表するキリスト教思想家であり、「無教会主義」の創始者です。札幌農学校でクラークの教えを受け、アメリカ留学も経験。明治・大正期の日本で、独自のキリスト教信仰を展開しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    内村の核心的思想——<b>「二つのJ」</b>。Jesus（イエス・キリスト）とJapan（日本）を共に愛する。キリスト教と日本人としてのアイデンティティを両立させようとした。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    <b>無教会主義</b>——組織としての教会、聖職者制度を批判し、聖書と信仰のみによる信仰生活を提唱。教派を超えた信仰の純粋さを求めました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    内村は、<b>「無教会主義はP2P信仰ネットワーク。中央サーバー（教会組織）なしに、ノード（信者）が直接聖書とつながる。プロトコル（聖書）は共通だが、ミドルウェア（教派）は不要」</b>と主張した、分散型キリスト教のアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 二つのJ -->
+        <section class="two-j-section">
+            <h2>✝ 二つのJ</h2>
+            <div class="two-j-diagram">
+                <div class="j-box jesus-box">
+                    <p class="j-letter">J</p>
+                    <p class="j-label">Jesus</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.3rem;">イエス・キリスト</p>
+                </div>
+                <div class="j-box japan-box">
+                    <p class="j-letter">J</p>
+                    <p class="j-label">Japan</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.3rem;">日本</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「私は二つのJを愛す——JesusとJapan」。キリスト教信仰と日本人としてのアイデンティティを共に保つ。西洋化でもなく、反キリスト教でもない第三の道。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 内村鑑三思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">余は如何にして基督信徒となりし乎。</p>
+                <p class="quote-author">— 『余は如何にして基督信徒となりし乎』（1895年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✝ 無教会主義</h3>
+                        <p>教会組織なしの信仰。聖書と直接対話。聖職者制度の否定。プロテスタントのさらに徹底。</p>
+                </div>
+                <div class="card">
+                    <h3">🇯🇵 二つのJ</h3>
+                        <p>Jesus（イエス）とJapan（日本）を共に愛する。西洋化でも反キリスト教でもない。日本的キリスト教の模索。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 聖書研究</h3>
+                        <p>『聖書之研究』誌を主宰。聖書の直接研究を重視。教義学より実存的読解。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 不敬事件</h3>
+                        <p>1891年、教育勅語への最敬礼を拒否。国家神道との対立。信仰の独立性を主張。</p>
+                </div>
+                <div class="card">
+                    <h3">☮️ 非戦論</h3>
+                        <p>日露戦争に反対。「非戦論」を主張。キリスト教的平和主義。当時の日本では少数派。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 代表的日本人</h3>
+                        <p>『代表的日本人』で西郷隆盛、上杉鷹山らを紹介。日本人の道徳性を世界に示す。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 無教会主義とは -->
+        <section class="section">
+            <h2 class="section-title">🔄 無教会主義とは何か</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 組織の否定</h3>
+                        <p>教派、教団、聖職者制度を否定。組織は信仰を堕落させる。信仰は個人と神の関係。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 聖書中心</h3>
+                        <p>「私の教会は聖書である」。聖書研究が信仰の核心。教義学、神学体系より実存的読解。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 集会形式</h3>
+                        <p>信者同士の聖書研究会。説教者はいるが聖職者ではない。信徒の平等。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 批判と応答</h3>
+                        <p>「教会なしでキリスト教は存続できるか？」——内村は「初代教会に教派はなかった」と応答。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Faith as Distributed Network</h2>
+            <div class="it-card">
+                <h3">Mukyokai as P2P Network</h3>
+                    <p>無教会主義はP2Pネットワーク。中央サーバー（教会組織）なしに、各ノード（信者）が直接プロトコル（聖書）にアクセス。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bible as Protocol</h3>
+                    <p>聖書がプロトコル。共通のルールブック。しかし解釈（実装）は各ノードが行う。教派というミドルウェアは不要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Two J's as Dual Identity</h3>
+                    <p>二つのJはデュアルブート。キリスト教OSと日本文化OSを同一マシンで運用。コンフリクトの解決が課題。</p>
+            </div>
+            <div class="it-card">
+                <h3">Non-War Position as Firewall Policy</h3>
+                    <p>非戦論はファイアウォール・ポリシー。戦争という「悪意のある通信」をブロック。システム・セキュリティとしての平和主義。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>無教会主義</strong>：組織なしの信仰運動。日本独自のキリスト教形態。</li>
+                <li><strong>『余は如何にして基督信徒となりし乎』</strong>：自伝的信仰告白。英文でも出版。</li>
+                <li><strong>『代表的日本人』</strong>：日本の道徳的英雄の紹介。</li>
+                <li><strong>非戦論</strong>：キリスト教的平和主義の主張。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>クラーク（札幌農学校）</li>
+                            <li>ルター（宗教改革）</li>
+                            <li>カーライル（英雄崇拝）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>無教会派の後継者たち</li>
+                            <li>矢内原忠雄</li>
+                            <li>日本のプロテスタント</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 日本キリスト教の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>内村鑑三</th>
+                        <th>新島襄</th>
+                        <th>遠藤周作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>教派</strong></td>
+                        <td>無教会</td>
+                        <td>組合教会</td>
+                        <td>カトリック</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アプローチ</strong></td>
+                        <td>組織批判</td>
+                        <td>教育</td>
+                        <td>文学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>日本との関係</strong></td>
+                        <td>二つのJ</td>
+                        <td>キリスト教教育</td>
+                        <td>「母なる宗教」</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>P2Pネットワーク</td>
+                        <td>教育プラットフォーム</td>
+                        <td>文学インターフェース</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：無教会は可能か</h2>
+            <div class="thought-experiment">
+                <h3">教会なしのキリスト教</h3>
+                    <p>内村は「教会なしの信仰」を主張しました。21世紀において、この主張はどう評価されるでしょうか？</p>
+                    <p>批判者は言います：教会は共同体の維持に必要。個人の聖書読解だけでは誤解が生じる。歴史的に異端はこうして生まれた。</p>
+                    <p>擁護者は言います：組織は必ず腐敗する。制度は信仰を形骸化させる。初代教会に教皇も教派もなかった。</p>
+                    <p>現代の状況——「宗教離れ」と「スピリチュアリティ」の興隆。組織化された宗教への不信感。内村の問題意識は今日でも共鳴する。</p>
+                    <p>また問います：「二つのJ」は矛盾なく両立できるか？キリスト教の普遍性と日本の特殊性——内村はこの緊張を生き抜いた。しかし戦時下の「日本的キリスト教」は危険な方向にも行きうる。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        信仰に「組織」は必要でしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>内村鑑三は、「無教会主義」を創始し、「二つのJ」——JesusとJapan——を共に愛する日本的キリスト教の道を切り開いた近代日本を代表するキリスト教思想家です。教会組織を批判し、聖書と直接向き合う信仰を提唱。不敬事件で国家神道と対立し、日露戦争では非戦論を主張——時代の大勢に抗しながら信仰の独立を守りました。『余は如何にして基督信徒となりし乎』『代表的日本人』など、日英両語での著作を残す。矢内原忠雄ら後継者を育て、無教会派は今日まで続いています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Two J's, One Faith.</p>
+    </footer>
+</body>
+
+</html>

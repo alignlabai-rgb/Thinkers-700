@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使徒パウロ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Apostle Purple */
+            --secondary: #2e1065;
+            /* Damascus Dark */
+            --accent: #a78bfa;
+            /* Grace Light */
+            --highlight: #ede9fe;
+            /* Faith Glow */
+            --bg: #0c0a1d;
+            /* Epistles Deep */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Grace Background */
+        .grace-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Paul Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✉";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Damascus Section */
+        .damascus-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .damascus-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .conversion-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .before-box,
+        .after-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .before-box {
+            background: #450a0a;
+            border: 3px solid #dc2626;
+        }
+
+        .after-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .arrow-text {
+            font-size: 2rem;
+            color: var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✉";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grace-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← EPISTLES</a>
+        <div>JUSTIFICATION_v5.62</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-562 / THE_THEOLOGIAN</span>
+        <h1>使徒パウロ</h1>
+        <p class="en-name">Paul the Apostle (c. 5 – c. 64 CE)</p>
+        <p class="catchphrase">「信仰義認」——キリスト教神学の構築者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">神学OS</span>
+            <span class="os-tag">布教OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">書簡（エピストル）</h2>
+            <div class="hero-box">
+                <p class="hero-text">使徒パウロは、キリスト教を世界宗教へと発展させた最重要人物です。元はキリスト教徒を迫害するパリサイ派ユダヤ人でしたが、ダマスコへの道中で回心。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    パウロの核心的神学——<b>信仰義認</b>。人は律法の行いではなく、キリストへの信仰によってのみ義とされる。これはユダヤ教からの決定的な離脱。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    新約聖書の約半分（13の書簡）がパウロに帰せられる。ローマ書、コリント書、ガラテヤ書——キリスト教神学の基盤。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    パウロは、<b>「イエスの教えをWorldwide対応に移植——ユダヤ教の依存関係（割礼、食事規定）を削除し、信仰だけで動く軽量版に。さらにAPIドキュメント（書簡）を整備し、各地にデプロイ」</b>した、キリスト教のチーフアーキテクト。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ダマスコ回心 -->
+        <section class="damascus-section">
+            <h2>⚡ ダマスコへの道（回心）</h2>
+            <div class="conversion-diagram">
+                <div class="before-box">
+                    <p style="font-size: 1.5rem;">サウロ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">パリサイ派</p>
+                    <p style="font-size: 0.85rem;">キリスト教迫害者</p>
+                </div>
+                <span class="arrow-text">⚡ 光 ⚡</span>
+                <div class="after-box">
+                    <p style="font-size: 1.5rem;">パウロ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">使徒</p>
+                    <p style="font-size: 0.85rem;">キリスト教伝道者</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+                「サウロ、サウロ、なぜ私を迫害するのか」——劇的な回心体験。迫害者が伝道者に。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 パウロ神学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人は律法の行いによってではなく、ただイエス・キリストへの信仰によって義とされる。</p>
+                <p class="quote-author">— ガラテヤ書 2:16</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚖️ 信仰義認</h3>
+                        <p>Justification by Faith。行いではなく信仰によって義（正しい）とされる。恩恵（グレース）。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 十字架の神学</h3>
+                        <p>キリストの死は贖罪——人類の罪の代償。復活は死に対する勝利。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 普遍主義</h3>
+                        <p>「ユダヤ人もギリシア人もない」——民族を超えた普遍的宗教へ。割礼不要。</p>
+                </div>
+                <div class="card">
+                    <h3">🕊️ 聖霊</h3>
+                        <p>信者に内住する神の霊。「霊の実」——愛、喜び、平和、忍耐、親切...</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 教会</h3>
+                        <p>Ekklesia。キリストの体。各信者は異なる賜物を持つ器官。共同体の神学。</p>
+                </div>
+                <div class="card">
+                    <h3">⏳ 終末論</h3>
+                        <p>キリストの再臨への期待。しかし「まだ」と「もう」の緊張。現在の倫理も重要。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 伝道旅行 -->
+        <section class="section">
+            <h2 class="section-title">🔄 パウロの伝道旅行</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">第一回（46-48年）</h3>
+                        <p>キプロス、小アジア南部。バルナバと共に。異邦人への伝道開始。</p>
+                </div>
+                <div class="card">
+                    <h3">第二回（49-52年）</h3>
+                        <p>小アジア、マケドニア、ギリシア。テサロニケ、コリント教会設立。</p>
+                </div>
+                <div class="card">
+                    <h3">第三回（53-57年）</h3>
+                        <p>エフェソ中心。ローマ書執筆。エルサレムへの献金輸送。</p>
+                </div>
+                <div class="card">
+                    <h3">ローマへ（60-64年）</h3>
+                        <p>エルサレムで逮捕、ローマへ護送。軟禁中も伝道。ネロ時代に殉教。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Porting to Global</h2>
+            <div class="it-card">
+                <h3">Justification as Authentication</h3>
+                    <p>信仰義認は認証。行い（多要素認証）ではなく、信仰（シングルサインオン）で承認。</p>
+            </div>
+            <div class="it-card">
+                <h3">Removing Dependencies</h3>
+                    <p>ユダヤ教の依存関係（割礼、食事規定）を削除。軽量・ポータブルに。</p>
+            </div>
+            <div class="it-card">
+                <h3">Epistles as API Documentation</h3>
+                    <p>書簡はAPIドキュメント。各教会（クライアント）への技術サポート。問題解決。</p>
+            </div>
+            <div class="it-card">
+                <h3">Church as Distributed System</h3>
+                    <p>教会は分散システム。各ノードは異なる機能（賜物）を持つ。一つの体として機能。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>信仰義認</strong>：プロテスタント神学の核心。</li>
+                <li><strong>書簡形式</strong>：神学的・牧会的文書。</li>
+                <li><strong>異邦人伝道</strong>：ユダヤ教からの自立。</li>
+                <li><strong>教会論</strong>：キリストの体としての共同体。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>イエス・キリスト</li>
+                            <li>パリサイ派ユダヤ教</li>
+                            <li>ヘレニズム文化</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アウグスティヌス</li>
+                            <li>ルター（宗教改革）</li>
+                            <li>西洋神学全般</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 初期キリスト教の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>パウロ</th>
+                        <th>ペトロ</th>
+                        <th>ヤコブ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>対象</strong></td>
+                        <td>異邦人</td>
+                        <td>ユダヤ人</td>
+                        <td>エルサレム教会</td>
+                    </tr>
+                    <tr>
+                        <td><strong>強調</strong></td>
+                        <td>信仰</td>
+                        <td>証言</td>
+                        <td>行い</td>
+                    </tr>
+                    <tr>
+                        <td><strong>律法</strong></td>
+                        <td>不要</td>
+                        <td>柔軟</td>
+                        <td>遵守</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>アーキテクト</td>
+                        <td>CEO</td>
+                        <td>コンプライアンス</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：信仰か行いか</h2>
+            <div class="thought-experiment">
+                <h3">義認の論争</h3>
+                    <p>パウロは「信仰によってのみ義とされる」と主張。</p>
+                    <p>しかしヤコブ書は「行いのない信仰は死んでいる」と言う。</p>
+                    <p>これは矛盾か？16世紀の宗教改革の核心問題。</p>
+                    <p>ルターはパウロを重視し、「信仰のみ」（sola fide）を掲げた。</p>
+                    <p>カトリックはヤコブも重視し、行いの価値を認めた。</p>
+                    <p>現代の視点：両者は補完的かもしれない。</p>
+                    <p>信仰は内的な変化、行いはその外的表現。</p>
+                    <p>「良い木は良い実を結ぶ」——信仰が本物なら行いが伴う。</p>
+                    <p>しかし行いで「稼ぐ」ことはできない——それは恩恵。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        救いは信仰によって得られますか、行いによって得られますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>使徒パウロは、キリスト教を世界宗教へと発展させた最重要人物です。元はキリスト教徒を迫害するパリサイ派ユダヤ人でしたが、ダマスコへの道中で劇的な回心を経験。「信仰義認」——人は律法の行いではなく、キリストへの信仰によってのみ義とされる。この神学はユダヤ教からの決定的な離脱を意味し、異邦人への伝道を可能にしました。新約聖書の約半分を占める書簡は、キリスト教神学の基盤であり、後のアウグスティヌス、ルターらに決定的な影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Justified by faith alone.</p>
+    </footer>
+</body>
+
+</html>

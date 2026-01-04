@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャン・バプティスト・ヴィーコ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* History Gold */
+            --secondary: #292524;
+            /* Cycle Dark */
+            --accent: #f59e0b;
+            /* Corso Amber */
+            --highlight: #fef3c7;
+            /* Ricorso Glow */
+            --bg: #1c1917;
+            /* Naples Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* History Background */
+        .history-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Philosophical Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔄";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cycle Theory */
+        .cycle-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .cycle-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .cycle-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .age-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .gods-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .heroes-box {
+            background: #dc2626;
+            border: 3px solid #f87171;
+        }
+
+        .men-box {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        .ricorso-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .cycle-arrow {
+            font-size: 2rem;
+            color: var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔄";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .cycle-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="history-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SCIENZA_NUOVA</a>
+        <div>HISTORICAL_CYCLE_v5.27</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-527 / THE_PHILOSOPHER_OF_HISTORY</span>
+        <h1>ジャン・バプティスト・ヴィーコ</h1>
+        <p class="en-name">Giambattista Vico (1668–1744)</p>
+        <p class="catchphrase">「歴史は螺旋的に繰り返す——コルソとリコルソ」</p>
+        <div class="os-tags">
+            <span class="os-tag">歴史OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">言語OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">新しい学</h2>
+            <div class="hero-box">
+                <p class="hero-text">ジャン・バプティスト・ヴィーコは、18世紀ナポリの哲学者であり、『新しい学（Scienza
+                    Nuova）』で歴史哲学の基礎を築いた先駆者です。デカルト的合理主義への批判者として、人文科学の独自性を主張しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヴィーコの核心的思想——<b>verum
+                        factum（真理と創造の一致）</b>。人間は自然を「創った」のではないから完全には知り得ない。しかし歴史・社会は人間が創ったから、科学的に知ることができる。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また歴史は<b>神々の時代→英雄の時代→人間の時代</b>を経て、再び回帰する（リコルソ）という循環論を提唱しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ヴィーコは、<b>「歴史はバージョン管理システム——v1.0（神々の時代）、v2.0（英雄の時代）、v3.0（人間の時代）、そしてリファクタリング（リコルソ）で新バージョンへ。しかし根本アーキテクチャは変わらない」</b>と分析した、歴史のシステム分析者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 歴史の循環 -->
+        <section class="cycle-section">
+            <h2>🔄 歴史の三段階と循環</h2>
+            <div class="cycle-diagram">
+                <div class="age-box gods-box">
+                    <p>⚡</p>
+                    <p>神々の時代</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">神話・神権政治</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="age-box heroes-box">
+                    <p>⚔️</p>
+                    <p>英雄の時代</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">貴族制</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="age-box men-box">
+                    <p>👥</p>
+                    <p>人間の時代</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">民主制・衰退</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="age-box ricorso-box">
+                    <p>🔄</p>
+                    <p>リコルソ</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">回帰・再生</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                コルソ（進行）とリコルソ（回帰）。歴史は直線ではなく螺旋。しかし同じ繰り返しではなく、より高次へ。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ヴィーコ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間の世界は確かに人間によって作られた。したがってその原理は人間精神の変容のうちに見出されうる。</p>
+                <p class="quote-author">— 『新しい学』（1744年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📜 Verum Factum</h3>
+                        <p>「真理と創造の一致」。創ったものだけを真に知り得る。自然は神が創った。歴史・社会は人間が創った。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 コルソとリコルソ</h3>
+                        <p>歴史の進行（corso）と回帰（ricorso）。三段階を経て衰退し、新たな始まりへ。螺旋的発展。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 神々の時代</h3>
+                        <p>人類の幼年期。神話的思考。すべてを神々の意志で説明。神権政治。象形文字的言語。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 英雄の時代</h3>
+                        <p>英雄的詩と比喩の言語。貴族制。ホメロスの時代。力と名誉が支配する。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 人間の時代</h3>
+                        <p>散文と抽象的言語。民主制と法。しかし衰退も始まる——個人主義が共同体を解体。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 新しい学</h3>
+                        <p>人文科学の方法論。自然科学とは異なる——理解（verstehen）と解釈の学。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. デカルトへの批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 デカルト合理主義への批判</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 数学的方法の限界</h3>
+                        <p>デカルトは数学的明晰さをすべてに求めた。ヴィーコは応答：歴史、言語、神話には別の方法が必要。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 想像力の擁護</h3>
+                        <p>合理主義は想像力を軽視。しかし神話、詩——人類最初の「知恵」は想像力の産物。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 人文科学の独自性</h3>
+                        <p>自然科学と人文科学は方法が異なる。後者は「内からの理解」が可能——人間が創ったから。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 言語の歴史性</h3>
+                        <p>言語は恣意的記号ではなく、歴史的発展の産物。言語を分析すれば民族の精神がわかる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: History as Version Control</h2>
+            <div class="it-card">
+                <h3">History as Git Repository</h3>
+                    <p>歴史はGitリポジトリ。コミット（出来事）の連鎖。しかしリニアではなく、ブランチ、マージ、そして時にリセット（リコルソ）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Three Ages as Major Versions</h3>
+                    <p>三段階はメジャーバージョン。v1.0（神話的）、v2.0（英雄的）、v3.0（合理的）。リコルソはv4.0へのリファクタリング。</p>
+            </div>
+            <div class="it-card">
+                <h3">Verum Factum as Source Code Access</h3>
+                    <p>Verum Factumはソースコードへのアクセス。自分が書いたコードは理解できる。他人のバイナリは逆コンパイルが難しい。</p>
+            </div>
+            <div class="it-card">
+                <h3">Humanities as Reverse Engineering</h3>
+                    <p>人文科学はリバースエンジニアリング。人間の「作品」（歴史、言語、神話）を解析して、原理を抽出する。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『新しい学』</strong>：歴史哲学の古典。1725/1744年。</li>
+                <li><strong>Verum Factum</strong>：人文科学の認識論的基礎。</li>
+                <li><strong>歴史の循環論</strong>：コルソとリコルソ。螺旋的発展。</li>
+                <li><strong>詩的知恵</strong>：神話は原初的哲学。想像力の擁護。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>プラトン（イデア）</li>
+                            <li>タキトゥス（歴史）</li>
+                            <li>ベーコン（経験論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ヘルダー（歴史主義）</li>
+                            <li>ヘーゲル（弁証法）</li>
+                            <li>ジョイス（文学）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 歴史哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ヴィーコ</th>
+                        <th>ヘーゲル</th>
+                        <th>マルクス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>歴史の形態</strong></td>
+                        <td>螺旋（循環）</td>
+                        <td>直線（弁証法）</td>
+                        <td>直線（唯物史観）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>駆動力</strong></td>
+                        <td>人間精神の変容</td>
+                        <td>精神の自己展開</td>
+                        <td>生産力と生産関係</td>
+                    </tr>
+                    <tr>
+                        <td><strong>終点</strong></td>
+                        <td>なし（循環）</td>
+                        <td>絶対精神</td>
+                        <td>共産主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>バージョン管理</td>
+                        <td>線形開発</td>
+                        <td>ベースのリファクタ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：現代はどの時代か</h2>
+            <div class="thought-experiment">
+                <h3">私たちは「人間の時代」の終わりにいるか</h3>
+                    <p>ヴィーコの循環論によれば、「人間の時代」は民主制、合理性、個人主義の時代——しかし衰退の兆候を含む。</p>
+                    <p>現代を見ると：民主主義への信頼の低下、ポピュリズムの台頭、共同体の解体。ヴィーコは言うかもしれません：これは「人間の時代」の終末症状。</p>
+                    <p>リコルソは何をもたらすか？ヴィーコによれば、新たな「野蛮」への回帰——しかしこれは単なる退行ではなく、新たな始まり。</p>
+                    <p>問います：SNS時代の「神話」は何か？新しい「英雄」は誰か？次の「神々の時代」はどのような形を取るか？</p>
+                    <p>歴史は繰り返すが、同じ形ではない——螺旋的に、より高次へ？それとも…？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        私たちは「リコルソ」の始まりにいるのでしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジャン・バプティスト・ヴィーコは、『新しい学』で歴史哲学の基礎を築いた18世紀の先駆者です。「Verum
+                Factum」——人間が創ったものだけを真に知り得る——という原理で人文科学の独自性を主張しました。歴史の三段階（神々・英雄・人間の時代）とリコルソ（回帰）という循環論は、ヘーゲル、マルクスに先立つ歴史哲学の古典。デカルト的合理主義への批判、想像力と神話の擁護、言語の歴史性——彼の洞察は今日の人文科学、文化研究に受け継がれています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. History spirals.</p>
+    </footer>
+</body>
+
+</html>

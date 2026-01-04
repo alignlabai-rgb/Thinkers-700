@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エミー・ネーター - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Symmetry Teal */
+            --secondary: #164e63;
+            /* Abstract Dark */
+            --accent: #22d3ee;
+            /* Conservation Light */
+            --highlight: #cffafe;
+            /* Invariance Glow */
+            --bg: #083344;
+            /* Deep Mathematics */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Symmetry Background */
+        .symmetry-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Noether Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "∞";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Theorem Section */
+        .theorem-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .theorem-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .theorem-pairs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .theorem-pair {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        .theorem-pair h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "∞";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="symmetry-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SYMMETRY</a>
+        <div>INVARIANT_v5.80</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-580 / THE_SYMMETRY_MASTER</span>
+        <h1>エミー・ネーター</h1>
+        <p class="en-name">Emmy Noether (1882–1935)</p>
+        <p class="catchphrase">「対称性あるところに保存則あり」——現代物理学の礎</p>
+        <div class="os-tags">
+            <span class="os-tag">数学OS</span>
+            <span class="os-tag">物理学OS</span>
+            <span class="os-tag">対称性OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ネーターの定理</h2>
+            <div class="hero-box">
+                <p class="hero-text">エミー・ネーターは、ドイツの数学者であり、抽象代数学と理論物理学に革命をもたらした女性数学者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ネーターの核心的発見——<b>対称性と保存則は一対一で対応する</b>。時間の対称性→エネルギー保存。空間の対称性→運動量保存。ネーターの定理。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    アインシュタインは彼女を「数学史上最も重要な創造的数学の天才」と評しました。ナチスドイツを逃れ、アメリカで53歳で死去。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ネーターの定理は、<b>「対称性＝不変量の存在証明——システムが特定の変換に対して不変なら、必ず対応する保存量が存在する。これはプログラムの不変条件と同じ」</b>という、物理法則の深層構造の発見。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ネーターの定理 -->
+        <section class="theorem-section">
+            <h2>∞ ネーターの定理：対称性と保存則</h2>
+            <div class="theorem-pairs">
+                <div class="theorem-pair">
+                    <h4>時間並進対称性</h4>
+                    <p>↓</p>
+                    <p style="font-size: 1.2rem; color: var(--highlight);">エネルギー保存</p>
+                </div>
+                <div class="theorem-pair">
+                    <h4>空間並進対称性</h4>
+                    <p>↓</p>
+                    <p style="font-size: 1.2rem; color: var(--highlight);">運動量保存</p>
+                </div>
+                <div class="theorem-pair">
+                    <h4>回転対称性</h4>
+                    <p>↓</p>
+                    <p style="font-size: 1.2rem; color: var(--highlight);">角運動量保存</p>
+                </div>
+                <div class="theorem-pair">
+                    <h4>ゲージ対称性</h4>
+                    <p>↓</p>
+                    <p style="font-size: 1.2rem; color: var(--highlight);">電荷保存</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem;">対称性の数だけ保存則がある</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ネーター数学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">抽象化こそが数学の本質である。</p>
+                <p class="quote-author">— エミー・ネーター（の精神を表す言葉）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">∞ ネーターの定理</h3>
+                        <p>連続対称性と保存則の一対一対応。1918年発表。現代物理学の基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">🔢 抽象代数学</h3>
+                        <p>環、イデアル、加群の理論。「ネーター環」。構造主義数学の先駆。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 群論的アプローチ</h3>
+                        <p>対称性を群として捉える。抽象構造の重視。現代数学の方法論。</p>
+                </div>
+                <div class="card">
+                    <h3">👩‍🔬 女性数学者の先駆者</h3>
+                        <p>女性に学位が認められない時代。無給で講義。ヒルベルトの支援。</p>
+                </div>
+                <div class="card">
+                    <h3">🇩🇪→🇺🇸 亡命</h3>
+                        <p>1933年、ナチスにより大学を追放（ユダヤ人のため）。米ブリンマー大学へ。</p>
+                </div>
+                <div class="card">
+                    <h3">🎓 ゲッティンゲン学派</h3>
+                        <p>ヒルベルト、クラインと共に。20世紀数学の中心地。抽象代数学を確立。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 業績 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要業績</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">ネーターの定理 (1918)</h3>
+                        <p>連続対称性と保存則の関係。一般相対性理論のエネルギー問題を解決。</p>
+                </div>
+                <div class="card">
+                    <h3">イデアル理論 (1921)</h3>
+                        <p>環のイデアル理論。可換環論の基礎。「ネーター環」の概念。</p>
+                </div>
+                <div class="card">
+                    <h3">表現論への貢献</h3>
+                        <p>群の表現論。代数的構造の研究方法を確立。</p>
+                </div>
+                <div class="card">
+                    <h3">抽象代数学の確立</h3>
+                        <p>構造主義的アプローチ。ファン・デル・ヴェルデンの教科書に影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Invariants</h2>
+            <div class="it-card">
+                <h3">Symmetry as Interface</h3>
+                    <p>対称性はインターフェース。システムが特定の操作に対して同じ振る舞いを保証。</p>
+            </div>
+            <div class="it-card">
+                <h3">Conservation Law as Invariant</h3>
+                    <p>保存則はプログラムの不変条件。どの時点でも真であることが保証される性質。</p>
+            </div>
+            <div class="it-card">
+                <h3">Noether's Theorem as Proof</h3>
+                    <p>ネーターの定理は形式証明。対称性が存在すれば、保存則が論理的に導かれる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Abstract Algebra as Type System</h3>
+                    <p>抽象代数学は高度な型システム。構造的性質を抽象化し、一般的に証明。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ネーターの定理</strong>：対称性と保存則の統一。</li>
+                <li><strong>抽象代数学</strong>：構造主義的数学。</li>
+                <li><strong>ネーター環</strong>：可換環論の基盤。</li>
+                <li><strong>現代物理学の基盤</strong>：標準模型への影響。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ヒルベルト</li>
+                            <li>フェリックス・クライン</li>
+                            <li>デデキント</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ファン・デル・ヴェルデン</li>
+                            <li>現代物理学（標準模型）</li>
+                            <li>ホモロジー代数</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 数学アプローチの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ネーター（抽象）</th>
+                        <th>古典派（計算）</th>
+                        <th>応用数学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>構造</td>
+                        <td>計算</td>
+                        <td>問題解決</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>抽象化</td>
+                        <td>具体例</td>
+                        <td>近似</td>
+                    </tr>
+                    <tr>
+                        <td><strong>目標</strong></td>
+                        <td>一般理論</td>
+                        <td>特定解</td>
+                        <td>実用性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>型システム</td>
+                        <td>アルゴリズム</td>
+                        <td>ライブラリ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：なぜ保存則があるのか</h2>
+            <div class="thought-experiment">
+                <h3">対称性の起源</h3>
+                    <p>ネーターの定理は問います：なぜ物理法則には保存則があるのか？</p>
+                    <p>答え：対称性があるから。</p>
+                    <p>しかし次の問いが生まれる：なぜ対称性があるのか？</p>
+                    <p>宇宙は時間的に均一である必要はなかった。</p>
+                    <p>空間は等方的である必要はなかった。</p>
+                    <p>しかし実際にはそうなっている。</p>
+                    <p>これは偶然か、必然か、人間原理か？</p>
+                    <p>対称性が破れると何が起こるか？</p>
+                    <p>ヒッグス機構は対称性の破れ。質量の起源。</p>
+                    <p>対称性は法則の法則——メタ法則か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        対称性はなぜ存在するのですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>エミー・ネーターは、ドイツの数学者であり、抽象代数学と理論物理学に革命をもたらしました。「ネーターの定理」——連続対称性と保存則の一対一対応——は現代物理学の基盤です。時間の対称性がエネルギー保存を、空間の対称性が運動量保存を意味する。女性に大学で教える権利が認められない時代に、アインシュタインに「数学史上最も重要な創造的数学の天才」と評されました。1933年にナチスにより追放され、アメリカで53歳で死去。その思想は標準模型をはじめとする現代物理学に生き続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Symmetry is the soul of physics.</p>
+    </footer>
+</body>
+
+</html>

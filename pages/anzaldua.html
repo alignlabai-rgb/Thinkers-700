@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グロリア・アンサルドゥア - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #be185d;
+            /* Border Pink */
+            --secondary: #831843;
+            /* Deep Mestiza */
+            --accent: #f472b6;
+            /* Light Nepantla */
+            --highlight: #fce7f3;
+            /* Consciousness Glow */
+            --bg: #500724;
+            /* Deep Borderlands */
+            --text: #fce7f3;
+            --border: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Borderlands Background */
+        .borderlands-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(244, 114, 182, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(190, 24, 93, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Anzaldúa Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌵";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ec4899 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(190, 24, 93, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(190, 24, 93, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Nepantla Section */
+        .nepantla-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .nepantla-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .nepantla-word {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .nepantla-meaning {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌵";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="borderlands-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← BORDERLANDS</a>
+        <div>ANZALDUA_v7.00</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-700 / LA_NUEVA_MESTIZA</span>
+        <h1>グロリア・アンサルドゥア</h1>
+        <p class="en-name">Gloria Anzaldúa (1942–2004)</p>
+        <p class="catchphrase">「私は境界に住む。境界が私を作った」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">フェミニズムOS</span>
+            <span class="os-tag">境界OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">境界に生きる思想</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    グロリア・アンサルドゥアは、チカーナ（メキシコ系アメリカ人女性）の作家、詩人、フェミニスト理論家であり、境界（borderlands）とメスティーサ意識の思想を展開しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心概念は<b>「ボーダーランズ」</b>——テキサス/メキシコ国境。しかし単なる地理ではなく、文化、言語、アイデンティティ、ジェンダー、セクシュアリティのあらゆる境界。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    もう一つの核心は<b>「メスティーサ意識」</b>——混血（mestiza）であることを欠如ではなく、複数の視点を持つ力として再定義。二項対立を超えた第三の空間。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アンサルドゥアは、<b>「アイデンティティOSのマルチブート・アーキテクト——単一のOSではなく、複数のOS（言語、文化、ジェンダー）を同時に走らせる。境界はバグではなく、機能。ハイブリッドこそ強み」</b>という思想を展開した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ネパントラ -->
+        <section class="nepantla-section">
+            <h2>🌵 核心概念</h2>
+            <p class="nepantla-word">Nepantla</p>
+            <p class="nepantla-meaning">「間にある場所」——ナワトル語</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                どちらにも完全には属さない。しかしその「間」こそが、新しい意識が生まれる場所。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アンサルドゥア思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">メスティーサとして、私は複数の文化に住む。私は複数の言語を話す。私は複数の世界に属する——そしてどの世界にも完全には属さない。</p>
+                <p class="quote-author">— グロリア・アンサルドゥア『ボーダーランズ/ラ・フロンテーラ』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌵 ボーダーランズ</h3>
+                        <p>米墨国境。しかし物理的だけでなく、文化・言語・アイデンティティの境界。</p>
+                </div>
+                <div class="card">
+                    <h3">🧬 メスティーサ意識</h3>
+                        <p>混血アイデンティティを力として再定義。複数の視点を持つ能力。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 ネパントラ</h3>
+                        <p>「間にある場所」。変容と創造が起こる不確定な空間。</p>
+                </div>
+                <div class="card">
+                    <h3">🗣️ コード・スイッチング</h3>
+                        <p>英語/スペイン語/ナワトル語を混ぜる。言語のハイブリッドが意味を生む。</p>
+                </div>
+                <div class="card">
+                    <h3">🏳️‍🌈 クィアネス</h3>
+                        <p>レズビアンとして。ジェンダーとセクシュアリティもまた境界。</p>
+                </div>
+                <div class="card">
+                    <h3">✍️ 自伝的理論</h3>
+                        <p>個人的体験から理論を構築。詩とエッセイと理論が融合。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要著作 -->
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Borderlands/La Frontera (1987)</h3>
+                        <p>『ボーダーランズ/ラ・フロンテーラ：新しいメスティーサ』。主著。</p>
+                </div>
+                <div class="card">
+                    <h3">This Bridge Called My Back (1981)</h3>
+                        <p>『私の背が橋になる』。チェリー・モラガとの共編。有色人種女性の声。</p>
+                </div>
+                <div class="card">
+                    <h3">Making Face, Making Soul (1990)</h3>
+                        <p>『顔を作る、魂を作る』。有色人種フェミニズムのアンソロジー。</p>
+                </div>
+                <div class="card">
+                    <h3">Light in the Dark (2015)</h3>
+                        <p>『闇の中の光』。死後出版。ネパントラとコアトリクエの思想。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Borderlands</h2>
+            <div class="it-card">
+                <h3">Mestiza Consciousness as Multi-OS</h3>
+                    <p>メスティーサ意識はマルチOS。複数のシステムを同時に実行。</p>
+            </div>
+            <div class="it-card">
+                <h3">Code-Switching as API Translation</h3>
+                    <p>コード・スイッチングはAPIトランスレーション。言語間の相互運用。</p>
+            </div>
+            <div class="it-card">
+                <h3">Nepantla as Middleware</h3>
+                    <p>ネパントラはミドルウェア。異なるシステム間の仲介レイヤー。</p>
+            </div>
+            <div class="it-card">
+                <h3">Border as Interface</h3>
+                    <p>境界はインターフェース。異なるシステムが接触し、交渉する場所。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>チカーナ・フェミニズム</strong>：有色人種女性の声を理論化。</li>
+                <li><strong>境界理論</strong>：ボーダーランズ研究の基盤。</li>
+                <li><strong>クィア理論</strong>：交差性のパイオニア。</li>
+                <li><strong>脱植民地化</strong>：支配的二項対立を超える思考。</li>
+                <li><strong>自伝的理論</strong>：個人的/政治的/学術的の融合。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>チカーノ運動</li>
+                            <li>有色人種フェミニズム</li>
+                            <li>先住民神話（コアトリクエ）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>交差性理論</li>
+                            <li>脱植民地フェミニズム</li>
+                            <li>クィア・オブ・カラー批評</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 境界と脱植民地の思想家</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心</th>
+                        <th>アプローチ</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>アンサルドゥア</strong></td>
+                        <td>境界/メスティーサ</td>
+                        <td>自伝的理論</td>
+                        <td>チカーナ/クィア</td>
+                    </tr>
+                    <tr>
+                        <td><strong>フック（hooks）</strong></td>
+                        <td>マージン</td>
+                        <td>文化批評</td>
+                        <td>黒人フェミニズム</td>
+                    </tr>
+                    <tr>
+                        <td><strong>スピヴァク</strong></td>
+                        <td>サバルタン</td>
+                        <td>脱構築</td>
+                        <td>ポストコロニアル</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ファノン</strong></td>
+                        <td>植民地主義</td>
+                        <td>精神分析</td>
+                        <td>脱植民地化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：境界に住む</h2>
+            <div class="thought-experiment">
+                <h3">ネパントラの経験</h3>
+                    <p>あなたは「境界」に住んだことがあるか？——言語の間、文化の間、アイデンティティの間。完全にはどちらにも属さない経験。</p>
+                    <p style="margin-top: 1.5rem;">多くの人はこれを不安、不安定、欠如として経験する。「どちらでもない」は「どちらでもない」ことへの否定的感情を伴う。</p>
+                    <p style="margin-top: 1.5rem;">
+                        アンサルドゥアの転換：境界に住むことは、両方の視点を持つこと。「どちらでもない」ではなく「両方でありそれ以上」。ハイブリッドは欠如ではなく力。</p>
+                    <p style="margin-top: 1.5rem;">さらに：境界こそが創造的な場所。変容が起こるのは中心ではなく、境界。ネパントラは不安の場であると同時に、新しいものが生まれる場。</p>
+                    <p style="margin-top: 1.5rem;">問い：あなたの「境界」はどこにあるか？その不安を、力に変えることはできるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        境界に住むことは、負担ですか？それとも力ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>グロリア・アンサルドゥア（1942-2004）は、チカーナ（メキシコ系アメリカ人女性）の作家、詩人、フェミニスト理論家であり、境界（borderlands）とメスティーサ意識の思想を展開しました。核心概念は「ボーダーランズ」——米墨国境だけでなく、文化・言語・アイデンティティ・ジェンダー・セクシュアリティのあらゆる境界。「メスティーサ意識」は混血を欠如ではなく、複数の視点を持つ力として再定義。「ネパントラ」（間にある場所）は変容と創造が起こる空間。『ボーダーランズ/ラ・フロンテーラ』（1987）は主著。チカーナ・フェミニズム、交差性理論、脱植民地化思想に決定的影響を与えた、20世紀アメリカの最も重要なフェミニスト思想家の一人です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Living in the borderlands.</p>
+    </footer>
+</body>
+
+</html>

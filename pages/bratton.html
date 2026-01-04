@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベンジャミン・ブラットン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            /* Stack Dark */
+            --secondary: #1e293b;
+            /* Deep Platform */
+            --accent: #38bdf8;
+            /* Planetary Cyan */
+            --highlight: #e0f2fe;
+            /* Compute Glow */
+            --bg: #020617;
+            /* Deep Stack */
+            --text: #e0f2fe;
+            --border: #0ea5e9;
+            --layer1: #ef4444;
+            --layer2: #f97316;
+            --layer3: #eab308;
+            --layer4: #22c55e;
+            --layer5: #3b82f6;
+            --layer6: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Stack Background */
+        .stack-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                linear-gradient(180deg,
+                    rgba(239, 68, 68, 0.02) 0%,
+                    rgba(249, 115, 22, 0.02) 16%,
+                    rgba(234, 179, 8, 0.02) 33%,
+                    rgba(34, 197, 94, 0.02) 50%,
+                    rgba(59, 130, 246, 0.02) 66%,
+                    rgba(139, 92, 246, 0.02) 83%,
+                    transparent 100%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Bratton Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0f172a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌐";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0ea5e9 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* THE STACK Section */
+        .stack-section {
+            background: var(--secondary);
+            padding: 8rem 4rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .stack-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .stack-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stack-layer {
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .layer-6 {
+            background: var(--layer6);
+        }
+
+        .layer-5 {
+            background: var(--layer5);
+        }
+
+        .layer-4 {
+            background: var(--layer4);
+        }
+
+        .layer-3 {
+            background: var(--layer3);
+            color: #000;
+        }
+
+        .layer-2 {
+            background: var(--layer2);
+        }
+
+        .layer-1 {
+            background: var(--layer1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌐";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stack-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← THE_STACK</a>
+        <div>BRATTON_v7.03</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-703 / THE_PLANETARY_ARCHITECT</span>
+        <h1>ベンジャミン・ブラットン</h1>
+        <p class="en-name">Benjamin Bratton (1968–)</p>
+        <p class="catchphrase">「プラネタリー・スケールの計算が、統治と主体性を再定義する」</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">プラネタリーOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">プラネタリー・コンピューテーション</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ベンジャミン・ブラットンは、アメリカのデザイン理論家、社会学者であり、デジタル技術と地政学の交差を分析する「プラネタリー・スケール計算」の理論家です。UCサンディエゴ教授。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「ザ・スタック」（The
+                        Stack）</b>——地球規模のコンピューティング・インフラストラクチャを6つの層として概念化。クラウド、都市、ユーザーは単なる技術ではなく、新しい統治形態を形成。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    従来の国家、主権、市民という概念を、プラットフォーム、プロトコル、ユーザーという概念で読み替える。技術と政治の根本的再考。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ブラットンは、<b>「地球規模OSアーキテクチャの設計文書を書いた人——クラウド、IoT、スマートシティ、ユーザーという層が重なり、新しい統治システム（The
+                        Stack）が形成される。国家はプラットフォームに、市民はユーザーに」</b>という視点を提示した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. THE STACK -->
+        <section class="stack-section">
+            <h2>📚 The Stack: 6つの層</h2>
+            <div class="stack-layers">
+                <div class="stack-layer layer-6">User（ユーザー）</div>
+                <div class="stack-layer layer-5">Interface（インターフェース）</div>
+                <div class="stack-layer layer-4">Address（アドレス）</div>
+                <div class="stack-layer layer-3">City（都市）</div>
+                <div class="stack-layer layer-2">Cloud（クラウド）</div>
+                <div class="stack-layer layer-1">Earth（地球）</div>
+            </div>
+            <p style="text-align: center; margin-top: 3rem; color: rgba(255,255,255,0.8);">
+                地球からユーザーまで——技術はすべての層を貫く統治インフラとなる
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ブラットン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">プラットフォームは新しい主権者である。プロトコルは新しい法である。ユーザーは新しい市民である。</p>
+                <p class="quote-author">— ベンジャミン・ブラットン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📚 The Stack</h3>
+                        <p>地球規模のコンピューティング・インフラを6層で概念化。技術と統治の融合。</p>
+                </div>
+                <div class="card">
+                    <h3">☁️ クラウド層</h3>
+                        <p>Amazon、Google、Alibaba——クラウドは新しい領土。データセンターは新しい主権。</p>
+                </div>
+                <div class="card">
+                    <h3">🏙️ 都市層</h3>
+                        <p>スマートシティ。センサー、IoT、監視。都市は計算ノードになる。</p>
+                </div>
+                <div class="card">
+                    <h3">👤 ユーザー層</h3>
+                        <p>ユーザーは人間だけでなく、ボット、AI、センサーも。主体性の再定義。</p>
+                </div>
+                <div class="card">
+                    <h3">🦠 パンデミック政治</h3>
+                        <p>COVID-19は「The Revenge of the Real」——現実の復讐、計画の重要性。</p>
+                </div>
+                <div class="card">
+                    <h3">🤖 AIと主体性</h3>
+                        <p>人工知能は道具ではなく、新しい主体の形態。人間中心主義の終焉？</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要著作 -->
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">The Stack (2015)</h3>
+                        <p>ザ・スタック。プラネタリー・スケール計算のソフトウェアとソブリンティ。主著。</p>
+                </div>
+                <div class="card">
+                    <h3">The Revenge of the Real (2021)</h3>
+                        <p>現実の復讐。パンデミック政治とバイオセキュリティの未来。</p>
+                </div>
+                <div class="card">
+                    <h3">The Terraforming (2019)</h3>
+                        <p>テラフォーミング。スタジとして設計された惑星。</p>
+                </div>
+                <div class="card">
+                    <h3">Design in an Age of Crisis</h3>
+                        <p>危機の時代のデザイン。様々なエッセイと講演。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Planetary</h2>
+            <div class="it-card">
+                <h3">The Stack as Architecture Diagram</h3>
+                    <p>ザ・スタックはアーキテクチャ図。地球規模システムの設計文書。</p>
+            </div>
+            <div class="it-card">
+                <h3">Platform as Sovereign</h3>
+                    <p>プラットフォームは主権者。Google、Amazonは領土を持つ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Protocol as Constitution</h3>
+                    <p>プロトコルは憲法。TCP/IP、HTTPSが法を定める。</p>
+            </div>
+            <div class="it-card">
+                <h3">User as Process</h3>
+                    <p>ユーザーはプロセス。人間もボットも同等のノード。</p>
+            </div>
+        </section>
+
+        <!-- 5. 遺産 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>The Stack</strong>：地球規模技術の概念フレームワーク。</li>
+                <li><strong>プラットフォーム主権</strong>：GAFAと国家の新しい関係。</li>
+                <li><strong>思弁的デザイン</strong>：未来を設計する思考法。</li>
+                <li><strong>AI政治学</strong>：人工知能と統治の交差。</li>
+                <li><strong>Strelka Institute</strong>：モスクワでの教育プログラム。</li>
+            </ul>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 技術思想家の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心概念</th>
+                        <th>技術観</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ブラットン</strong></td>
+                        <td>The Stack</td>
+                        <td>統治インフラ</td>
+                        <td>プラネタリー</td>
+                    </tr>
+                    <tr>
+                        <td><strong>スティグレール</strong></td>
+                        <td>技術と時間</td>
+                        <td>薬/毒</td>
+                        <td>フランス現象学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>フロリディ</strong></td>
+                        <td>情報圏</td>
+                        <td>情報倫理</td>
+                        <td>オックスフォード</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ハラウェイ</strong></td>
+                        <td>サイボーグ</td>
+                        <td>境界の撹乱</td>
+                        <td>フェミニズム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：プラットフォームは国家か</h2>
+            <div class="thought-experiment">
+                <h3">新しい主権</h3>
+                    <p>Google、Amazon、Facebook、Apple——これらは単なる企業か？それとも新しい形態の主権者か？</p>
+                    <p style="margin-top: 1.5rem;">
+                        考えてみよう：彼らは「領土」（クラウド・インフラ、データセンター）を持つ。「市民」（ユーザー）を持つ。「法」（利用規約、アルゴリズム）を執行する。「通貨」を発行する（Apple
+                        Pay、Libra計画）。</p>
+                    <p style="margin-top: 1.5rem;">従来の主権国家との違いは何か？——物理的領土がない？しかしデータセンターは世界中に。軍隊がない？しかしセキュリティ・チームはいる。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ブラットンの洞察：プラットフォームと国家は対立するのではなく、相互浸透する。中国のプラットフォームは国家と融合。米国のプラットフォームは国家と交渉。</p>
+                    <p style="margin-top: 1.5rem;">未来の問い：あなたは何の「市民」か？——アメリカ人か、日本人か、それともGoogleユーザーか？どちらがより日常を統治しているか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたを最も統治しているのは、国家ですか？それともプラットフォームですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ベンジャミン・ブラットン（1968-）は、アメリカのデザイン理論家、社会学者であり、「プラネタリー・スケール計算」の理論家です。核心概念は「The
+                Stack」——地球規模のコンピューティング・インフラを6層（地球、クラウド、都市、アドレス、インターフェース、ユーザー）で概念化。プラットフォームは新しい主権者、プロトコルは新しい法、ユーザーは新しい市民。従来の国家、主権、市民という概念を技術的概念で読み替え、統治と主体性の再定義を行う。『The
+                Revenge of the Real』（2021）ではパンデミックを通じて「現実の復讐」を論じた。21世紀の技術と政治を考える上で不可欠な思想家です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The Stack is rising.</p>
+    </footer>
+</body>
+
+</html>

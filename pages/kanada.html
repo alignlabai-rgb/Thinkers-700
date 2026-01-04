@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カナーダ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Atom Green */
+            --secondary: #064e3b;
+            /* Deep Nature */
+            --accent: #34d399;
+            /* Light Particle */
+            --highlight: #d1fae5;
+            /* Category Glow */
+            --bg: #022c22;
+            /* Deep Vaisheshika */
+            --text: #d1fae5;
+            --border: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Vaisheshika Background */
+        .vaisheshika-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(52, 211, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(5, 150, 105, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Kanada Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚛️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #10b981 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .categories-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .category-box {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚛️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vaisheshika-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← VAISHESHIKA</a>
+        <div>KANADA_v6.83</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-683 / THE_INDIAN_ATOMIST</span>
+        <h1>カナーダ</h1>
+        <p class="en-name">Kanada / Kaṇāda (c.6th-2nd century BCE)</p>
+        <p class="catchphrase">「すべての物質は原子（アヌ）から成る」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">原子論OS</span>
+            <span class="os-tag">存在論OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">インドの原子論者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    カナーダは、インド六派哲学の一つであるヴァイシェーシカ学派の創始者とされる古代の賢者です。ギリシアのデモクリトスとほぼ同時代に、独立してインドで原子論を発展させました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「原子論（パラマーヌヴァーダ）」</b>——すべての物質は不可分の微小粒子（アヌ/パラマーヌ）から構成される。原子は永遠で破壊されない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>「カテゴリー論（パダールタ）」</b>を発展させ、存在のすべてを七つ（または六つ）のカテゴリーに分類しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    カナーダは、<b>「インド哲学OSのデータ型システム設計者——存在をカテゴリー（型）で分類し、物質を原子（ビット）に還元。西洋のデモクリトスと独立して同じパターンに到達」</b>した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 七つのカテゴリー -->
+        <section class="categories-section">
+            <h2>📦 七つのカテゴリー（パダールタ）</h2>
+            <div class="categories-grid">
+                <div class="category-box">
+                    <p>1. 実体</p>
+                    <p style="font-size: 0.9rem;">ドラヴィヤ</p>
+                </div>
+                <div class="category-box">
+                    <p>2. 性質</p>
+                    <p style="font-size: 0.9rem;">グナ</p>
+                </div>
+                <div class="category-box">
+                    <p>3. 運動</p>
+                    <p style="font-size: 0.9rem;">カルマン</p>
+                </div>
+                <div class="category-box">
+                    <p>4. 普遍</p>
+                    <p style="font-size: 0.9rem;">サーマーニャ</p>
+                </div>
+                <div class="category-box">
+                    <p>5. 特殊</p>
+                    <p style="font-size: 0.9rem;">ヴィシェーシャ</p>
+                </div>
+                <div class="category-box">
+                    <p>6. 内属</p>
+                    <p style="font-size: 0.9rem;">サマヴァーヤ</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                後に「非存在（アバーヴァ）」が第7のカテゴリーとして追加されました。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 カナーダ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">すべての結合した物体は原子から成り、原子は永遠である。</p>
+                <p class="quote-author">— ヴァイシェーシカ・スートラ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚛️ 原子論</h3>
+                        <p>物質は不可分の原子（アヌ/パラマーヌ）から成る。四つの元素（地・水・火・風）それぞれに対応する原子がある。</p>
+                </div>
+                <div class="card">
+                    <h3">📦 カテゴリー論</h3>
+                        <p>存在の七つの基本カテゴリー。実体、性質、運動、普遍、特殊、内属、非存在。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 九つの実体</h3>
+                        <p>地、水、火、風、空間、時間、方角、自己（アートマン）、心。四つは原子的、五つは非原子的。</p>
+                </div>
+                <div class="card">
+                    <h3">📐 結合理論</h3>
+                        <p>原子は二つずつ結合して二原子分子（ドヴィヤヌカ）を形成し、これらがさらに結合して大きな物体を形成。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 ニヤーヤとの合流</h3>
+                        <p>後にニヤーヤ学派と合流してニヤーヤ＝ヴァイシェーシカとなる。論理学と存在論の統合。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 ヴァイシェーシカ・スートラ</h3>
+                        <p>カナーダに帰せられる基本テキスト。原子論とカテゴリー論を提示。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 原子論の詳細 -->
+        <section class="section">
+            <h2 class="section-title">⚛️ インドの原子論</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 四種の原子</h3>
+                        <p>地（プリティヴィー）、水（アプ）、火（テージャス）、風（ヴァーユ）の原子。それぞれ異なる性質を持つ。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 原子の性質</h3>
+                        <p>永遠、不可分、無限小。原子自体は見えないが、結合した物体は見える。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 結合と分離</h3>
+                        <p>神（または不可見力）によって原子が結合し世界が創造される。世界の終わりには分離。</p>
+                </div>
+                <div class="card">
+                    <h3">4. ギリシア原子論との比較</h3>
+                        <p>デモクリトスと独立して発展。類似点（原子の不可分性）と相違点（原子の性質的多様性）がある。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Vaisheshika</h2>
+            <div class="it-card">
+                <h3">Atoms as Bits</h3>
+                    <p>原子はビット。すべてのデータ（物質）は基本単位（原子）の組み合わせ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Categories as Type System</h3>
+                    <p>カテゴリーは型システム。存在するものを分類するデータ型。実体、性質、運動など。</p>
+            </div>
+            <div class="it-card">
+                <h3">Nine Substances as Primitive Types</h3>
+                    <p>九つの実体はプリミティブ型。地、水、火、風、空間、時間、方角、自己、心——基本データ型。</p>
+            </div>
+            <div class="it-card">
+                <h3">Combination as Object Composition</h3>
+                    <p>原子の結合はオブジェクト合成。基本オブジェクトを組み合わせて複雑なオブジェクトを構築。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>インド原子論</strong>：ギリシアと独立した原子論の伝統。</li>
+                <li><strong>カテゴリー論</strong>：インド哲学の存在論的枠組み。</li>
+                <li><strong>ニヤーヤ＝ヴァイシェーシカ</strong>：論理学との統合。</li>
+                <li><strong>科学的思考</strong>：観察と分類に基づく自然理解。</li>
+                <li><strong>仏教・ジャイナ教への影響</strong>：原子論的概念の伝播。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">根</h3>
+                        <ul class="list-rich">
+                            <li>ヴェーダ</li>
+                            <li>初期インド自然哲学</li>
+                            <li>（デモクリトスとは独立）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">枝</h3>
+                        <ul class="list-rich">
+                            <li>プラシャスタパーダ</li>
+                            <li>ニヤーヤ＝ヴァイシェーシカ</li>
+                            <li>仏教原子論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 古代原子論の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>伝統</th>
+                        <th>原子の種類</th>
+                        <th>原子の性質</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>カナーダ</strong></td>
+                        <td>インド</td>
+                        <td>4種（地水火風）</td>
+                        <td>質的に異なる</td>
+                    </tr>
+                    <tr>
+                        <td><strong>デモクリトス</strong></td>
+                        <td>ギリシア</td>
+                        <td>1種（形状が異なる）</td>
+                        <td>形状のみ異なる</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ジャイナ教</strong></td>
+                        <td>インド</td>
+                        <td>多種</td>
+                        <td>質的に異なる</td>
+                    </tr>
+                    <tr>
+                        <td><strong>仏教</strong></td>
+                        <td>インド</td>
+                        <td>4種</td>
+                        <td>刹那的</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：分割の限界</h2>
+            <div class="thought-experiment">
+                <h3">無限分割は可能か</h3>
+                    <p>物質を半分に、さらに半分に、無限に分割できるでしょうか？カナーダとデモクリトスは「いいえ」と答えました。どこかで分割できない最小単位（原子）に到達する。</p>
+                    <p style="margin-top: 1.5rem;">
+                        現代物理学は両者に部分的に同意し、部分的に反論します。原子は分割可能でした（電子、陽子、中性子）。さらにクォークも発見されました。しかしどこかに「底」はあるのか？</p>
+                    <p style="margin-top: 1.5rem;">量子力学は別の問題を提起します。最小単位は「粒子」なのか「場」なのか？原子論的世界観は今日も議論されています。</p>
+                    <p style="margin-top: 1.5rem;">
+                        カナーダの洞察は、2500年前に「物質には基本構成単位がある」という直観を持ったこと。この直観は、形を変えながらも現代科学に受け継がれています。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        物質の最小単位は存在しますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>カナーダ（紀元前6-2世紀頃）は、インド六派哲学の一つであるヴァイシェーシカ学派の創始者とされる古代の賢者です。ギリシアのデモクリトスとほぼ同時代に、独立してインドで原子論を発展させました。すべての物質は不可分の原子（アヌ/パラマーヌ）から成り、地・水・火・風の四種の原子があります。また存在を七つのカテゴリー（パダールタ）に分類する存在論を提示。後にニヤーヤ学派と合流してニヤーヤ＝ヴァイシェーシカとなり、論理学と存在論が統合されました。インド哲学における科学的・分析的思考の典型であり、観察と分類に基づく自然理解の先駆者です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Atoms and Categories.</p>
+    </footer>
+</body>
+
+</html>

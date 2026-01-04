@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>張載 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Qi Purple */
+            --secondary: #4c1d95;
+            /* Cosmos Dark */
+            --accent: #a78bfa;
+            /* Light Ether */
+            --highlight: #ede9fe;
+            /* Heaven Glow */
+            --bg: #2e1065;
+            /* Deep Void */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Qi Background */
+        .qi-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Zhang Zai Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☯️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Xi Ming Section */
+        .ximing-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .ximing-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .ximing-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .ximing-content {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☯️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="qi-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← QI_MONISM</a>
+        <div>ZHANG_ZAI_v6.86</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-686 / THE_COSMIC_ETHICIST</span>
+        <h1>張載</h1>
+        <p class="en-name">Zhang Zai / Hengqu 横渠 (1020–1077)</p>
+        <p class="catchphrase">「天地の為に心を立て、生民の為に命を立つ」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">気一元論OS</span>
+            <span class="os-tag">宋学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">宋代新儒学の先駆者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    張載（字は子厚、号は横渠先生）は、北宋の儒学者であり、「気一元論」を提唱した宋代新儒学（宋学・理学）の先駆者です。周敦頤、二程（程顥・程頤）と並ぶ「北宋五子」の一人。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「気一元論」</b>——宇宙のすべては「気」という一つの実体から成る。太虚（究極の虚空）と気は同一。仏教・道教に対抗する儒学的宇宙論。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    もう一つの核心は<b>『西銘』</b>——「乾は父と称し、坤は母と称す」——宇宙全体を一つの家族として捉え、万物を兄弟とする倫理的ビジョン。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    張載は、<b>「儒学OSに宇宙論カーネルを追加——仏教・道教の形而上学に対抗するため、『気』という統一理論を開発。『西銘』は倫理と宇宙論を統合するコア・コンセプト・ドキュメント」</b>を作成した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 西銘 -->
+        <section class="ximing-section">
+            <h2>📜 『西銘』冒頭</h2>
+            <p class="ximing-title">西銘</p>
+            <p class="ximing-content">
+                乾は父と称し、坤は母と称す。<br>
+                予れ（われ）は茲（ここ）に藐焉（ばくえん）として、乃ち混然として中に処る。<br>
+                故に天地の塞（そく）は吾が体となし、天地の帥（すい）は吾が性となす。<br>
+                民は吾が同胞、物は吾が与（とも）なり。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 張載思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">天地の為に心を立て、生民の為に命を立て、往聖の為に絶学を継ぎ、万世の為に太平を開く。</p>
+                <p class="quote-author">— 張載「横渠四句」</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">☯️ 気一元論</h3>
+                        <p>宇宙はすべて「気」から成る。太虚（究極の虚空）も気の一形態。仏教の「空」に対抗する儒学的実在論。</p>
+                </div>
+                <div class="card">
+                    <h3">🌌 太虚</h3>
+                        <p>究極の虚空。しかし「無」ではなく、気の散らばった状態。気が凝集すると万物となる。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 西銘</h3>
+                        <p>「乾は父、坤は母」——宇宙を一つの家族として捉える。万物は兄弟。倫理の宇宙論的基礎。</p>
+                </div>
+                <div class="card">
+                    <h3">🎓 横渠四句</h3>
+                        <p>儒学者の使命宣言。天地、民、聖人、万世のために働く。宋明理学のマニフェスト。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 仏教・道教批判</h3>
+                        <p>仏教の「空」と道教の「無」を批判。「気」という実在を主張。儒学的宇宙論を確立。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 正蒙</h3>
+                        <p>主著。気一元論を体系的に展開。太虚、陰陽、性、心などを論じる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 気一元論の詳細 -->
+        <section class="section">
+            <h2 class="section-title">🌀 気一元論</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 気とは</h3>
+                        <p>宇宙を構成する根本的実体。物質でも精神でもなく、両者の根源。凝集して万物、散じて太虚。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 太虚即気</h3>
+                        <p>太虚（究極の虚空）は「無」ではない。気の散らばった状態。虚空も実在。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 陰陽</h3>
+                        <p>気の二つのモード。陰（収縮・静）と陽（膨張・動）。この相互作用で万物が生成。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 仏教批判</h3>
+                        <p>仏教の「空」は虚無主義。世界は幻ではなく、気という実在から成る。儒学的リアリズム。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Qi Monism</h2>
+            <div class="it-card">
+                <h3">Qi as Universal Substrate</h3>
+                    <p>気はユニバーサル・サブストレート。すべてのオブジェクト（万物）が実行される基盤。太虚はメモリの空き領域。</p>
+            </div>
+            <div class="it-card">
+                <h3">Yin-Yang as Binary States</h3>
+                    <p>陰陽はバイナリ状態。0と1。この二つのモードの組み合わせで全システムが動作。</p>
+            </div>
+            <div class="it-card">
+                <h3">Xi Ming as README</h3>
+                    <p>『西銘』はREADMEファイル。プロジェクト（宇宙）の目的と構造を簡潔に説明。コア・ビジョンを伝達。</p>
+            </div>
+            <div class="it-card">
+                <h3">Hengqu Four Sentences as Mission Statement</h3>
+                    <p>横渠四句はミッション・ステートメント。儒学者（開発者）の目標と責任を宣言。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>気一元論</strong>：宋明理学の基盤の一つ。</li>
+                <li><strong>『西銘』</strong>：倫理の宇宙論的基礎。朱熹が高く評価。</li>
+                <li><strong>横渠四句</strong>：儒学者の使命宣言として今日も引用。</li>
+                <li><strong>仏教・道教批判</strong>：儒学的宇宙論の確立。</li>
+                <li><strong>朱熹への影響</strong>：気の概念を継承。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">師</h3>
+                        <ul class="list-rich">
+                            <li>孔子・孟子</li>
+                            <li>周敦頤</li>
+                            <li>易経</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響</h3>
+                        <ul class="list-rich">
+                            <li>程顥・程頤</li>
+                            <li>朱熹</li>
+                            <li>王陽明</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 北宋五子の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心概念</th>
+                        <th>代表作</th>
+                        <th>影響</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>周敦頤</strong></td>
+                        <td>太極・無極</td>
+                        <td>太極図説</td>
+                        <td>宋学の開祖</td>
+                    </tr>
+                    <tr>
+                        <td><strong>張載</strong></td>
+                        <td>気一元論</td>
+                        <td>正蒙・西銘</td>
+                        <td>気の哲学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>程顥</strong></td>
+                        <td>仁・天理</td>
+                        <td>識仁篇</td>
+                        <td>心学の源流</td>
+                    </tr>
+                    <tr>
+                        <td><strong>程頤</strong></td>
+                        <td>理・格物</td>
+                        <td>易伝</td>
+                        <td>朱子学の源流</td>
+                    </tr>
+                    <tr>
+                        <td><strong>邵雍</strong></td>
+                        <td>象数学</td>
+                        <td>皇極経世</td>
+                        <td>数理的宇宙論</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：万物は兄弟か</h2>
+            <div class="thought-experiment">
+                <h3">『西銘』のビジョン</h3>
+                    <p>『西銘』は宣言します：「民は吾が同胞、物は吾が与なり」——すべての人は兄弟であり、すべての存在は仲間である。これは倫理的理想か、形而上学的真実か？</p>
+                    <p style="margin-top: 1.5rem;">張載の論証：天地（乾坤）は万物の父母。私たちは皆、同じ宇宙的「家族」の一員。だから万物への慈しみは自然な義務。</p>
+                    <p style="margin-top: 1.5rem;">この見方は今日の環境倫理と共鳴します。人間だけでなく、すべての生命、さらには「存在」そのものへの配慮。</p>
+                    <p style="margin-top: 1.5rem;">批判者は問う：これは美しい詩的表現だが、実際の行動指針となるか？「万物は兄弟」と言いながら、肉を食べ、木を切る。矛盾ではないか？</p>
+                    <p style="margin-top: 1.5rem;">張載の答え：宇宙論的一体性を認識することで、行動が変わる。すべての存在を尊重しながらも、人間として生きる道がある。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        万物は兄弟であるという見方は、私たちの行動を変えますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>張載（1020-1077）は、北宋の儒学者であり、「気一元論」を提唱した宋代新儒学の先駆者です。「太虚即気」——宇宙のすべては気という一つの実体から成る。仏教の「空」と道教の「無」に対抗する儒学的宇宙論を確立しました。『西銘』は「乾は父、坤は母、民は同胞、物は与」——宇宙全体を一つの家族として捉え、万物への倫理的配慮を基礎づけました。「横渠四句」——「天地の為に心を立て、生民の為に命を立て、往聖の為に絶学を継ぎ、万世の為に太平を開く」——は儒学者の使命宣言として今日も引用されます。朱熹、王陽明など後代の宋明理学に大きな影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. All under Heaven is one family.</p>
+    </footer>
+</body>
+
+</html>

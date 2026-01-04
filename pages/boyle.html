@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ロバート・ボイル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0369a1;
+            /* Chemistry Blue */
+            --secondary: #0c4a6e;
+            /* Experiment Dark */
+            --accent: #38bdf8;
+            /* Light Element */
+            --highlight: #e0f2fe;
+            /* Science Glow */
+            --bg: #082f49;
+            /* Deep Lab */
+            --text: #e0f2fe;
+            --border: #0ea5e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Chemistry Background */
+        .chemistry-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(3, 105, 161, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Boyle Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0369a1 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚗️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(3, 105, 161, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(3, 105, 161, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Boyle's Law Section */
+        .law-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0369a1 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .law-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .law-formula {
+            font-size: 3rem;
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .law-desc {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚗️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chemistry-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← EXPERIMENTAL_PHILOSOPHY</a>
+        <div>BOYLE_v6.81</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-681 / THE_FATHER_OF_MODERN_CHEMISTRY</span>
+        <h1>ロバート・ボイル</h1>
+        <p class="en-name">Robert Boyle (1627–1691)</p>
+        <p class="catchphrase">「実験によってのみ、自然の真実に到達できる」</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">化学OS</span>
+            <span class="os-tag">実験OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">近代化学の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ロバート・ボイルは、17世紀イギリスの自然哲学者・化学者であり、「近代化学の父」と呼ばれています。ボイルの法則で知られるほか、実験的方法を科学に導入した先駆者。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「実験哲学」</b>——権威や理論ではなく、実験と観察によって自然を理解する。錬金術から化学への転換を促進。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ボイルは敬虔なキリスト教徒でもあり、<b>自然神学</b>——自然の研究を通じて神を知る——を支持しました。科学と宗教の調和。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ボイルは、<b>「錬金術という旧OSを化学という新OSにリプレイス——実験（テスト駆動開発）を導入し、四元素説というレガシーコードを原子論的アプローチに置き換え。科学OSの近代化を推進」</b>した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ボイルの法則 -->
+        <section class="law-section">
+            <h2>⚗️ ボイルの法則</h2>
+            <p class="law-formula">PV = k</p>
+            <p class="law-desc">「温度一定のとき、気体の体積は圧力に反比例する」</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                1662年に発見。気体の挙動を定量的に記述した最初の法則の一つ。実験によって確立された法則の典型例。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ボイル思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">自然の研究は、神の作品を理解することであり、神への礼拝の一形態である。</p>
+                <p class="quote-author">— ロバート・ボイル</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚗️ 実験哲学</h3>
+                        <p>権威ではなく実験に基づく知識。観察と実験を科学の基盤に。フランシス・ベーコンの経験主義を実践。</p>
+                </div>
+                <div class="card">
+                    <h3">💨 ボイルの法則</h3>
+                        <p>PV = k。温度一定で気体の体積と圧力は反比例。空気ポンプを使った実験で確立。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 『懐疑的化学者』</h3>
+                        <p>1661年出版。四元素説（土・水・火・空気）を批判。「元素」の近代的定義を提唱。</p>
+                </div>
+                <div class="card">
+                    <h3">⚛️ 微粒子哲学</h3>
+                        <p>物質は微小な粒子（コープスキル）で構成される。化学変化は粒子の再配列。原子論への橋渡し。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 自然神学</h3>
+                        <p>自然の研究は神を知る方法。科学と宗教は対立しない。ボイル講義を設立（無神論反駁のため）。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 王立協会</h3>
+                        <p>1660年設立の王立協会の創設メンバー。科学コミュニティの制度化に貢献。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 錬金術から化学へ -->
+        <section class="section">
+            <h2 class="section-title">🔄 錬金術から化学へ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 四元素説の批判</h3>
+                        <p>古代ギリシア以来の四元素（土・水・火・空気）説を実験的に反駁。単純に分解できないものが元素。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 元素の再定義</h3>
+                        <p>「これ以上分解できない単純な物質」を元素と定義。近代化学の元素概念の先駆け。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 実験的方法</h3>
+                        <p>錬金術の秘密主義を排し、実験の再現性と公開を重視。科学的方法の確立。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 定量的アプローチ</h3>
+                        <p>測定と数値化。ボイルの法則は気体の定量的法則。化学の数学化への第一歩。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Experimental Philosophy</h2>
+            <div class="it-card">
+                <h3">Experiment as Unit Test</h3>
+                    <p>実験はユニットテスト。仮説（コード）を実験（テスト）で検証。テストをパスしなければ採用しない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Alchemy to Chemistry as Legacy Migration</h3>
+                    <p>錬金術から化学への移行はレガシーマイグレーション。神秘的なコードベースを科学的なアーキテクチャに刷新。</p>
+            </div>
+            <div class="it-card">
+                <h3">Corpuscular Philosophy as Object-Oriented</h3>
+                    <p>微粒子哲学はオブジェクト指向。物質は粒子（オブジェクト）の集合。化学変化はオブジェクトの再構成。</p>
+            </div>
+            <div class="it-card">
+                <h3">Royal Society as Open Source Community</h3>
+                    <p>王立協会はオープンソースコミュニティ。成果を公開し、ピアレビュー。科学の共同開発。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>ボイルの法則（1662年）</strong>：気体の基本法則。</li>
+                <li><strong>『懐疑的化学者』（1661年）</strong>：近代化学の創設文書。</li>
+                <li><strong>実験的方法</strong>：科学における実験の重要性を確立。</li>
+                <li><strong>王立協会</strong>：科学コミュニティの制度化。</li>
+                <li><strong>ボイル講義</strong>：自然神学のための講義シリーズ。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">根</h3>
+                        <ul class="list-rich">
+                            <li>フランシス・ベーコン</li>
+                            <li>ガリレオ</li>
+                            <li>錬金術</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">枝</h3>
+                        <ul class="list-rich">
+                            <li>ニュートン</li>
+                            <li>ラヴォアジエ</li>
+                            <li>近代化学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 科学革命の巨人たち</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>分野</th>
+                        <th>主要貢献</th>
+                        <th>方法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ボイル</strong></td>
+                        <td>化学・物理</td>
+                        <td>ボイルの法則、元素概念</td>
+                        <td>実験</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ニュートン</strong></td>
+                        <td>物理・数学</td>
+                        <td>万有引力、微積分</td>
+                        <td>数学・実験</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ガリレオ</strong></td>
+                        <td>物理・天文</td>
+                        <td>地動説、落体の法則</td>
+                        <td>観測・実験</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ハーヴィ</strong></td>
+                        <td>医学</td>
+                        <td>血液循環</td>
+                        <td>解剖・実験</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：科学と宗教</h2>
+            <div class="thought-experiment">
+                <h3">ボイルにとっての調和</h3>
+                    <p>ボイルは敬虔なキリスト教徒でありながら、近代科学の創設者でした。今日、科学と宗教は対立すると見られることが多い。ボイルはなぜ両者を調和させられたのか？</p>
+                    <p style="margin-top: 1.5rem;">ボイルの答え：「自然の研究は神の作品を理解することであり、神への礼拝の一形態である」。自然神学——自然から神を知る。</p>
+                    <p style="margin-top: 1.5rem;">この見方では、科学は宗教に反するどころか、宗教的義務の一部。神が創造した世界を理解することは、神への敬意。</p>
+                    <p style="margin-top: 1.5rem;">批判者は問う：自然法則で説明できれば、神は不要ではないか？ニュートンも晩年、「ギャップの神」問題に直面した。</p>
+                    <p style="margin-top: 1.5rem;">この問いは今日も続いています。科学と宗教は対立、独立、対話、統合——どの関係か？（バーバーの四モデル参照）</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        科学と宗教は調和できますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ロバート・ボイル（1627-1691）は、17世紀イギリスの自然哲学者・化学者であり、「近代化学の父」と呼ばれています。ボイルの法則（PV =
+                k）は気体の基本法則であり、実験によって確立された法則の典型例。『懐疑的化学者』（1661）で四元素説を批判し、元素の近代的定義を提唱しました。「実験哲学」——権威ではなく実験に基づく知識——を科学の基盤に据え、王立協会の創設メンバーとして科学コミュニティの制度化に貢献。敬虔なキリスト教徒として自然神学を支持し、科学と宗教の調和を追求しました。錬金術から化学への転換を促進し、近代科学の方法論を確立した先駆者です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Experimental Philosophy.</p>
+    </footer>
+</body>
+
+</html>

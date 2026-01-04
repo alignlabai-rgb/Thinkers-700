@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イリヤ・プリゴジン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #a855f7;
+            /* Entropy Purple */
+            --secondary: #3b0764;
+            /* Chaos Dark */
+            --accent: #c084fc;
+            /* Emergence Light */
+            --highlight: #f3e8ff;
+            /* Order Glow */
+            --bg: #1e0a3c;
+            /* Deep Complexity */
+            --text: #f3e8ff;
+            --border: #9333ea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Entropy Background */
+        .entropy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(192, 132, 252, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Prigogine Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #a855f7 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌀";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #9333ea 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dissipative Section */
+        .dissipative-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #a855f7 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .dissipative-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌀";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="entropy-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← COMPLEXITY</a>
+        <div>ENTROPY_v5.79</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-579 / THE_ENTROPY_ARTIST</span>
+        <h1>イリヤ・プリゴジン</h1>
+        <p class="en-name">Ilya Prigogine (1917–2003)</p>
+        <p class="catchphrase">「混沌から秩序へ」——散逸構造のノーベル賞化学者</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">複雑系OS</span>
+            <span class="os-tag">時間OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">散逸構造</h2>
+            <div class="hero-box">
+                <p class="hero-text">イリヤ・プリゴジンは、ロシア生まれのベルギーの物理化学者であり、非平衡熱力学と散逸構造の研究でノーベル化学賞（1977）を受賞しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    プリゴジンの核心的発見——<b>平衡から遠い系では、エントロピー生成を通じて自発的に秩序が形成される</b>。散逸構造。混沌から秩序が生まれる。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    時間の矢の問題にも取り組み、「決定論の終焉」を宣言。複雑系科学、自己組織化研究に革命をもたらしました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    プリゴジンの散逸構造は、<b>「エネルギー消費から自発的パターン形成——オープンシステムはエントロピーを輸出して内部秩序を生成。生命はシステム維持のためにエネルギーを『燃やす』」</b>という、自己組織化の科学。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 散逸構造 -->
+        <section class="dissipative-section">
+            <h2>🌀 散逸構造 (Dissipative Structures)</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto; color: var(--highlight);">
+                エネルギーを消費（散逸）しながら<br>
+                秩序を維持する構造
+            </p>
+            <p style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.9;">
+                例：対流セル（ベナール・セル）、生命、都市<br>
+                平衡から遠く離れた「非平衡開放系」で発生<br>
+                → ノーベル化学賞 1977
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 プリゴジン理論の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">未来は与えられてはいない。未来は構築されるものだ。</p>
+                <p class="quote-author">— イリヤ・プリゴジン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌀 散逸構造</h3>
+                        <p>エネルギー散逸から秩序形成。非平衡熱力学。平衡から遠い系でのパターン形成。</p>
+                </div>
+                <div class="card">
+                    <h3">⏰ 時間の矢</h3>
+                        <p>時間は不可逆。過去と未来は対称ではない。熱力学第二法則。</p>
+                </div>
+                <div class="card">
+                    <h3">🎲 決定論の終焉</h3>
+                        <p>未来は完全に決定されていない。分岐点（ビフルケーション）で複数の未来が可能。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 自己組織化</h3>
+                        <p>系は外部の指令なしに自発的に秩序を形成。創発的パターン。</p>
+                </div>
+                <div class="card">
+                    <h3">🌡️ 非平衡開放系</h3>
+                        <p>物質・エネルギーが流入・流出する系。閉鎖系では熱死に向かうだけ。</p>
+                </div>
+                <div class="card">
+                    <h3">🧬 生命への示唆</h3>
+                        <p>生命は散逸構造。エントロピーを外部に排出して内部秩序を維持。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 著作 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Self-Organization in Nonequilibrium Systems (1977)</h3>
+                        <p>非平衡系における自己組織化。ニコリスとの共著。散逸構造の数学的基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">From Being to Becoming (1980)</h3>
+                        <p>存在から生成へ——時間と複雑性。時間の不可逆性の哲学的意味。</p>
+                </div>
+                <div class="card">
+                    <h3">Order Out of Chaos (1984)</h3>
+                        <p>混沌からの秩序。スタンジェールとの共著。一般向け。ベストセラー。</p>
+                </div>
+                <div class="card">
+                    <h3">The End of Certainty (1997)</h3>
+                        <p>確実性の終焉——時間、カオス、新しい自然法則。決定論批判の集大成。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Emergence</h2>
+            <div class="it-card">
+                <h3">Dissipative Structure as Active System</h3>
+                    <p>散逸構造はアクティブシステム。常にリソースを消費して状態を維持。停止すれば崩壊。</p>
+            </div>
+            <div class="it-card">
+                <h3">Entropy Export as Garbage Collection</h3>
+                    <p>エントロピー輸出はガベージコレクション。内部秩序のために「ゴミ」を外部に排出。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bifurcation as Conditional Branch</h3>
+                    <p>分岐点は条件分岐。しかし結果は予測不能。ランダム性がシステムの進化を決定。</p>
+            </div>
+            <div class="it-card">
+                <h3">Self-Organization as Emergent Behavior</h3>
+                    <p>自己組織化は創発的振る舞い。単純なルールから複雑なパターン。ゲームオブライフ。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>散逸構造</strong>：エネルギー消費から秩序形成。</li>
+                <li><strong>非平衡熱力学</strong>：平衡から遠い系の科学。</li>
+                <li><strong>自己組織化</strong>：外部指令なき秩序形成。</li>
+                <li><strong>決定論批判</strong>：未来は開かれている。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ボルツマン（熱力学）</li>
+                            <li>オンサーガー</li>
+                            <li>ベルクソン（時間論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>複雑系科学</li>
+                            <li>カオス理論</li>
+                            <li>サンタフェ研究所</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 世界観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>プリゴジン（複雑系）</th>
+                        <th>ニュートン（決定論）</th>
+                        <th>量子力学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>未来</strong></td>
+                        <td>開かれている</td>
+                        <td>決定されている</td>
+                        <td>確率的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>時間</strong></td>
+                        <td>不可逆</td>
+                        <td>可逆</td>
+                        <td>可逆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>秩序</strong></td>
+                        <td>創発的</td>
+                        <td>初期条件から</td>
+                        <td>観測から</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>創発システム</td>
+                        <td>決定論的プログラム</td>
+                        <td>確率的アルゴリズム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：秩序と混沌</h2>
+            <div class="thought-experiment">
+                <h3">なぜ宇宙に秩序があるのか</h3>
+                    <p>熱力学第二法則：宇宙はエントロピー増大へ向かう。</p>
+                    <p>しかし同時に、銀河、惑星、生命、文明が存在する。</p>
+                    <p>なぜ「混沌への道」の中に「秩序の島」があるのか？</p>
+                    <p>プリゴジンの答え：局所的秩序はグローバルなエントロピー増大と矛盾しない。</p>
+                    <p>散逸構造はエントロピーを「輸出」して内部秩序を維持。</p>
+                    <p>生命は宇宙のエントロピー増大を加速しながら、自らの秩序を維持。</p>
+                    <p>これは「熱力学の逆説」の解決。</p>
+                    <p>しかし問いは残る：なぜこのような法則が存在するのか？</p>
+                    <p>自己組織化は宇宙の基本的性質か、それとも偶然か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        秩序は混沌の中に必然的に生まれますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>イリヤ・プリゴジンは、ベルギーの物理化学者であり、非平衡熱力学と散逸構造の研究でノーベル化学賞（1977）を受賞しました。平衡から遠い系では、エネルギーを消費（散逸）しながら自発的に秩序が形成される——これが「散逸構造」。時間の不可逆性、決定論批判、自己組織化など、複雑系科学の基盤を築きました。「未来は与えられてはいない、構築されるものだ」というプリゴジンのメッセージは、科学を超えて哲学、社会理論にも影響を与え続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Order emerges from chaos.</p>
+    </footer>
+</body>
+
+</html>

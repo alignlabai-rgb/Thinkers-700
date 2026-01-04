@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョルジュ・ソレル - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #991b1b;
+            /* Violence Red */
+            --secondary: #1c1917;
+            /* Strike Dark */
+            --accent: #ef4444;
+            /* Myth Fire */
+            --highlight: #fecaca;
+            /* Syndicalism Glow */
+            --bg: #0c0a09;
+            /* Revolution Deep */
+            --text: #fef2f2;
+            --border: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Strike Background */
+        .strike-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(153, 27, 27, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Revolutionary Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #44403c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚡";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b91c1c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(153, 27, 27, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(153, 27, 27, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Myth vs Utopia Diagram */
+        .myth-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #44403c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .myth-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .myth-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .myth-box {
+            padding: 3rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .myth-good {
+            background: var(--accent);
+            border: 3px solid var(--highlight);
+        }
+
+        .utopia-bad {
+            background: #6b7280;
+            border: 2px solid #9ca3af;
+        }
+
+        .myth-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .myth-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="strike-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← RÉFLEXIONS_SUR_LA_VIOLENCE</a>
+        <div>MYTH_OF_STRIKE_v4.89</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-489 / LE_THÉORICIEN_DE_LA_VIOLENCE</span>
+        <h1>ジョルジュ・ソレル</h1>
+        <p class="en-name">Georges Sorel (1847–1922)</p>
+        <p class="catchphrase">「神話は行動する力である」</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">心理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">神話の力</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    フランスの社会思想家ジョルジュ・ソレルは、20世紀政治思想に最も「危険」な洞察を与えました。彼の主著『暴力論』（1908年）は、暴力を単なる破壊ではなく、<b>社会変革の創造的な力</b>として分析します。しかしソレルの真の発見は<b>「神話」</b>の概念——真偽を問わず、人々を行動へと駆り立てるイメージの力——です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ソレルの「ゼネラル・ストライキの神話」——労働者が一斉に立ち上がり、ブルジョア社会を転覆するというイメージ——は、実現可能性ではなく、<b>行動を触発する力</b>によって評価される。これは「ユートピア」（合理的な社会設計）とは根本的に異なる。神話は理性ではなく感情に訴え、人々を団結させ、行動へと向かわせる。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ソレルを学ぶことは、<b>理性では説明できない政治的情熱の源泉を理解すること</b>です。その洞察は、左右を問わず20世紀の大衆運動に影響を与えました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>ソレルは、<b>「政治的動員には『神話』——コードの正確さではなく、チームを団結させ行動に駆り立てるビジョン——が必要だ。『完璧なアーキテクチャ図』（ユートピア）は無力だが、『革命的なプロダクトのイメージ』（神話）は人を動かす」</b>と洞察した、政治心理学のハッカーです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 神話 vs ユートピア -->
+        <section class="myth-section">
+            <h2>⚡ 神話 vs ユートピア</h2>
+            <div class="myth-diagram">
+                <div class="myth-box myth-good">
+                    <p>🔥 神話</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Myth</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">感情・行動・団結</p>
+                </div>
+                <div class="myth-arrow">⚔️</div>
+                <div class="myth-box utopia-bad">
+                    <p>📐 ユートピア</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Utopia</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">理性・計画・受動</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                神話は真偽ではなく行動力で評価される。ユートピアは合理的だが無力。「ゼネスト神話」は労働者を団結させ、行動へと駆り立てる力を持つ。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ソレル思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">神話とは、現在の闘争における最も強力な傾向の表現として、戦闘の準備ができた人々に自らを語りかけるイメージの複合体である。</p>
+                <p class="quote-author">— 『暴力論』（1908年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔥 暴力論</h3>
+                    <p>暴力は破壊だけでなく創造の力。プロレタリアートの暴力はブルジョア暴力（国家の強制）と異なる。革命的エネルギーの源泉。</p>
+                </div>
+                <div class="card">
+                    <h3>📜 神話</h3>
+                    <p>行動を触発するイメージの複合体。真偽ではなく動員力で評価。「ゼネスト神話」が典型。理性ではなく感情に訴える。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ ゼネラル・ストライキ</h3>
+                        <p>労働者が一斉に立ち上がるイメージ。実現可能性ではなく、団結と行動を促す力。サンディカリズムの中心概念。</p>
+                </div>
+                <div class="card">
+                    <h3">❌ 反合理主義</h3>
+                        <p>啓蒙的理性への批判。人間は合理的存在ではなく、神話と情熱に動かされる。ベルクソンの生の哲学からの影響。</p>
+                </div>
+                <div class="card">
+                    <h3">🏭 サンディカリズム</h3>
+                        <p>労働組合を革命の主体とする思想。政党や議会ではなく、直接行動と職場での闘争を重視。</p>
+                </div>
+                <div class="card">
+                    <h3">📉 デカダンス批判</h3>
+                        <p>ブルジョア社会の「退廃」への批判。妥協、調停、快適さへの軽蔑。英雄的道徳の復活を求める。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 危険な遺産</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 左派への影響</h3>
+                        <p>サンディカリズム、アナルコ・サンディカリズム。直接行動の理論。議会主義批判。革命的労働運動。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 右派への影響</h3>
+                        <p>ファシズムへの「神話」概念の流用。ムッソリーニはソレルを読んでいた。非合理主義と暴力の美学化。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 両義的評価</h3>
+                        <p>左右両極が参照した思想家。「神話」の概念は道具であり、内容は問わない。危険だが洞察に富む。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 現代への示唆</h3>
+                        <p>ポピュリズム、ナショナリズム、宗教的原理主義——すべて「神話」で動員する。ソレルの洞察は今も有効。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Myth as Mobilization Protocol</h2>
+            <div class="it-card">
+                <h3">Myth as Vision Statement</h3>
+                    <p>神話はビジョンステートメント。技術的正確さより、チームを団結させ行動に駆り立てる力が重要。「世界を変える」——実現可能性より動員力。</p>
+            </div>
+            <div class="it-card">
+                <h3">Utopia as Waterfall Spec</h3>
+                    <p>ユートピアはウォーターフォール仕様書。詳細で合理的だが、実行力がない。計画は完璧だが、誰も動かない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Violence as Disruptive Innovation</h3>
+                    <p>暴力は破壊的イノベーション。既存秩序を壊すことで新しい可能性を開く。「創造的破壊」の政治的版。</p>
+            </div>
+            <div class="it-card">
+                <h3">General Strike as System Shutdown</h3>
+                    <p>ゼネラル・ストライキはシステムシャットダウン。すべてのプロセスを停止し、システム全体を再起動する。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『暴力論』</strong>：プロレタリアート暴力の創造的側面を分析。歴史を動かす力としての暴力。</li>
+                <li><strong>神話の概念</strong>：行動を触発するイメージの複合体。真偽ではなく動員力で評価。政治心理学への貢献。</li>
+                <li><strong>反合理主義</strong>：啓蒙的理性への批判。人間は感情と神話に動かされる。ベルクソンからの影響。</li>
+                <li><strong>サンディカリズム理論</strong>：労働組合と直接行動を革命の手段とする。議会主義批判。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>カール・マルクス（階級闘争）</li>
+                            <li>アンリ・ベルクソン（生の哲学）</li>
+                            <li>プルードン（アナーキズム）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アントニオ・グラムシ（ヘゲモニー論）</li>
+                            <li>ファシズム（神話の流用）</li>
+                            <li>エルネスト・ラクラウ（ポピュリズム論）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 革命理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ソレル</th>
+                        <th>マルクス</th>
+                        <th>レーニン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>革命の主体</strong></td>
+                        <td>労働組合</td>
+                        <td>プロレタリアート</td>
+                        <td>前衛党</td>
+                    </tr>
+                    <tr>
+                        <td><strong>革命の手段</strong></td>
+                        <td>神話・直接行動</td>
+                        <td>階級闘争</td>
+                        <td>組織・蜂起</td>
+                    </tr>
+                    <tr>
+                        <td><strong>理性への態度</strong></td>
+                        <td>反合理主義</td>
+                        <td>科学的社会主義</td>
+                        <td>科学的＋意志主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ビジョン駆動</td>
+                        <td>システム分析</td>
+                        <td>プロジェクト管理</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：動員する物語</h2>
+            <div class="thought-experiment">
+                <h3">あなたの「神話」は何か</h3>
+                    <p>政治運動、宗教、企業——あらゆる集団は「神話」を持っています。「われわれは〇〇を実現する」「かつて△△があった、それを取り戻す」——これらは事実かどうかではなく、行動を促すかどうかで評価される。
+                    </p>
+                    <p>ソレルのゼネスト神話は、労働者が一斉に立ち上がり、ブルジョア社会が崩壊するというイメージでした。これは「計画」ではない。誰も具体的なスケジュールを持っていない。しかし、このイメージが人々を団結させ、闘争へと向かわせる。
+                    </p>
+                    <p>現代のスタートアップも「神話」で動いています。「世界を変える」「〇〇をディスラプトする」——これは詳細な事業計画より、チームを動員する力を持つ。</p>
+                    <p>問題は：神話は内容を問わない。善にも悪にも使える。ファシズムもナショナリズムも宗教的原理主義も、「神話」で動員する。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたを動かしている「神話」は何ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジョルジュ・ソレルの『暴力論』と「神話」の概念は、20世紀政治思想に深い影響を与えました。合理的な計画（ユートピア）ではなく、感情に訴えるイメージ（神話）が人々を動員する——この洞察は、左右を問わず大衆運動に応用されました。ソレルの遺産は両義的です。その洞察は深いが、暴力の美学化やファシズムへの流用という暗い側面もある。しかし今日のポピュリズム、ナショナリズム、宗教的過激主義を理解するためには、ソレルの「神話」概念は不可欠な分析ツールであり続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. La violence... est créatrice.</p>
+    </footer>
+</body>
+
+</html>

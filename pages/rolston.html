@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームズ・ロールストン三世 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            /* Nature Green */
+            --secondary: #14532d;
+            /* Forest Dark */
+            --accent: #22c55e;
+            /* Light Growth */
+            --highlight: #dcfce7;
+            /* Ecological Glow */
+            --bg: #052e16;
+            /* Deep Wilderness */
+            --text: #dcfce7;
+            --border: #16a34a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Nature Background */
+        .nature-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(21, 128, 61, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Ecological Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #15803d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌲";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #16a34a 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(21, 128, 61, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(21, 128, 61, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Value Hierarchy Section */
+        .value-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #15803d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .value-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .value-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .value-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 320px;
+        }
+
+        .instrumental-box {
+            background: #78350f;
+            border: 2px solid #d97706;
+        }
+
+        .systemic-box {
+            background: #0369a1;
+            border: 2px solid #38bdf8;
+        }
+
+        .intrinsic-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .value-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌲";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nature-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ENVIRONMENTAL_ETHICS</a>
+        <div>ROLSTON_v6.54</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-654 / THE_WILDERNESS_PHILOSOPHER</span>
+        <h1>ホームズ・ロールストン三世</h1>
+        <p class="en-name">Holmes Rolston III (1932–)</p>
+        <p class="catchphrase">「自然には人間とは独立した価値がある——それを尊重せよ」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">環境OS</span>
+            <span class="os-tag">価値OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">環境倫理学の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ホームズ・ロールストン三世は、アメリカの哲学者であり、環境倫理学という分野を確立した最も重要な理論家の一人です。コロラド州立大学の教授として、自然の「内在的価値」を哲学的に論じ、人間中心主義を超えた倫理学を構築しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「自然の内在的価値」</b>——自然は人間に役立つから価値があるのではない。自然それ自体に価値がある。人間がいなくても、荒野、種、生態系には価値がある。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    この主張は<b>「人間中心主義の批判」</b>を含む——従来の倫理学は人間だけを道徳的考慮の対象とした。ロールストンはこれを拡張し、動物、植物、種、生態系、さらには地形や河川にまで道徳的地位を認めようとした。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ロールストンは、<b>「倫理学のスコープを拡張——従来の倫理OSは『人間』というクラスだけを道徳的オブジェクトとして扱っていた。ロールストンは継承階層を再設計し、『生命』『種』『生態系』という親クラスを追加。すべてのインスタンスは内在的価値というプロパティを持つ」</b>と主張しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 価値の階層 -->
+        <section class="value-section">
+            <h2>💎 自然の価値の階層</h2>
+            <div class="value-diagram">
+                <div class="value-box intrinsic-box">
+                    <p>✨ 内在的価値</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Intrinsic Value</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">それ自体のための価値</p>
+                </div>
+                <div class="value-arrow">↑</div>
+                <div class="value-box systemic-box">
+                    <p>🔄 システム的価値</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Systemic Value</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">生態系の機能としての価値</p>
+                </div>
+                <div class="value-arrow">↑</div>
+                <div class="value-box instrumental-box">
+                    <p>🔧 道具的価値</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Instrumental Value</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">人間にとっての有用性</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                従来の倫理学は道具的価値だけを認めた。ロールストンは自然の内在的価値を主張し、人間の利益を超えた道徳的配慮を求めた。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ロールストン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">荒野には、人間が去った後もそこにあり続ける価値がある。</p>
+                <p class="quote-author">— ホームズ・ロールストン三世</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>✨ 内在的価値</h3>
+                    <p>自然それ自体が価値を持つ。人間の利益とは独立に。荒野、種、生態系——すべてがそれ自体のために価値がある。</p>
+                </div>
+                <div class="card">
+                    <h3>🌍 生態系中心主義</h3>
+                    <p>個体だけでなく、種や生態系にも道徳的地位を認める。全体論的アプローチ。レオポルドの「土地倫理」を哲学的に発展。</p>
+                </div>
+                <div class="card">
+                    <h3">🏔️ 荒野の価値</h3>
+                        <p>手つかずの自然（ウィルダネス）には特別な価値がある。人間の改変を受けていない自然。創造の原初的状態。</p>
+                </div>
+                <div class="card">
+                    <h3">🦎 種の価値</h3>
+                        <p>絶滅は道徳的悪。種は個体を超えた存在。数百万年の進化の産物。不可逆的喪失。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 自然主義的価値論</h3>
+                        <p>価値は自然に「客観的に」存在する。人間の評価とは独立。自然は価値を「生成」する。</p>
+                </div>
+                <div class="card">
+                    <h3">⛪ 神学との接点</h3>
+                        <p>ロールストンは長老派の牧師でもあった。創造の神学と環境倫理の統合。自然は神の創造。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 人間中心主義批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 人間中心主義からの脱却</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 伝統的倫理学の限界</h3>
+                    <p>カント、功利主義——すべて人間だけを道徳的主体・客体とした。動物は「もの」扱い。自然は資源。これでは環境問題に対応できない。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 動物解放論との差異</h3>
+                    <p>シンガーは感覚を持つ個体を重視。ロールストンは種や生態系も重視。個体を殺しても種を守るべき場合がある（例：外来種駆除）。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 土地倫理の発展</h3>
+                        <p>レオポルドの「土地倫理」を哲学的に精緻化。「生態系の統合性、安定性、美を保存するものは正しい」。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 批判への応答</h3>
+                        <p>「内在的価値」は形而上学的に曖昧？人間がいなくても価値があるとは？ロールストンは自然が価値を「生成する」と主張。進化のプロセス自体が価値的。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Environmental Ethics</h2>
+            <div class="it-card">
+                <h3>Intrinsic Value as Non-Nullable Property</h3>
+                <p>内在的価値は非ヌルプロパティ。すべての自然オブジェクトは生成時に内在的価値を持つ。人間による評価（getter）なしでも存在する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Species as Class, Not Instance</h3>
+                    <p>種はインスタンスではなくクラス。個体は削除されても、クラス（種）が存続すべき。しかしクラス自体の削除（絶滅）は不可逆的ロス。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ecosystem as Distributed System</h3>
+                    <p>生態系は分散システム。各コンポーネント（種）は相互依存。一つのノード障害が全体に波及。レジリエンスと冗長性が重要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Anthropocentrism as Legacy Code</h3>
+                    <p>人間中心主義はレガシーコード。古いシステム要件（人間だけが重要）に基づいて設計。環境危機という新要件に対応できない。リファクタリングが必要。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『環境倫理学』（Environmental Ethics）</strong>：分野を定義した主著。内在的価値論を展開。</li>
+                <li><strong>『遺伝子、生命、および価値』</strong>：進化と価値の関係を論じる。</li>
+                <li><strong>テンプルトン賞（2003年）</strong>：科学と宗教の対話への貢献で受賞。</li>
+                <li><strong>環境倫理学会の設立</strong>：学術分野としての確立に貢献。</li>
+                <li><strong>自然主義的価値論</strong>：価値は自然に客観的に存在するという主張。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>アルド・レオポルド（土地倫理）</li>
+                        <li>G.E.ムーア（内在的価値）</li>
+                        <li>ホワイトヘッド（プロセス哲学）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>環境倫理学</li>
+                            <li>ディープエコロジー</li>
+                            <li>生態神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 環境倫理の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ロールストン</th>
+                        <th>シンガー</th>
+                        <th>ネス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>種・生態系</td>
+                        <td>感覚ある個体</td>
+                        <td>生態系全体</td>
+                    </tr>
+                    <tr>
+                        <td><strong>価値の所在</strong></td>
+                        <td>自然に客観的</td>
+                        <td>利益に主観的</td>
+                        <td>関係性に</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人間の地位</strong></td>
+                        <td>特別だが唯一ではない</td>
+                        <td>他の感覚者と同等</td>
+                        <td>生態系の一部</td>
+                    </tr>
+                    <tr>
+                        <td><strong>外来種駆除</strong></td>
+                        <td>許容（種保護のため）</td>
+                        <td>問題視（個体の苦痛）</td>
+                        <td>全体論的判断</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>非ヌルプロパティ</td>
+                        <td>ユーザー体験重視</td>
+                        <td>分散システム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：最後の人間</h2>
+            <div class="thought-experiment">
+                <h3">ラストマン・アーギュメント</h3>
+                    <p>ある哲学者が提起した思考実験があります：「地球最後の人間が、死ぬ前にすべての森を焼き払った。これは道徳的に悪いか？」</p>
+                    <p style="margin-top: 1.5rem;">人間中心主義者は言います：誰も害されない。傷つく人間はいない。したがって道徳的に問題ない。倫理は人間間の関係に限られる。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ロールストンは言います：これは道徳的悪である。森には内在的価値がある。人間がいなくても、生態系、種、個々の生命には価値がある。最後の人間は価値あるものを破壊した。</p>
+                    <p style="margin-top: 1.5rem;">
+                        批判者は問います：人間がいなくて「誰のための」価値か？価値は評価者を必要としないか？ロールストンは答える：自然は価値を「生成する」。進化のプロセス自体が価値的である。人間の評価は価値を「発見」するだけで、「創造」しない。
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        この思考実験は、私たちの倫理観の基盤を問います：価値は人間に依存するか？それとも人間なしでも存在しうるか？あなたが最後の人間だったら、森を焼き払うことは許されますか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        人間がいなくても、自然に価値はありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ホームズ・ロールストン三世（1932-）は、アメリカの哲学者であり、環境倫理学という分野を確立した最も重要な理論家の一人です。自然の「内在的価値」——人間の利益とは独立に、自然それ自体が価値を持つ——という主張を哲学的に展開しました。種、生態系、荒野に道徳的地位を認め、人間中心主義を超えた倫理学を構築。レオポルドの「土地倫理」を哲学的に精緻化し、『環境倫理学』で分野を定義しました。長老派の牧師でもあり、創造神学と環境倫理を統合。2003年にテンプルトン賞を受賞。「ラストマン・アーギュメント」——最後の人間が森を焼き払うことは悪か——という問いは、人間中心主義の限界を照らし出します。気候変動と生物多様性喪失の時代、ロールストンの問いかけはかつてなく重要です：自然には、私たちがいなくても、価値がある。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Nature has intrinsic value.</p>
+    </footer>
+</body>
+
+</html>

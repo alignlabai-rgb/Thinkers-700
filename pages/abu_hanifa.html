@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アブー・ハニーファ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Islamic Green */
+            --secondary: #022c22;
+            /* Kufa Dark */
+            --accent: #34d399;
+            /* Reason Light */
+            --highlight: #d1fae5;
+            /* Fiqh Glow */
+            --bg: #021810;
+            /* Deep Wisdom */
+            --text: #d1fae5;
+            --border: #047857;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .hanafi-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(5, 150, 105, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(52, 211, 153, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #047857 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Largest Section */
+        .largest-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .largest-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hanafi-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← FIQH</a>
+        <div>ABU_HANIFA_v6.05</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-605 / THE_GREAT_IMAM</span>
+        <h1>アブー・ハニーファ</h1>
+        <p class="en-name">Abū Ḥanīfa (c. 699–767)</p>
+        <p class="catchphrase">「大イマーム」——イスラム法学四大学派の最大</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">理性OS</span>
+            <span class="os-tag">フィクフOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">ハナフィー法学派創始</h2>
+            <div class="hero-box">
+                <p class="hero-text">アブー・ハニーファ（本名ヌアマーン・イブン・サービト）は、8世紀イラク・クーファの法学者であり、イスラム法学四大学派の一つハナフィー学派の創始者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    アブー・ハニーファの歴史的業績——<b>ラアイ（個人的推論）とキヤース（類推）を重視。実際に起きていない仮定的事例も検討</b>。イスラム世界で最大のフォロワー数。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    オスマン帝国、ムガル帝国、現代のトルコ、パキスタン、インド、バングラデシュ、中央アジアで採用。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アブー・ハニーファの法学は、<b>「フレキシブルなフレームワーク——原則に基づきながら、新しいケースに適応。テストケースで未来を先取り。理性による拡張性」</b>という、スケーラブルな法体系。
+                </p>
+            </div>
+        </section>
+
+        <!-- 最大学派 -->
+        <section class="largest-section">
+            <h2>🌍 世界最大のイスラム法学派</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+                スンニ派ムスリムの約1/3が従う<br>
+                オスマン帝国の公式法学派<br>
+                トルコ、パキスタン、インド<br>
+                バングラデシュ、中央アジア<br>
+                最も柔軟で理性的とされる
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 アブー・ハニーファの法学</h2>
+            <div class="quote-box">
+                <p class="quote-text">私たちは人間であり、今日言ったことを明日変えることがある。</p>
+                <p class="quote-author">— アブー・ハニーファ（帰される言葉）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🧠 ラアイ</h3>
+                    <p>個人的推論。テキストが沈黙する場所で理性を使用。</p>
+                </div>
+                <div class="card">
+                    <h3">📐 キヤース</h3>
+                        <p>類推。既知の判決から新しいケースへ適用。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 仮定的フィクフ</h3>
+                        <p>まだ起きていないケースも検討。先回り法学。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ イスティフサーン</h3>
+                        <p>法的選好。厳格な類推より衡平を優先する場合。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 アサル</h3>
+                        <p>伝承も重視するが、理性との調和を求める。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 拒否</h3>
+                        <p>アッバース朝カリフの裁判官職を拒否。投獄されて死去。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Flexibility</h2>
+            <div class="it-card">
+                <h3>Ra'y as Heuristics</h3>
+                <p>ラアイはヒューリスティクス。完全な情報がなくても合理的判断。</p>
+            </div>
+            <div class="it-card">
+                <h3">Qiyas as Inheritance</h3>
+                    <p>キヤースは継承。既存クラスから新しいケースを派生。</p>
+            </div>
+            <div class="it-card">
+                <h3">Hypothetical Fiqh as TDD</h3>
+                    <p>仮定的フィクフはTDD。まだ存在しないケースのテストを先に書く。</p>
+            </div>
+            <div class="it-card">
+                <h3">Istihsan as Exception Handling</h3>
+                    <p>イスティフサーンは例外処理。一般規則が不適切な場合の代替パス。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ハナフィー学派</strong>：最大のイスラム法学派。</li>
+                <li><strong>ラアイ・キヤース</strong>：理性と類推の重視。</li>
+                <li><strong>仮定的フィクフ</strong>：先回りの法学。</li>
+                <li><strong>柔軟性</strong>：新状況への適応力。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イブン・マスウード</li>
+                        <li>イラク法学派</li>
+                        <li>サハーバ（教友）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アブー・ユースフ</li>
+                            <li>ムハンマド・シャイバーニー</li>
+                            <li>オスマン法</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：理性と啓示</h2>
+            <div class="thought-experiment">
+                <h3">テキストが沈黙する時</h3>
+                    <p>クルアーンとハディースが明確な答えを与えない時——</p>
+                    <p>人間の理性に頼るべきか？</p>
+                    <p>アブー・ハニーファはラアイを用いた。</p>
+                    <p>批判者は「人間の意見が神の法に介入する」と言った。</p>
+                    <p>しかし、新しい問題は常に生まれる。</p>
+                    <p>法は固定か、それとも発展か？</p>
+                    <p>憲法解釈論争にも通じる——</p>
+                    <p>オリジナリズム vs リビング・コンスティテューション。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        テキストが沈黙する時、誰が答えを出すべきですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アブー・ハニーファ（c.
+                699-767）は、8世紀イラク・クーファの法学者であり、イスラム法学四大学派の最大であるハナフィー学派の創始者です。「大イマーム」と称され、ラアイ（個人的推論）とキヤース（類推）を重視し、まだ起きていない仮定的ケースも検討しました。オスマン帝国の公式法学派となり、今日も世界のスンニ派ムスリムの約1/3がハナフィー学派に従います。アッバース朝カリフの裁判官職を拒否し、投獄中に死去。理性と啓示の調和を求めた法学者です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Reason in law.</p>
+    </footer>
+</body>
+
+</html>

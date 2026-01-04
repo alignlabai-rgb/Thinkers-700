@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベルナール・スティグレール - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Pharmakon Purple */
+            --secondary: #1e1b4b;
+            /* Digital Dark */
+            --accent: #a78bfa;
+            /* Technics Light */
+            --highlight: #ede9fe;
+            /* Memory Glow */
+            --bg: #0c0a1d;
+            /* Time Deep */
+            --text: #ede9fe;
+            --border: #6d28d9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Technical Background */
+        .technical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Technics Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4c1d95 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚙️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6d28d9 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Pharmakon Diagram */
+        .pharmakon-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4c1d95 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .pharmakon-section h2 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .pharmakon-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .phar-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .remedy-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .pharmakon-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .poison-box {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .phar-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "⚙️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .pharmakon-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="technical-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← TECHNICS_AND_TIME</a>
+        <div>EPIPHYLOGENESIS_v4.99</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-499 / THE_PHILOSOPHER_OF_TECHNICS</span>
+        <h1>ベルナール・スティグレール</h1>
+        <p class="en-name">Bernard Stiegler (1952–2020)</p>
+        <p class="catchphrase">「技術は人間の本質である——同時に脅威でもある」</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">技術と時間</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ベルナール・スティグレールは、デリダの弟子であり、21世紀の最も重要な技術哲学者の一人です。特異な経歴を持ち、5年間の服役中に哲学を独学で学び、その後博士号を取得。『技術と時間』三部作で技術と人間の本質的関係を探究しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スティグレールの中心概念は<b>「エピフィロジェネシス」</b>——技術によって媒介された記憶の世代間継承です。人間は道具、文字、デジタル技術を通じて、経験を記憶し継承する。技術は人間の「外化された記憶」であり、人間の本質を構成する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    しかし技術はまた<b>「ファルマコン」</b>——薬であり毒でもある。注意力の経済、プロレタリア化、デジタル資本主義——スティグレールはこれらの問題を哲学的に分析しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スティグレールは、<b>「技術は人間の外部ストレージ。しかし今やビッグテックがこのストレージを支配し、私たちの注意力、記憶、欲望さえも『プログラム』している。人間をテクノロジーから取り戻すには？」</b>と問う、デジタル時代のメモリ管理者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ファルマコンの構造 -->
+        <section class="pharmakon-section">
+            <h2>💊 技術＝ファルマコン</h2>
+            <div class="pharmakon-diagram">
+                <div class="phar-box remedy-box">
+                    <p>💚 薬</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Remedy</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">可能性・拡張</p>
+                </div>
+                <div class="phar-arrow">←→</div>
+                <div class="phar-box pharmakon-box">
+                    <p>💊 ファルマコン</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Pharmakon</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">技術そのもの</p>
+                </div>
+                <div class="phar-arrow">←→</div>
+                <div class="phar-box poison-box">
+                    <p>☠️ 毒</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Poison</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">危険・喪失</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                技術は薬であり毒でもある。同じテクノロジーが人間を解放し、同時に人間を疎外する。重要なのは「どう使うか」——技術への「ケア」が問われる。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 スティグレール思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間は生まれながらにして欠陥を持つ存在である。技術はその欠陥を補うものであり、したがって人間の本質をなす。</p>
+                <p class="quote-author">— 『技術と時間』（1994年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚙️ エピフィロジェネシス</h3>
+                        <p>技術によって媒介された記憶の継承。遺伝子（フィロジェネシス）でも個体（エピジェネシス）でもない、第三の進化。人間を人間たらしめるもの。</p>
+                </div>
+                <div class="card">
+                    <h3">💊 ファルマコン</h3>
+                        <p>プラトンから借りた概念。技術は薬であり毒。文字は記憶を助けるが、同時に内的記憶を弱める。デジタル技術も同様。</p>
+                </div>
+                <div class="card">
+                    <h3">📉 プロレタリア化</h3>
+                        <p>マルクスの用語を拡張。労働者が技能を失うだけでなく、消費者も知識、注意力、欲望を「奪われる」。デジタル・プロレタリア化。</p>
+                </div>
+                <div class="card">
+                    <h3">👁️ 注意の経済</h3>
+                        <p>Attention Economy——現代資本主義は人間の注意力を収奪する。スマートフォン、SNS、プッシュ通知。深い思考能力の危機。</p>
+                </div>
+                <div class="card">
+                    <h3">🌿 ネガントロピー</h3>
+                        <p>アントロポセン（人新世）への対抗。カオスへの傾向（エントロピー）に対抗し、秩序と多様性を生み出す力。文化、芸術、知識。</p>
+                </div>
+                <div class="card">
+                    <h3">🤲 ケアの哲学</h3>
+                        <p>技術に対する「ケア」——注意深く、責任を持って技術と関わること。消費者ではなく「貢献者」として。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 三つの記憶</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 遺伝的記憶</h3>
+                        <p>DNA、遺伝子。種としての人間が継承するもの。フィロジェネシス。変化は非常に遅い。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 神経的記憶</h3>
+                        <p>脳、個人の経験。エピジェネシス。一般的に継承されない。個体の生涯で消える。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 技術的記憶</h3>
+                        <p>道具、文字、デジタル。エピフィロジェネシス。経験を外化し、世代を超えて継承する。これが人間の本質。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 現代の危機</h3>
+                        <p>デジタル技術が技術的記憶を「産業化」した。プラットフォームが記憶を支配。個人のケアが奪われる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: MEMORY AS EXTERNALIZED STORAGE</h2>
+            <div class="it-card">
+                <h3">Epiphylogenesis as External Storage</h3>
+                    <p>エピフィロジェネシスは外部ストレージ。人間はRAM（脳）だけでなく、HDD（技術的記録）に依存する。文字からクラウドまで——人間は常に「外化」してきた。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pharmakon as Dual-Use Technology</h3>
+                    <p>ファルマコンはデュアルユース技術。同じAIが創造にも破壊にも使える。技術そのものには良し悪しがない——問題は「実装」と「ガバナンス」。</p>
+            </div>
+            <div class="it-card">
+                <h3">Proletarianization as Skill Deskilling</h3>
+                    <p>プロレタリア化はスキルのデスキリング。ノーコードツールは便利だが、コーディング能力を失わせる。GPSは便利だが、方向感覚を失わせる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Attention Economy as Resource Exhaustion</h3>
+                    <p>注意の経済はリソース枯渇。CPUサイクルが有限であるように、人間の注意力も有限。プラットフォームはこのリソースを奪い合う。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『技術と時間』三部作</strong>：技術と人間の本質的関係を探究。エピフィロジェネシス概念を導入。</li>
+                <li><strong>ファルマコン論</strong>：技術は薬であり毒。デリダのファルマコン概念を技術哲学に応用。</li>
+                <li><strong>注意の経済批判</strong>：デジタル資本主義が人間の注意力を収奪。深い思考能力の危機を警告。</li>
+                <li><strong>ネガントロピー</strong>：アントロポセンへの対抗。エントロピーに対抗する秩序生成の力。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジャック・デリダ（脱構築）</li>
+                            <li>マルティン・ハイデガー（技術論）</li>
+                            <li>ジルベール・シモンドン（技術哲学）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>デジタル・ヒューマニティーズ</li>
+                            <li>プラットフォーム批評</li>
+                            <li>テクノ・エシックス</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 技術哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スティグレール</th>
+                        <th>ハイデガー</th>
+                        <th>シモンドン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>技術への態度</strong></td>
+                        <td>両義的（ファルマコン）</td>
+                        <td>批判的（立て組み）</td>
+                        <td>肯定的（個体化）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人間と技術</strong></td>
+                        <td>相互構成的</td>
+                        <td>人間が技術に支配される危険</td>
+                        <td>技術は人間の延長</td>
+                    </tr>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>記憶と時間</td>
+                        <td>存在と真理</td>
+                        <td>個体化過程</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>外部ストレージ</td>
+                        <td>フレーミング</td>
+                        <td>システム発生</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：あなたの外部記憶</h2>
+            <div class="thought-experiment">
+                <h3">スマートフォンを失ったら</h3>
+                    <p>あなたのスマートフォンが突然消えたと想像してください。友人の電話番号を覚えていますか？次の予定を思い出せますか？道順は？</p>
+                    <p>スティグレールによれば、これは「プロレタリア化」の一例です。私たちは記憶、計算、ナビゲーションといった能力を、デバイスに「外化」してきた。それ自体は悪いことではない——文字の発明も同様だった。
+                    </p>
+                    <p>問題は「誰が」その外部記憶を管理するかです。あなたのスマートフォン、クラウド、SNSは誰のものか？あなたのデータ、記憶、注意力は誰に管理されているか？</p>
+                    <p>スティグレールは、これらの「第三の記憶」を私たちが取り戻すべきだと主張しました。消費者ではなく「貢献者」として。プラットフォームに奪われるのではなく、自分たちでケアする。</p>
+                    <p>ファルマコンとしての技術——薬にも毒にもなる。どちらになるかは、私たちの関わり方次第。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「外部記憶」は誰が管理していますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ベルナール・スティグレールは、技術と人間の本質的関係を問い続けた哲学者です。エピフィロジェネシス——技術によって媒介された記憶の継承——は人間を人間たらしめるもの。しかし同時に、技術はファルマコン、薬であり毒でもある。デジタル資本主義は私たちの注意力、記憶、欲望を「産業化」し、プロレタリア化を進行させる。スティグレールはこの危機を警告しつつ、「ケア」と「貢献」による対抗を呼びかけました。2020年に逝去しましたが、その思想は21世紀のテクノ・エシックスに不可欠の参照点となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Take care of technics.</p>
+    </footer>
+</body>
+
+</html>

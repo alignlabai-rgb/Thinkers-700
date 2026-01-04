@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グル・ナーナク - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f97316;
+            /* Sikh Saffron */
+            --secondary: #1e3a8a;
+            /* Khalsa Blue */
+            --accent: #fbbf24;
+            /* Golden Temple */
+            --highlight: #fef3c7;
+            /* Naam Light */
+            --bg: #0c1929;
+            /* Punjab Night */
+            --text: #fef3c7;
+            --border: #ea580c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Sikh Background */
+        .sikh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(30, 58, 138, 0.1) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Nanak Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f97316 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☬";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ea580c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Three Pillars Section */
+        .pillars-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f97316 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .pillars-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .pillars-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .pillar-box {
+            padding: 2.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            min-width: 200px;
+        }
+
+        .pillar-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☬";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sikh-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SIKHISM</a>
+        <div>WAHEGURU_v5.67</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-567 / THE_FIRST_GURU</span>
+        <h1>グル・ナーナク</h1>
+        <p class="en-name">Guru Nanak (1469–1539)</p>
+        <p class="catchphrase">「ヒンドゥーもムスリムもいない」——シク教の開祖</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">平等OS</span>
+            <span class="os-tag">奉仕OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ワーヘグルー（唯一神）</h2>
+            <div class="hero-box">
+                <p class="hero-text">グル・ナーナクは、シク教の開祖であり、10人のグル（導師）の最初の人物です。現在約3000万人の信者を持つシク教を創始。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ナーナクの核心的主張——<b>「ヒンドゥーもムスリムもいない」</b>。既存の宗教的境界を超えた普遍的真理。唯一神ワーヘグルーへの信仰。カースト否定。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シク教の三本柱——ナーム・ジャプナー（神の名を唱える）、キラト・カルナー（正直に働く）、ヴァンド・チャクナー（分かち合う）。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">シク教は、<b>「ヒンドゥー教とイスラム教のAPIを統合したクロスプラットフォーム宗教——両者の良い部分をimportし、カースト制度のような
+                        deprecated な機能を削除。シンプルで実用的なインターフェース」</b>という、宗教のリファクタリング。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 三本柱 -->
+        <section class="pillars-section">
+            <h2>☬ シク教の三本柱</h2>
+            <div class="pillars-grid">
+                <div class="pillar-box">
+                    <h4>ナーム・ジャプナー</h4>
+                    <p style="font-size: 0.9rem;">神の名を唱える</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">瞑想と祈り</p>
+                </div>
+                <div class="pillar-box">
+                    <h4>キラト・カルナー</h4>
+                    <p style="font-size: 0.9rem;">正直に働く</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">労働の尊厳</p>
+                </div>
+                <div class="pillar-box">
+                    <h4>ヴァンド・チャクナー</h4>
+                    <p style="font-size: 0.9rem;">分かち合う</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">共同体への奉仕</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 シク教の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">真なるものは一つ。その名は真理。創造者、恐れなく、敵なく、永遠、生まれず、自存。</p>
+                <p class="quote-author">— ムール・マントラ（グル・グラント・サーヒブ冒頭）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">☝️ 唯一神</h3>
+                        <p>Ik Onkar（エーク・オンカール）。一なる神。形なく、永遠、自存。ヒンドゥーの神々もイスラムのアッラーも同じ神。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 平等</h3>
+                        <p>カースト制度の完全否定。男女平等。ランガル（共同食堂）——誰もが一緒に床に座って食べる。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 セーヴァ</h3>
+                        <p>無償奉仕。共同体への奉仕が信仰の実践。ランガルでの調理・給仕。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 グル・グラント・サーヒブ</h3>
+                        <p>シク教の聖典。ナーナク以降のグルの教えを収録。最終グル（11代目）として崇拝。</p>
+                </div>
+                <div class="card">
+                    <h3">🗡️ カールサー</h3>
+                        <p>1699年、第10代グル・ゴービンド・シンが設立。5Kのシンボル（ケーシュ、カンガー、カラー、カチェーラー、キルパーン）。</p>
+                </div>
+                <div class="card">
+                    <h3">🏠 ハリマンディル・サーヒブ</h3>
+                        <p>「黄金寺院」。アムリトサルの聖地。4つの入り口——すべての方向からすべての人を歓迎。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 旅 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ナーナクの伝道旅行</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">ウダーシー（旅）</h3>
+                        <p>20年以上にわたる4回の大旅行。インド全土、チベット、アラビア、バグダッドまで。</p>
+                </div>
+                <div class="card">
+                    <h3">対話</h3>
+                        <p>ヒンドゥー教のパンディット、イスラム教のスーフィーと対話。形式的儀礼よりも内的信仰を強調。</p>
+                </div>
+                <div class="card">
+                    <h3">カルターパル</h3>
+                        <p>最後の18年間を過ごした共同体。シク教共同体の原型。農業と奉仕。</p>
+                </div>
+                <div class="card">
+                    <h3">後継者</h3>
+                        <p>息子ではなく弟子アンガドをグル・アンガド（第2代グル）に指名。能力による継承。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Cross-Platform Religion</h2>
+            <div class="it-card">
+                <h3">One API for All Gods</h3>
+                    <p>唯一神は統一API。ヒンドゥーの神々もアッラーも同じエンドポイント。異なる呼び方、同じ実体。</p>
+            </div>
+            <div class="it-card">
+                <h3">Caste as Deprecated</h3>
+                    <p>カーストは非推奨機能。シク教ではこの「古いコード」を完全に削除。</p>
+            </div>
+            <div class="it-card">
+                <h3">Langar as Load Balancing</h3>
+                    <p>ランガルはロードバランシング。富める者から貧しき者へ資源を再配分。システム全体の安定。</p>
+            </div>
+            <div class="it-card">
+                <h3">Guru Granth as Living Documentation</h3>
+                    <p>グル・グラント・サーヒブは永久ドキュメント。11代目（最終）グルとして「凍結」。変更不可。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>唯一神信仰</strong>：ヒンドゥーとイスラムの統合。</li>
+                <li><strong>カースト否定</strong>：完全な平等。</li>
+                <li><strong>ランガル</strong>：無料の共同食堂。</li>
+                <li><strong>三本柱</strong>：祈り・労働・分かち合い。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>バクティ運動</li>
+                            <li>スーフィズム</li>
+                            <li>カビール</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>シク教10人のグル</li>
+                            <li>カールサー</li>
+                            <li>パンジャーブ文化</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ インド宗教の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シク教</th>
+                        <th>ヒンドゥー教</th>
+                        <th>イスラム教</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>神観</strong></td>
+                        <td>唯一神</td>
+                        <td>多神/一神</td>
+                        <td>厳格な一神</td>
+                    </tr>
+                    <tr>
+                        <td><strong>カースト</strong></td>
+                        <td>否定</td>
+                        <td>伝統的に肯定</td>
+                        <td>理念上否定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>聖典</strong></td>
+                        <td>グル・グラント・サーヒブ</td>
+                        <td>ヴェーダ等</td>
+                        <td>クルアーン</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>クロスプラットフォーム</td>
+                        <td>レガシー</td>
+                        <td>プロトコル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：宗教を超えられるか</h2>
+            <div class="thought-experiment">
+                <h3">普遍宗教の可能性</h3>
+                    <p>ナーナクは「ヒンドゥーもムスリムもいない」と言いました。</p>
+                    <p>すべての宗教が指し示す真理は一つなのか？</p>
+                    <p>これは「普遍主義」——すべての宗教は同じ山を登る異なる道。</p>
+                    <p>しかし批判もある：宗教間の違いは本質的ではないか？</p>
+                    <p>「同じ神」と言っても、三位一体とタウヒードは同じか？</p>
+                    <p>輪廻と復活は同じか？</p>
+                    <p>普遍主義は各宗教の独自性を薄めてしまうのでは？</p>
+                    <p>しかしシク教は成功した——ヒンドゥーとイスラムの要素を統合して独自の伝統を築いた。</p>
+                    <p>これは「融合」なのか「新しい創造」なのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        すべての宗教は同じ真理を指していますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>グル・ナーナクは、シク教の開祖であり、「ヒンドゥーもムスリムもいない」と宣言して宗教的境界を超えた普遍的真理を説きました。唯一神ワーヘグルーへの信仰、カースト制度の完全否定、ランガル（共同食堂）による平等と奉仕——これらの教えは現在約3000万人の信者を持つシク教の基盤となっています。ナーム・ジャプナー（祈り）、キラト・カルナー（労働）、ヴァンド・チャクナー（分かち合い）の三本柱は、信仰と実践を不可分のものとして結びつけています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Waheguru Ji Ka Khalsa, Waheguru Ji Ki Fateh.</p>
+    </footer>
+</body>
+
+</html>

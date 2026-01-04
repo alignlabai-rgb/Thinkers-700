@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スティーヴン・トゥールミン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4338ca;
+            /* Argument Indigo */
+            --secondary: #1e1b4b;
+            /* Logic Dark */
+            --accent: #818cf8;
+            /* Reason Violet */
+            --highlight: #e0e7ff;
+            /* Warrant Glow */
+            --bg: #0f0e24;
+            /* Debate Deep */
+            --text: #e0e7ff;
+            --border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Argument Background */
+        .argument-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(67, 56, 202, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(129, 140, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Rhetorical Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(67, 56, 202, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(67, 56, 202, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Argument Model */
+        .model-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .model-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .model-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .model-row {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .model-box {
+            padding: 1.5rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .data-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .claim-box {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .warrant-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .backing-box {
+            background: #0369a1;
+            border: 2px solid #0ea5e9;
+        }
+
+        .qualifier-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .rebuttal-box {
+            background: #b45309;
+            border: 2px solid #fbbf24;
+        }
+
+        .model-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="argument-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← USES_OF_ARGUMENT</a>
+        <div>PRACTICAL_REASONING_v5.19</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-519 / THE_ARGUMENT_THEORIST</span>
+        <h1>スティーヴン・トゥールミン</h1>
+        <p class="en-name">Stephen Toulmin (1922–2009)</p>
+        <p class="catchphrase">「実際の議論は三段論法に還元できない——文脈が重要だ」</p>
+        <div class="os-tags">
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">レトリックOS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">議論の技法</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    スティーヴン・トゥールミンは、イギリスの哲学者であり、『議論の技法』（1958年）で実践的推論のモデルを提示しました。形式論理学への批判者として、日常的議論の構造を分析しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    トゥールミンの核心的主張——<b>三段論法はフィクションである</b>。実際の議論は「主張」「根拠」「論拠」「裏付け」「限定詞」「反駁」という6要素から成る。法廷での議論がモデル。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また『コスモポリス』では近代の再評価を試み、17世紀の「合理主義」を批判。文脈、具体性、実践の重要性を主張しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    トゥールミンは、<b>「議論は単純なif-then文ではなく、例外処理付きの関数。主張は戻り値、根拠は入力、論拠はロジック、裏付けはドキュメント、限定詞はconfidenceレベル、反駁はcatchブロック」</b>と構造化した、議論のアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 議論モデル -->
+        <section class="model-section">
+            <h2>⚖️ トゥールミンモデル</h2>
+            <div class="model-diagram">
+                <div class="model-row">
+                    <div class="model-box data-box">
+                        <p>📊 根拠 (Data)</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.3rem;">事実・証拠</p>
+                    </div>
+                    <div class="model-arrow">→</div>
+                    <div class="model-box qualifier-box">
+                        <p>📏 限定詞 (Qualifier)</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.3rem;">「おそらく」</p>
+                    </div>
+                    <div class="model-arrow">→</div>
+                    <div class="model-box claim-box">
+                        <p>💬 主張 (Claim)</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.3rem;">結論</p>
+                    </div>
+                </div>
+                <div class="model-arrow">↑</div>
+                <div class="model-row">
+                    <div class="model-box warrant-box">
+                        <p>📜 論拠 (Warrant)</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.3rem;">根拠と主張を結ぶ原則</p>
+                    </div>
+                    <div class="model-box rebuttal-box">
+                        <p>⚠️ 反駁 (Rebuttal)</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.3rem;">例外条件</p>
+                    </div>
+                </div>
+                <div class="model-arrow">↑</div>
+                <div class="model-box backing-box">
+                    <p>📚 裏付け (Backing)</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">論拠の正当化</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 トゥールミン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">論理学は法学から学ぶべきだ——数学からではなく。</p>
+                <p class="quote-author">— 『議論の技法』（1958年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📊 根拠 (Data)</h3>
+                        <p>議論の出発点。事実、証拠、観察。「ハリーはバミューダで生まれた」。主張を支える具体的情報。</p>
+                </div>
+                <div class="card">
+                    <h3">💬 主張 (Claim)</h3>
+                        <p>議論の結論。聞き手に受け入れてほしい立場。「ハリーはイギリス国民だ」。論証のゴール。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 論拠 (Warrant)</h3>
+                        <p>根拠と主張を結ぶ原則。「バミューダ生まれの人はイギリス国民」。なぜその根拠がその主張を支えるか。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 裏付け (Backing)</h3>
+                        <p>論拠の正当化。法律、規則、権威。「イギリス国籍法第X条による」。論拠が信頼できる理由。</p>
+                </div>
+                <div class="card">
+                    <h3">📏 限定詞 (Qualifier)</h3>
+                        <p>主張の確信度。「おそらく」「通常」「必ず」。議論の強さを調整する。</p>
+                </div>
+                <div class="card">
+                    <h3">⚠️ 反駁 (Rebuttal)</h3>
+                        <p>例外条件。「ただし帰化していなければ」。主張が成り立たない場合の想定。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 形式論理学批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 形式論理学への批判</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 三段論法の限界</h3>
+                        <p>「すべてのAはB、XはA、ゆえにXはB」——これは日常的議論の脱文脈化された抽象。実際の推論はこれほど単純ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 分野依存性</h3>
+                        <p>良い議論の基準は分野によって異なる。法学、科学、倫理——それぞれの領域で何が「良い根拠」かは変わる。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 法廷モデル</h3>
+                        <p>トゥールミンは法廷での論証をモデルに。弁護士は裁判官を説得する——普遍的真理を導出するのではなく。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 実践的推論</h3>
+                        <p>「何が真か」ではなく「何をすべきか」「信じるべきか」。行為と決定のための推論。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Argument as Function</h2>
+            <div class="it-card">
+                <h3">Argument as Function with Exception Handling</h3>
+                    <p>議論は例外処理付き関数。主張は戻り値、根拠は引数、論拠はビジネスロジック、反駁はcatchブロック。tryブロック内で例外が発生しなければ主張が返る。</p>
+            </div>
+            <div class="it-card">
+                <h3">Warrant as Logic Layer</h3>
+                    <p>論拠はロジックレイヤー。入力（根拠）を出力（主張）に変換するルール。ビジネスルールエンジンに相当。</p>
+            </div>
+            <div class="it-card">
+                <h3">Backing as Documentation</h3>
+                    <p>裏付けはドキュメンテーション。なぜそのロジックが正しいかの説明。コードコメント、API仕様書。</p>
+            </div>
+            <div class="it-card">
+                <h3">Qualifier as Confidence Score</h3>
+                    <p>限定詞は信頼度スコア。機械学習モデルの予測確率に相当。「99%の確信で」「おそらく」——結論の確からしさ。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『議論の技法』</strong>：6要素モデル。実践的推論の分析。</li>
+                <li><strong>『コスモポリス』</strong>：17世紀合理主義批判。文脈主義への転回。</li>
+                <li><strong>分野依存的論理</strong>：良い議論の基準は領域によって異なる。</li>
+                <li><strong>修辞学の復権</strong>：アリストテレス的レトリックへの回帰。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アリストテレス（レトリック）</li>
+                            <li>ヴィトゲンシュタイン（言語ゲーム）</li>
+                            <li>法学（法的論証）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>議論分析</li>
+                            <li>批判的思考教育</li>
+                            <li>AIの論証研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 論理学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>トゥールミン</th>
+                        <th>形式論理学</th>
+                        <th>ペレルマン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>モデル</strong></td>
+                        <td>6要素モデル</td>
+                        <td>三段論法</td>
+                        <td>新修辞学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>理想</strong></td>
+                        <td>法廷</td>
+                        <td>数学</td>
+                        <td>弁論</td>
+                    </tr>
+                    <tr>
+                        <td><strong>基準</strong></td>
+                        <td>分野依存的</td>
+                        <td>普遍的妥当性</td>
+                        <td>聴衆の同意</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>例外処理付き関数</td>
+                        <td>純粋関数</td>
+                        <td>ユーザー説得</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：AI時代の議論</h2>
+            <div class="thought-experiment">
+                <h3">AIは「良い議論」を評価できるか</h3>
+                    <p>トゥールミンは「良い議論の基準は分野によって異なる」と主張しました。AIが議論を評価する時代に、この洞察は何を意味するでしょうか？</p>
+                    <p>GPTは文章を生成し、論証を構成できます。しかしその議論が「良い」かどうかの判断は？科学的論文と法律文書と倫理的議論——それぞれ異なる基準が必要です。</p>
+                    <p>トゥールミンモデルはAIに実装可能か？根拠、主張、論拠の抽出は可能かもしれない。しかし「この論拠は妥当か」の判断は？裏付けの十分性は？</p>
+                    <p>ファクトチェックAIはトゥールミンモデルを使えるかもしれません。しかし「良い議論」の評価は、分野の専門知識と、何が重要かの価値判断を必要とします。</p>
+                    <p>またSNS時代の「議論」——しばしば論拠なしに主張だけが飛び交う。トゥールミンモデルは、議論の質を可視化するツールになるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの議論に「論拠」はありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>スティーヴン・トゥールミンは、『議論の技法』で実践的推論の6要素モデルを提示し、形式論理学に対する有力な代替案を示した哲学者です。根拠、主張、論拠、裏付け、限定詞、反駁——この6要素が実際の議論の構造を捉えます。三段論法は日常的推論の脱文脈化された抽象であり、法廷での論証こそがモデルとなる。『コスモポリス』では17世紀の合理主義を批判し、文脈、具体性、実践の重要性を主張しました。批判的思考教育、議論分析、AIの論証研究——トゥールミンの影響は幅広い分野に及んでいます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Arguments in use.</p>
+    </footer>
+</body>
+
+</html>

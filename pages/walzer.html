@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイケル・ウォルツァー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #be185d;
+            /* Justice Pink */
+            --secondary: #500724;
+            /* Spheres Dark */
+            --accent: #f472b6;
+            /* Complex Rose */
+            --highlight: #fce7f3;
+            /* Equality Glow */
+            --bg: #1a0511;
+            /* Communitarian Deep */
+            --text: #fce7f3;
+            --border: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Justice Background */
+        .justice-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(190, 24, 93, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(244, 114, 182, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Spheres Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⭕";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ec4899 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(190, 24, 93, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(190, 24, 93, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Spheres */
+        .spheres-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .spheres-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .spheres-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sphere-box {
+            padding: 2rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50%;
+            text-align: center;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .money-sphere {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        .power-sphere {
+            background: #dc2626;
+            border: 3px solid #f87171;
+        }
+
+        .education-sphere {
+            background: #0ea5e9;
+            border: 3px solid #38bdf8;
+        }
+
+        .health-sphere {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⭕";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="justice-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SPHERES_OF_JUSTICE</a>
+        <div>COMPLEX_EQUALITY_v5.33</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-533 / THE_COMMUNITARIAN</span>
+        <h1>マイケル・ウォルツァー</h1>
+        <p class="en-name">Michael Walzer (1935–)</p>
+        <p class="catchphrase">「正義の領分——社会的財には固有の配分原理がある」</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">正義OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">複合的平等</h2>
+            <div class="hero-box">
+                <p class="hero-text">マイケル・ウォルツァーは、現代アメリカの政治哲学者であり、「複合的平等」と「正義の領分」の理論で知られるコミュニタリアン（共同体主義者）です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウォルツァーの核心的主張——<b>異なる社会的財には、異なる配分原理が適用される</b>。お金は市場で、医療は必要に応じて、地位は能力に応じて配分されるべき。一つの領分の支配が他の領分に及ぶのが不正義。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「正戦と不正戦」では正戦論を現代に更新。「解釈と社会批判」では普遍主義への懐疑を表明。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウォルツァーは、<b>「社会は複数のドメインを持つシステム——各ドメインには固有のアクセス制御ルールがある。お金ドメインの権限が教育ドメインに越境するのはセキュリティ違反。ファイアウォールで領分を守る」</b>と分析した、社会正義のシステム設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 正義の領分 -->
+        <section class="spheres-section">
+            <h2>⭕ 正義の領分（Spheres of Justice）</h2>
+            <div class="spheres-diagram">
+                <div class="sphere-box money-sphere">
+                    <p>💰</p>
+                    <p>市場</p>
+                    <p style="font-size: 0.8rem;">交換の原理</p>
+                </div>
+                <div class="sphere-box power-sphere">
+                    <p>🏛️</p>
+                    <p>政治</p>
+                    <p style="font-size: 0.8rem;">民主的参加</p>
+                </div>
+                <div class="sphere-box education-sphere">
+                    <p>📚</p>
+                    <p>教育</p>
+                    <p style="font-size: 0.8rem;">能力と努力</p>
+                </div>
+                <div class="sphere-box health-sphere">
+                    <p>🏥</p>
+                    <p>医療</p>
+                    <p style="font-size: 0.8rem;">必要の原理</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                各領分には固有の配分原理がある。お金で政治的影響力を買うのは「支配」。領分間の境界を守ることが複合的平等。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウォルツァー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">正義とは、社会的財がその社会的意味に従って配分されることである。</p>
+                <p class="quote-author">— 『正義の領分』（1983年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⭕ 正義の領分</h3>
+                        <p>異なる社会的財には異なる配分原理。お金、権力、教育、医療——各領分は自律的。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 複合的平等</h3>
+                        <p>単純な平等ではなく、複合的平等。一つの領分の不平等が他の領分に波及しないこと。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 支配の禁止</h3>
+                        <p>お金で政治を買う、権力で教育を歪める——これが「支配」。領分間の越境が不正義。</p>
+                </div>
+                <div class="card">
+                    <h3">🏘️ 共同体主義</h3>
+                        <p>普遍的正義ではなく、共同体の共有された意味から正義を導く。ロールズへの批判。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 正戦論</h3>
+                        <p>『正戦と不正戦』。戦争にも道義がある。無差別攻撃の批判、人道的介入の正当化。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 内在的批判</h3>
+                        <p>社会批判は外部からではなく内部から。共同体の価値を引用しながら、その欠如を批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ロールズ批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ロールズ批判</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 普遍主義への疑問</h3>
+                        <p>ロールズは「無知のヴェール」の下で普遍的原理を導く。ウォルツァー：正義は文化依存的。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 単純な平等の問題</h3>
+                        <p>すべてを平等に配分するのは不適切。医療は必要に、教育は能力に、市場は交換によるべき。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 社会的意味</h3>
+                        <p>財の配分は、その財の「社会的意味」によって決まる。意味は共同体によって異なる。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 内在的批判の重要性</h3>
+                        <p>外部からの批判は権威主義的。共同体の価値に訴え、そこからの逸脱を批判するのが正当。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Society as Domain System</h2>
+            <div class="it-card">
+                <h3">Spheres as Domains</h3>
+                    <p>正義の領分はドメイン。各ドメイン（市場、政治、教育、医療）には固有のアクセス制御ポリシーがある。</p>
+            </div>
+            <div class="it-card">
+                <h3">Tyranny as Privilege Escalation</h3>
+                    <p>支配は特権昇格攻撃。一つのドメインの権限を使って、別のドメインにアクセスする。これはセキュリティ違反。</p>
+            </div>
+            <div class="it-card">
+                <h3">Complex Equality as Firewall</h3>
+                    <p>複合的平等はファイアウォール。ドメイン間の不正な通信をブロック。各ドメインの自律性を保護。</p>
+            </div>
+            <div class="it-card">
+                <h3">Social Meanings as Interface Contract</h3>
+                    <p>社会的意味はインターフェース契約。財がどのように使用されるべきかを定義。契約違反は不正義。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『正義の領分』</strong>：複合的平等の理論。1983年。</li>
+                <li><strong>『正戦と不正戦』</strong>：現代正戦論の古典。1977年。</li>
+                <li><strong>複合的平等</strong>：領分間の境界を守る正義の概念。</li>
+                <li><strong>内在的批判</strong>：共同体の価値からの社会批判。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>パスカル（領分）</li>
+                            <li>マルクス（批判理論）</li>
+                            <li>ユダヤ教伝統</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>コミュニタリアニズム</li>
+                            <li>多文化主義</li>
+                            <li>人道的介入論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 政治哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウォルツァー</th>
+                        <th>ロールズ</th>
+                        <th>ノージック</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>正義の源泉</strong></td>
+                        <td>共同体の意味</td>
+                        <td>普遍的原理</td>
+                        <td>個人の権利</td>
+                    </tr>
+                    <tr>
+                        <td><strong>平等の形</strong></td>
+                        <td>複合的平等</td>
+                        <td>公正な機会</td>
+                        <td>形式的権利</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>解釈的・内在的</td>
+                        <td>契約論的</td>
+                        <td>権利論的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ドメイン分離</td>
+                        <td>グローバル設定</td>
+                        <td>所有権</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：金で買えるもの</h2>
+            <div class="thought-experiment">
+                <h3">お金はどこまで通用すべきか</h3>
+                    <p>お金で買えるもの：食べ物、衣服、住居、車、旅行——これは問題ない。市場の領分。</p>
+                    <p>しかし：</p>
+                    <p>お金で買った方がよい大学の入学枠？ 政治家への献金で影響力？ 臓器を売買？</p>
+                    <p>ウォルツァーは問います：これらは「支配」ではないか？お金の領分が教育や政治の領分を侵犯している。</p>
+                    <p>サンデルは『それをお金で買いますか』でこの問題を展開しました。ウォルツァーの枠組みが見えます。</p>
+                    <p>現代の問い：SNSの「インフルエンサー」は、影響力をお金に変えている。これは正当か？</p>
+                    <p>領分の境界は動く。しかし「すべてがお金で買える」社会は——ウォルツァーにとって——不正義。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        お金はどこまで通用すべきですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マイケル・ウォルツァーは、『正義の領分』で「複合的平等」の理論を提示した現代アメリカのコミュニタリアン哲学者です。異なる社会的財には異なる配分原理が適用されるべきであり、一つの領分の支配が他の領分に及ぶのが不正義。ロールズの普遍主義を批判し、共同体の共有された意味から正義を導くべきだと主張。『正戦と不正戦』では正戦論を現代に更新。内在的批判、複合的平等、領分の自律性——ウォルツァーの枠組みは、市場原理が拡張する現代において、ますます重要な問いを提起しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Separate spheres, complex equality.</p>
+    </footer>
+</body>
+
+</html>

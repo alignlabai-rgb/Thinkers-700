@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鈴木大拙 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1f2937;
+            /* Zen Gray */
+            --secondary: #111827;
+            /* Mu Dark */
+            --accent: #4b5563;
+            /* Satori Silver */
+            --highlight: #f3f4f6;
+            /* Emptiness Glow */
+            --bg: #0f0f0f;
+            /* Void Deep */
+            --text: #f3f4f6;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Zen Background */
+        .zen-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(75, 85, 99, 0.05) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Minimalist Header */
+        .header {
+            background: var(--secondary);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "無";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25rem;
+            opacity: 0.03;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--secondary);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-left: 4px solid var(--accent);
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .it-analogy h2 {
+            color: var(--highlight);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(75, 85, 99, 0.1);
+            border-radius: 10px;
+        }
+
+        .it-card h3 {
+            color: var(--highlight);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Zen Circle */
+        .enso-section {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .enso-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .enso-circle {
+            width: 200px;
+            height: 200px;
+            border: 8px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .enso-circle::after {
+            content: "空";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "◯";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 10px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.4;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zen-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ZEN_MIND</a>
+        <div>JAPANESE_SPIRITUALITY_v5.07</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-507 / THE_ZEN_MASTER</span>
+        <h1>鈴木大拙</h1>
+        <p class="en-name">D.T. Suzuki (1870–1966)</p>
+        <p class="catchphrase">「禅とは自己の本性を見ることである」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">禅OS</span>
+            <span class="os-tag">比較思想OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">日本的霊性</h2>
+            <div class="hero-box">
+                <p class="hero-text">鈴木大拙（すずき だいせつ、英名: D.T.
+                    Suzuki）は、禅仏教を西洋に紹介した最も重要な人物です。96歳まで生き、英語で多数の著作を残し、禅を世界的な思想潮流へと導きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    大拙の核心的概念は<b>「日本的霊性」</b>——鎌倉時代に禅と浄土信仰が融合して生まれた日本独自の精神性。論理や概念を超えて「直接」真理をつかむ態度。これは禅の「悟り」にも通じます。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    大拙を学ぶことは、<b>東洋と西洋の対話</b>を理解することです。ユングやハイデガーとも交流し、禅をヨーロッパとアメリカに広めた思想の架橋者。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 10px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    大拙は、<b>「禅とはデバッグ。概念というバグを取り除き、心をクリーンな状態に戻す。悟りとはシステムのリブート——初期状態への回帰。言葉では説明できない、直接体験するしかない」</b>と説いた、意識のデバッガーです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 円相 -->
+        <section class="enso-section">
+            <h2>◯ 無と空</h2>
+            <div class="enso-circle"></div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.7);">
+                円相（えんそう）——禅の象徴。完全でありながら空っぽ。始まりも終わりもない。言葉を超えた真理を指し示す。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 大拙思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">禅は特別な教義も哲学もない。しかしその中心には、生命の意味を直接つかむ洞察がある。</p>
+                <p class="quote-author">— 『禅とは何か』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">◯ 禅の本質</h3>
+                        <p>概念や教義ではなく、直接体験。坐禅、公案——理性を超えて本性を見る。「不立文字、教外別伝」。</p>
+                </div>
+                <div class="card">
+                    <h3">🇯🇵 日本的霊性</h3>
+                        <p>鎌倉時代に覚醒した日本独自の精神性。禅と浄土の融合。知性でなく「腹」で感じる直覚。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 東西の架橋</h3>
+                        <p>英語での著作、講演。コロンビア大学での講義。ビート世代、ユング、ハイデガーにも影響。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 即非の論理</h3>
+                        <p>「AはAであってAではない、それゆえにAである」——形式論理を超える禅の論理。矛盾を包含する思考。</p>
+                </div>
+                <div class="card">
+                    <h3">🎨 禅と文化</h3>
+                        <p>茶道、剣道、書道——禅は日本文化の基盤。「行住坐臥」すべてが禅。生活全体が修行。</p>
+                </div>
+                <div class="card">
+                    <h3">❓ 公案</h3>
+                        <p>「隻手の声」「趙州無字」——論理では解けない問い。知性の限界で「跳躍」が起こる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 即非の論理 -->
+        <section class="section">
+            <h2 class="section-title">🔄 即非の論理</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 否定</h3>
+                        <p>「Aは非Aである」——山は山ではない。固定した概念を否定し、流動性を見る。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 肯定</h3>
+                        <p>「それゆえにAである」——しかし山は山である。否定を通過した上での肯定。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 超越</h3>
+                        <p>矛盾を超えた地点。形式論理のA/非Aではなく、両方を含む全体性。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 日常への回帰</h3>
+                        <p>悟り前：山は山。悟り中：山は山ではない。悟り後：山はやはり山。しかし同じではない。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Zen as System Reset</h2>
+            <div class="it-card">
+                <h3">Satori as Kernel Reset</h3>
+                    <p>悟りはカーネルリセット。蓄積したプロセス（煩悩、概念）をクリアし、初期状態に戻す。しかしシステムは同じハードウェア上で動く——同じ自分だが、異なる動作。</p>
+            </div>
+            <div class="it-card">
+                <h3">Koan as Infinite Loop Breaker</h3>
+                    <p>公案は無限ループブレーカー。論理が循環し続ける状態を、矛盾によって強制終了させる。スタックオーバーフローで「跳躍」が起こる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mu as Null Value</h3>
+                    <p>「無」はNull。存在も非存在でもない。「犬に仏性はあるか？」——「無」。Yes/Noではなく、問い自体の無効化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Japanese Spirituality as Cultural API</h3>
+                    <p>日本的霊性は文化的API。禅の抽象的教えを、日本という具体的環境で実装したもの。茶道、剣道、俳句——すべてがこのAPIを使用。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『禅と日本文化』</strong>：英語で書かれた禅入門の古典。西洋への禅紹介。</li>
+                <li><strong>『日本的霊性』</strong>：日本独自の精神性を理論化。大地性、直覚。</li>
+                <li><strong>即非の論理</strong>：形式論理を超える禅の思考法を定式化。</li>
+                <li><strong>エラノス会議参加</strong>：ユングらと交流。東西思想の対話を促進。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>臨済禅（今北洪川）</li>
+                            <li>浄土教（親鸞・妙好人）</li>
+                            <li>西洋哲学（ウィリアム・ジェームズ）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ビート世代（ケルアック、ギンズバーグ）</li>
+                            <li>アラン・ワッツ</li>
+                            <li>ジョン・ケージ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 禅思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>鈴木大拙</th>
+                        <th>西田幾多郎</th>
+                        <th>アラン・ワッツ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>アプローチ</strong></td>
+                        <td>宗教体験</td>
+                        <td>純粋哲学</td>
+                        <td>カウンターカルチャー</td>
+                    </tr>
+                    <tr>
+                        <td><strong>聴衆</strong></td>
+                        <td>学者・知識人</td>
+                        <td>哲学者</td>
+                        <td>一般大衆</td>
+                    </tr>
+                    <tr>
+                        <td><strong>強調点</strong></td>
+                        <td>体験・直覚</td>
+                        <td>論理・矛盾</td>
+                        <td>自由・自然</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>デバッグ</td>
+                        <td>形式検証</td>
+                        <td>オープンソース</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：隻手の声</h2>
+            <div class="thought-experiment">
+                <h3">両手を打てば音がする。片手の音はどうか？</h3>
+                    <p>これは白隠禅師による有名な公案です。論理的に答えを考えてみてください。</p>
+                    <p>「片手では音は出ない」——これは正解でしょうか？しかし問いは「片手の音はどうか」であり、「音が出るか」ではありません。</p>
+                    <p>「空気の振動がある」「無音という音」——しかしこれも概念的な回答であり、公案の求める「直接体験」ではありません。</p>
+                    <p>公案のポイントは「答え」ではなく、答えを求める過程で論理が行き詰まり、何か別のものが開けること。「跳躍」——概念的思考を超えた瞬間。</p>
+                    <p>大拙によれば、禅はこのような「概念の崩壊」を通じて、本来の自己——言葉以前の自己——を見せる。デバッグによってバグが除かれ、クリーンなシステムが現れる。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 10px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        片手の音を「聞いた」ことがありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>鈴木大拙は、禅を西洋に紹介した最も影響力のある思想家です。「日本的霊性」という概念で日本独自の精神性を理論化し、「即非の論理」で形式論理を超える禅の思考法を定式化しました。英語での著作、コロンビア大学での講義、エラノス会議への参加——大拙は東西の架橋者として、禅をグローバルな思想潮流へと導きました。ビート世代、ユング、ハイデガー——彼の影響は哲学、芸術、カウンターカルチャーに広がります。96年の生涯を通じて「自己の本性を見る」ことを説き続けた大拙の遺産は、今なお世界中で読み継がれています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Before thinking — what is it?</p>
+    </footer>
+</body>
+
+</html>

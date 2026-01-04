@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ソースティン・ヴェブレン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Leisure Purple */
+            --secondary: #1e1b4b;
+            /* Consumption Dark */
+            --accent: #a78bfa;
+            /* Conspicuous Violet */
+            --highlight: #ede9fe;
+            /* Status Glow */
+            --bg: #0f0e24;
+            /* Class Deep */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Consumption Background */
+        .consumption-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Economic Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "💎";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Consumption Theory */
+        .consumption-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .consumption-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .consumption-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .consumption-box {
+            padding: 2rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .leisure-box {
+            background: #d97706;
+            border: 2px solid #fbbf24;
+        }
+
+        .display-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "💎";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="consumption-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LEISURE_CLASS</a>
+        <div>CONSPICUOUS_CONSUMPTION_v5.25</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-525 / THE_INSTITUTIONAL_ECONOMIST</span>
+        <h1>ソースティン・ヴェブレン</h1>
+        <p class="en-name">Thorstein Veblen (1857–1929)</p>
+        <p class="catchphrase">「消費は地位を示すための儀式である」</p>
+        <div class="os-tags">
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">制度OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">顕示的消費</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ソースティン・ヴェブレンは、アメリカの経済学者・社会学者であり、「制度派経済学」の創始者の一人です。1899年の『有閑階級の理論』で「顕示的消費」の概念を提唱し、消費社会の鋭い批判者となりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヴェブレンの核心的洞察——<b>消費は機能のためではなく、地位を示すために行われる</b>。高価なものを買い、労働しない暇を見せびらかす——これが「有閑階級」の論理。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「衒示的消費」「衒示的閑暇」——私たちは今日、SNSで何を見せびらかしているでしょうか？
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ヴェブレンは、<b>「消費はステータスの可視化プロトコル。高級ブランドはバッジ——機能ではなくシンボル。Instagramのフォロワー数、仮想通貨のNFT——ヴェブレンの『衒示的消費』は形を変えて続いている」</b>と分析した、消費社会の解読者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 顕示的消費 -->
+        <section class="consumption-section">
+            <h2>💎 顕示的消費と顕示的閑暇</h2>
+            <div class="consumption-diagram">
+                <div class="consumption-box leisure-box">
+                    <p>🛋️ 顕示的閑暇</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Conspicuous Leisure</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">労働しない余裕を見せる</p>
+                </div>
+                <div class="consumption-box display-box">
+                    <p>💎 顕示的消費</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Conspicuous Consumption</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">高価なものを見せびらかす</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                有閑階級は労働から解放された暇を見せ、高価な消費で地位を誇示する。消費は機能ではなく、社会的シグナルである。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ヴェブレン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">有閑階級の成員は、生産的労働から免除されていることを誇りとする。</p>
+                <p class="quote-author">— 『有閑階級の理論』（1899年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">💎 顕示的消費</h3>
+                        <p>社会的地位を示すための消費。機能より象徴。高価であること自体が価値。ブランド品の論理。</p>
+                </div>
+                <div class="card">
+                    <h3">🛋️ 顕示的閑暇</h3>
+                        <p>労働しない余裕を見せる。働かなくても生きていける——これこそ最高のステータス。</p>
+                </div>
+                <div class="card">
+                    <h3">👔 有閑階級</h3>
+                        <p>生産的労働から免除された階級。その存在自体が特権の証明。模倣の対象となる。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 模倣のカスケード</h3>
+                        <p>下位階級は上位階級を模倣する。しかし上位は新たな差異化を求める。終わりなき競争。</p>
+                </div>
+                <div class="card">
+                    <h3">⚙️ 制度派経済学</h3>
+                        <p>新古典派経済学への批判。人間は合理的個人ではなく、制度に埋め込まれた存在。進化的アプローチ。</p>
+                </div>
+                <div class="card">
+                    <h3">🔧 技術者と企業家</h3>
+                        <p>技術者（エンジニア）は生産的、企業家は略奪的。後者が支配する資本主義への批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ヴェブレン効果 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ヴェブレン効果</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 価格が上がると需要も上がる</h3>
+                        <p>通常の需要曲線と逆。高いからこそ欲しい。安くなると価値が下がる。ラグジュアリーブランドの論理。</p>
+                </div>
+                <div class="card">
+                    <h3">2. スノッブ効果</h3>
+                        <p>他の人が持っていないものを欲しがる。希少性の価値。限定品、入手困難なもの。</p>
+                </div>
+                <div class="card">
+                    <h3">3. バンドワゴン効果</h3>
+                        <p>他の人が持っているから欲しい。流行、トレンドに乗る。社会的同調。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 現代社会への示唆</h3>
+                        <p>SNS時代の「いいね」経済。フォロワー数、ブランド品の写真——顕示的消費のデジタル版。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Consumption as Status Protocol</h2>
+            <div class="it-card">
+                <h3">Consumption as Signaling Protocol</h3>
+                    <p>消費はシグナリング・プロトコル。情報（ステータス）を他者に送信する手段。ブランドロゴはバッジ。青いチェックマークと同じ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Luxury as Proof of Work</h3>
+                    <p>贅沢品はProof of Work。「これを買えるほど稼いでいる」ことの証明。暗号通貨のマイニングと同じ——コストがかかること自体が価値。</p>
+            </div>
+            <div class="it-card">
+                <h3">Veblen Effect as Price Inversion</h3>
+                    <p>ヴェブレン効果は価格反転。通常のプライシングロジックが逆転。高コスト＝高価値という再帰的ループ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Instagram as Conspicuous Display</h3>
+                    <p>InstagramはConsumption.display()。消費を可視化し、ブロードキャストするプラットフォーム。写真が通貨。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『有閑階級の理論』</strong>：顕示的消費の古典的分析。1899年。</li>
+                <li><strong>顕示的消費</strong>：地位を示すための消費行動の概念化。</li>
+                <li><strong>制度派経済学</strong>：進化的・歴史的アプローチを経済学に導入。</li>
+                <li><strong>技術者階級論</strong>：生産的労働と略奪的企業の区別。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ダーウィン（進化論）</li>
+                            <li>マルクス（批判的経済学）</li>
+                            <li>スペンサー（社会進化論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>制度派経済学</li>
+                            <li>消費社会批判</li>
+                            <li>行動経済学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 経済学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ヴェブレン</th>
+                        <th>新古典派</th>
+                        <th>マルクス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>人間観</strong></td>
+                        <td>制度に埋め込まれる</td>
+                        <td>合理的個人</td>
+                        <td>階級的存在</td>
+                    </tr>
+                    <tr>
+                        <td><strong>消費の意味</strong></td>
+                        <td>地位シグナル</td>
+                        <td>効用最大化</td>
+                        <td>疎外</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法論</strong></td>
+                        <td>進化的・歴史的</td>
+                        <td>数学的モデル</td>
+                        <td>弁証法</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>シグナリング</td>
+                        <td>最適化アルゴリズム</td>
+                        <td>システム批判</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：SNS時代の顕示的消費</h2>
+            <div class="thought-experiment">
+                <h3">Instagramは何を見せびらかしているか</h3>
+                    <p>ヴェブレンの時代、顕示的消費は馬車、使用人、豪邸でした。21世紀の私たちは何を「見せびらかして」いるでしょうか？</p>
+                    <p>Instagramの写真——高級レストラン、海外旅行、ブランド品。これらは「顕示的消費」のデジタル版。ただし変化もあります：</p>
+                    <p>新しい形式——「経験」の消費。物ではなく体験。ただし見せびらかす対象が変わっただけで、ロジックは同じ。</p>
+                    <p>新しいステータスシンボル——フォロワー数、エンゲージメント率、青いチェックマーク。これらは「デジタルな顕示」。</p>
+                    <p>「ヴェブレン効果」はNFTにも見られます。高価であることが価値。機能ではなくシンボル。</p>
+                    <p>問います：あなたのSNS投稿は、誰に、何を、なぜ見せていますか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたは何を「顕示的に消費」していますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ソースティン・ヴェブレンは、『有閑階級の理論』で「顕示的消費」の概念を提唱し、消費社会の鋭い批判者となった制度派経済学の創始者です。消費は効用のためではなく、社会的地位を示すために行われる——この洞察は経済学に新しい視点をもたらしました。合理的個人を仮定する新古典派への批判、進化的・歴史的アプローチの導入——ヴェブレンの遺産は行動経済学、消費社会批判に受け継がれています。SNS、NFT、インフルエンサー経済——21世紀の「顕示的消費」を理解するために、ヴェブレンは必読の思想家です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Status signaling continues.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヴァスバンドゥ（世親） - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Vijñāna Gold */
+            --secondary: #292524;
+            /* Mind Dark */
+            --accent: #f59e0b;
+            /* Consciousness Amber */
+            --highlight: #fef3c7;
+            /* Wisdom Glow */
+            --bg: #1c1917;
+            /* Abhidharma Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Mind Background */
+        .mind-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Buddhist Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☸️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mind Only */
+        .mind-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .mind-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .consciousness-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .consciousness-box {
+            padding: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .alaya-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+            width: 140px;
+            height: 140px;
+            font-size: 1rem;
+        }
+
+        .manas-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .sense-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☸️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mind-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← VIJÑAPTIMĀTRA</a>
+        <div>CONSCIOUSNESS_ONLY_v5.24</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-524 / THE_MIND_PHILOSOPHER</span>
+        <h1>ヴァスバンドゥ（世親）</h1>
+        <p class="en-name">Vasubandhu (4th–5th century)</p>
+        <p class="catchphrase">「一切は唯識のみ——すべては心の表れである」</p>
+        <div class="os-tags">
+            <span class="os-tag">仏教OS</span>
+            <span class="os-tag">心識OS</span>
+            <span class="os-tag">アビダルマOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">唯識思想</h2>
+            <div class="hero-box">
+                <p class="hero-text">ヴァスバンドゥ（世親）は、4〜5世紀のインドで活躍した仏教哲学者であり、唯識学派（瑜伽行唯識派）の大成者です。兄のアサンガ（無著）とともに唯識思想を確立しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    世親の核心的主張——<b>唯識（vijñaptimātra）</b>。すべての存在は心（識）の表れにすぎない。外界の実在を否定し、心の分析を徹底。八識説で意識の構造を解明。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    前半生は説一切有部のアビダルマ論師として『倶舎論』を著し、後半生は大乗の唯識学派に転向。『唯識三十頌』『唯識二十論』を著しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    世親は、<b>「世界というUIはすべてレンダリング結果——実際には外部サーバー（外界）は存在せず、すべてはローカルのレンダリングエンジン（阿頼耶識）が生成している。私たちが見る『外界』は心が投影したバーチャルリアリティ」</b>と分析した、意識のシステムアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 八識 -->
+        <section class="mind-section">
+            <h2>☸️ 八識説</h2>
+            <div class="consciousness-diagram">
+                <div class="consciousness-box sense-box">
+                    <p>👁️</p>
+                    <p>眼識</p>
+                </div>
+                <div class="consciousness-box sense-box">
+                    <p>👂</p>
+                    <p>耳識</p>
+                </div>
+                <div class="consciousness-box sense-box">
+                    <p>👃</p>
+                    <p>鼻識</p>
+                </div>
+                <div class="consciousness-box sense-box">
+                    <p>👅</p>
+                    <p>舌識</p>
+                </div>
+                <div class="consciousness-box sense-box">
+                    <p>✋</p>
+                    <p>身識</p>
+                </div>
+                <div class="consciousness-box manas-box">
+                    <p>🧠</p>
+                    <p>意識</p>
+                </div>
+                <div class="consciousness-box manas-box">
+                    <p>💭</p>
+                    <p>末那識</p>
+                </div>
+                <div class="consciousness-box alaya-box">
+                    <p>🌊</p>
+                    <p>阿頼耶識</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                前五識（感覚）、第六意識（思考）、第七末那識（自我意識）、第八阿頼耶識（根本識・蔵識）。すべての経験はここから生じる。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 世親思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">一切唯識。三界は心のみ。</p>
+                <p class="quote-author">— 『唯識三十頌』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">☸️ 唯識（vijñaptimātra）</h3>
+                        <p>すべては識（心）の表れ。外界の実在を否定。経験されるものはすべて心の内にある。</p>
+                </div>
+                <div class="card">
+                    <h3">🌊 阿頼耶識</h3>
+                        <p>第八識。根本識、蔵識。すべての種子（bīja）を貯蔵。潜在意識の根源。輪廻の主体。</p>
+                </div>
+                <div class="card">
+                    <h3">💭 末那識</h3>
+                        <p>第七識。常に阿頼耶識を「自己」と誤認する。我執の根源。自我意識。</p>
+                </div>
+                <div class="card">
+                    <h3">🌱 種子（bīja）</h3>
+                        <p>行為（業）が阿頼耶識に残す潜在力。熏習により形成。将来の経験の原因。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 倶舎論</h3>
+                        <p>『阿毘達磨倶舎論』。説一切有部のアビダルマを体系化。「論の宝庫」。前半生の主著。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 転識得智</h3>
+                        <p>識を転じて智を得る。煩悩に染まった識を、修行により清浄な智慧へ変容。悟りへの道。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 外界実在の否定 -->
+        <section class="section">
+            <h2 class="section-title">🔄 外界はなぜ存在しないか</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 夢の論証</h3>
+                        <p>夢の中でも山や川が見える。しかし夢の外界は存在しない。覚醒時も同様では？</p>
+                </div>
+                <div class="card">
+                    <h3">2. 原子の不可能性</h3>
+                        <p>外界が原子から成るなら、原子に大きさはあるか？あれば分割可能、なければ集合しても大きさを持たない。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 共有の問題</h3>
+                        <p>複数の人が「同じもの」を見るのはなぜ？共業（共通の業）により類似した経験が生じる。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 実践的意義</h3>
+                        <p>外界の実在を否定することで執着を断つ。「自分と世界」という二元論を超える。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Mind as Rendering Engine</h2>
+            <div class="it-card">
+                <h3">Ālayavijñāna as Database + Engine</h3>
+                    <p>阿頼耶識はデータベース兼レンダリングエンジン。種子（データ）を貯蔵し、経験（UI）をレンダリング。外部サーバー（外界）は存在しない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Manas as Self-Reference Loop</h3>
+                    <p>末那識は自己参照ループ。システムが「自己」というオブジェクトを常に参照し続ける。この自己参照が我執を生む。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bīja as Stored Procedures</h3>
+                    <p>種子はストアドプロシージャ。過去の行為（入力）がデータベースに保存され、条件が揃うと実行（経験として現れる）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Transformation of Consciousness as Refactoring</h3>
+                    <p>転識得智はコードのリファクタリング。バグ（煩悩）を含むコード（識）を、クリーンなコード（智）に書き換える。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『唯識三十頌』</strong>：唯識思想の簡潔な要約。30偈。</li>
+                <li><strong>『唯識二十論』</strong>：外界実在への反論。</li>
+                <li><strong>『阿毘達磨倶舎論』</strong>：説一切有部アビダルマの集大成。</li>
+                <li><strong>八識説</strong>：意識の構造分析。阿頼耶識・末那識の発見。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アサンガ（無著、兄）</li>
+                            <li>マイトレーヤ（弥勒）</li>
+                            <li>説一切有部アビダルマ</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>法相宗（中国・日本）</li>
+                            <li>玄奘（訳経）</li>
+                            <li>東アジア仏教全般</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 仏教哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>世親（唯識派）</th>
+                        <th>中観派</th>
+                        <th>説一切有部</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>実在観</strong></td>
+                        <td>心のみ実在</td>
+                        <td>すべて空</td>
+                        <td>ダルマが実在</td>
+                    </tr>
+                    <tr>
+                        <td><strong>外界</strong></td>
+                        <td>存在しない</td>
+                        <td>空</td>
+                        <td>原子から構成</td>
+                    </tr>
+                    <tr>
+                        <td><strong>修行論</strong></td>
+                        <td>識の転変</td>
+                        <td>空の体得</td>
+                        <td>煩悩の断滅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>VR（心がレンダリング）</td>
+                        <td>無（空ポインタ）</td>
+                        <td>オブジェクトDB</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：VRの中の世界</h2>
+            <div class="thought-experiment">
+                <h3">私たちはシミュレーションの中にいるか</h3>
+                    <p>世親は「外界は心が作り出したもの」と主張しました。現代のVR技術やシミュレーション仮説と照らしてみましょう。</p>
+                    <p>VRヘッドセットを装着すると、山や川が見えます。触覚フィードバックで「触れた」感覚もある。しかし山や川は存在しない——すべてはレンダリング。</p>
+                    <p>世親の唯識は言います：VRを外さなくても、「通常の」経験も同じ。阿頼耶識というエンジンがすべてをレンダリングしている。</p>
+                    <p>イーロン・マスクやニック・ボストロムの「シミュレーション仮説」——私たちが高度な文明のシミュレーションの中にいる可能性。</p>
+                    <p>違いは？シミュレーション仮説は外部（シミュレーターを動かす「真の」現実）があると仮定。唯識はそのような外部すら否定——すべては心のみ。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの見る「世界」は、どこで生成されていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ヴァスバンドゥ（世親）は、唯識学派の大成者として、インド仏教哲学の頂点に立つ思想家です。「唯識」——すべては心の表れ——という徹底的な観念論を展開し、八識説で意識の構造を分析しました。阿頼耶識（根本識）、末那識（自我意識）の発見は、フロイトに先駆ける深層心理学と言えます。前半生は『倶舎論』で説一切有部を集大成し、後半生は大乗唯識派へ転向。『唯識三十頌』『唯識二十論』は東アジア仏教思想の基礎となりました。意識とは何か、外界は存在するか——世親の問いは現代の心の哲学、VR、シミュレーション仮説とも共鳴しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Mind only.</p>
+    </footer>
+</body>
+
+</html>

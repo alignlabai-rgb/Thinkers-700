@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エドワード・サピア - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,700;1,400&family=Spectral:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            /* Linguistic Teal */
+            --secondary: #134e4a;
+            /* Deep Forest */
+            --accent: #fbbf24;
+            /* Knowledge Gold */
+            --bg: #f0fdfa;
+            /* Mint Cream */
+            --text: #1f2937;
+            --border: #99f6e4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Language Wave Background */
+        .wave-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .wave1 {
+            top: 10%;
+            left: -50%;
+            animation: wave 15s ease-in-out infinite;
+        }
+
+        .wave2 {
+            top: 40%;
+            left: -30%;
+            animation: wave 12s ease-in-out infinite reverse;
+            opacity: 0.5;
+        }
+
+        .wave3 {
+            top: 70%;
+            left: -40%;
+            animation: wave 18s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateX(-20%) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateX(10%) rotate(5deg);
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Linguistic Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #042f2e 100%);
+            color: #fff;
+            padding: 12rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "∞";
+            position: absolute;
+            bottom: -5rem;
+            right: 5%;
+            font-size: 35rem;
+            opacity: 0.05;
+            color: var(--accent);
+            font-family: serif;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Spectral', serif;
+            font-size: 5.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Spectral', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 5px;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Spectral', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5rem;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--primary);
+            margin-top: 1rem;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: "«";
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            font-size: 8rem;
+            opacity: 0.2;
+            font-family: 'Spectral', serif;
+        }
+
+        .quote-text {
+            font-family: 'Spectral', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.3s;
+            border-left: 5px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(13, 148, 136, 0.1);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Spectral', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid #5eead4;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: #042f2e;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🗣️";
+            position: absolute;
+            left: 0;
+            font-size: 1.8rem;
+            top: -0.2rem;
+        }
+
+        .thought-experiment {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border: 2px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Spectral', serif;
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wave-bg">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../index.html">← LANGUAGE_CULTURE_PERSONALITY</a>
+        <div>LINGUISTIC_RELATIVITY_v4.58</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-458 / THE_LINGUISTIC_ANTHROPOLOGIST</span>
+        <h1>エドワード・サピア</h1>
+        <p class="en-name">Edward Sapir (1884–1939)</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">文化OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">言語が思考を形づくる</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「私たちは、母語の定めた線路の上で思考している」——エドワード・サピアは、言語が単なるコミュニケーションの道具ではなく、<b>私たちの世界認識そのものを形成する</b>という革命的なアイデアを提唱しました。これは後に弟子のベンジャミン・リー・ウォーフによって発展され、<b>「サピア＝ウォーフ仮説」</b>として知られるようになりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    サピアを学ぶことは、<b>「言語というOSが、私たちの思考という『アプリ』にどんな制約と可能性を与えているか」</b>を理解することです。彼はドイツ生まれのアメリカの人類学者・言語学者であり、アメリカ先住民の言語を精力的に記録・分析しました。その中で、各言語が独自の「概念の切り分け方」を持つことを発見し、文化相対主義に言語学的な基盤を与えたのです。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--secondary); color: #fff;">
+                <h4 style="color: var(--accent);">💡 たとえるなら</h4>
+                <p>サピアは、<b>「異なる言語は異なるOS（Windows, macOS,
+                        Linux）のようなもので、それぞれがファイルシステム（概念の分類）やAPIコール（表現の仕方）に独自の設計思想を持ち、ユーザー（話者）の思考パターンや可能性に影響を与えているという、言語学界の比較OSアーキテクト」</b>です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 言語OSの核心：言語相対性</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間は社会が表現の媒体として使用している特定の言語に大いに左右されて生きている</p>
+                <p class="quote-author">— エドワード・サピア</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌐 言語相対性仮説</h3>
+                    <p>言語の構造が思考や世界認識に影響を与えるという考え。強いバージョン（言語決定論）と弱いバージョン（言語影響論）がある。 </p>
+                </div>
+                <div class="card">
+                    <h3>📚 記述言語学の確立</h3>
+                    <p>アメリカ先住民言語を偏見なく、それ自体の体系として記述・分析する方法論を確立。文法的「正しさ」の普遍性を疑問視。 </p>
+                </div>
+                <div class="card">
+                    <h3>🧬 言語と文化のパターン</h3>
+                    <p>言語は文化の一部であり、文化と不可分に結びついている。言語を研究することは、その文化の思考様式を研究することでもある。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 言語学的分析のフロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. フィールドワーク (Collect)</h3>
+                    <p>対象言語のネイティブスピーカーと直接対話し、音声、語彙、文法データを収集する。 </p>
+                </div>
+                <div class="card">
+                    <h3>2. 体系的記述 (Describe)</h3>
+                    <p>収集したデータを、その言語固有の論理に従って体系的に記述する。印欧語の枠組みを押し付けない。 </p>
+                </div>
+                <div class="card">
+                    <h3>3. 文化的コンテキスト (Contextualize)</h3>
+                    <p>言語構造と、それを話す人々の世界観、社会構造、文化的価値観との関連を分析する。 </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Language Runtime</h2>
+            <div class="it-card">
+                <h3>Language as OS Kernel</h3>
+                <p>言語は、思考というアプリケーションが動作するためのカーネル（基盤）を提供する。異なる言語は、異なるカーネル設計を持つ異なるOS。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Conceptual Namespace</h3>
+                <p>各言語は、世界をどのように「名前空間（カテゴリ）」に分割するかについて、独自のルールを持つ。色彩語彙、親族名称、時間表現などがその例。 </p>
+            </div>
+            <div class="it-card">
+                <h3>Syntax as API Design</h3>
+                <p>文法構造は、思考を表現するためのAPI設計に相当する。異なる言語は、同じ意味を伝えるために異なるAPIコール（文法構造）を使用する。 </p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>アメリカ構造主義言語学</strong>：ヨーロッパの歴史言語学とは異なる、記述的・共時的なアプローチを確立し、チョムスキー以前のアメリカ言語学の基礎を築いた。</li>
+                <li><strong>音素論の発展</strong>：言語の音声体系を、物理的な音（phone）ではなく、意味を区別する機能的単位（phoneme）として分析する方法論に貢献。</li>
+                <li><strong>言語と人格</strong>：言語が話者のパーソナリティや思考スタイルにどう影響するかという、言語心理学的な問いを先駆的に探求。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>フランツ・ボアズ（文化相対主義、師匠）</li>
+                        <li>ヴィルヘルム・フォン・フンボルト（言語的世界観）</li>
+                        <li>フェルディナン・ド・ソシュール（構造主義言語学）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ベンジャミン・リー・ウォーフ（サピア＝ウォーフ仮説）</li>
+                        <li>認知言語学への影響</li>
+                        <li>文化人類学における言語研究</li>
+                        <li>言語教育・多文化理解への応用</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 言語観の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>普遍文法（チョムスキー）</th>
+                        <th>サピア＝ウォーフ仮説</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>言語の核心</strong></td>
+                        <td>生得的・普遍的な構造</td>
+                        <td>文化的・多様な構造</td>
+                    </tr>
+                    <tr>
+                        <td><strong>思考との関係</strong></td>
+                        <td>思考が言語に先立つ</td>
+                        <td>言語が思考に影響する</td>
+                    </tr>
+                    <tr>
+                        <td><strong>言語間の違い</strong></td>
+                        <td>表面的なバリエーション</td>
+                        <td>根本的な世界観の差異</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Universal Runtime</td>
+                        <td>Culture-Specific OS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：もし「青」がなかったら</h2>
+            <div class="thought-experiment">
+                <h3>色彩の名前と認識</h3>
+                <p>ロシア語には「青」に相当する単一の語がなく、「明るい青（goluboy）」と「暗い青（siniy）」を別の基本色として区別します。研究によると、ロシア語話者は、この二つの色の違いを英語話者よりも速く識別できるといいます。
+                </p>
+                <p>言語が色を分ける方法が異なれば、私たちが「見る」世界も変わるのでしょうか？ あなたの母語には、他の言語にはない独自の概念がありますか？
+                    日本語の「わびさび」「もったいない」「木漏れ日」を、他の言語で一言で言い表すことはできるでしょうか？ 言語は、現実を映す透明な窓ではなく、現実を彩るステンドグラスなのかもしれません。</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>エドワード・サピアの言語OSは、言語を単なる道具ではなく、思考と文化の基盤そのものとして捉え直しました。彼の「言語相対性」の視点は、異なる言語を話す人々が、異なる「現実」を生きている可能性を示唆しています。グローバル化とAI翻訳の時代において、サピアの洞察は、多言語・多文化を理解することの真の深さを思い出させてくれます。言語はコードではなく、世界観なのです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Language Shapes Reality.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フルドリッヒ・ツヴィングリ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Reformation Red */
+            --secondary: #7f1d1d;
+            /* Deep Swiss */
+            --accent: #f87171;
+            /* Light Reform */
+            --highlight: #fecaca;
+            /* Scripture Glow */
+            --bg: #450a0a;
+            /* Deep Zurich */
+            --text: #fecaca;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Reform Background */
+        .reform-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(248, 113, 113, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Zwingli Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚔️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sola Scriptura Section */
+        .sola-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .sola-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .sola-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .sola-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚔️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reform-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SWISS_REFORMATION</a>
+        <div>ZWINGLI_v6.91</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-691 / THE_SWISS_REFORMER</span>
+        <h1>フルドリッヒ・ツヴィングリ</h1>
+        <p class="en-name">Huldrych Zwingli (1484–1531)</p>
+        <p class="catchphrase">「聖書のみが真理の源である」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">宗教改革OS</span>
+            <span class="os-tag">聖書主義OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">スイス宗教改革の指導者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    フルドリッヒ・ツヴィングリは、16世紀スイスの宗教改革者であり、チューリッヒを中心にスイス宗教改革を主導しました。ルターと並ぶプロテスタント宗教改革の創始者の一人。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「聖書主義」</b>——聖書のみが信仰と実践の唯一の権威。教会の伝統、教皇、聖人崇拝は聖書に根拠がなければ排除。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ルターとは<b>聖餐論</b>で対立。ツヴィングリはパンとぶどう酒をキリストの身体の「象徴」とし、ルターの「臨在」説を否定。この対立は今日まで続く。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ツヴィングリは、<b>「キリスト教OSのラディカル・リファクタリング——ソースコード（聖書）のみを権威とし、レガシーな伝統機能を削除。ルターより徹底的なコードベースの整理。聖餐はシンボリック・リンク」</b>という改革を行った人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 聖書のみ -->
+        <section class="sola-section">
+            <h2>📖 核心原則</h2>
+            <p class="sola-title">Sola Scriptura</p>
+            <p class="sola-subtitle">聖書のみ</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                聖書に書かれていないことは、信仰や実践において権威を持たない。<br>
+                教皇、公会議、伝統——すべて聖書によって吟味される。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ツヴィングリ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">福音においては、神の言葉のみが規範である。人間の伝統ではない。</p>
+                <p class="quote-author">— フルドリッヒ・ツヴィングリ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📖 聖書主義</h3>
+                        <p>聖書のみが権威。教会の伝統、教皇の権威は聖書に照らして吟味される。</p>
+                </div>
+                <div class="card">
+                    <h3">🍞 象徴的聖餐論</h3>
+                        <p>パンとぶどう酒はキリストの身体の「象徴」。実体変化（カトリック）も臨在（ルター）も否定。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 市民宗教</h3>
+                        <p>チューリッヒでは教会と市民共同体が一体。信仰は個人だけでなく共同体の問題。</p>
+                </div>
+                <div class="card">
+                    <h3">🎨 偶像破壊</h3>
+                        <p>教会から聖像、オルガン、装飾を撤去。礼拝の簡素化。言葉中心。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 戦士としての死</h3>
+                        <p>1531年カッペル戦争でカトリック勢力と戦い、戦死。改革者にして軍人。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 67箇条</h3>
+                        <p>1523年の67箇条。チューリッヒ宗教改革の綱領。聖書的根拠に基づく改革。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 聖餐論争 -->
+        <section class="section">
+            <h2 class="section-title">🍞 聖餐論争</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">カトリック</h3>
+                        <p>実体変化。パンとぶどう酒の本質がキリストの身体と血に変化。司祭が執行。</p>
+                </div>
+                <div class="card">
+                    <h3">ルター</h3>
+                        <p>臨在。パンとぶどう酒の「中に、と共に、下に」キリストが現存。</p>
+                </div>
+                <div class="card">
+                    <h3">ツヴィングリ</h3>
+                        <p>象徴。パンとぶどう酒はキリストの身体を「表す」記念。霊的な意味のみ。</p>
+                </div>
+                <div class="card">
+                    <h3">カルヴァン</h3>
+                        <p>霊的臨在。物理的ではないが、聖霊によってキリストと結合。中間的立場。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Reformation</h2>
+            <div class="it-card">
+                <h3">Sola Scriptura as Source of Truth</h3>
+                    <p>聖書のみは Single Source of Truth。すべてのドキュメント（伝統）はこれに照らして検証。</p>
+            </div>
+            <div class="it-card">
+                <h3">Eucharist as Symbolic Link</h3>
+                    <p>ツヴィングリの聖餐はシンボリック・リンク。参照するが、実体はない（ルターはハードリンク）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Iconoclasm as Code Cleanup</h3>
+                    <p>偶像破壊はコード・クリーンアップ。不要な機能（聖像、装飾）を削除し、コアに集中。</p>
+            </div>
+            <div class="it-card">
+                <h3">67 Articles as API Spec</h3>
+                    <p>67箇条はAPIスペック。改革後のシステムがどう動作すべきかを定義。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>スイス宗教改革</strong>：チューリッヒを起点に拡大。</li>
+                <li><strong>改革派の基礎</strong>：カルヴァンに継承される改革派伝統。</li>
+                <li><strong>象徴的聖餐論</strong>：多くのプロテスタント教派に影響。</li>
+                <li><strong>市民宗教</strong>：教会と国家の関係モデル。</li>
+                <li><strong>徹底した聖書主義</strong>：聖書に基づく礼拝改革。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>エラスムス</li>
+                            <li>ルター（部分的）</li>
+                            <li>聖書人文主義</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>カルヴァン</li>
+                            <li>改革派教会</li>
+                            <li>清教徒</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 宗教改革者の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>改革者</th>
+                        <th>地域</th>
+                        <th>聖餐論</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ルター</strong></td>
+                        <td>ドイツ</td>
+                        <td>臨在</td>
+                        <td>信仰義認</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ツヴィングリ</strong></td>
+                        <td>スイス</td>
+                        <td>象徴</td>
+                        <td>聖書主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>カルヴァン</strong></td>
+                        <td>ジュネーヴ</td>
+                        <td>霊的臨在</td>
+                        <td>予定説</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ノックス</strong></td>
+                        <td>スコットランド</td>
+                        <td>改革派</td>
+                        <td>長老制</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：聖餐は何か</h2>
+            <div class="thought-experiment">
+                <h3">マールブルク会談（1529年）</h3>
+                    <p>ルターとツヴィングリはマールブルクで会談。14点で合意したが、聖餐論で決裂。ルターは「これは私の体である」を文字通りに理解。ツヴィングリは「これは私の体を表す」と解釈。</p>
+                    <p style="margin-top: 1.5rem;">この違いは単なる神学論争ではありません。言葉の意味、象徴の力、霊と物質の関係についての根本的な問い。</p>
+                    <p style="margin-top: 1.5rem;">ツヴィングリの問い：もしパンが文字通りキリストの身体なら、それを食べることは？物質が神になれるのか？</p>
+                    <p style="margin-top: 1.5rem;">ルターの反論：神は全能。キリストの言葉は真実。「これは私の体である」と言った以上、そうである。理性で制限するな。</p>
+                    <p style="margin-top: 1.5rem;">この対立はプロテスタントを今日まで分裂させています。ルター派と改革派の違いの核心。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「これは私の体である」——文字通りか、象徴か？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フルドリッヒ・ツヴィングリ（1484-1531）は、16世紀スイスの宗教改革者であり、チューリッヒを中心にスイス宗教改革を主導しました。「聖書のみ」——聖書だけが信仰と実践の権威。教会の伝統、教皇、聖人崇拝は聖書に根拠がなければ排除。ルターとは聖餐論で対立し、パンとぶどう酒を「象徴」とする立場をとりました。1523年の67箇条はチューリッヒ改革の綱領。偶像破壊を通じて教会を簡素化。1531年カッペル戦争で戦死——戦士としても生き、死んだ改革者。カルヴァン、改革派教会、清教徒に継承されるスイス宗教改革の創始者です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Scripture alone.</p>
+    </footer>
+</body>
+
+</html>

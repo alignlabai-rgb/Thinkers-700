@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨハネス・アルトゥジウス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            /* Federal Indigo */
+            --secondary: #312e81;
+            /* Deep Covenant */
+            --accent: #818cf8;
+            /* Light Community */
+            --highlight: #e0e7ff;
+            /* Consociation Glow */
+            --bg: #1e1b4b;
+            /* Deep Emden */
+            --text: #e0e7ff;
+            --border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Federal Background */
+        .federal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(129, 140, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Althusius Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4f46e5 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🏛️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Consociation Diagram */
+        .consociation-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4f46e5 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .consociation-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 3rem;
+        }
+
+        .layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .layer {
+            padding: 1.5rem 3rem;
+            border-radius: 10px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .layer-1 {
+            background: #4f46e5;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .layer-2 {
+            background: #6366f1;
+            width: 80%;
+            max-width: 480px;
+        }
+
+        .layer-3 {
+            background: #818cf8;
+            width: 60%;
+            max-width: 360px;
+        }
+
+        .layer-4 {
+            background: #a5b4fc;
+            width: 40%;
+            max-width: 240px;
+            color: var(--bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🏛️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="federal-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← FEDERALISM</a>
+        <div>ALTHUSIUS_v6.95</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-695 / THE_FATHER_OF_FEDERALISM</span>
+        <h1>ヨハネス・アルトゥジウス</h1>
+        <p class="en-name">Johannes Althusius (1563–1638)</p>
+        <p class="catchphrase">「政治は共生の技術である」</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">連邦主義OS</span>
+            <span class="os-tag">契約OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">連邦主義の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ヨハネス・アルトゥジウスは、17世紀ドイツの政治理論家・法学者であり、「連邦主義の父」として知られる人物です。エムデン市の法務官として実務にも携わりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「共生」（consociatio）</b>——政治とは様々なレベルの共同体が契約によって結合し、共に生きる技術である。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ボダンやホッブズの「主権」概念に対抗し、<b>多層的な共同体</b>に基づく政治秩序を提唱。補完性原理の先駆者。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アルトゥジウスは、<b>「政治OSのマイクロサービス・アーキテクト——単一の中央集権サーバー（絶対主権）ではなく、分散された多層サービス（家族→ギルド→都市→州→帝国）による連邦アーキテクチャを設計」</b>した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 共生の階層 -->
+        <section class="consociation-section">
+            <h2>🏛️ 共生の階層</h2>
+            <div class="layers">
+                <div class="layer layer-1">帝国・連邦（Universal Consociation）</div>
+                <div class="layer layer-2">州・領邦（Province）</div>
+                <div class="layer layer-3">都市・コムーネ（City）</div>
+                <div class="layer layer-4">家族・ギルド（Private）</div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+                下位の共同体が上位の共同体を構成する。主権は分散され、各レベルが自律性を持つ。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アルトゥジウス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">政治とは共生の技術であり、社会生活に必要なものを相互に伝達し合う術である。</p>
+                <p class="quote-author">— ヨハネス・アルトゥジウス『政治学方法論』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🤝 共生（Consociatio）</h3>
+                        <p>人間は共に生きる存在。共生は契約によって形成される。政治は共生の技術。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 契約</h3>
+                        <p>共同体は構成員の合意（契約）によって成立。ルソーの社会契約に先行。</p>
+                </div>
+                <div class="card">
+                    <h3">🏗️ 多層的共同体</h3>
+                        <p>家族→ギルド→都市→州→帝国。下位の共同体が上位を構成。ボトムアップの政治秩序。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 補完性原理</h3>
+                        <p>問題は可能な限り下位のレベルで解決。上位は下位が対処できないときのみ介入。</p>
+                </div>
+                <div class="card">
+                    <h3">👑 人民主権</h3>
+                        <p>主権は人民にあり、統治者に委任される。暴君には抵抗権がある。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 『政治学方法論』</h3>
+                        <p>Politica Methodice Digesta（1603）。主著。体系的な政治理論。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Federalism</h2>
+            <div class="it-card">
+                <h3">Consociation as Microservices</h3>
+                    <p>共生はマイクロサービス。各サービスは自律的に動作し、APIで連携。</p>
+            </div>
+            <div class="it-card">
+                <h3">Subsidiarity as Local Processing</h3>
+                    <p>補完性はローカル処理。可能な限りエッジで処理し、クラウドは必要時のみ介入。</p>
+            </div>
+            <div class="it-card">
+                <h3">Covenant as Service Contract</h3>
+                    <p>契約はサービス契約（SLA）。各層が責任と権限を明示的に合意。</p>
+            </div>
+            <div class="it-card">
+                <h3">Popular Sovereignty as Open Source</h3>
+                    <p>人民主権はオープンソース。コードの所有権はコミュニティにあり、メンテナーに委任。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>連邦主義の基礎</strong>：スイス、EU、アメリカに影響。</li>
+                <li><strong>補完性原理</strong>：EUの基本原則として採用。</li>
+                <li><strong>社会契約論</strong>：ホッブズ、ルソーに先行。</li>
+                <li><strong>人民主権</strong>：民主主義理論の先駆。</li>
+                <li><strong>実務と理論</strong>：エムデン市での実践経験を理論化。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>カルヴァン</li>
+                            <li>モナルコマキ</li>
+                            <li>アリストテレス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>連邦主義</li>
+                            <li>EU統合</li>
+                            <li>カトリック社会教説</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 主権論の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>主権観</th>
+                        <th>政治秩序</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ボダン</strong></td>
+                        <td>絶対主権</td>
+                        <td>中央集権</td>
+                        <td>分割不可能</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ホッブズ</strong></td>
+                        <td>リヴァイアサン</td>
+                        <td>中央集権</td>
+                        <td>社会契約</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アルトゥジウス</strong></td>
+                        <td>人民主権</td>
+                        <td>連邦制</td>
+                        <td>多層的共同体</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ロック</strong></td>
+                        <td>制限主権</td>
+                        <td>立憲制</td>
+                        <td>自然権</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：中央か分権か</h2>
+            <div class="thought-experiment">
+                <h3">補完性の限界</h3>
+                    <p>アルトゥジウスの補完性原理：問題は可能な限り下位で解決。しかし、気候変動、パンデミック、グローバル経済——これらは地域で解決できるか？</p>
+                    <p style="margin-top: 1.5rem;">一方、中央集権的解決は効率的だが、地域の多様性を無視する危険がある。一律の政策が全ての地域に適合するか？</p>
+                    <p style="margin-top: 1.5rem;">EUは補完性原理を採用したが、常に「EUレベルか、国家レベルか」で議論が起きる。正しいレベルをどう決めるか？</p>
+                    <p style="margin-top: 1.5rem;">アルトゥジウスの答え：各レベルが契約で合意すべき。問題の性質に応じて柔軟に。</p>
+                    <p style="margin-top: 1.5rem;">しかし批判者は問う：下位が上位に権限を委任しないと主張したら？連邦制は分離主義を招く。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        問題解決の「正しいレベル」は、どのように決まりますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ヨハネス・アルトゥジウス（1563-1638）は、17世紀ドイツの政治理論家・法学者であり、「連邦主義の父」として知られます。核心概念は「共生」（consociatio）——政治とは様々なレベルの共同体が契約によって結合し、共に生きる技術。家族からギルド、都市、州、帝国へと積み上がる多層的な共同体構造を提唱。ボダンやホッブズの絶対主権に対抗し、人民主権と補完性原理を主張しました。『政治学方法論』（1603）は主著。連邦主義、EU統合、補完性原理に影響を与え、今日も参照される政治思想の古典です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Politics is the art of living together.</p>
+    </footer>
+</body>
+
+</html>

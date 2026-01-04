@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラビンドラナート・タゴール - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Bengal Gold */
+            --secondary: #1c1917;
+            /* Poetry Dark */
+            --accent: #f59e0b;
+            /* Gitanjali Light */
+            --highlight: #fef3c7;
+            /* Spirit Glow */
+            --bg: #0c0a09;
+            /* Universe Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Poetic Background */
+        .poetry-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Poetic Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌸";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Visva-Bharati */
+        .university-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .university-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .unity-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .unity-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .east-box {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .visva-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .west-box {
+            background: #2563eb;
+            border: 2px solid #60a5fa;
+        }
+
+        .unity-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌸";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .unity-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="poetry-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← GITANJALI</a>
+        <div>RELIGION_OF_MAN_v5.08</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-508 / THE_POET_PHILOSOPHER</span>
+        <h1>ラビンドラナート・タゴール</h1>
+        <p class="en-name">Rabindranath Tagore (1861–1941)</p>
+        <p class="catchphrase">「狭いナショナリズムを超え、人間性の大海へ」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">文学OS</span>
+            <span class="os-tag">教育OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">人間の宗教</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ラビンドラナート・タゴールは、1913年に『ギタンジャリ』でノーベル文学賞を受賞したインドの詩人・思想家・教育者です。アジア初のノーベル文学賞受賞者として、東洋と西洋の精神的対話を象徴する存在となりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    タゴールの思想の核心は<b>「人間の宗教」</b>——教義やドグマではなく、人間性そのものへの信仰。また、<b>ナショナリズム批判</b>で知られ、狭い国家主義が人間性を分断すると警告しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シャンティニケタン（平和の住処）を設立し、東西の知恵を融合した教育を実践。タゴールを学ぶことは、<b>普遍的人間主義</b>の可能性を探ることです。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    タゴールは、<b>「ナショナリズムはファイアウォール。セキュリティのためと言いつつ、実際にはネットワークの分断を引き起こす。人間性はインターネット——国境を超えてつながるべき。教育はこのグローバルネットワークへの接続」</b>と説いた、人類ネットワークの設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ヴィシュワ・バーラティ -->
+        <section class="university-section">
+            <h2>🏫 ヴィシュワ・バーラティ（世界大学）</h2>
+            <div class="unity-diagram">
+                <div class="unity-box east-box">
+                    <p>🌏 東洋</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">East</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">精神・直観</p>
+                </div>
+                <div class="unity-arrow">←→</div>
+                <div class="unity-box visva-box">
+                    <p>🌐 融合</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Visva-Bharati</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">世界は一つの巣</p>
+                </div>
+                <div class="unity-arrow">←→</div>
+                <div class="unity-box west-box">
+                    <p>🌍 西洋</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">West</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">科学・理性</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「ヤトラ・ヴィシュワム・バヴァティ・エーカ・ニーダム」——世界は一つの巣となる。東洋と西洋の知恵を融合し、全人類のための教育を。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 タゴール思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">ナショナリズムは人類に対する最大の脅威である。それは国家を神格化し、人間性を犠牲にする。</p>
+                <p class="quote-author">— 『ナショナリズム』（1917年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🙏 人間の宗教</h3>
+                        <p>Religion of Man——教義やドグマではなく、人間性への信仰。神は人間の中に、人間を通じて現れる。普遍的精神性。</p>
+                </div>
+                <div class="card">
+                    <h3">⚠️ ナショナリズム批判</h3>
+                        <p>国家を神格化するナショナリズムへの警告。人間を分断し、戦争を招く。「私の国、正しかろうが間違っていようが」への批判。</p>
+                </div>
+                <div class="card">
+                    <h3">🌸 ギタンジャリ</h3>
+                        <p>「詩の捧げもの」——103の詩から成る詩集。神への愛、自然との一体感、人間的成熟。ノーベル賞受賞作。</p>
+                </div>
+                <div class="card">
+                    <h3">🏫 シャンティニケタン</h3>
+                        <p>「平和の住処」——タゴールが設立した学校。自然の中での教育、東西融合。後のヴィシュワ・バーラティ大学。</p>
+                </div>
+                <div class="card">
+                    <h3">🎨 総合芸術</h3>
+                        <p>詩人、劇作家、作曲家、画家——多才。ベンガル・ルネサンスの中心。2,000以上の歌、7つの小説。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 東西対話</h3>
+                        <p>イェイツ、アインシュタインとの交流。日本にも訪問（岡倉天心との友情）。文明間対話の先駆者。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ナショナリズム批判 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ナショナリズムの問題</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 国家の神格化</h3>
+                        <p>ナショナリズムは国家を至上のものとする。人間が国家に奉仕するのではなく、国家が人間に奉仕すべき。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 人間性の分断</h3>
+                        <p>「私たち」と「彼ら」の分離。同じ人間を外国人として敵視する。人間性という共通基盤の喪失。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 戦争への道</h3>
+                        <p>国家間競争は必然的に軍拡と戦争へ。第一次世界大戦を見よ——ナショナリズムの帰結。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 真の愛国心</h3>
+                        <p>タゴールは愛国心を否定したのではない。狭い排他的ナショナリズムを批判した。人間性に開かれた愛国心を。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Humanity as Global Network</h2>
+            <div class="it-card">
+                <h3">Nationalism as Firewall</h3>
+                    <p>ナショナリズムはファイアウォール。セキュリティを名目に、実際にはネットワークを分断。人間という共通プロトコルを遮断する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Religion of Man as Universal Protocol</h3>
+                    <p>「人間の宗教」は普遍プロトコル。ヒンドゥー、キリスト教、イスラームといった異なるアプリケーション層の下にある、共通のトランスポート層。</p>
+            </div>
+            <div class="it-card">
+                <h3">Visva-Bharati as API Gateway</h3>
+                    <p>ヴィシュワ・バーラティはAPIゲートウェイ。東洋と西洋という異なるシステム間の相互運用性を提供。翻訳と統合。</p>
+            </div>
+            <div class="it-card">
+                <h3">Poetry as Source Code</h3>
+                    <p>詩はソースコード。論理では表現できない人間の経験を、言語という形式で記述。コンパイル（朗読）によって感動が生まれる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『ギタンジャリ』</strong>：ノーベル文学賞受賞の詩集。神への愛と普遍的精神性。</li>
+                <li><strong>『人間の宗教』</strong>：講演録。教義を超えた普遍的人間主義。</li>
+                <li><strong>『ナショナリズム』</strong>：ナショナリズム批判の古典。人間性への警告。</li>
+                <li><strong>シャンティニケタン/ヴィシュワ・バーラティ</strong>：東西融合の教育実践。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ウパニシャッド（インド古典）</li>
+                            <li>ブラフモ・サマージ（改革派）</li>
+                            <li>ロマン主義（シェリー、キーツ）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ベンガル・ルネサンス</li>
+                            <li>インド・バングラデシュ国歌</li>
+                            <li>世界文学・精神的対話</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 近代インド思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>タゴール</th>
+                        <th>ガンジー</th>
+                        <th>オーロビンド</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>核心</strong></td>
+                        <td>普遍的人間主義</td>
+                        <td>非暴力・真理</td>
+                        <td>統合ヨーガ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ナショナリズム</strong></td>
+                        <td>批判的</td>
+                        <td>慎重な肯定</td>
+                        <td>精神的変容へ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>詩・教育</td>
+                        <td>行動・運動</td>
+                        <td>瞑想・著作</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ネットワーク設計</td>
+                        <td>プロトコル実装</td>
+                        <td>カーネル開発</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：愛国心と人間性</h2>
+            <div class="thought-experiment">
+                <h3">国を愛することと人類を愛すること</h3>
+                    <p>「私の国」を愛することと「人類」を愛することは、両立しますか？それとも矛盾しますか？</p>
+                    <p>タゴールはナショナリズムを批判しましたが、インド独立運動にも関わりました。彼が批判したのは「愛国心」ではなく、「排他的ナショナリズム」——自国を他国より優越とし、他者を敵視する態度。</p>
+                    <p>タゴールは「家族を愛することは人類を愛することと矛盾しない」と考えました。むしろ、具体的な愛（家族、コミュニティ、国）を通じて、普遍的な愛（人類、生命）へと開かれていく。</p>
+                    <p>しかし現実は？ナショナリズムはしばしば「私たち vs
+                        彼ら」の構図を作り、人間を分断します。オリンピックで「自国」を応援することは自然ですが、それが「他国への敵意」に変わるとき、何が起こるでしょうか。</p>
+                    <p>タゴールの問いは今日も有効です。グローバル化の時代に、どのように「ローカルな帰属」と「普遍的人間性」を調和させるか。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「愛国心」は人間性に開かれていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラビンドラナート・タゴールは、アジア初のノーベル文学賞受賞者として、東洋と西洋の精神的対話を象徴する存在です。「人間の宗教」——教義を超えた普遍的人間主義——を説き、狭いナショナリズムが人間性を分断すると警告しました。ヴィシュワ・バーラティで東西融合の教育を実践し、詩、音楽、戯曲、絵画と多岐にわたる創作を残しました。インドとバングラデシュの国歌を作詞したタゴールの遺産は、国境を越えて人々を鼓舞し続けています。「世界は一つの巣」——彼のビジョンは、グローバル化とナショナリズムが交錯する今日、いっそう重要な指針となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Where the World Becomes One Nest.</p>
+    </footer>
+</body>
+
+</html>

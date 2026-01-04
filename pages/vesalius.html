@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アンドレアス・ヴェサリウス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Anatomy Red */
+            --secondary: #1c1917;
+            /* Body Dark */
+            --accent: #f87171;
+            /* Dissection Rose */
+            --highlight: #fef2f2;
+            /* Medical Glow */
+            --bg: #0c0a09;
+            /* Observation Deep */
+            --text: #fef2f2;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Anatomy Background */
+        .anatomy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Medical Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🫀";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Revolution */
+        .revolution-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .revolution-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .revolution-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .method-box {
+            padding: 2rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .old-box {
+            background: #4b5563;
+            border: 2px solid #9ca3af;
+        }
+
+        .arrow-box {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .new-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🫀";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .revolution-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="anatomy-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DE_HUMANI_CORPORIS_FABRICA</a>
+        <div>ANATOMY_v5.26</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-526 / THE_ANATOMIST</span>
+        <h1>アンドレアス・ヴェサリウス</h1>
+        <p class="en-name">Andreas Vesalius (1514–1564)</p>
+        <p class="catchphrase">「自分の目で見よ——権威ではなく観察が真理」</p>
+        <div class="os-tags">
+            <span class="os-tag">医学OS</span>
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">解剖OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">近代解剖学の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">アンドレアス・ヴェサリウスは、16世紀のベルギー出身の医学者であり、「近代解剖学の父」と称されます。1543年の著作『人体の構造について』（De Humani
+                    Corporis Fabrica）は、科学史における記念碑的著作です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヴェサリウスの革命——<b>古代の権威（ガレノス）への盲従を拒否し、直接観察に基づく解剖学を確立</b>。自らメスを持って解剖し、人体の真の構造を明らかにしました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    同じ1543年にコペルニクスの『天球の回転について』も出版。天文学と解剖学——二つの「回転」が近代科学革命を開始しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ヴェサリウスは、<b>「医学のレガシーコードをリバースエンジニアリングした人物。1400年前のドキュメント（ガレノス）を鵜呑みにせず、実際のシステム（人体）をデバッグして、正確なドキュメントを書き直した」</b>という、人体のリファクタリング技術者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 方法論革命 -->
+        <section class="revolution-section">
+            <h2>🫀 観察に基づく解剖学</h2>
+            <div class="revolution-diagram">
+                <div class="method-box old-box">
+                    <p>📜 古代の権威</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">ガレノス（2世紀）</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">文献に従う</p>
+                </div>
+                <div class="arrow-box">→</div>
+                <div class="method-box new-box">
+                    <p>👁️ 直接観察</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">ヴェサリウス</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">自分の目で見る</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                1400年間、医学はガレノスの権威に従っていた。ヴェサリウスは自ら解剖し、多くの誤りを発見・修正。観察に基づく科学の始まり。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ヴェサリウス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">医師は自らの手で解剖を行い、自らの目で確かめなければならない。</p>
+                <p class="quote-author">— 『人体の構造について』序文（1543年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">👁️ 直接観察</h3>
+                        <p>権威への服従を拒否。自分の目で見ることが科学の基本。ガレノスの誤りを200以上発見。</p>
+                </div>
+                <div class="card">
+                    <h3">🔪 自ら解剖</h3>
+                        <p>中世の医師は解剖を下僕に任せ、文献を読み上げていた。ヴェサリウスは自らメスを持った。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 図解の革新</h3>
+                        <p>『ファブリカ』は精密な図版で有名。芸術家との協力。視覚的な科学コミュニケーション。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 権威批判</h3>
+                        <p>ガレノスは動物（主に猿）を解剖していた。人体には当てはまらない記述が多い。ヴェサリウスはこれを暴露。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ パドヴァ大学</h3>
+                        <p>23歳でパドヴァ大学の解剖学教授に。イタリア・ルネサンスの学術的自由がヴェサリウスを育てた。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 ファブリカ</h3>
+                        <p>『人体の構造について』1543年。7巻。骨格、筋肉、血管、神経、内臓、心臓、脳を詳細に記述。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ガレノスからの転換 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ガレノスの誤り</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 下顎骨</h3>
+                        <p>ガレノス：2つの骨から成る。ヴェサリウス：人間では1つの骨。ガレノスは犬を観察していた。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 胸骨</h3>
+                        <p>ガレノス：7つの部分。ヴェサリウス：人間では3つ。動物と人間の違い。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 心室中隔</h3>
+                        <p>ガレノス：穴があって血液が通過する。ヴェサリウス：穴は見つからない。血液循環理論の矛盾を露呈。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 200以上の誤り</h3>
+                        <p>ヴェサリウスはガレノスの200以上の誤りを修正。しかし批判を恐れつつも公表した。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Body as Documented System</h2>
+            <div class="it-card">
+                <h3">Galen as Legacy Documentation</h3>
+                    <p>ガレノスはレガシー・ドキュメント。1400年間メンテナンスされていない。実際のシステム（人体）と乖離。しかし誰も検証しなかった。</p>
+            </div>
+            <div class="it-card">
+                <h3">Vesalius as Reverse Engineer</h3>
+                    <p>ヴェサリウスはリバースエンジニア。実際のシステム（人体）を分解し、ドキュメント（解剖学）を書き直した。</p>
+            </div>
+            <div class="it-card">
+                <h3">Fabrica as Technical Documentation</h3>
+                    <p>『ファブリカ』は新しいテクニカル・ドキュメント。図解付き、検証済み。オープンソース化された人体マニュアル。</p>
+            </div>
+            <div class="it-card">
+                <h3">Direct Observation as Testing</h3>
+                    <p>直接観察はテスト駆動開発。仮説（ガレノス）をテスト（解剖）で検証。テストに失敗したらドキュメントを修正。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『人体の構造について』</strong>：近代解剖学の基礎。1543年。</li>
+                <li><strong>直接観察の方法</strong>：権威ではなく経験に基づく科学。</li>
+                <li><strong>精密図版</strong>：科学と芸術の融合。視覚的コミュニケーション。</li>
+                <li><strong>ガレノス批判</strong>：1400年の権威を覆す。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ガレノス（批判的継承）</li>
+                            <li>レオナルド・ダ・ヴィンチ（解剖図）</li>
+                            <li>ルネサンス人文主義</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ハーヴェイ（血液循環）</li>
+                            <li>近代医学全体</li>
+                            <li>科学革命</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 科学革命の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ヴェサリウス</th>
+                        <th>コペルニクス</th>
+                        <th>ガリレオ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>分野</strong></td>
+                        <td>解剖学</td>
+                        <td>天文学</td>
+                        <td>物理学・天文学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>批判対象</strong></td>
+                        <td>ガレノス</td>
+                        <td>プトレマイオス</td>
+                        <td>アリストテレス</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>解剖・観察</td>
+                        <td>計算・モデル</td>
+                        <td>実験・望遠鏡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>主著の年</strong></td>
+                        <td>1543</td>
+                        <td>1543</td>
+                        <td>1632</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：権威への挑戦</h2>
+            <div class="thought-experiment">
+                <h3">なぜ1400年間、誰も検証しなかったのか</h3>
+                    <p>ガレノスは2世紀の医師。ヴェサリウスは16世紀。1400年間、誰もガレノスの誤りに気づかなかったのでしょうか？</p>
+                    <p>答えは「気づいた人はいたかもしれない」しかし問題は別にあります：</p>
+                    <p>制度——中世の大学では、ガレノスのテキストを読み上げることが「教育」だった。解剖は下僕が行い、教授は文献を朗読した。</p>
+                    <p>権威——古代の知恵は完璧であるという信念。疑問を抱くこと自体が許されなかった。</p>
+                    <p>ヴェサリウスの勇気——批判は危険だった。彼は慎重に、しかし明確にガレノスの誤りを指摘した。</p>
+                    <p>今日の私たちは「権威」にどう向き合っているでしょうか？専門家の意見、査読論文、「常識」——検証なしに受け入れていませんか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたは「権威」を検証していますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アンドレアス・ヴェサリウスは、『人体の構造について』で近代解剖学の基礎を築いた「解剖学の父」です。1400年間続いたガレノスへの盲従を打破し、直接観察に基づく科学的方法を確立しました。自らメスを持ち、200以上の誤りを発見・修正。精密な図版は科学と芸術の融合を示しています。1543年——コペルニクスと同年——に出版された『ファブリカ』は、科学革命の出発点の一つ。権威ではなく観察が真理——この原則は今日の科学の基礎であり続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Seeing is believing.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商鞅 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1f2937;
+            /* Iron Gray */
+            --secondary: #111827;
+            /* Law Dark */
+            --accent: #6b7280;
+            /* Steel Light */
+            --highlight: #e5e7eb;
+            /* Order Glow */
+            --bg: #030712;
+            /* Deep Qin */
+            --text: #e5e7eb;
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .shang-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(31, 41, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(107, 114, 128, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1f2937 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚔️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #374151 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(31, 41, 55, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(31, 41, 55, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reform-section {
+            background: linear-gradient(135deg, #000 0%, #1f2937 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .reform-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚔️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shang-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LEGALISM</a>
+        <div>SHANG_YANG_v6.22</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-622 / THE_REFORMER</span>
+        <h1>商鞅</h1>
+        <p class="en-name">Shāng Yāng（紀元前390頃–338）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「法家の実践者」——秦の変法を断行</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">改革OS</span>
+            <span class="os-tag">国家OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">法治国家の制度化</h2>
+            <div class="hero-box">
+                <p class="hero-text">商鞅（しょうおう、公孫鞅とも）は、戦国時代秦の政治家・改革者であり、法家思想を実践して秦を最強国に変えた人物です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    商鞅の歴史的業績——<b>変法（へんぽう）で秦を根本的に改革。軍功爵制、連坐制、県制を導入。100年後の秦の天下統一を準備</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    改革は成功したが、支持者の孝公死後、車裂きの刑に処される。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>商鞅の変法は、<b>「国家のフルスタック・リファクタリング——農業、軍事、行政、法律すべてを再設計。レガシーシステム（貴族制）を廃止し、メリトクラシーに移行」</b>という、根本的システム改造。</p>
+            </div>
+        </section>
+
+        <section class="reform-section">
+            <h2>🔧 商鞅変法の内容</h2>
+            <div class="grid" style="text-align: left;">
+                <div class="card">
+                    <h3">⚔️ 軍功爵制</h3>
+                        <p>軍功に応じて爵位を授与。貴族の世襲を廃止。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 什伍制</h3>
+                        <p>5家を伍、10家を什とし相互監視。連坐制。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 県制</h3>
+                        <p>封建制を廃止し、中央から派遣された官僚が統治。</p>
+                </div>
+                <div class="card">
+                    <h3">🌾 農戦</h3>
+                        <p>農業と戦争のみを重視。商業・学問を抑制。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 商鞅の思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">法を行えば、卿相・将軍といえども法を犯せば必ず誅す。</p>
+                <p class="quote-author">— 『商君書』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚖️ 法治</h3>
+                        <p>人治でなく法治。法は君主さえ拘束する。</p>
+                </div>
+                <div class="card">
+                    <h3">🎖️ 実績主義</h3>
+                        <p>血統でなく功績。軍功で爵位。</p>
+                </div>
+                <div class="card">
+                    <h3">👁️ 相互監視</h3>
+                        <p>連坐制で相互告発を奨励。犯罪を抑止。</p>
+                </div>
+                <div class="card">
+                    <h3">🌾 富国強兵</h3>
+                        <p>農業生産と軍事力の最大化。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 弱民政策</h3>
+                        <p>民は愚かに保つべし。統治しやすくする。</p>
+                </div>
+                <div class="card">
+                    <h3">📏 標準化</h3>
+                        <p>度量衡の統一。行政の効率化。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Reform</h2>
+            <div class="it-card">
+                <h3>Reform as Refactoring</h3>
+                <p>変法はリファクタリング。既存システムを根本から再設計。</p>
+            </div>
+            <div class="it-card">
+                <h3">Merit as Performance Metric</h3>
+                    <p>軍功爵制はパフォーマンス・メトリクス。血統でなく実績で評価。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mutual Surveillance as Logging</h3>
+                    <p>相互監視はロギング。すべての行動を記録し追跡。</p>
+            </div>
+            <div class="it-card">
+                <h3">Standardization as API</h3>
+                    <p>標準化はAPI。異なるモジュール間の互換性を確保。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>軍功爵制</strong>：実績主義。</li>
+                <li><strong>県制</strong>：中央集権。</li>
+                <li><strong>連坐制</strong>：相互監視。</li>
+                <li><strong>富国強兵</strong>：国力最大化。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>李悝の変法</li>
+                        <li>呉起の改革</li>
+                        <li>初期法家</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>韓非子</li>
+                            <li>秦の統一</li>
+                            <li>現代官僚制</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：改革者の運命</h2>
+            <div class="thought-experiment">
+                <h3">自分が作った法で殺される</h3>
+                    <p>商鞅は秦を最強国に変えた。</p>
+                    <p>しかし支持者の孝公が死ぬと——</p>
+                    <p>貴族たちが復讐。</p>
+                    <p>商鞅は逃亡を試みるが——</p>
+                    <p>自分が作った法（身分証明なしでは宿泊不可）に阻まれる。</p>
+                    <p>自分が作った連坐制で処刑される。</p>
+                    <p>改革者は自分の改革によって滅ぶのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        厳格な法は、作った本人さえ容赦しませんでした。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>商鞅（紀元前390頃-338）は、戦国時代秦の政治家であり、法家思想を実践して秦を最強国に変えました。変法で軍功爵制（実績主義）、連坐制（相互監視）、県制（中央集権）を導入し、100年後の秦の天下統一を準備しました。『商君書』がその思想を伝えます。改革は成功しましたが、支持者の孝公死後、自分が作った法によって車裂きの刑に処されました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Law and iron.</p>
+    </footer>
+</body>
+
+</html>

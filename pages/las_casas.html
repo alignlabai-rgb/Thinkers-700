@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>バルトロメ・デ・ラス・カサス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Justice Orange */
+            --secondary: #451a03;
+            /* Colonial Dark */
+            --accent: #f59e0b;
+            /* Hope Light */
+            --highlight: #fef3c7;
+            /* Freedom Glow */
+            --bg: #1c0a02;
+            /* Deep Rights */
+            --text: #fef3c7;
+            --border: #92400e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .lascasas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #92400e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .conversion-section {
+            background: linear-gradient(135deg, #000 0%, #b45309 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .conversion-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lascasas-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HUMAN RIGHTS</a>
+        <div>LAS_CASAS_v6.24</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-624 / THE_DEFENDER</span>
+        <h1>バルトロメ・デ・ラス・カサス</h1>
+        <p class="en-name">Bartolomé de las Casas（1484–1566）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「インディオの守護者」——先住民権利擁護</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">人権OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">先住民権利擁護</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    バルトロメ・デ・ラス・カサスは、16世紀スペインのドミニコ会修道士、歴史家、先住民権利擁護者です。最初はエンコミエンダ（先住民労働制度）の受益者だったが、回心してその最大の批判者となりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ラス・カサスの歴史的業績——<b>『インディアス破壊を告発する簡潔な報告』でスペインの植民地支配を告発。「新法」の制定に貢献。人権思想の先駆者</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「インディオの守護者」として50年以上活動。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>ラス・カサスの活動は、<b>「システムのバグ報告者から改革者へ——植民地システムの『ユーザー』から、そのシステムの欠陥を告発し、パッチ（新法）を要求する改革者へ転身」</b>という、内部告発。</p>
+            </div>
+        </section>
+
+        <section class="conversion-section">
+            <h2>🔄 回心と転身</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                最初はエンコミエンダ（先住民労働）の受益者<br>
+                1514年、説教の準備中に回心<br>
+                「彼らの労働と汗と血の上に建つものは呪われよ」<br>
+                植民地主義の最大の批判者に転身<br>
+                50年以上、先住民のために闘う<br>
+                搾取者から擁護者へ
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ラス・カサスの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">すべての民族は一つであり、神の似姿として創造された平等な人間である。</p>
+                <p class="quote-author">— バルトロメ・デ・ラス・カサス</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✊ 普遍的人権</h3>
+                        <p>すべての人間は自由に生まれる。先住民も例外ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 告発</h3>
+                        <p>『インディアス破壊報告』でスペインの残虐行為を詳述。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 新法</h3>
+                        <p>1542年「新法」制定に貢献。先住民保護を規定。</p>
+                </div>
+                <div class="card">
+                    <h3">🗣️ バリャドリド論争</h3>
+                        <p>1550-51年、セプルベダと論争。先住民の人間性を主張。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 歴史記録</h3>
+                        <p>『インディアス史』で征服の歴史を記録。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 平和的布教</h3>
+                        <p>武力征服でなく平和的布教を主張。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Justice</h2>
+            <div class="it-card">
+                <h3>Conversion as Bug Discovery</h3>
+                <p>回心はバグ発見。システムの問題に気づく瞬間。</p>
+            </div>
+            <div class="it-card">
+                <h3">Report as Documentation</h3>
+                    <p>告発書はドキュメンテーション。問題を詳細に記録。</p>
+            </div>
+            <div class="it-card">
+                <h3">New Laws as Patch</h3>
+                    <p>新法はパッチ。既存システムの欠陥を修正。</p>
+            </div>
+            <div class="it-card">
+                <h3">Debate as Code Review</h3>
+                    <p>バリャドリド論争はコードレビュー。設計思想を問う。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>先住民権利擁護</strong>：人権思想の先駆け。</li>
+                <li><strong>植民地主義批判</strong>：内部告発。</li>
+                <li><strong>新法（1542）</strong>：法的保護。</li>
+                <li><strong>平和的布教論</strong>：武力否定。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>キリスト教倫理</li>
+                        <li>ドミニコ会</li>
+                        <li>サラマンカ学派</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>人権思想</li>
+                            <li>植民地批判</li>
+                            <li>解放の神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：加害者の告発</h2>
+            <div class="thought-experiment">
+                <h3">搾取者が告発者になる時</h3>
+                    <p>ラス・カサスは最初エンコミエンダの受益者だった。</p>
+                    <p>先住民を搾取する側にいた。</p>
+                    <p>その彼が最大の告発者になった。</p>
+                    <p>これは贖罪か、偽善か、勇気か？</p>
+                    <p>システムの内部にいた人間こそが——</p>
+                    <p>最も効果的に告発できる？</p>
+                    <p>しかし罪を犯した人間に告発する資格があるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        加害者だった人間に、告発する資格はありますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>バルトロメ・デ・ラス・カサス（1484-1566）は、16世紀スペインのドミニコ会修道士であり、先住民権利擁護の先駆者です。最初はエンコミエンダの受益者だったが回心し、『インディアス破壊報告』でスペインの植民地支配を告発。1542年「新法」制定に貢献し、バリャドリド論争でセプルベダと対決。「インディオの守護者」として50年以上活動し、人権思想、植民地主義批判、解放の神学に影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Defender of the oppressed.</p>
+    </footer>
+</body>
+
+</html>

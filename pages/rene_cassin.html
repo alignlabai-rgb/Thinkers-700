@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ルネ・カサン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4338ca;
+            /* Jurist Purple */
+            --secondary: #1e1b4b;
+            /* Law Dark */
+            --accent: #818cf8;
+            /* Peace Light */
+            --highlight: #e0e7ff;
+            /* Justice Glow */
+            --bg: #0c0a1f;
+            /* Deep Drafting */
+            --text: #e0e7ff;
+            --border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .cassin-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(67, 56, 202, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(129, 140, 248, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(67, 56, 202, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(67, 56, 202, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .portico-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .portico-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cassin-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HUMAN RIGHTS</a>
+        <div>RENE_CASSIN_v6.26</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-626 / THE_DRAFTSMAN</span>
+        <h1>ルネ・カサン</h1>
+        <p class="en-name">René Cassin（1887–1976）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「人権宣言の起草者」——1968年ノーベル平和賞</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">人権OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">世界人権宣言の起草</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ルネ・カサンは、フランスの法学者、裁判官、外交官であり、世界人権宣言の主要起草者です。第一次世界大戦で負傷した退役軍人として、また第二次世界大戦中はド・ゴールの自由フランスで戦いました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    カサンの歴史的業績——<b>世界人権宣言の草案を執筆。「神殿のポルティコ」構造を設計。1968年ノーベル平和賞受賞</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    欧州人権裁判所の設立にも貢献。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>カサンの起草作業は、<b>「人権のシステムアーキテクチャ設計——30条を『神殿のポルティコ』構造に配置。基盤（尊厳）、柱（権利カテゴリ）、ペディメント（社会秩序）を設計」</b>という、法的設計。
+                </p>
+            </div>
+        </section>
+
+        <section class="portico-section">
+            <h2>🏛️ 神殿のポルティコ構造</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; text-align: left;">
+                <strong>基礎（第1-2条）：</strong>尊厳、自由、平等<br>
+                <strong>柱1（第3-11条）：</strong>個人的権利<br>
+                <strong>柱2（第12-17条）：</strong>市民的権利<br>
+                <strong>柱3（第18-21条）：</strong>精神的権利<br>
+                <strong>柱4（第22-27条）：</strong>社会的・経済的権利<br>
+                <strong>ペディメント（第28-30条）：</strong>社会秩序と義務
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 カサンの貢献</h2>
+            <div class="quote-box">
+                <p class="quote-text">人権の侵害がどこで起ころうとも、それはすべての人に関わる問題である。</p>
+                <p class="quote-author">— ルネ・カサン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📜 起草者</h3>
+                        <p>世界人権宣言の主要起草者。フランス人権宣言の伝統を継承。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ ポルティコ</h3>
+                        <p>30条を論理的構造に配置。神殿のメタファーで説明。</p>
+                </div>
+                <div class="card">
+                    <h3">🏆 ノーベル賞</h3>
+                        <p>1968年ノーベル平和賞受賞。人権への貢献を評価。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 自由フランス</h3>
+                        <p>第二次大戦中、ド・ゴールの自由フランスで法務担当。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 欧州人権</h3>
+                        <p>欧州人権裁判所の設立に貢献。裁判官も務める。</p>
+                </div>
+                <div class="card">
+                    <h3">🇫🇷 フランス法</h3>
+                        <p>フランス最高裁（国務院）副長官。憲法院メンバー。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Drafting</h2>
+            <div class="it-card">
+                <h3>Portico as Architecture</h3>
+                <p>ポルティコはアーキテクチャ。システム全体の構造を設計。</p>
+            </div>
+            <div class="it-card">
+                <h3">Articles as Modules</h3>
+                    <p>30条はモジュール。各権利が独立しつつ連携。</p>
+            </div>
+            <div class="it-card">
+                <h3">Foundation as Core</h3>
+                    <p>尊厳はコア。すべての権利の基盤。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pillars as Packages</h3>
+                    <p>四つの柱はパッケージ。関連する権利をグループ化。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>世界人権宣言</strong>：起草と構造設計。</li>
+                <li><strong>ポルティコ構造</strong>：論理的配置。</li>
+                <li><strong>欧州人権裁判所</strong>：実効性の確保。</li>
+                <li><strong>国際人権法</strong>：法的発展の基盤。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>人権宣言（1789）</li>
+                        <li>フランス法学</li>
+                        <li>国際法</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>国際人権法</li>
+                            <li>欧州人権条約</li>
+                            <li>人権裁判所</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：法の建築</h2>
+            <div class="thought-experiment">
+                <h3">法は建築物か</h3>
+                    <p>カサンは世界人権宣言を「神殿のポルティコ」と呼んだ。</p>
+                    <p>法は建築物のように設計できるか？</p>
+                    <p>基礎があり、柱があり、屋根がある。</p>
+                    <p>しかし法は言葉でできている——</p>
+                    <p>解釈によって形が変わる。</p>
+                    <p>建築物は物理的に固定されるが——</p>
+                    <p>法は解釈によって「改築」される。</p>
+                    <p>法の「設計」と「解釈」の関係は？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        法は設計されるものですか、解釈されるものですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ルネ・カサン（1887-1976）は、フランスの法学者、外交官であり、世界人権宣言の主要起草者です。30条を「神殿のポルティコ」構造に配置し、尊厳を基盤、権利カテゴリを柱、社会秩序をペディメントとして設計しました。第二次大戦中は自由フランスで活動し、戦後は欧州人権裁判所の設立に貢献。1968年ノーベル平和賞受賞。国際人権法の発展に大きく寄与しました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The architecture of rights.</p>
+    </footer>
+</body>
+
+</html>

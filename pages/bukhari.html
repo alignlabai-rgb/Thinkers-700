@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アル＝ブハーリー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #15803d;
+            /* Authentic Green */
+            --secondary: #052e16;
+            /* Hadith Dark */
+            --accent: #22c55e;
+            /* Sahih Light */
+            --highlight: #bbf7d0;
+            /* Trust Glow */
+            --bg: #021208;
+            /* Deep Verification */
+            --text: #bbf7d0;
+            --border: #166534;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .bukhari-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(21, 128, 61, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 197, 94, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #15803d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📚";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #166534 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(21, 128, 61, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(21, 128, 61, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #15803d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .stats-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bukhari-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SAHIH</a>
+        <div>BUKHARI_v6.09</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-609 / THE_AUTHENTICATOR</span>
+        <h1>アル＝ブハーリー</h1>
+        <p class="en-name">Al-Bukhārī (810–870)</p>
+        <p class="catchphrase">「最も真正なる書」——クルアーンに次ぐ権威</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">検証OS</span>
+            <span class="os-tag">伝承OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">サヒーフ・アル＝ブハーリー</h2>
+            <div class="hero-box">
+                <p class="hero-text">アル＝ブハーリー（ムハンマド・イブン・イスマーイール・アル＝ブハーリー）は、9世紀のハディース学者であり、『サヒーフ・アル＝ブハーリー』の編纂者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ブハーリーの歴史的業績——<b>60万のハディースから約7,275を厳選。16年かけて編纂。クルアーンに次ぐ最も権威ある書</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    各ハディースの前に礼拝し、イスナード（伝達経路）を徹底的に検証。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ブハーリーの方法論は、<b>「厳格なコードレビュー——60万件の候補から7千件のみを『本番』に採用。各コミットの出所（イスナード）を追跡可能に」</b>という、品質管理の極致。
+                </p>
+            </div>
+        </section>
+
+        <!-- 統計 -->
+        <section class="stats-section">
+            <h2>📊 サヒーフ・ブハーリーの数字</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">600,000</div>
+                    <div>検討したハディース</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7,275</div>
+                    <div>収録されたハディース</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">16年</div>
+                    <div>編纂にかけた年月</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ブハーリーの方法論</h2>
+            <div class="quote-box">
+                <p class="quote-text">私はこの書に、真正であると確信した（サヒーフ）ものだけを載せた。そして長くなることを恐れ多くを省いた。</p>
+                <p class="quote-author">— アル＝ブハーリー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔗 イスナード</h3>
+                    <p>伝達経路の検証。すべての語り手が信頼できるか。連続しているか。</p>
+                </div>
+                <div class="card">
+                    <h3">📝 マトン</h3>
+                        <p>本文の検証。クルアーンや他のハディースと矛盾しないか。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 敬虔</h3>
+                        <p>各ハディースを記録する前に礼拝。神聖な作業として。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 旅</h3>
+                        <p>16年間、イスラム世界を旅してハディースを収集。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 分類</h3>
+                        <p>97の書（キターブ）、3,450の章（バーブ）に整理。</p>
+                </div>
+                <div class="card">
+                    <h3">✅ サヒーフ</h3>
+                        <p>「真正」の基準を厳格に適用。最高品質のハディース集。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Verification</h2>
+            <div class="it-card">
+                <h3>Isnad as Git History</h3>
+                <p>イスナードはGit履歴。誰が誰に伝えたか追跡可能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sahih as Production-Ready</h3>
+                    <p>サヒーフは本番環境対応。厳格なテストを通過したコード。</p>
+            </div>
+            <div class="it-card">
+                <h3">600K → 7K as Code Review</h3>
+                    <p>60万から7千への絞り込みは厳格なコードレビュー。1%未満が通過。</p>
+            </div>
+            <div class="it-card">
+                <h3">Classification as API Design</h3>
+                    <p>分類はAPI設計。論理的に整理され、検索可能に。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>サヒーフ・ブハーリー</strong>：最も権威あるハディース集。</li>
+                <li><strong>イスナード批判</strong>：伝達経路の検証方法論。</li>
+                <li><strong>真正性基準</strong>：厳格な選別基準。</li>
+                <li><strong>体系的分類</strong>：主題別整理。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イブン・ハンバル</li>
+                        <li>各地のハディース学者</li>
+                        <li>初期イスナード学</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ムスリム</li>
+                            <li>六大ハディース集</li>
+                            <li>ハディース学全体</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：真正性の基準</h2>
+            <div class="thought-experiment">
+                <h3">何をもって「真正」とするか</h3>
+                    <p>ブハーリーは60万から7千を選んだ。</p>
+                    <p>残りの593,000はすべて偽物か？</p>
+                    <p>必ずしもそうではない——</p>
+                    <p>彼の基準が特に厳格だっただけ。</p>
+                    <p>他の編纂者は別の基準で選んだ。</p>
+                    <p>「真正」の定義自体が議論の対象。</p>
+                    <p>現代でも——</p>
+                    <p>ニュースの「ファクトチェック」は誰の基準か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        何が「真正」かを決めるのは誰ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アル＝ブハーリー（810-870）は、9世紀のハディース学者であり、『サヒーフ・アル＝ブハーリー』の編纂者です。60万のハディースから約7,275を厳選し、16年かけて編纂しました。各ハディースのイスナード（伝達経路）を徹底的に検証し、マトン（本文）の矛盾も確認。クルアーンに次ぐ最も権威ある書とされ、スンニ派イスラムの基盤となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Only the authentic.</p>
+    </footer>
+</body>
+
+</html>

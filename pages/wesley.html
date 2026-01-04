@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョン・ウェスレー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Methodist Red */
+            --secondary: #450a0a;
+            /* Revival Dark */
+            --accent: #f87171;
+            /* Heart Flame */
+            --highlight: #fecaca;
+            /* Warmth Glow */
+            --bg: #1c0505;
+            /* Deep Conviction */
+            --text: #fecaca;
+            --border: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .flame-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "❤️‍🔥";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b91c1c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Heart Section */
+        .heart-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .heart-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "❤️‍🔥";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flame-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← METHODISM</a>
+        <div>WESLEY_v6.01</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-601 / THE_HEART_ON_FIRE</span>
+        <h1>ジョン・ウェスレー</h1>
+        <p class="en-name">John Wesley (1703–1791)</p>
+        <p class="catchphrase">「心が不思議に温められた」——メソジスト運動の創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">リバイバルOS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">メソジスト運動</h2>
+            <div class="hero-box">
+                <p class="hero-text">ジョン・ウェスレーは、18世紀イギリスの神学者、説教者であり、メソジスト運動の創始者です。今日のメソジスト教会の父。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウェスレーの歴史的業績——<b>「聖化」の強調、野外説教、小グループ（クラス・ミーティング）、社会改革への関与</b>。信仰と行いの統合。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    50年間で25万マイルを旅し、4万回以上の説教。「世界は私の教区である」。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウェスレーのメソジストは、<b>「アジャイル・スピリチュアリティ——大規模組織ではなく小グループで反復。フィードバックループ。継続的改善。スケーラブルな霊的成長システム」</b>という、組織イノベーション。
+                </p>
+            </div>
+        </section>
+
+        <!-- 心の温かさ -->
+        <section class="heart-section">
+            <h2>❤️‍🔥 オルダースゲートの体験</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+                1738年5月24日<br>
+                「心が不思議に温められた」<br>
+                回心体験<br>
+                キリストを信頼することで救われる確信<br>
+                メソジスト運動の霊的起点
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ウェスレーの神学</h2>
+            <div class="quote-box">
+                <p class="quote-text">世界は私の教区である。</p>
+                <p class="quote-author">— ジョン・ウェスレー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>✨ 聖化</h3>
+                    <p>義認の後の継続的成長。「キリスト者の完全」への道。</p>
+                </div>
+                <div class="card">
+                    <h3">📢 野外説教</h3>
+                        <p>教会の外で説教。労働者階級に福音を届ける。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 クラス・ミーティング</h3>
+                        <p>小グループでの相互accountability。霊的成長の仕組み。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 社会改革</h3>
+                        <p>奴隷制反対、貧困救済、教育。信仰と行動の統合。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 四辺形</h3>
+                        <p>ウェスレーアン四辺形：聖書、伝統、理性、経験。</p>
+                </div>
+                <div class="card">
+                    <h3">🏇 巡回説教</h3>
+                        <p>馬に乗って国中を巡回。25万マイル、4万回説教。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Scalability</h2>
+            <div class="it-card">
+                <h3>Class Meeting as Sprint</h3>
+                <p>クラス・ミーティングはスプリント。小グループで定期的に振り返り。</p>
+            </div>
+            <div class="it-card">
+                <h3">Circuit Riding as Deployment</h3>
+                    <p>巡回説教はデプロイメント。各地に定期的にアップデートを届ける。</p>
+            </div>
+            <div class="it-card">
+                <h3">Quadrilateral as Multi-Source</h3>
+                    <p>四辺形はマルチソース。聖書、伝統、理性、経験——複数の入力を統合。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sanctification as CI/CD</h3>
+                    <p>聖化はCI/CD。継続的な改善と成長のパイプライン。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>メソジスト運動</strong>：組織的リバイバル。</li>
+                <li><strong>クラス・ミーティング</strong>：小グループ霊性。</li>
+                <li><strong>聖化</strong>：継続的霊的成長。</li>
+                <li><strong>社会的聖性</strong>：信仰と社会行動。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>英国国教会</li>
+                        <li>モラヴィア兄弟団</li>
+                        <li>ケンピス</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>メソジスト教会</li>
+                            <li>ホーリネス運動</li>
+                            <li>ペンテコステ派</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：組織 vs 運動</h2>
+            <div class="thought-experiment">
+                <h3">運動が組織になる時</h3>
+                    <p>ウェスレーは英国国教会から離れたくなかった。</p>
+                    <p>メソジストは運動であり、教会ではなかった。</p>
+                    <p>しかし、死後にメソジスト教会が誕生。</p>
+                    <p>運動が組織になると何が変わるか？</p>
+                    <p>柔軟性は失われるか？</p>
+                    <p>持続可能性は増すか？</p>
+                    <p>スタートアップが大企業になる過程と似ている——</p>
+                    <p>文化は保てるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        運動を組織に変えずに持続させられますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジョン・ウェスレー（1703-1791）は、18世紀イギリスの神学者であり、メソジスト運動の創始者です。1738年のオルダースゲート体験で「心が不思議に温められ」、その後50年間で25万マイルを旅し4万回以上の説教を行いました。クラス・ミーティングによる小グループ霊性、聖化（継続的成長）の強調、野外説教による労働者階級への伝道、奴隷制反対などの社会改革——信仰と行動を統合。メソジスト教会、ホーリネス運動、ペンテコステ派の源流となりました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Heart strangely warmed.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジョアンナ・メイシー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Earth Cyan */
+            --secondary: #164e63;
+            /* Deep Ocean */
+            --accent: #22d3ee;
+            /* Light Gaia */
+            --highlight: #cffafe;
+            /* Spiral Glow */
+            --bg: #083344;
+            /* Deep Earth */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Earth Background */
+        .earth-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(8, 145, 178, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Macy Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌍";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Spiral Section */
+        .spiral-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .spiral-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 3rem;
+        }
+
+        .spiral-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .spiral-step {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .spiral-step h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌍";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .spiral-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="earth-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← WORK_THAT_RECONNECTS</a>
+        <div>MACY_v6.98</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-698 / THE_GREAT_TURNING</span>
+        <h1>ジョアンナ・メイシー</h1>
+        <p class="en-name">Joanna Macy (1929–)</p>
+        <p class="catchphrase">「私たちの真の本性は、地球と相互につながっている」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">エコロジーOS</span>
+            <span class="os-tag">仏教OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">大転換の思想家</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ジョアンナ・メイシーは、アメリカの環境活動家、仏教学者、システム理論家であり、「つながりを取り戻すワーク」（Work That Reconnects）の開発者です。90歳を超えてなお活動を続ける。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心は<b>「大転換」（The Great Turning）</b>——産業成長社会から生命持続社会への文明的転換。これは私たちの時代の中心的冒険。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    仏教の縁起（相互依存）とシステム理論を融合し、エコロジカルな自己（ecological self）の再発見を促す実践的ワークショップを展開。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    メイシーは、<b>「文明OSの大規模マイグレーション・ガイド——産業成長OS（Industrial Growth Society）から生命持続OS（Life-Sustaining
+                        Society）への移行。仏教の縁起とシステム理論がマイグレーション・プロトコル」</b>を開発した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. スパイラル -->
+        <section class="spiral-section">
+            <h2>🔄 つながりを取り戻すワークの螺旋</h2>
+            <div class="spiral-steps">
+                <div class="spiral-step">
+                    <h4">1. 感謝から始める</h4>
+                        <p>生命の贈り物への感謝</p>
+                </div>
+                <div class="spiral-step">
+                    <h4">2. 世界への痛みを尊重する</h4>
+                        <p>悲しみ、怒り、恐怖を認める</p>
+                </div>
+                <div class="spiral-step">
+                    <h4">3. 新しい目で見る</h4>
+                        <p>相互依存の認識</p>
+                </div>
+                <div class="spiral-step">
+                    <h4">4. 前に進む</h4>
+                        <p>行動への意図</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 メイシー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">私たちの世界への痛みは、生命システムとしての私たちの結びつきから自然に生じるものである。</p>
+                <p class="quote-author">— ジョアンナ・メイシー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔄 大転換</h3>
+                        <p>The Great Turning。産業成長社会から生命持続社会への文明的転換。</p>
+                </div>
+                <div class="card">
+                    <h3">🕸️ 縁起（相互依存）</h3>
+                        <p>仏教の中心概念。すべての存在は相互に依存し、つながっている。</p>
+                </div>
+                <div class="card">
+                    <h3">💔 世界への痛み</h3>
+                        <p>環境破壊、社会的不正への痛みを否定せず、認め、変容させる。</p>
+                </div>
+                <div class="card">
+                    <h3">🌱 エコロジカルな自己</h3>
+                        <p>自己は皮膚の内側で終わらない。生態系全体に拡張された自己。</p>
+                </div>
+                <div class="card">
+                    <h3">⚙️ システム理論</h3>
+                        <p>生命システムとしての地球。フィードバック、自己組織化。</p>
+                </div>
+                <div class="card">
+                    <h3">🧘 活動家の内面</h3>
+                        <p>燃え尽きを防ぐ。活動の源は怒りではなく愛とつながり。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 三つの次元 -->
+        <section class="section">
+            <h2 class="section-title">🌍 大転換の三つの次元</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 抵抗する行動</h3>
+                        <p>破壊を止める。抗議、政策変更、直接行動。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 構造を変える</h3>
+                        <p>新しいシステムを作る。代替経済、持続可能な実践。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 意識を変える</h3>
+                        <p>世界観の転換。分離から相互依存へ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Reconnection</h2>
+            <div class="it-card">
+                <h3">Great Turning as OS Migration</h3>
+                    <p>大転換はOSマイグレーション。産業成長OSから生命持続OSへの大規模移行。</p>
+            </div>
+            <div class="it-card">
+                <h3">Interdependence as Network</h3>
+                    <p>縁起はネットワーク・トポロジー。すべてのノードが相互接続。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pain as System Alert</h3>
+                    <p>世界への痛みはシステム・アラート。無視せず、対応が必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Spiral as Iterative Process</h3>
+                    <p>つながりを取り戻すワークの螺旋は反復プロセス。各サイクルで深まる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>つながりを取り戻すワーク</strong>：世界中で実践されるワークショップ。</li>
+                <li><strong>活動家の内面</strong>：燃え尽きを防ぐスピリチュアルな基盤。</li>
+                <li><strong>仏教とエコロジーの架橋</strong>：縁起とシステム理論の統合。</li>
+                <li><strong>大転換</strong>：文明転換のフレームワーク。</li>
+                <li><strong>90歳超の活動</strong>：生涯現役のモデル。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>仏教（チベット仏教）</li>
+                            <li>システム理論</li>
+                            <li>ディープエコロジー</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>環境活動家</li>
+                            <li>エコスピリチュアリティ</li>
+                            <li>気候正義運動</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ エコロジー思想家</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心</th>
+                        <th>アプローチ</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>メイシー</strong></td>
+                        <td>大転換</td>
+                        <td>仏教+システム理論</td>
+                        <td>ワークショップ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ネス</strong></td>
+                        <td>ディープエコロジー</td>
+                        <td>哲学</td>
+                        <td>自己実現</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ベリー(Thomas)</strong></td>
+                        <td>宇宙物語</td>
+                        <td>宗教的生態学</td>
+                        <td>地球法学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ベリー(Wendell)</strong></td>
+                        <td>土地倫理</td>
+                        <td>農業実践</td>
+                        <td>地域共同体</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：痛みを受け入れる</h2>
+            <div class="thought-experiment">
+                <h3">世界への痛みと向き合う</h3>
+                    <p>メイシーは問う：気候変動、種の絶滅、社会的不正——これらを知ったとき、あなたは何を感じるか？悲しみ？怒り？無力感？</p>
+                    <p style="margin-top: 1.5rem;">私たちはこれらの感情を抑圧しがちだ。「考えても仕方ない」「私一人では何もできない」と。</p>
+                    <p style="margin-top: 1.5rem;">メイシーの洞察：この痛みは病気ではない。それは私たちが生命と深くつながっている証拠。痛みを感じるのは、私たちがまだ生きているから。</p>
+                    <p style="margin-top: 1.5rem;">痛みを抑圧すると、エネルギーも抑圧される。痛みを認め、表現し、共有すると——驚くべきことに——行動のエネルギーが解放される。</p>
+                    <p style="margin-top: 1.5rem;">批判者は問う：これは単なるセラピーか？構造変革なしに感情を扱っても世界は変わらない。</p>
+                    <p style="margin-top: 1.5rem;">メイシーの答え：両方が必要。内面の変容なしに持続的な活動はできない。燃え尽きるだけ。内面と外面、両方の変革を。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        世界への痛みは、抑圧すべきですか？それとも変容の源ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジョアンナ・メイシー（1929-）は、アメリカの環境活動家、仏教学者、システム理論家であり、「つながりを取り戻すワーク」の開発者です。核心概念は「大転換」——産業成長社会から生命持続社会への文明的転換。これは私たちの時代の中心的冒険。仏教の縁起（相互依存）とシステム理論を統合し、エコロジカルな自己の再発見を促す。「世界への痛み」は病気ではなく、生命とのつながりの証——これを認め、変容させることで行動のエネルギーが生まれる。90歳を超えてなお活動を続け、世界中の環境活動家、スピリチュアル・アクティビストに影響を与える、生きた伝説です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. We are the Great Turning.</p>
+    </footer>
+</body>
+
+</html>

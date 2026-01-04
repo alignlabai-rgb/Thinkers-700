@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ツォンカパ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ca8a04;
+            /* Gelug Gold */
+            --secondary: #422006;
+            /* Monastery Dark */
+            --accent: #facc15;
+            /* Wisdom Yellow */
+            --highlight: #fef9c3;
+            /* Enlightenment Glow */
+            --bg: #1a0f02;
+            /* Deep Tibet */
+            --text: #fef9c3;
+            --border: #a16207;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .tsongkhapa-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(202, 138, 4, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(250, 204, 21, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🏔️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #a16207 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(202, 138, 4, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(202, 138, 4, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .three-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ca8a04 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .three-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .three-item {
+            padding: 2rem;
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🏔️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .three-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tsongkhapa-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← GELUG</a>
+        <div>TSONGKHAPA_v6.19</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-619 / THE_REFORMER</span>
+        <h1>ツォンカパ</h1>
+        <p class="en-name">Tsongkhapa（1357–1419）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「第二のブッダ」——ゲルク派創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">戒律OS</span>
+            <span class="os-tag">修行OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">ゲルク派と仏教改革</h2>
+            <div class="hero-box">
+                <p class="hero-text">ツォンカパ（ジェ・ツォンカパ、「玉ねぎの谷の人」の意）は、14-15世紀チベットの仏教学僧であり、ゲルク派（黄帽派）の創始者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ツォンカパの歴史的業績——<b>戒律の復興、中観哲学の精緻化、修行道次第の体系化。「第二のブッダ」と称される</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ダライ・ラマとパンチェン・ラマを輩出するゲルク派の祖。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>ツォンカパの仏教改革は、<b>「チベット仏教のリファクタリング——コードベース（教義）を整理し、テスト（戒律）を強化し、ドキュメント（道次第）を明確化」</b>という、システムの再構築。</p>
+            </div>
+        </section>
+
+        <section class="three-section">
+            <h2>📚 三つの主著</h2>
+            <div class="three-grid">
+                <div class="three-item"><strong>菩提道次第大論</strong><br>ラムリム・チェンモ<br>修行の全段階</div>
+                <div class="three-item"><strong>密教道次第大論</strong><br>ンガクリム・チェンモ<br>タントラの段階</div>
+                <div class="three-item"><strong>中観の真髄</strong><br>レクシェー・ニンポ<br>空性哲学</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ツォンカパの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">空性の理解なくして解脱はなく、戒律なくして空性の理解はない。</p>
+                <p class="quote-author">— ツォンカパ（帰される言葉）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📜 戒律復興</h3>
+                        <p>僧侶の戒律を厳格化。チベット仏教の堕落を批判。</p>
+                </div>
+                <div class="card">
+                    <h3">🧘 道次第</h3>
+                        <p>ラムリム（道次第）で修行を段階化。初心者から仏陀まで。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 中観派</h3>
+                        <p>帰謬論証派（プラーサンギカ）の立場を精緻化。空と縁起。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 密教統合</h3>
+                        <p>顕教と密教を統合。段階的に学ぶシステム。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 学問重視</h3>
+                        <p>論理学と哲学の学習を強調。ゲシェ制度。</p>
+                </div>
+                <div class="card">
+                    <h3">🏔️ ゲルク派</h3>
+                        <p>黄帽派を創始。後にチベット最大宗派に。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Reform</h2>
+            <div class="it-card">
+                <h3>Lamrim as Roadmap</h3>
+                <p>道次第はロードマップ。目的地（悟り）への段階的計画。</p>
+            </div>
+            <div class="it-card">
+                <h3">Vinaya as Test Suite</h3>
+                    <p>戒律はテストスイート。コード（行動）の品質保証。</p>
+            </div>
+            <div class="it-card">
+                <h3">Gelug as Fork</h3>
+                    <p>ゲルク派はフォーク。既存のコードベースを改良して新ブランチ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Integration as API</h3>
+                    <p>顕密統合はAPI設計。異なるモジュールを連携。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ゲルク派</strong>：チベット仏教最大宗派。</li>
+                <li><strong>道次第</strong>：修行の体系化。</li>
+                <li><strong>戒律復興</strong>：僧侶の規律強化。</li>
+                <li><strong>顕密統合</strong>：段階的学習。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>龍樹・中観派</li>
+                        <li>アティーシャ</li>
+                        <li>カダム派</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ダライ・ラマ</li>
+                            <li>パンチェン・ラマ</li>
+                            <li>現代チベット仏教</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：改革と伝統</h2>
+            <div class="thought-experiment">
+                <h3">改革は裏切りか、回帰か</h3>
+                    <p>ツォンカパは「改革者」だった。</p>
+                    <p>しかし彼は「新しいこと」を教えたわけではない。</p>
+                    <p>「本来のブッダの教えに戻る」と主張した。</p>
+                    <p>改革者はしばしば「原点回帰」を唱える。</p>
+                    <p>ルターも「聖書に戻れ」と言った。</p>
+                    <p>「改革」と「保守」は対立するのか？</p>
+                    <p>それとも同じことの別の表現か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        改革と原点回帰は同じですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ツォンカパ（1357-1419）は、14-15世紀チベットの仏教学僧であり、ゲルク派（黄帽派）の創始者です。戒律の復興、中観哲学の精緻化、道次第（ラムリム）による修行の体系化を行い、「第二のブッダ」と称されました。『菩提道次第大論』などの主著で顕教と密教を統合し、段階的な修行システムを確立。ダライ・ラマとパンチェン・ラマを輩出するゲルク派は、現在チベット仏教最大の宗派となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The path to enlightenment.</p>
+    </footer>
+</body>
+
+</html>

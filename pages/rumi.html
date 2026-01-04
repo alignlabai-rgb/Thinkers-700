@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ルーミー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Sufi Purple */
+            --secondary: #2e1065;
+            /* Mystic Dark */
+            --accent: #c4b5fd;
+            /* Love Light */
+            --highlight: #ede9fe;
+            /* Divine Glow */
+            --bg: #0c0a1d;
+            /* Whirling Deep */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Sufi Background */
+        .sufi-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(196, 181, 253, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Rumi Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "💫";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Whirling Section */
+        .whirling-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .whirling-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .whirling-icon {
+            font-size: 8rem;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "💫";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sufi-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SUFISM</a>
+        <div>MASNAVI_v5.69</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-569 / THE_WHIRLING_POET</span>
+        <h1>ジャラールッディーン・ルーミー</h1>
+        <p class="en-name">Jalal al-Din Rumi (1207–1273)</p>
+        <p class="catchphrase">「愛のみが神への道」——スーフィズム最大の詩人</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">神秘OS</span>
+            <span class="os-tag">詩OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">神秘的愛（イシュク）</h2>
+            <div class="hero-box">
+                <p class="hero-text">ルーミー（モウラーナー）は、13世紀ペルシアの詩人・スーフィー（イスラム神秘主義者）であり、世界で最も読まれている詩人の一人です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ルーミーの核心的教え——<b>神への道は愛のみ</b>。知識や儀礼ではなく、神への恋愛的な愛（イシュク）が魂を神に導く。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    『マスナヴィー』——6巻26000対句の神秘的叙事詩。「ペルシア語のクルアーン」と呼ばれる。メヴレヴィー教団（旋舞教団）の創始者。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    スーフィズムは、<b>「イスラムOSの内部APIへの直接アクセス——外部インターフェース（律法・儀礼）ではなく、カーネル（神）との直接通信。愛はそのプロトコル」</b>という、宗教のディープアクセス。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 旋舞 -->
+        <section class="whirling-section">
+            <h2>💫 旋舞（セマー）</h2>
+            <div class="whirling-icon">🕺</div>
+            <p style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                右手を天に、左手を地に。回転しながら神との合一を求める。
+                <br>自我を消し、神の愛に溶け込む。メヴレヴィー教団のサマー。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ルーミー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">愛する者たちの宗教は神ご自身。<br>愛する者たちの国も宗派も神ご自身。</p>
+                <p class="quote-author">— ルーミー『マスナヴィー』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">❤️ 愛（イシュク）</h3>
+                        <p>神への恋愛的愛。理性を超える狂気の愛。自我を焼き尽くす。愛なしには神に届かない。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 消滅（ファナー）</h3>
+                        <p>自我の消滅。神の中に溶け込む。蝋燭が炎に溶けるように。神秘的合一。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 マスナヴィー</h3>
+                        <p>6巻26000対句の神秘的叙事詩。物語・寓話・神学。「ペルシア語のクルアーン」。</p>
+                </div>
+                <div class="card">
+                    <h3">🕺 セマー</h3>
+                        <p>旋舞の儀式。回転しながら神を求める。メヴレヴィー教団の中心行事。</p>
+                </div>
+                <div class="card">
+                    <h3">👤 シャムセ・タブリーズィー</h3>
+                        <p>ルーミーの霊的導師。出会いがルーミーを変容させた。「太陽」の意。突然の失踪。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 普遍主義</h3>
+                        <p>「私はキリスト教徒でもユダヤ教徒でもムスリムでもない」。宗教を超えた普遍的真理。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 詩 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ルーミーの詩</h2>
+            <div class="quote-box" style="margin-top: 0;">
+                <p class="quote-text">
+                    来い、来い、あなたが誰であれ来い。<br>放浪者でも、火を拝む者でも、偶像崇拝者でも。<br>たとえ千回誓いを破ったとしても来い。<br>これは絶望の門ではない。来い、来たままに来い。</p>
+                <p class="quote-author">— ルーミー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">ディーヴァーネ・シャムス</h3>
+                        <p>シャムスに捧げた抒情詩集。約3万5千couplet。恋愛詩のスタイルで神への愛を歌う。</p>
+                </div>
+                <div class="card">
+                    <h3">葦笛の歌</h3>
+                        <p>マスナヴィー冒頭。「葦笛が泣くのを聞け」——魂が故郷（神）から離れた嘆き。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Deep Access</h2>
+            <div class="it-card">
+                <h3">Sufism as Kernel Access</h3>
+                    <p>スーフィズムはカーネルアクセス。外部API（律法）ではなく、内部実装（神）に直接通信。</p>
+            </div>
+            <div class="it-card">
+                <h3">Love as Protocol</h3>
+                    <p>愛はプロトコル。理性や知識ではなく、愛だけが神への接続を確立できる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Fana as Process Termination</h3>
+                    <p>ファナー（消滅）はプロセス終了。自我プロセスを終了し、神プロセスに統合。</p>
+            </div>
+            <div class="it-card">
+                <h3">Whirling as Infinite Loop</h3>
+                    <p>旋舞は無限ループ。しかしバグではなく、神との接続を維持するための意図的設計。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>神秘的愛</strong>：理性を超える神への愛。</li>
+                <li><strong>マスナヴィー</strong>：ペルシア神秘詩の最高峰。</li>
+                <li><strong>旋舞</strong>：身体を通じた神秘体験。</li>
+                <li><strong>普遍主義</strong>：宗教を超えた真理。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アッタール</li>
+                            <li>イブン・アラビー</li>
+                            <li>シャムセ・タブリーズィー</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>メヴレヴィー教団</li>
+                            <li>ペルシア文学</li>
+                            <li>現代ニューエイジ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ イスラム思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ルーミー（スーフィズム）</th>
+                        <th>正統派イスラム</th>
+                        <th>イブン・ルシュド</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>中心</strong></td>
+                        <td>愛・神秘体験</td>
+                        <td>律法・服従</td>
+                        <td>理性・哲学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>神との関係</strong></td>
+                        <td>合一</td>
+                        <td>超越・服従</td>
+                        <td>知解</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>瞑想・旋舞</td>
+                        <td>五行</td>
+                        <td>論証</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>カーネル</td>
+                        <td>API</td>
+                        <td>ドキュメント</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：愛は知を超えるか</h2>
+            <div class="thought-experiment">
+                <h3">理性と愛</h3>
+                    <p>ルーミーは言います：「愛の前に理性は無力だ」。</p>
+                    <p>哲学者は理性によって神を理解しようとする。</p>
+                    <p>スーフィーは愛によって神を体験しようとする。</p>
+                    <p>どちらが「正しい」か？</p>
+                    <p>パスカルも「心には理性が知らない理由がある」と言った。</p>
+                    <p>しかし愛は主観的——どうやって真理を判定するのか？</p>
+                    <p>ルーミーの答え：体験した者だけが分かる。</p>
+                    <p>これは「神秘主義」の常套句——批判者には循環論法に見える。</p>
+                    <p>しかし科学教育も同じ構造を持つ：「勉強すれば分かる」。</p>
+                    <p>真理へのアクセス方法は一つではないのかもしれない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        愛は理性よりも深い真理に届きますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ルーミー（モウラーナー）は、13世紀ペルシアの詩人・スーフィーであり、世界で最も読まれている詩人の一人です。「愛のみが神への道」——理性や律法ではなく、神への恋愛的な愛（イシュク）が魂を神に導くと説きました。『マスナヴィー』は「ペルシア語のクルアーン」と呼ばれ、メヴレヴィー教団の旋舞儀礼は今もトルコで続いています。「来い、来い、誰であれ来い」——宗教を超えた普遍的愛のメッセージは、現代でも世界中で愛されています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Come, come, whoever you are.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラビ・アキバ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Martyrdom Red */
+            --secondary: #450a0a;
+            /* Study Dark */
+            --accent: #f87171;
+            /* Wisdom Light */
+            --highlight: #fecaca;
+            /* Flame Glow */
+            --bg: #1c0707;
+            /* Deep Devotion */
+            --text: #fecaca;
+            --border: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Devotion Background */
+        .martyr-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Akiva Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔥";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b91c1c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Martyrdom Section */
+        .martyr-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .martyr-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="martyr-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← TALMUD</a>
+        <div>MARTYR_v5.88</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-588 / THE_DEVOTED_SCHOLAR</span>
+        <h1>ラビ・アキバ</h1>
+        <p class="en-name">Rabbi Akiva ben Joseph (c. 50 – 135 CE)</p>
+        <p class="catchphrase">「すべてに意味がある」——タルムード的思考の創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">ユダヤOS</span>
+            <span class="os-tag">解釈OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">タルムード的思考</h2>
+            <div class="hero-box">
+                <p class="hero-text">ラビ・アキバ・ベン・ヨシェフは、紀元1世紀から2世紀にかけて活動したユダヤ教の最も偉大な賢者の一人であり、ミシュナの基盤を築きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    アキバの核心的方法論——<b>トーラーのすべての文字、すべての綴り、すべての飾り線（タギン）に意味がある</b>。解釈学的精密さ。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    40歳で学び始めた遅咲きの学者。バル・コクバの乱を支持し、ローマによって処刑された殉教者。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    アキバの解釈学は、<b>「コードの一行一行に意味がある——コメントも、空白も、命名規則も。すべてが意図的であり、解読可能」</b>という、テキストの完全性への信頼。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 殉教 -->
+        <section class="martyr-section">
+            <h2>🔥 殉教</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto; color: var(--highlight);">
+                ローマがトーラー学習を禁止した時、<br>
+                アキバは教え続けた。
+            </p>
+            <p style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.9;">
+                捕らえられ、鉄の櫛で皮膚を剥がされながら<br>
+                「シェマ・イスラエル」を唱え続けた。<br>
+                「エハッド（唯一）」の言葉で息を引き取った。<br>
+                — タルムード ベラホット 61b
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アキバの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">隣人を自分のように愛せ——これがトーラーの大原則だ。</p>
+                <p class="quote-author">— ラビ・アキバ（エルサレム・タルムード ネダリム 9:4）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📜 すべてに意味</h3>
+                        <p>トーラーの一字一句、飾り線まで意味がある。極度に精密な解釈。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 ミシュナの基盤</h3>
+                        <p>弟子たちを通じてミシュナに貢献。ラビ・メイル、ラビ・シモンなど。</p>
+                </div>
+                <div class="card">
+                    <h3">👴 遅咲き</h3>
+                        <p>40歳まで無学の羊飼い。妻ラヘルの支援で学び始め、最大の賢者に。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 愛の原則</h3>
+                        <p>「隣人を自分のように愛せ」をトーラーの大原則とした。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ バル・コクバ</h3>
+                        <p>ローマへの反乱を支持。バル・コクバをメシアと認識。敗北後に処刑。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 殉教</h3>
+                        <p>トーラー教育を禁止したローマに抗い、処刑。ユダヤ教の殉教者の模範。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 弟子たち -->
+        <section class="section">
+            <h2 class="section-title">🔄 アキバの弟子たち</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">ラビ・メイル</h3>
+                        <p>ミシュナの匿名部分の多くを執筆。アキバの方法論を継承。</p>
+                </div>
+                <div class="card">
+                    <h3">ラビ・シモン・バル・ヨハイ</h3>
+                        <p>ゾハルの著者とされる。カバラの伝統。ラグ・バオメルで記念。</p>
+                </div>
+                <div class="card">
+                    <h3">ラビ・ヨシェ</h3>
+                        <p>法的推論に優れる。「理由に基づく」解釈。</p>
+                </div>
+                <div class="card">
+                    <h3">ラビ・エルアザル・ベン・シャモア</h3>
+                        <p>最も長命のアキバの弟子。伝統の継承者。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Close Reading</h2>
+            <div class="it-card">
+                <h3">Every Character Matters</h3>
+                    <p>すべての文字に意味がある——タイポではない。コードの正確性と同じ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Late Bloomer as Career Change</h3>
+                    <p>40歳から学習——キャリアチェンジは可能。プログラミングを始めるのに遅すぎることはない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Disciples as Open Source Contributors</h3>
+                    <p>弟子たちはオープンソースコントリビュータ。師の方法論を継承し、拡張する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Martyrdom as Commitment</h3>
+                    <p>殉教は究極のコミットメント。原則のために命を懸ける。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>精密解釈</strong>：一字一句に意味を見出す。</li>
+                <li><strong>ミシュナの基盤</strong>：口伝律法の体系化。</li>
+                <li><strong>愛の原則</strong>：隣人愛をトーラーの核心に。</li>
+                <li><strong>殉教の模範</strong>：信仰のために死ぬ覚悟。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ヒレル</li>
+                            <li>ナフム・イシュ・ガムズ</li>
+                            <li>エリエゼル・ベン・ヒュルカノス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ラビ・メイル</li>
+                            <li>ミシュナ</li>
+                            <li>タルムード的思考</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 解釈アプローチの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>アキバ</th>
+                        <th>イシュマエル</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>すべてに意味</td>
+                        <td>人間の言語</td>
+                    </tr>
+                    <tr>
+                        <td><strong>飾り線</strong></td>
+                        <td>解釈対象</td>
+                        <td>装飾のみ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>規則数</strong></td>
+                        <td>多数の派生</td>
+                        <td>13ミドット</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>厳密パーサー</td>
+                        <td>寛容パーサー</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：40歳からの学習</h2>
+            <div class="thought-experiment">
+                <h3">遅すぎることはない</h3>
+                    <p>アキバは40歳まで無学の羊飼いだった。</p>
+                    <p>アルファベットさえ読めなかった。</p>
+                    <p>しかし、ユダヤ教史上最大の賢者の一人になった。</p>
+                    <p>彼の物語は問いかける：学びに「遅すぎる」はあるか？</p>
+                    <p>現代社会は「若さ」を過度に評価していないか？</p>
+                    <p>テック業界の「30代後半は老人」という神話は本当か？</p>
+                    <p>人生経験は学びの障害か、資産か？</p>
+                    <p>アキバは羊飼いとしての経験をどう活かしたか？</p>
+                    <p>「カミングアウト遅咲き」の人々の物語は励みになるか、例外か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        何かを始めるのに遅すぎることはありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラビ・アキバは、紀元1-2世紀のユダヤ教の最も偉大な賢者の一人です。40歳まで無学の羊飼いでしたが、学び始めてユダヤ教史上最大の賢者に。「トーラーのすべての文字に意味がある」という精密な解釈方法論を確立し、ミシュナの基盤を築きました。「隣人を自分のように愛せ——これがトーラーの大原則だ」と教え、バル・コクバの乱を支持してローマに処刑された殉教者です。弟子たちを通じてタルムード的思考を後世に伝えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Every letter has meaning.</p>
+    </footer>
+</body>
+
+</html>

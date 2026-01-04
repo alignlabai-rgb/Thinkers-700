@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マーティン・ルーサー・キング・ジュニア - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            /* Dream Blue */
+            --secondary: #1e3a8a;
+            /* Justice Dark */
+            --accent: #3b82f6;
+            /* Light Hope */
+            --highlight: #dbeafe;
+            /* Freedom Glow */
+            --bg: #0c1629;
+            /* Deep Dream */
+            --text: #dbeafe;
+            --border: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .king-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(30, 64, 175, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e40af 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊🏿";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 64, 175, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dream-section {
+            background: linear-gradient(135deg, #000 0%, #1e40af 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .dream-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🕊️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="king-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DREAM</a>
+        <div>MLK_v6.37</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-637 / THE_DREAMER</span>
+        <h1>マーティン・ルーサー・キング・ジュニア</h1>
+        <p class="en-name">Martin Luther King Jr.（1929–1968）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「夢を見る者」——非暴力と愛の革命</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">公民権OS</span>
+            <span class="os-tag">非暴力OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">非暴力直接行動</h2>
+            <div class="hero-box">
+                <p class="hero-text">マーティン・ルーサー・キング・ジュニアは、アメリカの牧師、公民権運動の指導者であり、非暴力直接行動によって人種差別と闘いました。1963年のワシントン大行進で「I
+                    Have a Dream」演説を行いました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    キングの歴史的業績——<b>モンゴメリー・バス・ボイコットを指導。ワシントン大行進。1964年公民権法。1965年投票権法。1964年ノーベル平和賞</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    1968年4月4日、メンフィスで暗殺。39歳。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>キングの非暴力は、<b>「システム変更のソフトウェアパッチ——ハードウェア（暴力）を使わずにOSを更新。愛と正義というコードで社会を書き換え」</b>という、平和的システム改革。</p>
+            </div>
+        </section>
+
+        <section class="dream-section">
+            <h2>💭 I Have a Dream（1963年8月28日）</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                ワシントン記念塔の前<br>
+                25万人の群衆<br><br>
+                「私には夢がある」<br>
+                「いつの日か、この国が立ち上がり」<br>
+                「自明の真理を実現する日が来ることを」<br>
+                「すべての人は平等に創られている」<br><br>
+                この演説がアメリカを変えた
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 キングの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">闇は闘で追い払えない。光だけがそれをできる。憎しみは憎しみで追い払えない。愛だけがそれをできる。</p>
+                <p class="quote-author">— マーティン・ルーサー・キング・ジュニア</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🕊️ 非暴力</h3>
+                        <p>暴力なき抵抗。ガンジーのサティヤーグラハに学ぶ。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ アガペー</h3>
+                        <p>キリスト教的愛。敵をも愛する無条件の愛。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 正義</h3>
+                        <p>不正な法には従わない。良心に従う義務。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 統合</h3>
+                        <p>分離ではなく統合。愛する共同体（Beloved Community）。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 預言者的伝統</h3>
+                        <p>聖書の正義の伝統。預言者としての牧師。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 人間の尊厳</h3>
+                        <p>すべての人に固有の尊厳がある。人種を超えて。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Nonviolence</h2>
+            <div class="it-card">
+                <h3">Nonviolence as Software Update</h3>
+                    <p>非暴力はソフトウェア更新。システムを壊さずに変更。</p>
+            </div>
+            <div class="it-card">
+                <h3">Love as Protocol</h3>
+                    <p>愛はプロトコル。敵対者とも通信可能に。</p>
+            </div>
+            <div class="it-card">
+                <h3">Dream as Vision</h3>
+                    <p>夢はビジョン。将来のシステム設計図。</p>
+            </div>
+            <div class="it-card">
+                <h3">March as Demonstration</h3>
+                    <p>行進はデモンストレーション。新機能を公開展示。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>非暴力直接行動</strong>：平和的抗議の方法論。</li>
+                <li><strong>公民権法（1964）</strong>：人種差別を違法化。</li>
+                <li><strong>投票権法（1965）</strong>：投票における差別禁止。</li>
+                <li><strong>愛する共同体</strong>：統合のビジョン。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ガンジー</li>
+                        <li>キリスト教神学</li>
+                        <li>ソロー</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>公民権運動</li>
+                            <li>世界の人権運動</li>
+                            <li>非暴力抵抗</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：非暴力の限界</h2>
+            <div class="thought-experiment">
+                <h3">非暴力は常に正しいか</h3>
+                    <p>キングは非暴力を貫いた。</p>
+                    <p>しかし相手が暴力を使ったら？</p>
+                    <p>ナチスに対しても非暴力か？</p>
+                    <p>マルコムXは言った——</p>
+                    <p>「自己防衛は暴力ではない」</p>
+                    <p>ネルソン・マンデラは——</p>
+                    <p>非暴力から武装闘争に転じた。</p>
+                    <p>非暴力は常に可能か？</p>
+                    <p>それとも贅沢な選択肢か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        非暴力は普遍的に正しいですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マーティン・ルーサー・キング・ジュニア（1929-1968）は、アメリカの牧師、公民権運動の指導者であり、非暴力直接行動によって人種差別と闘いました。ガンジーに学んだ非暴力哲学とキリスト教的愛（アガペー）を統合し、「愛する共同体」のビジョンを提示。モンゴメリー・バス・ボイコット、ワシントン大行進を指導し、1964年公民権法、1965年投票権法の成立に貢献。1964年ノーベル平和賞受賞。1968年暗殺されましたが、その夢は生き続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. I have a dream.</p>
+    </footer>
+</body>
+
+</html>

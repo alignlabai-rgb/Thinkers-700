@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハーバート・サイモン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16a34a;
+            /* Decision Green */
+            --secondary: #0f1a14;
+            /* Bounded Dark */
+            --accent: #4ade80;
+            /* Satisfice Light */
+            --highlight: #dcfce7;
+            /* Rationality Glow */
+            --bg: #030906;
+            /* Artificial Deep */
+            --text: #dcfce7;
+            --border: #15803d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Decision Background */
+        .decision-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(22, 163, 74, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(74, 222, 128, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Carnegie Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #14532d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🧠";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #15803d 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(22, 163, 74, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Decision Diagram */
+        .decision-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #14532d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .decision-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .decision-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .decision-box {
+            padding: 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .optimize-box {
+            background: #dc2626;
+            border: 2px solid #ef4444;
+        }
+
+        .bounded-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+            padding: 4rem;
+        }
+
+        .satisfice-box {
+            background: #0891b2;
+            border: 2px solid #22d3ee;
+        }
+
+        .decision-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .thought-experiment p {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .decision-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="decision-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ADMINISTRATIVE_BEHAVIOR</a>
+        <div>BOUNDED_RATIONALITY_v4.82</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-482 / THE_POLYMATH</span>
+        <h1>ハーバート・サイモン</h1>
+        <p class="en-name">Herbert Alexander Simon (1916–2001)</p>
+        <p class="catchphrase">"Satisficing" — 最適化ではなく満足化</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">心理OS</span>
+            <span class="os-tag">組織OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">人間は「最適化」しない</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    経済学の標準モデルでは、人間は「合理的経済人」——すべての情報を処理し、最適な選択をする存在——とされます。しかし、私たちは本当にそうでしょうか。ノーベル経済学賞受賞者ハーバート・サイモンの答えは明確でした：<b>「人間の合理性は限定されている」</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    サイモンは<b>「限定合理性（Bounded
+                        Rationality）」</b>の概念を導入しました。人間は認知能力、時間、情報に限界がある。すべての選択肢を検討し最適解を見つけることは不可能。だから私たちは<b>「満足化（Satisficing）」</b>する——「十分に良い」解が見つかったら、探索をやめる。これは合理的な適応であり、欠陥ではない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    サイモンを学ぶことは、<b>意思決定、組織、人工知能の本質を理解すること</b>です。彼は行政学、経営学、心理学、計算機科学、AI——あらゆる分野で先駆的業績を残した真の「ポリマス（万学者）」でした。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p style="font-family: 'Space Grotesk', sans-serif;">
+                    サイモンは、<b>「人間の認知は巨大な探索空間で動作するヒューリスティックアルゴリズムである。完全な最適解（グローバル最適）を見つけるリソースがないので、『十分に良い』解（ローカル最適＋閾値）で満足する。これはバグではなくフィーチャーだ」</b>と主張した、認知科学のシステムアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 限定合理性の図式 -->
+        <section class="decision-section">
+            <h2>🧠 限定合理性 vs 完全合理性</h2>
+            <div class="decision-diagram">
+                <div class="decision-box optimize-box">
+                    <p>📊 完全合理性</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">すべての選択肢を検討</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">最適解を選択</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #fca5a5;">→ 非現実的</p>
+                </div>
+                <div class="decision-arrow">vs</div>
+                <div class="decision-box bounded-box">
+                    <p>🎯 限定合理性</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">認知・時間・情報に限界</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">ヒューリスティクス</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--highlight);">→ 現実的</p>
+                </div>
+                <div class="decision-arrow">→</div>
+                <div class="decision-box satisfice-box">
+                    <p>✅ 満足化</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Satisfice</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">「十分に良い」で満足</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8); font-family: 'Space Grotesk', sans-serif;">
+                Satisfice = Satisfy（満足する）+ Suffice（十分である）。最適化（Optimize）ではなく満足化。これは欠陥ではなく、限られたリソースへの合理的適応。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 意思決定科学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">The capacity of the human mind for formulating and solving complex problems is
+                    very small compared with the size of the problems.</p>
+                <p class="quote-author">— "Models of Bounded Rationality" (1982)</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🎯 限定合理性</h3>
+                        <p>人間の認知能力、利用可能な情報、意思決定の時間には限界がある。完全合理性は非現実的仮定。経済学の革命。</p>
+                </div>
+                <div class="card">
+                    <h3">✅ 満足化</h3>
+                        <p>「最適」ではなく「十分に良い」解を選ぶ。閾値を超えたら探索停止。効率的な意思決定のヒューリスティック。</p>
+                </div>
+                <div class="card">
+                    <h3">🏢 組織論</h3>
+                        <p>組織は合理的意思決定のための装置。個人の限界を補完し、情報処理能力を拡張する。行政行動論の創始。</p>
+                </div>
+                <div class="card">
+                    <h3">🤖 人工知能</h3>
+                        <p>AIの先駆者の一人。「物理的記号システム仮説」を提唱。Logic Theorist、GPSを開発。チューリング賞受賞。</p>
+                </div>
+                <div class="card">
+                    <h3">🧩 問題解決</h3>
+                        <p>問題解決を「探索」として定式化。状態空間、演算子、目標状態。ヒューリスティック探索の数学的基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">📊 意思決定の構造</h3>
+                        <p>プログラム化可能な決定vs非構造化決定。ルーチン決定はアルゴリズム化できる。経営情報システムへの貢献。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 学際的革新</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 経済学</h3>
+                        <p>「経済人」モデルへの根本的批判。行動経済学の先駆け。ノーベル経済学賞（1978年）。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 経営学・行政学</h3>
+                        <p>『経営行動論』で組織的意思決定を分析。カーネギー学派の創始者。意思決定科学の確立。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 心理学</h3>
+                        <p>認知心理学の創始者の一人。問題解決の情報処理モデル。「考える」をプログラムとして分析。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 計算機科学</h3>
+                        <p>AI創設期の中心人物。ダートマス会議参加。チューリング賞（1975年）。ヒューリスティック探索の開拓。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: COGNITION AS COMPUTATION</h2>
+            <div class="it-card">
+                <h3">Bounded Rationality as Resource Constraints</h3>
+                    <p>限定合理性はリソース制約。無限のCPU時間とメモリがあれば「最適解」が見つかる。しかし現実のシステムはタイムアウトとメモリ制限の中で動作する。ヒューリスティクスは必須。</p>
+            </div>
+            <div class="it-card">
+                <h3">Satisficing as Early Termination</h3>
+                    <p>満足化は早期終了条件。「スコア > 閾値」なら探索停止。グローバル最適は保証しないが、計算コストを劇的に削減。実用的なトレードオフ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Heuristics as Search Algorithms</h3>
+                    <p>ヒューリスティクスは探索アルゴリズム。A*、貪欲法、近傍探索——計算量と解の質のトレードオフ。人間の意思決定も同様のアルゴリズムで動作。</p>
+            </div>
+            <div class="it-card">
+                <h3">Organization as Distributed System</h3>
+                    <p>組織は分散システム。個々のノード（人間）の処理能力は限られているが、協調することで複雑な問題を解ける。階層、分業、標準化はプロトコル。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>限定合理性</strong>：経済学の「合理的経済人」仮定を批判。行動経済学の基盤を築いた。ノーベル経済学賞受賞。</li>
+                <li><strong>満足化（Satisficing）</strong>：最適化に代わる意思決定モデル。「十分に良い」で満足する合理的適応。</li>
+                <li><strong>人工知能の創設</strong>：Logic Theorist、GPS開発。物理的記号システム仮説。チューリング賞受賞。</li>
+                <li><strong>組織的意思決定論</strong>：『経営行動論』で組織を意思決定装置として分析。カーネギー学派の創始。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>チェスター・バーナード（組織論）</li>
+                            <li>ジョン・フォン・ノイマン（ゲーム理論）</li>
+                            <li>アラン・チューリング（計算理論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ダニエル・カーネマン（行動経済学）</li>
+                            <li>ゲルト・ギーゲレンツァー（ヒューリスティクス）</li>
+                            <li>現代AI・認知科学全般</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 意思決定理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>サイモン</th>
+                        <th>古典経済学</th>
+                        <th>カーネマン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>人間像</strong></td>
+                        <td>限定合理的</td>
+                        <td>完全合理的</td>
+                        <td>二重過程（システム1/2）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>意思決定</strong></td>
+                        <td>満足化</td>
+                        <td>最適化</td>
+                        <td>バイアスの影響下</td>
+                    </tr>
+                    <tr>
+                        <td><strong>評価</strong></td>
+                        <td>適応的・効率的</td>
+                        <td>規範的</td>
+                        <td>エラー傾向</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ヒューリスティック探索</td>
+                        <td>完全探索</td>
+                        <td>キャッシュ＋バグ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 THOUGHT_EXPERIMENT: 家探し</h2>
+            <div class="thought-experiment">
+                <h3">「最高の家」を見つけるには？</h3>
+                    <p>新しい家を探しているとしましょう。「最高の家」を見つけるには、すべての物件を見て比較すべきでしょうか？</p>
+                    <p>古典的経済学はそう言います。しかし、その街には1万件の物件があります。毎日5件見ても、全部見るのに5年以上かかります。その間に良い物件は売れてしまいます。</p>
+                    <p>サイモンの答え：私たちは「満足化」する。最低限の基準（部屋数、予算、通勤時間など）を設定し、その基準を満たす最初の物件で決める。これは「最適」ではないかもしれないが、「十分に良い」。</p>
+                    <p>これは欠陥でしょうか？いいえ。限られた時間と認知能力の中で、合理的に行動しているのです。「最適」を追求することのコストが、「最適」と「十分に良い」の差を上回るなら、満足化こそが賢い選択です。
+                    </p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたは「最適化」していますか、「満足化」していますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p style="font-family: 'Space Grotesk', sans-serif;">
+                ハーバート・サイモンは、20世紀で最も影響力のある学際的思想家の一人です。「限定合理性」と「満足化」の概念は、経済学の「合理的経済人」仮定を批判し、行動経済学の基盤を築きました。彼の業績は経済学（ノーベル賞）、計算機科学（チューリング賞）、心理学、経営学、行政学にまたがり、すべての分野で先駆的影響を与えました。AI研究、認知科学、意思決定理論——現代のこれらの分野はすべて、サイモンの遺産の上に構築されています。「人間の認知には限界がある——そしてそれは悪いことではない」というメッセージは、完璧主義と最適化に駆られた現代社会に対する、重要な処方箋でもあります。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Bounded rationality is rational.</p>
+    </footer>
+</body>
+
+</html>

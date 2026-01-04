@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダマスコのヨハネ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Byzantine Gold */
+            --secondary: #451a03;
+            /* Icon Dark */
+            --accent: #f59e0b;
+            /* Light Gold */
+            --highlight: #fef3c7;
+            /* Orthodox Glow */
+            --bg: #1c0a02;
+            /* Deep East */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .john-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🖼️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .icon-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🖼️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="john-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ORTHODOX</a>
+        <div>JOHN_OF_DAMASCUS_v6.35</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-635 / THE_ICONOPHILE</span>
+        <h1>ダマスコのヨハネ</h1>
+        <p class="en-name">John of Damascus（675頃–749）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「最後の教父」——東方正教の体系化とイコン擁護</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">神学OS</span>
+            <span class="os-tag">美学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">東方正教の教義体系化</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ダマスコのヨハネは、7-8世紀シリアの神学者、教父であり、東方正教の教義を体系化した「最後の教父」です。イスラム支配下のダマスカスで育ち、修道士となってイコン擁護論を展開しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヨハネの歴史的業績——<b>『知識の泉』で東方正教の教義を体系化。イコン破壊運動（聖像破壊運動）に対してイコン崇敬を神学的に擁護</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    東西教会双方で聖人として崇敬される。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>ヨハネの業績は、<b>「正教神学のドキュメンテーション——散在する教父の教えをまとめ、体系的なリファレンスを作成。『知識の泉』は正教のAPI仕様書」</b>という、神学的標準化。</p>
+            </div>
+        </section>
+
+        <section class="icon-section">
+            <h2>🖼️ イコン擁護論</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                イコン破壊派：「像の崇拝は偶像崇拝」<br><br>
+                ヨハネの反論：<br>
+                「神が受肉したから、神を描ける」<br>
+                「キリストは見える姿を取った」<br>
+                「イコンは崇拝ではなく崇敬の対象」<br>
+                「敬意は原型（キリスト）に向かう」
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ヨハネの神学</h2>
+            <div class="quote-box">
+                <p class="quote-text">私はイコンを崇拝するのではない。物質を崇拝するのではない。しかし物質を通して私の救いを成し遂げてくださった方を崇敬する。</p>
+                <p class="quote-author">— ダマスコのヨハネ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📖 知識の泉</h3>
+                        <p>『正統信仰論』を含む三部作。教義の集大成。</p>
+                </div>
+                <div class="card">
+                    <h3">🖼️ イコン擁護</h3>
+                        <p>受肉を論拠に聖像崇敬を擁護。偶像崇拝と区別。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 三位一体</h3>
+                        <p>東方的三位一体論の体系化。ペリコレシス。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 キリスト論</h3>
+                        <p>カルケドン派。神性と人性の二性一体。</p>
+                </div>
+                <div class="card">
+                    <h3">📿 典礼</h3>
+                        <p>賛美歌の作者。東方典礼に貢献。</p>
+                </div>
+                <div class="card">
+                    <h3">🕌 イスラム</h3>
+                        <p>最初のキリスト教的イスラム批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Icon</h2>
+            <div class="it-card">
+                <h3>Icon as UI</h3>
+                <p>イコンはUI。見えない神への視覚的インターフェース。</p>
+            </div>
+            <div class="it-card">
+                <h3">Fount as Documentation</h3>
+                    <p>『知識の泉』はドキュメンテーション。教義を体系的に記録。</p>
+            </div>
+            <div class="it-card">
+                <h3">Veneration as Reference</h3>
+                    <p>崇敬は参照。イコンを通じて原型を指し示す。</p>
+            </div>
+            <div class="it-card">
+                <h3">Incarnation as API</h3>
+                    <p>受肉はAPI。神が人間のインターフェースを取る。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>教義体系化</strong>：知識の泉。</li>
+                <li><strong>イコン擁護</strong>：神学的正当化。</li>
+                <li><strong>崇敬と崇拝の区別</strong>：概念的明確化。</li>
+                <li><strong>東方神学</strong>：正教の標準。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>カッパドキア教父</li>
+                        <li>偽ディオニシウス</li>
+                        <li>マクシモス</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>東方正教神学</li>
+                            <li>スコラ学</li>
+                            <li>イコン神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：像と偶像</h2>
+            <div class="thought-experiment">
+                <h3">宗教的イメージは許されるか</h3>
+                    <p>十戒は言う——「偶像を作るな」</p>
+                    <p>イスラム教は像を禁じる。</p>
+                    <p>ユダヤ教も像を禁じる。</p>
+                    <p>プロテスタントの多くも像に警戒的。</p>
+                    <p>しかし東方正教とカトリックは——</p>
+                    <p>イコン/聖像を大切にする。</p>
+                    <p>ヨハネは言った——</p>
+                    <p>「神が人間になったから、描ける」</p>
+                    <p>受肉は像を正当化するか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        神を描くことは許されますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ダマスコのヨハネ（675頃-749）は、7-8世紀シリアの神学者であり「最後の教父」と称されます。『知識の泉』で東方正教の教義を体系化し、イコン破壊運動に対してイコン崇敬を神学的に擁護しました。「受肉」を論拠に、イコンは偶像崇拝ではなく正当な崇敬の対象であると主張。東方正教神学、スコラ学、イコン神学に大きな影響を与え、東西教会双方で聖人として崇敬されています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The Fount of Knowledge.</p>
+    </footer>
+</body>
+
+</html>

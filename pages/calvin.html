@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャン・カルヴァン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            /* Geneva Blue */
+            --secondary: #0f172a;
+            /* Predestination Dark */
+            --accent: #60a5fa;
+            /* Election Light */
+            --highlight: #dbeafe;
+            /* Grace Glow */
+            --bg: #030712;
+            /* Sovereignty Deep */
+            --text: #dbeafe;
+            --border: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Reformed Background */
+        .reformed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(30, 58, 95, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(96, 165, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Calvin Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a5f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚙";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 58, 95, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* TULIP Section */
+        .tulip-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a5f 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .tulip-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .tulip-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tulip-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .tulip-letter {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚙";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reformed-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← REFORMED</a>
+        <div>PREDESTINATION_v5.65</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-565 / THE_SYSTEMATIZER</span>
+        <h1>ジャン・カルヴァン</h1>
+        <p class="en-name">John Calvin (1509–1564)</p>
+        <p class="catchphrase">「神の栄光のために」——改革派神学の体系化者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">キリスト教綱要</h2>
+            <div class="hero-box">
+                <p class="hero-text">ジャン・カルヴァンは、フランス出身の宗教改革者であり、ジュネーヴでプロテスタント神学を体系化しました。『キリスト教綱要』——改革派神学の基礎文献。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    カルヴァンの核心的教義——<b>予定説</b>。神は永遠の昔から、誰が救われ誰が滅びるかを定めている。人間の行為や選択ではなく、神の主権的決定。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「プロテスタント労働倫理」——マックス・ウェーバーが『プロテスタンティズムの倫理と資本主義の精神』で分析。カルヴァン主義と近代資本主義の関係。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    カルヴァン主義は、<b>「神がシステム管理者として全権を持つ——ユーザーの救済（アクセス権）は事前に決定済み。ユーザーの行動はログとして記録され、選ばれた者かの『しるし』となる」</b>という、神の主権性を最大化したアーキテクチャ。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. TULIP -->
+        <section class="tulip-section">
+            <h2>🌷 TULIP（カルヴァン主義の5要点）</h2>
+            <div class="tulip-grid">
+                <div class="tulip-item">
+                    <span class="tulip-letter">T</span>
+                    <div>
+                        <strong>Total Depravity</strong>
+                        <p style="font-size: 0.9rem;">全的堕落——人間は完全に罪に堕落</p>
+                    </div>
+                </div>
+                <div class="tulip-item">
+                    <span class="tulip-letter">U</span>
+                    <div>
+                        <strong>Unconditional Election</strong>
+                        <p style="font-size: 0.9rem;">無条件的選び——神は条件なしに選ぶ</p>
+                    </div>
+                </div>
+                <div class="tulip-item">
+                    <span class="tulip-letter">L</span>
+                    <div>
+                        <strong>Limited Atonement</strong>
+                        <p style="font-size: 0.9rem;">限定的贖罪——キリストは選民のために死んだ</p>
+                    </div>
+                </div>
+                <div class="tulip-item">
+                    <span class="tulip-letter">I</span>
+                    <div>
+                        <strong>Irresistible Grace</strong>
+                        <p style="font-size: 0.9rem;">不可抗的恩恵——選ばれた者は恩恵に抗えない</p>
+                    </div>
+                </div>
+                <div class="tulip-item">
+                    <span class="tulip-letter">P</span>
+                    <div>
+                        <strong>Perseverance of Saints</strong>
+                        <p style="font-size: 0.9rem;">聖徒の堅忍——選ばれた者は最後まで保たれる</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 カルヴァン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">神の栄光のためにのみ。（Soli Deo Gloria）</p>
+                <p class="quote-author">— カルヴァン主義のモットー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚡ 予定説</h3>
+                        <p>Predestination。神は永遠の昔から選民と滅びの民を定めた。二重予定——救いと滅び両方。</p>
+                </div>
+                <div class="card">
+                    <h3">👑 神の主権</h3>
+                        <p>Divine Sovereignty。すべては神のコントロール下。人間の自由意志は極小化。</p>
+                </div>
+                <div class="card">
+                    <h3">💼 職業召命</h3>
+                        <p>Vocation / Calling。世俗の労働も神への奉仕。勤勉と節約。資本蓄積の正当化。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ ジュネーヴ</h3>
+                        <p>「プロテスタントのローマ」。神政政治的共同体。道徳の取り締まり。宗教改革の中心地。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 キリスト教綱要</h3>
+                        <p>Institutes of the Christian Religion。1536年初版、後に大幅拡大。体系的神学書。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 改革派教会</h3>
+                        <p>長老派、改革派教会の源流。スコットランド、オランダ、アメリカのピューリタン。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ウェーバー・テーゼ -->
+        <section class="section">
+            <h2 class="section-title">🔄 資本主義の精神</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">ウェーバー・テーゼ</h3>
+                        <p>マックス・ウェーバー『プロテスタンティズムの倫理と資本主義の精神』。カルヴァン主義が近代資本主義を生んだ。</p>
+                </div>
+                <div class="card">
+                    <h3">予定の不安</h3>
+                        <p>自分が選ばれた者か不安。世俗的成功を「選びのしるし」とする心理。</p>
+                </div>
+                <div class="card">
+                    <h3">禁欲的蓄積</h3>
+                        <p>勤勉に働き、節約し、消費を控える。結果として資本が蓄積。</p>
+                </div>
+                <div class="card">
+                    <h3">批判</h3>
+                        <p>因果関係の反論、他地域との比較、理念型の問題。しかし影響力ある仮説として残る。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Deterministic Architecture</h2>
+            <div class="it-card">
+                <h3">Predestination as Immutable Config</h3>
+                    <p>予定説は不変設定。ユーザーの運命（救済/滅び）は起動前に設定済み。ランタイム変更不可。</p>
+            </div>
+            <div class="it-card">
+                <h3">Success as Selection Indicator</h3>
+                    <p>世俗的成功は選択インジケータ。ログ（行動）を見て自分のステータスを推測。</p>
+            </div>
+            <div class="it-card">
+                <h3">Geneva as Production Server</h3>
+                    <p>ジュネーヴは本番サーバー。厳格な運用規則。監視と規律。理想的実行環境。</p>
+            </div>
+            <div class="it-card">
+                <h3">Institutes as System Documentation</h3>
+                    <p>『綱要』はシステムドキュメント。包括的な仕様書。体系的で論理的。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>予定説</strong>：神の主権的選び。</li>
+                <li><strong>『キリスト教綱要』</strong>：体系的神学。</li>
+                <li><strong>ジュネーヴ統治</strong>：神政政治的共同体。</li>
+                <li><strong>職業召命観</strong>：労働の神聖化。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アウグスティヌス</li>
+                            <li>マルティン・ルター</li>
+                            <li>ツヴィングリ</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>改革派・長老派教会</li>
+                            <li>ピューリタン</li>
+                            <li>ウェーバー・テーゼ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 予定説の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>カルヴァン</th>
+                        <th>ルター</th>
+                        <th>アルミニウス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>予定</strong></td>
+                        <td>二重予定</td>
+                        <td>単一予定</td>
+                        <td>条件的選び</td>
+                    </tr>
+                    <tr>
+                        <td><strong>意志</strong></td>
+                        <td>束縛</td>
+                        <td>束縛</td>
+                        <td>自由</td>
+                    </tr>
+                    <tr>
+                        <td><strong>恩恵</strong></td>
+                        <td>不可抗的</td>
+                        <td>不可抗的</td>
+                        <td>可抗的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>決定論</td>
+                        <td>決定論</td>
+                        <td>条件分岐</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：運命は決まっているか</h2>
+            <div class="thought-experiment">
+                <h3">決定論と自由意志</h3>
+                    <p>カルヴァンは問います：もし全能の神がいるなら、未来は決まっているのでは？</p>
+                    <p>神は全知——未来を知っている。ならば未来は変えられない？</p>
+                    <p>これは「神学的決定論」——宗教的バージョンの決定論。</p>
+                    <p>しかし批判者は問う：運命が決まっているなら、なぜ努力するのか？</p>
+                    <p>カルヴァン派の答え：努力自体が「選びのしるし」。選ばれた者は必然的に善く生きる。</p>
+                    <p>これは循環論法か、それとも深い洞察か？</p>
+                    <p>現代物理学でも決定論が議論される：ラプラスの悪魔、量子力学の不確定性。</p>
+                    <p>自由意志は「幻想」か「実在」か——これは今も哲学・神経科学の最前線。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの選択は本当に自由ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジャン・カルヴァンは、フランス出身の宗教改革者であり、ジュネーヴでプロテスタント神学を体系化しました。『キリスト教綱要』で改革派神学を確立。予定説——神は永遠の昔から誰が救われるかを定めた。この教義は「プロテスタント労働倫理」を通じて近代資本主義に影響を与えたとウェーバーは論じました。改革派・長老派教会、ピューリタンの思想的源流として、カルヴァンの影響は現代にまで及んでいます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Soli Deo Gloria.</p>
+    </footer>
+</body>
+
+</html>

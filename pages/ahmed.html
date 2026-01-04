@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サラ・アーメッド - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstonic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #be185d;
+            /* Feminist Pink */
+            --secondary: #831843;
+            /* Deep Resistance */
+            --accent: #ec4899;
+            /* Light Killjoy */
+            --highlight: #fce7f3;
+            /* Affect Glow */
+            --bg: #500724;
+            /* Deep Politics */
+            --text: #fce7f3;
+            --border: #db2777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Feminist Background */
+        .feminist-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(190, 24, 93, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Sara Ahmed Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #db2777 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(190, 24, 93, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(190, 24, 93, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Killjoy Section */
+        .killjoy-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .killjoy-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .killjoy-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .killjoy-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="feminist-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← FEMINIST_KILLJOY</a>
+        <div>SARA_AHMED_v6.90</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-690 / THE_FEMINIST_KILLJOY</span>
+        <h1>サラ・アーメッド</h1>
+        <p class="en-name">Sara Ahmed (1969–)</p>
+        <p class="catchphrase">「幸福は政治的である」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">感情OS</span>
+            <span class="os-tag">フェミニズムOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">フェミニスト・キルジョイ</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    サラ・アーメッドは、イギリス/オーストラリアの哲学者・フェミニスト理論家であり、「感情の政治」「クィア現象学」「制度批判」で知られる現代最重要のフェミニスト思想家の一人です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心概念は<b>「フェミニスト・キルジョイ」</b>——場の雰囲気を「壊す」人。不正を指摘することで「楽しい雰囲気」を損なうが、それこそがフェミニズムの仕事。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>「感情の政治」</b>——感情は個人的なものではなく、政治的・社会的に構築される。幸福、怒り、希望は権力と結びついている。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    サラ・アーメッドは、<b>「社会OSのバグレポーター——システムの『正常動作』として見過ごされる不正をドキュメント化。バグを報告すると『場の雰囲気を壊す』と言われるが、それこそがバグ修正の第一歩」</b>という役割を担う人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. キルジョイ -->
+        <section class="killjoy-section">
+            <h2>✊ 核心概念</h2>
+            <p class="killjoy-title">Feminist Killjoy</p>
+            <p class="killjoy-subtitle">フェミニスト・キルジョイ</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「場の雰囲気を壊す人」——不正を指摘することで「和やかな雰囲気」を disrupts する。<br>
+                しかし、その不正こそが問題。キルジョイは問題を「作る」のではなく「露わにする」。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 アーメッド思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">フェミニストであることは、問題を引き起こすことで問題を露わにすることである。</p>
+                <p class="quote-author">— サラ・アーメッド『フェミニスト・キルジョイとして生きる』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✊ フェミニスト・キルジョイ</h3>
+                        <p>場の雰囲気を壊す人。不正を指摘することで「楽しさ」を損なうが、それこそが変革の始まり。</p>
+                </div>
+                <div class="card">
+                    <h3">💔 感情の政治</h3>
+                        <p>感情は個人的ではなく政治的。幸福、怒り、恐怖は社会的に構築され、配分される。</p>
+                </div>
+                <div class="card">
+                    <h3">🌈 クィア現象学</h3>
+                        <p>空間と身体の向き（オリエンテーション）。誰がどの空間に「居心地よく」いられるか。</p>
+                </div>
+                <div class="card">
+                    <h3">😊 幸福の約束</h3>
+                        <p>「幸福」は特定の生き方（結婚、消費、適応）を強制する。幸福の約束を拒否する権利。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 制度批判</h3>
+                        <p>多様性（diversity）が制度の飾りになる。変革ではなくパフォーマンス。</p>
+                </div>
+                <div class="card">
+                    <h3">🚪 壁と扉</h3>
+                        <p>ある人にとっての「開かれた扉」は、別の人にとっては「見えない壁」。アクセスの不平等。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要著作 -->
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">The Cultural Politics of Emotion</h3>
+                        <p>『感情の文化政治学』——感情がいかに社会的に流通し、権力と結びつくか。</p>
+                </div>
+                <div class="card">
+                    <h3">Queer Phenomenology</h3>
+                        <p>『クィア現象学』——空間、身体、オリエンテーションのクィアな分析。</p>
+                </div>
+                <div class="card">
+                    <h3">The Promise of Happiness</h3>
+                        <p>『幸福の約束』——幸福がいかに規範として機能するか。</p>
+                </div>
+                <div class="card">
+                    <h3">Living a Feminist Life</h3>
+                        <p>『フェミニスト・キルジョイとして生きる』——フェミニズムを日常で生きること。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Killjoy</h2>
+            <div class="it-card">
+                <h3">Killjoy as Bug Reporter</h3>
+                    <p>キルジョイはバグレポーター。システムの不具合を報告するが、「問題を作る人」と非難される。</p>
+            </div>
+            <div class="it-card">
+                <h3">Affect as Data Flow</h3>
+                    <p>感情はデータフロー。特定の方向に流れ、特定のノードに蓄積する。その配分は権力的。</p>
+            </div>
+            <div class="it-card">
+                <h3">Orientation as Config</h3>
+                    <p>オリエンテーションはシステム設定。デフォルト設定が誰を想定しているか。</p>
+            </div>
+            <div class="it-card">
+                <h3">Diversity as UI Only</h3>
+                    <p>多様性はUIだけの変更。バックエンドのロジックは変わらない。見た目だけのアップデート。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>フェミニスト・キルジョイ</strong>：フェミニズムの新しいアイコン。</li>
+                <li><strong>感情の政治</strong>：感情研究の新パラダイム。</li>
+                <li><strong>クィア現象学</strong>：現象学のクィアな応用。</li>
+                <li><strong>制度批判</strong>：多様性パフォーマンスの暴露。</li>
+                <li><strong>ブログとツイッター</strong>：学術とアクティビズムの融合。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">影響元</h3>
+                        <ul class="list-rich">
+                            <li>フッサール・メルロ＝ポンティ</li>
+                            <li>ジュディス・バトラー</li>
+                            <li>オードリー・ロード</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>現代フェミニズム</li>
+                            <li>クィア理論</li>
+                            <li>制度研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 現代フェミニスト哲学者</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心概念</th>
+                        <th>アプローチ</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>バトラー</strong></td>
+                        <td>ジェンダー・パフォーマティヴィティ</td>
+                        <td>言語行為論</td>
+                        <td>構築主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アーメッド</strong></td>
+                        <td>感情の政治</td>
+                        <td>現象学</td>
+                        <td>感情・身体</td>
+                    </tr>
+                    <tr>
+                        <td><strong>スピヴァク</strong></td>
+                        <td>サバルタン</td>
+                        <td>脱構築</td>
+                        <td>ポストコロニアル</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ハラウェイ</strong></td>
+                        <td>サイボーグ</td>
+                        <td>科学論</td>
+                        <td>テクノフェミニズム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：場の雰囲気を壊すこと</h2>
+            <div class="thought-experiment">
+                <h3">キルジョイのジレンマ</h3>
+                    <p>家族の食卓で、誰かが人種差別的なジョークを言う。笑いが起きる。あなたは不快だ。指摘すべきか？</p>
+                    <p style="margin-top: 1.5rem;">指摘すると「場の雰囲気を壊す」。「冗談なのに」「真剣に取りすぎ」と言われる。あなたが「問題」になる。</p>
+                    <p style="margin-top: 1.5rem;">アーメッドの分析：本当の問題は差別的なジョークであり、それを指摘する人ではない。しかし、指摘者が「問題を作る人」として非難される。</p>
+                    <p style="margin-top: 1.5rem;">これがキルジョイのジレンマ。黙れば不正は続く。指摘すれば自分が排除される。どちらを選んでもコストがある。</p>
+                    <p style="margin-top: 1.5rem;">アーメッドの答え：キルジョイであることを引き受ける。「場の雰囲気」が誰のためにあるのかを問う。全員にとって良い雰囲気ではない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        不正を指摘することは、場の雰囲気を壊すことですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>サラ・アーメッド（1969-）は、イギリス/オーストラリアの哲学者・フェミニスト理論家であり、「感情の政治」「クィア現象学」「制度批判」で知られる現代最重要のフェミニスト思想家の一人です。「フェミニスト・キルジョイ」——不正を指摘することで「場の雰囲気を壊す」人——は彼女の代表的概念。感情は個人的ではなく政治的であり、幸福も権力と結びついている。クィア現象学は空間と身体の向きを分析。制度的な「多様性」がパフォーマンスに過ぎないことを暴露。ブログとSNSを通じて学術とアクティビズムを融合させ、フェミニズムを日常で生きることを提唱する、現代フェミニズムの最前線に立つ思想家です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Being a problem is not the problem.</p>
+    </footer>
+</body>
+
+</html>

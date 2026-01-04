@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランシス・クリック - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* DNA Cyan */
+            --secondary: #164e63;
+            /* Helix Dark */
+            --accent: #22d3ee;
+            /* Light Gene */
+            --highlight: #cffafe;
+            /* Life Glow */
+            --bg: #042f2e;
+            /* Deep Bio */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .crick-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🧬";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .helix-section {
+            background: linear-gradient(135deg, #000 0%, #0891b2 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .helix-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🧬";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="crick-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DNA</a>
+        <div>CRICK_v6.41</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-641 / THE_DECODER</span>
+        <h1>フランシス・クリック</h1>
+        <p class="en-name">Francis Harry Compton Crick（1916–2004）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「生命の秘密を解読した男」——DNA二重らせんとセントラルドグマ</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">分子生物学OS</span>
+            <span class="os-tag">情報OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">DNA二重らせんの発見</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    フランシス・クリックは、イギリスの分子生物学者であり、ジェームズ・ワトソンとともにDNAの二重らせん構造を発見しました。この発見は20世紀最大の科学的業績の一つとされています。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    クリックの歴史的業績——<b>1953年、DNA二重らせん構造を発見。セントラルドグマを提唱。1962年ノーベル生理学・医学賞受賞</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    晩年は意識の科学的研究に取り組んだ。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>クリックのDNA発見は、<b>「生命のソースコードを解読する——生物は『情報』で動くプログラム。DNAはそのソースコード。セントラルドグマはコンパイルのルール」</b>という、生物を情報システムとして理解すること。
+                </p>
+            </div>
+        </section>
+
+        <section class="helix-section">
+            <h2>🧬 1953年、キャベンディッシュ研究所</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                「生命の秘密を発見した」<br><br>
+                クリックとワトソンが昼食時に叫んだ言葉<br>
+                二重らせん——二本の鎖がねじれて<br>
+                A-T、G-C——塩基対<br>
+                自己複製の仕組み<br>
+                遺伝情報の保存と伝達<br>
+                生命の暗号が解読された
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 クリックの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">生命はただの化学であり、化学はただの物理である。しかし生命は非常に複雑な化学である。</p>
+                <p class="quote-author">— フランシス・クリック</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🧬 二重らせん</h3>
+                    <p>DNAの構造。二本の鎖がねじれる。相補的塩基対。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 セントラルドグマ</h3>
+                        <p>DNA→RNA→タンパク質。情報の流れは一方向。</p>
+                </div>
+                <div class="card">
+                    <h3">🔤 遺伝暗号</h3>
+                        <p>コドン。3つの塩基が1つのアミノ酸を指定。</p>
+                </div>
+                <div class="card">
+                    <h3">🧠 意識の科学</h3>
+                        <p>晩年は意識の問題に取り組む。40ヘルツ仮説。</p>
+                </div>
+                <div class="card">
+                    <h3">👽 パンスペルミア</h3>
+                        <p>生命は宇宙から来た？意図的播種説。</p>
+                </div>
+                <div class="card">
+                    <h3">⚛️ 還元主義</h3>
+                        <p>生命は物理・化学に還元できる。神秘はない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Life as Code</h2>
+            <div class="it-card">
+                <h3">DNA as Source Code</h3>
+                    <p>DNAはソースコード。生命の設計図。</p>
+            </div>
+            <div class="it-card">
+                <h3">Central Dogma as Compilation</h3>
+                    <p>セントラルドグマはコンパイル。コードを実行可能形式に変換。</p>
+            </div>
+            <div class="it-card">
+                <h3">Codon as Instruction</h3>
+                    <p>コドンは命令。3ビット（塩基）で1つの操作（アミノ酸）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mutation as Bug</h3>
+                    <p>突然変異はバグ。コードの予期せぬ変更。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>DNA二重らせん構造</strong>：生命の基本構造。</li>
+                <li><strong>セントラルドグマ</strong>：情報の流れ。</li>
+                <li><strong>遺伝暗号</strong>：コドン表。</li>
+                <li><strong>分子生物学</strong>：新しい学問分野。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>シュレーディンガー</li>
+                        <li>X線結晶学</li>
+                        <li>ロザリンド・フランクリン</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ゲノム科学</li>
+                            <li>バイオインフォマティクス</li>
+                            <li>遺伝子工学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：生命は情報か</h2>
+            <div class="thought-experiment">
+                <h3">生命は「ただの」化学か</h3>
+                    <p>クリックは言った——</p>
+                    <p>「生命はただの化学である」</p>
+                    <p>DNAを解読し、遺伝暗号を解明した。</p>
+                    <p>しかし——</p>
+                    <p>情報を持つものは「生きている」のか？</p>
+                    <p>コンピュータウイルスは「生きている」か？</p>
+                    <p>AIは「生きている」か？</p>
+                    <p>生命と非生命の境界はどこか？</p>
+                    <p>情報処理だけで生命を定義できるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        生命は情報以上のものですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フランシス・クリック（1916-2004）は、イギリスの分子生物学者であり、ジェームズ・ワトソンとともにDNAの二重らせん構造を発見しました。1953年のこの発見は20世紀最大の科学的業績の一つ。「セントラルドグマ」で遺伝情報の流れ（DNA→RNA→タンパク質）を定式化し、遺伝暗号の解明に貢献。生命を情報処理として理解する枠組みを確立し、ゲノム科学、バイオインフォマティクス、遺伝子工学の基礎を築きました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The secret of life.</p>
+    </footer>
+</body>
+
+</html>

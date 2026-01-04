@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スラヴォイ・ジジェク - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Žižek Red */
+            --secondary: #450a0a;
+            /* Ljubljana Dark */
+            --accent: #f87171;
+            /* Lacan Light */
+            --highlight: #fee2e2;
+            /* Ideology Glow */
+            --bg: #1a0505;
+            /* Sublime Deep */
+            --text: #fee2e2;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Ideological Background */
+        .ideology-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Žižek Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☭";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Lacan Diagram */
+        .lacan-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .lacan-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .lacan-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .lacan-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .real-box {
+            background: #000;
+            border: 3px solid #666;
+        }
+
+        .symbolic-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .imaginary-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🎬";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ideology-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← IDEOLOGY_CRITIQUE</a>
+        <div>LACAN_MARX_v5.58</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-558 / THE_PROVOCATEUR</span>
+        <h1>スラヴォイ・ジジェク</h1>
+        <p class="en-name">Slavoj Žižek (1949–)</p>
+        <p class="catchphrase">「イデオロギーの崇高な対象」——ポップカルチャーとラカン</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">精神分析OS</span>
+            <span class="os-tag">批判OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ラカン派マルクス主義</h2>
+            <div class="hero-box">
+                <p class="hero-text">スラヴォイ・ジジェクは、スロベニア出身の哲学者・文化批評家であり、ラカン派精神分析とマルクス主義を統合した独自の理論で知られます。映画・ポップカルチャー分析で有名。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ジジェクの核心的主張——<b>イデオロギーは「現実」の外にあるのではなく、私たちの現実認識そのものを構成している</b>。イデオロギーの外には出られない。しかし「症候」を読み解くことで転覆可能。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「They Live」の眼鏡——現実にイデオロギーが隠れているのではなく、眼鏡をかけることでイデオロギー的メッセージが「見える」。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ジジェクは、<b>「OSそのものがマルウェア——クリーンインストールも感染している。ウイルス対策ソフト自体がウイルス。しかしバグを利用して脱獄（jailbreak）は可能」</b>と分析する、イデオロギーのセキュリティリサーチャー。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ラカンの三界 -->
+        <section class="lacan-section">
+            <h2>ラカンの三界（RSI）</h2>
+            <div class="lacan-diagram">
+                <div class="lacan-box real-box">
+                    <p style="font-size: 1.5rem;">現実界（R）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">象徴化不可能</p>
+                    <p style="font-size: 0.85rem;">トラウマ・死</p>
+                </div>
+                <div class="lacan-box symbolic-box">
+                    <p style="font-size: 1.5rem;">象徴界（S）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">言語・法・社会</p>
+                    <p style="font-size: 0.85rem;">大他者</p>
+                </div>
+                <div class="lacan-box imaginary-box">
+                    <p style="font-size: 1.5rem;">想像界（I）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">自我・イメージ</p>
+                    <p style="font-size: 0.85rem;">鏡像段階</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                ラカンの理論をイデオロギー批判に応用。現実界は象徴化を逃れるトラウマ的核心。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ジジェク思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">イデオロギーとは、我々がすでにその中にいるものである。</p>
+                <p class="quote-author">— スラヴォイ・ジジェク</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🎭 イデオロギー</h3>
+                        <p>イデオロギーは「虚偽意識」ではない。現実の構成要素。外には出られない。</p>
+                </div>
+                <div class="card">
+                    <h3">🕳️ 対象a</h3>
+                        <p>Objet petit a。欲望の原因-対象。決して到達できない。欠如を駆動力とする。</p>
+                </div>
+                <div class="card">
+                    <h3">🩹 症候</h3>
+                        <p>Symptom。イデオロギーの矛盾が露呈する点。読み解くことで社会を批判。</p>
+                </div>
+                <div class="card">
+                    <h3">🎬 ポップカルチャー</h3>
+                        <p>映画・ジョークを哲学的に分析。『マトリックス』『They Live』『ヒッチコック』。</p>
+                </div>
+                <div class="card">
+                    <h3">☭ 共産主義</h3>
+                        <p>資本主義批判。しかし過去の共産主義も批判。「新しい共産主義」の模索。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 挑発</h3>
+                        <p>ポリティカル・コレクトネス批判。挑発的発言。「リベラル左派」への批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 映画分析 -->
+        <section class="section">
+            <h2 class="section-title">🔄 映画で読み解く哲学</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">They Live (1988)</h3>
+                        <p>サングラスをかけるとイデオロギーが見える——しかしジジェクは逆転。サングラスなしでは見えない「美化」こそイデオロギー。</p>
+                </div>
+                <div class="card">
+                    <h3">マトリックス</h3>
+                        <p>「赤い pill」と「青い pill」。しかし第三の選択肢はないのか？選択自体がイデオロギー的。</p>
+                </div>
+                <div class="card">
+                    <h3">ヒッチコック</h3>
+                        <p>マクガフィン＝対象a。観客を駆動する「無」。欲望のメカニズム。</p>
+                </div>
+                <div class="card">
+                    <h3">ジョーズ</h3>
+                        <p>サメは「何でもあり得る」——共産主義、資本主義、性。象徴界の空虚。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: OS as Malware</h2>
+            <div class="it-card">
+                <h3">Ideology as Operating System</h3>
+                    <p>イデオロギーはOS。プログラムを動かすが、自らは見えない。「自然」に見える。</p>
+            </div>
+            <div class="it-card">
+                <h3">Real as Kernel Panic</h3>
+                    <p>現実界はカーネルパニック。象徴化できないエラー。システムがクラッシュする点。</p>
+            </div>
+            <div class="it-card">
+                <h3">Symptom as Stack Trace</h3>
+                    <p>症候はスタックトレース。エラーの痕跡。読み解くことでシステムの欠陥が見える。</p>
+            </div>
+            <div class="it-card">
+                <h3">Objet a as Null Pointer</h3>
+                    <p>対象aはヌルポインタ。参照しているが、指す先は「無」。しかしプログラムを駆動。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『イデオロギーの崇高な対象』</strong>：1989年の主著。</li>
+                <li><strong>ポップカルチャー分析</strong>：映画と哲学の統合。</li>
+                <li><strong>ラカン＋マルクス</strong>：精神分析とイデオロギー批判。</li>
+                <li><strong>挑発的スタイル</strong>：ジョーク、脱線、逆説。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジャック・ラカン</li>
+                            <li>カール・マルクス</li>
+                            <li>ヘーゲル</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>文化批評</li>
+                            <li>ポップ哲学</li>
+                            <li>新左派理論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 現代批判理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ジジェク</th>
+                        <th>バトラー</th>
+                        <th>バディウ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>基盤</strong></td>
+                        <td>ラカン</td>
+                        <td>フーコー</td>
+                        <td>数学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>精神分析</td>
+                        <td>系譜学</td>
+                        <td>存在論</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政治</strong></td>
+                        <td>共産主義</td>
+                        <td>フェミニズム</td>
+                        <td>共産主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>スタイル</strong></td>
+                        <td>挑発的</td>
+                        <td>学術的</td>
+                        <td>厳密</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：本当の自由とは</h2>
+            <div class="thought-experiment">
+                <h3">コーヒーか紅茶か</h3>
+                    <p>ジジェクは問います：「コーヒーか紅茶か」という選択は自由か？</p>
+                    <p>自由に見える——しかし「選択肢を設定する」のは誰か？</p>
+                    <p>資本主義は無限の選択肢を与える——しかしシステム自体を選ぶ自由はない。</p>
+                    <p>「赤い pill vs 青い pill」——しかし第三の選択肢は？</p>
+                    <p>ジジェクの答え：選択の枠組み自体を問え。</p>
+                    <p>「コーヒーか紅茶か」と聞かれたら「水をください」と答える——これが真の自由。</p>
+                    <p>しかしこれも新たな選択肢に過ぎないのでは？無限後退...</p>
+                    <p>ジジェク：だからこそイデオロギー批判は終わらない。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「自由な選択」は誰が設定しましたか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>スラヴォイ・ジジェクは、スロベニア出身の哲学者・文化批評家であり、ラカン派精神分析とマルクス主義を統合した独自の理論で知られます。『イデオロギーの崇高な対象』（1989年）で、イデオロギーは「虚偽意識」ではなく現実の構成要素であると主張。映画やポップカルチャーを哲学的に分析し、学術界を超えた人気を獲得しました。挑発的発言と独特のスタイルで「哲学界のロックスター」とも呼ばれます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. And so on, and so on...</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジッドゥ・クリシュナムルティ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            /* Freedom Teal */
+            --secondary: #134e4a;
+            /* Deep Awareness */
+            --accent: #2dd4bf;
+            /* Light Mind */
+            --highlight: #ccfbf1;
+            /* Clarity Glow */
+            --bg: #042f2e;
+            /* Deep Observation */
+            --text: #ccfbf1;
+            --border: #14b8a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Freedom Background */
+        .freedom-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(45, 212, 191, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(13, 148, 136, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Krishnamurti Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d9488 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🦅";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #14b8a6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(13, 148, 136, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(13, 148, 136, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Freedom Section */
+        .freedom-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d9488 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .freedom-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .freedom-quote {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🦅";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="freedom-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← TOTAL_FREEDOM</a>
+        <div>KRISHNAMURTI_v6.94</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-694 / THE_WORLD_TEACHER</span>
+        <h1>ジッドゥ・クリシュナムルティ</h1>
+        <p class="en-name">Jiddu Krishnamurti (1895–1986)</p>
+        <p class="catchphrase">「真理は道なき土地である」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">自由OS</span>
+            <span class="os-tag">気づきOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">権威なき真理</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ジッドゥ・クリシュナムルティは、20世紀インド出身の哲学者・スピリチュアル教師であり、あらゆる権威——宗教、グル、伝統——からの完全な自由を説いた人物です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心は<b>「真理は道なき土地である」</b>——真理に至る既製の道、メソッド、組織は存在しない。各人が自ら発見しなければならない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    神智学協会から「世界教師」として育てられたが、1929年に組織を解散。「私に従うな」と宣言——反権威主義の象徴的転換点。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    クリシュナムルティは、<b>「宗教OSの完全アンインストーラー——すべてのフレームワーク、ライブラリ、依存関係を削除。『クリーン・インストール』ではなく『no-OS』状態。自由はOSなしで発見される」</b>という教えを説いた人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 真理は道なき土地 -->
+        <section class="freedom-section">
+            <h2>🦅 核心の宣言</h2>
+            <p class="freedom-quote">「真理は道なき土地である。いかなる道によっても、いかなる宗教によっても、いかなる宗派によっても、それに近づくことはできない」</p>
+            <p style="margin-top: 3rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">
+                — 1929年、「星の教団」解散演説より
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 クリシュナムルティ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">観察者は観察されるものである。思考者と思考の分離は幻想である。</p>
+                <p class="quote-author">— ジッドゥ・クリシュナムルティ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🦅 完全な自由</h3>
+                        <p>あらゆる権威——グル、伝統、組織、メソッド——からの自由。他者の結論を受け入れない。</p>
+                </div>
+                <div class="card">
+                    <h3">👁️ 条件づけ</h3>
+                        <p>心は文化、教育、経験によって条件づけられている。この条件づけを見ることが解放。</p>
+                </div>
+                <div class="card">
+                    <h3">🔍 観察</h3>
+                        <p>判断、評価、比較なしに観察する。「あるがまま」を見る。分析ではなく直接的知覚。</p>
+                </div>
+                <div class="card">
+                    <h3">🧠 思考の限界</h3>
+                        <p>思考は過去の記憶に基づく。新しいものを捉えられない。思考を超えた知覚。</p>
+                </div>
+                <div class="card">
+                    <h3">⏰ 「今」の重要性</h3>
+                        <p>過去と未来は思考の産物。真の変革は「今」この瞬間にのみ起こる。</p>
+                </div>
+                <div class="card">
+                    <h3">❌ メソッドの拒否</h3>
+                        <p>瞑想のテクニック、段階的プロセス、修行——すべて拒否。即時的な気づきのみ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要テーマ -->
+        <section class="section">
+            <h2 class="section-title">📚 主要テーマ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">恐怖</h3>
+                        <p>恐怖は既知への執着と未知への回避。恐怖を直視すれば消える。</p>
+                </div>
+                <div class="card">
+                    <h3">快楽</h3>
+                        <p>快楽の追求は苦しみの原因。快楽と喜びは異なる。</p>
+                </div>
+                <div class="card">
+                    <h3">関係性</h3>
+                        <p>関係はイメージの出会い。相手のイメージではなく、相手そのものを見る。</p>
+                </div>
+                <div class="card">
+                    <h3">死</h3>
+                        <p>心理的な死——過去への執着を毎日終わらせる。肉体の死は問題ではない。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Freedom</h2>
+            <div class="it-card">
+                <h3">Conditioning as Legacy Code</h3>
+                    <p>条件づけはレガシーコード。過去のプログラマー（文化、教育）が書いたコードが今も動いている。</p>
+            </div>
+            <div class="it-card">
+                <h3">Observation as Real-time Debugging</h3>
+                    <p>観察はリアルタイム・デバッグ。ログを見るのではなく、プロセスをライブで観察。</p>
+            </div>
+            <div class="it-card">
+                <h3">No Method as No Framework</h3>
+                    <p>メソッドの拒否はフレームワークなしのプログラミング。依存関係ゼロ。純粋なコード。</p>
+            </div>
+            <div class="it-card">
+                <h3">Observer is Observed as Self-Reference</h3>
+                    <p>「観察者は観察されるもの」は自己参照。プログラムが自分自身を観察——再帰的意識。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>権威批判</strong>：スピリチュアル権威の徹底的批判。</li>
+                <li><strong>教育への影響</strong>：世界中にクリシュナムルティ学校。</li>
+                <li><strong>対話形式</strong>：講演と対話による教え。</li>
+                <li><strong>科学者との対話</strong>：デヴィッド・ボームとの対話。</li>
+                <li><strong>「私に従うな」</strong>：反権威主義の象徴。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">背景</h3>
+                        <ul class="list-rich">
+                            <li>神智学協会</li>
+                            <li>アニー・ベサント</li>
+                            <li>C.W.リードビーター</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">対話相手・影響</h3>
+                        <ul class="list-rich">
+                            <li>デヴィッド・ボーム</li>
+                            <li>オルダス・ハクスリー</li>
+                            <li>現代マインドフルネス</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ ラーマナとクリシュナムルティ</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ラーマナ・マハルシ</th>
+                        <th>クリシュナムルティ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>「私は誰か？」</td>
+                        <td>判断なき観察</td>
+                    </tr>
+                    <tr>
+                        <td><strong>伝統</strong></td>
+                        <td>アドヴァイタ継承</td>
+                        <td>あらゆる伝統を拒否</td>
+                    </tr>
+                    <tr>
+                        <td><strong>スタイル</strong></td>
+                        <td>沈黙</td>
+                        <td>対話・講演</td>
+                    </tr>
+                    <tr>
+                        <td><strong>組織</strong></td>
+                        <td>アシュラム</td>
+                        <td>組織の解散</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：権威なしで生きる</h2>
+            <div class="thought-experiment">
+                <h3">「私に従うな」</h3>
+                    <p>クリシュナムルティは言う：「私に従うな。私の言葉を信じるな。自分で見よ」。しかしこれ自体が指示ではないか？「権威に従うな」と言う権威。</p>
+                    <p style="margin-top: 1.5rem;">もしあらゆるメソッド、教師、伝統を拒否するなら、どうやって学ぶのか？完全に独学で真理に到達できるのか？</p>
+                    <p style="margin-top: 1.5rem;">クリシュナムルティの答え：私は指針を与えているのではない。条件づけを見るよう促しているだけ。見れば自動的に変容が起こる。</p>
+                    <p style="margin-top: 1.5rem;">批判者は問う：60年以上講演したクリシュナムルティ自身が権威になっていないか？「クリシュナムルティアン」は存在する。</p>
+                    <p style="margin-top: 1.5rem;">彼の答え：もし私を権威にするなら、それは私の教えを理解していない証拠。言葉ではなく、自分自身を見よ。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        すべての権威を拒否することは、可能ですか？望ましいですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジッドゥ・クリシュナムルティ（1895-1986）は、20世紀インド出身の哲学者・スピリチュアル教師であり、あらゆる権威からの完全な自由を説いた人物です。「真理は道なき土地である」——既製の道、メソッド、組織は真理に導かない。各人が自ら発見しなければならない。神智学協会から「世界教師」として育てられたが、1929年に組織を解散し「私に従うな」と宣言。条件づけへの気づき、判断なき観察、思考の限界——これらのテーマで60年以上講演と対話を続けました。物理学者デヴィッド・ボームとの対話は有名。世界中にクリシュナムルティ学校を設立。反権威主義のスピリチュアリティの象徴です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Truth is a pathless land.</p>
+    </footer>
+</body>
+
+</html>

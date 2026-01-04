@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラーマナ・マハルシ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f97316;
+            /* Arunachala Orange */
+            --secondary: #7c2d12;
+            /* Deep Ashram */
+            --accent: #fb923c;
+            /* Light Self */
+            --highlight: #ffedd5;
+            /* Awareness Glow */
+            --bg: #431407;
+            /* Deep Mountain */
+            --text: #ffedd5;
+            --border: #ea580c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Self Background */
+        .self-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Ramana Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f97316 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🕉️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ea580c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Who Am I Section */
+        .inquiry-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f97316 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .inquiry-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .inquiry-question {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .inquiry-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🕉️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .inquiry-question {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="self-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SELF_INQUIRY</a>
+        <div>RAMANA_v6.93</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-693 / THE_SAGE_OF_ARUNACHALA</span>
+        <h1>ラーマナ・マハルシ</h1>
+        <p class="en-name">Sri Ramana Maharshi (1879–1950)</p>
+        <p class="catchphrase">「私は誰か？——この問いだけで十分である」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">アドヴァイタOS</span>
+            <span class="os-tag">自己探求OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">アルナーチャラの聖者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ラーマナ・マハルシは、20世紀インドの聖者・賢者であり、近代アドヴァイタ・ヴェーダーンタの最も影響力ある代表者の一人です。南インドのアルナーチャラ山のふもとで生涯を過ごしました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心は<b>「自己探求（ヴィチャーラ）」</b>——「私は誰か？」という問いを自分自身に向け続けることで、真の自己（アートマン）を発見する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    16歳のとき「死の体験」を経験し、自発的に覚醒。その後、アルナーチャラ山に住み、沈黙のうちに教えを伝えました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ラーマナは、<b>「意識OSのデバッグマスター——『私は誰か？』はルートプロセス（自我）をトレースするコマンド。すべてのプログラム（思考）は『私』から始まる。その『私』の源を追跡すれば、純粋意識（カーネル）に到達」</b>という教えを説いた人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 私は誰か -->
+        <section class="inquiry-section">
+            <h2>🔍 核心の問い</h2>
+            <p class="inquiry-question">「私は誰か？」</p>
+            <p class="inquiry-subtitle">"Who am I?" — ナーン・ヤール</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                思考が起こるたびに「この思考は誰に起こっているのか？」と問う。<br>
+                答えは「私に」。では「その私とは誰か？」——この問いを追求する。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ラーマナ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">沈黙は最も雄弁な教えである。心が静まったとき、真の自己が輝き出す。</p>
+                <p class="quote-author">— ラーマナ・マハルシ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔍 自己探求（ヴィチャーラ）</h3>
+                        <p>「私は誰か？」を問い続ける。思考の源を追跡し、純粋な意識に到達。</p>
+                </div>
+                <div class="card">
+                    <h3">🕉️ アドヴァイタ</h3>
+                        <p>不二一元論。アートマン（個我）とブラフマン（宇宙意識）は同一。分離は幻想。</p>
+                </div>
+                <div class="card">
+                    <h3">🤫 沈黙の教え</h3>
+                        <p>言葉より沈黙。ラーマナの存在そのものが教え。ダルシャン（謁見）による伝達。</p>
+                </div>
+                <div class="card">
+                    <h3">🏔️ アルナーチャラ</h3>
+                        <p>聖なる山。ラーマナはこの山をシヴァ神の顕現と見た。生涯離れなかった。</p>
+                </div>
+                <div class="card">
+                    <h3">💀 死の体験</h3>
+                        <p>16歳で死の恐怖に直面。「身体は死ぬが、私は死なない」——自発的覚醒。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 『ウパデーシャ・サーラ』</h3>
+                        <p>教えの精髄。30節の詩で自己探求の道を説く。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 自己探求の方法 -->
+        <section class="section">
+            <h2 class="section-title">🧘 自己探求の実践</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 思考を観察</h3>
+                        <p>思考が起こったら、それを追いかけるのではなく、観察する。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 源を問う</h3>
+                        <p>「この思考は誰に起こっているのか？」——答えは「私に」。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 私を追跡</h3>
+                        <p>「その私とは誰か？」——この問いを内側に向ける。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 沈黙に至る</h3>
+                        <p>問いを続けると、思考が止まり、純粋な「存在」が残る。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Self-Inquiry</h2>
+            <div class="it-card">
+                <h3">"Who Am I?" as Root Process Trace</h3>
+                    <p>「私は誰か？」はルートプロセスのトレース。すべてのプロセス（思考）の親を追跡。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ego as User Process</h3>
+                    <p>自我（エゴ）はユーザープロセス。カーネル（真の自己）ではなく、その上で動くプログラム。</p>
+            </div>
+            <div class="it-card">
+                <h3">Silence as System Idle</h3>
+                    <p>沈黙はシステム・アイドル状態。すべてのプロセスが停止し、純粋なカーネルが露わになる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Arunachala as Holy Server</h3>
+                    <p>アルナーチャラ山はホーリー・サーバー。ラーマナはそこから教えを配信し続けた。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>自己探求</strong>：シンプルで直接的な瞑想法。</li>
+                <li><strong>近代アドヴァイタ</strong>：西洋にも広まった非二元論。</li>
+                <li><strong>沈黙の教え</strong>：言葉を超えた伝達。</li>
+                <li><strong>アルナーチャラ</strong>：巡礼地として今も人々が訪れる。</li>
+                <li><strong>西洋への影響</strong>：エックハルト・トール、ムージなど。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">伝統</h3>
+                        <ul class="list-rich">
+                            <li>シャンカラ</li>
+                            <li>アドヴァイタ・ヴェーダーンタ</li>
+                            <li>ウパニシャッド</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響先</h3>
+                        <ul class="list-rich">
+                            <li>ニサルガダッタ・マハラジ</li>
+                            <li>パパジ</li>
+                            <li>エックハルト・トール</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 20世紀インドの聖者</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>聖者</th>
+                        <th>教え</th>
+                        <th>方法</th>
+                        <th>特徴</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ラーマナ</strong></td>
+                        <td>自己探求</td>
+                        <td>「私は誰か？」</td>
+                        <td>沈黙・アルナーチャラ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>クリシュナムルティ</strong></td>
+                        <td>自由</td>
+                        <td>気づき</td>
+                        <td>権威批判</td>
+                    </tr>
+                    <tr>
+                        <td><strong>オーロビンド</strong></td>
+                        <td>統合ヨーガ</td>
+                        <td>進化</td>
+                        <td>スピリチュアル進化論</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ニサルガダッタ</strong></td>
+                        <td>私は在る</td>
+                        <td>存在への気づき</td>
+                        <td>ボンベイの賢者</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：私は誰か</h2>
+            <div class="thought-experiment">
+                <h3">自己探求の実験</h3>
+                    <p>今、この文章を読んでいる「私」とは誰か？目、脳、心——しかしそれらは観察される対象。観察しているのは誰？</p>
+                    <p style="margin-top: 1.5rem;">ラーマナの方法：思考や感覚を観察する「私」を探す。その「私」もまた観察できる——では観察しているのは誰？</p>
+                    <p style="margin-top: 1.5rem;">この探求を続けると、最終的に「観察者」と「観察されるもの」の区別が消える。純粋な意識だけが残る——とラーマナは言う。</p>
+                    <p style="margin-top: 1.5rem;">批判者は問う：これは単なる内省の無限後退ではないか？「意識」という答えは何も説明していない。</p>
+                    <p style="margin-top: 1.5rem;">ラーマナの答え：説明ではなく体験。議論ではなく直接的認識。「私は誰か？」を実践すれば、答えは自ずと明らかになる。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        この文章を読んでいる「私」とは、本当は誰ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラーマナ・マハルシ（1879-1950）は、20世紀インドの聖者・賢者であり、近代アドヴァイタ・ヴェーダーンタの最も影響力ある代表者の一人です。核心の教えは「私は誰か？」——この問いを自分自身に向け続けることで、思考の源を追跡し、純粋な意識（真の自己）に到達する。16歳で自発的に覚醒し、その後アルナーチャラ山のふもとで生涯を過ごしました。沈黙を最も雄弁な教えとし、その存在そのものが伝達の手段でした。ニサルガダッタ、エックハルト・トールなど現代のスピリチュアル教師に影響を与え、西洋にも非二元論の教えを広めた、20世紀の偉大な聖者です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Who am I?</p>
+    </footer>
+</body>
+
+</html>

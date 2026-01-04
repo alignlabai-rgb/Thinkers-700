@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イブン・アル＝ジャウズィー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Hanbali Amber */
+            --secondary: #78350f;
+            /* Baghdad Dark */
+            --accent: #f59e0b;
+            /* Light Sermon */
+            --highlight: #fef3c7;
+            /* Moral Glow */
+            --bg: #451a03;
+            /* Deep Islam */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Hanbali Background */
+        .hanbali-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(180, 83, 9, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Ibn al-Jawzi Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📖";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Preacher Section */
+        .preacher-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .preacher-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .preacher-stat {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .preacher-label {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📖";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hanbali-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HANBALI_WISDOM</a>
+        <div>IBN_JAWZI_v6.84</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-684 / THE_MASTER_PREACHER</span>
+        <h1>イブン・アル＝ジャウズィー</h1>
+        <p class="en-name">Ibn al-Jawzi (1116–1201)</p>
+        <p class="catchphrase">「知識は行動を伴わなければ、木のない果実である」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">説教OS</span>
+            <span class="os-tag">道徳OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">バグダードの大説教者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    イブン・アル＝ジャウズィーは、12世紀バグダードのハンバル派学者・説教者であり、イスラム史上最も多作な著者の一人です。1000冊以上の著作を残したとされます。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心は<b>「ワアズ（説教）」</b>——道徳訓戒と心の改善。数万人を前に説教し、人々の心を動かした。バグダードの金曜礼拝での説教は伝説的。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>過度な神秘主義への批判者</b>でもあり、スーフィズムの行き過ぎを批判しながらも、適切な禁欲主義は認めました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    イブン・アル＝ジャウズィーは、<b>「イスラム正統派OSのテクニカルエヴァンジェリスト兼品質管理者——大規模カンファレンス（説教）で聴衆を魅了し、コードベース（正統教義）の品質を維持。神秘主義プラグインの過度な使用を警告」</b>した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 説教の統計 -->
+        <section class="preacher-section">
+            <h2>🎤 伝説的説教者</h2>
+            <div class="grid" style="text-align: center; margin-top: 3rem;">
+                <div>
+                    <p class="preacher-stat">1000+</p>
+                    <p class="preacher-label">著作数</p>
+                </div>
+                <div>
+                    <p class="preacher-stat">100,000+</p>
+                    <p class="preacher-label">聴衆（一回の説教で）</p>
+                </div>
+                <div>
+                    <p class="preacher-stat">85</p>
+                    <p class="preacher-label">生涯年数</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 イブン・アル＝ジャウズィー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">心は庭園のようなもの。手入れを怠れば雑草が生える。</p>
+                <p class="quote-author">— イブン・アル＝ジャウズィー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🎤 ワアズ（説教）</h3>
+                        <p>宗教的説教と道徳訓戒。心を動かし、行動を改善させる。修辞学と情熱。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 多作な著者</h3>
+                        <p>歴史、法学、クルアーン解釈、ハディース、伝記、道徳など多分野で1000冊以上。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ ハンバル派</h3>
+                        <p>四大法学派の一つ。アフマド・イブン・ハンバルに従う。伝統重視、厳格な正統派。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 神秘主義批判</h3>
+                        <p>『タルビース・イブリース』（悪魔の欺瞞）でスーフィズムの行き過ぎを批判。適切な禁欲は認める。</p>
+                </div>
+                <div class="card">
+                    <h3">💔 心の改善</h3>
+                        <p>『サイド・アル＝ハーティル』（心の狩り）——自己省察と精神的成長。内面の改革。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 歴史家</h3>
+                        <p>『アル＝ムンタザム』——創世から1200年までのイスラム史。年代記的歴史叙述。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 主要著作 -->
+        <section class="section">
+            <h2 class="section-title">📚 主要著作</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">タルビース・イブリース</h3>
+                        <p>「悪魔の欺瞞」——スーフィズムの行き過ぎを批判。正統派からの警告。</p>
+                </div>
+                <div class="card">
+                    <h3">サイド・アル＝ハーティル</h3>
+                        <p>「心の狩り」——自己省察と道徳的成長のための随想録。</p>
+                </div>
+                <div class="card">
+                    <h3">アル＝ムンタザム</h3>
+                        <p>「秩序ある編年史」——創世から自分の時代までのイスラム史。</p>
+                </div>
+                <div class="card">
+                    <h3">ザード・アル＝マスィール</h3>
+                        <p>「旅の糧」——クルアーン解釈（タフスィール）。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Preaching</h2>
+            <div class="it-card">
+                <h3">Sermon as Conference Talk</h3>
+                    <p>説教はカンファレンス講演。大規模な聴衆に向けて、情熱と修辞で核心メッセージを伝達。</p>
+            </div>
+            <div class="it-card">
+                <h3">Talbis Iblis as Security Audit</h3>
+                    <p>『悪魔の欺瞞』はセキュリティ監査。神秘主義プラグインの脆弱性を検出し、警告をドキュメント化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Hanbali as Strict Mode</h3>
+                    <p>ハンバル派はstrict mode。伝統（ハディース）に厳格に従う。独自解釈を最小化。</p>
+            </div>
+            <div class="it-card">
+                <h3">1000+ Books as Prolific Output</h3>
+                    <p>1000冊以上の著作は驚異的なコミット数。多分野にわたる網羅的なドキュメンテーション。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>ワアズの伝統</strong>：イスラム説教の模範。</li>
+                <li><strong>膨大な著作</strong>：多分野にわたる1000冊以上。</li>
+                <li><strong>神秘主義批判</strong>：正統派からのチェック機能。</li>
+                <li><strong>ハンバル派の強化</strong>：学派の知的威信を高めた。</li>
+                <li><strong>孫イブン・タイミーヤへの影響</strong>：ハンバル派の系譜。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">師</h3>
+                        <ul class="list-rich">
+                            <li>アフマド・イブン・ハンバル</li>
+                            <li>ハンバル派の伝統</li>
+                            <li>伝統主義</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響</h3>
+                        <ul class="list-rich">
+                            <li>イブン・タイミーヤ</li>
+                            <li>イブン・カイイム</li>
+                            <li>現代サラフィー派</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ ハンバル派学者の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>学者</th>
+                        <th>時代</th>
+                        <th>主な貢献</th>
+                        <th>神秘主義への態度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>アフマド・イブン・ハンバル</strong></td>
+                        <td>9世紀</td>
+                        <td>学派創設</td>
+                        <td>距離を置く</td>
+                    </tr>
+                    <tr>
+                        <td><strong>イブン・アル＝ジャウズィー</strong></td>
+                        <td>12世紀</td>
+                        <td>説教・著作</td>
+                        <td>批判的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>イブン・タイミーヤ</strong></td>
+                        <td>13-14世紀</td>
+                        <td>神学・改革</td>
+                        <td>批判的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>イブン・カイイム</strong></td>
+                        <td>14世紀</td>
+                        <td>霊性・法学</td>
+                        <td>適度に統合</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：神秘主義の限界</h2>
+            <div class="thought-experiment">
+                <h3">正統派と神秘主義のバランス</h3>
+                    <p>イブン・アル＝ジャウズィーは、スーフィズムの「行き過ぎ」を批判しました。しかし、どこからが「行き過ぎ」なのか？</p>
+                    <p style="margin-top: 1.5rem;">スーフィーは言う：神との直接的合一は可能だ。外面的な法（シャリーア）を超えた内面的真実（ハキーカ）がある。</p>
+                    <p style="margin-top: 1.5rem;">
+                        イブン・アル＝ジャウズィーの批判：この道は危険だ。法を軽視し、異端に陥る。ハッラージュは処刑された。正統派の枠内での禁欲は良いが、それを超えるべきではない。</p>
+                    <p style="margin-top: 1.5rem;">
+                        これはイスラムに限らない普遍的な問いです。宗教において、制度と個人体験のバランスはどうあるべきか？正統派は秩序を守るが、硬直化の危険がある。神秘主義は活力を与えるが、逸脱の危険がある。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        宗教において、制度と個人体験のバランスはどうあるべきですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>イブン・アル＝ジャウズィー（1116-1201）は、12世紀バグダードのハンバル派学者・説教者であり、イスラム史上最も多作な著者の一人です。1000冊以上の著作を残し、数万人を前に説教した伝説的説教者。『タルビース・イブリース』（悪魔の欺瞞）でスーフィズムの行き過ぎを批判しながらも、適切な禁欲主義は認めました。『サイド・アル＝ハーティル』（心の狩り）は自己省察と精神的成長のための随想録。ハンバル派の知的威信を高め、後のイブン・タイミーヤ、イブン・カイイムに影響を与えました。道徳訓戒と心の改善——知識は行動を伴わなければ木のない果実です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Knowledge demands action.</p>
+    </footer>
+</body>
+
+</html>

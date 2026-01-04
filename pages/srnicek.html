@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニック・スルニチェク - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            /* Platform Blue */
+            --secondary: #0f172a;
+            /* Data Dark */
+            --accent: #3b82f6;
+            /* Digital Light */
+            --highlight: #dbeafe;
+            /* Cloud Glow */
+            --bg: #030712;
+            /* Network Deep */
+            --text: #dbeafe;
+            --border: #1d4ed8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Platform Background */
+        .platform-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Digital Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a8a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📊";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Platform Types */
+        .platform-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a8a 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .platform-section h2 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .plat-box {
+            padding: 2rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .advertising-box {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .cloud-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .industrial-box {
+            background: #d97706;
+            border: 2px solid #fbbf24;
+        }
+
+        .product-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .lean-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 2px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "📊";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="platform-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PLATFORM_CAPITALISM</a>
+        <div>ACCELERATE_MANIFESTO_v4.95</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-495 / THE_PLATFORM_THEORIST</span>
+        <h1>ニック・スルニチェク</h1>
+        <p class="en-name">Nick Srnicek (1982–)</p>
+        <p class="catchphrase">「プラットフォームは21世紀の工場である」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">政治OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">データが石油になった世界</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    Google、Amazon、Facebook、Uber——21世紀の経済を支配するのは、従来の製造業ではなく「プラットフォーム」企業です。カナダ出身の政治経済学者ニック・スルニチェクは、著書『プラットフォーム・キャピタリズム』（2016年）でこの新しい資本主義の形態を体系的に分析しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スルニチェクによれば、プラットフォームとは<b>「異なるユーザーグループを仲介し、そのインタラクションからデータを抽出するデジタルインフラ」</b>です。プラットフォームは「市場を創造する」のではなく「市場そのものになる」。そしてデータは新たな「石油」——しかし石油と違って、使っても減らず、無限に複製可能。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スルニチェクを学ぶことは、<b>現代のデジタル経済がどのように機能し、何を変えようとしているか</b>を理解することです。彼は「加速主義」の共著者でもあり、左派的な技術ビジョンを提示します。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スルニチェクは、<b>「プラットフォームはAPIであり市場である。異なるユーザーグループ（ドライバーと乗客、売り手と買い手）を接続し、そのトランザクションからデータをロギングする。このデータが新たな価値の源泉であり、独占の基盤」</b>と分析した、デジタル経済のシステムアナリストです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. プラットフォームの類型 -->
+        <section class="platform-section">
+            <h2>📊 5つのプラットフォーム類型</h2>
+            <div class="platform-grid">
+                <div class="plat-box advertising-box">
+                    <p>📰 広告型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Google, Facebook</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">無料サービス＋広告収入</p>
+                </div>
+                <div class="plat-box cloud-box">
+                    <p>☁️ クラウド型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">AWS, Azure</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">インフラを貸し出す</p>
+                </div>
+                <div class="plat-box industrial-box">
+                    <p>🏭 産業型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">GE, Siemens</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">製造業のデジタル化</p>
+                </div>
+                <div class="plat-box product-box">
+                    <p>📦 製品型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Spotify, Netflix</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">サブスク＋コンテンツ</p>
+                </div>
+                <div class="plat-box lean-box">
+                    <p>🚗 リーン型</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Uber, Airbnb</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.3rem;">資産を持たず仲介</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                プラットフォームは一枚岩ではない。ビジネスモデル、収益構造、データ活用法が異なる5類型。共通点は「仲介」と「データ抽出」。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 プラットフォーム資本主義の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">プラットフォームは21世紀において、工場が20世紀に持っていたのと同じ役割を果たしている。</p>
+                <p class="quote-author">— "Platform Capitalism" (2016)</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📊 プラットフォーム</h3>
+                    <p>異なるユーザーグループを仲介するデジタルインフラ。ネットワーク効果により独占に向かう。市場ではなく市場の基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">🛢️ データは新たな石油</h3>
+                        <p>データは21世紀の原材料。しかし石油と違い、使っても減らない。無限複製可能で、機械学習の燃料になる。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 ネットワーク効果</h3>
+                        <p>ユーザーが増えるほど価値が増す。これが独占への傾向を生む。「勝者総取り」の経済。</p>
+                </div>
+                <div class="card">
+                    <h3">📉 リーン・プラットフォーム</h3>
+                        <p>Uber、Airbnb——資産をほとんど持たず、需要と供給を仲介するだけ。リスクは労働者に外部化。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 加速主義</h3>
+                        <p>共著『加速主義宣言』。資本主義を加速させることで、その先のポスト資本主義へ。左派的技術楽観主義。</p>
+                </div>
+                <div class="card">
+                    <h3">🔓 オルタナティブ</h3>
+                        <p>プラットフォーム協同組合、公共プラットフォームなど、現状への対抗案。データの民主化。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 長期低迷からプラットフォームへ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 2008年以前</h3>
+                        <p>2000年代のドットコムバブル崩壊。しかしインフラは残った。ブロードバンド、モバイル、クラウド。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 2008年危機</h3>
+                        <p>金融危機と長期低迷。低金利、余剰資本がテック企業に流入。Uber、Airbnbなどが急成長。</p>
+                </div>
+                <div class="card">
+                    <h3">3. プラットフォームの台頭</h3>
+                        <p>GAFA（Google、Apple、Facebook、Amazon）が経済を支配。時価総額上位を独占。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 今後の課題</h3>
+                        <p>独占規制、データプライバシー、ギグワーカーの権利。プラットフォームの公共性をどう確保するか。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: PLATFORM AS INFRASTRUCTURE</h2>
+            <div class="it-card">
+                <h3">Platform as API Economy</h3>
+                    <p>プラットフォームはAPIとして機能。異なるサービス（ドライバー、乗客）を接続。プラットフォーム自体は何も「生産」しないが、すべてのトランザクションを仲介し、手数料とデータを取る。</p>
+            </div>
+            <div class="it-card">
+                <h3">Data as Training Set</h3>
+                    <p>データは機械学習のトレーニングセット。より多くのデータ＝より良いモデル＝より良いサービス＝より多くのユーザー＝より多くのデータ。正のフィードバックループ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Network Effect as Lock-in</h3>
+                    <p>ネットワーク効果はロックイン。ユーザーが集まるほど離脱しにくくなる。競合サービスに移行するコストが上がる。自然独占。</p>
+            </div>
+            <div class="it-card">
+                <h3">Lean Platform as Serverless</h3>
+                    <p>リーン・プラットフォームはサーバーレスアーキテクチャに似ている。インフラ（車、部屋）を所有せず、オンデマンドで提供者を呼び出す。スケールしやすいが、労働者にリスクを外部化。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『プラットフォーム・キャピタリズム』</strong>：21世紀のデジタル経済を体系的に分析。プラットフォームの5類型を提示。</li>
+                <li><strong>『加速主義宣言』</strong>：アレックス・ウィリアムズとの共著。左派的技術ビジョン。</li>
+                <li><strong>『ポスト労働の世界』</strong>：労働からの解放を構想。ベーシックインカム、労働時間短縮を提唱。</li>
+                <li><strong>プラットフォーム類型論</strong>：広告型、クラウド型、産業型、製品型、リーン型——分析枠組みを確立。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>マルクス主義（政治経済学批判）</li>
+                            <li>ドゥルーズ＆ガタリ（加速主義へ）</li>
+                            <li>デジタル経済論</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>プラットフォーム研究</li>
+                            <li>デジタル労働論</li>
+                            <li>左派加速主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ デジタル経済論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スルニチェク</th>
+                        <th>ショシャナ・ズボフ</th>
+                        <th>エフゲニー・モロゾフ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>プラットフォーム経済</td>
+                        <td>監視資本主義</td>
+                        <td>テクノ・ソリューショニズム批判</td>
+                    </tr>
+                    <tr>
+                        <td><strong>データの見方</strong></td>
+                        <td>新たな原材料</td>
+                        <td>行動余剰</td>
+                        <td>権力のツール</td>
+                    </tr>
+                    <tr>
+                        <td><strong>オルタナティブ</strong></td>
+                        <td>加速＋公共化</td>
+                        <td>規制強化</td>
+                        <td>政治的解決</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>APIエコノミー</td>
+                        <td>ユーザートラッキング</td>
+                        <td>技術決定論批判</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：あなたのデータの価値</h2>
+            <div class="thought-experiment">
+                <h3">無料サービスの代償</h3>
+                    <p>Google検索、Facebook、Instagram——これらのサービスは「無料」です。しかし本当に無料でしょうか？</p>
+                    <p>スルニチェクによれば、あなたは「ユーザー」ではなく「商品」です。プラットフォームはあなたの注意、行動、データを収集し、広告主に販売している。「無料」は幻想——あなたはデータで支払っている。
+                    </p>
+                    <p>Uberのドライバー、Airbnbのホストも同様。彼らはプラットフォームに「アクセス」するために手数料を払い、評価システムに従い、リスク（事故、損害）を自己負担する。プラットフォームは仲介するだけで、資産も労働者も持たない「リーン」な存在。
+                    </p>
+                    <p>では、オルタナティブは何か？スルニチェクはプラットフォーム協同組合（労働者が所有するプラットフォーム）、公共プラットフォーム（政府が運営するデジタルインフラ）を提案します。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたのデータは誰のものですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ニック・スルニチェクの『プラットフォーム・キャピタリズム』は、21世紀のデジタル経済を理解するための必読書です。プラットフォームとは異なるユーザーグループを仲介し、そのインタラクションからデータを抽出するインフラ。広告型、クラウド型、産業型、製品型、リーン型の5類型があり、それぞれ異なるビジネスモデルを持つ。共通するのはネットワーク効果による独占への傾向と、データを新たな価値の源泉とする点です。スルニチェクは批判だけでなく、「加速主義」という左派的技術ビジョンを提示し、プラットフォームの公共化という具体的オルタナティブを示しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Data is the new oil.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.F.スキナー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Behavior Cyan */
+            --secondary: #0c1a1f;
+            /* Lab Dark */
+            --accent: #22d3ee;
+            /* Reinforcement Light */
+            --highlight: #cffafe;
+            /* Operant Glow */
+            --bg: #030a0d;
+            /* Experimental Deep */
+            --text: #cffafe;
+            --border: #0e7490;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Lab Background */
+        .lab-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Experimental Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #164e63 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🐀";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0e7490 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Operant Diagram */
+        .operant-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #164e63 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .operant-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .operant-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .op-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .behavior-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .consequence-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+        }
+
+        .increase-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .decrease-box {
+            background: #dc2626;
+            border: 2px solid #ef4444;
+        }
+
+        .op-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "🔬";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .thought-experiment p {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .operant-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lab-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← BEYOND_FREEDOM_AND_DIGNITY</a>
+        <div>RADICAL_BEHAVIORISM_v4.85</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-485 / THE_ENGINEER_OF_BEHAVIOR</span>
+        <h1>B.F.スキナー</h1>
+        <p class="en-name">Burrhus Frederic Skinner (1904–1990)</p>
+        <p class="catchphrase">「自由意志は幻想。行動は結果によって形成される」</p>
+        <div class="os-tags">
+            <span class="os-tag">心理OS</span>
+            <span class="os-tag">教育OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">行動を科学する</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    私たちは「自分の意志で」行動していると思っています。しかし、20世紀アメリカの心理学者B.F.スキナーは、この考えを徹底的に否定しました。<b>「行動は環境によって形成される」</b>——心の中の意図や感情ではなく、行動の<b>結果（強化）</b>が将来の行動を決定する。これが<b>「徹底的行動主義」</b>です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スキナーは<b>「オペラント条件づけ」</b>を発見・体系化しました。行動が報酬（正の強化）をもたらせばその行動は増加し、罰をもたらせば減少する。この単純な原理が、言語習得から社会設計まで、あらゆる人間行動を説明できるとスキナーは主張しました。「スキナー箱」は行動研究の標準ツールとなりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スキナーを学ぶことは、<b>「自由意志」という概念を問い直すこと</b>です。彼の思想は教育（プログラム学習）、心理療法（行動療法）、UX設計（ゲーミフィケーション）に直接影響を与えています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p style="font-family: 'Space Grotesk', sans-serif;">
+                    スキナーは、<b>「人間は環境からのフィードバックによってプログラムされるシステムである。『意志』や『動機』は内部変数にすぎず、本当のプログラミングは強化スケジュールによって行われる。行動を変えたければ、環境（報酬構造）を変えよ」</b>と主張した、行動のシステムエンジニアです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. オペラント条件づけの図式 -->
+        <section class="operant-section">
+            <h2>🔄 オペラント条件づけ</h2>
+            <div class="operant-diagram">
+                <div class="op-box behavior-box">
+                    <p>🐀 行動</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Behavior</p>
+                </div>
+                <div class="op-arrow">→</div>
+                <div class="op-box consequence-box">
+                    <p>📊 結果</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Consequence</p>
+                </div>
+                <div class="op-arrow">→</div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="op-box increase-box">
+                        <p>⬆️ 強化 → 行動↑</p>
+                    </div>
+                    <div class="op-box decrease-box">
+                        <p>⬇️ 罰 → 行動↓</p>
+                    </div>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8); font-family: 'Space Grotesk', sans-serif;">
+                行動の直後に何が起きるかが将来の行動を決定する。報酬（強化）があれば行動は増加し、罰や無視があれば減少する。これがオペラント条件づけの核心。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 徹底的行動主義の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">The real question is not whether machines think but whether men do.</p>
+                <p class="quote-author">— "Contingencies of Reinforcement" (1969)</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔄 オペラント条件づけ</h3>
+                        <p>行動の結果が将来の行動を形成。パブロフの古典的条件づけ（刺激→反応）を超えて、「行動→結果→行動変化」のモデルを確立。</p>
+                </div>
+                <div class="card">
+                    <h3">➕ 強化</h3>
+                        <p>行動を増加させる結果。正の強化（報酬を与える）と負の強化（嫌悪刺激を除去）。両方とも行動を増やす。</p>
+                </div>
+                <div class="card">
+                    <h3">➖ 罰</h3>
+                        <p>行動を減少させる結果。正の罰（嫌悪刺激を与える）と負の罰（報酬を除去）。しかしスキナーは罰より強化を推奨。</p>
+                </div>
+                <div class="card">
+                    <h3">📅 強化スケジュール</h3>
+                        <p>連続強化、間欠強化（固定・変動×比率・間隔）。ギャンブル依存は変動比率強化の典型例。スケジュールが行動パターンを決定。</p>
+                </div>
+                <div class="card">
+                    <h3">📦 スキナー箱</h3>
+                        <p>行動実験の標準装置。動物がレバーを押すと餌が出る。変数を制御して行動法則を発見。行動研究の方法論的革新。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 自由意志の否定</h3>
+                        <p>「自由意志」は幻想。行動は過去の強化歴と現在の環境で決定される。『自由と尊厳を超えて』で社会設計を提唱。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 行動主義の応用</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. プログラム学習</h3>
+                        <p>学習をスモールステップに分割し、即時フィードバック。ティーチングマシンの開発。今日のeラーニングの先駆。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 行動療法</h3>
+                        <p>不適応行動を強化原理で修正。トークンエコノミー、系統的脱感作。認知行動療法（CBT）の行動的基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 組織行動管理</h3>
+                        <p>職場での行動修正。報酬体系、フィードバックシステム。パフォーマンスマネジメントへの応用。</p>
+                </div>
+                <div class="card">
+                    <h3">4. ゲーミフィケーション</h3>
+                        <p>ポイント、バッジ、ランキング——すべて強化原理の応用。アプリのエンゲージメント設計もスキナー的。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: BEHAVIOR AS PROGRAMMING</h2>
+            <div class="it-card">
+                <h3">Operant Conditioning as Feedback Loop</h3>
+                    <p>オペラント条件づけはフィードバックループ。行動→結果→行動修正。制御システムと同じ論理。正のフィードバック（強化）と負のフィードバック（罰または消去）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Reinforcement Schedule as Reward Algorithm</h3>
+                    <p>強化スケジュールは報酬アルゴリズム。連続、固定比率、変動比率——SNSの「いいね」は変動比率強化。アプリのエンゲージメントはスキナー箱。</p>
+            </div>
+            <div class="it-card">
+                <h3">Behavior Shaping as Incremental Development</h3>
+                    <p>行動形成（シェーピング）は漸進的開発。複雑な行動を小さなステップに分割し、各ステップを強化。agile開発のイテレーションに類似。</p>
+            </div>
+            <div class="it-card">
+                <h3">Extinction as Deprecation</h3>
+                    <p>消去（強化しない→行動減少）は機能の非推奨化。フィードバックを止めれば行動は消える。レガシー機能の段階的廃止と同じ論理。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>オペラント条件づけ</strong>：行動の結果による行動修正を体系化。古典的条件づけを超えた行動研究の新パラダイム。</li>
+                <li><strong>強化スケジュール</strong>：連続強化と間欠強化のパターンを発見。行動の持続性と抵抗力を決定する法則。</li>
+                <li><strong>スキナー箱</strong>：行動実験の標準装置を開発。変数制御と自動記録を可能に。</li>
+                <li><strong>プログラム学習</strong>：教育工学の先駆。即時フィードバックとスモールステップ。今日のeラーニングの基盤。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジョン・ワトソン（行動主義創始）</li>
+                            <li>イワン・パブロフ（古典的条件づけ）</li>
+                            <li>エドワード・ソーンダイク（効果の法則）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>行動療法・CBT</li>
+                            <li>応用行動分析（ABA）</li>
+                            <li>ゲーミフィケーション・UXデザイン</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 心理学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スキナー</th>
+                        <th>フロイト</th>
+                        <th>認知心理学</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>研究対象</strong></td>
+                        <td>観察可能な行動</td>
+                        <td>無意識</td>
+                        <td>認知プロセス</td>
+                    </tr>
+                    <tr>
+                        <td><strong>行動の原因</strong></td>
+                        <td>環境（強化歴）</td>
+                        <td>無意識的欲動</td>
+                        <td>情報処理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>実験的制御</td>
+                        <td>自由連想・解釈</td>
+                        <td>実験・計算モデル</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ブラックボックス最適化</td>
+                        <td>デバッグ・ログ解析</td>
+                        <td>アルゴリズム分析</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 THOUGHT_EXPERIMENT: Walden Two</h2>
+            <div class="thought-experiment">
+                <h3">行動工学のユートピア</h3>
+                    <p>スキナーの小説『ウォールデン・ツー』（1948年）は、行動工学で設計されたコミュニティを描きます。犯罪も争いもない。誰もが幸福。しかし、それは「自由」も「尊厳」もない世界かもしれません。</p>
+                    <p>批評家は問います：行動を制御することは人間の自由を奪うのではないか？スキナーの答え：そもそも「自由意志」は幻想。私たちの行動はすでに環境によって制御されている。問題は「制御するかしないか」ではなく、「誰が、どのように制御するか」。
+                    </p>
+                    <p>今日のソーシャルメディア、ゲームアプリ、ポイントシステム——すべて行動を「設計」している。意図せずスキナー的世界は実現しつつあります。</p>
+                    <p>問題は：この設計は誰の利益のためか？ユーザーのウェルビーイングか、企業の利益か？</p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの行動は、誰によって設計されていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p style="font-family: 'Space Grotesk', sans-serif;">
+                B.F.スキナーの徹底的行動主義は、人間の行動を科学的に研究する方法論を確立しました。オペラント条件づけ、強化スケジュール、行動形成——これらの概念は教育、心理療法、組織管理、UXデザインに直接応用されています。「自由意志は幻想」という主張は物議を醸しましたが、今日のアプリ設計やソーシャルメディアは、意図せずスキナー的原理で動いています。スキナーを学ぶことは、私たちの行動がどのように「設計」されているかを理解し、その設計に意識的に関わることの必要性を認識することでもあります。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Behavior is shaped by its consequences.</p>
+    </footer>
+</body>
+
+</html>

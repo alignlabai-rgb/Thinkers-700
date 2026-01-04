@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レイモンド・ウィリアムズ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b91c1c;
+            /* Cultural Red */
+            --secondary: #450a0a;
+            /* Wales Dark */
+            --accent: #f87171;
+            /* Keywords Rose */
+            --highlight: #fecaca;
+            /* Structure Glow */
+            --bg: #1c0505;
+            /* Materialism Deep */
+            --text: #fecaca;
+            --border: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Cultural Background */
+        .cultural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(185, 28, 28, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Williams Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📚";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #dc2626 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(185, 28, 28, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(185, 28, 28, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Culture Structure */
+        .culture-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .culture-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .culture-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .culture-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .base-box {
+            background: #0891b2;
+            border: 3px solid #22d3ee;
+        }
+
+        .super-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .culture-box-style {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📚";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cultural-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CULTURE_AND_SOCIETY</a>
+        <div>KEYWORDS_v5.45</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-545 / THE_CULTURAL_MATERIALIST</span>
+        <h1>レイモンド・ウィリアムズ</h1>
+        <p class="en-name">Raymond Williams (1921–1988)</p>
+        <p class="catchphrase">「文化は普通である——それは全体的な生活様式である」</p>
+        <div class="os-tags">
+            <span class="os-tag">文化OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">文学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">文化的唯物論</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    レイモンド・ウィリアムズは、イギリス文化研究（カルチュラル・スタディーズ）の創始者の一人であり、ウェールズ出身の文学批評家・社会思想家です。「文化的唯物論」を提唱し、文化と社会の関係を分析しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウィリアムズの核心的洞察——<b>文化は「普通」である</b>。エリート的な「高級文化」ではなく、人々の日常的な生活様式全体が「文化」。労働者階級にも固有の文化がある。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「キーワード」——言葉の意味変化を追跡することで、社会変化を読み解く。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウィリアムズは、<b>「文化はユーザー体験——UIだけでなく、バックエンドの構造、開発プロセス、コミュニティ全体が『文化』。キーワードはAPIドキュメント——言葉の定義変化で仕様変更が分かる」</b>と分析した、社会のUXリサーチャーです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 文化構造 -->
+        <section class="culture-section">
+            <h2>📚 「感情の構造」</h2>
+            <div class="culture-diagram">
+                <div class="culture-box base-box">
+                    <p>🏭</p>
+                    <p>土台</p>
+                    <p style="font-size: 0.85rem;">経済・生産</p>
+                </div>
+                <div style="font-size: 2rem; color: var(--highlight);">↔</div>
+                <div class="culture-box super-box">
+                    <p>📜</p>
+                    <p>上部構造</p>
+                    <p style="font-size: 0.85rem;">法・政治・イデオロギー</p>
+                </div>
+                <div style="font-size: 2rem; color: var(--highlight);">↔</div>
+                <div class="culture-box culture-box-style">
+                    <p>💭</p>
+                    <p>感情の構造</p>
+                    <p style="font-size: 0.85rem;">生きられた経験</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                マルクス主義の土台/上部構造モデルを超えて、「感情の構造」——ある時代を生きる人々の共有された感覚。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウィリアムズ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">文化は普通である。それは全体的な生活様式である。</p>
+                <p class="quote-author">— 「文化は普通である」（1958年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📚 文化的唯物論</h3>
+                        <p>Cultural Materialism。文化を物質的実践として分析。観念論でも経済決定論でもなく。</p>
+                </div>
+                <div class="card">
+                    <h3">💭 感情の構造</h3>
+                        <p>Structure of Feeling。まだ言語化されていないが、共有されている感覚。時代の雰囲気。</p>
+                </div>
+                <div class="card">
+                    <h3">🔑 キーワード</h3>
+                        <p>Keywords。「文化」「社会」「産業」——言葉の意味変化を追跡。社会史としての語彙。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ ヘゲモニー</h3>
+                        <p>グラムシのヘゲモニー概念を発展。支配的、残余的、出現しつつある——三つの文化層。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 長い革命</h3>
+                        <p>Long Revolution。民主主義、産業、文化の同時変革。漸進的だが根本的な変化。</p>
+                </div>
+                <div class="card">
+                    <h3">🏴 ウェールズ</h3>
+                        <p>労働者階級出身。ケンブリッジに進学するも疎外感。地域・階級・ナショナリズム。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. カルチュラル・スタディーズ -->
+        <section class="section">
+            <h2 class="section-title">🔄 カルチュラル・スタディーズ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. バーミンガム学派</h3>
+                        <p>ウィリアムズ、ホガート、E.P.トンプソンが先駆。スチュアート・ホールが発展。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 労働者階級文化</h3>
+                        <p>ホガート『読み書き能力の効用』。労働者階級にも独自の豊かな文化がある。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 大衆文化分析</h3>
+                        <p>テレビ、広告、サブカルチャー——「低級」とされたものを真剣に分析。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 批判的方法</h3>
+                        <p>文化は権力の場。イデオロギー批判。しかし抵抗の可能性も。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Culture as Ecosystem</h2>
+            <div class="it-card">
+                <h3">Culture as Full Stack</h3>
+                    <p>文化はフルスタック。フロントエンド（可視的表現）だけでなく、バックエンド（生産様式）、インフラ（制度）まで含む。</p>
+            </div>
+            <div class="it-card">
+                <h3">Keywords as API Documentation</h3>
+                    <p>キーワードはAPIドキュメント。言葉＝インターフェース定義。意味変化＝仕様変更。歴史的なバージョン管理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Structure of Feeling as User Experience</h3>
+                    <p>感情の構造はUX。言語化されていないが、ユーザーが共有する感覚。デザインに影響。</p>
+            </div>
+            <div class="it-card">
+                <h3">Hegemony as Market Dominance</h3>
+                    <p>ヘゲモニーは市場支配。支配的＝デファクトスタンダード。出現しつつある＝新興技術。残余的＝レガシー。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『文化と社会』</strong>：イギリス文化批評の古典。1958年。</li>
+                <li><strong>『長い革命』</strong>：文化・民主主義・産業の変革。1961年。</li>
+                <li><strong>『キーワード』</strong>：文化と社会の語彙。1976年。</li>
+                <li><strong>文化的唯物論</strong>：マルクス主義の再解釈。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>F.R.リーヴィス</li>
+                            <li>アントニオ・グラムシ</li>
+                            <li>マルクス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>カルチュラル・スタディーズ</li>
+                            <li>ポストコロニアル批評</li>
+                            <li>メディア研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 文化理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウィリアムズ</th>
+                        <th>アドルノ</th>
+                        <th>ブルデュー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>文化観</strong></td>
+                        <td>全体的生活様式</td>
+                        <td>批判的</td>
+                        <td>資本</td>
+                    </tr>
+                    <tr>
+                        <td><strong>大衆文化</strong></td>
+                        <td>抵抗の可能性</td>
+                        <td>文化産業批判</td>
+                        <td>区別の場</td>
+                    </tr>
+                    <tr>
+                        <td><strong>階級</strong></td>
+                        <td>労働者階級文化</td>
+                        <td>大衆の操作</td>
+                        <td>文化資本</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>エコシステム</td>
+                        <td>批判</td>
+                        <td>リソース</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：「文化」とは何か</h2>
+            <div class="thought-experiment">
+                <h3">高級文化と大衆文化</h3>
+                    <p>オペラは「高級文化」、アニメは「低級文化」か？</p>
+                    <p>ウィリアムズは問います：誰が、なぜ、この区別を作ったのか？</p>
+                    <p>19世紀以前、シェイクスピアは大衆娯楽だった。オペラも庶民の楽しみだった。</p>
+                    <p>「高級」化は歴史的なプロセス——階級と権力の作用。</p>
+                    <p>ウィリアムズの答え：文化は「普通」——労働者階級の生活様式も文化。</p>
+                    <p>今日、ゲーム、ミーム、TikTok——これらは「文化」か？</p>
+                    <p>もし「はい」なら、なぜ美術館には展示されないのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「文化」は何ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>レイモンド・ウィリアムズは、「文化的唯物論」「感情の構造」「キーワード」の概念で知られるイギリス文化研究の創始者の一人です。ウェールズの労働者階級出身として、「文化は普通である——全体的な生活様式である」と主張。マルクス主義を発展させつつ、経済決定論を超えて文化の相対的自律性を認めました。『文化と社会』『長い革命』『キーワード』で文化批評の枠組みを確立。カルチュラル・スタディーズ、ポストコロニアル批評、メディア研究に甚大な影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Culture is ordinary.</p>
+    </footer>
+</body>
+
+</html>

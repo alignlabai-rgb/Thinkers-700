@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハンムラビ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #92400e;
+            /* Babylon Bronze */
+            --secondary: #451a03;
+            /* Mesopotamia Dark */
+            --accent: #f59e0b;
+            /* Stele Gold */
+            --highlight: #fef3c7;
+            /* Law Glow */
+            --bg: #1c1000;
+            /* Ancient Deep */
+            --text: #fef3c7;
+            --border: #b45309;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Babylon Background */
+        .babylon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(146, 64, 14, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Hammurabi Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #92400e 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b45309 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(146, 64, 14, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(146, 64, 14, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Law Diagram */
+        .law-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #92400e 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .law-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .law-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .law-box {
+            padding: 2rem 2rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .god-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .king-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .code-box {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        .arrow-down {
+            font-size: 2rem;
+            color: var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="babylon-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CODE_OF_LAW</a>
+        <div>HAMMURABI_v5.53</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-553 / THE_FIRST_LAWGIVER</span>
+        <h1>ハンムラビ</h1>
+        <p class="en-name">Hammurabi (c. 1810–1750 BCE)</p>
+        <p class="catchphrase">「目には目を、歯には歯を」——最古の成文法典</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ハンムラビ法典</h2>
+            <div class="hero-box">
+                <p class="hero-text">ハンムラビは、古代バビロニア王国の王であり、世界最古の成文法典の一つである「ハンムラビ法典」を制定したことで知られます（紀元前18世紀）。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ハンムラビ法典の核心——<b>法は神から与えられ、王によって公布され、石碑に刻まれる</b>。282の条文が、商取引、財産、家族、刑罰を規定。「目には目を」は同害報復（タリオ）の原則。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    法の成文化——恣意的な裁きを防ぎ、予測可能な秩序を作る。法の支配の原型。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ハンムラビ法典は、<b>「人類最初のソースコード公開——法がハードコードされ、誰でも読める。恣意的なランタイム判断ではなく、コンパイル時に確定。法の「API仕様書」を石に刻んだ」</b>、社会システムの最初のドキュメンテーション。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 法の構造 -->
+        <section class="law-section">
+            <h2>⚖️ 法の正統性の構造</h2>
+            <div class="law-diagram">
+                <div class="law-box god-box">
+                    <p>☀️ シャマシュ神</p>
+                    <p style="font-size: 0.85rem;">正義の神</p>
+                </div>
+                <span class="arrow-down">↓</span>
+                <div class="law-box king-box">
+                    <p>👑 ハンムラビ王</p>
+                    <p style="font-size: 0.85rem;">神の代理者</p>
+                </div>
+                <span class="arrow-down">↓</span>
+                <div class="law-box code-box">
+                    <p>📜 法典</p>
+                    <p style="font-size: 0.85rem;">282条</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                法の権威は神→王→法典と降りてくる。石碑に刻むことで永続性と公開性を確保。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ハンムラビ法典の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">もし人が人の目を潰したなら、その者の目を潰すべし。</p>
+                <p class="quote-author">— ハンムラビ法典 196条</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">👁️ 同害報復</h3>
+                        <p>Lex Talionis。目には目を、歯には歯を。報復は被害と等しくあるべき。過剰報復の禁止。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 成文法</h3>
+                        <p>Written Law。法を石碑に刻む。誰でも読める（リテラシーがあれば）。恣意的裁判の防止。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 身分差</h3>
+                        <p>法は平等ではない。自由人、平民、奴隷で罰が異なる。しかし法自体は明確。</p>
+                </div>
+                <div class="card">
+                    <h3">💰 商取引</h3>
+                        <p>契約、ローン、価格規制。商業社会の法的インフラ。経済活動の規範。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍👩‍👧 家族法</h3>
+                        <p>結婚、離婚、相続、養子縁組。家庭内の権利と義務を規定。</p>
+                </div>
+                <div class="card">
+                    <h3">☀️ 神意</h3>
+                        <p>法は太陽神シャマシュから与えられた。神的権威が法の正統性を保証。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 具体例 -->
+        <section class="section">
+            <h2 class="section-title">🔄 法典の具体例</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">建築業者の責任</h3>
+                        <p>「建てた家が崩れて住人が死んだら、建築業者を殺せ」——製造物責任の原型。品質保証。</p>
+                </div>
+                <div class="card">
+                    <h3">医療過誤</h3>
+                        <p>「外科手術で患者を殺したら、医師の手を切り落とせ」——医療責任。しかし身分で異なる。</p>
+                </div>
+                <div class="card">
+                    <h3">虚偽告発</h3>
+                        <p>「殺人の虚偽告発をした者は死刑」——偽証への抑止。訴訟の濫用防止。</p>
+                </div>
+                <div class="card">
+                    <h3">財産保護</h3>
+                        <p>盗難、詐欺、財産権の侵害に対する規定。所有権の保護。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Law as Source Code</h2>
+            <div class="it-card">
+                <h3">Code of Law as Open Source</h3>
+                    <p>法典はオープンソース。石碑に刻んで公開。誰でも読める（アクセス可能）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Lex Talionis as Strict Equality Check</h3>
+                    <p>同害報復は厳密な等価比較。if (damage === penalty) { execute; }。過剰報復はバグ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Stele as Immutable Storage</h3>
+                    <p>石碑は不変ストレージ。ブロックチェーンのように改ざん不可能。永続性。</p>
+            </div>
+            <div class="it-card">
+                <h3">Divine Authority as Root Certification</h3>
+                    <p>神的権威はルート証明書。最上位の信頼の根拠。PKI（公開鍵インフラ）の原型。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ハンムラビ法典</strong>：282条の成文法。</li>
+                <li><strong>同害報復原則</strong>：目には目を。</li>
+                <li><strong>法の公開</strong>：石碑に刻んで設置。</li>
+                <li><strong>バビロン統一</strong>：メソポタミア統一。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 法の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ウル・ナンム法典</li>
+                            <li>シュメール法</li>
+                            <li>メソポタミア慣習法</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>モーセの律法</li>
+                            <li>ローマ法</li>
+                            <li>近代法典</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 古代法典の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ハンムラビ法典</th>
+                        <th>モーセの律法</th>
+                        <th>ローマ十二表法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>時代</strong></td>
+                        <td>紀元前18世紀</td>
+                        <td>紀元前13世紀?</td>
+                        <td>紀元前450年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>権威</strong></td>
+                        <td>シャマシュ神</td>
+                        <td>ヤハウェ</td>
+                        <td>市民</td>
+                    </tr>
+                    <tr>
+                        <td><strong>報復</strong></td>
+                        <td>同害報復</td>
+                        <td>同害報復</td>
+                        <td>賠償中心</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ソースコード</td>
+                        <td>契約</td>
+                        <td>憲法</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：目には目を？</h2>
+            <div class="thought-experiment">
+                <h3">報復の正義</h3>
+                    <p>「目には目を」は野蛮か、それとも正義の原型か？</p>
+                    <p>一見残酷——しかし歴史的文脈を考える：</p>
+                    <p>これ以前は、些細な侮辱に対して村ごと破壊することもあった。</p>
+                    <p>「目には目を」は報復の「上限」を設定した——被害を超える報復を禁じた。</p>
+                    <p>これは復讐の抑制であり、エスカレーションの防止。</p>
+                    <p>現代法は「賠償」に移行した——しかし「均衡」の理念は残っている。</p>
+                    <p>刑罰は罪に比例すべき——この原則はハンムラビからの遺産。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        罰は罪に「等しく」あるべきですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ハンムラビは、古代バビロニア王国の王であり、世界最古の成文法典の一つ「ハンムラビ法典」を制定しました。282条の法律を石碑に刻み、公開することで、法の予測可能性と透明性を確保しました。「目には目を」の同害報復原則は、一見残酷ですが、過剰報復を禁じる「上限」として機能しました。法は神シャマシュから与えられ、王によって公布される——この正統性の構造は、後の法思想に甚大な影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. An eye for an eye.</p>
+    </footer>
+</body>
+
+</html>

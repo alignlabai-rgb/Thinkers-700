@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パドマサンバヴァ（蓮華生） - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #be185d;
+            /* Lotus Pink */
+            --secondary: #500724;
+            /* Tantra Dark */
+            --accent: #f472b6;
+            /* Light Vajra */
+            --highlight: #fce7f3;
+            /* Blessing Glow */
+            --bg: #2a0516;
+            /* Deep Tibet */
+            --text: #fce7f3;
+            --border: #db2777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .padma-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(190, 24, 93, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(244, 114, 182, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #be185d 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🪷";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #db2777 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(190, 24, 93, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(190, 24, 93, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tibet-section {
+            background: linear-gradient(135deg, #000 0%, #be185d 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .tibet-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🪷";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="padma-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← VAJRAYANA</a>
+        <div>PADMASAMBHAVA_v6.48</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-648 / THE_LOTUS_BORN</span>
+        <h1>パドマサンバヴァ（蓮華生）</h1>
+        <p class="en-name">Padmasambhava / Guru Rinpoche（8世紀）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「第二の仏陀」——チベット密教の開祖</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">密教OS</span>
+            <span class="os-tag">チベットOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">チベットに密教を根付かせる</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    パドマサンバヴァ（蓮華生、グル・リンポチェ）は、8世紀にインドからチベットに密教（金剛乗）をもたらした伝説的な大導師です。チベット仏教の四大宗派の一つ、ニンマ派の開祖とされます。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    パドマサンバヴァの歴史的業績——<b>チベットで悪鬼を調伏。サムイェー寺を建立。テルマ（埋蔵経典）を隠す。密教の儀礼・瞑想・倫理を確立</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    チベットでは「第二の仏陀」と崇敬される。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>パドマサンバヴァのチベット伝道は、<b>「OSの地域展開——インドの仏教OSをチベット仕様にローカライズ。土着の『デーモン』（悪鬼）を『プロセス』として取り込み、システムに統合」</b>という、仏教のチベット化。
+                </p>
+            </div>
+        </section>
+
+        <section class="tibet-section">
+            <h2>👹 悪鬼調伏</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                チベットの土地は悪鬼に満ちていた<br>
+                寺を建てようとしても崩される<br>
+                王はパドマサンバヴァを招いた<br>
+                彼は密教の力で——<br>
+                悪鬼を調伏した<br>
+                敵を味方にした<br>
+                悪鬼は仏法の護法神となった<br>
+                サムイェー寺が完成した
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 パドマサンバヴァの教え</h2>
+            <div class="quote-box">
+                <p class="quote-text">私は去らない。信仰を持つ者の前に、私は常にいる。</p>
+                <p class="quote-author">— パドマサンバヴァ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🪷 蓮から生まれる</h3>
+                        <p>蓮の花から生まれた。神秘的な出生。</p>
+                </div>
+                <div class="card">
+                    <h3">👹 調伏</h3>
+                        <p>悪鬼を降伏させ、護法神に転換。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 テルマ</h3>
+                        <p>埋蔵経典。未来のために教えを隠す。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 ニンマ派</h3>
+                        <p>最古のチベット仏教宗派。古訳派。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 ゾクチェン</h3>
+                        <p>大完成。心の本性を直接認識。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 金剛杵</h3>
+                        <p>ヴァジュラ。密教のシンボル。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Tantra</h2>
+            <div class="it-card">
+                <h3">Subjugation as Integration</h3>
+                    <p>調伏は統合。敵対プロセスをシステムに取り込む。</p>
+            </div>
+            <div class="it-card">
+                <h3">Terma as Cache</h3>
+                    <p>テルマはキャッシュ。必要な時に読み出される。</p>
+            </div>
+            <div class="it-card">
+                <h3">Dzogchen as Direct Access</h3>
+                    <p>ゾクチェンはダイレクトアクセス。仲介なしにカーネルへ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Vajra as Root Access</h3>
+                    <p>金剛杵はルートアクセス。システムの根本権限。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>チベット密教</strong>：金剛乗の地域展開。</li>
+                <li><strong>調伏の技法</strong>：敵を味方に。</li>
+                <li><strong>テルマの伝統</strong>：埋蔵経典。</li>
+                <li><strong>ニンマ派</strong>：古訳派の確立。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>インド密教</li>
+                        <li>ナーランダ</li>
+                        <li>シャーンタラクシタ</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>チベット仏教</li>
+                            <li>ニンマ派</li>
+                            <li>ゾクチェン</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：敵を味方に</h2>
+            <div class="thought-experiment">
+                <h3">抑圧か統合か</h3>
+                    <p>パドマサンバヴァは悪鬼を滅ぼさなかった。</p>
+                    <p>調伏した——味方にした。</p>
+                    <p>これは宗教的「統合」の例。</p>
+                    <p>土着の神々を仏教に取り込む。</p>
+                    <p>これは妥協か？ 知恵か？</p>
+                    <p>純粋さを失うか？</p>
+                    <p>それとも普及を可能にするか？</p>
+                    <p>すべての宗教はこれをしてきた。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        敵を味方にすることは正しいですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>パドマサンバヴァ（8世紀、蓮華生、グル・リンポチェ）は、インドからチベットに密教をもたらした伝説的大導師です。悪鬼を調伏してサムイェー寺を建立し、チベット仏教ニンマ派の開祖となりました。テルマ（埋蔵経典）の伝統を確立し、ゾクチェン（大完成）の教えを伝えました。チベットでは「第二の仏陀」と崇敬され、密教の儀礼・瞑想・倫理をチベットに根付かせました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The Lotus-Born.</p>
+    </footer>
+</body>
+
+</html>

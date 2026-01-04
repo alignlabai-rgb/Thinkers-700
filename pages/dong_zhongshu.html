@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>董仲舒 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #991b1b;
+            /* Imperial Red */
+            --secondary: #450a0a;
+            /* State Dark */
+            --accent: #ef4444;
+            /* Heaven Light */
+            --highlight: #fecaca;
+            /* Mandate Glow */
+            --bg: #1a0505;
+            /* Deep Empire */
+            --text: #fecaca;
+            --border: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .dong-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(153, 27, 27, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(239, 68, 68, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #991b1b 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🏛️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b91c1c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(153, 27, 27, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(153, 27, 27, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .heaven-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #991b1b 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .heaven-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🏛️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dong-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CONFUCIANISM</a>
+        <div>DONG_ZHONGSHU_v6.21</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-621 / THE_STATE_THEOLOGIAN</span>
+        <h1>董仲舒</h1>
+        <p class="en-name">Dǒng Zhòngshū（紀元前179–104）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「儒教国教化の立役者」——天人相関説</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">宇宙OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">儒教の国家イデオロギー化</h2>
+            <div class="hero-box">
+                <p class="hero-text">董仲舒は、前漢の儒学者であり、武帝に仕えて儒教を国家の公式イデオロギーとして確立した人物です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    董仲舒の歴史的業績——<b>「百家を罷して儒術のみを独尊す」を建議。天人相関説で皇帝権力に宇宙論的正当性を付与。2000年続く儒教国家の基盤を構築</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    陰陽五行説と儒教を統合し、政治的・宇宙論的体系を創出。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>董仲舒の業績は、<b>「儒教のエンタープライズ導入——個人の道徳哲学を国家OSにスケールアップ。天の意志をAPIとして皇帝に接続」</b>という、思想の国家実装。</p>
+            </div>
+        </section>
+
+        <section class="heaven-section">
+            <h2>🌌 天人相関説</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                天と人は相互に感応する<br>
+                皇帝が徳を失えば天が災害を送る<br>
+                皇帝が善政を行えば祥瑞が現れる<br>
+                天は皇帝を監視している<br>
+                皇帝の権力は絶対だが——<br>
+                天への責任がある
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 董仲舒の思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">春秋の義を繹いて明かにすれば、諸侯卿大夫の義、天子の義も見ゆ。</p>
+                <p class="quote-author">— 董仲舒『春秋繁露』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌌 天人相関</h3>
+                        <p>天と人の相互感応。災異と祥瑞。皇帝への天の監視。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 三綱五常</h3>
+                        <p>君臣、父子、夫婦の関係。仁義礼智信の五常。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 陰陽五行</h3>
+                        <p>陰陽五行説と儒教を統合。宇宙論的儒教。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 春秋学</h3>
+                        <p>『春秋』解釈を通じた政治理論。公羊学派。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 儒教独尊</h3>
+                        <p>百家を罷し儒教のみを尊ぶよう建議。</p>
+                </div>
+                <div class="card">
+                    <h3">👑 天命</h3>
+                        <p>皇帝は天命を受けているが、失政で天命を失う。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: State Ideology</h2>
+            <div class="it-card">
+                <h3>Confucianism as State OS</h3>
+                <p>儒教は国家OS。すべての制度がこの上で動く。</p>
+            </div>
+            <div class="it-card">
+                <h3">Heaven as Monitoring System</h3>
+                    <p>天は監視システム。皇帝のパフォーマンスを監視し、アラート（災異）を発する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Yin-Yang as Framework</h3>
+                    <p>陰陽五行はフレームワーク。儒教の機能を拡張。</p>
+            </div>
+            <div class="it-card">
+                <h3">Three Bonds as Hierarchy</h3>
+                    <p>三綱は階層構造。権限と責任のチェーン。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>儒教国教化</strong>：2000年続く体制。</li>
+                <li><strong>天人相関説</strong>：政治神学。</li>
+                <li><strong>三綱五常</strong>：社会倫理の骨格。</li>
+                <li><strong>宇宙論的儒教</strong>：陰陽五行との統合。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>孔子・孟子</li>
+                        <li>陰陽家</li>
+                        <li>公羊春秋</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>漢代儒教</li>
+                            <li>帝国イデオロギー</li>
+                            <li>2000年の中国政治</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：思想のインストール</h2>
+            <div class="thought-experiment">
+                <h3">国家が思想を採用する時</h3>
+                    <p>武帝は董仲舒の建議を受け入れた。</p>
+                    <p>儒教が国家の公式イデオロギーになった。</p>
+                    <p>これは儒教にとって勝利か？</p>
+                    <p>それとも思想の変質か？</p>
+                    <p>国家に採用されると——</p>
+                    <p>思想は権力に奉仕するようになる？</p>
+                    <p>孔子の教えは国家統制の道具になったのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        国家に採用されることは、思想にとって良いことですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>董仲舒（紀元前179-104）は、前漢の儒学者であり、武帝に仕えて儒教を国家の公式イデオロギーとして確立しました。「百家を罷して儒術のみを独尊す」を建議し、天人相関説で皇帝権力に宇宙論的正当性を付与。陰陽五行説と儒教を統合して三綱五常を体系化し、2000年続く儒教国家の基盤を構築しました。『春秋繁露』が主著。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Heaven and state.</p>
+    </footer>
+</body>
+
+</html>

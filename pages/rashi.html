@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラシ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c2d12;
+            /* Parchment Brown */
+            --secondary: #1c0a01;
+            /* Ink Dark */
+            --accent: #c2410c;
+            /* Commentary Orange */
+            --highlight: #fed7aa;
+            /* Script Glow */
+            --bg: #0f0503;
+            /* Deep Manuscript */
+            --text: #fed7aa;
+            --border: #9a3412;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .script-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 45, 18, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(194, 65, 12, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✍️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #9a3412 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 45, 18, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 45, 18, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Script Section */
+        .script-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c2d12 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .script-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .rashi-script {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✍️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="script-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← COMMENTARY</a>
+        <div>RASHI_v5.91</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-591 / THE_COMMENTATOR</span>
+        <h1>ラシ</h1>
+        <p class="en-name">Rashi / Rabbi Shlomo Yitzchaki (1040–1105)</p>
+        <p class="catchphrase">「最も読まれた注解者」——聖書とタルムードの決定版解釈</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">ユダヤOS</span>
+            <span class="os-tag">注解OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">注解の決定版</h2>
+            <div class="hero-box">
+                <p class="hero-text">ラシ（シュロモ・ベン・イツハク、Rabbi Shlomo Yitzchaki
+                    の略）は、11世紀フランス・トロワのユダヤ教の賢者であり、聖書とタルムードの最も重要な注解者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ラシの歴史的業績——<b>聖書とタルムードに対する包括的な注解を執筆。簡潔で明晰。今日まで標準的参照</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ラシの注解なしにトーラーやタルムードを学ぶことは考えられない——それほど影響力が大きい。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ラシの注解は、<b>「公式ドキュメントの決定版コメント——コードの意図を説明し、難解な部分を明確化。すべての開発者が参照する標準」</b>という、知識アクセスの民主化。
+                </p>
+            </div>
+        </section>
+
+        <!-- ラシ書体 -->
+        <section class="script-section">
+            <h2>✍️ ラシ書体</h2>
+            <p class="rashi-script">רש״י</p>
+            <p style="font-size: 1.2rem;">
+                ラシの名を冠した書体（実際はスペイン系ユダヤ人の書体）<br>
+                注解部分を本文と区別するために使用<br>
+                今日でも聖書・タルムード版に使用
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ラシの注解</h2>
+            <div class="quote-box">
+                <p class="quote-text">聖句の平易な意味（ペシャット）に従って解釈する。</p>
+                <p class="quote-author">— ラシの方法論</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 聖書注解</h3>
+                    <p>トーラー五書の包括的注解。ペシャット（平易な意味）を重視。ミドラシュも引用。</p>
+                </div>
+                <div class="card">
+                    <h3>📚 タルムード注解</h3>
+                    <p>バビロニア・タルムード全体の注解。議論の流れを明確化。</p>
+                </div>
+                <div class="card">
+                    <h3">✂️ 簡潔さ</h3>
+                        <p>必要最小限の言葉で最大限の明確さ。余計な言葉がない。</p>
+                </div>
+                <div class="card">
+                    <h3">🇫🇷 ラーズ</h3>
+                        <p>フランス語の単語を注解に含める（ラーズ）。11世紀フランス語の貴重な資料。</p>
+                </div>
+                <div class="card">
+                    <h3">🍇 ブドウ栽培者</h3>
+                        <p>シャンパーニュ地方でブドウ畑を所有。実生活の知識が注解に反映。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍👧 孫たち（トサフォート）</h3>
+                        <p>孫や弟子たちがラシへの補足・反論（トサフォート）を執筆。対話的伝統。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Documentation</h2>
+            <div class="it-card">
+                <h3>Commentary as Code Comments</h3>
+                <p>注解はコードコメント。元のテキスト（コード）の意図を説明し、後続の読者を助ける。</p>
+            </div>
+            <div class="it-card">
+                <h3>Brevity as Clean Code</h3>
+                <p>簡潔さはクリーンコード。余計な言葉がない——DRY原則。</p>
+            </div>
+            <div class="it-card">
+                <h3">Tosafot as Pull Requests</h3>
+                    <p>トサフォートはプルリクエスト。ラシへの追加、修正、議論。コードレビュー。</p>
+            </div>
+            <div class="it-card">
+                <h3">Standard Reference as API Docs</h3>
+                    <p>標準参照はAPIドキュメント。すべての開発者が使う公式リソース。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>聖書注解</strong>：トーラー五書の決定版解釈。</li>
+                <li><strong>タルムード注解</strong>：全トラクタートへの注解。</li>
+                <li><strong>ペシャット重視</strong>：平易な意味の優先。</li>
+                <li><strong>アクセシビリティ</strong>：難解なテキストの民主化。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>タルムード</li>
+                        <li>ミドラシュ</li>
+                        <li>先行注解者</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>トサフォート</li>
+                            <li>後世のすべての注解者</li>
+                            <li>キリスト教ヘブライ学者</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：注解なしで読めるか</h2>
+            <div class="thought-experiment">
+                <h3>テキストとコメント</h3>
+                <p>ラシの注解は聖書・タルムードに不可欠になった。</p>
+                <p>標準的な版ではラシが常に印刷されている。</p>
+                <p>これは良いことか？</p>
+                <p>注解なしで元のテキストを読む能力は失われたか？</p>
+                <p>コードのコメントが多すぎると、コード自体を読まなくなる——</p>
+                <p>しかし、コメントなしでは複雑なコードは理解できない。</p>
+                <p>最適なバランスはどこにあるか？</p>
+                <p>ラシは元のテキストへのアクセスを民主化したか、</p>
+                <p>それとも元のテキストとの直接的な関係を遮断したか？</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    注解は助けになりますか、障害になりますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラシ（1040-1105）は、11世紀フランスのユダヤ教の賢者であり、聖書とタルムードの最も重要な注解者です。簡潔で明晰な注解は、今日まで標準的参照として使われています。ペシャット（平易な意味）を重視しながらもミドラシュを引用し、難解なテキストへのアクセスを民主化しました。孫や弟子たちによるトサフォート（補足注解）が対話的伝統を形成。ラシの注解なしにトーラーやタルムードを学ぶことは考えられないほど、ユダヤ教の学習に不可欠な存在です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The definitive commentary.</p>
+    </footer>
+</body>
+
+</html>

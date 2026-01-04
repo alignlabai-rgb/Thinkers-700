@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フリードリヒ・シュライアマハー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            /* Deep Ocean Blue */
+            --secondary: #0f172a;
+            /* Midnight Ink */
+            --accent: #d4af37;
+            /* Sacred Gold */
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --border: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Sacred Text Background */
+        .sacred-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.02;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 50px,
+                    var(--primary) 50px,
+                    var(--primary) 51px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Hermeneutic Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: #fff;
+            padding: 12rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📖";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 10rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.1);
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(30, 58, 95, 0.15);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid #334155;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(51, 65, 85, 0.3);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Hermeneutic Circle Diagram */
+        .circle-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .circle-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 4rem;
+        }
+
+        .circle-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .circle-box {
+            padding: 3rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .part-box {
+            background: var(--primary);
+        }
+
+        .whole-box {
+            background: var(--secondary);
+        }
+
+        .circle-arrow {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--secondary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📜";
+            position: absolute;
+            left: 0;
+            font-size: 1.8rem;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 8rem 2rem;
+            }
+
+            .circle-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sacred-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HERMENEUTIK_FUNDAMENTUM</a>
+        <div>INTERPRETATION_THEOLOGY_v4.65</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-465 / VATER_DER_MODERNEN_THEOLOGIE</span>
+        <h1>フリードリヒ・シュライアマハー</h1>
+        <p class="en-name">Friedrich Schleiermacher (1768–1834)</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">言語OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">理解することの理解</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    テキストを読むとき、あなたは何をしているのか。シュライアマハーは、この一見自明な行為を哲学的に徹底して考えた人物です。彼は<b>「理解する」という行為そのもの</b>を学問として確立した近代解釈学（ヘルメノイティクス）の父であり、同時にプロテスタント神学を啓蒙主義の批判から救い出した<b>近代神学の父</b>でもあります。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    主著『宗教について——宗教を軽蔑する教養人に向けた講話』（1799年）で、シュライアマハーは革命的な主張を行いました。宗教とは教義でも道徳でもない。<b>「絶対的に依存している感情（schlechthinnige
+                        Abhängigkeit）」</b>という、あらゆる思考に先立つ直接的な意識経験である——と。これにより、カントの理性批判を受けてもなお、宗教は固有の領域を持つことが示されました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シュライアマハーを学ぶことは、<b>「著者が自分自身を理解するよりもよく著者を理解する」</b>という大胆な可能性を探求することです。AI翻訳、異文化理解、文学研究——あらゆる「解釈」の現場でシュライアマハーの問いは今も生きています。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--secondary); color: #fff; border-radius: 20px;">
+                <h4 style="color: var(--accent);">💡 たとえるなら</h4>
+                <p>シュライアマハーは、<b>「テキスト理解とは、著者の『ソースコード（思考プロセス）』を逆コンパイルし、その生成文法を再構築することだ」</b>と主張した、知のリバースエンジニアリングの先駆者です。単に「出力（テキスト）」を読むのではなく、その出力を生成した「関数（著者の精神）」を復元する——それが解釈学です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 解釈学的循環の図式 -->
+        <section class="circle-section">
+            <h2>🔄 解釈学的循環</h2>
+            <div class="circle-diagram">
+                <div class="circle-box part-box">
+                    <p>部分</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">個々の語・文</p>
+                </div>
+                <div class="circle-arrow">⟷</div>
+                <div class="circle-box whole-box">
+                    <p>全体</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">テキスト・著者</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                個々の語は全体の文脈からしか理解できないが、全体は個々の語の理解なしには把握できない。この循環は悪循環ではなく、理解を深める螺旋的プロセスである。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 解釈学と神学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">著者が自分自身を理解するよりもよく、著者を理解しなければならない。</p>
+                <p class="quote-author">— シュライアマハー『解釈学』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 文法的解釈</h3>
+                    <p>テキストを言語的・歴史的文脈の中で理解する。語の意味、文法構造、時代の言語使用を分析する客観的側面。</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 心理学的解釈</h3>
+                    <p>著者の精神的プロセスを追体験（Nacherleben）する。テキスト生成の内的動機を再構築する主観的側面。</p>
+                </div>
+                <div class="card">
+                    <h3>🔄 解釈学的循環</h3>
+                    <p>部分は全体からしか、全体は部分からしか理解できない。この循環を通じて理解は深化する。悪循環ではなく生産的螺旋。</p>
+                </div>
+                <div class="card">
+                    <h3>🙏 宗教的感情</h3>
+                    <p>宗教の本質は教義でも道徳でもなく「絶対的依存の感情」。思考や行為に先立つ、宇宙との一体感という直接的意識。</p>
+                </div>
+                <div class="card">
+                    <h3>🌊 シュレヒトヒンニゲ・アプヘンギヒカイト</h3>
+                    <p>「絶対的に依存しているという感情」。自己と全体（神/無限）との関係の直接的自覚。宗教体験の核心。</p>
+                </div>
+                <div class="card">
+                    <h3>💬 対話的理解</h3>
+                    <p>理解は著者との「対話」である。読者は問いを立て、テキストは答える。この往復運動が真の理解を生む。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 解釈のプロセス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 予備理解（Vorverständnis）</h3>
+                    <p>読者は常に事前理解を持っている。完全な白紙状態からの読解は不可能。この先入見を自覚することが第一歩。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 文法的分析</h3>
+                    <p>語彙・文法・時代の言語使用を分析。テキストを歴史的・言語的文脈に位置づける。客観的理解の基盤を築く。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 心理学的再構成</h3>
+                    <p>著者の思考プロセスを追体験する。なぜこの表現を選んだのか、何を伝えようとしたのかを内側から理解する。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 統合と深化</h3>
+                    <p>部分と全体を往復しながら理解を深める。循環を繰り返すたびに、より豊かな理解が生まれる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Hermeneutics as Decompilation</h2>
+            <div class="it-card">
+                <h3>Text as Compiled Output, Author as Source Code</h3>
+                <p>テキストは著者の思考（ソースコード）がコンパイルされた出力物。解釈学とは、この出力から元のソースコードを逆コンパイルする技術。完全な復元は不可能でも、近似的再構築は可能。</p>
+            </div>
+            <div class="it-card">
+                <h3>Hermeneutic Circle as Recursive Parsing</h3>
+                <p>解釈学的循環は、再帰的パーシングに類似する。部分を解析するには全体の構文規則が必要だが、構文規則は部分の解析から抽出される。この再帰を繰り返すことで、最終的にAST（抽象構文木）が構築される。</p>
+            </div>
+            <div class="it-card">
+                <h3>Religious Feeling as Pre-Logical Event Handler</h3>
+                <p>宗教的感情はOSのイベントハンドラに似ている。論理処理（教義解釈）や行動実行（道徳）に先立って発火する、最も低レベルな意識状態。これをキャッチしないと、宗教の本質を見失う。</p>
+            </div>
+            <div class="it-card">
+                <h3>Understanding Better than the Author as Optimization</h3>
+                <p>著者より著者を理解するとは、著者が無意識に従っていた規則を明示化すること。実行時のJITコンパイルが、元のコードより効率的な機械語を生成するように、優れた解釈は著者の意図を超えた構造を明らかにする。
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>一般解釈学の確立</strong>：聖書解釈に限定されていた解釈学を、あらゆるテキスト理解に適用可能な普遍的方法論へと拡張。</li>
+                <li><strong>宗教の自律領域</strong>：宗教を知識（形而上学）や行為（道徳）に還元するカント的批判から、宗教を独自の「感情」領域として救出。</li>
+                <li><strong>プロテスタント神学の刷新</strong>：啓蒙主義の批判に応答し、信仰を体験・感情の次元で再定義。リベラル神学の源流。</li>
+                <li><strong>プラトン翻訳</strong>：ドイツ語へのプラトン全集翻訳。翻訳理論の実践的展開。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イマヌエル・カント（批判哲学、宗教論）</li>
+                        <li>ヨハン・G・ヘルダー（言語哲学、歴史主義）</li>
+                        <li>ドイツ・ロマン主義（感情、直観の重視）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>ヴィルヘルム・ディルタイ（精神科学の解釈学）</li>
+                        <li>ハンス＝ゲオルク・ガダマー（哲学的解釈学）</li>
+                        <li>パウル・リクール（テキスト解釈学）</li>
+                        <li>リベラル神学（ハルナック、トレルチ）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 解釈学的立場の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シュライアマハー</th>
+                        <th>ガダマー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>目標</strong></td>
+                        <td>著者の意図の再構築</td>
+                        <td>地平の融合（新たな意味の創造）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>先入見</strong></td>
+                        <td>克服すべき障害</td>
+                        <td>理解の条件・積極的役割</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>心理学的追体験</td>
+                        <td>効果史的意識</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>逆コンパイル</td>
+                        <td>バージョン間の統合</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：翻訳の不可能性</h2>
+            <div class="thought-experiment">
+                <h3>完璧な翻訳は可能か？</h3>
+                <p>ある日本語の俳句を英語に翻訳することを想像してください。「古池や 蛙飛び込む 水の音」——芭蕉のこの句は、英語でどう表現できるでしょうか。</p>
+                <p>シュライアマハーは、翻訳には二つの方法があると述べました。読者を著者に近づけるか、著者を読者に近づけるか。前者は原文の「異質さ」を保持し、後者は自然な訳文を優先する。</p>
+                <p>さらに根本的な問題があります。芭蕉が感じた「古池」の風景、蛙が飛び込む瞬間の静寂と音の対比——これらを芭蕉が感じたように感じ取ることは、可能なのでしょうか。シュライアマハーは、<b>理解とは著者の思考プロセスを「追体験」すること</b>だと言います。
+                </p>
+                <p
+                    style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    あなたは誰かの言葉を「完全に」理解したことがありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フリードリヒ・シュライアマハーは、「理解する」という行為を哲学的に解明した先駆者でした。解釈学的循環——部分と全体の往復運動——という概念は、テキスト理解だけでなく、異文化理解、対話、さらには機械翻訳においても根本的な洞察を与え続けています。同時に、宗教を「絶対依存の感情」として再定義することで、近代の世俗化批判から信仰を守る道を開きました。AIがテキストを「処理」する時代に、シュライアマハーの問い——「理解とは何か」——は、かつてないほど鋭い問いかけとなっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Verstehen ist Nachkonstruieren.</p>
+    </footer>
+</body>
+
+</html>

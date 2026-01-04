@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パウル・ティリッヒ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4338ca;
+            /* Ultimate Indigo */
+            --secondary: #1e1b4b;
+            /* Ground Dark */
+            --accent: #818cf8;
+            /* Light Concern */
+            --highlight: #e0e7ff;
+            /* Courage Glow */
+            --bg: #0f0e24;
+            /* Deep Being */
+            --text: #e0e7ff;
+            --border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Ground Background */
+        .ground-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(129, 140, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(67, 56, 202, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Tillich Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "∞";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(67, 56, 202, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(67, 56, 202, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Diagram Section */
+        .diagram-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .diagram-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .diagram-box {
+            padding: 2rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 15px;
+            text-align: center;
+            width: 320px;
+        }
+
+        .diagram-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .box-concern {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .box-faith {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .box-god {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "∞";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ground-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ULTIMATE_CONCERN</a>
+        <div>TILLICH_v6.69</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-669 / THE_THEOLOGIAN_OF_CULTURE</span>
+        <h1>パウル・ティリッヒ</h1>
+        <p class="en-name">Paul Tillich (1886–1965)</p>
+        <p class="catchphrase">「神とは存在それ自体であり、存在の根拠である」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">実存OS</span>
+            <span class="os-tag">文化OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">文化の神学者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    パウル・ティリッヒは、ドイツ生まれのアメリカの神学者・哲学者であり、20世紀で最も影響力のあるプロテスタント神学者の一人です。神学と文化、宗教と世俗の境界を超える「相関の方法」を提唱しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「究極的関心（ultimate concern）」</b>——宗教とは何か？それは教義や儀式ではない。人間にとって「究極的に重要なもの」への関わり。これが宗教の本質。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    もう一つの核心は<b>「存在の勇気（the courage to be）」</b>——不安（非存在の脅威）に直面しながらも自己を肯定する勇気。実存主義と神学の統合。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ティリッヒは、<b>「宗教OSと実存OSのAPI統合——両者は別々のシステムではなく、相互に呼び出し合う。宗教は実存的問いに答え、実存は宗教的探求を動機づける。『相関の方法』はこのAPI仕様」</b>を設計した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 究極的関心 -->
+        <section class="diagram-section">
+            <h2>∞ 究極的関心の構造</h2>
+            <div class="diagram-flow">
+                <div class="diagram-box box-concern">
+                    <p>🔥 究極的関心</p>
+                    <p style="font-size: 0.9rem;">人間にとって最も重要なもの</p>
+                </div>
+                <div class="diagram-arrow">↓</div>
+                <div class="diagram-box box-faith">
+                    <p>🙏 信仰</p>
+                    <p style="font-size: 0.9rem;">究極的なものに捉えられること</p>
+                </div>
+                <div class="diagram-arrow">↓</div>
+                <div class="diagram-box box-god">
+                    <p>∞ 神＝存在それ自体</p>
+                    <p style="font-size: 0.9rem;">存在の根拠</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                神は「存在」の一つではなく、存在それ自体。「神は存在するか」という問いは誤り。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ティリッヒ神学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">神は「存在」という述語の主語ではない。神は存在それ自体であり、存在の根拠である。</p>
+                <p class="quote-author">— パウル・ティリッヒ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>∞ 究極的関心</h3>
+                    <p>宗教の定義。人間が「究極的」と感じるものへの関わり。これは伝統的な神でなくてもよい——国家、富、名誉も究極的関心になりうる（ただし偶像）。</p>
+                </div>
+                <div class="card">
+                    <h3>💪 存在の勇気</h3>
+                    <p>非存在（死、無意味、罪責）に脅かされながらも、自己を肯定する勇気。不安を克服するのではなく、引き受けて生きる。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 相関の方法</h3>
+                        <p>実存的な問いと神学的な答えを相関させる。哲学が問いを分析し、神学が答えを提示。対話的アプローチ。</p>
+                </div>
+                <div class="card">
+                    <h3">🎨 文化の神学</h3>
+                        <p>宗教は文化の深層であり、文化は宗教の表現。芸術、政治、科学——すべてに宗教的次元がある。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ プロテスタント原理</h3>
+                        <p>偶像崇拝への批判。いかなる有限なもの（制度、教義）も究極的なものに置き換えてはならない。批判的精神。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 新しい存在</h3>
+                        <p>キリストにおける「新しい存在」。疎外を克服し、本来の自己との和解。キリスト論の実存主義的解釈。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 三つの不安 -->
+        <section class="section">
+            <h2 class="section-title">😰 三つの不安</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 運命と死の不安</h3>
+                        <p>存在論的不安。私たちは死に向かう存在であり、偶然に支配されている。非存在の脅威。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 空虚と無意味の不安</h3>
+                        <p>精神的不安。人生に意味はあるのか？価値は相対的なのか？現代の実存的危機。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 罪責と断罪の不安</h3>
+                        <p>道徳的不安。私は正しく生きているか？許されるか？良心の呵責。</p>
+                </div>
+                <div class="card">
+                    <h3">存在の勇気</h3>
+                        <p>これらの不安を「治す」のではなく、引き受けて生きる勇気。絶対的信仰——不安そのものを包含する信仰。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Existential Theology</h2>
+            <div class="it-card">
+                <h3">Ultimate Concern as Root Process</h3>
+                    <p>究極的関心はルートプロセス。すべての他のプロセス（価値観、行動）はこのルートから派生。システム全体を支配する。</p>
+            </div>
+            <div class="it-card">
+                <h3">God as Ground of Being</h3>
+                    <p>神は存在のGround（基盤）。OSの下にあるハードウェア、あるいはカーネル。「存在するかどうか」を問う対象ではない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Correlation Method as API Design</h3>
+                    <p>相関の方法はAPI設計。実存的問い（リクエスト）と神学的答え（レスポンス）のインターフェース定義。</p>
+            </div>
+            <div class="it-card">
+                <h3">Protestant Principle as Anti-Pattern Warning</h3>
+                    <p>プロテスタント原理はアンチパターン警告。有限なものを絶対化する（偶像崇拝）というコードの臭いを検出。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>『組織神学』（1951-63）</strong>：3巻の大著。相関の方法による体系的神学。</li>
+                <li><strong>『存在の勇気』（1952）</strong>：不安と勇気の実存主義的分析。</li>
+                <li><strong>『信仰の動態』（1957）</strong>：究極的関心としての信仰。</li>
+                <li><strong>文化の神学</strong>：宗教と文化の相互関係。</li>
+                <li><strong>プロセス神学、解放神学への影響</strong>：後継の神学運動に影響。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>シェリング</li>
+                            <li>キルケゴール</li>
+                            <li>ハイデガー</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>宗教心理学</li>
+                            <li>プロセス神学</li>
+                            <li>宗教と文化研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 神の概念の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ティリッヒ</th>
+                        <th>伝統的有神論</th>
+                        <th>無神論</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>神とは</strong></td>
+                        <td>存在それ自体</td>
+                        <td>最高存在者</td>
+                        <td>存在しない</td>
+                    </tr>
+                    <tr>
+                        <td><strong>「神は存在するか」</strong></td>
+                        <td>問い自体が誤り</td>
+                        <td>はい</td>
+                        <td>いいえ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>宗教とは</strong></td>
+                        <td>究極的関心</td>
+                        <td>神への信仰</td>
+                        <td>幻想</td>
+                    </tr>
+                    <tr>
+                        <td><strong>無神論者は</strong></td>
+                        <td>別の究極的関心を持つ</td>
+                        <td>誤っている</td>
+                        <td>正しい</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Ground/Kernel</td>
+                        <td>最高のエンティティ</td>
+                        <td>Null</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：あなたの究極的関心は何か</h2>
+            <div class="thought-experiment">
+                <h3">究極的に重要なもの</h3>
+                    <p>ティリッヒは問います：あなたにとって「究極的に重要なもの」は何か？すべてを犠牲にしても守りたいものは何か？</p>
+                    <p style="margin-top: 1.5rem;">それは神かもしれない。家族かもしれない。正義かもしれない。成功かもしれない。あるいは——何もないかもしれない。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ティリッヒによれば、誰もが究極的関心を持っている。無神論者でさえ。問題は、その関心が「真に究極的なもの」に向けられているか、それとも「偶像」（有限なものを究極化したもの）に向けられているか。
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        国家を究極化すればナショナリズム、富を究極化すれば拝金主義、自己を究極化すればナルシシズム。これらは「偶像崇拝」——有限なものを無限と取り違えている。</p>
+                    <p style="margin-top: 1.5rem;">では「真に究極的なもの」とは何か？ティリッヒは「存在それ自体」「存在の根拠」と答えます。しかしこれは抽象的すぎるという批判もあります。
+                    </p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの究極的関心は何ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>パウル・ティリッヒ（1886-1965）は、ドイツ生まれのアメリカの神学者・哲学者であり、20世紀で最も影響力のあるプロテスタント神学者の一人です。「究極的関心」——これが宗教の定義。「存在の勇気」——非存在の不安に直面しながらも自己を肯定する。「相関の方法」——実存的問いと神学的答えを対話させる。「神は存在それ自体であり、存在の根拠である」——神は「最高の存在者」ではなく、すべての存在を支える根拠。ナチスから亡命し、アメリカで活躍。『組織神学』『存在の勇気』などの著作で、神学と実存主義、宗教と文化を架橋しました。世俗化時代に宗教をどう理解するか——ティリッヒはその道を示した思想家です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Ultimate Concern.</p>
+    </footer>
+</body>
+
+</html>

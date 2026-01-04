@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アッ＝シャーフィイー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Method Blue */
+            --secondary: #164e63;
+            /* Synthesis Dark */
+            --accent: #22d3ee;
+            /* Usul Light */
+            --highlight: #cffafe;
+            /* Framework Glow */
+            --bg: #0c1a20;
+            /* Deep Methodology */
+            --text: #cffafe;
+            --border: #0e7490;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .shafii-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔧";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0e7490 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Four Sources Section */
+        .sources-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .sources-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .source-item {
+            padding: 2rem;
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔧";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .sources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shafii-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← USUL</a>
+        <div>SHAFII_v6.07</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-607 / THE_METHODOLOGIST</span>
+        <h1>アッ＝シャーフィイー</h1>
+        <p class="en-name">Al-Shāfiʿī (767–820)</p>
+        <p class="catchphrase">「法学方法論の父」——ウスール・アル・フィクフを体系化</p>
+        <div class="os-tags">
+            <span class="os-tag">法OS</span>
+            <span class="os-tag">方法論OS</span>
+            <span class="os-tag">統合OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">ウスール・アル・フィクフ体系化</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    アッ＝シャーフィイー（ムハンマド・イブン・イドリース・アッ＝シャーフィイー）は、8-9世紀のイスラム法学者であり、法学方法論（ウスール・アル・フィクフ）を体系化した人物です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シャーフィイーの歴史的業績——<b>法源の四つの階層を確立：クルアーン、スンナ、イジュマー（合意）、キヤース（類推）</b>。異なる学派間の「仲裁者」。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    マーリクに師事し、イラク学派とヒジャーズ学派を統合。『リサーラ』は法学方法論の最初の体系的著作。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    シャーフィイーの貢献は、<b>「ソフトウェア開発方法論の確立——個々のプログラマーの勘ではなく、体系的なプロセスと原則を定義。コーディング規約とベストプラクティス」</b>という、法学のフレームワーク。
+                </p>
+            </div>
+        </section>
+
+        <!-- 四つの法源 -->
+        <section class="sources-section">
+            <h2>📚 四つの法源（ウスール・アル・フィクフ）</h2>
+            <div class="sources-grid">
+                <div class="source-item"><strong>1. クルアーン</strong><br>神の言葉</div>
+                <div class="source-item"><strong>2. スンナ</strong><br>預言者の言行</div>
+                <div class="source-item"><strong>3. イジュマー</strong><br>学者の合意</div>
+                <div class="source-item"><strong>4. キヤース</strong><br>類推</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 シャーフィイーの法学</h2>
+            <div class="quote-box">
+                <p class="quote-text">私の言うことが預言者のハディースと矛盾すれば、私の言葉を壁に投げつけよ。</p>
+                <p class="quote-author">— アッ＝シャーフィイー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 リサーラ</h3>
+                    <p>法学方法論の最初の体系的著作。法解釈の原則を確立。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 統合</h3>
+                        <p>イラク学派（ハナフィー）とヒジャーズ学派（マーリキー）を統合。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ ハディース重視</h3>
+                        <p>スンナの権威を強調。メディナの慣行よりハディースを優先。</p>
+                </div>
+                <div class="card">
+                    <h3">🧮 キヤース</h3>
+                        <p>類推を体系化。条件と限界を明確に定義。</p>
+                </div>
+                <div class="card">
+                    <h3">📍 二つの学派</h3>
+                        <p>旧派（バグダード）と新派（エジプト）。自身の見解を修正。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 地域</h3>
+                        <p>エジプト、東南アジア、東アフリカで採用。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Methodology</h2>
+            <div class="it-card">
+                <h3>Usul as Software Engineering</h3>
+                <p>ウスールはソフトウェア工学。個人の勘ではなく体系的方法論。</p>
+            </div>
+            <div class="it-card">
+                <h3">Risala as RFC</h3>
+                    <p>リサーラはRFC（Request for Comments）。標準を提案し、合意を求める。</p>
+            </div>
+            <div class="it-card">
+                <h3">Four Sources as Stack</h3>
+                    <p>四法源はスタック。上位ソースが下位をオーバーライド。</p>
+            </div>
+            <div class="it-card">
+                <h3">Qiyas as Pattern Matching</h3>
+                    <p>キヤースはパターンマッチング。既知のケースから未知へ適用。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ウスール体系化</strong>：法学方法論の確立。</li>
+                <li><strong>四法源</strong>：階層的な法源理論。</li>
+                <li><strong>学派統合</strong>：異なるアプローチの仲裁。</li>
+                <li><strong>リサーラ</strong>：方法論の古典。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>マーリク</li>
+                        <li>ハナフィー学派</li>
+                        <li>メディナ学派</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>シャーフィイー学派</li>
+                            <li>ガザーリー</li>
+                            <li>イスラム法理論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：方法論の価値</h2>
+            <div class="thought-experiment">
+                <h3">なぜ方法が重要か</h3>
+                    <p>シャーフィイー以前、法学者は各自の方法で判断していた。</p>
+                    <p>シャーフィイーは方法論を確立した。</p>
+                    <p>結論より方法が重要か？</p>
+                    <p>正しい方法から間違った結論が出ることも——</p>
+                    <p>間違った方法から正しい結論が出ることも——</p>
+                    <p>しかし、方法論があれば議論が可能になる。</p>
+                    <p>「なぜその結論か」を問えるようになる。</p>
+                    <p>科学の方法論も同じ——再現可能性。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        結論より方法が重要ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アッ＝シャーフィイー（767-820）は、イスラム法学方法論（ウスール・アル・フィクフ）を体系化した「法学方法論の父」です。四つの法源——クルアーン、スンナ、イジュマー、キヤース——の階層を確立し、『リサーラ』で法学方法論の最初の体系的著作を残しました。マーリクに師事し、イラク学派とヒジャーズ学派を統合。エジプト、東南アジア、東アフリカでシャーフィイー学派が採用されています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Method matters.</p>
+    </footer>
+</body>
+
+</html>

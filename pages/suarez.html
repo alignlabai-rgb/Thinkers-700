@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フランシスコ・スアレス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7f1d1d;
+            /* Jesuit Red */
+            --secondary: #1c1917;
+            /* Scholastic Dark */
+            --accent: #b45309;
+            /* Iberian Gold */
+            --highlight: #fef3c7;
+            /* Salamanca Glow */
+            --bg: #0c0a09;
+            /* Metaphysics Deep */
+            --text: #fef3c7;
+            --border: #991b1b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Scholastic Background */
+        .scholastic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(127, 29, 29, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(180, 83, 9, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Jesuit Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #44403c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✝";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #991b1b 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(127, 29, 29, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(127, 29, 29, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Metaphysical Structure */
+        .meta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #44403c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .meta-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .meta-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .essence-box {
+            background: #2563eb;
+            border: 2px solid #60a5fa;
+        }
+
+        .existence-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .relation-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .meta-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✝";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .meta-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scholastic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DISPUTATIONES_METAPHYSICAE</a>
+        <div>DOCTOR_EXIMIUS_v5.03</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-503 / THE_DOCTOR_EXIMIUS</span>
+        <h1>フランシスコ・スアレス</h1>
+        <p class="en-name">Francisco Suárez (1548–1617)</p>
+        <p class="catchphrase">「形而上学——存在するものとしての存在を研究する学問」</p>
+        <div class="os-tags">
+            <span class="os-tag">形而上OS</span>
+            <span class="os-tag">法哲学OS</span>
+            <span class="os-tag">神学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">形而上学論議</h2>
+            <div class="hero-box">
+                <p class="hero-text">フランシスコ・スアレスは、スペイン・スコラ哲学の頂点に立つイエズス会士であり、「卓越した博士（Doctor
+                    Eximius）」の称号を持ちます。彼の主著『形而上学論議』（1597年）は、アリストテレス形而上学の最も体系的な注釈であり、<b>近代哲学への橋渡し</b>となりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スアレスは、トマス・アクィナスとドゥンス・スコトゥスの間を独自に総合しました。「本質と存在の区別」——トマスの実在的区別に対し、スアレスは「理性の区別」を主張。また、<b>近代自然法理論</b>の先駆者として、グロティウスやロックに影響を与えました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スアレスを学ぶことは、<b>スコラ哲学と近代哲学の連続性</b>を理解することです。デカルトもライプニッツもスアレスを読んでいました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スアレスは、<b>「存在とはオブジェクト。本質と存在はプロパティとインスタンスのようなもの？それとも概念的に区別されるだけ？スアレスは後者を主張——これはオブジェクト指向における型とインスタンスの関係を再考させる」</b>と分析した、中世最後のシステムアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 形而上学的構造 -->
+        <section class="meta-section">
+            <h2>📐 本質と存在</h2>
+            <div class="meta-diagram">
+                <div class="meta-box essence-box">
+                    <p>📋 本質</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Essentia</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">何であるか</p>
+                </div>
+                <div class="meta-arrow">⟺</div>
+                <div class="meta-box relation-box">
+                    <p>🔗 理性的区別</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Distinctio Rationis</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">概念上の区別</p>
+                </div>
+                <div class="meta-arrow">⟺</div>
+                <div class="meta-box existence-box">
+                    <p>✨ 存在</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Existentia</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">あるということ</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                トマスは本質と存在の「実在的区別」を主張。スアレスは「理性的区別」——同一の実在を、異なる概念で把握する。これが近代合理主義への道を開く。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 スアレス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">形而上学の対象は、存在するものとしての存在——これはすべての存在者に共通のものである。</p>
+                <p class="quote-author">— 『形而上学論議』（1597年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📐 形而上学の体系化</h3>
+                        <p>『形而上学論議』54論議。アリストテレス注釈ではなく、独立した体系的叙述。存在、因果、カテゴリーを網羅。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 本質と存在</h3>
+                        <p>トマスの実在的区別を批判。本質と存在は「理性的に」区別される。同一の実在を異なる視点から見る。</p>
+                </div>
+                <div class="card">
+                    <h3">📏 存在の類比</h3>
+                        <p>存在は神と被造物で一義的ではないが、単なる多義的でもない。類比的——共通性と差異の両方。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 自然法理論</h3>
+                        <p>神の意志と理性の関係。法は神の命令だが、理性に基づく。国際法への貢献。グロティウスに影響。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 抵抗権</h3>
+                        <p>暴君に対する人民の抵抗権を理論化。社会契約思想の先駆。ロックに影響。</p>
+                </div>
+                <div class="card">
+                    <h3">✝ イエズス会神学</h3>
+                        <p>恩寵と自由意志の関係。中知（scientia media）——神は人間の自由な選択を予知する。モリニスム。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 スコラから近代へ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. スコトゥス派の影響</h3>
+                        <p>トマス主義だけでなく、スコトゥスからも学ぶ。存在の一義性と類比性の中間路線。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 形而上学の独立</h3>
+                        <p>形而上学をアリストテレス注釈から独立させ、体系的学問として確立。近代形而上学への道。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 近代への影響</h3>
+                        <p>デカルト、ライプニッツ、ヴォルフがスアレスを読んだ。17世紀ドイツ・プロテスタントのテキスト。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 法哲学への遺産</h3>
+                        <p>自然法と国際法。グロティウスの先駆。社会契約、抵抗権——近代政治哲学の萌芽。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Being as Object Hierarchy</h2>
+            <div class="it-card">
+                <h3">Essence and Existence as Type and Instance</h3>
+                    <p>本質と存在は型とインスタンスか？トマスは別々に実在すると言った（実在的区別）。スアレスは「同じオブジェクト、異なるビュー」と主張（概念的区別）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Analogy of Being as Polymorphism</h3>
+                    <p>存在の類比はポリモーフィズム。神と被造物は同じ「存在」インターフェースを実装するが、実装は異なる。共通性と差異の両立。</p>
+            </div>
+            <div class="it-card">
+                <h3">Disputationes as API Documentation</h3>
+                    <p>『形而上学論議』はアリストテレス哲学の完全なAPIドキュメント。すべての概念、関係、使用例を体系的に記述。</p>
+            </div>
+            <div class="it-card">
+                <h3">Natural Law as Universal Protocol</h3>
+                    <p>自然法は普遍的プロトコル。すべての国家・文化が実装すべき基盤。神が定めたが、理性で認識可能。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『形而上学論議』</strong>：54論議で存在を体系的に分析。近代形而上学の基盤。</li>
+                <li><strong>本質と存在の理性的区別</strong>：トマスの実在的区別を批判。概念的アプローチへ。</li>
+                <li><strong>自然法理論</strong>：神の意志と理性。国際法への貢献。グロティウスに影響。</li>
+                <li><strong>抵抗権理論</strong>：暴君への抵抗。社会契約思想の先駆。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>トマス・アクィナス（スコラ哲学）</li>
+                            <li>ドゥンス・スコトゥス（存在の一義性）</li>
+                            <li>アリストテレス（形而上学）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ルネ・デカルト（近代哲学）</li>
+                            <li>フーゴー・グロティウス（国際法）</li>
+                            <li>ゴットフリート・ライプニッツ</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ スコラ哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スアレス</th>
+                        <th>トマス</th>
+                        <th>スコトゥス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>本質と存在</strong></td>
+                        <td>理性的区別</td>
+                        <td>実在的区別</td>
+                        <td>形相的区別</td>
+                    </tr>
+                    <tr>
+                        <td><strong>存在の述語</strong></td>
+                        <td>類比的</td>
+                        <td>類比的</td>
+                        <td>一義的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>個体化原理</strong></td>
+                        <td>実体全体</td>
+                        <td>質料</td>
+                        <td>此性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ビュー分離</td>
+                        <td>型/インスタンス</td>
+                        <td>UUID</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：存在とは何か</h2>
+            <div class="thought-experiment">
+                <h3">ソクラテスの本質と存在</h3>
+                    <p>「ソクラテス」という人間がいます。彼は「人間である」（本質）、そして「存在する」（存在）。この二つは別のものでしょうか？</p>
+                    <p>トマス・アクィナスは言いました：本質と存在は「実在的に」区別される。ソクラテスにおいて、「人間性」と「存在すること」は別の原理。神だけが本質と存在が一致する。</p>
+                    <p>スアレスは反論しました：実際には、ソクラテスは一つの実在です。「人間である」と「存在する」は、同じ実在を異なる概念で捉えているだけ。区別は「理性的」——私たちの思考における区別であり、事物における区別ではない。
+                    </p>
+                    <p>これは抽象的に見えますが、重要な帰結があります。スアレスのアプローチは、形而上学をより「概念的」な方向へ導きました。デカルト以降の近代哲学は、この概念的アプローチを継承します。</p>
+                    <p>ITで言えば：型とインスタンスは「実在的に」別か、それとも同じオブジェクトの「異なるビュー」か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「存在する」とは、「何であるか」とは別のことですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>フランシスコ・スアレスは、スコラ哲学の完成者であり、近代哲学への橋渡しとなった「卓越した博士」です。『形而上学論議』54論議で存在を体系的に分析し、本質と存在の「理性的区別」を主張。トマスとスコトゥスを独自に総合し、デカルト、ライプニッツに影響を与えました。また、自然法理論と抵抗権の議論で、グロティウス、ロックに先駆けました。中世と近代をつなぐスアレスの形而上学は、哲学史の重要な結節点として、今なお研究され続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Ad Maiorem Dei Gloriam.</p>
+    </footer>
+</body>
+
+</html>

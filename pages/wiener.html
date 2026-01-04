@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ノルベルト・ウィーナー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Cybernetic Cyan */
+            --secondary: #164e63;
+            /* Feedback Dark */
+            --accent: #22d3ee;
+            /* Control Bright */
+            --highlight: #cffafe;
+            /* System Glow */
+            --bg: #083344;
+            /* MIT Deep */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Cybernetic Background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Wiener Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔄";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Feedback Loop */
+        .feedback-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .feedback-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .feedback-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .feedback-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .input-box {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .process-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .output-box {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        .feedback-box-style {
+            background: #dc2626;
+            border: 3px solid #f87171;
+        }
+
+        .arrow-right {
+            font-size: 2rem;
+            color: var(--highlight);
+        }
+
+        .arrow-curve {
+            font-size: 1.5rem;
+            color: #f87171;
+            transform: rotate(180deg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔄";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cyber-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CYBERNETICS</a>
+        <div>FEEDBACK_CONTROL_v5.43</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-543 / THE_FATHER_OF_CYBERNETICS</span>
+        <h1>ノルベルト・ウィーナー</h1>
+        <p class="en-name">Norbert Wiener (1894–1964)</p>
+        <p class="catchphrase">「サイバネティクス——通信と制御の科学」</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">数学OS</span>
+            <span class="os-tag">情報OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">サイバネティクス</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ノルベルト・ウィーナーは、「サイバネティクス」（Cybernetics）の創始者として知られるアメリカの数学者です。通信、制御、フィードバックの理論を統合し、機械と生物を貫く一般理論を構築しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウィーナーの核心的洞察——<b>フィードバックループが知能と制御の鍵である</b>。機械も生物も、出力を入力に戻すことで目標を達成する。これはAI、ロボット工学、システム論の源流。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    神童として知られ、18歳でハーバード大学で博士号を取得。第二次世界大戦中の対空砲火制御研究からサイバネティクスが生まれました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウィーナーは、<b>「すべてのインテリジェントシステムはフィードバックループ——センサー（入力）、プロセッサー（処理）、アクチュエーター（出力）、そしてフィードバック。これはサーモスタットもAIもDNAも同じ」</b>と発見した、制御システムの統一理論家です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. フィードバックループ -->
+        <section class="feedback-section">
+            <h2>🔄 フィードバックループ</h2>
+            <div class="feedback-diagram">
+                <div class="feedback-box input-box">
+                    <p>📥</p>
+                    <p>入力</p>
+                    <p style="font-size: 0.8rem;">Sensor</p>
+                </div>
+                <span class="arrow-right">→</span>
+                <div class="feedback-box process-box">
+                    <p>⚙️</p>
+                    <p>処理</p>
+                    <p style="font-size: 0.8rem;">Controller</p>
+                </div>
+                <span class="arrow-right">→</span>
+                <div class="feedback-box output-box">
+                    <p>📤</p>
+                    <p>出力</p>
+                    <p style="font-size: 0.8rem;">Actuator</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem;">
+                <span style="font-size: 1.5rem; color: #f87171;">↩ フィードバック（出力を入力に戻す）</span>
+            </div>
+            <p
+                style="margin-top: 2rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                目標と実際の差を検出し、修正する——これがフィードバック制御。サーモスタット、オートパイロット、そして脳も同じ原理。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウィーナー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">情報こそがエントロピーに対抗する力である。</p>
+                <p class="quote-author">— 『人間機械論』（1950年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🔄 フィードバック</h3>
+                        <p>出力を入力に戻す。負のフィードバック＝安定化。正のフィードバック＝増幅。制御の基本原理。</p>
+                </div>
+                <div class="card">
+                    <h3">📡 通信</h3>
+                        <p>情報の伝達。ノイズとの戦い。シャノンの情報理論との関係。メッセージの符号化と復号。</p>
+                </div>
+                <div class="card">
+                    <h3">🎯 制御</h3>
+                        <p>目標状態の維持。ホメオスタシス。機械と生物に共通する原理。目的論的行動。</p>
+                </div>
+                <div class="card">
+                    <h3">🤖 人間と機械</h3>
+                        <p>機械と生物の共通原理。しかし技術の悪用への警告も。社会的責任。</p>
+                </div>
+                <div class="card">
+                    <h3">📊 エントロピー</h3>
+                        <p>情報はエントロピーに対抗。秩序の維持。熱力学第二法則との関係。</p>
+                </div>
+                <div class="card">
+                    <h3">🧮 確率論</h3>
+                        <p>ウィーナー過程。確率微分方程式。ブラウン運動の数学的定式化。金融工学にも応用。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. システム論 -->
+        <section class="section">
+            <h2 class="section-title">🔄 学際的影響</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 人工知能</h3>
+                        <p>サイバネティクスはAIの源流の一つ。学習、適応、目標志向——機械知能の概念的基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">2. システム論</h3>
+                        <p>ベルタランフィの一般システム論と共鳴。複雑系、自己組織化、創発——20世紀後半の科学。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 認知科学</h3>
+                        <p>脳をフィードバックシステムとして理解。計算主義心理学。ニューラルネットワークの着想。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 社会科学</h3>
+                        <p>社会システムへの応用。オートポイエーシス（ルーマン）。第二次サイバネティクス。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Cybernetics as Systems Engineering</h2>
+            <div class="it-card">
+                <h3">Feedback as Control Loop</h3>
+                    <p>フィードバックは制御ループ。PID制御、Kubernetes、機械学習の勾配降下法——すべてフィードバック原理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Cybernetics as DevOps</h3>
+                    <p>サイバネティクスはDevOps。継続的モニタリング、アラート、自動修復——システムの自己制御。</p>
+            </div>
+            <div class="it-card">
+                <h3">Information vs Entropy as Error Correction</h3>
+                    <p>情報対エントロピーはエラー訂正。チェックサム、冗長性、修復——ノイズとの戦い。</p>
+            </div>
+            <div class="it-card">
+                <h3">Wiener Process as Random Walk</h3>
+                    <p>ウィーナー過程はランダムウォーク。ブラウン運動の数学的モデル。モンテカルロ法、金融工学。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『サイバネティクス』</strong>：通信と制御の科学。1948年。</li>
+                <li><strong>『人間機械論』</strong>：サイバネティクスの人間・社会への応用。</li>
+                <li><strong>ウィーナー過程</strong>：確率論の基礎概念。</li>
+                <li><strong>技術倫理への警告</strong>：自動化と人間の未来。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>クロード・シャノン（情報理論）</li>
+                            <li>ワルター・キャノン（ホメオスタシス）</li>
+                            <li>アラン・チューリング（計算理論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>人工知能</li>
+                            <li>システム論</li>
+                            <li>認知科学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 情報科学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウィーナー</th>
+                        <th>シャノン</th>
+                        <th>チューリング</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>制御・フィードバック</td>
+                        <td>通信・符号化</td>
+                        <td>計算・アルゴリズム</td>
+                    </tr>
+                    <tr>
+                        <td><strong>キー概念</strong></td>
+                        <td>フィードバック</td>
+                        <td>エントロピー</td>
+                        <td>チューリングマシン</td>
+                    </tr>
+                    <tr>
+                        <td><strong>応用</strong></td>
+                        <td>ロボット工学</td>
+                        <td>通信工学</td>
+                        <td>コンピュータ科学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>制御ループ</td>
+                        <td>圧縮</td>
+                        <td>仮想マシン</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：機械は目的を持てるか</h2>
+            <div class="thought-experiment">
+                <h3">目的論的機械</h3>
+                    <p>サーモスタットは「目標」を持っているか？</p>
+                    <p>ウィーナーの答え：ある意味では、イエス。</p>
+                    <p>フィードバックシステムは「目標状態」を持ち、それに向かって行動を調整する。これは目的論的行動。</p>
+                    <p>しかし問いがあります：</p>
+                    <p>サーモスタットは本当に「目的」を持っているか？それとも我々がそう解釈しているだけか？</p>
+                    <p>AIは？——GPTは「答えを出す」という目標を持っているか？</p>
+                    <p>意識なき目的論——これは矛盾か、それとも目的概念の拡張か？</p>
+                    <p>ウィーナーは技術の悪用も警告しました。自動化は人間を解放するか、奴隷にするか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        機械に「目的」を与えることは、何を意味しますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ノルベルト・ウィーナーは、「サイバネティクス」の創始者として知られるアメリカの数学者です。通信、制御、フィードバックの理論を統合し、機械と生物を貫く一般理論を構築しました。フィードバックループが知能と制御の鍵——この洞察はAI、ロボット工学、システム論、認知科学の源流となりました。『人間機械論』では技術の社会的影響も論じ、自動化と人間の未来について警告しました。ウィーナー過程は確率論の基礎として、金融工学にも応用されています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Control through feedback.</p>
+    </footer>
+</body>
+
+</html>

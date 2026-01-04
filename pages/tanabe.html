@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>田辺元 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4c1d95;
+            /* Kyoto Purple */
+            --secondary: #1e1b4b;
+            /* Repentance Dark */
+            --accent: #7c3aed;
+            /* Species Violet */
+            --highlight: #ede9fe;
+            /* Logic Glow */
+            --bg: #0f0e1a;
+            /* Absolute Deep */
+            --text: #ede9fe;
+            --border: #6d28d9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Dialectic Background */
+        .dialectic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(76, 29, 149, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Kyoto School Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4c1d95 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "種";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6d28d9 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(76, 29, 149, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(76, 29, 149, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Species Logic */
+        .logic-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4c1d95 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .logic-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .logic-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logic-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .rui-box {
+            background: #2563eb;
+            border: 2px solid #60a5fa;
+        }
+
+        .shu-box {
+            background: var(--accent);
+            color: #fff;
+            border: 3px solid var(--highlight);
+        }
+
+        .ko-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .logic-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔮";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dialectic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LOGIC_OF_SPECIES</a>
+        <div>ZANGE_PHILOSOPHY_v5.09</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-509 / THE_KYOTO_DIALECTICIAN</span>
+        <h1>田辺元</h1>
+        <p class="en-name">Hajime Tanabe (1885–1962)</p>
+        <p class="catchphrase">「個と類の間に種がある——国民、民族、階級」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">宗教OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">種の論理</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    田辺元は、西田幾多郎の後を継いで京都大学哲学科の主任となり、独自の「種の論理」を発展させた京都学派の中心人物です。西田の「場所の論理」を批判的に継承し、<b>社会的・歴史的次元</b>を重視しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「種の論理」の核心は、個（個人）と類（人類・普遍）の間に<b>「種」（民族、国民、階級といった中間集団）</b>があるという主張。個は種を通じてのみ類へと参加できる。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    戦後、田辺は自らの戦時中の思想を反省し、<b>「懺悔道としての哲学」</b>を提唱。哲学者の倫理的責任を問う、深い自己批判の書『懺悔道としての哲学』を発表しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    田辺は、<b>「個人（オブジェクト）と人類（最上位クラス）の間に、中間クラス（種＝コミュニティ、国家）がある。個は中間クラスのインスタンスとしてのみ上位クラスと通信できる。抽象化には仲介者が必要」</b>と分析した、社会構造のクラス設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 種の論理図解 -->
+        <section class="logic-section">
+            <h2>📐 種の論理構造</h2>
+            <div class="logic-diagram">
+                <div class="logic-box rui-box">
+                    <p>類（Rui）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">普遍・人類</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">抽象的一般</p>
+                </div>
+                <div class="logic-arrow">↕ 媒介</div>
+                <div class="logic-box shu-box">
+                    <p>種（Shu）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">民族・国民・階級</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">中間集団</p>
+                </div>
+                <div class="logic-arrow">↕ 媒介</div>
+                <div class="logic-box ko-box">
+                    <p>個（Ko）</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">個人・実存</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">具体的個物</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                個は直接的に類へは参加できない。種を媒介として初めて普遍性に到達する。しかし種は個を抑圧する危険もある。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 田辺思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">哲学は懺悔道としてのみ可能である。私の過去の思想に対する根本的批判から始めなければならない。</p>
+                <p class="quote-author">— 『懺悔道としての哲学』（1946年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📐 種の論理</h3>
+                        <p>個と類の間の「種」——民族、国民、階級。ヘーゲル弁証法を日本の社会現実に適用。媒介の論理。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 西田批判</h3>
+                        <p>西田の「場所」は抽象的すぎる。具体的な歴史・社会を欠いている。種の論理で補完・批判。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 懺悔道</h3>
+                        <p>戦後、自己の思想を反省。哲学者の倫理的責任。親鸞の他力思想から影響。</p>
+                </div>
+                <div class="card">
+                    <h3">⚠️ 戦時イデオロギー</h3>
+                        <p>種の論理は戦時中、国家主義を正当化する論理として使われた問題もある。田辺自身の後の反省。</p>
+                </div>
+                <div class="card">
+                    <h3">✝ 絶対無と他力</h3>
+                        <p>西田の絶対無を継承しつつ、親鸞的な他力の思想を取り入れる。自力の限界と救済。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 死の哲学</h3>
+                        <p>晩年は死の問題に取り組む。『死の哲学』で有限性と超越の問題を探求。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 懺悔の転換 -->
+        <section class="section">
+            <h2 class="section-title">🔄 懺悔の転換</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 戦時中の思想</h3>
+                        <p>種の論理は日本国家を肯定的に位置づけた。「種的国家」としての日本。戦争協力への批判を招く。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 敗戦と反省</h3>
+                        <p>1945年の敗戦。自己の思想の根本的見直し。哲学者としての責任の自覚。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 懺悔道の提唱</h3>
+                        <p>『懺悔道としての哲学』（1946年）。哲学は自己否定から始まる。親鸞の他力への傾斜。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 哲学の再構築</h3>
+                        <p>種の論理を反省しつつも放棄せず。媒介の論理をより普遍的に再構築する試み。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Species as Middle Class</h2>
+            <div class="it-card">
+                <h3">Individual, Species, Genus as Class Hierarchy</h3>
+                    <p>個（オブジェクト）、種（中間クラス）、類（抽象クラス）——クラス階層構造。個は直接抽象クラスにアクセスできず、中間クラスを経由する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Species as Adapter Pattern</h3>
+                    <p>種はアダプターパターン。個（具体的実装）と類（抽象インターフェース）の間を仲介。変換と適合を行う。</p>
+            </div>
+            <div class="it-card">
+                <h3">Metanoesis as System Rollback</h3>
+                    <p>懺悔（メタノエシス）はシステムロールバック。過去の状態（戦時思想）を否定し、新しいコミットから再開する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Other-Power as External Service</h3>
+                    <p>他力は外部サービス依存。自力（ローカル処理）の限界を認め、絶対者（クラウドサービス）に委ねる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>種の論理</strong>：個と類の間の「種」を理論化。社会哲学への貢献。</li>
+                <li><strong>『懺悔道としての哲学』</strong>：哲学者の倫理的責任を問う。戦後思想の出発点。</li>
+                <li><strong>『死の哲学』</strong>：有限性と超越の問題。晩年の代表作。</li>
+                <li><strong>数理哲学</strong>：数学の哲学的基礎づけ。初期の業績。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>西田幾多郎（場所の論理）</li>
+                            <li>ヘーゲル（弁証法）</li>
+                            <li>親鸞（他力思想）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>京都学派第二世代</li>
+                            <li>戦後日本哲学</li>
+                            <li>懺悔の思想</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 京都学派の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>田辺元</th>
+                        <th>西田幾多郎</th>
+                        <th>久松真一</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>核心概念</strong></td>
+                        <td>種の論理</td>
+                        <td>絶対矛盾的自己同一</td>
+                        <td>無相の自己</td>
+                    </tr>
+                    <tr>
+                        <td><strong>重視</strong></td>
+                        <td>社会・歴史</td>
+                        <td>純粋経験</td>
+                        <td>禅的覚醒</td>
+                    </tr>
+                    <tr>
+                        <td><strong>宗教的源泉</strong></td>
+                        <td>浄土真宗</td>
+                        <td>禅</td>
+                        <td>禅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>クラス階層</td>
+                        <td>場としての空間</td>
+                        <td>空オブジェクト</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：種の両義性</h2>
+            <div class="thought-experiment">
+                <h3">民族・国家は必要か</h3>
+                    <p>田辺の「種の論理」によれば、個人は民族や国家といった「種」を通じてのみ普遍（人類）に参加できます。しかし、これは問題をはらんでいます。</p>
+                    <p>一方で、「種」は個人に意味とアイデンティティを与えます。言語、文化、歴史——私たちは「種」を通じて世界を理解し、他者とつながります。</p>
+                    <p>他方で、「種」は抑圧の源泉にもなります。民族主義、国家主義——個人を「種」に従属させ、自由を奪う。田辺自身、戦時中にこの問題に直面しました。</p>
+                    <p>コスモポリタニズム（世界市民主義）は「種」を超えて直接「類」（人類）につながろうとします。しかしそれは可能でしょうか？具体的な文化・言語なしに、抽象的な「人類」にアクセスできるでしょうか？
+                    </p>
+                    <p>田辺は戦後、この問題を反省しつつも、媒介の必要性は手放しませんでした。問題は「種」を否定することではなく、「種」が個を抑圧しないようにすること。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「種」は何ですか？それはあなたを解放しますか、抑圧しますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>田辺元は、京都学派の中心人物として「種の論理」を発展させ、個と類の間の「種」（民族、国民、階級）の媒介的役割を理論化しました。西田の「場所の論理」を批判的に継承し、社会的・歴史的次元を重視しました。しかし戦時中、この論理が国家主義を正当化する論理として機能した問題を、田辺は戦後深く反省しました。『懺悔道としての哲学』で哲学者の倫理的責任を問い、自己否定から始まる哲学を提唱しました。親鸞の他力思想への傾斜、死の哲学——田辺の思想は、自力の限界と超越への問いとして、今なお考察に値します。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Philosophy as the Way of Metanoesis.</p>
+    </footer>
+</body>
+
+</html>

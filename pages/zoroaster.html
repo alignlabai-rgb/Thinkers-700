@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゾロアスター - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f59e0b;
+            /* Fire Gold */
+            --secondary: #451a03;
+            /* Persia Dark */
+            --accent: #fcd34d;
+            /* Flame Light */
+            --highlight: #fef3c7;
+            /* Ahura Glow */
+            --bg: #1c1000;
+            /* Mazda Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Fire Background */
+        .fire-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(252, 211, 77, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Zoroaster Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f59e0b 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔥";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.15;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(245, 158, 11, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dualism Diagram */
+        .dualism-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f59e0b 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .dualism-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .dualism-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .dual-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .good-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .evil-box {
+            background: #000;
+            border: 3px solid #666;
+        }
+
+        .vs-text {
+            font-size: 3rem;
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fire-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DUALISM</a>
+        <div>AHURA_MAZDA_v5.59</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-559 / THE_PROPHET_OF_LIGHT</span>
+        <h1>ゾロアスター</h1>
+        <p class="en-name">Zoroaster / Zarathustra (c. 1500–500 BCE?)</p>
+        <p class="catchphrase">「善と悪の戦い」——宗教的二元論の創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">終末OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">善悪二元論</h2>
+            <div class="hero-box">
+                <p class="hero-text">ゾロアスター（ザラスシュトラ）は、古代イランの預言者であり、ゾロアスター教（拝火教）の創始者です。年代は紀元前1500年から500年の間と推定に幅があります。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ゾロアスターの核心的教え——<b>世界は善と悪の戦場である</b>。善神アフラ・マズダと悪神アンラ・マンユ（アーリマン）の宇宙的闘争。人間は善の側を選ばなければならない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    終末論——最後には善が勝利し、世界は刷新される。最後の審判。この構造はユダヤ教・キリスト教・イスラム教に影響。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ゾロアスター教は、<b>「宇宙のバイナリ・ファイト——世界はTrue（善）とFalse（悪）の二値で動く。ユーザー（人間）はif分岐で善を選択すべき。最後にはgood.exe()が勝利してシステム再起動（終末）」</b>という、宗教史上最初のブール型世界観。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 善悪二元論 -->
+        <section class="dualism-section">
+            <h2>⚔️ 宇宙的二元論</h2>
+            <div class="dualism-diagram">
+                <div class="dual-box good-box">
+                    <p style="font-size: 2rem;">☀️</p>
+                    <p>アフラ・マズダ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">善・光・真理</p>
+                    <p style="font-size: 0.85rem;">スプンタ・マンユ</p>
+                </div>
+                <span class="vs-text">VS</span>
+                <div class="dual-box evil-box">
+                    <p style="font-size: 2rem;">🌑</p>
+                    <p>アンラ・マンユ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">悪・闇・嘘</p>
+                    <p style="font-size: 0.85rem;">アーリマン</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                世界は善と悪の戦場。人間は自由意志で善を選ぶ責任がある。最後には善が勝利する。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ゾロアスター教の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">善き思い、善き言葉、善き行い。</p>
+                <p class="quote-author">— ゾロアスター教の三大徳</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">☀️ アフラ・マズダ</h3>
+                        <p>「知恵の主」。最高神。善・光・真理の源。唯一神的傾向。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 善悪二元論</h3>
+                        <p>世界は善と悪の闘争。悪は独立した力として存在。一神教とは異なる構造。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 火</h3>
+                        <p>火は神聖——アフラ・マズダの象徴。拝火教と呼ばれる由来。火を崇拝するのではなく、象徴として尊重。</p>
+                </div>
+                <div class="card">
+                    <h3">⏳ 終末論</h3>
+                        <p>最後の審判。善が最終的に勝利。世界の刷新（フラショケレティ）。死者の復活。</p>
+                </div>
+                <div class="card">
+                    <h3">🧑‍⚖️ 自由意志</h3>
+                        <p>人間は善と悪を選ぶ自由がある。道徳的責任。行為が審判で問われる。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 アヴェスター</h3>
+                        <p>聖典「アヴェスター」。その中の「ガーサー」はゾロアスター自身の詩とされる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 影響 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ゾロアスター教の影響</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. ユダヤ教</h3>
+                        <p>バビロン捕囚後、ペルシア支配下で接触。天使・悪魔、終末論、復活の概念に影響か。</p>
+                </div>
+                <div class="card">
+                    <h3">2. キリスト教</h3>
+                        <p>終末論、最後の審判、天国と地獄、サタン——ゾロアスター教由来の可能性。東方三博士はマギ（ゾロアスター教司祭）。</p>
+                </div>
+                <div class="card">
+                    <h3">3. イスラム教</h3>
+                        <p>「啓典の民」として認められた。天使、審判、天国と地獄の構造に影響。</p>
+                </div>
+                <div class="card">
+                    <h3">4. ニーチェ</h3>
+                        <p>『ツァラトゥストラはかく語りき』——ゾロアスター（ツァラトゥストラ）を主人公に。善悪の彼岸を超えるために、善悪を最初に区別した者が必要だった。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Boolean Worldview</h2>
+            <div class="it-card">
+                <h3">Good vs Evil as Boolean</h3>
+                    <p>善悪はブール値。True/False。二値論理。曖昧さを排除した明確な判断基準。</p>
+            </div>
+            <div class="it-card">
+                <h3">Eschatology as System Reboot</h3>
+                    <p>終末論はシステム再起動。現在のシステム（悪を含む）を終了し、クリーンなシステムで再起動。</p>
+            </div>
+            <div class="it-card">
+                <h3">Free Will as User Choice</h3>
+                    <p>自由意志はユーザー選択。if分岐で善を選ぶのはユーザーの責任。選択は記録される（審判）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Fire as Debug Light</h3>
+                    <p>火はデバッグランプ。システムが正常に動いていることを示す光。神聖な状態のインジケータ。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>善悪二元論</strong>：宇宙的善悪の闘争。</li>
+                <li><strong>終末論</strong>：最後の審判と世界の刷新。</li>
+                <li><strong>火の象徴</strong>：神聖な光のシンボル。</li>
+                <li><strong>『アヴェスター』</strong>：聖典の成立。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>古代イラン多神教</li>
+                            <li>インド・イラン共通宗教</li>
+                            <li>ヴェーダ宗教</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ユダヤ教（終末論）</li>
+                            <li>キリスト教（悪魔・審判）</li>
+                            <li>マニ教</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 古代宗教の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ゾロアスター教</th>
+                        <th>ユダヤ教</th>
+                        <th>ヴェーダ宗教</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>神観</strong></td>
+                        <td>二元論的</td>
+                        <td>一神教</td>
+                        <td>多神教</td>
+                    </tr>
+                    <tr>
+                        <td><strong>悪</strong></td>
+                        <td>独立した力</td>
+                        <td>神に従属</td>
+                        <td>秩序/混沌</td>
+                    </tr>
+                    <tr>
+                        <td><strong>終末</strong></td>
+                        <td>善の勝利</td>
+                        <td>メシア来臨</td>
+                        <td>循環</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Boolean</td>
+                        <td>Singleton</td>
+                        <td>Enum</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：悪は必要か</h2>
+            <div class="thought-experiment">
+                <h3">闇なしに光はあるか</h3>
+                    <p>ゾロアスター教は問います：善と悪の戦いが世界の本質だとしたら——</p>
+                    <p>悪がなければ、善も存在しないのか？</p>
+                    <p>キリスト教の神学者も悩んだ：全能の善なる神がいるなら、なぜ悪が存在するのか？（神義論）</p>
+                    <p>ゾロアスター教の答え：悪は独立した力として存在する。神は全能ではない（少なくとも今は）。</p>
+                    <p>これは論理的に一貫している——悪の存在を説明できる。</p>
+                    <p>しかし代償がある：神は「全能」ではなくなる。</p>
+                    <p>一神教は悪を「神の許し」や「自由意志の帰結」として説明しようとした。</p>
+                    <p>どちらの説明が「良い」か？これは今も神学・哲学の中心問題。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        悪なしに善は存在できますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ゾロアスターは、古代イランの預言者であり、ゾロアスター教（拝火教）の創始者です。善神アフラ・マズダと悪神アンラ・マンユの宇宙的闘争——この「善悪二元論」は、後のユダヤ教・キリスト教・イスラム教の終末論、天使と悪魔、最後の審判の概念に影響を与えたと考えられています。「善き思い、善き言葉、善き行い」——火を神聖視し、道徳的選択を重視するゾロアスター教は、現在もインド（パールシー）やイランに信者が残っています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Good thoughts, good words, good deeds.</p>
+    </footer>
+</body>
+
+</html>

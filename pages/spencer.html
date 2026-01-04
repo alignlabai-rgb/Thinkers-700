@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハーバート・スペンサー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #854d0e;
+            /* Evolution Bronze */
+            --secondary: #1c1917;
+            /* Victorian Dark */
+            --accent: #ca8a04;
+            /* Progress Gold */
+            --highlight: #fef9c3;
+            /* Darwin Glow */
+            --bg: #0c0a09;
+            /* Industrial Deep */
+            --text: #fef9c3;
+            --border: #a16207;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Evolution Background */
+        .evolution-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(133, 77, 14, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(202, 138, 4, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Victorian Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #44403c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📈";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #a16207 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(133, 77, 14, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(133, 77, 14, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Evolution Diagram */
+        .evolution-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #44403c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .evolution-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .evolution-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .evo-box {
+            padding: 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .simple-box {
+            background: #6b7280;
+            border: 2px solid #9ca3af;
+        }
+
+        .differentiation-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .complex-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .evo-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📈";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .evolution-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="evolution-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← THE_SYNTHETIC_PHILOSOPHY</a>
+        <div>SOCIAL_EVOLUTION_v4.92</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-492 / THE_PHILOSOPHER_OF_EVOLUTION</span>
+        <h1>ハーバート・スペンサー</h1>
+        <p class="en-name">Herbert Spencer (1820–1903)</p>
+        <p class="catchphrase">「適者生存」——進化は宇宙の法則</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">進化の哲学者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「適者生存」——この表現を作ったのはダーウィンではなく、ハーバート・スペンサーです。ヴィクトリア朝イギリスの哲学者スペンサーは、<b>進化を宇宙全体の原理</b>として体系化しました。生物だけでなく、社会、心理、倫理、知識——すべてが進化の法則に従う。これが彼の「綜合哲学」です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スペンサーによれば、進化とは<b>「同質的で漠然としたものから、異質的で明確なものへ」の移行</b>——分化と統合。社会は単純な部族から複雑な産業社会へと進化する。この思想は19世紀後半に絶大な人気を博し、スペンサーはダーウィンより有名でした。しかし「社会進化論」は弱者淘汰を正当化するものとして20世紀に激しく批判されました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スペンサーを学ぶことは、<b>19世紀の知的楽観主義と、その限界を理解すること</b>です。彼の思想は問題を含みますが、社会変動の理論として今も再評価されています。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スペンサーは、<b>「宇宙はバージョンアップし続けるソフトウェア。v1.0は単純で同質的、v2.0は分化と専門化、v3.0は高度な統合。社会も同じ——部族から産業社会へ、コマンドラインからGUIへ。進歩は不可避」</b>と信じた、進化の壮大なアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 進化の図式 -->
+        <section class="evolution-section">
+            <h2>📈 進化の公式</h2>
+            <div class="evolution-diagram">
+                <div class="evo-box simple-box">
+                    <p>🟤 同質的</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Homogeneous</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">単純・未分化</p>
+                </div>
+                <div class="evo-arrow">→</div>
+                <div class="evo-box differentiation-box">
+                    <p>⚙️ 分化</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Differentiation</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">専門化・多様化</p>
+                </div>
+                <div class="evo-arrow">→</div>
+                <div class="evo-box complex-box">
+                    <p>🏛️ 異質的</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Heterogeneous</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">複雑・統合</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                進化＝同質から異質へ、漠然から明確へ、単純から複雑へ。宇宙、生物、社会、心理——すべてに適用される普遍法則。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 綜合哲学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">進化とは物質の統合と運動の散逸であり、その間に物質は不確定で均一な状態から確定的で異質な状態へと移行する。</p>
+                <p class="quote-author">— 『第一原理』（1862年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📈 進化の普遍法則</h3>
+                        <p>進化は生物だけでなく宇宙全体の原理。星雲から太陽系、細胞から有機体、部族から国家——すべて同じ法則に従う。</p>
+                </div>
+                <div class="card">
+                    <h3">💪 適者生存</h3>
+                        <p>スペンサーが作った表現。環境に最も適応した者が生き残る。しかし後に「弱者淘汰の正当化」として批判される。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 社会進化論</h3>
+                        <p>社会は軍事型から産業型へ進化する。複雑化、分化、自発的協力の増加。政府介入は進化を妨げる。</p>
+                </div>
+                <div class="card">
+                    <h3">🔓 自由放任主義</h3>
+                        <p>政府の役割は最小限に。福祉国家は「適者生存」を妨げる。個人の自由と自発的秩序を重視。</p>
+                </div>
+                <div class="card">
+                    <h3">🧠 心理学の進化論</h3>
+                        <p>心も進化の産物。連合心理学を進化論的に再解釈。ウィリアム・ジェイムズに影響。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 綜合哲学</h3>
+                        <p>生物学、心理学、社会学、倫理学を一つの進化論的体系に統合。10巻の大著「綜合哲学体系」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 栄光と没落</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. ヴィクトリア朝の人気</h3>
+                        <p>19世紀後半、スペンサーはダーウィンより有名だった。アメリカでは鉄鋼王カーネギーが信奉。進歩の時代の哲学者。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 社会ダーウィニズム</h3>
+                        <p>スペンサーの思想は「社会ダーウィニズム」と呼ばれ、弱者淘汰、植民地主義、優生学を正当化するものとして流用された。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 20世紀の批判</h3>
+                        <p>進歩史観の崩壊。二つの世界大戦。スペンサーは「反動的」として激しく批判され、忘却される。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 再評価</h3>
+                        <p>今日、社会変動論、複雑系理論、自由主義思想史の文脈で再評価されつつある。批判的に読む価値がある思想家。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Evolution as Version Control</h2>
+            <div class="it-card">
+                <h3">Evolution as Software Development</h3>
+                    <p>進化はソフトウェア開発。v1.0は単純で同質的（モノリス）、v2.0は分化と専門化（モジュール化）、v3.0は高度な統合（マイクロサービス連携）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Survival of the Fittest as Natural Selection Algorithm</h3>
+                    <p>適者生存は自然選択アルゴリズム。適応度関数に基づいてソリューションを選択。遺伝的アルゴリズムの基盤。</p>
+            </div>
+            <div class="it-card">
+                <h3">Social Evolution as System Scaling</h3>
+                    <p>社会進化はシステムスケーリング。単体サーバー（部族）から分散システム（産業社会）へ。負荷分散、冗長性、専門化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Laissez-faire as Minimal Intervention</h3>
+                    <p>自由放任は最小介入のアーキテクチャ。中央集権的制御ではなく、自己組織化と創発的秩序を信頼する。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>「適者生存」</strong>：ダーウィン理論を社会に拡張した表現。後に誤用されるが、影響力は絶大。</li>
+                <li><strong>綜合哲学</strong>：生物学、心理学、社会学、倫理学を進化論的に統合。10巻の体系。</li>
+                <li><strong>社会進化論</strong>：社会を軍事型から産業型への進化として分析。社会学の先駆的貢献。</li>
+                <li><strong>自由主義哲学</strong>：政府介入の最小化、個人の自由、自発的秩序。リバタリアニズムの先駆。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジャン＝バティスト・ラマルク（進化論）</li>
+                            <li>トマス・マルサス（人口論）</li>
+                            <li>古典的自由主義（スミス、ミル）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>エミール・デュルケーム（分業論）</li>
+                            <li>アメリカ実用主義（ジェイムズ）</li>
+                            <li>リバタリアニズム</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 進化論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スペンサー</th>
+                        <th>ダーウィン</th>
+                        <th>マルクス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>進化の範囲</strong></td>
+                        <td>宇宙全体</td>
+                        <td>生物</td>
+                        <td>社会経済</td>
+                    </tr>
+                    <tr>
+                        <td><strong>メカニズム</strong></td>
+                        <td>分化と統合</td>
+                        <td>自然選択</td>
+                        <td>階級闘争</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社会への帰結</strong></td>
+                        <td>自由放任</td>
+                        <td>（社会理論なし）</td>
+                        <td>革命</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>バージョンアップ</td>
+                        <td>遺伝的アルゴリズム</td>
+                        <td>システム置換</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：進歩は不可避か</h2>
+            <div class="thought-experiment">
+                <h3">スペンサーのヴィクトリア朝楽観主義</h3>
+                    <p>1851年のロンドン万博——「水晶宮」に世界中の産業製品が集まり、人類の進歩を祝いました。スペンサーはこの時代の哲学者です。進化は進歩、単純から複雑へ、落後から文明へ——この流れは不可避だと。
+                    </p>
+                    <p>しかし20世紀はこの楽観を打ち砕きました。二つの世界大戦、ホロコースト、核兵器——「文明」社会が行った残虐。進歩は不可避どころか、後退もある。「適者生存」は弱者排除の口実に。</p>
+                    <p>スペンサーを読むときのジレンマ：彼の進化論的社会学には洞察がある（分化、統合、複雑性）。しかし「進歩は不可避」という哲学は危険だった。</p>
+                    <p>今日のAI進歩論、テクノ楽観主義も同じ問題を孕んでいないか？「技術は不可避に発展し、社会は良くなる」——これはスペンサー的楽観の現代版かもしれません。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「進歩は不可避」——あなたはこの信念を持っていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ハーバート・スペンサーは、進化を宇宙全体の原理として体系化した19世紀の哲学者です。「適者生存」という表現を作り、社会、心理、倫理を進化論的に統合する「綜合哲学」を構築しました。ヴィクトリア朝には絶大な人気を誇りましたが、20世紀には「社会ダーウィニズム」として批判を受け、忘却されました。今日、その思想は批判的に再評価されています。分化と統合、自発的秩序、複雑性の増加——これらの概念は現代の社会学、複雑系理論、自由主義思想にも影響を残しています。スペンサーは問題を孕む思想家ですが、だからこそ読む価値があります。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Progress is not Providence.</p>
+    </footer>
+</body>
+
+</html>

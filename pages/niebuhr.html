@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラインホールド・ニーバー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            /* Realism Blue */
+            --secondary: #1e3a5f;
+            /* Power Dark */
+            --accent: #60a5fa;
+            /* Light Justice */
+            --highlight: #dbeafe;
+            /* Serenity Glow */
+            --bg: #0c1929;
+            /* Deep Politics */
+            --text: #dbeafe;
+            --border: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Realism Background */
+        .realism-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(30, 64, 175, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Niebuhr Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e40af 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Serenity Prayer Section */
+        .prayer-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e40af 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .prayer-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .prayer-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="realism-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CHRISTIAN_REALISM</a>
+        <div>NIEBUHR_v6.71</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-671 / THE_CHRISTIAN_REALIST</span>
+        <h1>ラインホールド・ニーバー</h1>
+        <p class="en-name">Reinhold Niebuhr (1892–1971)</p>
+        <p class="catchphrase">「変えられないものを受け入れる静けさを、変えられるものを変える勇気を」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">倫理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">キリスト教リアリズムの父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ラインホールド・ニーバーは、20世紀アメリカで最も影響力のあるプロテスタント神学者・政治思想家です。「キリスト教リアリズム」を提唱し、罪と権力の現実を直視しながら社会正義を追求しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「人間の罪性」</b>——人間は自己中心的であり、集団になるとさらに悪化する。この現実を無視した理想主義は危険。しかし罪を認めた上でなお正義を追求すべき。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ニーバーは<b>「セレニティの祈り」</b>の作者としても知られています（帰属には議論あり）。オバマ大統領が最も影響を受けた神学者として挙げました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ニーバーは、<b>「政治システムにおける例外処理の重要性を強調——理想的なコード（ユートピア）を書いても、人間の罪（バグ）は発生する。Try-Catchで例外を処理しつつ、それでもシステム改善を目指す。これがキリスト教リアリズム」</b>と主張しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. セレニティの祈り -->
+        <section class="prayer-section">
+            <h2>🙏 セレニティの祈り</h2>
+            <p class="prayer-text">
+                神よ、変えることのできないものを静穏に受け入れる力を与えてください。<br>
+                変えるべきものを変える勇気を、<br>
+                そして、変えられないものと変えるべきものを識別する知恵を与えてください。
+            </p>
+            <p style="margin-top: 3rem; font-size: 1.1rem; color: rgba(255,255,255,0.7);">
+                アルコホーリクス・アノニマス（AA）などで広く使われる祈り。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ニーバー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間の正義への能力が民主主義を可能にし、人間の不正義への傾向が民主主義を必要にする。</p>
+                <p class="quote-author">— ラインホールド・ニーバー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔴 原罪</h3>
+                    <p>人間は根本的に自己中心的。これは「原罪」の現代的解釈。楽観的な人間観を批判。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 集団の悪</h3>
+                        <p>個人より集団の方が利己的。国家、企業、階級——集団は道徳的制約を受けにくい。『道徳的人間と非道徳的社会』。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ キリスト教リアリズム</h3>
+                        <p>罪の現実を認めつつ正義を追求。ユートピア主義も冷笑主義も拒否。現実主義的な社会改革。</p>
+                </div>
+                <div class="card">
+                    <h3">🕊️ 正義と愛</h3>
+                        <p>愛は最高の理想だが、政治では正義が限界。権力のバランスで正義を追求。</p>
+                </div>
+                <div class="card">
+                    <h3">🇺🇸 冷戦と民主主義</h3>
+                        <p>共産主義にもファシズムにも反対。民主主義は最良ではないが、人間の罪を考えれば最も安全。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 政治参加</h3>
+                        <p>神学者でありながら積極的に政治に関与。労働運動を支持。後にADA（アメリカ民主行動連盟）設立に参加。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 道徳的人間と非道徳的社会 -->
+        <section class="section">
+            <h2 class="section-title">📚 道徳的人間と非道徳的社会</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 個人と集団の違い</h3>
+                        <p>個人は道徳的行動が可能。しかし集団（国家、階級）は利己的で冷酷になりやすい。構造が道徳を阻害。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 理想主義の限界</h3>
+                        <p>教育や道徳的訴えだけでは社会変革できない。権力には権力で対抗する必要がある。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 権力のバランス</h3>
+                        <p>正義は権力の均衡から生まれる。支配される側が対抗力を持つとき、正義が実現しやすくなる。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 相対的正義</h3>
+                        <p>完全な正義は不可能。しかし「より良い」不正義の削減は可能。漸進的改革。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Christian Realism</h2>
+            <div class="it-card">
+                <h3">Sin as Bug</h3>
+                    <p>罪（原罪）はバグ。人間システムに内在するバグであり、完全に除去できない。バグの存在を前提に設計する必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Democracy as Fault Tolerance</h3>
+                    <p>民主主義はフォールトトレランス。権力の分散、チェック＆バランス——一箇所の障害がシステム全体を壊さない設計。</p>
+            </div>
+            <div class="it-card">
+                <h3">Utopianism as Over-optimization</h3>
+                    <p>ユートピア主義は過剰最適化。理想的なコードを書こうとして、エッジケース（人間の罪）を無視。本番環境でクラッシュ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Justice as Load Balancing</h3>
+                    <p>正義はロードバランシング。権力（負荷）を分散し、一箇所に集中させない。これが相対的正義。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>『道徳的人間と非道徳的社会』（1932）</strong>：キリスト教リアリズムの基本書。</li>
+                <li><strong>『人間の本性と運命』（1941-43）</strong>：2巻の神学的大著。</li>
+                <li><strong>セレニティの祈り</strong>：世界中で使われる祈り。</li>
+                <li><strong>冷戦期リベラリズム</strong>：反共産主義と社会正義の両立。</li>
+                <li><strong>オバマ大統領への影響</strong>：最も影響を受けた神学者として言及。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アウグスティヌス（原罪）</li>
+                            <li>マルクス（権力分析）</li>
+                            <li>キルケゴール</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>現実主義的国際政治</li>
+                            <li>アメリカ政治思想</li>
+                            <li>公共神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 政治倫理の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ニーバー</th>
+                        <th>理想主義</th>
+                        <th>冷笑主義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>人間観</strong></td>
+                        <td>罪深いが改善可能</td>
+                        <td>本質的に善</td>
+                        <td>本質的に悪</td>
+                    </tr>
+                    <tr>
+                        <td><strong>正義</strong></td>
+                        <td>相対的に可能</td>
+                        <td>完全に可能</td>
+                        <td>不可能</td>
+                    </tr>
+                    <tr>
+                        <td><strong>権力</strong></td>
+                        <td>必要悪</td>
+                        <td>不要／抑制すべき</td>
+                        <td>すべて</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政治</strong></td>
+                        <td>慎重な参加</td>
+                        <td>変革を追求</td>
+                        <td>傍観／利用</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>例外処理</td>
+                        <td>バグフリー前提</td>
+                        <td>セキュリティ無視</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：悪に対抗する悪</h2>
+            <div class="thought-experiment">
+                <h3">手を汚す政治</h3>
+                    <p>ニーバーは問います：正義を実現するために、不正な手段を使うことは許されるか？</p>
+                    <p style="margin-top: 1.5rem;">
+                        第二次世界大戦。ナチスに対抗するために爆撃で民間人を殺す。これは正義か？ニーバーは支持した——完全な正義は不可能だが、ナチスの悪よりはましな選択。</p>
+                    <p style="margin-top: 1.5rem;">労働運動。ストライキは経済に損害を与える。しかし労働者の権利のためには必要な力。愛だけでは資本家は譲歩しない。</p>
+                    <p style="margin-top: 1.5rem;">これは「手が汚れる」問題です。政治に関与すれば妥協が必要。純粋さを保つには傍観するしかないが、それは悪を放置すること。</p>
+                    <p style="margin-top: 1.5rem;">ニーバーの答え：罪の自覚を持ちながら行動せよ。自分の選択が完全に正しいとは思うな。しかし選択しないことも選択だ。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        正義のために不正を行うことは許されますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラインホールド・ニーバー（1892-1971）は、20世紀アメリカで最も影響力のあるプロテスタント神学者・政治思想家です。「キリスト教リアリズム」——人間の罪を直視しつつ、なお正義を追求する。『道徳的人間と非道徳的社会』で、個人と集団の道徳的差異を分析し、権力のバランスによる相対的正義を提唱しました。「人間の正義への能力が民主主義を可能にし、不正義への傾向が民主主義を必要にする」——この名言は民主主義の本質を突いています。「セレニティの祈り」（変えられないものを受け入れる静けさを、変えるべきものを変える勇気を）は世界中で使われています。オバマ大統領が最も影響を受けた神学者として言及。ニーバーは、純粋な理想主義でも冷笑的現実主義でもない、第三の道を示しました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Serenity, Courage, Wisdom.</p>
+    </footer>
+</body>
+
+</html>

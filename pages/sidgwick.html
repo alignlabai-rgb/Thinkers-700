@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヘンリー・シジウィック - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            /* Ethics Blue */
+            --secondary: #0f172a;
+            /* Cambridge Dark */
+            --accent: #3b82f6;
+            /* Reason Light */
+            --highlight: #dbeafe;
+            /* Method Glow */
+            --bg: #020617;
+            /* Systematic Deep */
+            --text: #e0f2fe;
+            --border: #1e3a8a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Systematic Background */
+        .systematic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Victorian Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a8a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Three Methods Diagram */
+        .methods-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a8a 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .methods-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .methods-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .method-box {
+            padding: 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .intuition-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .egoism-box {
+            background: #dc2626;
+            border: 2px solid #ef4444;
+        }
+
+        .utilitarianism-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📚";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .methods-diagram {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="systematic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← THE_METHODS_OF_ETHICS</a>
+        <div>SYSTEMATIC_ETHICS_v4.80</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-480 / THE_METHODICAL_ETHICIST</span>
+        <h1>ヘンリー・シジウィック</h1>
+        <p class="en-name">Henry Sidgwick (1838–1900)</p>
+        <p class="catchphrase">「倫理学を厳密な学問へ」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">倫理学を科学にする</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「何が正しいか」を議論するとき、私たちはしばしば混乱します。直感に訴える人、自己利益を主張する人、全体の幸福を語る人——誰もが異なる基準で語っている。19世紀イギリスの哲学者ヘンリー・シジウィックは、この混乱を整理しようとしました。彼の主著『倫理学の諸方法』は、<b>倫理学における競合する立場を体系的に分析した最初の作品</b>です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シジウィックは三つの「倫理的方法」を区別しました：<b>直覚主義</b>（道徳的直観に従う）、<b>利己主義</b>（自己利益を最大化する）、<b>功利主義</b>（全体の幸福を最大化する）。彼はこれらを公平に検討し、最終的に功利主義を支持しましたが、同時に恐るべき問題を発見しました——<b>「実践理性の二元論」</b>。功利主義と利己主義の間には、理性的に解決できない根本的対立があるかもしれないのです。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シジウィックを学ぶことは、<b>倫理的議論の「方法」を理解すること</b>です。彼の厳密さと誠実さは、現代倫理学の規範となっています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>シジウィックは、<b>「倫理学には複数の『ルーティングプロトコル』が競合している。直覚主義はハードコードされたルート、利己主義はローカル最適化、功利主義はグローバル最適化。どのプロトコルを採用すべきか、システム設計者は選択を迫られる」</b>と分析した、倫理のシステムエンジニアです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 三つの方法 -->
+        <section class="methods-section">
+            <h2>📐 倫理学の三つの方法</h2>
+            <div class="methods-diagram">
+                <div class="method-box intuition-box">
+                    <p style="font-size: 1.4rem; margin-bottom: 1rem;">🔮 直覚主義</p>
+                    <p>Intuitionism</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">道徳的直観に従う</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">「これは正しいと感じる」</p>
+                </div>
+                <div class="method-box egoism-box">
+                    <p style="font-size: 1.4rem; margin-bottom: 1rem;">👤 利己主義</p>
+                    <p>Egoism</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">自己利益を最大化</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">「私にとって良いこと」</p>
+                </div>
+                <div class="method-box utilitarianism-box">
+                    <p style="font-size: 1.4rem; margin-bottom: 1rem;">⚖️ 功利主義</p>
+                    <p>Utilitarianism</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem;">全体の幸福を最大化</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">「みんなにとって最善」</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                これらは競合する正当化の方法。シジウィックは各々を公平に検討し、強みと弱みを分析した。最終的に功利主義を支持したが、利己主義との対立は解消できなかった。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 体系的倫理学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">私が見出した道徳哲学の根本的困難は、合理的利己主義と合理的博愛主義の間の対立である。</p>
+                <p class="quote-author">— 『倫理学の諸方法』（1874年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📐 三つの方法</h3>
+                        <p>直覚主義、利己主義、功利主義。倫理的判断を正当化する三つの独立した方法。シジウィックはこれらの関係を体系的に分析した。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 実践理性の二元論</h3>
+                        <p>功利主義（全体の善）と利己主義（自己の善）は、どちらも合理的に正当化可能。しかし両者が衝突したとき、理性は解決できない。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 哲学的直覚主義</h3>
+                        <p>道徳の自明な公理を直覚で認識できる。しかしシジウィックは、多くの「直覚」は一貫性がなく、功利主義的検討を要すると主張。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 洗練された功利主義</h3>
+                        <p>ベンサムやミルの功利主義をさらに洗練。「快楽」より「望ましい意識状態」、規則と行為の区別など。現代功利主義の基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 常識道徳の検討</h3>
+                        <p>日常の道徳的判断を哲学的に検討。曖昧さや矛盾を発見し、より一貫した原理への整理を試みる。反省的均衡の先駆け。</p>
+                </div>
+                <div class="card">
+                    <h3">🎓 学問的誠実さ</h3>
+                        <p>シジウィックは結論を強制せず、困難を隠さなかった。未解決の問題を認める誠実さは、哲学的方法の模範とされる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 倫理学の厳密化</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 体系的分類</h3>
+                        <p>競合する倫理的立場を体系的に分類・整理。「何が正しいか」ではなく「どう正当化するか」を問う。メタ倫理学への一歩。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 公平な検討</h3>
+                        <p>自分が最終的に支持する功利主義だけでなく、直覚主義や利己主義も公平に検討。敵対的立場の最良のバージョンを相手にする。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 困難の認識</h3>
+                        <p>「実践理性の二元論」という未解決問題を正直に認めた。哲学を「答えを与える」ものではなく「問いを明確にする」ものとして。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 後世への影響</h3>
+                        <p>G.E.ムーア、ロールズ、パーフィットらに直接影響。現代倫理学の「方法」と「厳密さ」の基準を確立。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Ethics as Protocol Selection</h2>
+            <div class="it-card">
+                <h3">Three Protocols</h3>
+                    <p>直覚主義はハードコードされたルール（if-then）。利己主義はローカル最適化アルゴリズム。功利主義はグローバル最適化。どのプロトコルを採用するかで、同じ入力に異なる出力が生まれる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Dualism as Protocol Conflict</h3>
+                    <p>実践理性の二元論はプロトコル衝突。功利主義プロトコルと利己主義プロトコルが異なるルーティングを指示するとき、上位のメタプロトコルがない。デッドロックの可能性。</p>
+            </div>
+            <div class="it-card">
+                <h3">Intuitionism as Default Rules</h3>
+                    <p>直覚主義はデフォルトルール。システムに組み込まれた初期設定だが、エッジケースで矛盾が生じる。より一貫したプロトコル（功利主義）での再設計が必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Philosophical Honesty as Error Reporting</h3>
+                    <p>シジウィックの誠実さはエラーを隠さないこと。システムのバグ（未解決問題）を正直に報告し、ドキュメントに残す。将来の開発者（後続の哲学者）への責任。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『倫理学の諸方法』</strong>：英語による最も重要な倫理学著作の一つ。体系的・分析的倫理学の模範。</li>
+                <li><strong>三つの方法の分析</strong>：直覚主義、利己主義、功利主義を体系的に比較分析。現代メタ倫理学の先駆け。</li>
+                <li><strong>実践理性の二元論</strong>：功利主義と利己主義の根本的対立を発見。倫理学の限界を正直に認める。</li>
+                <li><strong>洗練された功利主義</strong>：ベンサム、ミルの粗い功利主義を精密化。現代功利主義研究の出発点。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジェレミー・ベンサム（功利主義）</li>
+                            <li>J.S.ミル（功利主義の洗練）</li>
+                            <li>ジョセフ・バトラー（良心論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>G.E.ムーア（メタ倫理学）</li>
+                            <li>ジョン・ロールズ（反省的均衡）</li>
+                            <li>デレク・パーフィット（理由と人格）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 功利主義者の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シジウィック</th>
+                        <th>ベンサム</th>
+                        <th>J.S.ミル</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>価値の基準</strong></td>
+                        <td>望ましい意識状態</td>
+                        <td>快楽（量的）</td>
+                        <td>快楽（質的区別）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法論</strong></td>
+                        <td>体系的・分析的</td>
+                        <td>計算的</td>
+                        <td>弁証法的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>直覚の扱い</strong></td>
+                        <td>批判的検討</td>
+                        <td>否定</td>
+                        <td>部分的承認</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>プロトコル比較</td>
+                        <td>数値計算</td>
+                        <td>経験学習</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：孤島の宝</h2>
+            <div class="thought-experiment">
+                <h3">誰も見ていないとき</h3>
+                    <p>無人島に漂着したあなたは、瀕死の老人から宝の地図を託されました。「これを私の息子に届けてほしい」。あなたは約束しました。老人は死にました。</p>
+                    <p>しかし考えてみてください。息子に届けても、あなたが着服しても、世界の総幸福量は同じかもしれません。むしろあなたが使ったほうが幸福が増えるかもしれない。誰も知らないのだから。</p>
+                    <p>シジウィックはここに「実践理性の二元論」を見出しました。功利主義は「全体の幸福を最大化せよ」と言う。しかし利己主義は「自分の幸福を最大化せよ」と言う。どちらも「合理的」なら、約束を守る理由は何でしょうか？
+                    </p>
+                    <p>シジウィックは正直に告白しました——この対立を理性だけで解決する方法はわからない、と。哲学者が「わからない」と言う誠実さ。それ自体が一つの答えかもしれません。</p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        誰も見ていないとき、あなたは何を基準に選びますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ヘンリー・シジウィックの『倫理学の諸方法』は、倫理学を厳密な学問的分野として確立した記念碑的著作です。直覚主義、利己主義、功利主義という三つの方法を体系的に分析し、それぞれの強みと弱みを公平に検討した彼の方法は、現代分析倫理学の模範となっています。「実践理性の二元論」という未解決問題を正直に認めた誠実さは、答えを与えることよりも問いを明確にすることを重視する哲学的姿勢を示しています。G.E.ムーア、ロールズ、パーフィットら後続の哲学者たちはすべてシジウィックから出発し、彼の問いに応答してきました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The methods of ethics.</p>
+    </footer>
+</body>
+
+</html>

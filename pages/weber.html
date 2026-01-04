@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マックス・ウェーバー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #64748b;
+            /* Rationalization Gray */
+            --secondary: #1e293b;
+            /* Iron Cage Dark */
+            --accent: #94a3b8;
+            /* Bureaucracy Slate */
+            --highlight: #e2e8f0;
+            /* Disenchantment Glow */
+            --bg: #0f172a;
+            /* Heidelberg Deep */
+            --text: #e2e8f0;
+            --border: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Rationalization Background */
+        .rational-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(100, 116, 139, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(148, 163, 184, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Weber Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #64748b 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚙️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #475569 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(100, 116, 139, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(100, 116, 139, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Authority Types */
+        .authority-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #64748b 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .authority-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .authority-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .authority-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .traditional-box {
+            background: #b45309;
+            border: 3px solid #f59e0b;
+        }
+
+        .charismatic-box {
+            background: #dc2626;
+            border: 3px solid #f87171;
+        }
+
+        .rational-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚙️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rational-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← IRON_CAGE</a>
+        <div>RATIONALIZATION_v5.38</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-538 / THE_FOUNDING_FATHER_OF_SOCIOLOGY</span>
+        <h1>マックス・ウェーバー</h1>
+        <p class="en-name">Max Weber (1864–1920)</p>
+        <p class="catchphrase">「脱魔術化——合理化が世界から魔法を奪う」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">政治OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">理解社会学</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    マックス・ウェーバーは、ドイツの社会学者・経済学者・政治学者であり、「社会学の創始者」の一人として知られます。近代化を「合理化」として分析し、その帰結としての「脱魔術化」と「鉄の檻」を警告しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウェーバーの核心的洞察——<b>近代化は合理化のプロセスである</b>。宗教、魔術、伝統から離れ、計算可能性、効率、官僚制が支配する世界へ。しかしこれは「鉄の檻」でもある。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    『プロテスタンティズムの倫理と資本主義の精神』——宗教と経済の関係を分析した社会科学の古典。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウェーバーは、<b>「近代社会はレガシーシステムからクラウドへの移行——魔法（手作業）から自動化へ。効率は上がるが、人間が『歯車』になるリスクがある。鉄の檻はロックイン」</b>と分析した、社会システムのアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 支配の三類型 -->
+        <section class="authority-section">
+            <h2>👑 支配の三類型</h2>
+            <div class="authority-diagram">
+                <div class="authority-box traditional-box">
+                    <p>🏛️</p>
+                    <p>伝統的支配</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">慣習・世襲</p>
+                </div>
+                <div class="authority-box charismatic-box">
+                    <p>⚡</p>
+                    <p>カリスマ的支配</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">個人の資質</p>
+                </div>
+                <div class="authority-box rational-box">
+                    <p>⚙️</p>
+                    <p>合法的支配</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">法・官僚制</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                支配の正当性には三つの類型がある。近代化は伝統・カリスマから合法的支配へと移行するプロセス。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウェーバー思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">世界の脱魔術化こそが我々の運命である。</p>
+                <p class="quote-author">— 『職業としての学問』（1917年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✨ 脱魔術化</h3>
+                        <p>Entzauberung。世界から魔法が消える。科学と合理性が神秘を追放。意味の喪失。</p>
+                </div>
+                <div class="card">
+                    <h3">⚙️ 合理化</h3>
+                        <p>Rationalisierung。計算可能性、効率、予測可能性の追求。近代化の本質。</p>
+                </div>
+                <div class="card">
+                    <h3">🔒 鉄の檻</h3>
+                        <p>Stahlhartes Gehäuse。官僚制と合理化が人間を「歯車」に。自由の喪失。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 プロ倫理</h3>
+                        <p>『プロテスタンティズムの倫理と資本主義の精神』。カルヴァン主義が勤勉と蓄財を促進。</p>
+                </div>
+                <div class="card">
+                    <h3">🎯 理解社会学</h3>
+                        <p>Verstehende Soziologie。行為の意味を理解する。因果説明と意味理解。</p>
+                </div>
+                <div class="card">
+                    <h3">🏢 官僚制</h3>
+                        <p>近代的官僚制の分析。階層、規則、文書主義。効率と非人格性。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. プロテスタントの倫理 -->
+        <section class="section">
+            <h2 class="section-title">🔄 宗教と資本主義</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 問題設定</h3>
+                        <p>なぜ西欧で近代資本主義が発展したか？マルクスは物質的要因を強調。ウェーバーは精神的要因に注目。</p>
+                </div>
+                <div class="card">
+                    <h3">2. カルヴァン主義</h3>
+                        <p>予定説——救済は神によって予め決定。しかし勤勉と成功は救済の「しるし」。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 天職概念</h3>
+                        <p>Beruf。世俗の仕事も神への奉仕。禁欲的勤労と蓄財。消費せず再投資。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 資本主義の精神</h3>
+                        <p>時は金なり、信用は金なり——ベンジャミン・フランクリン。宗教的動機が世俗化。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Society as Rationalized System</h2>
+            <div class="it-card">
+                <h3">Rationalization as Automation</h3>
+                    <p>合理化は自動化。手作業（魔法、伝統）から自動処理（規則、官僚制）へ。効率は上がるが人間味が失われる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Iron Cage as Vendor Lock-in</h3>
+                    <p>鉄の檻はベンダーロックイン。一度入ったら抜けられない。システムが人間を拘束する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Disenchantment as Deprecation</h3>
+                    <p>脱魔術化はレガシー機能のdeprecation。魔法、神秘、伝統——古いAPIは廃止される。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bureaucracy as Enterprise System</h3>
+                    <p>官僚制はエンタープライズシステム。階層、規則、ドキュメント——効率的だが柔軟性がない。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『プロテスタンティズムの倫理と資本主義の精神』</strong>：宗教社会学の古典。1905年。</li>
+                <li><strong>理解社会学</strong>：行為の意味を理解する方法論。</li>
+                <li><strong>支配の三類型</strong>：伝統・カリスマ・合法的支配。</li>
+                <li><strong>官僚制論</strong>：近代組織の分析。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>マルクス（唯物史観への対抗）</li>
+                            <li>ニーチェ（価値の問題）</li>
+                            <li>ディルタイ（精神科学）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>パーソンズ（機能主義）</li>
+                            <li>フランクフルト学派</li>
+                            <li>組織論・経営学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 社会学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウェーバー</th>
+                        <th>マルクス</th>
+                        <th>デュルケム</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>意味・合理化</td>
+                        <td>階級・生産様式</td>
+                        <td>社会的事実</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>理解</td>
+                        <td>弁証法</td>
+                        <td>実証主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>近代観</strong></td>
+                        <td>鉄の檻</td>
+                        <td>疎外</td>
+                        <td>アノミー</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>自動化</td>
+                        <td>所有権</td>
+                        <td>統合</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：効率の代償</h2>
+            <div class="thought-experiment">
+                <h3">私たちは「鉄の檻」の中にいるか</h3>
+                    <p>ウェーバーは警告しました：合理化が進むと、人間は「歯車」になる。</p>
+                    <p>現代を見てみましょう：</p>
+                    <p>アルゴリズムが決める——SNSのフィード、就職活動の書類選考、信用スコア。</p>
+                    <p>KPIに追われる——数値目標、評価指標、パフォーマンス・レビュー。</p>
+                    <p>効率の追求——オプティマイゼーション、生産性、最適化。</p>
+                    <p>これは「鉄の檻」の現代版でしょうか？</p>
+                    <p>AIと自動化はこの傾向を加速させます。効率は上がるが、人間の主体性は？</p>
+                    <p>ウェーバーの問い：我々は効率と引き換えに何を失っているか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        効率化の代償として、何を失っていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マックス・ウェーバーは、「社会学の創始者」の一人として、近代化を「合理化」のプロセスとして分析したドイツの社会学者です。脱魔術化——科学と合理性が魔法を追放。鉄の檻——官僚制と効率が人間を拘束。『プロテスタンティズムの倫理と資本主義の精神』で宗教と経済の関係を分析。支配の三類型、理解社会学、官僚制論——ウェーバーの枠組みは現代社会を理解する上で依然として不可欠です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Disenchanted but rational.</p>
+    </footer>
+</body>
+
+</html>

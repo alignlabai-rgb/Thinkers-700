@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マーリク・イブン・アナス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Medina Gold */
+            --secondary: #451a03;
+            /* Desert Dark */
+            --accent: #f59e0b;
+            /* Tradition Light */
+            --highlight: #fef3c7;
+            /* Practice Glow */
+            --bg: #1c0f00;
+            /* Deep Hadith */
+            --text: #fef3c7;
+            --border: #92400e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .maliki-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📜";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #92400e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Muwatta Section */
+        .muwatta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .muwatta-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📜";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="maliki-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MEDINA</a>
+        <div>MALIK_v6.06</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-606 / THE_IMAM_OF_MEDINA</span>
+        <h1>マーリク・イブン・アナス</h1>
+        <p class="en-name">Mālik ibn Anas (c. 711–795)</p>
+        <p class="catchphrase">「メディナのイマーム」——預言者の町の慣行</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">伝統OS</span>
+            <span class="os-tag">法OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">マーリキー法学派</h2>
+            <div class="hero-box">
+                <p class="hero-text">マーリク・イブン・アナスは、8世紀メディナの法学者であり、イスラム法学四大学派の一つマーリキー学派の創始者、『ムワッタ』の著者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    マーリクの歴史的業績——<b>アマル・アヒル・マディーナ（メディナの人々の実践）を法源として重視。『ムワッタ』は現存最古のイスラム法典</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    北アフリカ、スペイン（アンダルス）、西アフリカで採用。シャーフィイーの師。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    マーリクの法学は、<b>「レガシー・コードの価値——メディナの『本番環境』で数世代にわたり動作してきたプラクティス。理論より実績。ライブデータの重視」</b>という、慣行ベースのアプローチ。
+                </p>
+            </div>
+        </section>
+
+        <!-- ムワッタ -->
+        <section class="muwatta-section">
+            <h2>📚 ムワッタ（踏み慣らされた道）</h2>
+            <p style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+                現存最古のイスラム法典<br>
+                ハディースとフィクフの統合<br>
+                40年かけて編纂<br>
+                約1700の項目<br>
+                メディナの実践を記録
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 マーリクの法学</h2>
+            <div class="quote-box">
+                <p class="quote-text">私は人間であり、過ちもあれば正しいこともある。私の意見を検討し、クルアーンとスンナに合うものは取り、合わないものは捨てよ。</p>
+                <p class="quote-author">— マーリク・イブン・アナス</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🏠 アマル</h3>
+                    <p>メディナの人々の実践（アマル）。預言者の町で連綿と続く慣行。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 ムワッタ</h3>
+                        <p>「踏み慣らされた道」。ハディースと法判断の統合。40年の集大成。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 マスラハ</h3>
+                        <p>公共の利益（マスラハ・ムルサラ）。明示的テキストがない場合。</p>
+                </div>
+                <div class="card">
+                    <h3">🔒 サッド・ダラーイア</h3>
+                        <p>悪への手段を封じる。予防的禁止。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 イジュマー</h3>
+                        <p>メディナ学者の合意。預言者に最も近い共同体。</p>
+                </div>
+                <div class="card">
+                    <h3">📍 地域</h3>
+                        <p>北アフリカ、マグリブ、西アフリカ、スペイン。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Practice</h2>
+            <div class="it-card">
+                <h3>Amal as Production Code</h3>
+                <p>アマルは本番コード。理論ではなく実際に動作してきたもの。</p>
+            </div>
+            <div class="it-card">
+                <h3">Muwatta as Documentation</h3>
+                    <p>ムワッタはドキュメンテーション。既存プラクティスの記録と体系化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Maslaha as Feature Request</h3>
+                    <p>マスラハは機能要求。公共の利益に基づく拡張。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sadd al-Dharai as Security</h3>
+                    <p>サッド・ダラーイアはセキュリティ。脆弱性への入口を閉じる。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>マーリキー学派</strong>：慣行に基づく法学。</li>
+                <li><strong>ムワッタ</strong>：現存最古のイスラム法典。</li>
+                <li><strong>メディナの実践</strong>：預言者の町の権威。</li>
+                <li><strong>マスラハ</strong>：公共の利益の考慮。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>メディナ学者</li>
+                        <li>サハーバ</li>
+                        <li>タービウーン</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>シャーフィイー</li>
+                            <li>北アフリカ法</li>
+                            <li>アンダルス法</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：慣行の権威</h2>
+            <div class="thought-experiment">
+                <h3">「みんながやっている」は正しいか</h3>
+                    <p>マーリクはメディナの慣行を法源とした。</p>
+                    <p>「みんながやっている」から正しい？</p>
+                    <p>しかし——</p>
+                    <p>メディナは預言者が最後の10年を過ごした町。</p>
+                    <p>そこの慣行は預言者に直接由来する可能性が高い。</p>
+                    <p>伝統は「何世代もテストされた」実績。</p>
+                    <p>しかし、伝統は時に過ちを固定する。</p>
+                    <p>慣行と革新のバランスは？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「みんながやっている」ことは正しさの証拠ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マーリク・イブン・アナス（c.
+                711-795）は、8世紀メディナの法学者であり、イスラム法学四大学派の一つマーリキー学派の創始者です。「メディナのイマーム」と称され、メディナの人々の実践（アマル）を法源として重視しました。40年かけて編纂した『ムワッタ』は現存最古のイスラム法典であり、ハディースと法判断を統合しました。シャーフィイーの師であり、北アフリカ、西アフリカ、かつてのスペイン（アンダルス）でマーリキー学派が採用されています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The practice of Medina.</p>
+    </footer>
+</body>
+
+</html>

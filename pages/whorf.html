@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベンジャミン・リー・ウォーフ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Linguistic Green */
+            --secondary: #064e3b;
+            /* Hopi Dark */
+            --accent: #34d399;
+            /* Relativity Emerald */
+            --highlight: #d1fae5;
+            /* Language Glow */
+            --bg: #022c22;
+            /* Sapir Deep */
+            --text: #d1fae5;
+            --border: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Linguistic Background */
+        .linguistic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Whorf Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🗣️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #10b981 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Language Diagram */
+        .language-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .language-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .language-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .language-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .english-box {
+            background: #0ea5e9;
+            border: 3px solid #38bdf8;
+        }
+
+        .hopi-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🗣️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="linguistic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LINGUISTIC_RELATIVITY</a>
+        <div>SAPIR_WHORF_v5.42</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-542 / THE_LINGUISTIC_RELATIVIST</span>
+        <h1>ベンジャミン・リー・ウォーフ</h1>
+        <p class="en-name">Benjamin Lee Whorf (1897–1941)</p>
+        <p class="catchphrase">「言語が思考を形作る——異なる言語、異なる世界」</p>
+        <div class="os-tags">
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">認知OS</span>
+            <span class="os-tag">人類学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">言語相対性仮説</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ベンジャミン・リー・ウォーフは、アメリカの言語学者・人類学者であり、「サピア＝ウォーフ仮説」（言語相対性仮説）で知られます。ホピ語などアメリカ先住民言語の研究を通じて、言語が思考を形作ると主張しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウォーフの核心的洞察——<b>言語は世界を「切り分ける」メガネである</b>。異なる言語を話す人々は、異なる仕方で世界を認識する。言語は単なるラベルではなく、思考そのものを形成する。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ホピ語には「時間」を表す文法がない？——西洋的時間概念は普遍ではない。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウォーフは、<b>「言語はプログラミング言語——異なる言語は異なるパラダイム。Pythonで考える人とHaskellで考える人は違う。言語がデータ構造と処理方法を規定する」</b>と分析した、思考のコンパイラ研究者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 言語の比較 -->
+        <section class="language-section">
+            <h2>🗣️ 言語と世界認識</h2>
+            <div class="language-diagram">
+                <div class="language-box english-box">
+                    <p>🇬🇧</p>
+                    <p>英語</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">時制・名詞中心</p>
+                    <p style="font-size: 0.8rem;">Past-Present-Future</p>
+                </div>
+                <div style="font-size: 2rem; color: var(--highlight);">≠</div>
+                <div class="language-box hopi-box">
+                    <p>🏜️</p>
+                    <p>ホピ語</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">相・動詞中心</p>
+                    <p style="font-size: 0.8rem;">Manifested-Manifesting</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                ウォーフはホピ語には時制がなく、時間概念が根本的に異なると主張。ただしこの解釈には批判もある。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウォーフ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">言語は思考の型を作る。それぞれの言語は独自の形而上学を含んでいる。</p>
+                <p class="quote-author">— 「言語・思考・実在」（1956年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🗣️ 言語相対性</h3>
+                        <p>Linguistic Relativity。言語が思考を形作る。異なる言語＝異なる世界観。強いバージョンと弱いバージョン。</p>
+                </div>
+                <div class="card">
+                    <h3">🔤 言語決定論</h3>
+                        <p>Linguistic Determinism。強いバージョン。言語が思考を「決定」する。批判も多い極端な解釈。</p>
+                </div>
+                <div class="card">
+                    <h3">🏜️ ホピ語研究</h3>
+                        <p>アリゾナのホピ族の言語を研究。時制、空間、時間——西洋とは異なる概念化。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 隠れた形而上学</h3>
+                        <p>言語に埋め込まれた世界観。話者は気づかない。「無意識の」カテゴリー化。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍🏫 エドワード・サピア</h3>
+                        <p>ウォーフの師。「サピア＝ウォーフ仮説」として共に知られる。言語人類学の創始者の一人。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 火災保険調査員</h3>
+                        <p>ウォーフは火災保険調査員でもあった。言葉の誤解が事故を引き起こす——言語への関心の原点。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 批判と擁護 -->
+        <section class="section">
+            <h2 class="section-title">🔄 批判と再評価</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. チョムスキー批判</h3>
+                        <p>普遍文法——言語の根底には普遍的な構造がある。言語相対性は表層的な違いに過ぎない。</p>
+                </div>
+                <div class="card">
+                    <h3">2. ホピ語の誤解？</h3>
+                        <p>後の研究者はホピ語にも時間概念があると主張。ウォーフの分析は誤りか、過剰解釈か。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 弱いバージョンの復権</h3>
+                        <p>「言語は思考に影響する」——弱いバージョンは心理学実験で支持されつつある。色、空間、数。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 認知言語学</h3>
+                        <p>レイコフ、ラネカーらの認知言語学。言語と認知の密接な関係。ウォーフの再評価。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Language as Programming Paradigm</h2>
+            <div class="it-card">
+                <h3">Language as Programming Language</h3>
+                    <p>自然言語はプログラミング言語。PythonとHaskellで考え方が違うように、日本語と英語で思考パターンが異なる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Linguistic Relativity as Paradigm Shift</h3>
+                    <p>言語相対性はパラダイムシフト。手続き型、オブジェクト指向、関数型——異なるパラダイムは異なる「見方」を強制する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Hidden Metaphysics as Framework Defaults</h3>
+                    <p>隠れた形而上学はフレームワークのデフォルト設定。意識せずに使っているが、思考を制約している。</p>
+            </div>
+            <div class="it-card">
+                <h3">Weak Version as API Constraints</h3>
+                    <p>弱いバージョンはAPI制約。完全に決定はしないが、何が「やりやすい」かを規定する。言語はaffordance。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>サピア＝ウォーフ仮説</strong>：言語相対性の理論的枠組み。</li>
+                <li><strong>ホピ語研究</strong>：時間・空間概念の言語相対的分析。</li>
+                <li><strong>『言語・思考・実在』</strong>：死後出版された論文集。1956年。</li>
+                <li><strong>隠れた形而上学</strong>：言語に埋め込まれた世界観の発見。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>エドワード・サピア</li>
+                            <li>フンボルト（言語世界観）</li>
+                            <li>フランツ・ボアズ</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>認知言語学</li>
+                            <li>言語人類学</li>
+                            <li>SF（『メッセージ』）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 言語観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ウォーフ</th>
+                        <th>チョムスキー</th>
+                        <th>ヴィトゲンシュタイン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>言語観</strong></td>
+                        <td>相対的</td>
+                        <td>普遍的</td>
+                        <td>用法依存</td>
+                    </tr>
+                    <tr>
+                        <td><strong>思考との関係</strong></td>
+                        <td>言語→思考</td>
+                        <td>思考→言語</td>
+                        <td>言語=生活形式</td>
+                    </tr>
+                    <tr>
+                        <td><strong>多様性</strong></td>
+                        <td>根本的に異なる</td>
+                        <td>表層的な違い</td>
+                        <td>言語ゲームの多様性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>パラダイム</td>
+                        <td>共通API</td>
+                        <td>DSL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：言語を変えると思考は変わるか</h2>
+            <div class="thought-experiment">
+                <h3">新しい言語を学ぶと別人になるか</h3>
+                    <p>日本語で考えるあなたと、英語で考えるあなた——同じ人ですか？</p>
+                    <p>バイリンガルの証言：言語によって「性格」が変わるという報告は多い。</p>
+                    <p>プログラマーの経験：Pythonで考えるとき、Haskellで考えるとき——解決策のパターンが違う。</p>
+                    <p>強い主張：翻訳不可能なものがある。ある言語でしか表現できない概念がある。</p>
+                    <p>弱い主張：翻訳は可能だが、自然さが違う。ある言語では「言いやすい」ことがある。</p>
+                    <p>AIと言語：大規模言語モデルは「多言語」だが、その「思考」は言語によって変わるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        もう一つの言語を学んだら、別の自分になれますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ベンジャミン・リー・ウォーフは、「サピア＝ウォーフ仮説」（言語相対性仮説）で知られるアメリカの言語学者です。ホピ語などアメリカ先住民言語の研究を通じて、言語が思考を形作ると主張しました。強いバージョン（言語決定論）には批判が多いものの、弱いバージョン（言語が思考に影響する）は認知科学で再評価されています。映画『メッセージ』のモチーフにもなり、「言語を変えれば世界が変わる」というアイデアは今も魅力的な問いを投げかけます。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Language shapes thought.</p>
+    </footer>
+</body>
+
+</html>

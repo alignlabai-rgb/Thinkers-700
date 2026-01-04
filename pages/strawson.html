@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.F.ストローソン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            /* Oxford Blue */
+            --secondary: #0f172a;
+            /* Analytic Dark */
+            --accent: #3b82f6;
+            /* Logic Light */
+            --highlight: #dbeafe;
+            /* Concept Glow */
+            --bg: #030712;
+            /* Metaphysics Deep */
+            --text: #dbeafe;
+            --border: #1d4ed8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Analytic Background */
+        .analytic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(30, 58, 95, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Oxford Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a8a 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📐";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 58, 95, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Conceptual Scheme */
+        .scheme-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a8a 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .scheme-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .scheme-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sch-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .body-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .person-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .space-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .sch-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📐";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .scheme-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="analytic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← INDIVIDUALS</a>
+        <div>DESCRIPTIVE_METAPHYSICS_v5.01</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-501 / THE_DESCRIPTIVE_METAPHYSICIAN</span>
+        <h1>P.F.ストローソン</h1>
+        <p class="en-name">Peter Frederick Strawson (1919–2006)</p>
+        <p class="catchphrase">「記述的形而上学——われわれの思考の実際の構造を描く」</p>
+        <div class="os-tags">
+            <span class="os-tag">形而上OS</span>
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">言語OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">記述的形而上学</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    P.F.ストローソンは、20世紀イギリスの分析哲学を代表する哲学者の一人です。オックスフォード大学で長く教鞭をとり、言語哲学と形而上学に多大な貢献をしました。彼の代表作『個体』（1959年）は、<b>記述的形而上学</b>というプログラムを提唱しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    記述的形而上学とは、「私たちの思考の実際の構造を記述する」試みです。世界が究極的にどうあるべきかを語る「改訂的形而上学」ではなく、<b>私たちが実際に世界をどのように分節しているか</b>を明らかにする。その結果、「物体」と「人格」が基本的な個体のカテゴリーであることがわかる。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ストローソンを学ぶことは、<b>分析哲学における形而上学の復権</b>を理解することです。日常言語と深い形而上学的洞察の結合。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>ストローソンは、<b>「思考には『オントロジー』がある。私たちはデータをどのように構造化するか——プリミティブ型（個体）、リレーション（述語付け）、オブジェクト階層。記述的形而上学とは、このスキーマを解明すること」</b>と説いた、概念アーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 概念スキーム -->
+        <section class="scheme-section">
+            <h2>📐 基本的個体</h2>
+            <div class="scheme-diagram">
+                <div class="sch-box body-box">
+                    <p>📦 物体</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Material Bodies</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">空間的連続性</p>
+                </div>
+                <div class="sch-arrow">+</div>
+                <div class="sch-box person-box">
+                    <p>👤 人格</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Persons</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">心と身体の統一</p>
+                </div>
+                <div class="sch-arrow">=</div>
+                <div class="sch-box space-box">
+                    <p>🌐 時空の枠組み</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Spatio-temporal</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">同定の基盤</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                思考の基本的個体は「物体」と「人格」。どちらも時空的に位置づけられる。「人格」は心と身体の統一であり、デカルト的二元論を超える。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ストローソン思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">記述的形而上学は、われわれの思考の実際の構造を記述することを目的とする。</p>
+                <p class="quote-author">— 『個体』（1959年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📐 記述的形而上学</h3>
+                        <p>思考の実際の構造を記述。改訂ではなく描写。われわれが世界をどう分節しているかを明らかにする。</p>
+                </div>
+                <div class="card">
+                    <h3">📦 基本的個体</h3>
+                        <p>「物体」と「人格」が基本カテゴリー。時空的連続性によって同定される。他の個体（出来事など）はこれらに依存。</p>
+                </div>
+                <div class="card">
+                    <h3">👤 人格の概念</h3>
+                        <p>心と身体の統一。デカルト的二元論への批判。心的述語と身体的述語を同一主体に帰属させる概念。</p>
+                </div>
+                <div class="card">
+                    <h3">📝 指示と記述</h3>
+                        <p>ラッセルの記述理論批判。「現在のフランス国王は禿げている」——ラッセルは偽と分析。ストローソンは真でも偽でもない（前提の失敗）。</p>
+                </div>
+                <div class="card">
+                    <h3">🗣️ 日常言語哲学</h3>
+                        <p>論理言語ではなく、日常言語の分析。オースティンと並ぶオックスフォード日常言語学派のリーダー。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 カント解釈</h3>
+                        <p>『感覚の限界』でカントを分析哲学的に再解釈。超越論的論証を現代的に再構成。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ラッセル vs ストローソン</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. ラッセルの記述理論</h3>
+                        <p>「現在のフランス国王は禿げている」——ラッセルはこの文を分析し、「フランス国王が存在する」という存在主張を含むと解釈。よって偽。</p>
+                </div>
+                <div class="card">
+                    <h3">2. ストローソンの批判</h3>
+                        <p>文と発話の区別。文は真偽を持たない。発話が真偽を持つ。この発話は前提（国王の存在）の失敗で、真でも偽でもない。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 前提と含意</h3>
+                        <p>前提（presupposition）は含意（entailment）と異なる。前提の失敗は真偽値の欠如を生む。論理だけでは捉えられない。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 語用論への道</h3>
+                        <p>ストローソンの分析は語用論の発展に貢献。文の意味だけでなく、発話の文脈が重要。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Ontology as Data Model</h2>
+            <div class="it-card">
+                <h3">Descriptive Metaphysics as ORM</h3>
+                    <p>記述的形而上学はオブジェクト関係マッピング。思考が世界をどうモデル化するかを記述。プリミティブ型、オブジェクト、リレーションの構造を明らかにする。</p>
+            </div>
+            <div class="it-card">
+                <h3">Basic Particulars as Primitive Types</h3>
+                    <p>基本的個体はプリミティブ型。「物体」と「人格」——他のすべてのオブジェクトはこれらから派生するか、これらに依存する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Person as Composite Object</h3>
+                    <p>「人格」はコンポジット・オブジェクト。心的属性と身体的属性を持つ。デカルト的二元論（二つの異なるオブジェクト）ではなく、単一オブジェクトに複数インターフェース。</p>
+            </div>
+            <div class="it-card">
+                <h3">Presupposition as Null Check</h3>
+                    <p>前提はNullチェック。参照が存在しない場合、真偽を評価できない（NullPointerException）。ラッセルはデフォルトで「偽」、ストローソンは「評価不能」。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『個体』</strong>：記述的形而上学の確立。基本的個体として物体と人格を分析。</li>
+                <li><strong>「指示について」</strong>：ラッセルの記述理論批判。前提と含意の区別を導入。</li>
+                <li><strong>人格の概念</strong>：心と身体の統一としての人格。デカルト的二元論への批判。</li>
+                <li><strong>『感覚の限界』</strong>：カントの分析哲学的再解釈。超越論的論証の現代版。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>イマヌエル・カント（カテゴリー）</li>
+                            <li>バートランド・ラッセル（批判対象）</li>
+                            <li>J.L.オースティン（日常言語）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>分析形而上学の復興</li>
+                            <li>語用論</li>
+                            <li>息子ギャレン・ストローソン</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 分析哲学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ストローソン</th>
+                        <th>ラッセル</th>
+                        <th>クワイン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>形而上学</strong></td>
+                        <td>記述的</td>
+                        <td>論理主義的</td>
+                        <td>自然主義的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>言語観</strong></td>
+                        <td>日常言語</td>
+                        <td>理想言語</td>
+                        <td>科学言語</td>
+                    </tr>
+                    <tr>
+                        <td><strong>基本カテゴリー</strong></td>
+                        <td>物体・人格</td>
+                        <td>論理的原子</td>
+                        <td>時空の断片</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ORM</td>
+                        <td>型システム</td>
+                        <td>物理モデル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：存在しない王</h2>
+            <div class="thought-experiment">
+                <h3">現在のフランス国王</h3>
+                    <p>「現在のフランス国王は禿げている」——この文は真ですか、偽ですか？</p>
+                    <p>バートランド・ラッセルは言いました：この文は「フランス国王が一人だけ存在する」という存在主張を暗に含んでいる。フランスに国王はいないので、この主張は偽。よって文全体も偽。</p>
+                    <p>ストローソンは反論しました：文と発話を区別せよ。文は抽象的な表現であり、真偽を持たない。発話は特定の文脈で行われる行為であり、ここで真偽が問われる。</p>
+                    <p>「現在のフランス国王は禿げている」という発話は、フランス国王が存在することを<b>前提</b>としている。この前提が成立しないなら、発話は真でも偽でもない——前提の失敗によって真偽値が生じない。
+                    </p>
+                    <p>これは論理学だけでは捉えられない語用論的現象です。誰かが「私の妻はベジタリアンだ」と言って、その人が独身なら、その発話は真でも偽でもない——「評価不能」。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「前提」が成り立たないとき、何が起こりますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>P.F.ストローソンの「記述的形而上学」は、分析哲学における形而上学の復権を象徴する仕事です。『個体』で提唱されたこのプログラムは、世界がどうあるべきかではなく、私たちの思考が世界をどのように分節しているかを記述します。物体と人格という基本的個体、ラッセルへの批判における前提の概念、カントの分析哲学的再解釈——ストローソンの業績は日常言語と深い形而上学的洞察を結合しました。オックスフォード哲学を代表する彼の思想は、今なお分析形而上学と語用論に影響を与え続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. In the structure of thought.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピティリム・ソローキン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Ideational Purple */
+            --secondary: #1e1b2e;
+            /* Cycle Dark */
+            --accent: #a78bfa;
+            /* Sensate Light */
+            --highlight: #ede9fe;
+            /* Cultural Glow */
+            --bg: #0f0d1a;
+            /* Dynamics Deep */
+            --text: #ede9fe;
+            --border: #6d28d9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Cycle Background */
+        .cycle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Cultural Dynamics Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #5b21b6 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🔄";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6d28d9 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cultural Cycle Diagram */
+        .cycle-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #5b21b6 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .cycle-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .cycle-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cycle-box {
+            padding: 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .ideational-box {
+            background: #2563eb;
+            border: 2px solid #60a5fa;
+        }
+
+        .idealistic-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+        }
+
+        .sensate-box {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .cycle-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🔄";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .cycle-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cycle-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← SOCIAL_AND_CULTURAL_DYNAMICS</a>
+        <div>CULTURAL_SUPERSYSTEM_v4.90</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-490 / THE_SOCIOLOGIST_OF_CIVILIZATION</span>
+        <h1>ピティリム・ソローキン</h1>
+        <p class="en-name">Pitirim A. Sorokin (1889–1968)</p>
+        <p class="catchphrase">「文化は循環する——感覚的から理念的へ、そしてまた戻る」</p>
+        <div class="os-tags">
+            <span class="os-tag">社会OS</span>
+            <span class="os-tag">歴史OS</span>
+            <span class="os-tag">文化OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">文明の振り子</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ロシア革命を生き延び、追放された後アメリカでハーバード大学社会学部を創設したピティリム・ソローキンは、20世紀最大のマクロ社会学者の一人です。彼の主著『社会文化的動学』（全4巻、1937-1941年）は、<b>人類文明の2500年を分析し、文化の周期的変動を発見</b>しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ソローキンによれば、文化は三つの「超システム」——<b>理念的（Ideational）</b>、<b>感覚的（Sensate）</b>、<b>理想主義的（Idealistic）</b>——の間を循環する。理念的文化は超越的現実を重視し、感覚的文化は感覚的・物質的現実を重視する。理想主義的は両者の統合。西洋文明は現在「感覚的」段階の末期にあり、危機に直面している——とソローキンは診断しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ソローキンを学ぶことは、<b>長期的・循環的な視点から現代文明を診断すること</b>です。彼の「愛の社会学」は後年の研究テーマとなりました。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>ソローキンは、<b>「文明は三つの『オペレーティングシステム』——理念的OS（超越志向）、感覚的OS（物質志向）、理想主義的OS（統合）——を周期的に切り替える。現在の西洋は『感覚的OS』の末期であり、システムクラッシュが近い」</b>と診断した、文明のシステムアナリストです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 文化サイクル -->
+        <section class="cycle-section">
+            <h2>🔄 文化の循環</h2>
+            <div class="cycle-diagram">
+                <div class="cycle-box ideational-box">
+                    <p>🙏 理念的</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ideational</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">超越・精神・永遠</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-box idealistic-box">
+                    <p>⚖️ 理想主義的</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Idealistic</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">統合・調和・均衡</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-box sensate-box">
+                    <p>👁️ 感覚的</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Sensate</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">物質・快楽・現在</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                文化は三つの超システムを循環する。各段階は芸術、科学、倫理、法、社会組織すべてに影響。現代西洋は感覚的段階の末期——物質主義、相対主義、ニヒリズム。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 社会文化的動学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">どの偉大な文化も、その誕生から成熟、そして衰退まで、三つの超システムの間を振動する。</p>
+                <p class="quote-author">— 『社会文化的動学』（1937-1941年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🙏 理念的文化</h3>
+                    <p>究極の現実は超越的・精神的。禁欲主義、神秘主義、来世志向。中世ヨーロッパ、古代ヒンドゥー文明が例。</p>
+                </div>
+                <div class="card">
+                    <h3">👁️ 感覚的文化</h3>
+                        <p>究極の現実は感覚で知覚可能なもの。物質主義、快楽主義、現世志向。近代西洋、特に19-20世紀が典型。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 理想主義的文化</h3>
+                        <p>理念的と感覚的の調和・統合。ギリシア古典期、ルネサンス初期が例。最も創造的だが、不安定で短命。</p>
+                </div>
+                <div class="card">
+                    <h3">📉 危機の時代</h3>
+                        <p>感覚的文化の末期症状——科学主義の行き詰まり、道徳的相対主義、芸術の堕落、社会の解体。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 愛の社会学</h3>
+                        <p>後年の研究テーマ。「創造的利他主義」——愛を社会変革の力として分析。ハーバード愛的利他主義研究センターを設立。</p>
+                </div>
+                <div class="card">
+                    <h3">📊 統合的方法</h3>
+                        <p>量的・質的方法の統合。膨大な歴史データを統計的に分析しつつ、意味理解も重視。マクロ社会学の方法論的革新。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 感覚的文化の危機</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 科学の限界</h3>
+                        <p>感覚的認識論の行き詰まり。還元主義、決定論の限界。科学万能主義への疑問。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 道徳的相対主義</h3>
+                        <p>絶対的価値の崩壊。「善悪は相対的」——しかし何を基準に行動するか。ニヒリズムの蔓延。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 芸術の堕落</h3>
+                        <p>美から快楽へ。永続的価値から一時的刺激へ。商業化、センセーショナリズム。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 新たな統合へ</h3>
+                        <p>危機は転換への前奏曲。新しい理念的・理想主義的統合への胎動。創造的利他主義の可能性。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Civilization as OS Cycle</h2>
+            <div class="it-card">
+                <h3">Cultural Supersystem as Operating System</h3>
+                    <p>文化超システムはオペレーティングシステム。すべてのアプリケーション（芸術、科学、法、倫理）はこのOS上で動作する。OSが変われば、すべてが変わる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sensate Crisis as System Overload</h3>
+                    <p>感覚的文化の危機はシステムオーバーロード。物質主義の限界、リソース枯渇、パフォーマンス低下。システム再起動が必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ideational Turn as System Reset</h3>
+                    <p>理念的転回はシステムリセット。物質的蓄積をクリアし、精神的・超越的価値に再起動。新しいカーネルのインストール。</p>
+            </div>
+            <div class="it-card">
+                <h3">Idealistic as Balanced Architecture</h3>
+                    <p>理想主義的文化はバランスの取れたアーキテクチャ。物質と精神、感覚と超越の統合。最も安定だが、維持が困難。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『社会文化的動学』</strong>：2500年の文明史を分析した全4巻の大著。文化循環論の古典。</li>
+                <li><strong>三つの超システム</strong>：理念的、感覚的、理想主義的——文化を統合的に理解するフレームワーク。</li>
+                <li><strong>感覚的危機論</strong>：現代西洋文明の危機を診断。予言的な洞察として再評価されている。</li>
+                <li><strong>創造的利他主義</strong>：愛を社会変革の力として分析。社会学における愛の研究の先駆け。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>オズヴァルト・シュペングラー（文明循環）</li>
+                            <li>マックス・ウェーバー（理念型）</li>
+                            <li>ロシア正教神学</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>トインビー（文明論に影響）</li>
+                            <li>社会学的文明論</li>
+                            <li>トランスパーソナル心理学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 文明論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ソローキン</th>
+                        <th>シュペングラー</th>
+                        <th>トインビー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>歴史観</strong></td>
+                        <td>循環的</td>
+                        <td>有機的衰退</td>
+                        <td>挑戦と応答</td>
+                    </tr>
+                    <tr>
+                        <td><strong>現代診断</strong></td>
+                        <td>感覚的危機</td>
+                        <td>西洋の没落</td>
+                        <td>精神的挑戦</td>
+                    </tr>
+                    <tr>
+                        <td><strong>希望</strong></td>
+                        <td>新たな統合</td>
+                        <td>悲観的</td>
+                        <td>宗教的再生</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>OS循環</td>
+                        <td>レガシー消滅</td>
+                        <td>適応進化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：今日の文化は何段階か</h2>
+            <div class="thought-experiment">
+                <h3">感覚的文化の末期症状</h3>
+                    <p>ソローキンが1937年に診断した「感覚的文化の危機」は、21世紀にどうなっているでしょうか。チェックリストを見てみましょう：</p>
+                    <p>□ 物質的消費への執着——より多く、より速く、より新しく<br>
+                        □ 道徳的相対主義——「正しさ」は見方次第<br>
+                        □ 芸術の商業化——永続的価値より一時的刺激<br>
+                        □ 科学技術への過信——すべての問題に技術的解決を求める<br>
+                        □ 現世志向——死後、来世への関心の低下</p>
+                    <p>しかしソローキンは絶望しませんでした。危機は転換の前奏曲。新しい統合——物質と精神のバランス——への胎動がすでに始まっているかもしれない。</p>
+                    <p>彼の「創造的利他主義」研究は、この希望を体現しています。愛、共感、利他的行動——これらは次の時代の核になりうる。</p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたは「感覚的」ですか、「理念的」ですか、それとも「統合」を求めていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ピティリム・ソローキンの社会文化的動学は、人類文明を長期的・循環的視点から分析する壮大な試みです。理念的、感覚的、理想主義的——三つの文化超システムの振動として歴史を読み解く。現代西洋は感覚的段階の末期にあり、物質主義、相対主義、ニヒリズムの危機に直面している——この診断は、80年以上経った今日もなお説得力を持ちます。しかしソローキンは悲観主義者ではありませんでした。「創造的利他主義」の研究は、危機を超える道が愛と共感にあることを示唆しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The ways of love are immense.</p>
+    </footer>
+</body>
+
+</html>

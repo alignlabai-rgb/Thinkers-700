@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リンダ・トゥヒワイ・スミス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Māori Red */
+            --secondary: #450a0a;
+            /* Indigenous Dark */
+            --accent: #f87171;
+            /* Light Sovereignty */
+            --highlight: #fecaca;
+            /* Decolonize Glow */
+            --bg: #1c0505;
+            /* Deep Aotearoa */
+            --text: #fecaca;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Indigenous Background */
+        .indigenous-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(248, 113, 113, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Decolonizing Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌿";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Decolonize Section */
+        .decolonize-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .decolonize-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .decolonize-diagram {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .decolonize-box {
+            padding: 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 280px;
+        }
+
+        .colonial-box {
+            background: #374151;
+            border: 2px solid #6b7280;
+        }
+
+        .decolonial-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .decolonize-diagram {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="indigenous-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DECOLONIZING</a>
+        <div>SMITH_v6.59</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-659 / THE_DECOLONIZER</span>
+        <h1>リンダ・トゥヒワイ・スミス</h1>
+        <p class="en-name">Linda Tuhiwai Smith (1950–)</p>
+        <p class="catchphrase">「研究それ自体が植民地主義の道具だった——方法論を脱植民地化せよ」</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">脱植民地化OS</span>
+            <span class="os-tag">先住民OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">研究方法論の脱植民地化</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    リンダ・トゥヒワイ・スミスは、ニュージーランドのマオリ族出身の教育学者であり、『Decolonizing
+                    Methodologies（研究方法論の脱植民地化）』で国際的に知られています。先住民研究と脱植民地化理論の最も影響力のある声の一人です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心的主張は<b>「研究そのものが植民地主義的」</b>——西洋の学術研究は、先住民を「対象」として見てきた。研究者が来て、データを取って、論文を書いて、去っていく。先住民には何も残らない。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    これに対して<b>「先住民の知の主権」</b>を主張——先住民は研究の「対象」ではなく「主体」であるべき。先住民自身が問いを立て、方法を選び、成果を共有する。研究倫理の根本的な転換。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    スミスは、<b>「研究というソフトウェアのソースコード監査——西洋の研究OSには植民地主義的バイアスがハードコードされていた。データ抽出のAPI（研究方法）が先住民を搾取するよう設計されていた。スミスはこのアーキテクチャを根本から批判し、先住民主導のフォークを提案」</b>しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 二つの研究パラダイム -->
+        <section class="decolonize-section">
+            <h2>🔄 研究パラダイムの転換</h2>
+            <div class="decolonize-diagram">
+                <div class="decolonize-box colonial-box">
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">🔬 植民地主義的研究</p>
+                    <p>外部者が問いを立てる</p>
+                    <p>先住民は「対象」</p>
+                    <p>データを抽出</p>
+                    <p>成果は学界へ</p>
+                </div>
+                <div class="decolonize-box decolonial-box">
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">🌿 脱植民地化された研究</p>
+                    <p>先住民が問いを立てる</p>
+                    <p>先住民は「主体」</p>
+                    <p>知識を共創</p>
+                    <p>成果はコミュニティへ</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「私たちについて、私たちなしに、何も決めるな」——障害者運動のスローガンは、先住民研究にも当てはまる。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 スミス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">「研究」という言葉は、先住民コミュニティにとって最も汚い言葉の一つである。</p>
+                <p class="quote-author">— リンダ・トゥヒワイ・スミス</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🌿 脱植民地化</h3>
+                        <p>研究方法論そのものの植民地性を批判。知識生産のプロセスに埋め込まれた支配関係を明らかに。</p>
+                </div>
+                <div class="card">
+                    <h3">👥 先住民の主権</h3>
+                        <p>先住民は研究の対象ではなく主体。自らの知識、歴史、未来について決定する権利を持つ。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 カウパパ・マオリ</h3>
+                        <p>マオリの価値観に基づく研究方法論。ファナウ（家族）、マナ（権威）、ワイルア（精神性）を尊重。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 関係性</h3>
+                        <p>研究は関係性の中で行われる。研究者とコミュニティの相互責任。短期的な「データ収集」ではなく長期的な関係構築。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 ストーリーテリング</h3>
+                        <p>先住民の知識は物語の中にある。西洋的な「客観的」分析だけが知識ではない。ナラティブの尊重。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 研究倫理</h3>
+                        <p>誰のための研究か？誰が利益を得るか？インフォームド・コンセントを超えた、コミュニティとの対話。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 研究の歴史 -->
+        <section class="section">
+            <h2 class="section-title">🔄 研究と植民地主義の歴史</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 帝国と知識</h3>
+                        <p>植民地主義は武力だけでなく知識によっても行われた。分類、命名、記録——すべてが支配の道具。先住民は「発見」され、「記述」された。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 人類学の問題</h3>
+                        <p>人類学は「未開社会」を研究する学問として始まった。先住民は博物館の展示品のように扱われた。研究者の視線は常に外からだった。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 遺骨と遺物</h3>
+                        <p>西洋の博物館には先住民の遺骨や聖なる遺物が収蔵されている。これらは「研究のため」に持ち去られた。返還運動はまだ続いている。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 現代の課題</h3>
+                        <p>今日でも、研究者が先住民コミュニティに入り、データを取り、去っていく「ヘリコプター研究」が問題視されている。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Decolonizing Research</h2>
+            <div class="it-card">
+                <h3">Research as Data Extraction API</h3>
+                    <p>植民地主義的研究はデータ抽出API。先住民コミュニティからデータを取得し、外部サーバー（学界）に送信。コミュニティにはレスポンスなし。</p>
+            </div>
+            <div class="it-card">
+                <h3">Decolonizing as API Redesign</h3>
+                    <p>脱植民地化はAPI再設計。双方向通信、認証・認可（コミュニティの同意）、ローカルストレージ（知識がコミュニティに残る）。</p>
+            </div>
+            <div class="it-card">
+                <h3">Indigenous Sovereignty as Data Ownership</h3>
+                    <p>先住民の主権はデータ所有権。自分のデータを誰が使えるか、どう使えるかを決める権利。GDPR的発想を先住民に。</p>
+            </div>
+            <div class="it-card">
+                <h3">Kaupapa Māori as Alternative Framework</h3>
+                    <p>カウパパ・マオリは代替フレームワーク。西洋の研究フレームワーク（React的）ではなく、マオリの価値観に基づく独自のフレームワーク。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『Decolonizing Methodologies』（1999）</strong>：研究方法論の脱植民地化の古典。翻訳多数。</li>
+                <li><strong>カウパパ・マオリ研究</strong>：マオリの価値観に基づく研究方法論の発展。</li>
+                <li><strong>先住民研究倫理</strong>：コミュニティとの関係性を中心に据えた倫理的枠組み。</li>
+                <li><strong>国際的影響</strong>：世界中の先住民研究者に影響。脱植民地化理論の基盤に。</li>
+                <li><strong>ワイカト大学</strong>：ニュージーランドで先住民研究所を主導。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>フランツ・ファノン</li>
+                            <li>パウロ・フレイレ</li>
+                            <li>マオリ知識伝統</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>先住民研究</li>
+                            <li>脱植民地化理論</li>
+                            <li>研究倫理の転換</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 研究方法論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スミス</th>
+                        <th>従来の研究</th>
+                        <th>参加型研究</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>研究者の位置</strong></td>
+                        <td>内部者/当事者</td>
+                        <td>外部の観察者</td>
+                        <td>協力者</td>
+                    </tr>
+                    <tr>
+                        <td><strong>コミュニティ</strong></td>
+                        <td>主権を持つ主体</td>
+                        <td>研究対象</td>
+                        <td>パートナー</td>
+                    </tr>
+                    <tr>
+                        <td><strong>知識</strong></td>
+                        <td>コミュニティに帰属</td>
+                        <td>学界に帰属</td>
+                        <td>共有</td>
+                    </tr>
+                    <tr>
+                        <td><strong>目的</strong></td>
+                        <td>コミュニティの解放</td>
+                        <td>学術的貢献</td>
+                        <td>社会変革</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ローカルストレージ</td>
+                        <td>データ抽出</td>
+                        <td>クラウド共有</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：誰のための研究か</h2>
+            <div class="thought-experiment">
+                <h3">研究の倫理を問い直す</h3>
+                    <p>あなたは大学院生で、先住民コミュニティについて研究しようとしています。あなたの研究は学術的に価値があり、論文になり、あなたのキャリアに貢献するでしょう。しかし、そのコミュニティには何が残りますか？
+                    </p>
+                    <p style="margin-top: 1.5rem;">従来の研究倫理は言う：インフォームド・コンセントを取得せよ。害を与えるな。プライバシーを守れ。これで十分では？</p>
+                    <p style="margin-top: 1.5rem;">
+                        スミスは問う：それは最低限だ。本当に問うべきは——誰が問いを立てたのか？誰が利益を得るのか？研究成果はコミュニティに還元されるのか？あなたは去った後もコミュニティと関係を持ち続けるのか？
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        さらに深い問い：そもそもあなた（外部者）がこの研究をする権利があるのか？先住民自身が自らについて研究すべきではないか？あなたの研究はコミュニティの物語を「盗む」ことにならないか？</p>
+                    <p style="margin-top: 1.5rem;">
+                        これは答えの出にくい問いです。しかしスミスは、この問いを立てること自体が重要だと言います。研究は中立ではない。権力関係の中で行われる。それを認識することが第一歩。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        誰のための研究ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>リンダ・トゥヒワイ・スミス（1950-）は、ニュージーランドのマオリ族出身の教育学者であり、『Decolonizing
+                Methodologies（研究方法論の脱植民地化）』で国際的に知られています。彼女は研究そのものが植民地主義的であることを暴露し——西洋の学術研究は先住民を「対象」として見て、データを抽出し、何も残さずに去っていった——これに対して「先住民の知の主権」を主張しました。先住民は研究の対象ではなく主体。自らの知識、歴史、未来について決定する権利を持つ。カウパパ・マオリ研究はマオリの価値観に基づく研究方法論として発展。「研究」という言葉が先住民にとって「最も汚い言葉の一つ」だったとすれば、スミスはその言葉を再定義しようとしています。誰のための研究か——この問いは、すべての研究者が問い続けるべき問いです。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Nothing about us without us.</p>
+    </footer>
+</body>
+
+</html>

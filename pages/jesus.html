@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イエス・キリスト - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Agape Red */
+            --secondary: #450a0a;
+            /* Passion Dark */
+            --accent: #fbbf24;
+            /* Glory Gold */
+            --highlight: #fef3c7;
+            /* Divine Light */
+            --bg: #1a0505;
+            /* Golgotha Deep */
+            --text: #fef3c7;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Divine Background */
+        .divine-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 70%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Christ Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✝";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Beatitudes */
+        .beatitudes-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .beatitudes-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .beatitude-list {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .beatitude-list li {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            list-style: none;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .beatitude-list li::before {
+            content: "✝";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✝";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="divine-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← GOSPEL</a>
+        <div>AGAPE_v5.61</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-561 / THE_MESSIAH</span>
+        <h1>イエス・キリスト</h1>
+        <p class="en-name">Jesus Christ (c. 4 BCE – c. 30 CE)</p>
+        <p class="catchphrase">「汝の敵を愛せよ」——キリスト教の創始者</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">愛OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">福音（ゴスペル）</h2>
+            <div class="hero-box">
+                <p class="hero-text">イエス・キリストは、キリスト教の創始者であり、約20億人の信者を持つ世界最大の宗教の中心人物です。歴史上最も影響力のある人物とされることが多い。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    イエスの核心的教え——<b>愛と赦し</b>。「神を愛せよ、隣人を愛せよ」。さらに「敵を愛せよ」——これは革命的な教えでした。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「神の国」——イエスは「神の国が近づいた」と宣言。終末論的希望。しかし同時に「神の国はあなたがたの内にある」——内面的・霊的解釈も。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    イエスは、<b>「律法OS（モーセ）のパッチではなく、完全なパラダイム・シフト——外部規則（ACL）から内部原理（愛）へ。ルールベースからプリンシプルベースへ。『何をすべきか』から『どうあるべきか』へ」</b>という、倫理システムの根本的リファクタリング。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 山上の説教 -->
+        <section class="beatitudes-section">
+            <h2>⛰️ 山上の説教（至福の教え）</h2>
+            <ul class="beatitude-list">
+                <li>幸いなるかな、心の貧しき者。天国は彼らのものなり。</li>
+                <li>幸いなるかな、悲しむ者。彼らは慰められん。</li>
+                <li>幸いなるかな、柔和なる者。彼らは地を嗣がん。</li>
+                <li>幸いなるかな、義に飢え渇く者。彼らは満たされん。</li>
+                <li>幸いなるかな、憐れみ深き者。彼らは憐れみを受けん。</li>
+                <li>幸いなるかな、心の清き者。彼らは神を見ん。</li>
+                <li>幸いなるかな、平和を造る者。彼らは神の子と呼ばれん。</li>
+                <li>幸いなるかな、義のために迫害される者。天国は彼らのものなり。</li>
+            </ul>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 イエスの教えの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">汝の敵を愛し、汝を迫害する者のために祈れ。</p>
+                <p class="quote-author">— マタイ 5:44</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">❤️ アガペー（愛）</h3>
+                        <p>無条件の愛。エロス（欲求的愛）でもフィリア（友愛）でもなく、自己犠牲的・神的愛。</p>
+                </div>
+                <div class="card">
+                    <h3">🕊️ 赦し</h3>
+                        <p>「七の七十倍赦せ」（490回＝無限回）。復讐のサイクルを断ち切る。</p>
+                </div>
+                <div class="card">
+                    <h3">👑 神の国</h3>
+                        <p>Kingdom of God。終末論的希望と現在の内面的現実。価値の逆転。</p>
+                </div>
+                <div class="card">
+                    <h3">🙇 謙遜</h3>
+                        <p>「高ぶる者は低くされ、へりくだる者は高くされる」。弱者・辺境者への連帯。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 十字架</h3>
+                        <p>贖罪（atonement）。人類の罪のための代償。死と復活。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 たとえ話</h3>
+                        <p>放蕩息子、良きサマリア人、種をまく人。教えの独特のスタイル。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 影響 -->
+        <section class="section">
+            <h2 class="section-title">🔄 キリストの影響</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. キリスト教</h3>
+                        <p>約20億人の信者。カトリック、東方正教、プロテスタント。世界史を形作った。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 西洋倫理</h3>
+                        <p>人間の尊厳、平等、慈善——キリスト教的価値観が基盤。人権思想の源流。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 芸術・文化</h3>
+                        <p>絵画、音楽、建築、文学——西洋文化の中心テーマ。暦そのものがキリスト起点（BC/AD）。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 哲学への影響</h3>
+                        <p>キルケゴール、ドストエフスキー、トルストイ——キリスト教的実存主義。ニーチェの批判対象。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: From Rules to Principles</h2>
+            <div class="it-card">
+                <h3">Love as Master Principle</h3>
+                    <p>愛はマスター原理。613の律法を「神を愛せ、隣人を愛せ」の2つに集約。DRY原則の究極形。</p>
+            </div>
+            <div class="it-card">
+                <h3">Forgiveness as Garbage Collection</h3>
+                    <p>赦しはガベージコレクション。恨みと復讐のメモリリークを防ぐ。システムをクリーンに保つ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Kingdom of God as New Runtime</h3>
+                    <p>神の国は新しいランタイム。現行システムの価値観を逆転。弱者が優先、強者が後に。</p>
+            </div>
+            <div class="it-card">
+                <h3">Parables as Design Patterns</h3>
+                    <p>たとえ話はデザインパターン。具体的な例から普遍的原則を抽出。再利用可能な教え。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>アガペー</strong>：無条件の愛。</li>
+                <li><strong>山上の説教</strong>：キリスト教倫理の核心。</li>
+                <li><strong>たとえ話</strong>：教えの独特のスタイル。</li>
+                <li><strong>十字架と復活</strong>：贖罪の神学。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>モーセ（律法）</li>
+                            <li>預言者（イザヤ等）</li>
+                            <li>ユダヤ教黙示文学</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>使徒パウロ</li>
+                            <li>教父哲学</li>
+                            <li>西洋文明全体</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 宗教創始者の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>イエス</th>
+                        <th>釈迦</th>
+                        <th>ムハンマド</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>核心</strong></td>
+                        <td>愛・赦し</td>
+                        <td>苦の解決</td>
+                        <td>帰依・共同体</td>
+                    </tr>
+                    <tr>
+                        <td><strong>神観</strong></td>
+                        <td>三位一体</td>
+                        <td>無記（問わない）</td>
+                        <td>厳格な一神教</td>
+                    </tr>
+                    <tr>
+                        <td><strong>救済</strong></td>
+                        <td>信仰</td>
+                        <td>悟り</td>
+                        <td>帰依と行為</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>原理ベース</td>
+                        <td>デバッグ</td>
+                        <td>プロトコル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：敵を愛することは可能か</h2>
+            <div class="thought-experiment">
+                <h3">愛の限界</h3>
+                    <p>「敵を愛せよ」——これは実行可能な命令か？</p>
+                    <p>友人や家族を愛することは自然。敵を愛することは不自然。</p>
+                    <p>しかしイエスはまさにそれを命じた。</p>
+                    <p>これは感情（feeling）ではなく意志（will）の問題かもしれない。</p>
+                    <p>「敵のために良いことをしろ」——行動レベルでは可能。</p>
+                    <p>しかし心から愛することは？これは究極の挑戦。</p>
+                    <p>ガンジーやキング牧師はこれを実践しようとした。</p>
+                    <p>非暴力抵抗——敵を打ち負かすのではなく、敵を変えようとする。</p>
+                    <p>これは「甘さ」か、それとも「最強の戦略」か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの敵を愛することは可能ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>イエス・キリストは、キリスト教の創始者であり、歴史上最も影響力のある人物の一人です。「神を愛せ、隣人を愛せ」——さらに「敵を愛せ」。愛と赦しを核心とする教えは、律法中心のユダヤ教から原理中心のキリスト教への転換をもたらしました。山上の説教、たとえ話、十字架と復活——これらの教えと出来事は、約20億人のキリスト教徒の信仰の基盤であり、西洋文明の倫理・芸術・文化を根本から形作りました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Love your enemies.</p>
+    </footer>
+</body>
+
+</html>

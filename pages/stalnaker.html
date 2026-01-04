@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ロバート・スタルネイカー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            /* Modal Indigo */
+            --secondary: #1e1b4b;
+            /* Possible Dark */
+            --accent: #818cf8;
+            /* Counterfactual Light */
+            --highlight: #e0e7ff;
+            /* Logic Glow */
+            --bg: #0c0a1d;
+            /* Semantics Deep */
+            --text: #e0e7ff;
+            --border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Modal Background */
+        .modal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(129, 140, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Logic Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "◇";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Possible Worlds Diagram */
+        .worlds-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .worlds-section h2 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .worlds-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .world-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .actual-world {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .possible-world-1 {
+            background: rgba(99, 102, 241, 0.5);
+            border: 2px dashed var(--accent);
+        }
+
+        .possible-world-2 {
+            background: rgba(99, 102, 241, 0.3);
+            border: 2px dashed var(--accent);
+        }
+
+        .world-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "◇";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .worlds-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← INQUIRY_INTO_MODAL_LOGIC</a>
+        <div>POSSIBLE_WORLDS_v4.96</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-496 / THE_MODAL_LOGICIAN</span>
+        <h1>ロバート・スタルネイカー</h1>
+        <p class="en-name">Robert Stalnaker (1940–)</p>
+        <p class="catchphrase">「可能世界は私たちの思考を構造化する」</p>
+        <div class="os-tags">
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">言語OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">可能性の論理学</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「もしカエサルがルビコン川を渡らなかったら？」——私たちは日常的にこうした反事実的条件文を使います。しかし、「起こらなかったこと」について語るとは、何を意味するのでしょうか？アメリカの哲学者ロバート・スタルネイカーは、<b>可能世界意味論</b>を発展させ、この問いに厳密な答えを与えました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スタルネイカーによれば、「もしPならばQ」という反事実的条件文は、<b>Pが真であるような最も類似した可能世界でQが真であるかどうか</b>で評価されます。これはデイヴィッド・ルイスの可能世界理論と並び、様相論理学と言語哲学の中心理論となりました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スタルネイカーを学ぶことは、<b>「可能性」「必然性」「反事実」を論理的に分析する方法</b>を理解することです。彼の業績は言語学、AI、哲学に広く影響を与えています。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スタルネイカーは、<b>「可能世界とは並列宇宙のブランチ。『もしこのコミットをしなかったら？』を評価するには、最も類似したブランチを見つけ、そこでの状態を確認する。Git
+                        diffの形而上学版」</b>と説明する、論理学のバージョン管理システムです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 可能世界の構造 -->
+        <section class="worlds-section">
+            <h2>◇ 可能世界の構造</h2>
+            <div class="worlds-diagram">
+                <div class="world-box possible-world-2">
+                    <p>◇ W2</p>
+                    <p style="font-size: 0.8rem;">可能世界</p>
+                </div>
+                <div class="world-arrow">←→</div>
+                <div class="world-box actual-world">
+                    <p>@ W0</p>
+                    <p style="font-size: 0.8rem;">現実世界</p>
+                </div>
+                <div class="world-arrow">←→</div>
+                <div class="world-box possible-world-1">
+                    <p>◇ W1</p>
+                    <p style="font-size: 0.8rem;">可能世界</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                現実世界（@）を中心に、可能世界が「類似性」の関係で配置される。反事実的条件文は「最も類似した可能世界」で評価される。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 可能世界意味論の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">命題とは可能世界の集合である——その命題が真であるような世界の集合。</p>
+                <p class="quote-author">— "A Theory of Conditionals" (1968)</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">◇ 可能世界</h3>
+                        <p>物事がいかにありえたかを表す抽象的存在。現実世界は可能世界の一つ。様相（必然性、可能性）の意味論的基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">→ 反事実的条件文</h3>
+                        <p>「もしPならばQ」——スタルネイカー・ルイス意味論。Pが真である最も類似した可能世界でQが真かどうか。</p>
+                </div>
+                <div class="card">
+                    <h3">📍 文脈と命題</h3>
+                        <p>命題は文脈依存的に決定される。発話の文脈が「共通基盤」を設定し、命題内容を特定する。語用論への貢献。</p>
+                </div>
+                <div class="card">
+                    <h3">📐 共通基盤</h3>
+                        <p>対話者が共有する前提の集合。会話は共通基盤を更新していくプロセス。ダイナミック意味論の先駆。</p>
+                </div>
+                <div class="card">
+                    <h3">🎯 断言の語用論</h3>
+                        <p>断言とは共通基盤に命題を追加する行為。話し手は聞き手が受け入れることを提案する。会話の動的理論。</p>
+                </div>
+                <div class="card">
+                    <h3">🧩 二次元意味論</h3>
+                        <p>命題の二つの側面——文脈に依存する「性格」と、文脈から独立した「内容」。アプリオリと必然の区別。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 条件文の分析</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 実質条件法の問題</h3>
+                        <p>古典論理の「P→Q」（Pが偽なら全体が真）は日常的条件文を捉えない。「もし太陽が四角なら、私は億万長者」は古典論理では真。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 可能世界アプローチ</h3>
+                        <p>「もしPならばQ」——Pが真である最も類似した可能世界でQが真。類似性関係が鍵。スタルネイカーは「選択関数」で形式化。</p>
+                </div>
+                <div class="card">
+                    <h3">3. スタルネイカー vs ルイス</h3>
+                        <p>スタルネイカー：最も類似した世界は「一つ」（一意性仮定）。ルイス：複数ありうる。微妙だが重要な違い。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 広範な応用</h3>
+                        <p>反事実的因果論、知識と信念の論理、AIの推論システム、言語学の意味論——幅広い分野で応用。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: POSSIBLE WORLDS AS BRANCHING</h2>
+            <div class="it-card">
+                <h3">Possible Worlds as Git Branches</h3>
+                    <p>可能世界はGitブランチ。「もしこのコミットをしなかったら？」——最も類似したブランチを見つけ、そこでの状態を確認。反事実的条件文はdiff操作。</p>
+            </div>
+            <div class="it-card">
+                <h3">Similarity as Edit Distance</h3>
+                    <p>可能世界間の類似性は編集距離に似ている。現実世界からの「変更量」が少ないほど類似。最小の変更でPが真になる世界を選ぶ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Common Ground as Shared State</h3>
+                    <p>共通基盤は共有状態。クライアントとサーバーが同期している情報。断言は状態を更新するAPIコール。</p>
+            </div>
+            <div class="it-card">
+                <h3">Proposition as Boolean Function</h3>
+                    <p>命題は可能世界から真理値へのブール関数。各世界を入力として取り、その世界で真かどうかを返す。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>反事実的条件文の意味論</strong>：「もしPならばQ」を可能世界と類似性で分析。ルイスと並ぶ標準理論。</li>
+                <li><strong>共通基盤理論</strong>：対話者が共有する前提の集合。会話の動的理論の基盤。</li>
+                <li><strong>断言の語用論</strong>：断言とは共通基盤に命題を追加する提案。言語行為論への貢献。</li>
+                <li><strong>文脈と内容</strong>：二次元意味論への貢献。文脈依存と命題内容の区別。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ゴットロープ・フレーゲ（意味と指示）</li>
+                            <li>ソール・クリプキ（可能世界）</li>
+                            <li>ポール・グライス（語用論）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>デイヴィッド・ルイス（可能世界意味論）</li>
+                            <li>ダイナミック意味論</li>
+                            <li>形式語用論</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 様相論理の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スタルネイカー</th>
+                        <th>ルイス</th>
+                        <th>クリプキ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>可能世界の存在論</strong></td>
+                        <td>穏健な実在論</td>
+                        <td>様相実在論（本物の宇宙）</td>
+                        <td>抽象的存在</td>
+                    </tr>
+                    <tr>
+                        <td><strong>反事実的条件文</strong></td>
+                        <td>一意性仮定</td>
+                        <td>複数の世界が類似しうる</td>
+                        <td>（条件文に注力せず）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>言語・語用論</td>
+                        <td>形而上学</td>
+                        <td>指示と必然性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ブランチ選択</td>
+                        <td>マルチバース</td>
+                        <td>参照解決</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：類似した世界を選ぶ</h2>
+            <div class="thought-experiment">
+                <h3">オズワルドがケネディを撃たなかったら</h3>
+                    <p>「もしオズワルドがケネディを撃たなかったら、誰か他の人が撃っていただろうか？」</p>
+                    <p>この反事実的条件文を評価するには、オズワルドが撃たなかった「最も類似した可能世界」を考えます。その世界で、別の暗殺者がケネディを撃つかどうか。</p>
+                    <p>直観的には「No」——オズワルドが撃たなかったら、ケネディは生きていた。しかし、もし「暗殺計画全体」を考えると？陰謀論的世界では別の暗殺者がいるかもしれない。</p>
+                    <p>スタルネイカーの理論の鍵は「類似性」——どの要素を一定に保ち、どの要素を変えるか。これは文脈や目的に依存する。科学的因果分析では「最小の変更」を求め、日常会話では「自然な解釈」を求める。</p>
+                    <p>ITで言えば、「もしこのバグフィックスをしなかったら？」——最も類似した世界（ブランチ）でシステムがどう動くかを推論する。最小の変更で、最大の情報を得る。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「もし〜だったら」は、どの可能世界を参照していますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ロバート・スタルネイカーの可能世界意味論は、「もし〜ならば」という反事実的条件文を厳密に分析する枠組みを提供しました。可能世界とは物事がいかにありえたかを表す抽象的存在であり、反事実的条件文は「最も類似した可能世界」で評価されます。さらにスタルネイカーは「共通基盤」概念を発展させ、会話を共有された前提を更新するプロセスとして分析しました。彼の業績は言語哲学、論理学、言語学、AIに広く影響を与え、「可能性」と「必然性」を論理的に扱う標準ツールとなっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. In the space of possibilities.</p>
+    </footer>
+</body>
+
+</html>

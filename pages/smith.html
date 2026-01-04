@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アダム・スミス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #166534;
+            /* Wealth Green */
+            --secondary: #14532d;
+            /* Market Dark */
+            --accent: #22c55e;
+            /* Prosperity Light */
+            --highlight: #dcfce7;
+            /* Sympathy Glow */
+            --bg: #052e16;
+            /* Edinburgh Deep */
+            --text: #dcfce7;
+            --border: #15803d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Wealth Background */
+        .wealth-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(22, 101, 52, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Scottish Enlightenment Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #166534 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "👁️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #15803d 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(22, 101, 52, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(22, 101, 52, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Two Works Diagram */
+        .works-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #166534 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .works-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .works-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .work-box {
+            padding: 3rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .tms-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .wn-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .works-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "💰";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .works-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wealth-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← THE_WEALTH_OF_NATIONS</a>
+        <div>MORAL_SENTIMENTS_v4.87</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-487 / THE_FATHER_OF_ECONOMICS</span>
+        <h1>アダム・スミス</h1>
+        <p class="en-name">Adam Smith (1723–1790)</p>
+        <p class="catchphrase">「見えざる手」と「共感する観察者」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">経済学の父、道徳哲学者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    アダム・スミスといえば「見えざる手」「自由市場」——経済学の父として知られます。しかし、スミスの本当の顔は<b>道徳哲学者</b>でした。彼の最初の主著『道徳感情論』（1759年）は、人間の道徳心理を分析した傑作であり、スミス自身は生涯これを『国富論』より重視しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    『道徳感情論』の中心概念は<b>「共感（sympathy）」</b>と<b>「公平な観察者（impartial
+                        spectator）」</b>です。私たちは他者の感情に共感し、また自分の行動を「公平な第三者」の目で評価する。この心理的メカニズムが道徳を可能にする。利己心だけでなく、共感と社会性こそが人間の本質だとスミスは考えました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    スミスを学ぶことは、<b>市場経済と道徳心理学の両方を理解すること</b>です。「見えざる手」は利己心の肯定ではなく、制度設計への洞察なのです。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p>スミスは、<b>「市場は分散型システム。各ノード（個人）が自己利益を追求しても、価格メカニズム（見えざる手）がグローバルな最適化を達成する。しかし、このシステムは『共感プロトコル』と『公平な観察者』というモラルレイヤーの上で動作する」</b>と教えた、社会システムの初代アーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 二つの著作 -->
+        <section class="works-section">
+            <h2>📚 二つの主著</h2>
+            <div class="works-diagram">
+                <div class="work-box tms-box">
+                    <p>🤝 道徳感情論</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">TMS (1759)</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">共感と公平な観察者</p>
+                </div>
+                <div class="works-arrow">+</div>
+                <div class="work-box wn-box">
+                    <p>💰 国富論</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">WN (1776)</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">分業と見えざる手</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                両著作は矛盾しない。『道徳感情論』が人間の社会的本性を分析し、『国富論』が経済システムを分析する。共感する道徳的存在が、市場で取引する。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 スミス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間がどれほど利己的なものと想定されようとも、その本性には他者の運命に関心を持ち、他者の幸福を自分にとって必要なものとする何らかの原理が存在する。</p>
+                <p class="quote-author">— 『道徳感情論』（1759年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🤝 共感（Sympathy）</h3>
+                        <p>他者の感情を想像的に共有する能力。道徳判断の基礎。私たちは他者がどう感じるかを想像することで、道徳的評価を行う。</p>
+                </div>
+                <div class="card">
+                    <h3">👁️ 公平な観察者</h3>
+                        <p>自分の行動を判断する「内なる第三者」。公平で情報を持った観察者が何と言うか——これが良心の働き。道徳的自己評価のメカニズム。</p>
+                </div>
+                <div class="card">
+                    <h3">👐 見えざる手</h3>
+                        <p>各人が自己利益を追求しても、意図せず社会全体の利益に貢献する。価格メカニズムによる資源配分。しかし『国富論』で3回しか登場しない。</p>
+                </div>
+                <div class="card">
+                    <h3">⚒️ 分業</h3>
+                        <p>生産性向上の源泉。ピン工場の例。分業は市場の規模に依存——したがって自由貿易が重要。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 正義</h3>
+                        <p>社会を支える「大黒柱」。正義なくして社会は崩壊。慈善は社会の「装飾」だが、正義は「土台」。最低限のルール。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ 自然的自由の体系</h3>
+                        <p>政府の役割は防衛、司法、公共事業に限定。個人の自由な追求が社会全体を繁栄させる。しかし規制の必要性も認めた。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 スミス問題を超えて</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 「スミス問題」</h3>
+                        <p>『道徳感情論』（共感）と『国富論』（自己利益）は矛盾する？——19世紀ドイツで提起された問題。しかし誤解に基づく。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 統一的理解</h3>
+                        <p>両著作は補完的。道徳的存在（共感、正義）が市場で取引する。自己利益は社会的文脈（共感、正義）の中で働く。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 誤読の歴史</h3>
+                        <p>「見えざる手＝自由放任」は後世の誤読。スミスは銀行規制、独占批判、労働者の権利も論じた。単純な市場原理主義者ではない。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 現代への示唆</h3>
+                        <p>市場経済は道徳的基盤を必要とする。信頼、正義、共感なくして市場は機能しない。行動経済学はスミスを再発見している。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Market as Distributed System</h2>
+            <div class="it-card">
+                <h3">Invisible Hand as Emergent Order</h3>
+                    <p>見えざる手は創発的秩序。各ノード（個人）がローカルな情報と自己利益に基づいて行動しても、価格システムがグローバルな調整を達成。中央集権的計画なしに資源配分。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sympathy as Protocol</h3>
+                    <p>共感は通信プロトコル。他者の「状態」を想像的に読み取り、自分の行動を調整する。このプロトコルなしに社会的協調は不可能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Impartial Spectator as Self-Monitoring</h3>
+                    <p>公平な観察者はセルフモニタリング。外部の評価者を内面化し、自分の行動をチェックする。ログ監査と同じ機能——自己透明性の確保。</p>
+            </div>
+            <div class="it-card">
+                <h3">Division of Labor as Modularization</h3>
+                    <p>分業はモジュール化。各モジュールは専門化し、インターフェースを通じて連携。システム全体の効率と複雑性管理を両立。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『道徳感情論』</strong>：共感と公平な観察者による道徳心理学。道徳感情主義の頂点。行動経済学が再発見。</li>
+                <li><strong>『国富論』</strong>：経済学を独立した学問として確立。分業、価格理論、自由貿易論。近代経済学の出発点。</li>
+                <li><strong>見えざる手</strong>：市場メカニズムによる自律的調整。ハイエクの自生的秩序に継承。</li>
+                <li><strong>正義の理論</strong>：正義を社会の土台として分析。慈善との区別。ロールズに先行する洞察。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>デイヴィッド・ヒューム（共感論）</li>
+                            <li>フランシス・ハチソン（道徳感覚）</li>
+                            <li>ストア哲学（自制と正義）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>古典派経済学全般</li>
+                            <li>F.A.ハイエク（自生的秩序）</li>
+                            <li>行動経済学（共感と限定合理性）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 経済思想の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>スミス</th>
+                        <th>マルクス</th>
+                        <th>ケインズ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>市場観</strong></td>
+                        <td>自律的調整（＋道徳基盤）</td>
+                        <td>搾取と矛盾</td>
+                        <td>不完全、介入必要</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人間観</strong></td>
+                        <td>共感＋自己利益</td>
+                        <td>歴史的・階級的存在</td>
+                        <td>不確実性下の行為者</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政府の役割</strong></td>
+                        <td>最小限（＋公共財）</td>
+                        <td>プロレタリア独裁→廃止</td>
+                        <td>需要管理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>分散型システム</td>
+                        <td>システム批判</td>
+                        <td>負荷分散・介入</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：見知らぬ人の災難</h2>
+            <div class="thought-experiment">
+                <h3">汝、何を感じるか</h3>
+                    <p>スミスは『道徳感情論』でこう問いかけます：遠い中国で大地震が起き、何百万人もが犠牲になったとする。人道的な欧州人は何を感じるか？</p>
+                    <p>最初は悲しみ、人類の不安定さへの省察——しかしその後、自分のビジネスや楽しみに戻り、ぐっすり眠るだろう。では、もし明日自分の小指を失うと分かったら？今夜は眠れない。</p>
+                    <p>ここからスミスは問います：では、何百万人の命を救うために小指を犠牲にするか？——ほとんどの人は「イエス」と答える。なぜか？</p>
+                    <p>スミスの答え：<b>「公平な観察者」</b>の声を聴くからだ。この「内なる第三者」が、自己中心的な感情を超えて道徳的判断を可能にする。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの「公平な観察者」は、今日何と言っていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アダム・スミスは「経済学の父」であると同時に、卓越した道徳哲学者でした。『道徳感情論』の共感と公平な観察者、『国富論』の見えざる手と分業——この二つの著作は矛盾せず、補完し合います。市場経済は道徳的基盤——共感、正義、信頼——の上で機能する。「見えざる手＝自由放任」という後世の誤読を超えて、スミスの真の洞察——人間の社会性と市場の自律性の両方——を再発見することが、現代経済学と倫理学の課題です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The theory of moral sentiments.</p>
+    </footer>
+</body>
+
+</html>

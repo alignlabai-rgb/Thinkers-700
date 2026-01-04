@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カール・シュミット - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;700;900&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #991b1b;
+            /* Blood Red */
+            --secondary: #0c0a09;
+            /* Void Black */
+            --accent: #dc2626;
+            /* Crisis Red */
+            --highlight: #fafaf9;
+            /* Stark White */
+            --bg: #1c1917;
+            /* Dark Stone */
+            --text: #fafaf9;
+            --border: #44403c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Exception State Background */
+        .exception-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(153, 27, 27, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Decisive Header */
+        .header {
+            background: var(--secondary);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+            border: 3px solid var(--accent);
+        }
+
+        .header::before {
+            content: "⚔️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 5.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+        }
+
+        .hero-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-left: 8px solid var(--accent);
+        }
+
+        .quote-box::before {
+            content: "«";
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            font-size: 8rem;
+            opacity: 0.1;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.1);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: #0c0a09;
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid #292524;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(41, 37, 36, 0.5);
+            position: relative;
+        }
+
+        .it-card::before {
+            content: "//";
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Friend-Enemy Diagram */
+        .decision-section {
+            background: linear-gradient(135deg, #1c1917 0%, #0c0a09 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border: 2px solid var(--border);
+            text-align: center;
+        }
+
+        .decision-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .decision-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .decision-box {
+            padding: 4rem 5rem;
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .friend-box {
+            background: #1e40af;
+            border: 3px solid #3b82f6;
+        }
+
+        .enemy-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+        }
+
+        .sovereign-box {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem 6rem;
+        }
+
+        .decision-arrow {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            font-size: 1.8rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(153, 27, 27, 0.2);
+            border: 2px solid var(--accent);
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .decision-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="exception-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DER_BEGRIFF_DES_POLITISCHEN</a>
+        <div>POLITICAL_THEOLOGY_v4.66</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-466 / KRONJURIST_DES_AUSNAHMEZUSTANDS</span>
+        <h1>カール・シュミット</h1>
+        <p class="en-name">Carl Schmitt (1888–1985)</p>
+        <p class="catchphrase">「主権者とは、例外状態について決定する者である」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">法OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">政治の本質を直視する</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    カール・シュミットは20世紀最も論争的な政治思想家です。ナチス政権に加担した「第三帝国の桂冠法学者」という汚名を持ちながら、彼の概念——<b>友と敵の区別</b>、<b>例外状態</b>、<b>決断主義</b>——は現代の政治哲学において避けて通れない参照点となり続けています。なぜか。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シュミットは、リベラルな政治理論が隠蔽しようとするものを容赦なく暴露したからです。政治とは「議論」でも「妥協」でもなく、究極的には<b>「友と敵を区別する」</b>こと——生死をかけた対立の可能性——に帰着するとシュミットは主張しました。そして法秩序は、平時のルールではなく、<b>例外状態（Ausnahmezustand）において誰が決断するか</b>によって本当の姿を現す。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シュミットを学ぶことは、<b>「政治から暴力を排除できる」という幻想を批判的に検討すること</b>です。テロリズム、パンデミック下の緊急措置、国境を超える難民問題——「例外状態」は現代においても頻出します。その状況で誰が決断し、どのように法が機能するのか。シュミットの問いは現代政治の暗部を照らし出します。
+                </p>
+            </div>
+            <div class="warning-box">
+                <h4>⚠️ 注意</h4>
+                <p>シュミットはナチス体制に積極的に協力し、反ユダヤ主義的な著述も行いました。彼の思想を学ぶことは、彼を正当化することではありません。むしろ、なぜ鋭い知性がファシズムに結びついたのかを批判的に検討することが重要です。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--secondary); color: #fff; border: 2px solid var(--accent);">
+                <h4 style="color: var(--accent);">💡 たとえるなら</h4>
+                <p>シュミットは、<b>「政治システムのセキュリティ脆弱性を発見し、その悪用方法まで詳細に記述したハッカー」</b>です。彼は民主主義・法治国家・議会制の「バグ」を暴露しました。問題は、彼自身がそのバグを悪用する側に回ったことです。しかし、脆弱性レポートとしての彼の分析は、システムを堅牢にするために今でも参照され続けています。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 友敵の図式 -->
+        <section class="decision-section">
+            <h2>⚔️ 政治的なものの本質</h2>
+            <div class="decision-diagram">
+                <div class="decision-box friend-box">
+                    <p>友（Freund）</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">同質的集団</p>
+                </div>
+                <div class="decision-arrow">⟷</div>
+                <div class="decision-box enemy-box">
+                    <p>敵（Feind）</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">実存的他者</p>
+                </div>
+            </div>
+            <div style="margin-top: 4rem;">
+                <div class="decision-box sovereign-box">
+                    <p>主権者</p>
+                    <p style="font-size: 1rem; margin-top: 1rem; font-weight: 300;">例外状態について決定する者</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                政治的区別とは、究極的には友と敵の区別である。敵とは、道徳的に悪い者でも、美学的に醜い者でもなく、実存的に異質な「他者」——物理的衝突の可能性を持つ存在——である。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 政治神学の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">主権者とは、例外状態について決定する者である。</p>
+                <p class="quote-author">— 『政治神学』（1922年）冒頭</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>⚔️ 友と敵の区別</h3>
+                    <p>政治的なものの定義。道徳（善/悪）・美学（美/醜）・経済（利益/損失）から独立した、実存的対立の次元。政治は究極的にはこの区別に帰着する。</p>
+                </div>
+                <div class="card">
+                    <h3>🚨 例外状態</h3>
+                    <p>法的規範が適用されない危機的状況。法の外部にありながら法に属する。この状態で決断する者こそが真の主権者。平時の法学は例外を扱えない。</p>
+                </div>
+                <div class="card">
+                    <h3>👑 決断主義</h3>
+                    <p>規範（法）は決断なしには自らを適用できない。規範の「適用」そのものが決断を要する。究極的な決断は規範によって正当化されない純粋な行為。</p>
+                </div>
+                <div class="card">
+                    <h3>⛪ 政治神学</h3>
+                    <p>近代国家の概念はすべて世俗化された神学概念である。主権者＝神、例外状態＝奇跡、法秩序＝自然法則。神学的構造が政治に引き継がれている。</p>
+                </div>
+                <div class="card">
+                    <h3>📜 具体的秩序思考</h3>
+                    <p>法は抽象的規範ではなく、具体的な秩序・状況から生じる。法の意味は社会的文脈から切り離せない。法実証主義への批判。</p>
+                </div>
+                <div class="card">
+                    <h3>🗣️ 議会主義批判</h3>
+                    <p>議会は本来「議論」を通じて真理に到達する場だったが、今や利害調整の場に堕落した。リベラルな討議の理想は政治の本質を誤認している。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 例外状態のロジック</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 平常状態（Normalzustand）</h3>
+                    <p>法的規範が機能する通常の状態。規則に従った行政・司法が可能。しかしこの「正常さ」は自明ではなく、政治的決断によって維持されている。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 危機の発生</h3>
+                    <p>既存の法規範では対処できない状況が出現する。戦争、内乱、自然災害、パンデミック。規範の適用条件そのものが問われる。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 例外状態の宣言</h3>
+                    <p>主権者が例外状態を宣言する。法の停止と同時に、法秩序を維持するための超法規的措置が取られる。ここに真の主権が顕現する。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 新たな秩序の創設</h3>
+                    <p>例外状態は新たな法秩序を創設する可能性を持つ。革命・制憲権力・新体制の樹立。法は法の外から生まれる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Exception Handling in Political OS</h2>
+            <div class="it-card">
+                <h3>Friend-Enemy as Access Control</h3>
+                <p>友/敵の区別はシステムのアクセス制御に類似する。誰を「内部」として信頼し、誰を「外部」として警戒するか。ファイアウォールのルール設定は政治的決断である。ホワイトリスト（友）とブラックリスト（敵）の境界線。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>Exception State as Kernel Panic</h3>
+                <p>例外状態はOSのカーネルパニックに似ている。通常のプロセスでは対処できない致命的エラーが発生し、システムは通常モードを停止。誰がこの状態から回復を決断するか——それがシステム管理者（主権者）の権限。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>Decisionism as Runtime Interpretation</h3>
+                <p>法（コード）は自動的に実行されない。各ケースへの「適用」は解釈を必要とする。コンパイル済みのバイナリでさえ、実行時の環境に依存する。規範は決断によって初めて効力を持つ。</p>
+            </div>
+            <div class="it-card">
+                <h3>Political Theology as Legacy Code</h3>
+                <p>シュミットによれば、近代国家の概念は神学的概念の「リファクタリング」版。主権＝全能の神、奇跡＝例外状態。レガシーコードの構造は、新しいラッパークラスによっても完全には隠蔽されない。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>政治的なものの自律性</strong>：政治を道徳・経済・文化から独立した固有の領域として分析。政治の還元不可能性。</li>
+                <li><strong>憲法理論</strong>：『憲法論』で制憲権力（pouvoir constituant）と憲法制定権力の区別を精緻化。憲法の正当性根拠を探求。</li>
+                <li><strong>大空間（グロースラウム）論</strong>：国際法における国民国家を超えた「大空間」秩序の構想。（ナチスの領土拡張正当化に利用された）</li>
+                <li><strong>パルチザン論</strong>：正規軍ではない非対称戦争の主体としてのパルチザンを理論化。ゲリラ戦争・テロリズムの先駆的分析。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>トマス・ホッブズ（主権論、自然状態）</li>
+                        <li>ジャン・ボダン（主権概念）</li>
+                        <li>ドノソ・コルテス（カトリック反革命思想）</li>
+                        <li>ジョルジュ・ソレル（暴力論）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>レオ・シュトラウス（リベラリズム批判）</li>
+                        <li>ジョルジョ・アガンベン（例外状態、ホモ・サケル）</li>
+                        <li>シャンタル・ムフ（闘技的民主主義）</li>
+                        <li>現代の緊急権・国家安全保障研究</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 政治理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シュミット</th>
+                        <th>ハーバーマス</th>
+                        <th>ロールズ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>政治の本質</strong></td>
+                        <td>友/敵の区別</td>
+                        <td>コミュニケーション的合意</td>
+                        <td>公正な協働</td>
+                    </tr>
+                    <tr>
+                        <td><strong>正当性の源泉</strong></td>
+                        <td>決断・例外状態</td>
+                        <td>討議・合意</td>
+                        <td>原初状態・無知のヴェール</td>
+                    </tr>
+                    <tr>
+                        <td><strong>対立の扱い</strong></td>
+                        <td>排除不可能</td>
+                        <td>対話で解消可能</td>
+                        <td>合理的多元主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>例外処理・セキュリティ</td>
+                        <td>プロトコル・標準化</td>
+                        <td>公平なアルゴリズム設計</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：緊急事態の決断</h2>
+            <div class="thought-experiment">
+                <h3>誰が「例外」を決めるのか</h3>
+                <p>2020年、世界中の政府がCOVID-19パンデミックに対応して「緊急事態」を宣言しました。移動の自由は制限され、集会は禁止され、経済活動は停止された。</p>
+                <p>これらの措置は「法律に基づいて」行われた——と私たちは説明を受けました。しかしシュミットならこう問うでしょう。その「法律」は誰が解釈したのか。「緊急事態」だと決定したのは誰か。そして、いつ「通常」に戻るかを決めるのは誰か。
+                </p>
+                <p>民主主義国家でさえ、危機において「例外的権限」が行政府に集中する傾向があります。議会の審議は「遅すぎる」とみなされ、司法の審査は「後回し」にされる。</p>
+                <p
+                    style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    緊急事態において、あなたは誰に決断を委ねますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>カール・シュミットは、リベラルな政治理論が見て見ぬふりをする暗部——政治における暴力、敵対性、例外——を容赦なく照らし出しました。「友と敵の区別」という定義は道徳的に不快かもしれませんが、現実の政治におけるアイデンティティ・ポリティクス、排外主義、「われわれ対彼ら」の論理を理解するための鋭い分析道具を提供します。「例外状態において誰が決断するか」という問いは、テロ対策法、パンデミック対応、難民政策など、現代の法的・政治的問題においても核心を突いています。シュミットを批判的に読むことは、民主主義と法治国家の脆弱性を認識し、それを強化するための第一歩です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Souverän ist, wer über den Ausnahmezustand entscheidet.</p>
+    </footer>
+</body>
+
+</html>

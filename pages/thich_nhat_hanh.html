@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ティク・ナット・ハン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            /* Mindful Teal */
+            --secondary: #134e4a;
+            /* Plum Village Dark */
+            --accent: #2dd4bf;
+            /* Light Breath */
+            --highlight: #ccfbf1;
+            /* Peace Glow */
+            --bg: #042f2e;
+            /* Deep Zen */
+            --text: #ccfbf1;
+            --border: #14b8a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Mindful Background */
+        .mindful-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(45, 212, 191, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(13, 148, 136, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Breathing Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d9488 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🪷";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #14b8a6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(13, 148, 136, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(13, 148, 136, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Breathing Meditation Section */
+        .breath-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d9488 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .breath-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .breath-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .breath-box {
+            padding: 2.5rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+        }
+
+        .breath-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🪷";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mindful-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MINDFULNESS</a>
+        <div>THAY_v6.51</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-651 / THE_MINDFUL_MASTER</span>
+        <h1>ティク・ナット・ハン</h1>
+        <p class="en-name">Thích Nhất Hạnh (1926–2022)</p>
+        <p class="catchphrase">「息を吸えば、私は落ち着く——息を吐けば、私は微笑む」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">マインドフルネスOS</span>
+            <span class="os-tag">平和OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">エンゲージド・ブディズム</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ティク・ナット・ハン（タイ）は、ベトナムの禅僧・詩人・平和活動家であり、西洋にマインドフルネスを広めた最も重要な人物の一人です。ダライ・ラマと並んで「世界で最も影響力のある生きた仏教僧」と呼ばれました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「エンゲージド・ブディズム（社会参加仏教）」</b>——瞑想は隠遁ではなく、社会変革の基盤となる。内なる平和なしに外なる平和はない。マーティン・ルーサー・キング・Jr.との友情、ベトナム戦争への反対、プラムヴィレッジ共同体の設立。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>「インタービーイング（相互存在）」</b>——すべては相互につながっている。この紙の中に雲が見える。花が生きているのは花でないもののおかげ。縁起を現代語で再解釈。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ティク・ナット・ハンは、<b>「バックグラウンドプロセスとしてのマインドフルネス——OSはマルチタスクで走っているが、意識的な『今ここ』への注意を常駐させる。これがシステムの安定性と効率を高める。怒りや不安は暴走プロセス。呼吸瞑想は再起動ではなく、穏やかなプロセス管理」</b>という、心のシステムアドミニストレーターです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 呼吸瞑想 -->
+        <section class="breath-section">
+            <h2>🌬️ 意識的な呼吸</h2>
+            <div class="breath-diagram">
+                <div class="breath-box">
+                    <p>息を吸って</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Breathing in</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">私は落ち着く</p>
+                </div>
+                <div class="breath-arrow">↓</div>
+                <div class="breath-box">
+                    <p>息を吐いて</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Breathing out</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">私は微笑む</p>
+                </div>
+                <div class="breath-arrow">↓</div>
+                <div class="breath-box">
+                    <p>今この瞬間に</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Dwelling in the present moment</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">これが唯一の瞬間</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                タイの瞑想指導は驚くほどシンプル。呼吸に注意を向ける。ただそれだけ。しかしその「ただそれだけ」が人生を変える。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 タイ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">あなたが怒りを抱くとき、あなたは怒りの赤ん坊を抱いている母親のようになりなさい。</p>
+                <p class="quote-author">— ティク・ナット・ハン</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🪷 マインドフルネス</h3>
+                    <p>今この瞬間への意識的な注意。過去への後悔でも未来への不安でもなく、今ここに完全に存在する。皿を洗うときは皿を洗う。</p>
+                </div>
+                <div class="card">
+                    <h3>🔗 インタービーイング</h3>
+                    <p>相互存在。すべては相互依存。この紙の中に雲がある——雲がなければ雨がなく、雨がなければ木がなく、木がなければ紙がない。</p>
+                </div>
+                <div class="card">
+                    <h3>✊ エンゲージド・ブディズム</h3>
+                    <p>社会参加仏教。瞑想は逃避ではない。社会正義、平和、環境への参加。ベトナム戦争への非暴力抵抗。</p>
+                </div>
+                <div class="card">
+                    <h3>🌬️ 意識的呼吸</h3>
+                    <p>呼吸への注意を通じて意識を取り戻す。怒りを感じたら呼吸に戻る。恐れを感じたら呼吸に戻る。</p>
+                </div>
+                <div class="card">
+                    <h3>🏘️ プラムヴィレッジ</h3>
+                    <p>フランス南西部に設立した共同体。世界最大級の仏教修行センター。マインドフルな生活の実験場。</p>
+                </div>
+                <div class="card">
+                    <h3>✌️ 平和の実践</h3>
+                    <p>キング牧師との友情。ベトナム戦争への反対でノーベル平和賞候補。「平和は歩くこと」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. マインドフルネスと現代 -->
+        <section class="section">
+            <h2 class="section-title">🔄 マインドフルネスと現代社会</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. ストレス社会への解答</h3>
+                    <p>現代人は常に忙しく、常に「ここ」にいない。メール、SNS、マルチタスク。マインドフルネスは「今ここ」への回帰を教える。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 医療・心理学への影響</h3>
+                    <p>MBSR（マインドフルネスストレス低減法）、MBCT（マインドフルネス認知療法）。タイの教えは科学的検証を経て医療に導入された。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 企業・教育への展開</h3>
+                    <p>Google、Apple、Facebookが導入。学校でのマインドフルネス教育。しかし「マックマインドフルネス」批判も。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 批判と応答</h3>
+                    <p>仏教から切り離されたマインドフルネスは薄っぺらい？タイは倫理（五戒）とセットでの実践を強調。社会変革なしの個人瞑想は不十分。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Mindfulness as OS</h2>
+            <div class="it-card">
+                <h3>Mindfulness as Background Process</h3>
+                <p>マインドフルネスはバックグラウンドプロセス。常駐して心の状態をモニタリング。暴走プロセス（怒り、不安）を検出し、穏やかに終了させる。再起動なしでシステムを安定化。</p>
+            </div>
+            <div class="it-card">
+                <h3>Interbeing as Dependency Graph</h3>
+                <p>インタービーイングは依存関係グラフ。すべてのモジュールは他のモジュールに依存。単独で存在するコンポーネントはない。変更は全体に波及する。</p>
+            </div>
+            <div class="it-card">
+                <h3>Engaged Buddhism as Open Source</h3>
+                <p>エンゲージド・ブディズムはオープンソース活動。瞑想を独占せず、社会に開放。コミュニティで改善し、すべての人に利益をもたらす。</p>
+            </div>
+            <div class="it-card">
+                <h3>Breathing as Heartbeat</h3>
+                <p>意識的呼吸はシステムのハートビート。定期的にシグナルを送り、システムが生きていること、健全であることを確認。呼吸を忘れるとシステムは暴走する。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『リビング・ブッダ、リビング・クライスト』</strong>：仏教とキリスト教の対話。</li>
+                <li><strong>『怒り』</strong>：怒りとの関わり方。怒りを抱きしめる。</li>
+                <li><strong>『今このとき、すばらしいこのとき』</strong>：日常のマインドフルネス。</li>
+                <li><strong>「五つのマインドフルネス・トレーニング」</strong>：現代版の五戒。</li>
+                <li><strong>プラムヴィレッジ共同体</strong>：マインドフルな生活の実験場。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>臨済宗（ベトナム禅）</li>
+                        <li>初期仏教（四念処）</li>
+                        <li>大乗仏教（菩薩道）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>マインドフルネス運動</li>
+                        <li>MBSR/MBCT</li>
+                        <li>エンゲージド・ブディズム</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 仏教改革者の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>タイ</th>
+                        <th>ダライ・ラマ</th>
+                        <th>ブッダダーサ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>伝統</strong></td>
+                        <td>ベトナム禅（臨済）</td>
+                        <td>チベット仏教</td>
+                        <td>タイ上座部</td>
+                    </tr>
+                    <tr>
+                        <td><strong>核心概念</strong></td>
+                        <td>マインドフルネス</td>
+                        <td>慈悲と空</td>
+                        <td>空と縁起</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社会参加</strong></td>
+                        <td>エンゲージド</td>
+                        <td>チベット問題</td>
+                        <td>仏法社会主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>西洋への影響</strong></td>
+                        <td>マインドフルネス運動</td>
+                        <td>チベット仏教普及</td>
+                        <td>限定的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>バックグラウンドプロセス</td>
+                        <td>エラーハンドリング</td>
+                        <td>リファクタリング</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：今ここに生きる</h2>
+            <div class="thought-experiment">
+                <h3>マインドフルネスは仏教なしで成り立つか</h3>
+                <p>タイは西洋にマインドフルネスを広めました。しかし今日、「マインドフルネス」は仏教から切り離されて企業研修や医療に導入されています。これは良いことでしょうか、悪いことでしょうか？</p>
+                <p style="margin-top: 1.5rem;">擁護者は言います：マインドフルネスは宗教を超えた普遍的実践。仏教を信じなくても呼吸瞑想は効果がある。より多くの人に届くなら、世俗化は良いこと。
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    批判者は言います：倫理（五戒）なしのマインドフルネスは「マックマインドフルネス」——ファストフード化された瞑想。より効率的に働くための道具に堕する。社会変革なしの個人瞑想は体制順応。</p>
+                <p style="margin-top: 1.5rem;">
+                    タイ自身は言いました：「マインドフルネスは倫理とセットでなければならない」。五つのマインドフルネス・トレーニングは、殺さない、盗まない、嘘をつかない、性的不品行をしない、酒・薬物を避ける——という倫理的基盤を強調します。
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    もしあなたがストレス軽減のためだけにマインドフルネスを実践するなら、それは十分でしょうか？それとも社会への関与、他者への慈悲、倫理的生活が必要でしょうか？</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    マインドフルネスは仏教なしで成り立ちますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ティク・ナット・ハン（1926-2022）は、ベトナムの禅僧であり、西洋にマインドフルネスを広めた最も重要な人物の一人です。「エンゲージド・ブディズム（社会参加仏教）」を提唱し、瞑想は隠遁ではなく社会変革の基盤であると説きました。ベトナム戦争への非暴力抵抗、キング牧師との友情、フランスでのプラムヴィレッジ共同体設立——タイの生涯は実践そのものでした。「インタービーイング（相互存在）」の概念で縁起を現代語に翻訳し、「今この瞬間」への意識的注意を教えました。今日のマインドフルネス運動——MBSR、MBCT、企業研修——の源流はここにあります。しかしタイは常に強調しました：マインドフルネスは倫理とセット、社会参加とセット、平和とセットでなければならない。息を吸えば、私は落ち着く。息を吐けば、私は微笑む。今この瞬間に。これが唯一の瞬間。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Breathing in, I calm my body.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マルティン・ルター - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #78350f;
+            /* Reformation Brown */
+            --secondary: #451a03;
+            /* Wittenberg Dark */
+            --accent: #fbbf24;
+            /* Thesis Gold */
+            --highlight: #fef3c7;
+            /* Grace Light */
+            --bg: #1c1000;
+            /* 95 Theses Deep */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Reformation Background */
+        .reform-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(120, 53, 15, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Luther Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "95";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(120, 53, 15, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(120, 53, 15, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Solas Section */
+        .solas-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #78350f 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .solas-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .solas-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sola-box {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            min-width: 180px;
+        }
+
+        .sola-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📜";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reform-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← REFORMATION</a>
+        <div>SOLA_FIDE_v5.64</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-564 / THE_REFORMER</span>
+        <h1>マルティン・ルター</h1>
+        <p class="en-name">Martin Luther (1483–1546)</p>
+        <p class="catchphrase">「ここに立つ、私に他にできることはない」——宗教改革の父</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">改革OS</span>
+            <span class="os-tag">自由OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">95か条の論題</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    マルティン・ルターは、プロテスタント宗教改革を開始したドイツの神学者・修道士です。1517年、ヴィッテンベルク城教会の扉に95か条の論題を掲示——これが宗教改革の始まり。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ルターの核心的主張——<b>信仰のみ（Sola Fide）</b>。人は行いや贖宥状（免罪符）ではなく、信仰によってのみ義とされる。パウロの「信仰義認」の再発見。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「聖書のみ」「恩恵のみ」「キリストのみ」——五つの「ソラ」がプロテスタント神学の基盤に。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ルターは、<b>「腐敗したレガシーシステム（中世カトリック）に対するオープンソース革命——ソースコード（聖書）を公開し、各ユーザー（信者）が直接アクセス可能に。中央サーバー（教皇）の独占を否定」</b>した、キリスト教のリファクタリング。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 五ソラ -->
+        <section class="solas-section">
+            <h2>📜 五つのソラ（Sola）</h2>
+            <div class="solas-grid">
+                <div class="sola-box">
+                    <h4>Sola Scriptura</h4>
+                    <p style="font-size: 0.9rem;">聖書のみ</p>
+                </div>
+                <div class="sola-box">
+                    <h4>Sola Fide</h4>
+                    <p style="font-size: 0.9rem;">信仰のみ</p>
+                </div>
+                <div class="sola-box">
+                    <h4>Sola Gratia</h4>
+                    <p style="font-size: 0.9rem;">恩恵のみ</p>
+                </div>
+                <div class="sola-box">
+                    <h4>Solus Christus</h4>
+                    <p style="font-size: 0.9rem;">キリストのみ</p>
+                </div>
+                <div class="sola-box">
+                    <h4>Soli Deo Gloria</h4>
+                    <p style="font-size: 0.9rem;">神の栄光のみ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ルター思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">ここに私は立つ、私に他にできることはない。神よ、我を助けたまえ。アーメン。</p>
+                <p class="quote-author">— マルティン・ルター（ヴォルムス国会、1521年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚖️ 信仰義認</h3>
+                        <p>Justification by Faith。行いではなく信仰によってのみ義とされる。パウロの再発見。贖宥状への批判。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 聖書のみ</h3>
+                        <p>Sola Scriptura。教会の伝統ではなく聖書が唯一の権威。ルター訳聖書——ドイツ語に翻訳。</p>
+                </div>
+                <div class="card">
+                    <h3">👤 万人祭司</h3>
+                        <p>Priesthood of All Believers。すべての信者は祭司。聖職者と平信徒の区別を否定。</p>
+                </div>
+                <div class="card">
+                    <h3">🔓 良心の自由</h3>
+                        <p>「良心は神の言葉に囚われている」。個人の良心が権威に優先。近代的個人主義の萌芽。</p>
+                </div>
+                <div class="card">
+                    <h3">💼 職業召命</h3>
+                        <p>Beruf。世俗の職業も神への奉仕。修道院生活だけが聖なるのではない。プロテスタント労働倫理。</p>
+                </div>
+                <div class="card">
+                    <h3">🎵 賛美歌</h3>
+                        <p>ドイツ語の賛美歌を作曲。「神はわが砦」。礼拝を民衆のものに。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 歴史 -->
+        <section class="section">
+            <h2 class="section-title">🔄 宗教改革の展開</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1517年：95か条の論題</h3>
+                        <p>贖宥状（免罪符）への批判。ヴィッテンベルク城教会の扉に掲示。印刷術で急速に拡散。</p>
+                </div>
+                <div class="card">
+                    <h3">1521年：ヴォルムス国会</h3>
+                        <p>「ここに立つ」。撤回を拒否。帝国追放令。ヴァルトブルク城で聖書翻訳。</p>
+                </div>
+                <div class="card">
+                    <h3">1522年：ルター訳聖書</h3>
+                        <p>新約聖書のドイツ語訳出版。近代ドイツ語の基盤。民衆が聖書を読めるように。</p>
+                </div>
+                <div class="card">
+                    <h3">1530年：アウクスブルク信仰告白</h3>
+                        <p>メランヒトンが起草。ルター派の信仰を体系化。カトリックとの決裂が決定的に。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Open Source Revolution</h2>
+            <div class="it-card">
+                <h3">Sola Scriptura as Open Source</h3>
+                    <p>聖書のみはオープンソース。ソースコード（聖書）を公開。誰でもアクセス・解釈可能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Printing Press as GitHub</h3>
+                    <p>印刷術はGitHub。ルターの著作が急速に複製・配布。Fork（分派）が可能に。</p>
+            </div>
+            <div class="it-card">
+                <h3">Priesthood of All as Root Access</h3>
+                    <p>万人祭司はルートアクセス。聖職者だけでなく全ユーザーがsudoを持つ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Conscience as Local Authority</h3>
+                    <p>良心の自由はローカル権限。中央サーバー（教皇）ではなくローカル（個人）が最終判断。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>信仰義認</strong>：行いではなく信仰。</li>
+                <li><strong>聖書のみ</strong>：唯一の権威としての聖書。</li>
+                <li><strong>万人祭司</strong>：聖職者と平信徒の平等。</li>
+                <li><strong>ドイツ語聖書</strong>：民族語への翻訳。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>使徒パウロ</li>
+                            <li>アウグスティヌス</li>
+                            <li>ヤン・フス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ルター派教会</li>
+                            <li>プロテスタント倫理</li>
+                            <li>近代個人主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 宗教改革者の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ルター</th>
+                        <th>カルヴァン</th>
+                        <th>ツヴィングリ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>強調</strong></td>
+                        <td>信仰義認</td>
+                        <td>予定説</td>
+                        <td>聖書主義</td>
+                    </tr>
+                    <tr>
+                        <td><strong>聖餐</strong></td>
+                        <td>臨在</td>
+                        <td>霊的臨在</td>
+                        <td>記念</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政教</strong></td>
+                        <td>二王国</td>
+                        <td>神政</td>
+                        <td>市民宗教</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>フォーク</td>
+                        <td>ハードフォーク</td>
+                        <td>リブート</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：権威はどこにあるか</h2>
+            <div class="thought-experiment">
+                <h3">聖書か、教会か、良心か</h3>
+                    <p>ルターは「聖書のみ」と主張しました。</p>
+                    <p>しかし聖書の解釈は誰が行うのか？</p>
+                    <p>カトリックは答えた：教会（教皇と公会議）が正統な解釈を行う。</p>
+                    <p>ルターは答えた：個人の良心と聖書の明白な意味。</p>
+                    <p>しかし「明白な意味」は本当に明白か？</p>
+                    <p>宗教改革は多くの分派を生んだ——それぞれが「聖書のみ」を主張しながら異なる解釈。</p>
+                    <p>これは問題か、それとも多様性の豊かさか？</p>
+                    <p>現代でも同じ問い：法の解釈は誰が行うのか？最高裁か、議会か、市民か？</p>
+                    <p>「原典」と「解釈者」の関係は、あらゆる権威システムで問われる。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        テキストの正しい解釈は誰が決めますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マルティン・ルターは、プロテスタント宗教改革を開始したドイツの神学者・修道士です。1517年、95か条の論題を掲示し、贖宥状（免罪符）を批判。「信仰のみ」「聖書のみ」「恩恵のみ」——これらの原則はカトリック教会の中央権威に挑戦し、キリスト教の歴史を二分しました。ルター訳聖書は近代ドイツ語の基盤となり、「万人祭司」の概念は近代的個人主義の萌芽となりました。宗教改革は西洋近代の形成に決定的な影響を与えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Here I stand, I can do no other.</p>
+    </footer>
+</body>
+
+</html>

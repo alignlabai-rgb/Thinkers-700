@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程顥 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Ren Cyan */
+            --secondary: #164e63;
+            /* Tianli Dark */
+            --accent: #22d3ee;
+            /* Light Harmony */
+            --highlight: #cffafe;
+            /* Heart Glow */
+            --bg: #083344;
+            /* Deep Mind */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Ren Background */
+        .ren-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(8, 145, 178, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Cheng Hao Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "💧";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Ren Section */
+        .ren-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .ren-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .ren-char {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .ren-meaning {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "💧";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ren-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← REN_TIANLI</a>
+        <div>CHENG_HAO_v6.87</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-687 / MINGDAO_THE_ELDER_CHENG</span>
+        <h1>程顥</h1>
+        <p class="en-name">Cheng Hao / Mingdao 明道 (1032–1085)</p>
+        <p class="catchphrase">「仁とは天地万物と一体となることである」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">仁OS</span>
+            <span class="os-tag">心学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">明道先生——二程の兄</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    程顥（字は伯淳、号は明道先生）は、北宋の儒学者であり、弟の程頤とともに「二程」と呼ばれ、宋代理学（程朱学）の基礎を築きました。周敦頤に学び、張載と同時代。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「仁」</b>——天地万物と一体となる感覚。仁は単なる徳目ではなく、宇宙との根源的一体性。「万物一体の仁」。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    程顥は弟の程頤より<b>直観的・体験的</b>なアプローチを重視。後の王陽明「心学」の源流とも言われます。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    程顥は、<b>「儒学OSに『仁』コンポーネントを再設計——天理とユーザー（心）の直接接続を強調。弟の程頤が理論（理）を担当し、兄は体験（仁）を担当。後の心学はこの設計を継承」</b>した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 仁 -->
+        <section class="ren-section">
+            <h2>💧 核心概念</h2>
+            <p class="ren-char">仁</p>
+            <p class="ren-meaning">天地万物と一体となること</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                「仁者は天地万物を以て一体と為す。己ならざるなし。」<br>
+                ——仁とは、自己と世界の境界が消える体験。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 程顥思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">学者は須く先ず仁を識るべし。仁者は渾然として物と同体なり。</p>
+                <p class="quote-author">— 程顥『識仁篇』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">💧 万物一体の仁</h3>
+                        <p>仁は天地万物との一体感。他者の痛みを自分の痛みとして感じる。分離のない意識。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 天理</h3>
+                        <p>宇宙の根本原理。天理と人心は本来一致。私欲を去れば天理が顕れる。</p>
+                </div>
+                <div class="card">
+                    <h3">🧘 敬</h3>
+                        <p>心を一つに集中し、散乱を防ぐ。主一無適。静坐より日常での心の集中を重視。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 『識仁篇』</h3>
+                        <p>仁の本質を論じた短い文章。「仁を識る」ことが学問の出発点。</p>
+                </div>
+                <div class="card">
+                    <h3">🔮 直観的アプローチ</h3>
+                        <p>弟の程頤より直観・体験を重視。後の心学（陸象山、王陽明）の源流。</p>
+                </div>
+                <div class="card">
+                    <h3">🌸 温和な人格</h3>
+                        <p>「春風の如く」と称された穏やかな人格。弟の程頤は厳格。兄弟の対照。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 二程の比較 -->
+        <section class="section">
+            <h2 class="section-title">👬 二程兄弟</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">程顥（兄・明道）</h3>
+                        <p>体験・直観を重視。「仁」中心。温和な人格。心学の源流。</p>
+                </div>
+                <div class="card">
+                    <h3">程頤（弟・伊川）</h3>
+                        <p>分析・窮理を重視。「理」中心。厳格な人格。朱子学の源流。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Ren</h2>
+            <div class="it-card">
+                <h3">Ren as Connection Protocol</h3>
+                    <p>仁は接続プロトコル。自己と他者、自己と天地を接続。分離を超えた通信。</p>
+            </div>
+            <div class="it-card">
+                <h3">Tianli as Natural Law</h3>
+                    <p>天理は自然法則。宇宙のソースコード。心を清めれば読み取れる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Jing as Focus Mode</h3>
+                    <p>敬はフォーカスモード。心を一点に集中し、マルチタスクを排除。</p>
+            </div>
+            <div class="it-card">
+                <h3">Heart-Mind as Direct Access</h3>
+                    <p>心と天理の直接接続。仲介なしのダイレクトアクセス。弟の程頤は格物（学習）を仲介とする。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>万物一体の仁</strong>：儒学的一体感の哲学。</li>
+                <li><strong>『識仁篇』</strong>：仁の本質を論じた名文。</li>
+                <li><strong>心学の源流</strong>：陸象山、王陽明に影響。</li>
+                <li><strong>二程の一人</strong>：弟とともに宋学の基礎を築く。</li>
+                <li><strong>温和な人格</strong>：「春風の如き」儒者の模範。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">師</h3>
+                        <ul class="list-rich">
+                            <li>周敦頤</li>
+                            <li>孔子・孟子</li>
+                            <li>張載（同時代）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響</h3>
+                        <ul class="list-rich">
+                            <li>朱熹</li>
+                            <li>陸象山</li>
+                            <li>王陽明</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 二程と後代の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>核心</th>
+                        <th>方法</th>
+                        <th>学派</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>程顥</strong></td>
+                        <td>仁</td>
+                        <td>直観・体験</td>
+                        <td>心学の源流</td>
+                    </tr>
+                    <tr>
+                        <td><strong>程頤</strong></td>
+                        <td>理</td>
+                        <td>格物・窮理</td>
+                        <td>朱子学の源流</td>
+                    </tr>
+                    <tr>
+                        <td><strong>朱熹</strong></td>
+                        <td>理</td>
+                        <td>格物致知</td>
+                        <td>朱子学</td>
+                    </tr>
+                    <tr>
+                        <td><strong>王陽明</strong></td>
+                        <td>良知</td>
+                        <td>致良知</td>
+                        <td>陽明学</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：万物との一体</h2>
+            <div class="thought-experiment">
+                <h3">「仁」の体験</h3>
+                    <p>程顥は言います：「仁者は天地万物を以て一体と為す」。他者の痛みを自分の痛みとして感じ、世界との分離がない状態。これは実現可能か、理想的メタファーか？</p>
+                    <p style="margin-top: 1.5rem;">
+                        孟子の「惻隠の心」（赤子が井戸に落ちそうになると誰もが感じる不安）がヒントです。この自発的な共感は、仁の萌芽。これを拡張すれば万物との一体に至る。</p>
+                    <p style="margin-top: 1.5rem;">現代の神経科学は「ミラーニューロン」を発見しました。他者の行動を見ると、自分の脳も同じ領域が活性化する。共感には生物学的基盤がある。
+                    </p>
+                    <p style="margin-top: 1.5rem;">しかし批判者は問う：万物との一体は聞こえはいいが、実際にはどう行動すべきか？虫を踏まない？肉を食べない？程顥は日常生活を送っていた。
+                    </p>
+                    <p style="margin-top: 1.5rem;">程顥の答え：一体感は「識る」（認識する）こと。行動は状況に応じる。基本姿勢として万物への敬意を持つこと。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        万物との一体感を持つことは、あなたの行動を変えますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>程顥（1032-1085）は、北宋の儒学者であり、弟の程頤とともに「二程」と呼ばれ、宋代理学（程朱学）の基礎を築きました。彼の核心概念は「仁」——天地万物と一体となる感覚。「仁者は渾然として物と同体なり」。弟の程頤より直観的・体験的なアプローチを重視し、後の王陽明「心学」の源流となりました。『識仁篇』は仁の本質を論じた名文。「春風の如く」と称された温和な人格で知られ、厳格な弟との対照を成しました。万物一体の仁——孔子の仁を宇宙論的スケールに拡張した、宋代新儒学の偉大な貢献です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Ren as cosmic unity.</p>
+    </footer>
+</body>
+
+</html>

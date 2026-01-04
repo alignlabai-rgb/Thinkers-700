@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グスタボ・グティエレス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b91c1c;
+            /* Liberation Red */
+            --secondary: #7f1d1d;
+            /* Poor's Dark */
+            --accent: #f87171;
+            /* Light Hope */
+            --highlight: #fecaca;
+            /* Justice Glow */
+            --bg: #450a0a;
+            /* Deep Peru */
+            --text: #fecaca;
+            --border: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Liberation Background */
+        .liberation-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(248, 113, 113, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(185, 28, 28, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Gutierrez Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✊";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #ef4444 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(185, 28, 28, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(185, 28, 28, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Preferential Option Section */
+        .option-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b91c1c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .option-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .option-phrase {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .option-spanish {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✊";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="liberation-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← LIBERATION</a>
+        <div>GUTIERREZ_v6.80</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-680 / THE_FATHER_OF_LIBERATION_THEOLOGY</span>
+        <h1>グスタボ・グティエレス</h1>
+        <p class="en-name">Gustavo Gutiérrez (1928–2024)</p>
+        <p class="catchphrase">「神学は貧者の側に立つ——そうでなければ神学ではない」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">解放OS</span>
+            <span class="os-tag">社会正義OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">解放の神学の父</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    グスタボ・グティエレスは、ペルーのカトリック司祭・神学者であり、「解放の神学」の創始者です。1971年の『解放の神学』は、キリスト教神学に革命をもたらしました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「貧者への優先的選択」（Preferential Option for the Poor）</b>——神は特に貧者、抑圧された者の側に立つ。神学は社会正義の実践から始まる。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    グティエレスは、ラテンアメリカの貧困と抑圧の現実から神学を展開。<b>「プラクシス（実践）」</b>を通じて信仰を理解する。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    グティエレスは、<b>「神学OSをフォーク——従来のヨーロッパ版神学OSから、ラテンアメリカ版（貧者優先）を分岐。システム要件を『抽象的思考』から『社会正義の実践』に変更」</b>した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 貧者への優先的選択 -->
+        <section class="option-section">
+            <h2>✊ 核心概念</h2>
+            <p class="option-phrase">貧者への優先的選択</p>
+            <p class="option-spanish">Opción preferencial por los pobres</p>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                神は特に貧者、抑圧された者の側に立つ。教会と神学者もそうすべきである。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 グティエレス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">神学は貧者への関わりから始まる——抽象的な思弁ではなく。</p>
+                <p class="quote-author">— グスタボ・グティエレス</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">✊ 解放の神学</h3>
+                        <p>キリスト教信仰を社会正義の観点から再解釈。出エジプト物語——神は抑圧された民を解放する。</p>
+                </div>
+                <div class="card">
+                    <h3">❤️ 貧者への優先的選択</h3>
+                        <p>神は特に貧者の側に立つ。教会は貧者とともに、貧者のために存在すべき。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 プラクシス</h3>
+                        <p>実践から神学へ。理論から実践ではなく、実践から理論。行動と省察の循環。</p>
+                </div>
+                <div class="card">
+                    <h3">📊 社会分析</h3>
+                        <p>貧困の構造的原因を分析。マルクス主義的な社会分析を取り入れ（ただし共産主義ではない）。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 聖書の再解釈</h3>
+                        <p>出エジプト、預言者、イエスの宣教——解放のテーマを再発見。「貧しい者は幸いである」。</p>
+                </div>
+                <div class="card">
+                    <h3">🌎 ラテンアメリカ</h3>
+                        <p>ペルー、ブラジル、エルサルバドル。基礎教会共同体（CEB）、メデジン会議（1968年）、プエブラ会議（1979年）。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 解放の神学とは -->
+        <section class="section">
+            <h2 class="section-title">📚 解放の神学</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 歴史的背景</h3>
+                        <p>1960-70年代のラテンアメリカ。軍事独裁、貧困、不平等。第二バチカン公会議（1962-65）の改革精神。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 方法論</h3>
+                        <p>「見る、判断する、行動する」。社会現実の分析→聖書・伝統による判断→解放のための行動。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 聖書的根拠</h3>
+                        <p>出エジプト記：神は奴隷を解放。預言者：社会正義を要求。イエス：貧者への宣教。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 批判と論争</h3>
+                        <p>バチカンからマルクス主義と批判。ヨハネ・パウロ2世時代に抑制。しかしフランシスコ教皇は再評価。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Liberation</h2>
+            <div class="it-card">
+                <h3">Liberation as Fork</h3>
+                    <p>解放の神学は神学OSのフォーク。ヨーロッパ版から分岐し、ラテンアメリカの現実に最適化。</p>
+            </div>
+            <div class="it-card">
+                <h3">Praxis as Agile Development</h3>
+                    <p>プラクシスはアジャイル開発。実践（イテレーション）と省察（レトロスペクティブ）の循環。ウォーターフォール（理論先行）を拒否。</p>
+            </div>
+            <div class="it-card">
+                <h3">Preferential Option as Priority Queue</h3>
+                    <p>貧者への優先的選択は優先度キュー。貧者の声が最優先で処理される。FIFOではなく優先度順。</p>
+            </div>
+            <div class="it-card">
+                <h3">Base Communities as Distributed System</h3>
+                    <p>基礎教会共同体は分散システム。中央集権的な階層ではなく、草の根のノード。ピアツーピア神学。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>『解放の神学』（1971年）</strong>：分野の創設文書。</li>
+                <li><strong>「貧者への優先的選択」</strong>：カトリック社会教説に採用。</li>
+                <li><strong>メデジン会議（1968年）</strong>：ラテンアメリカ司教会議。</li>
+                <li><strong>フランシスコ教皇</strong>：解放の神学を再評価。グティエレスと会見。</li>
+                <li><strong>グローバルな影響</strong>：アフリカ、アジア、フェミニスト神学への波及。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">根</h3>
+                        <ul class="list-rich">
+                            <li>第二バチカン公会議</li>
+                            <li>カトリック社会教説</li>
+                            <li>マルクス主義社会分析</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">枝</h3>
+                        <ul class="list-rich">
+                            <li>オスカル・ロメロ</li>
+                            <li>レオナルド・ボフ</li>
+                            <li>フェミニスト神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 神学的アプローチの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>解放の神学</th>
+                        <th>伝統的神学</th>
+                        <th>福音主義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>出発点</strong></td>
+                        <td>貧者の現実</td>
+                        <td>教義・伝統</td>
+                        <td>聖書</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>プラクシス（実践→省察）</td>
+                        <td>思弁（理論→応用）</td>
+                        <td>聖書解釈</td>
+                    </tr>
+                    <tr>
+                        <td><strong>救い</strong></td>
+                        <td>歴史内の解放を含む</td>
+                        <td>来世中心</td>
+                        <td>個人の回心</td>
+                    </tr>
+                    <tr>
+                        <td><strong>社会</strong></td>
+                        <td>構造的変革</td>
+                        <td>個人の道徳</td>
+                        <td>伝道優先</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：神はどちらの側にいるか</h2>
+            <div class="thought-experiment">
+                <h3">神の視点</h3>
+                    <p>グティエレスは問います：神は貧者と富者の「中立」にいるのか？それとも貧者の側に立つのか？</p>
+                    <p style="margin-top: 1.5rem;">出エジプト記では、神はエジプトの奴隷を解放した。預言者たちは社会正義を要求した。イエスは「貧しい者は幸いである」と言った。</p>
+                    <p style="margin-top: 1.5rem;"><strong>批判者は言う</strong>：神は「すべての人」を愛する。貧者への「優先」は聖書的ではない。マルクス主義の影響だ。
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        <strong>グティエレスの答え</strong>：「優先的」は「排他的」ではない。神はすべての人を愛する。しかし貧者、抑圧された者への特別な関心がある。医者が病人を優先するように。</p>
+                    <p style="margin-top: 1.5rem;">この問いは政治的でもあります。教会は現状を維持すべきか、変革を求めるべきか？「中立」は実際には現状維持の側に立つのではないか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        神は貧者の側に立つと思いますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>グスタボ・グティエレス（1928-2024）は、ペルーのカトリック司祭・神学者であり、「解放の神学」の創始者です。1971年の『解放の神学』は、キリスト教神学に革命をもたらしました。「貧者への優先的選択」——神は特に貧者、抑圧された者の側に立つ——という概念は、カトリック社会教説に採用されました。グティエレスは、ラテンアメリカの貧困と抑圧の現実から神学を展開し、「プラクシス（実践）」を通じて信仰を理解することを提唱。バチカンからの批判を受けながらも、フランシスコ教皇によって再評価されました。2024年に96歳で逝去。解放の神学は、アフリカ、アジア、フェミニスト神学など、グローバルな影響を与え続けています。神学は貧者の側に立つ——そうでなければ神学ではない。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Preferential Option for the Poor.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アマルティア・セン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Capability Green */
+            --secondary: #022c22;
+            /* Development Dark */
+            --accent: #34d399;
+            /* Freedom Emerald */
+            --highlight: #d1fae5;
+            /* Justice Light */
+            --bg: #011611;
+            /* Human Dignity */
+            --text: #ecfdf5;
+            --border: #065f46;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Capability Background */
+        .capability-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Justice Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #064e3b 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #047857 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Capability Diagram */
+        .capability-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #064e3b 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .capability-section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .capability-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cap-box {
+            padding: 3rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .resource-box {
+            background: #0369a1;
+            border: 2px solid #0ea5e9;
+        }
+
+        .capability-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+            padding: 4rem 5rem;
+        }
+
+        .functioning-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .cap-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .capability-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="capability-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DEVELOPMENT_AS_FREEDOM</a>
+        <div>CAPABILITY_APPROACH_v4.73</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-473 / THE_CAPABILITY_ECONOMIST</span>
+        <h1>アマルティア・セン</h1>
+        <p class="en-name">Amartya Sen (1933–)</p>
+        <p class="catchphrase">「開発とは自由の拡大である」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">社会OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">貧困とは何かを再定義する</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「貧困」とは何でしょうか。所得が低いこと？お金がないこと？インド出身の経済学者・哲学者アマルティア・センは、この常識を根底から覆しました。貧困とは単なる「所得の欠如」ではなく、<b>「人が価値ある生き方を選ぶ能力（ケイパビリティ）の剥奪」</b>である——この洞察は、開発経済学と政治哲学に革命をもたらしました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    センの「ケイパビリティ・アプローチ」は問います。人は何を「持っている」かではなく、何を「することができる」か、何に「なれる」か。食料を持っていても、栄養失調かもしれない。投票権があっても、政治参加が実質的に不可能かもしれない。重要なのは<b>「実質的自由」</b>——人が価値ある生を選択し実現する能力——なのです。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    センを学ぶことは、<b>「何をもって人間の福祉を測るのか」を根本から問い直すこと</b>です。GDPや所得だけでは捉えられない「人間開発」の次元を開いたセンの思想は、国連人間開発指数の基盤となり、ロールズの正義論を補完・批判する重要な視座を提供しています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>センは、<b>「福祉とは『スペック』のリストではなく、『実際に動作するアプリケーション』の集合である。高性能なハードウェアを持っていても、ソフトウェアが動かなければ意味がない。ケイパビリティとは、人が実際に『実行できる』機能の集合である」</b>と主張した、開発経済学のソフトウェアエンジニアです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ケイパビリティ図式 -->
+        <section class="capability-section">
+            <h2>🌱 ケイパビリティ・アプローチ</h2>
+            <div class="capability-diagram">
+                <div class="cap-box resource-box">
+                    <p>📦 資源・財</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">所得、食料、医療など</p>
+                </div>
+                <div class="cap-arrow">→</div>
+                <div class="cap-box capability-box">
+                    <p>🌱 ケイパビリティ</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">「できる」「なれる」の集合</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--highlight);">実質的自由</p>
+                </div>
+                <div class="cap-arrow">→</div>
+                <div class="cap-box functioning-box">
+                    <p>✨ 機能（Functioning）</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">実際に達成された状態・活動</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                同じ資源を持っていても、ケイパビリティ（それを使って何ができるか）は人によって異なる。障害、教育、社会的制約によって「変換率」が変わる。正義は「ケイパビリティの平等」を目指すべき。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 開発と自由の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">開発とは、人々が享受する実質的自由の拡大として捉えることができる。</p>
+                <p class="quote-author">— 『自由と経済開発』（1999年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌱 ケイパビリティ</h3>
+                    <p>人が「することができる」「なれる」ことの集合。健康でいられる能力、教育を受ける能力、政治に参加する能力——これらの実質的自由こそが福祉の核心。</p>
+                </div>
+                <div class="card">
+                    <h3>✨ 機能（Functioning）</h3>
+                    <p>実際に達成された「状態」や「活動」。栄養が取れている、読み書きできる、社会関係に参加している——ケイパビリティの実現形態。</p>
+                </div>
+                <div class="card">
+                    <h3>🔄 変換要素</h3>
+                    <p>同じ資源でもケイパビリティへの変換率は異なる。個人的要素（年齢、障害）、社会的要素（差別、ジェンダー規範）、環境的要素が影響。</p>
+                </div>
+                <div class="card">
+                    <h3">🍚 飢饉の分析</h3>
+                        <p>飢饉は食料不足だけでは起きない。食料にアクセスする「エンタイトルメント」の崩壊が原因。市場価格、賃金、権利関係が飢饉を引き起こす。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 不完全な正義</h3>
+                        <p>ロールズ的な「理想的正義論」ではなく、「不正義の比較」を重視。完璧な正義社会の青写真より、現実の不正義を減らす実践的アプローチ。</p>
+                </div>
+                <div class="card">
+                    <h3">🗳️ 民主主義の価値</h3>
+                        <p>飢饉は民主主義国家では起きない。自由な報道と選挙は政府に応答責任を課す。民主主義は開発の「道具的価値」と「構成的価値」を持つ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 開発の再定義</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 従来の開発観</h3>
+                        <p>開発＝GDP成長、工業化、近代化。経済成長があれば福祉は「トリクルダウン」で改善される。所得が唯一の指標。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 功利主義批判</h3>
+                        <p>「幸福の総和」だけでは分配の問題を捉えられない。抑圧された人々は「適応的選好」を形成し、少ない幸福で満足してしまう。</p>
+                </div>
+                <div class="card">
+                    <h3">3. ケイパビリティへの転換</h3>
+                        <p>福祉の基準を「所得」から「ケイパビリティ」へ。重要なのは人が何を「持っているか」ではなく、何を「できるか」「なれるか」。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 人間開発指数</h3>
+                        <p>センの思想に基づき国連が開発したHDI。寿命、教育、所得を統合。GDPとは異なる開発の尺度を提供。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Capability as Runtime Environment</h2>
+            <div class="it-card">
+                <h3">Resource as Hardware, Capability as Runtime</h3>
+                    <p>資源はハードウェア（CPU、メモリ）、ケイパビリティはランタイム環境。同じハードウェアでも、OSやドライバの違いで実行できるプログラムが変わる。人間も同じ——同じ所得でも「できること」は異なる。
+                    </p>
+            </div>
+            <div class="it-card">
+                <h3">Functioning as Running Application</h3>
+                    <p>機能（Functioning）は実際に動作しているアプリケーション。ケイパビリティは「インストール済みだが起動していないアプリ」も含む。選択肢があること自体が価値を持つ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Conversion Factor as Driver Compatibility</h3>
+                    <p>変換要素はドライバ互換性に似ている。同じハードウェアでも、ドライバがなければ動かない。社会的・個人的「ドライバ」の有無がケイパビリティを決定する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Entitlement as Access Control</h3>
+                    <p>エンタイトルメントはアクセス制御。食料という「リソース」があっても、アクセス権がなければ利用できない。飢饉はリソース不足ではなく、アクセス制御の問題。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ケイパビリティ・アプローチ</strong>：福祉の評価基準を「所得」から「実質的自由」へ転換。マーサ・ヌスバウムとの共同開発。</li>
+                <li><strong>エンタイトルメント理論</strong>：飢饉を食料供給ではなくアクセス権の問題として分析。開発経済学の革命。</li>
+                <li><strong>人間開発指数への貢献</strong>：国連UNDPの人間開発指数の理論的基盤を提供。GDP偏重の開発観を批判。</li>
+                <li><strong>正義の比較アプローチ</strong>：ロールズ的「超越的制度主義」を批判し、不正義の比較による実践的正義論を提唱。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アリストテレス（エウダイモニア、機能）</li>
+                            <li>ジョン・ロールズ（正義論）</li>
+                            <li>アダム・スミス（必需品と能力）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>マーサ・ヌスバウム（ケイパビリティ・リスト）</li>
+                            <li>国連人間開発報告書（HDI）</li>
+                            <li>ジェンダーと開発研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 福祉理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>セン</th>
+                        <th>功利主義</th>
+                        <th>ロールズ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>福祉の基準</strong></td>
+                        <td>ケイパビリティ（実質的自由）</td>
+                        <td>効用（幸福、選好満足）</td>
+                        <td>基本財</td>
+                    </tr>
+                    <tr>
+                        <td><strong>平等の対象</strong></td>
+                        <td>ケイパビリティ</td>
+                        <td>なし（総和最大化）</td>
+                        <td>基本財（格差原理）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>正義へのアプローチ</strong></td>
+                        <td>比較論的・実践的</td>
+                        <td>結果主義</td>
+                        <td>契約論的・理想論的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ランタイム能力</td>
+                        <td>パフォーマンス指標</td>
+                        <td>リソース配分</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：同じ自転車、異なる自由</h2>
+            <div class="thought-experiment">
+                <h3">二人の自転車所有者</h3>
+                    <p>Aさんは健康な成人で、Bさんは脚に障害があります。二人とも同じ自転車を所有しています。</p>
+                    <p>功利主義者は二人の「幸福」を比較するかもしれません。ロールズ主義者は二人が「同じ基本財（自転車）」を持っていることに満足するかもしれません。</p>
+                    <p>しかしセンは問います。「二人は同じ『ケイパビリティ』を持っているか？」——明らかに違います。Aさんは自転車で移動できますが、Bさんにはそれが難しい。同じ「モノ」を持っていても、それを「使って何ができるか」は異なるのです。
+                    </p>
+                    <p>正義を考えるとき、私たちは「モノの平等」ではなく「実質的自由の平等」を目指すべきではないでしょうか。</p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたは何を「できる」状態にありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アマルティア・センのケイパビリティ・アプローチは、開発経済学と政治哲学の両分野に革命をもたらしました。「貧困とは所得の欠如ではなく、ケイパビリティの剥奪である」という洞察は、GDPや所得だけでは捉えられない人間の福祉の次元を開きました。彼のエンタイトルメント理論は飢饉研究を刷新し、比較アプローチは理想論的正義論への実践的代替案を提示しました。国連人間開発指数の基盤となり、ジェンダー・障害・開発研究に影響を与え続けるセンの思想は、「何をもって人間らしい生活と言えるのか」を問い続けるすべての人にとって不可欠の参照点です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Development is freedom.</p>
+    </footer>
+</body>
+
+</html>

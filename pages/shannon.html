@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クロード・シャノン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            /* Information Blue */
+            --secondary: #0c1929;
+            /* Binary Dark */
+            --accent: #38bdf8;
+            /* Bit Light */
+            --highlight: #e0f2fe;
+            /* Entropy Glow */
+            --bg: #020617;
+            /* Channel Void */
+            --text: #e0f2fe;
+            --border: #0369a1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Binary Background */
+        .binary-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Digital Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0c4a6e 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "01";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25rem;
+            opacity: 0.03;
+            font-weight: 700;
+        }
+
+        .rank {
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Communication Diagram */
+        .comm-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0c4a6e 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .comm-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .comm-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .comm-box {
+            padding: 2.5rem 3rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .source-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .encoder-box {
+            background: var(--primary);
+            border: 2px solid var(--accent);
+        }
+
+        .channel-box {
+            background: #7c3aed;
+            border: 2px solid #a78bfa;
+        }
+
+        .decoder-box {
+            background: var(--primary);
+            border: 2px solid var(--accent);
+        }
+
+        .dest-box {
+            background: #dc2626;
+            border: 2px solid #ef4444;
+        }
+
+        .noise-box {
+            background: #52525b;
+            border: 2px solid #a1a1aa;
+            position: relative;
+        }
+
+        .comm-arrow {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .list-rich li::before {
+            content: "💾";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .thought-experiment p {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .formula-box {
+            background: rgba(14, 165, 233, 0.2);
+            border: 2px solid var(--primary);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .comm-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="binary-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← A_MATHEMATICAL_THEORY_OF_COMMUNICATION</a>
+        <div>INFORMATION_THEORY_v4.78</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-478 / THE_FATHER_OF_INFORMATION_AGE</span>
+        <h1>クロード・シャノン</h1>
+        <p class="en-name">Claude Elwood Shannon (1916–2001)</p>
+        <p class="catchphrase">"Information is the resolution of uncertainty."</p>
+        <div class="os-tags">
+            <span class="os-tag">技術OS</span>
+            <span class="os-tag">数学OS</span>
+            <span class="os-tag">哲学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">情報とは何か</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    スマートフォン、インターネット、AI——私たちは「情報時代」に生きています。しかし、「情報」とは正確には何でしょうか。1948年、ベル研究所の若きエンジニア、クロード・シャノンは決定的な答えを示しました。<b>「情報とは不確実性の解消である」</b>。この洞察は、デジタル時代の理論的基盤を築き、シャノンを「情報時代の父」たらしめました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シャノンの<b>情報理論</b>は、情報を「意味」とは切り離して扱います。メッセージが「何を言っているか」ではなく、「どれだけの不確実性を解消するか」が情報量。この革命的な抽象化によって、テキスト、音声、画像——あらゆるデータを統一的に扱う数学的枠組みが可能になりました。<b>「ビット」</b>という単位もシャノンが導入したものです。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    シャノンを学ぶことは、<b>デジタル世界の文法を理解すること</b>です。データ圧縮、暗号化、通信プロトコル、機械学習——現代の情報技術はすべてシャノンの理論の上に構築されています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p style="font-family: 'Space Grotesk', sans-serif;">
+                    シャノンは、<b>「情報とは『驚きの量』である。『太陽は東から昇る』には情報量がほぼなく（予測可能だから）、『今日は宇宙人が来た』には情報量が大きい（予測不可能だから）。エントロピーとはこの『驚き』の平均量だ」</b>と定式化した、デジタル時代のアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 通信の数学モデル -->
+        <section class="comm-section">
+            <h2>📡 通信のシャノンモデル</h2>
+            <div class="comm-diagram">
+                <div class="comm-box source-box">
+                    <p>📝 情報源</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Message</p>
+                </div>
+                <div class="comm-arrow">→</div>
+                <div class="comm-box encoder-box">
+                    <p>🔢 エンコーダ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Transmitter</p>
+                </div>
+                <div class="comm-arrow">→</div>
+                <div class="comm-box channel-box">
+                    <p>📶 チャネル</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">+ Noise</p>
+                </div>
+                <div class="comm-arrow">→</div>
+                <div class="comm-box decoder-box">
+                    <p>🔤 デコーダ</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Receiver</p>
+                </div>
+                <div class="comm-arrow">→</div>
+                <div class="comm-box dest-box">
+                    <p>👤 受信者</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Destination</p>
+                </div>
+            </div>
+            <div class="formula-box" style="margin-top: 3rem;">
+                H(X) = −Σ p(x) log₂ p(x)
+            </div>
+            <p
+                style="margin-top: 2rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8); font-family: 'Space Grotesk', sans-serif;">
+                情報源がメッセージを生成し、送信機が信号に符号化し、ノイズのあるチャネルを通過し、受信機が復号し、受信者に届く。エントロピーH(X)が情報量の尺度。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 情報理論の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">The fundamental problem of communication is that of reproducing at one point
+                    either exactly or approximately a message selected at another point.</p>
+                <p class="quote-author">— "A Mathematical Theory of Communication" (1948)</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">📊 エントロピー</h3>
+                        <p>情報源の「不確実性の量」。均等な確率分布ほど高エントロピー。コイン投げ（50/50）は1ビットのエントロピー。熱力学のエントロピーとの類似。</p>
+                </div>
+                <div class="card">
+                    <h3">💾 ビット</h3>
+                        <p>情報の基本単位。二者択一の質問1つが解消する不確実性。シャノンが命名。Binary digit（二進数字）の略。デジタル時代の共通通貨。</p>
+                </div>
+                <div class="card">
+                    <h3">📦 データ圧縮</h3>
+                        <p>冗長性を除去してデータを圧縮できる。シャノンの第一定理（ソースコーディング定理）：圧縮の理論的限界はエントロピー。</p>
+                </div>
+                <div class="card">
+                    <h3">📶 チャネル容量</h3>
+                        <p>ノイズのあるチャネルで確実に送信できる情報の最大レート。シャノンの第二定理（ノイズのあるチャネル定理）：理論的限界と達成可能性。</p>
+                </div>
+                <div class="card">
+                    <h3">🔊 ノイズ</h3>
+                        <p>通信チャネルに入る不要な信号。しかし適切な符号化で影響を最小化できる。誤り訂正符号の理論的基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 冗長性</h3>
+                        <p>言語の冗長性（英語は約75%が冗長）が誤り訂正を可能にする。一方で圧縮の余地にもなる。冗長性のトレードオフ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 情報革命</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 意味と情報の分離</h3>
+                        <p>「情報」を「意味」から切り離す革命的抽象化。何が書かれているかではなく、どれだけの不確実性を解消するかが重要。形式主義的アプローチ。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 数学的定量化</h3>
+                        <p>エントロピーという尺度で情報を定量化。確率論と対数を使った厳密な数学的枠組み。通信工学を科学に昇格。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 理論的限界の発見</h3>
+                        <p>データ圧縮にもチャネル通信にも理論的限界がある。そしてその限界に近づく方法が存在する。不可能と可能の境界を明確化。</p>
+                </div>
+                <div class="card">
+                    <h3">4. デジタル時代の基盤</h3>
+                        <p>ZIP圧縮、MP3、JPEG、誤り訂正、暗号化——すべてシャノンの理論を基盤とする。現代情報技術の文法書を執筆。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: THE ARCHITECTURE OF INFORMATION</h2>
+            <div class="it-card">
+                <h3">Entropy as Compression Limit</h3>
+                    <p>エントロピーはデータ圧縮の限界。ZIP、gzip、lz4——どの圧縮アルゴリズムもエントロピー以下には圧縮できない。理論的下限を知ることで、アルゴリズムの性能を評価できる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Channel Capacity as Bandwidth</h3>
+                    <p>チャネル容量はネットワーク帯域幅の理論的最大値。シャノン限界に近づくことが通信技術の目標。4G→5G→6Gはこの追求の歴史。</p>
+            </div>
+            <div class="it-card">
+                <h3">Error Correction as Checksum++</h3>
+                    <p>シャノンの理論は誤り訂正符号の基盤。TCP/IPのチェックサム、QRコードの冗長性、RAIDのパリティ——すべてシャノン理論の応用。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bit as Universal Unit</h3>
+                    <p>ビットはデジタル世界の共通単位。テキスト、音声、画像、動画——すべてがビット列として統一的に扱える。この「統一」がシャノンの最大の貢献。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>情報理論の創設</strong>：1948年の論文で情報を数学的に定義。エントロピー、ビット、チャネル容量の概念を導入。</li>
+                <li><strong>ブール代数とスイッチング回路</strong>：修士論文でデジタル回路設計の基盤を確立。「20世紀最も重要な修士論文」と呼ばれる。</li>
+                <li><strong>暗号理論への貢献</strong>：「通信の秘密システム理論」で現代暗号学の基礎を築く。完全秘密の数学的証明。</li>
+                <li><strong>AI・チェスプログラミングの先駆</strong>：最初のチェスプログラミング論文を執筆。機械学習への貢献も。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ジョージ・ブール（ブール代数）</li>
+                            <li>ハリー・ナイキスト（通信理論）</li>
+                            <li>ラルフ・ハートレー（情報の定量化）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>アンドレイ・コルモゴロフ（複雑性理論）</li>
+                            <li>ソロモン・ゴロム（符号理論）</li>
+                            <li>現代情報技術全般</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 情報理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>シャノン</th>
+                        <th>コルモゴロフ</th>
+                        <th>意味論的理論</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>情報の定義</strong></td>
+                        <td>不確実性の解消</td>
+                        <td>最短記述長</td>
+                        <td>意味・真理値</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アプローチ</strong></td>
+                        <td>確率論的</td>
+                        <td>計算論的</td>
+                        <td>論理的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>主な応用</strong></td>
+                        <td>通信・圧縮</td>
+                        <td>複雑性・乱数性</td>
+                        <td>言語学・AI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>キー概念</strong></td>
+                        <td>エントロピー</td>
+                        <td>記述複雑性</td>
+                        <td>意味・参照</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 THOUGHT_EXPERIMENT: 20 Questions</h2>
+            <div class="thought-experiment">
+                <h3">二進探索と情報量</h3>
+                    <p>古典的なゲーム「20の質問」を考えてみましょう。相手が考えている物を、Yes/Noで答えられる質問だけで当てます。</p>
+                    <p>最適な戦略は何でしょうか？——答えは「二分探索」です。各質問で可能性を半分に減らす。例えば「それは生き物ですか？」という質問は、（適切に設計されていれば）可能性を半分にします。</p>
+                    <p>シャノンはこう定式化しました：100万の可能性から1つを特定するには、log₂(1,000,000) ≈ 20ビットの情報が必要。つまり20回の「半分に減らす」質問で足りる。</p>
+                    <p>これが「ビット」の本質です——1ビットは「二択の1つ」を特定する情報。そしてこの単純な洞察が、デジタル時代全体の数学的基盤となりました。</p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたの次のGoogle検索には、何ビットの情報が含まれていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p style="font-family: 'Space Grotesk', sans-serif;">
+                クロード・シャノンの1948年の論文は、情報という概念を厳密に定義し、デジタル時代の数学的基盤を築きました。「情報とは不確実性の解消である」という洞察は、テキスト・音声・画像などあらゆるデータを統一的に扱う枠組みを可能にしました。エントロピー、ビット、チャネル容量——これらの概念は、データ圧縮、暗号化、誤り訂正、通信プロトコルなど、現代情報技術のあらゆる分野で基本的役割を果たしています。シャノンは「情報時代の父」と呼ばれますが、彼の理論はAI・機械学習時代においても、不確実性を扱うあらゆる分野で核心的な重要性を保ち続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Information is the resolution of uncertainty.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アラン・チューリング - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            /* Computation Green */
+            --secondary: #022c22;
+            /* Machine Dark */
+            --accent: #10b981;
+            /* Algorithm Green */
+            --highlight: #d1fae5;
+            /* Binary Glow */
+            --bg: #0a1f14;
+            /* Code Deep */
+            --text: #d1fae5;
+            --border: #047857;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Computation Background */
+        .computation-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Computer Science Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚙️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #047857 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(5, 150, 105, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Turing Machine */
+        .machine-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .machine-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .tape-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .tape-cell {
+            width: 60px;
+            height: 60px;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .tape-cell.active {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .head-pointer {
+            font-size: 2rem;
+            color: var(--highlight);
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚙️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="computation-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← TURING_MACHINE</a>
+        <div>COMPUTABILITY_v5.21</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-521 / THE_COMPUTER_PIONEER</span>
+        <h1>アラン・チューリング</h1>
+        <p class="en-name">Alan Turing (1912–1954)</p>
+        <p class="catchphrase">「機械は考えることができるか？」</p>
+        <div class="os-tags">
+            <span class="os-tag">計算OS</span>
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">AI OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">計算の本質</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    アラン・チューリングは、20世紀最大の数学者・論理学者・計算科学者の一人であり、コンピュータ科学と人工知能の創始者と称されます。彼の仕事は現代のデジタル世界の理論的基礎を形成しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    チューリングの核心的業績——<b>チューリングマシン</b>。これは計算可能性を定義する抽象的な機械であり、すべてのコンピュータの理論モデルです。1936年の論文で「決定問題は解けない」ことを証明しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    第二次世界大戦中はエニグマ暗号を解読し、戦争終結に貢献。戦後は「チューリングテスト」を提案し、人工知能の議論を開拓。42歳で悲劇的な死を遂げました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    チューリングは、<b>「『計算とは何か』を定義した人物。チューリングマシンは仮想マシンの究極形——あらゆるプログラムを実行できる最小限のスペック。彼が定義した計算可能性の境界は、今日のすべてのコンピュータの限界でもある」</b>という、コンピュータ科学のアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. チューリングマシン -->
+        <section class="machine-section">
+            <h2>⚙️ チューリングマシン</h2>
+            <div class="tape-diagram">
+                <div class="tape-cell">0</div>
+                <div class="tape-cell">1</div>
+                <div class="tape-cell active">1</div>
+                <div class="tape-cell">0</div>
+                <div class="tape-cell">1</div>
+                <div class="tape-cell">□</div>
+            </div>
+            <div class="head-pointer">↑ ヘッド</div>
+            <p
+                style="margin-top: 2rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                無限のテープ、読み書きヘッド、状態遷移規則。この単純な機械があらゆる計算を実行できる——万能チューリングマシン。現代コンピュータの理論モデル。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 チューリング思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">機械は考えることができるか？——私はこの問いを「イミテーション・ゲーム」で置き換えることを提案する。</p>
+                <p class="quote-author">— 「計算機械と知性」（1950年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚙️ チューリングマシン</h3>
+                        <p>1936年。計算可能性の数学的定義。無限テープ、有限状態、遷移規則。あらゆるアルゴリズムを形式化。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 万能機械</h3>
+                        <p>他のすべてのチューリングマシンをシミュレートできる単一の機械。プログラム内蔵型コンピュータの概念。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 停止問題</h3>
+                        <p>「任意のプログラムが停止するか否か」を判定するアルゴリズムは存在しない。計算の限界の証明。</p>
+                </div>
+                <div class="card">
+                    <h3">🔐 エニグマ解読</h3>
+                        <p>第二次世界大戦中、ナチス・ドイツのエニグマ暗号を解読。Bombe（ボンブ）機械を開発。戦争終結を早めた。</p>
+                </div>
+                <div class="card">
+                    <h3">🤖 チューリングテスト</h3>
+                        <p>1950年。機械が人間と区別できないほど会話できれば「思考する」と見なす。AIの基準を提案。</p>
+                </div>
+                <div class="card">
+                    <h3">🧬 形態形成</h3>
+                        <p>晩年は生物学に関心。「化学的形態形成」——パターン形成の数学的モデル。縞模様、斑点の形成。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 計算可能性 -->
+        <section class="section">
+            <h2 class="section-title">🔄 計算可能性とは何か</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 決定問題</h3>
+                        <p>ヒルベルトが提起。「数学的命題の真偽を判定するアルゴリズムは存在するか？」チューリングは「否」と証明。</p>
+                </div>
+                <div class="card">
+                    <h3">2. チャーチ＝チューリング・テーゼ</h3>
+                        <p>「計算可能」とはチューリングマシンで計算できること。直観的な「計算」の概念を精密化。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 計算不可能な問題</h3>
+                        <p>停止問題、決定問題——アルゴリズムで解けない問題が存在する。計算には本質的な限界がある。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 複雑性理論への基礎</h3>
+                        <p>P vs NP問題など、現代計算理論の基礎。「何が計算可能か」だけでなく「どれだけ速く計算できるか」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Computation as Foundation</h2>
+            <div class="it-card">
+                <h3">Turing Machine as Virtual Machine</h3>
+                    <p>チューリングマシンは究極のVM。ハードウェア抽象化の極限。すべてのプログラムを実行可能な最小スペック。</p>
+            </div>
+            <div class="it-card">
+                <h3">Universal Machine as Interpreter</h3>
+                    <p>万能機械はインタープリタ。他のプログラム（チューリングマシンの記述）を入力として受け取り、実行する。プログラム内蔵型。</p>
+            </div>
+            <div class="it-card">
+                <h3">Halting Problem as Undecidability</h3>
+                    <p>停止問題はデバッグの限界。すべてのバグを自動検出するプログラムは存在しない。コンパイラの限界。</p>
+            </div>
+            <div class="it-card">
+                <h3">Turing Test as Validation</h3>
+                    <p>チューリングテストはユーザーテスト。機能（知性）の判定を外部観察者に委ねる。ブラックボックス評価。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>チューリングマシン</strong>：計算可能性の数学的定義。すべてのコンピュータの理論モデル。</li>
+                <li><strong>万能機械</strong>：プログラム内蔵型コンピュータの概念。</li>
+                <li><strong>停止問題の証明</strong>：計算の本質的限界の発見。</li>
+                <li><strong>チューリングテスト</strong>：人工知能の基準の提案。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ゲーデル（不完全性定理）</li>
+                            <li>チャーチ（ラムダ計算）</li>
+                            <li>ヒルベルト（決定問題）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>フォン・ノイマン</li>
+                            <li>コンピュータ科学全体</li>
+                            <li>人工知能研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 計算理論の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>チューリング</th>
+                        <th>チャーチ</th>
+                        <th>ゲーデル</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>主要業績</strong></td>
+                        <td>チューリングマシン</td>
+                        <td>ラムダ計算</td>
+                        <td>不完全性定理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>計算の定義</strong></td>
+                        <td>機械的手続き</td>
+                        <td>関数抽象</td>
+                        <td>再帰関数</td>
+                    </tr>
+                    <tr>
+                        <td><strong>限界の証明</strong></td>
+                        <td>停止問題</td>
+                        <td>決定問題</td>
+                        <td>不完全性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>VM</td>
+                        <td>関数型言語</td>
+                        <td>型システムの限界</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：AIは思考するか</h2>
+            <div class="thought-experiment">
+                <h3">チューリングテストを超えて</h3>
+                    <p>チューリングは1950年、「機械は考えることができるか」という問いを「イミテーション・ゲーム」で置き換えました。人間と区別できないなら「思考する」と見なせる。</p>
+                    <p>2020年代のLLM——GPT、Claude——はチューリングテストに合格しつつあるか？テキストベースの会話では人間と区別できない場合も多い。</p>
+                    <p>批判者は言います：パターンマッチングは思考ではない。「中国語の部屋」（サール）——シンボル操作は理解ではない。</p>
+                    <p>擁護者は言います：人間の脳もニューロンの発火パターン。計算と思考の境界は曖昧。意識の定義自体が未解決問題。</p>
+                    <p>チューリングの天才は、「思考とは何か」という哲学的泥沼を回避し、操作的定義（テスト）を提案したこと。しかし70年後、私たちはテストに合格しつつある機械を前に、同じ問いに直面しています。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        AIは「思考」しているのでしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アラン・チューリングは、コンピュータ科学と人工知能の創始者として、現代デジタル世界の理論的基礎を築きました。チューリングマシンは計算可能性を定義し、万能機械はプログラム内蔵型コンピュータの概念を先取り。停止問題の証明は計算の本質的限界を示しました。第二次世界大戦中のエニグマ解読、戦後のチューリングテストの提案——理論と実践の両面で巨大な貢献。42歳で悲劇的な死を遂げましたが、彼の遺産はすべてのコンピュータ、すべてのAIに生き続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Computing the computable.</p>
+    </footer>
+</body>
+
+</html>

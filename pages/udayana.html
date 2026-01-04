@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウダヤナ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Nyaya Amber */
+            --secondary: #78350f;
+            /* Logic Dark */
+            --accent: #f59e0b;
+            /* Light Proof */
+            --highlight: #fef3c7;
+            /* God Glow */
+            --bg: #451a03;
+            /* Deep Vedic */
+            --text: #fef3c7;
+            --border: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Nyaya Background */
+        .nyaya-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(180, 83, 9, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Udayana Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🕉️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #d97706 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* God Proofs Section */
+        .proofs-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .proofs-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🕉️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nyaya-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← NYAYA_LOGIC</a>
+        <div>UDAYANA_v6.79</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-679 / THE_INDIAN_AQUINAS</span>
+        <h1>ウダヤナ</h1>
+        <p class="en-name">Udayana / Udayanacharya (c.975–1050)</p>
+        <p class="catchphrase">「神の存在は論理によって証明できる」</p>
+        <div class="os-tags">
+            <span class="os-tag">論理OS</span>
+            <span class="os-tag">神学OS</span>
+            <span class="os-tag">ニヤーヤOS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">インドのアクィナス</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ウダヤナ（ウダヤナーチャールヤ）は、10-11世紀インドのニヤーヤ学派の哲学者であり、神存在証明で知られています。西洋のトマス・アクィナスに数世紀先んじて、論理的な神の存在証明を体系化しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「イーシュヴァラ（神）の論証」</b>——宇宙の秩序、因果性、道徳的法則から神の存在を論理的に証明。仏教の無神論に対抗。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ウダヤナはニヤーヤ論理学を発展させ、<b>インド哲学における論証</b>の精緻化に貢献しました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ウダヤナは、<b>「神OSの存在をフォーマル検証したインドの論理学者——仏教という強力な競合フレームワークに対抗し、ニヤーヤ論理エンジンを使って神の存在を証明。西洋のアクィナスより200年早い」</b>人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 神存在証明 -->
+        <section class="proofs-section">
+            <h2>🕉️ ウダヤナの神存在証明</h2>
+            <div class="grid" style="text-align: left;">
+                <div class="card" style="background: rgba(255,255,255,0.1);">
+                    <h3">1. 因果論証</h3>
+                        <p>すべての結果には原因がある。宇宙という結果には、知性ある原因（神）が必要。</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.1);">
+                    <h3">2. 原子結合論証</h3>
+                        <p>原子は自ら結合しない。原子の最初の結合を生じさせた知性（神）が必要。</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.1);">
+                    <h3">3. 世界支持論証</h3>
+                        <p>世界は維持されている。この維持には持続的な原因（神）が必要。</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.1);">
+                    <h3">4. 聖典信頼性論証</h3>
+                        <p>ヴェーダは信頼できる。その信頼性は全知の著者（神）を前提とする。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ウダヤナ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">世界の秩序から、私たちは知性ある設計者——イーシュヴァラ——を推論する。</p>
+                <p class="quote-author">— ウダヤナの論証から</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🕉️ イーシュヴァラ論</h3>
+                        <p>神（イーシュヴァラ）の存在を論理的に証明。ニヤーヤ学派の有神論。仏教・ジャイナ教の無神論に対抗。</p>
+                </div>
+                <div class="card">
+                    <h3">📐 ニヤーヤ論理学</h3>
+                        <p>インドの形式論理学。推論（アヌマーナ）、論証（五支作法）。知識論と論理学の体系。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 仏教批判</h3>
+                        <p>仏教の無我論、刹那滅論を批判。自己と神の実在を主張。論理的反駁。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 主要著作</h3>
+                        <p>『ニヤーヤ・クスーマーンジャリ』（論理の花束）——神存在証明の集大成。『アートマタットヴァヴィヴェーカ』——自己論。</p>
+                </div>
+                <div class="card">
+                    <h3">🔍 知識論</h3>
+                        <p>四つの知識手段（プラマーナ）：知覚、推論、比較、証言。厳密な認識論。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ ミティラー学派</h3>
+                        <p>ビハール地方のミティラーで活動。後代のニヤーヤ学派に大きな影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ニヤーヤ学派 -->
+        <section class="section">
+            <h2 class="section-title">📐 ニヤーヤ学派とは</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. インドの論理学派</h3>
+                        <p>六派哲学の一つ。ガウタマ（紀元前2世紀頃）が創始。論理学と認識論を発展。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 五支作法</h3>
+                        <p>インドの三段論法。主張、理由、実例、適用、結論の五段階。形式的論証法。</p>
+                </div>
+                <div class="card">
+                    <h3">3. ヴァイシェーシカとの合流</h3>
+                        <p>原子論のヴァイシェーシカ学派と合流。ニヤーヤ＝ヴァイシェーシカとして発展。</p>
+                </div>
+                <div class="card">
+                    <h3">4. ウダヤナの貢献</h3>
+                        <p>神存在証明を体系化。仏教との論争で有神論を擁護。後期ニヤーヤ（ナヴィヤ・ニヤーヤ）への橋渡し。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Nyaya Logic</h2>
+            <div class="it-card">
+                <h3">Nyaya as Formal Verification</h3>
+                    <p>ニヤーヤ論理はフォーマル検証。主張を論理的にテストし、証明または反駁。</p>
+            </div>
+            <div class="it-card">
+                <h3">God Proof as Theorem</h3>
+                    <p>神存在証明は定理。前提（公理）から論理的に導出。証明の妥当性を検証可能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Five-Member Syllogism as Function</h3>
+                    <p>五支作法は関数。入力（主張、理由）を処理し、出力（結論）を生成。明確な手順。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pramana as Data Source</h3>
+                    <p>知識手段（プラマーナ）はデータソース。知覚、推論、比較、証言——信頼できる情報源を定義。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>『ニヤーヤ・クスーマーンジャリ』</strong>：神存在証明の古典。</li>
+                <li><strong>仏教との論争</strong>：ヒンドゥー有神論を論理的に擁護。</li>
+                <li><strong>後期ニヤーヤへの影響</strong>：ナヴィヤ・ニヤーヤ（新ニヤーヤ）の発展に寄与。</li>
+                <li><strong>インド論理学の精緻化</strong>：形式論理の発展。</li>
+                <li><strong>西洋との比較</strong>：アクィナスに先駆けた神存在証明。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">師</h3>
+                        <ul class="list-rich">
+                            <li>ガウタマ（ニヤーヤ創始者）</li>
+                            <li>ヴァーツヤーヤナ</li>
+                            <li>ヴァイシェーシカ学派</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">影響</h3>
+                        <ul class="list-rich">
+                            <li>ガンゲーシャ</li>
+                            <li>ナヴィヤ・ニヤーヤ</li>
+                            <li>ヒンドゥー神学</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 神存在証明の比較</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>思想家</th>
+                        <th>論証の種類</th>
+                        <th>時代</th>
+                        <th>伝統</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ウダヤナ</strong></td>
+                        <td>因果・原子・聖典</td>
+                        <td>10-11世紀</td>
+                        <td>ニヤーヤ（インド）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アクィナス</strong></td>
+                        <td>五つの道</td>
+                        <td>13世紀</td>
+                        <td>スコラ（西洋）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アンセルムス</strong></td>
+                        <td>存在論的論証</td>
+                        <td>11世紀</td>
+                        <td>スコラ（西洋）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ガザーリー</strong></td>
+                        <td>カラーム論証</td>
+                        <td>11-12世紀</td>
+                        <td>イスラム</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：論理で神を証明できるか</h2>
+            <div class="thought-experiment">
+                <h3">哲学的問い</h3>
+                    <p>ウダヤナは論理によって神の存在を証明できると確信していました。しかし1000年後、この問いは今も議論されています。</p>
+                    <p style="margin-top: 1.5rem;"><strong>肯定派</strong>：宇宙の秩序、因果連鎖、道徳的法則——これらは知性ある設計者を指し示す。論理的に必然。</p>
+                    <p style="margin-top: 1.5rem;"><strong>否定派（仏教）</strong>：宇宙は因果の連鎖（縁起）で説明できる。「神」という仮説は不要。オッカムの剃刀。</p>
+                    <p style="margin-top: 1.5rem;"><strong>カント</strong>：神存在の「理論的」証明は不可能。しかし「実践的」要請としては意味がある。</p>
+                    <p style="margin-top: 1.5rem;">
+                        ウダヤナの論証は、西洋のアクィナスの「五つの道」と驚くほど類似しています。異なる文化が同じ論証構造に到達したことは興味深い。普遍的な論理なのか、文化的バイアスなのか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        神の存在は論理的に証明できますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ウダヤナ（c.975-1050）は、10-11世紀インドのニヤーヤ学派の哲学者であり、「インドのアクィナス」と呼ばれることがあります。西洋のトマス・アクィナスに200年先んじて、神（イーシュヴァラ）の存在を論理的に証明しました。『ニヤーヤ・クスーマーンジャリ』（論理の花束）は神存在証明の集大成。因果論証、原子結合論証、世界支持論証、聖典信頼性論証——これらの論証は仏教の無神論に対抗し、ヒンドゥー有神論を擁護しました。ニヤーヤ論理学を発展させ、後期ニヤーヤ（ナヴィヤ・ニヤーヤ）への橋渡しを行いました。論理によって神を証明するという試みは、東西を問わず人類の普遍的な関心事であり、ウダヤナはその先駆者の一人です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Nyaya Logic for God.</p>
+    </footer>
+</body>
+
+</html>

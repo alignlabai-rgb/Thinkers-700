@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アビラのテレサ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #b45309;
+            /* Carmelite Brown */
+            --secondary: #451a03;
+            /* Convent Dark */
+            --accent: #f59e0b;
+            /* Ecstasy Gold */
+            --highlight: #fef3c7;
+            /* Interior Castle Glow */
+            --bg: #1c0f00;
+            /* Deep Contemplation */
+            --text: #fef3c7;
+            --border: #92400e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .castle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(180, 83, 9, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🏰";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #92400e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(180, 83, 9, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Castle Section */
+        .castle-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #b45309 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .castle-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .mansions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .mansion {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🏰";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="castle-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← CARMEL</a>
+        <div>TERESA_v5.99</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-599 / THE_INTERIOR_CASTLE</span>
+        <h1>アビラのテレサ</h1>
+        <p class="en-name">Teresa of Ávila (1515–1582)</p>
+        <p class="catchphrase">「内面の城」——神秘神学と修道院改革</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">神秘OS</span>
+            <span class="os-tag">改革OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">神秘主義とカルメル改革</h2>
+            <div class="hero-box">
+                <p class="hero-text">アビラのテレサ（聖テレサ・デ・ヘスス）は、16世紀スペインの神秘家、修道女であり、カトリック教会の教会博士です。女性初の教会博士（シエナのカタリナと同時）。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    テレサの歴史的業績——<b>「内面の城」で祈りの段階を体系化。跣足カルメル会を創設し、修道院改革を推進</b>。実践と神学を統合。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    17の修道院を創設。異端審問所の監視下で活動しながらも、教会史上最も影響力のある神秘家の一人に。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    テレサの神秘神学は、<b>「内面のアーキテクチャ設計——魂を城に例え、7つの住居（マンションズ）で祈りの深化を体系化。レベルアップのロードマップ」</b>という、霊性のフレームワーク。
+                </p>
+            </div>
+        </section>
+
+        <!-- 7つの住居 -->
+        <section class="castle-section">
+            <h2>🏰 内面の城：7つの住居</h2>
+            <div class="mansions">
+                <div class="mansion">1</div>
+                <div class="mansion">2</div>
+                <div class="mansion">3</div>
+                <div class="mansion">4</div>
+                <div class="mansion">5</div>
+                <div class="mansion">6</div>
+                <div class="mansion" style="background: var(--accent); color: var(--bg);">7</div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem;">
+                第1住居：自己認識の始まり<br>
+                第4住居：超自然的祈りの始まり<br>
+                第7住居：神との霊的結婚
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 テレサの神学</h2>
+            <div class="quote-box">
+                <p class="quote-text">祈りとは、自分を愛してくださる方との友情の親しい交わりである。</p>
+                <p class="quote-author">— アビラのテレサ『自伝』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🏰 内面の城</h3>
+                    <p>1577年。魂を城に例え、7つの住居で祈りの深化を描写。マスターピース。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 自伝</h3>
+                        <p>強制的に書かされた自伝。神秘体験の記録。異端審問の証拠にもなりえた。</p>
+                </div>
+                <div class="card">
+                    <h3">🙏 完徳の道</h3>
+                        <p>修道女向けの祈りの手引き。実践的指導。</p>
+                </div>
+                <div class="card">
+                    <h3">👣 跣足カルメル会</h3>
+                        <p>1562年創設。より厳格な修道生活。「跣足」＝裸足。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 十字架のヨハネ</h3>
+                        <p>協力者。男子修道会の改革。二人で跣足カルメル会を発展。</p>
+                </div>
+                <div class="card">
+                    <h3">🔍 異端審問</h3>
+                        <p>監視下で活動。女性の神秘体験は疑いの目で見られた。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Architecture</h2>
+            <div class="it-card">
+                <h3>Interior Castle as Architecture</h3>
+                <p>内面の城はアーキテクチャ。魂の構造を設計図として提示。</p>
+            </div>
+            <div class="it-card">
+                <h3">7 Mansions as Levels</h3>
+                    <p>7つの住居はレベル。段階的な成長パス。ゲーミフィケーション。</p>
+            </div>
+            <div class="it-card">
+                <h3">Reform as Refactoring</h3>
+                    <p>修道院改革はリファクタリング。レガシーシステムを改善。</p>
+            </div>
+            <div class="it-card">
+                <h3">Inquisition as Code Review</h3>
+                    <p>異端審問はコードレビュー。厳しい審査を通過する必要。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>内面の城</strong>：祈りの体系化。</li>
+                <li><strong>跣足カルメル会</strong>：修道院改革。</li>
+                <li><strong>神秘神学</strong>：体験と理論の統合。</li>
+                <li><strong>教会博士</strong>：女性初の称号。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>カルメル会伝統</li>
+                        <li>アウグスティヌス</li>
+                        <li>フランシスコ会霊性</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>十字架のヨハネ</li>
+                            <li>カルメル会霊性</li>
+                            <li>現代霊性</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：体験を言語化する</h2>
+            <div class="thought-experiment">
+                <h3">言葉にできないものを書く</h3>
+                    <p>テレサは神秘体験を言葉にしようとした。</p>
+                    <p>本質的に言語を超えたものを——</p>
+                    <p>「内面の城」「7つの住居」という比喩で。</p>
+                    <p>これは成功か、それとも必然的な失敗か？</p>
+                    <p>体験を言語化すると何かが失われるか？</p>
+                    <p>あるいは、言語化することで広められるか？</p>
+                    <p>プログラミングも同様——</p>
+                    <p>アイデアをコードに変換する時、何かが失われるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        言葉にできないものを言葉にできますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>アビラのテレサ（1515-1582）は、16世紀スペインの神秘家であり、女性初の教会博士です。『内面の城』で魂を城に例え、7つの住居で祈りの深化を体系化しました。跣足カルメル会を創設し、17の修道院を設立して修道院改革を推進。異端審問所の監視下で活動しながらも、十字架のヨハネと協力してカルメル会の男女両方の改革を実現しました。神秘体験と実践的組織力を兼ね備えた稀有な人物です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Enter the interior castle.</p>
+    </footer>
+</body>
+
+</html>

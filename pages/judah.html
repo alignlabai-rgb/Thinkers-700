@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユダ・ハナシ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            /* Mishnah Blue */
+            --secondary: #082f49;
+            /* Codex Dark */
+            --accent: #38bdf8;
+            /* Oral Law Light */
+            --highlight: #e0f2fe;
+            /* Compilation Glow */
+            --bg: #031525;
+            /* Deep Tradition */
+            --text: #e0f2fe;
+            --border: #0369a1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .codex-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(2, 132, 199, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0284c7 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "📖";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0369a1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(2, 132, 199, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(2, 132, 199, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mishnah Section */
+        .mishnah-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0284c7 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .mishnah-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .sedarim {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .seder {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "📖";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="codex-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MISHNAH</a>
+        <div>CODEX_v5.89</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-589 / THE_COMPILER</span>
+        <h1>ユダ・ハナシ</h1>
+        <p class="en-name">Judah haNasi / Rabbi Judah the Prince (c. 135–217 CE)</p>
+        <p class="catchphrase">「ミシュナの編纂者」——口伝律法を文字に</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">ユダヤOS</span>
+            <span class="os-tag">編纂OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">ミシュナ編纂</h2>
+            <div class="hero-box">
+                <p class="hero-text">ユダ・ハナシ（ラビ・ユダ・ハナシ、「長老ユダ」）は、2-3世紀のユダヤ教の賢者であり、ミシュナの編纂者です。「ラビ」と呼ばれるだけで誰か分かるほど尊敬されました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ハナシの歴史的業績——<b>口伝律法（オーラル・トーラー）を体系的に編纂し、ミシュナとして成文化</b>。約200年頃に完成。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ローマとの関係は良好で、マルクス・アウレリウスとも交流があったとされます。サンヘドリンの長（ナシ）としてユダヤ共同体を指導。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ミシュナの編纂は、<b>「口頭伝承のドキュメント化——散在するノウハウを体系的に整理し、バージョン管理。失われる前にコードを文書化」</b>という、知識保存の決定的プロジェクト。
+                </p>
+            </div>
+        </section>
+
+        <!-- ミシュナの構造 -->
+        <section class="mishnah-section">
+            <h2>📚 ミシュナの6つのセダリム（部門）</h2>
+            <div class="sedarim">
+                <div class="seder">
+                    <h4>ゼライム</h4>
+                    <p>種子・農業法</p>
+                </div>
+                <div class="seder">
+                    <h4>モエド</h4>
+                    <p>祝祭・安息日</p>
+                </div>
+                <div class="seder">
+                    <h4>ナシム</h4>
+                    <p>女性・婚姻法</p>
+                </div>
+                <div class="seder">
+                    <h4>ネジキン</h4>
+                    <p>損害・民事法</p>
+                </div>
+                <div class="seder">
+                    <h4>コダシム</h4>
+                    <p>聖物・神殿法</p>
+                </div>
+                <div class="seder">
+                    <h4>トホロット</h4>
+                    <p>清浄法</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.1rem;">63のトラクタート（論考）。口伝律法の体系的編纂。</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ハナシの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">正しい道とは何か。自分にとって名誉であり、他者から名誉を得られるものを選べ。</p>
+                <p class="quote-author">— ユダ・ハナシ『ピルケイ・アヴォート』2:1</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>📖 ミシュナ編纂</h3>
+                    <p>口伝律法を体系化。6部門、63論考。約200年完成。</p>
+                </div>
+                <div class="card">
+                    <h3>👑 ナシ</h3>
+                    <p>サンヘドリンの長。ユダヤ共同体の政治的・宗教的指導者。</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 ローマとの関係</h3>
+                    <p>マルクス・アウレリウスと友好的。政治的手腕。</p>
+                </div>
+                <div class="card">
+                    <h3>📜 ヘブライ語振興</h3>
+                    <p>日常会話でもヘブライ語を使用すべきと主張。言語保存。</p>
+                </div>
+                <div class="card">
+                    <h3>💰 富裕</h3>
+                    <p>非常に裕福だった。「ラビの食卓から大根がなくなることはなかった」。</p>
+                </div>
+                <div class="card">
+                    <h3>👨‍👦 ヒレルの子孫</h3>
+                    <p>ヒレルの7代目の子孫。ガマリエルの孫。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Codification</h2>
+            <div class="it-card">
+                <h3>Oral to Written</h3>
+                <p>口伝を文書化——暗黙知を形式知に。ドキュメンテーションの重要性。</p>
+            </div>
+            <div class="it-card">
+                <h3>Mishnah as Standard Library</h3>
+                <p>ミシュナは標準ライブラリ。すべての後続コード（タルムード）がこれを参照。</p>
+            </div>
+            <div class="it-card">
+                <h3>6 Sedarim as Modules</h3>
+                <p>6つのセダリムはモジュール。農業、祭事、婚姻など機能別に分類。</p>
+            </div>
+            <div class="it-card">
+                <h3>Compilation as Preservation</h3>
+                <p>編纂は保存。迫害の時代に知識を失う前にバックアップ。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>ミシュナ</strong>：口伝律法の体系的成文化。</li>
+                <li><strong>6部門構成</strong>：モジュール化された法体系。</li>
+                <li><strong>ヘブライ語</strong>：聖なる言語の保存。</li>
+                <li><strong>タルムードの基盤</strong>：後世の議論の土台。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>ラビ・アキバ</li>
+                        <li>ラビ・メイル</li>
+                        <li>ヒレル</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export</h3>
+                    <ul class="list-rich">
+                        <li>エルサレム・タルムード</li>
+                        <li>バビロニア・タルムード</li>
+                        <li>ラビ文学全体</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：口伝を文書化すべきか</h2>
+            <div class="thought-experiment">
+                <h3>伝統の固定化</h3>
+                <p>口伝律法は本来、書き記されるべきではなかった。</p>
+                <p>しかし、迫害と離散の中で失われる危機に。</p>
+                <p>ハナシは決断した：書き記す。</p>
+                <p>これは伝統の保存か、それとも固定化か？</p>
+                <p>文書化されると、解釈の柔軟性は失われるか？</p>
+                <p>逆に、文書化されなければ完全に失われたかもしれない。</p>
+                <p>現代のソフトウェアドキュメンテーションも同じジレンマ——</p>
+                <p>書きすぎると硬直、書かなすぎると知識が失われる。</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    口伝の知恵を文書化すべきでしょうか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ユダ・ハナシは、2-3世紀のユダヤ教の賢者であり、ミシュナの編纂者です。口伝律法を6部門・63論考に体系化し、約200年に成文化。この編纂は、後のエルサレム・タルムードとバビロニア・タルムードの基盤となりました。ローマとの良好な関係を維持しながらユダヤ共同体を指導し、「ラビ」と呼ばれるだけで誰か分かるほど尊敬されました。迫害と離散の時代に口伝を文書化するという歴史的決断を下し、ユダヤ教の知識を後世に伝えました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Oral becomes written.</p>
+    </footer>
+</body>
+
+</html>

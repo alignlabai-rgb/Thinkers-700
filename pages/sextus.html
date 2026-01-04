@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セクストゥス・エンピリクス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #64748b;
+            /* Skeptical Slate */
+            --secondary: #1e293b;
+            /* Epoché Dark */
+            --accent: #94a3b8;
+            /* Suspension Light */
+            --highlight: #e2e8f0;
+            /* Ataraxia Glow */
+            --bg: #0f172a;
+            /* Doubt Deep */
+            --text: #e2e8f0;
+            --border: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.9;
+            overflow-x: hidden;
+        }
+
+        /* Skeptical Background */
+        .skeptic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(100, 116, 139, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(148, 163, 184, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Greek Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #334155 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "❓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.05;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .en-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+            letter-spacing: 0.2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #475569 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(100, 116, 139, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .card p {
+            font-family: 'Crimson Text', serif;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(100, 116, 139, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Epoché Diagram */
+        .epoche-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #334155 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .epoche-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .epoche-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .epoche-box {
+            padding: 3rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .claim-box {
+            background: #dc2626;
+            border: 2px solid #ef4444;
+        }
+
+        .suspension-box {
+            background: var(--primary);
+            border: 3px solid var(--accent);
+            padding: 4rem 5rem;
+        }
+
+        .ataraxia-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .epoche-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+            font-family: 'Crimson Text', serif;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--primary);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .thought-experiment p {
+            font-family: 'Crimson Text', serif;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .epoche-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="skeptic-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PYRRHONIAE_HYPOTYPOSES</a>
+        <div>SKEPTICAL_PHILOSOPHY_v4.76</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-476 / PHILOSOPHUS_SCEPTICUS</span>
+        <h1>SEXTUS EMPIRICUS</h1>
+        <p class="en-name">Sextus Empiricus (c. 160–210 CE)</p>
+        <p class="catchphrase">「すべての主張に対して、等しい力の反対主張を置くことができる」</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">認識OS</span>
+            <span class="os-tag">心理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">知らないという知恵</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「これが真実だ」「私は正しい」——私たちは日々、無数の判断を下しています。しかし、その確信は本当に正当化されているでしょうか。古代ギリシャ・ローマの懐疑主義者セクストゥス・エンピリクスは、<b>「判断停止（エポケー）」</b>こそが心の平和への道だと説きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    セクストゥスの<b>ピュロン主義的懐疑</b>（古代スケプティシズム）は、「何も知ることができない」と断言する独断的懐疑ではありません。むしろ、「すべての主張に対して等しい力の反対主張を置くことができる」と指摘し、そこから<b>判断を留保する</b>（エポケー）ことを教えます。そして、不思議なことに、この判断停止が心の平静（アタラクシア）をもたらすのです。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    セクストゥスを学ぶことは、<b>「確信」への執着を問い直すこと</b>です。ポストトゥルース、フェイクニュース、エコーチェンバー——確信が衝突する現代において、2000年前の懐疑主義者の知恵は、意外なほど的確な処方箋を提供しています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--primary); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p style="font-family: 'Crimson Text', serif;">
+                    セクストゥスは、<b>「私たちの認識システムは『未検証』状態のデータを無数に含んでいる。ピュロン主義とは、『未検証』のままcommitしないという開発方針だ。assertしない——なぜなら、反対のassertionも同等に可能だから。この''コミットせず''の姿勢が、システムを安定させる」</b>と教えた、認知的中立性のアーキテクトです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. エポケーの図式 -->
+        <section class="epoche-section">
+            <h2>⚖️ 判断停止への道</h2>
+            <div class="epoche-diagram">
+                <div class="epoche-box claim-box">
+                    <p>💬 主張A</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">「Xは真である」</p>
+                </div>
+                <div class="epoche-arrow">⚔️</div>
+                <div class="epoche-box claim-box">
+                    <p>💬 主張B</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">「Xは偽である」</p>
+                </div>
+                <div class="epoche-arrow">→</div>
+                <div class="epoche-box suspension-box">
+                    <p>⏸️ エポケー</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">判断停止</p>
+                </div>
+                <div class="epoche-arrow">→</div>
+                <div class="epoche-box ataraxia-box">
+                    <p>😌 アタラクシア</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">心の平静</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8); font-family: 'Crimson Text', serif;">
+                対立する主張が等しい説得力を持つとき、どちらにも同意しないでおく。この判断停止が、不思議なことに、心の平静をもたらす。確信への執着を手放すことで、苦しみも手放せる。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ピュロン主義の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">懐疑主義者とは、あらゆる方法で現れるものと考えられるものを対置する探究者である。</p>
+                <p class="quote-author">— 『ピュロン主義哲学の概要』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⏸️ エポケー（判断停止）</h3>
+                        <p>対立する主張が等しい説得力を持つとき、判断を留保する。「わからない」と言うことではなく、「どちらにも同意しない」という積極的態度。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ イソステネイア（等力）</h3>
+                        <p>対立する主張・論証は等しい力（isostheneia）を持つ。どちらが優越するかを決定できないという認識。これがエポケーの根拠。</p>
+                </div>
+                <div class="card">
+                    <h3">😌 アタラクシア（心の平静）</h3>
+                        <p>判断停止の結果として訪れる心の平静。確信への執着を手放すことで、不安や動揺から解放される。ストア派と目標を共有する。</p>
+                </div>
+                <div class="card">
+                    <h3">🔟 10の様態（トロポイ）</h3>
+                        <p>判断停止をもたらす論証パターン。相対性、無限背進、循環論法など。あらゆる独断的主張を揺るがせるための「武器庫」。</p>
+                </div>
+                <div class="card">
+                    <h3">🎭 現象に従う</h3>
+                        <p>懐疑主義者も日常生活は送る。「Xは真である」とは言わないが、「Xであるかのように現れる」ことには従う。実践的な生活のガイド。</p>
+                </div>
+                <div class="card">
+                    <h3">🚫 独断主義批判</h3>
+                        <p>ストア派、エピクロス派、アリストテレス主義——すべての独断的哲学は根拠なき確信に基づいている。セクストゥスはそれらを徹底的に批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 懐疑の方法</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 対立の提示</h3>
+                        <p>あらゆる主張に対して、反対の主張を置く。「蜂蜜は甘い」に対して「蜂蜜は病人には苦い」。感覚も理性も相対的。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 10の様態</h3>
+                        <p>①動物による差異　②人間による差異　③感覚器官の差異　④状況の差異　⑤位置・距離の差異　⑥混合　⑦量・構成　⑧相対性　⑨頻度　⑩しきたり・法・信条</p>
+                </div>
+                <div class="card">
+                    <h3">3. 判断停止</h3>
+                        <p>対立する主張を等しい力のものとして認識した結果、どちらにも同意しないでおく。「真実はわからない」ではなく「今は決定しない」。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 心の平静</h3>
+                        <p>「影のように」（skia）アタラクシアが訪れる。求めていたのではなく、判断停止の副産物として、心の平和が実現する。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 SYSTEM ANALYSIS: COMMIT NOTHING</h2>
+            <div class="it-card">
+                <h3">Epoché as Staging Without Commit</h3>
+                    <p>エポケーは「ステージングはするがコミットしない」戦略。データ（主張）を認識し検討するが、本番環境（信念体系）には反映しない。永遠のコードレビュー状態。</p>
+            </div>
+            <div class="it-card">
+                <h3">Isostheneia as Equal PR Reviews</h3>
+                    <p>イソステネイア（等力）は、PRレビューで賛成と反対が同数のとき。マージもリジェクトもできない。どちらの主張も決定的ではないとき、保留が合理的。</p>
+            </div>
+            <div class="it-card">
+                <h3">Ten Modes as Debug Patterns</h3>
+                    <p>10の様態はデバッグパターンのカタログ。あらゆる「バグ」（独断的主張）を発見するための体系的手法。エッジケースと相対性を常に確認する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Phenomena as User Interface</h3>
+                    <p>「現象に従う」とは、UIレベルでの操作を続けること。バックエンドの「真のデータ構造」については判断しないが、フロントエンドでは通常通り動作する。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『ピュロン主義哲学の概要』</strong>：ピュロン主義懐疑の最良の体系的解説。ルネサンス以降の近代懐疑主義の源泉。</li>
+                <li><strong>『学者たちへの反論』</strong>：論理学、物理学、倫理学——あらゆる独断的学問を批判。11巻に及ぶ百科全書的批判。</li>
+                <li><strong>10の様態の体系化</strong>：アイネシデモスの様態を整理し保存。懐疑的論証の「武器庫」を完成。</li>
+                <li><strong>ピュロン主義の実践的側面</strong>：日常生活における懐疑主義者のあり方を明確化。「現象に従う」という実践的指針。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ピュロン（初期懐疑主義）</li>
+                            <li>アイネシデモス（10の様態）</li>
+                            <li>アカデメイア派懐疑主義</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>モンテーニュ（エッセイ、懐疑）</li>
+                            <li>デカルト（方法的懐疑）</li>
+                            <li>ヒューム（経験論的懐疑主義）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 懐疑主義の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>セクストゥス（ピュロン主義）</th>
+                        <th>アカデメイア派</th>
+                        <th>近代懐疑主義</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>主張</strong></td>
+                        <td>判断停止</td>
+                        <td>知識は不可能</td>
+                        <td>基盤からの再構築</td>
+                    </tr>
+                    <tr>
+                        <td><strong>目的</strong></td>
+                        <td>心の平静</td>
+                        <td>確率的判断</td>
+                        <td>確実な知識の発見</td>
+                    </tr>
+                    <tr>
+                        <td><strong>日常生活</strong></td>
+                        <td>現象に従う</td>
+                        <td>もっともらしさに従う</td>
+                        <td>暫定的信念</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>永遠のコードレビュー</td>
+                        <td>確率的推論</td>
+                        <td>テスト駆動開発</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：蜂蜜の味</h2>
+            <div class="thought-experiment">
+                <h3">蜂蜜は甘いか？</h3>
+                    <p>目の前に蜂蜜があります。あなたは「蜂蜜は甘い」と言います。しかし、セクストゥスは問います。</p>
+                    <p>黄疸の患者には蜂蜜が苦く感じられる。では、「本当の」蜂蜜の味は何でしょうか？健康な人の味覚が「正しく」、病人の味覚が「間違っている」と、どうして言えるでしょうか？</p>
+                    <p>私たちは「蜂蜜が今、私に甘いかのように現れる」とは言えます。しかし「蜂蜜はそれ自体として本当に甘い」とまで言うことは——それを確認する方法がない以上——独断ではないでしょうか。</p>
+                    <p>セクストゥスは「甘い」という確信を放棄せよと言うのではありません。「甘いかのように現れる」ことに従って蜂蜜を楽しめばよいのです。ただ、「蜂蜜の本性について真実を知っている」という主張だけを留保せよ、と言うのです。
+                    </p>
+                    <p
+                        style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center; font-family: 'Crimson Text', serif;">
+                        あなたはどれだけの「確信」に依存して生きていますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p style="font-family: 'Crimson Text', serif;">
+                セクストゥス・エンピリクスのピュロン主義は、古代世界における懐疑主義の最も完成された形態でした。「エポケー」（判断停止）と「アタラクシア」（心の平静）という概念は、確信への執着が苦しみを生むと教え、その処方箋を示しました。ルネサンス期に再発見された彼の著作は、モンテーニュ、デカルト、ヒュームに直接影響を与え、近代哲学の出発点となりました。ポストトゥルース時代、エコーチェンバー、確信の衝突——2000年後の世界において、「判断を留保する」というセクストゥスの知恵は、異なる見解との共存、知的謙虚さ、そして心の平和のための古くて新しい道を示しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Οὐδὲν ὁρίζω (Nothing is determined).</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャン＝ポール・サルトル【特別編】 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;700;900&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            /* Existential Black */
+            --secondary: #18181b;
+            /* Cafe Noir */
+            --accent: #ef4444;
+            /* Nausea Red */
+            --highlight: #fbbf24;
+            /* Freedom Gold */
+            --bg: #fafaf9;
+            /* Existential White */
+            --text: #18181b;
+            --border: #d4d4d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Existential Void Background */
+        .void-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.03) 100%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--primary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Special Edition Badge */
+        .special-badge {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            font-weight: 900;
+            font-size: 0.75rem;
+            letter-spacing: 0.2rem;
+            z-index: 99;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 50px rgba(239, 68, 68, 0.8);
+            }
+        }
+
+        /* Existential Header */
+        .header {
+            background: var(--primary);
+            color: #fff;
+            padding: 15rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "NÉANT";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Libre Baskerville', serif;
+            font-size: 25rem;
+            opacity: 0.03;
+            color: #fff;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .hero-box {
+            background: #fff;
+            border: 3px solid var(--primary);
+            padding: 6rem;
+            position: relative;
+        }
+
+        .hero-box::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            z-index: -1;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .hero-text b {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: "«";
+            position: absolute;
+            top: 3rem;
+            left: 4rem;
+            font-size: 10rem;
+            opacity: 0.1;
+            font-family: 'Libre Baskerville', serif;
+            color: var(--accent);
+        }
+
+        .quote-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-source {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 2px solid var(--border);
+            padding: 3.5rem;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.7rem;
+            font-weight: 900;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 10rem 6rem;
+            margin: 12rem 0;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+        }
+
+        .it-analogy::before {
+            content: ">_";
+            position: absolute;
+            top: 3rem;
+            left: 3rem;
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+        }
+
+        .it-analogy h2 {
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid #3f3f46;
+            padding: 4rem;
+            margin-bottom: 4rem;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .it-card::before {
+            content: "//";
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .it-card h3 {
+            color: var(--highlight);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .it-card p {
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: #fff;
+        }
+
+        th,
+        td {
+            padding: 2rem;
+            border: 2px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .list-rich {
+            padding: 0;
+        }
+
+        .list-rich li {
+            margin-bottom: 3rem;
+            list-style: none;
+            padding-left: 5rem;
+            position: relative;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .list-rich li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .thought-experiment {
+            background: #fff;
+            border: 4px solid var(--primary);
+            padding: 7rem;
+            margin: 12rem 0;
+            position: relative;
+        }
+
+        .thought-experiment::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--accent), var(--highlight), var(--accent));
+        }
+
+        .thought-experiment h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .thought-experiment p {
+            font-size: 1.25rem;
+            line-height: 2;
+            margin-bottom: 2rem;
+        }
+
+        /* Special Section: 主著ガイド */
+        .books-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 8rem;
+            margin: 12rem 0;
+        }
+
+        .books-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .book-card {
+            background: #fff;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            border-left: 8px solid var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-card h4 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .book-card .year {
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .book-card p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 3rem;
+            background: #fff;
+            border: 2px solid var(--border);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -40px;
+        }
+
+        .timeline-year {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 12rem;
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Fira Code', monospace;
+            margin-top: 10rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 40px;
+            }
+
+            .timeline-content::before {
+                left: -30px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="void-bg"></div>
+    <div class="special-badge">★ 特別編 ★</div>
+
+    <nav class="nav">
+        <a href="../index.html">← L'ÊTRE_ET_LE_NÉANT</a>
+        <div>EXISTENTIALIST_KERNEL_v4.59</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-459 / LE_PÈRE_DE_L'EXISTENTIALISME</span>
+        <h1>ジャン＝ポール・サルトル</h1>
+        <p class="en-name">Jean-Paul Sartre (1905–1980)</p>
+        <p class="catchphrase">「実存は本質に先立つ」——人間は自由の刑に処せられている</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">文学OS</span>
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">心理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">なぜサルトルを学ぶのか</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    20世紀、二度の世界大戦が人類の理性への信頼を打ち砕いた後、「意味のない世界でいかに生きるか」という問いに最も鋭く、かつ大衆にも届く言葉で答えたのがジャン＝ポール・サルトルでした。彼は哲学者であり、小説家であり、劇作家であり、政治活動家でした。パリの左岸のカフェで執筆し、ノーベル文学賞を辞退し、1968年の五月革命で学生たちと共に街頭に立った。彼の生き様そのものが、<b>「知識人とは何か」</b>という問いへの一つの回答でした。
+                </p>
+                <p class="hero-text" style="margin-top: 2.5rem;">
+                    サルトルの中心命題は驚くほどシンプルです。<b>「実存（existence）は本質（essence）に先立つ」</b>。ペーパーナイフは作られる前に設計図がある。だがあなたには設計図がない。あなたはまず存在し、それから自分が何者であるかを自分で決める。そこには神もなく、運命もなく、言い訳もない。あなたは<b>「自由という刑に処せられている」</b>だけです。この自由は、歓喜であると同時に、吐き気がするほどの重荷でもあります。
+                </p>
+                <p class="hero-text" style="margin-top: 2.5rem;">
+                    サルトルを学ぶことは、<b>「他者のせいにしない、環境のせいにしない、自分の人生に絶対的に責任を持つ」</b>という、恐ろしくも解放的な態度を身につけることです。AIが仕事を代替し、アルゴリズムが選択を「最適化」しようとする現代において、サルトルの「人間は自らを創造する」という宣言は、かつてないほど切実な響きを持っています。
+                </p>
+            </div>
+            <div style="margin-top: 5rem; padding: 5rem; background: var(--primary); color: #fff;">
+                <h4 style="color: var(--highlight); font-size: 1.5rem; margin-bottom: 2rem;">💡 たとえるなら</h4>
+                <p style="font-size: 1.3rem; line-height: 2;">
+                    サルトルは、<b>「人間というプログラムには、コンパイル時に決まる『型（本質）』が存在しない。ランタイムで自らソースコードを書き換え続ける、自己参照的で自己生成的なプロセスである」</b>と宣言した、実存主義のチーフ・アーキテクトです。彼のシステムでは、あらゆる「デフォルト値」への依存（「人間とはこういうものだ」「社会がこうだから」）は<b>「自己欺瞞（mauvaise
+                        foi）」</b>というアンチパターンとして厳しく批判されます。あなたは常に、次の瞬間の自分を選択し続けなければならないのです。</p>
+            </div>
+        </section>
+
+        <!-- 1. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 実存主義OSの核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">人間は自由の刑に処せられている。なぜなら、一度世界に投げ出されたら、自分がなすあらゆることに責任があるからだ。</p>
+                <p class="quote-source">— 『実存主義とは何か』 (1945)</p>
+            </div>
+
+            <div style="margin-top: 6rem;">
+                <h3 style="font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary);">中心的な問い</h3>
+                <p
+                    style="font-size: 1.4rem; line-height: 2; padding: 3rem; background: #fff; border-left: 8px solid var(--accent);">
+                    神が存在しないなら、人間の「本質」を定義するものは何もない。では、意味のない世界で、私たちはいかにして「真正に（authentically）」生きることができるのか？
+                    自由であることの重荷にどう向き合うのか？</p>
+            </div>
+
+            <div class="grid" style="margin-top: 5rem;">
+                <div class="card">
+                    <h3>🚪 実存は本質に先立つ</h3>
+                    <p>道具（ペーパーナイフ）は目的のために設計される。だが人間には設計者がいない。まず存在し、その後で自分が何者かを自分で決定する。これが人間の条件である。</p>
+                </div>
+                <div class="card">
+                    <h3>⛓️ 自由という刑</h3>
+                    <p>人間は自由であることを選べない。自由であることを「強いられて」いる。選択しないという選択も選択であり、あらゆる行為の責任から逃れることはできない。</p>
+                </div>
+                <div class="card">
+                    <h3>🎭 自己欺瞞（mauvaise foi）</h3>
+                    <p>「私は生まれつきこうだから」「状況がそうさせた」と言い訳することで自由から逃げること。これは自分を「もの（en-soi）」として扱う不誠実な態度。</p>
+                </div>
+                <div class="card">
+                    <h3>👁️ 他者のまなざし</h3>
+                    <p>他者は私を「対象」として見る。その視線の下で私は「凝固」させられ、自由を脅かされる。「地獄とは他者である」という有名な言葉の背景。</p>
+                </div>
+                <div class="card">
+                    <h3>🤢 吐き気（La Nausée）</h3>
+                    <p>存在の偶然性、つまり「なぜ存在するのか」という問いに答えがないことへの身体的な嫌悪感。世界の「べったりした」存在感に圧倒される経験。</p>
+                </div>
+                <div class="card">
+                    <h3>✊ 参加（Engagement）</h3>
+                    <p>知識人は中立ではいられない。選択しないことも選択であり、政治的・社会的行動への参加（アンガージュマン）こそが真正な生き方。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 自己創造のフロー</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. 被投性の認識 (Recognize Thrownness)</h3>
+                    <p>人間は自らの意志なしに、特定の時代・場所・身体に「投げ込まれて」いる。この条件を認識することから始まる。選ばなかったスタート地点。</p>
+                </div>
+                <div class="card">
+                    <h3>2. 不安（Anguish）への直面</h3>
+                    <p>自由であること、つまり自分の選択の責任を全面的に引き受けることへの不安。この不安こそが、真に自由であることの証。</p>
+                </div>
+                <div class="card">
+                    <h3>3. 自己欺瞞の拒否 (Reject Bad Faith)</h3>
+                    <p>「仕方がない」「私はこういう人間だ」という言い訳を拒否する。常に自分には選択の余地があったし、これからもあることを認める。</p>
+                </div>
+                <div class="card">
+                    <h3>4. 企投（Project）</h3>
+                    <p>自分を未来に向かって「投げる」こと。まだ存在しない自分を選び、そこに向かって行動する。人間は常に「なりつつある」存在。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Existentialist Runtime</h2>
+            <div class="it-card">
+                <h3>No Compile-Time Type: Runtime Self-Definition</h3>
+                <p>オブジェクト指向プログラミングでは、オブジェクトはクラス（本質）からインスタンス化される。サルトルの人間は違う。クラス定義なしにランタイムでインスタンス化され、その後、自らメソッドを実装していく。<code>class Human extends Nothing { }</code>。本質は事後的に、行為の累積として構築される。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>Radical Garbage Collection: No Determinism</h3>
+                <p>サルトル的世界では、過去のコミット履歴（経験、環境、DNA）は次のコミットを「決定」しない。過去は現在の選択に影響を与えるが、強制はしない。ガベージコレクタは「言い訳」として使われようとする過去の参照を積極的に回収する。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>Mauvaise Foi as Anti-Pattern</h3>
+                <p>自己欺瞞は、自由のランタイムエラーを回避するために、自分を「イミュータブル（不変）」なオブジェクトとして扱おうとするアンチパターン。「私はIntrovertだから」「これが私のPersonalityだから」と型にはめることで、選択の責任から逃れようとする。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>L'Enfer c'est les Autres: Observer Pattern Gone Wrong</h3>
+                <p>他者のまなざは、私をオブザーバブル（観察対象）として「subscribe」する。その視線の下で、私は自分を「観察されている通りのもの」として固定しようとする誘惑に駆られる。これが「地獄とは他者である」の技術的意味。
+                </p>
+            </div>
+            <div class="it-card">
+                <h3>Engagement as Mandatory Side Effects</h3>
+                <p>純粋関数（副作用なし）として生きることは不可能。すべての行為（選択）は世界に対して副作用を持ち、その副作用に対して責任を負う。「中立」は存在しない——何もしないことも副作用を持つ。</p>
+            </div>
+        </section>
+
+        <!-- 4. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>現象学的心理学</strong>：フッサールの現象学を心理学に応用し、意識を「何かについての意識」として分析。意識は常に外部に向かい、それ自体では「空虚」である。</li>
+                <li><strong>実存的精神分析</strong>：フロイトの無意識を否定し、人間の行動を「選択」として解釈。精神分析は「言い訳」ではなく「責任」の文法で語られるべき。</li>
+                <li><strong>文学的哲学</strong>：小説（『嘔吐』）、戯曲（『出口なし』『蠅』）を通じて哲学的テーマを探求。哲学は抽象的概念だけでなく、生きられた経験として語られるべき。</li>
+                <li><strong>参加する知識人モデル</strong>：知識人は社会的・政治的問題に積極的に関与すべき。中立は不可能であり、沈黙も選択である。</li>
+                <li><strong>弁証法的理性批判</strong>：マルクス主義と実存主義の統合を試み、個人の自由と社会的・歴史的制約の関係を探求。</li>
+            </ul>
+        </section>
+
+        <!-- 5. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import：継承元</h3>
+                    <ul class="list-rich">
+                        <li>エトムント・フッサール（現象学の方法）</li>
+                        <li>マルティン・ハイデガー（現存在、被投性、不安）</li>
+                        <li>セーレン・キルケゴール（実存の先駆者、不安）</li>
+                        <li>G.W.F.ヘーゲル（弁証法、他者認識）</li>
+                        <li>カール・マルクス（唯物史観、疎外）</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Export：影響を与えた領域</h3>
+                    <ul class="list-rich">
+                        <li>シモーヌ・ド・ボーヴォワール（フェミニズム実存主義）</li>
+                        <li>アルベール・カミュ（不条理の哲学、後に決裂）</li>
+                        <li>フランツ・ファノン（脱植民地化の哲学）</li>
+                        <li>実存主義的精神療法（ロロ・メイ、V・フランクル）</li>
+                        <li>1960年代の反体制運動、カウンターカルチャー</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 実存主義の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>サルトル</th>
+                        <th>ハイデガー</th>
+                        <th>カミュ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>中心概念</strong></td>
+                        <td>自由、責任</td>
+                        <td>存在、現存在</td>
+                        <td>不条理、反抗</td>
+                    </tr>
+                    <tr>
+                        <td><strong>神の存在</strong></td>
+                        <td>無神論的</td>
+                        <td>存在論的（神とは別）</td>
+                        <td>無神論的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>政治参加</strong></td>
+                        <td>必須（アンガージュマン）</td>
+                        <td>距離を置く</td>
+                        <td>個人的反抗</td>
+                    </tr>
+                    <tr>
+                        <td><strong>人間の条件</strong></td>
+                        <td>自由という刑</td>
+                        <td>死への存在</td>
+                        <td>不条理との対峙</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>Runtime Self-Modification</td>
+                        <td>OS Kernel Ontology</td>
+                        <td>Exception Handling</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 主著ガイド -->
+        <section class="books-section">
+            <h2>📚 主著ガイド</h2>
+            <div class="book-card">
+                <h4>『嘔吐』（La Nausée）</h4>
+                <span class="year">1938年 / 小説</span>
+                <p>主人公ロカンタンが、存在の偶然性と「吐き気」に直面する物語。哲学的概念を文学的に表現したサルトルの代表作。「存在するとはどういうことか」を身体的に感じさせる実存主義の入門書として最適。</p>
+            </div>
+            <div class="book-card">
+                <h4>『存在と無』（L'Être et le Néant）</h4>
+                <span class="year">1943年 / 哲学書</span>
+                <p>サルトル哲学の主著。即自存在（en-soi）と対自存在（pour-soi）の区別、自己欺瞞、他者のまなざし、自由と責任など、実存主義の核心概念を展開。難解だが、彼の思想の体系的理解には必須。</p>
+            </div>
+            <div class="book-card">
+                <h4>『出口なし』（Huis Clos）</h4>
+                <span class="year">1944年 / 戯曲</span>
+                <p>「地獄とは他者である」の出典。三人の死者が密室に閉じ込められ、互いを「見る」ことで地獄を経験する。他者のまなざしと自己定義の問題を劇的に表現。</p>
+            </div>
+            <div class="book-card">
+                <h4>『実存主義とは何か』（L'existentialisme est un humanisme）</h4>
+                <span class="year">1945年 / 講演録</span>
+                <p>実存主義への批判（無責任、悲観主義）に応えた入門的講演。「実存は本質に先立つ」「人間は自らを創る」などの核心テーゼを平易に解説。サルトル入門として最も読みやすい。</p>
+            </div>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験</h2>
+            <div class="thought-experiment">
+                <h3>ウェイターのパラドックス</h3>
+                <p>パリのカフェにいるウェイターを観察してみよう。彼は「完璧なウェイター」を演じている。動作は正確で、態度は丁寧で、まさに「ウェイターらしい」振る舞いをしている。</p>
+                <p>サルトルは問う——彼は「ウェイターである」のか、それとも「ウェイターを演じている」のか？</p>
+                <p>テーブルやイスは「テーブルである」「イスである」と言える。それらは自己と一致している（即自存在）。しかし人間は違う。ウェイターは「ウェイターであろうとしている」のであって、テーブルがテーブルであるようには「ウェイターではない」。人間には常に自分自身との間に「隙間」がある。
+                </p>
+                <p>もし彼が「私はウェイターだから、こうするしかない」と言うなら、それは自己欺瞞だ。彼はいつでもエプロンを脱ぎ、カフェを出て行くことができる。そうしないのは、彼がそうしないことを「選択している」からだ。
+                </p>
+                <p
+                    style="background: var(--primary); color: #fff; padding: 3rem; margin-top: 3rem; font-size: 1.4rem; font-weight: 700; text-align: center;">
+                    あなたは今、何を「演じている」か？ それは選択か、それとも自己欺瞞か？</p>
+            </div>
+        </section>
+
+        <!-- 9. 知的生涯のタイムライン -->
+        <section class="section">
+            <h2 class="section-title">📅 知的生涯</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1905</div>
+                        <p>パリに生まれる。幼くして父を亡くし、祖父カール・シュヴァイツァー（アルベルト・シュヴァイツァーの叔父）の影響で知的教育を受ける。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1929</div>
+                        <p>高等師範学校卒業。教授資格試験で首席（シモーヌ・ド・ボーヴォワールは次席）。ボーヴォワールとの生涯にわたる「契約」関係が始まる。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1933-34</div>
+                        <p>ベルリンでフッサールの現象学を学ぶ。この経験が後の『存在と無』の基盤となる。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1938</div>
+                        <p>小説『嘔吐』を発表。存在の偶然性と吐き気を描き、文学界に衝撃を与える。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1943</div>
+                        <p>主著『存在と無』を発表。実存主義哲学の体系的展開。同年、戯曲『蠅』を上演（ナチス占領下の抵抗のメタファー）。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1945</div>
+                        <p>講演『実存主義とは何か』。戦後パリで実存主義ブームが起こり、サルトルは時代の知的スターとなる。雑誌『レ・タン・モデルヌ』創刊。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1964</div>
+                        <p>ノーベル文学賞を辞退。「作家は制度化されることを拒否すべきだ」。同年、自伝『言葉』を発表。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1968</div>
+                        <p>五月革命で学生たちを支持。街頭でビラを配り、学生運動の象徴となる。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1980</div>
+                        <p>パリで死去。葬儀には5万人が参列し、フランス知識人の時代の終わりを象徴した。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. 批判と限界 -->
+        <section class="section">
+            <h2 class="section-title">⚠️ 批判と限界</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>構造的制約の軽視</h3>
+                    <p>サルトルは個人の自由を強調しすぎ、構造的不平等（人種、階級、ジェンダー）の力を過少評価しているという批判。レヴィ＝ストロースらの構造主義者からの批判。</p>
+                </div>
+                <div class="card">
+                    <h3>無意識の否定</h3>
+                    <p>フロイトの無意識を否定し、すべてを「選択」の言葉で語ることで、トラウマや精神病理の複雑さを見落としているという批判。</p>
+                </div>
+                <div class="card">
+                    <h3>政治的遍歴の問題</h3>
+                    <p>ソ連やマオイズムへの一時的支持、その後の撤回など、政治的立場の変遷が批判された。「参加」の理念と実践の間のギャップ。</p>
+                </div>
+                <div class="card">
+                    <h3>他者論の限界</h3>
+                    <p>「地獄とは他者である」という視点は、他者との肯定的な関係性（連帯、愛、共同性）を十分に説明できないという批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Q&A -->
+        <section class="section">
+            <h2 class="section-title">❓ Q&A</h2>
+            <div class="grid" style="gap: 4rem;">
+                <div class="card">
+                    <h3>Q: サルトルとカミュの違いは？</h3>
+                    <p>両者とも無神論的実存主義者だが、サルトルは「自由と責任」を、カミュは「不条理と反抗」を中心に据えた。また、サルトルは積極的な政治参加（アンガージュマン）を求めたが、カミュはより個人的な態度を取った。1952年に決裂。
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Q: 「地獄とは他者である」とは？</h3>
+                    <p>他者の視線の下で、私は「対象」として凝固させられる。私は自分を自由な主体として経験するが、他者にとっては観察される「もの」になる。この緊張が「地獄」の本質。ただし、これは「人間関係は悪い」という意味ではなく、他者との関係の構造的緊張を指している。
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Q: 実存主義は悲観的？</h3>
+                    <p>サルトル自身は否定した。自由と責任は重荷だが、同時に人間に尊厳と創造性を与える。「人間はその計画そのものであり、計画する限りにおいて存在する」。これは希望の哲学でもある。</p>
+                </div>
+                <div class="card">
+                    <h3>Q: なぜノーベル賞を辞退した？</h3>
+                    <p>「作家は制度化されることを拒否すべきだ」「ジャン＝ポール・サルトルという署名と、ノーベル賞受賞者という署名は同じではない」。権威や制度への参加は、知識人の自由を損なうと考えた。</p>
+                </div>
+                <div class="card">
+                    <h3>Q: ボーヴォワールとの関係は？</h3>
+                    <p>生涯にわたる知的パートナー。伝統的な結婚を拒否し、互いの自由を尊重する「契約」関係を結んだ。互いに他のパートナーを持つことを認め合い、「本質的な愛」と「偶発的な愛」を区別した。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. 用語集 -->
+        <section class="section">
+            <h2 class="section-title">📖 用語集</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>即自存在（en-soi）</strong></td>
+                        <td>石やテーブルのように、自己と完全に一致している存在。意識を持たず、「自分自身である」だけ。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>対自存在（pour-soi）</strong></td>
+                        <td>意識を持ち、自己を反省できる存在。人間。常に自己との間に「隙間」があり、自己を問い続ける。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自己欺瞞（mauvaise foi）</strong></td>
+                        <td>自由から逃げるために、自分を「もの」（決定されたもの）として扱う不誠実な態度。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>企投（projet）</strong></td>
+                        <td>自分を未来に向かって「投げる」こと。人間は常に何かになりつつある存在。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>被投性（facticité）</strong></td>
+                        <td>選択なしに特定の状況（時代、場所、身体）に「投げ込まれている」という人間の条件。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>アンガージュマン（engagement）</strong></td>
+                        <td>知識人が社会的・政治的問題に積極的に参加すること。中立は不可能であり、選択しないことも選択。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>吐き気（la nausée）</strong></td>
+                        <td>存在の偶然性（なぜ存在するのかに答えがないこと）への身体的な嫌悪感・めまい。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>まなざし（le regard）</strong></td>
+                        <td>他者が私を見るとき、私は対象化される。この視線が私の自己認識と自由に影響を与える。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 13. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ジャン＝ポール・サルトルは、20世紀で最も影響力のある思想家の一人であり、哲学を学者の書斎からカフェや街頭に引きずり出した知識人でした。「実存は本質に先立つ」という彼のテーゼは、人間に「なりたい自分になる」自由と、その選択に対する絶対的な責任を突きつけます。神も運命もない世界で、私たちは自分自身の著者であり、その物語のすべての行に責任がある。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    AIが推薦し、アルゴリズムが予測し、データが「あなたはこういう人間だ」と告げる時代において、サルトルの「人間は自らを創造する」という宣言は、かつてないほど重要です。あなたはプロファイルではない。あなたは行動履歴ではない。あなたは次の瞬間に何を選ぶかであり、その選択に言い訳は通じない。それが自由という刑であり、それが尊厳の源泉です。
+                </p>
+                <p
+                    style="margin-top: 3rem; text-align: center; font-size: 2rem; font-weight: 900; color: var(--accent);">
+                    「人間は自由であるように宣告されている。」</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project.</p>
+        <p style="margin-top: 1rem; font-size: 1.2rem; color: var(--accent);">L'existence précède l'essence.</p>
+    </footer>
+</body>
+
+</html>

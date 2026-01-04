@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マリー・キュリー - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #22d3ee;
+            /* Radium Glow */
+            --secondary: #164e63;
+            /* Lab Dark */
+            --accent: #67e8f9;
+            /* Radioactive Light */
+            --highlight: #cffafe;
+            /* Nobel Glow */
+            --bg: #083344;
+            /* Deep Teal */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Radioactive Background */
+        .radio-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(34, 211, 238, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(103, 232, 249, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Curie Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #22d3ee 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "☢️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(34, 211, 238, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Nobel Section */
+        .nobel-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #22d3ee 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .nobel-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .nobel-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .nobel-badge {
+            padding: 2rem 3rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--accent);
+            border-radius: 20px;
+        }
+
+        .nobel-badge h4 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "☢️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="radio-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← RADIOACTIVITY</a>
+        <div>RADIUM_v5.77</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-577 / THE_RADIANT_PIONEER</span>
+        <h1>マリー・キュリー</h1>
+        <p class="en-name">Marie Curie (1867–1934)</p>
+        <p class="catchphrase">「科学に恐れを抱くな、新しいものを理解せよ」——ノーベル賞2度受賞</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">物理学OS</span>
+            <span class="os-tag">化学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">放射能の発見</h2>
+            <div class="hero-box">
+                <p class="hero-text">マリー・キュリー（マリア・スクウォドフスカ＝キュリー）は、ポーランド出身のフランスの物理学者・化学者であり、放射能研究の先駆者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    キュリーの核心的業績——<b>放射能の概念を確立し、ポロニウムとラジウムを発見</b>。ノーベル物理学賞（1903）とノーベル化学賞（1911）を受賞。2分野でノーベル賞を受けた最初の人物。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    女性科学者として数多くの「最初」を達成。フランス初の女性教授。その研究は原子物理学、医療（放射線治療）に革命をもたらしました。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    キュリーの放射能発見は、<b>「物質が不変ではなく変容することを証明——原子はブラックボックスではなく、エネルギーを放出するアクティブなプロセス。物質OSのバグ（崩壊）が機能になる」</b>という、物質観のパラダイムシフト。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. ノーベル賞 -->
+        <section class="nobel-section">
+            <h2>🏆 ノーベル賞2度受賞</h2>
+            <div class="nobel-badges">
+                <div class="nobel-badge">
+                    <h4>物理学賞 1903</h4>
+                    <p style="font-size: 0.9rem;">放射能現象の研究</p>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">ピエール・キュリー、アンリ・ベクレルと共同</p>
+                </div>
+                <div class="nobel-badge">
+                    <h4>化学賞 1911</h4>
+                    <p style="font-size: 0.9rem;">ラジウム・ポロニウムの発見</p>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">単独受賞</p>
+                </div>
+            </div>
+            <p style="margin-top: 3rem; font-size: 1.2rem;">異なる2分野でノーベル賞を受賞した最初の人物</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 キュリーの科学</h2>
+            <div class="quote-box">
+                <p class="quote-text">人生において恐れるべきものは何もない。理解すべきものがあるだけだ。</p>
+                <p class="quote-author">— マリー・キュリー</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">☢️ 放射能</h3>
+                        <p>Radioactivity。キュリーが命名。原子が自発的にエネルギーを放出する現象。</p>
+                </div>
+                <div class="card">
+                    <h3">🔬 ポロニウム</h3>
+                        <p>1898年発見。祖国ポーランドにちなんで命名。最初の新元素発見。</p>
+                </div>
+                <div class="card">
+                    <h3">💎 ラジウム</h3>
+                        <p>1898年発見。ピッチブレンドから抽出。青白く光る。医療応用。</p>
+                </div>
+                <div class="card">
+                    <h3">👫 ピエール・キュリー</h3>
+                        <p>夫であり共同研究者。圧電効果の発見者。1906年事故死。マリーは研究を継続。</p>
+                </div>
+                <div class="card">
+                    <h3">🏥 移動X線ユニット</h3>
+                        <p>第一次大戦中、「小さなキュリー」と呼ばれる移動X線車を開発。負傷兵を救う。</p>
+                </div>
+                <div class="card">
+                    <h3">👩‍🔬 女性の先駆者</h3>
+                        <p>ソルボンヌ大学初の女性教授。科学アカデミーへの入会は拒否された時代。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 業績 -->
+        <section class="section">
+            <h2 class="section-title">🔄 主要業績</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">放射能の研究 (1897–)</h3>
+                        <p>ベクレルの発見を追求。ウラン以外の元素でも放射能を確認。「放射能」という言葉を創出。</p>
+                </div>
+                <div class="card">
+                    <h3">新元素発見 (1898)</h3>
+                        <p>ポロニウムとラジウムを発見。何トンものピッチブレンドから0.1グラムのラジウムを抽出。</p>
+                </div>
+                <div class="card">
+                    <h3">ラジウム研究所 (1914)</h3>
+                        <p>パリに設立（現キュリー研究所）。放射能研究と医療応用の中心。</p>
+                </div>
+                <div class="card">
+                    <h3">放射線治療</h3>
+                        <p>がん治療への放射線応用。「キュリー療法」の基礎。現代医学に影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Matter Transforms</h2>
+            <div class="it-card">
+                <h3">Radioactivity as Emission</h3>
+                    <p>放射能は自発的放出。原子はパッシブではなくアクティブ。エネルギー放出プロセス。</p>
+            </div>
+            <div class="it-card">
+                <h3">Decay as State Change</h3>
+                    <p>放射性崩壊は状態変化。元素Aが元素Bに変換。錬金術が科学になった。</p>
+            </div>
+            <div class="it-card">
+                <h3">Half-life as Timer</h3>
+                    <p>半減期はタイマー。いつ「実行」されるか予測不可能だが、統計的には予測可能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Radiation as Signal</h3>
+                    <p>放射線はシグナル。原子内部の情報を外部に伝える。検出可能なログ出力。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>放射能概念</strong>：物質の新しい性質。</li>
+                <li><strong>新元素発見</strong>：ポロニウム、ラジウム。</li>
+                <li><strong>原子物理学</strong>：原子核研究の基盤。</li>
+                <li><strong>放射線医療</strong>：がん治療への応用。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アンリ・ベクレル</li>
+                            <li>ヴィルヘルム・レントゲン</li>
+                            <li>ピエール・キュリー</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>イレーヌ・キュリー（娘）</li>
+                            <li>原子核物理学</li>
+                            <li>放射線治療</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 物質観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>キュリー（変容する物質）</th>
+                        <th>古典化学（不変の元素）</th>
+                        <th>錬金術</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>元素</strong></td>
+                        <td>変換可能</td>
+                        <td>不変</td>
+                        <td>変換可能（願望）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>原子</strong></td>
+                        <td>複合構造</td>
+                        <td>不可分</td>
+                        <td>不明</td>
+                    </tr>
+                    <tr>
+                        <td><strong>エネルギー</strong></td>
+                        <td>原子から放出</td>
+                        <td>化学反応のみ</td>
+                        <td>霊的力</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>アクティブプロセス</td>
+                        <td>静的データ</td>
+                        <td>マジック</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：科学と危険</h2>
+            <div class="thought-experiment">
+                <h3">知識のコスト</h3>
+                    <p>マリー・キュリーは放射線被曝により1934年に死亡しました。</p>
+                    <p>彼女の研究ノートは今も放射能を帯びており、鉛の箱に保管されている。</p>
+                    <p>科学者は危険を冒して未知を探求すべきか？</p>
+                    <p>キュリー自身は放射線の危険性を軽視していた——当時の知識の限界。</p>
+                    <p>しかし彼女の発見は数百万人のがん患者を救った。</p>
+                    <p>個人のリスクと社会の利益——どうバランスを取るべきか？</p>
+                    <p>現代では放射線防護は厳格。しかし新しい未知は常に存在する。</p>
+                    <p>AI、遺伝子編集——新しい「放射線」に私たちはどう向き合うか。</p>
+                    <p>科学の進歩は常にリスクを伴う。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        未知の危険を冒して研究する価値はありますか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>マリー・キュリーは、ポーランド出身のフランスの物理学者・化学者であり、放射能研究の先駆者です。「放射能」という言葉を創出し、ポロニウムとラジウムを発見。ノーベル物理学賞（1903）とノーベル化学賞（1911）を受賞した最初の人物であり、今なお2分野でノーベル賞を受けた数少ない科学者の一人です。女性科学者として多くの障壁を乗り越え、科学における女性の地位向上に貢献。その研究は原子物理学と放射線医療の基盤となっています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Nothing in life is to be feared, it is only to be understood.</p>
+    </footer>
+</body>
+
+</html>

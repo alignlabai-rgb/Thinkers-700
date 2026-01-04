@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レオン・ワルラス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4338ca;
+            /* Equilibrium Indigo */
+            --secondary: #1e1b4b;
+            /* Market Dark */
+            --accent: #818cf8;
+            /* General Balance Violet */
+            --highlight: #e0e7ff;
+            /* Price Glow */
+            --bg: #0f0e24;
+            /* Lausanne Deep */
+            --text: #e0e7ff;
+            --border: #6366f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Equilibrium Background */
+        .equilibrium-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(67, 56, 202, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(129, 140, 248, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Equilibrium Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚖️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(67, 56, 202, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(67, 56, 202, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Equilibrium */
+        .equilibrium-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #4338ca 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .equilibrium-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .equilibrium-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .market-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .demand-box {
+            background: #dc2626;
+            border: 2px solid #f87171;
+        }
+
+        .supply-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .price-box {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .arrow-box {
+            font-size: 2rem;
+            color: var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .equilibrium-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="equilibrium-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← GENERAL_EQUILIBRIUM</a>
+        <div>LAUSANNE_SCHOOL_v5.32</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-532 / THE_MATHEMATICAL_ECONOMIST</span>
+        <h1>レオン・ワルラス</h1>
+        <p class="en-name">Léon Walras (1834–1910)</p>
+        <p class="catchphrase">「一般均衡——すべての市場が同時に均衡する」</p>
+        <div class="os-tags">
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">数理OS</span>
+            <span class="os-tag">均衡OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">一般均衡理論</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    レオン・ワルラスは、19世紀フランス出身の経済学者であり、「一般均衡理論」の創始者です。ローザンヌ学派を率い、経済学の数学化に最大の貢献をした人物として、シュンペーターから「すべての経済学者の中で最も偉大」と評されました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ワルラスの核心的洞察——<b>すべての市場は相互依存している</b>。ある市場の価格変動は他のすべての市場に影響する。すべての市場が同時に均衡する状態を数学的に分析。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「タトヌマン」（模索過程）——仮想的な競売人が価格を調整し、需給が一致するまで取引は行われない。均衡への収束メカニズム。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ワルラスは、<b>「経済全体はn元連立方程式——すべての変数（価格、数量）が同時に決定される。タトヌマンはイテレーション。解が収束するまでループを回す。一般均衡はシステムの安定状態」</b>と分析した、経済の数学者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 一般均衡 -->
+        <section class="equilibrium-section">
+            <h2>⚖️ 一般均衡のメカニズム</h2>
+            <div class="equilibrium-diagram">
+                <div class="market-box demand-box">
+                    <p>📉 需要</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Demand</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">価格上昇→減少</p>
+                </div>
+                <div class="arrow-box">⇆</div>
+                <div class="market-box price-box">
+                    <p>💰 均衡価格</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">P*</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">需給一致点</p>
+                </div>
+                <div class="arrow-box">⇆</div>
+                <div class="market-box supply-box">
+                    <p>📈 供給</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Supply</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.3rem;">価格上昇→増加</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                すべての市場で同時に需給が一致する価格ベクトルが存在する。これが一般均衡。各市場は相互依存。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ワルラス思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">純粋経済学は数理物理学と同様、数学的科学である。</p>
+                <p class="quote-author">— 『純粋経済学要論』（1874年）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">⚖️ 一般均衡</h3>
+                        <p>すべての市場が同時に均衡。n個の市場、n個の価格。連立方程式で解く。部分均衡の限界を超える。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 タトヌマン</h3>
+                        <p>模索過程。仮想的な競売人が価格を調整。需給が一致するまで取引しない。均衡への収束。</p>
+                </div>
+                <div class="card">
+                    <h3">📐 数学化</h3>
+                        <p>経済学を数理科学として確立。言葉ではなく方程式で理論を構築。厳密性と一般性。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 相互依存</h3>
+                        <p>市場は孤立していない。リンゴ市場の変化はオレンジ市場に影響。すべてが繋がっている。</p>
+                </div>
+                <div class="card">
+                    <h3">📊 限界効用</h3>
+                        <p>ジェヴォンズ、メンガーと並行して限界効用を発見。「限界革命」の三人の一人。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ ローザンヌ学派</h3>
+                        <p>スイスのローザンヌ大学で教鞭。パレートに継承。数理経済学の中心地に。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ワルラスの法則 -->
+        <section class="section">
+            <h2 class="section-title">🔄 ワルラスの法則</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 定義</h3>
+                        <p>すべての市場の超過需要の価値総額はゼロ。ある市場で超過需要があれば、別の市場で超過供給がある。</p>
+                </div>
+                <div class="card">
+                    <h3">2. n-1の独立性</h3>
+                        <p>n個の市場のうち、n-1個が均衡すれば、最後の1つも自動的に均衡。貨幣市場と財市場の関係。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 含意</h3>
+                        <p>価格の相対的な比率だけが重要。絶対的な価格水準は決まらない（ニュメレール問題）。</p>
+                </div>
+                <div class="card">
+                    <h3">4. マクロ経済学への影響</h3>
+                        <p>「セイの法則」との関連。一般均衡では失業は存在しない？ケインズはこれを批判。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Economy as Simultaneous Equations</h2>
+            <div class="it-card">
+                <h3">General Equilibrium as Linear Algebra</h3>
+                    <p>一般均衡は連立方程式。n個の変数（価格）、n個の方程式（需給均衡条件）。解ベクトルが均衡価格。</p>
+            </div>
+            <div class="it-card">
+                <h3">Tâtonnement as Iterative Algorithm</h3>
+                    <p>タトヌマンはイテレーション。初期値から始め、収束条件を満たすまでループ。勾配降下法のようなもの。</p>
+            </div>
+            <div class="it-card">
+                <h3">Interdependence as Microservices</h3>
+                    <p>市場の相互依存はマイクロサービス間の依存関係。一つのサービスの変更が他に波及。全体の整合性が必要。</p>
+            </div>
+            <div class="it-card">
+                <h3">Equilibrium as System Stability</h3>
+                    <p>均衡はシステムの安定状態。外部ショックがなければ状態が維持される。制御理論の均衡点。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>一般均衡理論</strong>：すべての市場の同時均衡を分析。</li>
+                <li><strong>『純粋経済学要論』</strong>：数理経済学の古典。1874年。</li>
+                <li><strong>タトヌマン</strong>：均衡への収束過程のモデル。</li>
+                <li><strong>ワルラスの法則</strong>：超過需要の総和はゼロ。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>クールノー（数理経済学）</li>
+                            <li>父オーギュスト・ワルラス</li>
+                            <li>ジェヴォンズ（限界効用）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>パレート（最適性）</li>
+                            <li>アロー＝ドブリュー（存在証明）</li>
+                            <li>動学的一般均衡モデル（DSGE）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 経済学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ワルラス</th>
+                        <th>マーシャル</th>
+                        <th>ケインズ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>均衡概念</strong></td>
+                        <td>一般均衡</td>
+                        <td>部分均衡</td>
+                        <td>不均衡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>数学的</td>
+                        <td>図解的</td>
+                        <td>総量的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>相互依存</td>
+                        <td>個別市場</td>
+                        <td>マクロ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>連立方程式</td>
+                        <td>モジュール</td>
+                        <td>フィードバック</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：均衡は存在するか</h2>
+            <div class="thought-experiment">
+                <h3">すべての市場が同時に均衡することは可能か</h3>
+                    <p>ワルラスは一般均衡の「概念」を提示しました。しかし存在証明は与えませんでした。</p>
+                    <p>1950年代、アロー、ドブリュー、マッケンジーがトポロジーを用いて存在証明に成功。一般均衡は数学的に存在しうる。</p>
+                    <p>しかし疑問は残ります：</p>
+                    <p>タトヌマンは現実的か？仮想的な競売人はいない。取引は不均衡なまま行われる。</p>
+                    <p>安定性は保証されるか？均衡が存在しても、そこに収束するとは限らない。不安定な均衡もありうる。</p>
+                    <p>計算可能性は？n個の市場、n個の価格を同時に決定する——現実には情報は分散している。</p>
+                    <p>一般均衡理論は「参照点」として価値がある。しかし現実経済の「記述」ではない——これはどこまで問題か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        数学的均衡と現実の経済、その距離は？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>レオン・ワルラスは、「一般均衡理論」の創始者として経済学の数学化に最大の貢献をした19世紀フランスの経済学者です。すべての市場が相互依存し、同時に均衡する状態を連立方程式で分析。タトヌマン（模索過程）で均衡への収束を構想しました。ジェヴォンズ、メンガーと並ぶ「限界革命」の三人の一人。ローザンヌ学派を率い、パレートに継承。アロー＝ドブリューによる存在証明、現代のDSGEモデル——ワルラスの遺産は経済学の中核に位置し続けています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. All markets clear.</p>
+    </footer>
+</body>
+
+</html>

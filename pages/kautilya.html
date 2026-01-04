@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カウティリヤ（チャーナキヤ）- Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #334155;
+            /* Statecraft Gray */
+            --secondary: #1e293b;
+            /* Power Dark */
+            --accent: #64748b;
+            /* Strategy Light */
+            --highlight: #e2e8f0;
+            /* Cunning Glow */
+            --bg: #0f172a;
+            /* Deep Politics */
+            --text: #e2e8f0;
+            --border: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .kautilya-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(51, 65, 85, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(100, 116, 139, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #334155 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🐍";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #475569 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(51, 65, 85, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(51, 65, 85, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mandala-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #334155 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .mandala-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🐍";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kautilya-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ARTHA</a>
+        <div>KAUTILYA_v6.17</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-617 / THE_STRATEGIST</span>
+        <h1>カウティリヤ（チャーナキヤ）</h1>
+        <p class="en-name">Kauṭilya / Chāṇakya（紀元前4世紀頃）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「インドのマキャベリ」——実用主義的国家術</p>
+        <div class="os-tags">
+            <span class="os-tag">政治OS</span>
+            <span class="os-tag">経済OS</span>
+            <span class="os-tag">戦略OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">アルタシャーストラと国家術</h2>
+            <div class="hero-box">
+                <p class="hero-text">カウティリヤ（チャーナキヤ、ヴィシュヌグプタとも）は、マウリヤ朝創始者チャンドラグプタの宰相であり、『アルタシャーストラ』の著者とされる古代インドの政治思想家です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    カウティリヤの歴史的業績——<b>15巻のアルタシャーストラで国家運営、外交、スパイ活動、経済管理を体系化。マキャベリの2000年前</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    目的が手段を正当化する——現実主義政治の古典。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>カウティリヤの著作は、<b>「国家運営のフルスタック・フレームワーク——経済、軍事、外交、諜報、行政すべてをカバー。国家というシステムの完全なドキュメント」</b>という、政治のOS化。</p>
+            </div>
+        </section>
+
+        <section class="mandala-section">
+            <h2>🌐 マンダラ理論（外交サークル）</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                隣国は敵<br>
+                隣国の隣国は味方<br>
+                円状に敵と味方が交互に配置<br>
+                永遠の同盟も永遠の敵もない<br>
+                利益だけが永遠
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 カウティリヤの政治思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">蛇と王には、危険なものと見なして常に警戒せよ。</p>
+                <p class="quote-author">— カウティリヤ『アルタシャーストラ』</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🎯 アルタ</h3>
+                        <p>富と権力の追求。ダルマ、カーマと並ぶ人生の目標。</p>
+                </div>
+                <div class="card">
+                    <h3">🌐 マンダラ</h3>
+                        <p>同心円状の外交理論。隣国は敵、その隣は味方。</p>
+                </div>
+                <div class="card">
+                    <h3">🕵️ スパイ網</h3>
+                        <p>諜報活動の体系化。内部・外部の情報収集。</p>
+                </div>
+                <div class="card">
+                    <h3">💰 経済政策</h3>
+                        <p>課税、貨幣、市場管理。国家の経済運営。</p>
+                </div>
+                <div class="card">
+                    <h3">⚔️ 七支理論</h3>
+                        <p>国家の7要素：王、大臣、領土、城塞、財務、軍、同盟。</p>
+                </div>
+                <div class="card">
+                    <h3">🐍 現実主義</h3>
+                        <p>道徳より効果。目的が手段を正当化。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: State</h2>
+            <div class="it-card">
+                <h3>Saptanga as Microservices</h3>
+                <p>七支はマイクロサービス。各要素が独立しつつ連携。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mandala as Network Topology</h3>
+                    <p>マンダラはネットワークトポロジー。接続パターンの分析。</p>
+            </div>
+            <div class="it-card">
+                <h3">Spy Network as Monitoring</h3>
+                    <p>スパイ網はモニタリング。システム状態の常時監視。</p>
+            </div>
+            <div class="it-card">
+                <h3">Arthashastra as System Architecture</h3>
+                    <p>アルタシャーストラはシステムアーキテクチャ。すべてのコンポーネントを定義。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>アルタシャーストラ</strong>：国家術の古典。</li>
+                <li><strong>マンダラ理論</strong>：同心円外交。</li>
+                <li><strong>七支理論</strong>：国家の構成要素。</li>
+                <li><strong>スパイ体系</strong>：諜報活動の組織化。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>古代インド政治慣行</li>
+                        <li>ブラーフマナ知識</li>
+                        <li>ナンダ朝経験</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>マキャベリとの比較</li>
+                            <li>国際関係論</li>
+                            <li>インド政治思想</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：道徳と効果</h2>
+            <div class="thought-experiment">
+                <h3">目的は手段を正当化するか</h3>
+                    <p>カウティリヤは現実主義者だった。</p>
+                    <p>「善い目的のための悪い手段」を認める。</p>
+                    <p>スパイ活動、暗殺、欺瞞——</p>
+                    <p>国家の利益のためなら正当化。</p>
+                    <p>マキャベリも同じことを言った——1800年後に。</p>
+                    <p>現代でも——</p>
+                    <p>国家安全保障のための人権侵害は許されるか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        目的は手段を正当化しますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>カウティリヤ（チャーナキヤ、紀元前4世紀頃）は、マウリヤ朝創始者チャンドラグプタの宰相であり、『アルタシャーストラ』の著者とされます。15巻で国家運営、外交、スパイ活動、経済管理を体系化し、「インドのマキャベリ」と呼ばれます。マンダラ理論（隣国は敵、その隣は味方）、七支理論（国家の7要素）を提唱。目的が手段を正当化する現実主義政治の古典であり、マキャベリの2000年前に同様の思想を展開しました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Power and strategy.</p>
+    </footer>
+</body>
+
+</html>

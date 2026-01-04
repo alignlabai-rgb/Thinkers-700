@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジェームズ・ワトソン - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* DNA Cyan */
+            --secondary: #164e63;
+            /* Helix Dark */
+            --accent: #22d3ee;
+            /* Double Helix Bright */
+            --highlight: #cffafe;
+            /* Genetics Glow */
+            --bg: #083344;
+            /* Cambridge Deep */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* DNA Background */
+        .dna-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* DNA Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🧬";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* DNA Diagram */
+        .dna-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .dna-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .dna-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .base-pair {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .adenine {
+            background: #dc2626;
+            border: 3px solid #f87171;
+        }
+
+        .thymine {
+            background: #059669;
+            border: 3px solid #34d399;
+        }
+
+        .guanine {
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        .cytosine {
+            background: var(--accent);
+            color: var(--bg);
+            border: 3px solid var(--highlight);
+        }
+
+        .pair-line {
+            font-size: 2rem;
+            color: var(--highlight);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🧬";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dna-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DOUBLE_HELIX</a>
+        <div>MOLECULAR_BIOLOGY_v5.35</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-535 / THE_DNA_DISCOVERER</span>
+        <h1>ジェームズ・ワトソン</h1>
+        <p class="en-name">James Watson (1928–)</p>
+        <p class="catchphrase">「二重らせん——生命の秘密は分子の構造にある」</p>
+        <div class="os-tags">
+            <span class="os-tag">科学OS</span>
+            <span class="os-tag">生命OS</span>
+            <span class="os-tag">還元OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">DNA二重らせん構造</h2>
+            <div class="hero-box">
+                <p class="hero-text">ジェームズ・ワトソンは、フランシス・クリックと共にDNAの二重らせん構造を発見し、1962年にノーベル生理学・医学賞を受賞したアメリカの分子生物学者です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ワトソンとクリックの核心的発見——<b>DNAは二重らせん構造を持ち、塩基対（A-T、G-C）が遺伝情報を保持する</b>。この構造は自己複製のメカニズムを示唆している。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    「生命の秘密」——遺伝情報は化学的コードである。分子レベルで生命を理解することができる。これは還元主義的生命観の勝利でした。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">ワトソンは、<b>「DNAは生命のソースコード——A、T、G、Cの4文字でプログラムが書かれている。二重らせんはバックアップ構造。複製はgit
+                        clone。突然変異はバグ」</b>と解明した、生命のリバースエンジニアです。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. DNA構造 -->
+        <section class="dna-section">
+            <h2>🧬 DNA二重らせん構造</h2>
+            <div class="dna-diagram">
+                <div class="base-pair adenine">
+                    <p>A</p>
+                    <p style="font-size: 0.85rem;">アデニン</p>
+                </div>
+                <div class="pair-line">═</div>
+                <div class="base-pair thymine">
+                    <p>T</p>
+                    <p style="font-size: 0.85rem;">チミン</p>
+                </div>
+                <span style="margin: 0 1rem; color: var(--highlight); font-size: 1.5rem;">|</span>
+                <div class="base-pair guanine">
+                    <p>G</p>
+                    <p style="font-size: 0.85rem;">グアニン</p>
+                </div>
+                <div class="pair-line">≡</div>
+                <div class="base-pair cytosine">
+                    <p>C</p>
+                    <p style="font-size: 0.85rem;">シトシン</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                AとT、GとCが水素結合で対になる。この相補性が複製を可能にし、遺伝情報を忠実に伝達する。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ワトソン・クリック発見の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">私たちは生命の秘密を発見した。</p>
+                <p class="quote-author">— フランシス・クリック（1953年2月28日、イーグル・パブにて）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🧬 二重らせん</h3>
+                        <p>DNAは二重らせん構造。2本の鎖が逆方向に巻きつく。シャルガフの法則（A=T、G=C）と合致。</p>
+                </div>
+                <div class="card">
+                    <h3">🔗 塩基対</h3>
+                        <p>アデニン-チミン（2本の水素結合）、グアニン-シトシン（3本の水素結合）。相補的塩基対。</p>
+                </div>
+                <div class="card">
+                    <h3">🔄 複製メカニズム</h3>
+                        <p>構造自体が複製を示唆。二本鎖がほどけ、各鎖が鋳型となって新しい鎖を合成。半保存的複製。</p>
+                </div>
+                <div class="card">
+                    <h3">📸 X線回折</h3>
+                        <p>ロザリンド・フランクリンのX線回折写真（Photo 51）が決定的な証拠。らせん構造を示す。</p>
+                </div>
+                <div class="card">
+                    <h3">🏆 ノーベル賞</h3>
+                        <p>1962年、ワトソン、クリック、ウィルキンスがノーベル生理学・医学賞を受賞。フランクリンは1958年に死去。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 セントラルドグマ</h3>
+                        <p>DNA→RNA→タンパク質。遺伝情報の流れ。クリックが提唱。分子生物学の中心原理。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 発見のプロセス -->
+        <section class="section">
+            <h2 class="section-title">🔄 発見のプロセス</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 先行研究</h3>
+                        <p>DNAが遺伝物質であることはエイブリーらが示していた。問題はその構造。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 競争</h3>
+                        <p>ライナス・ポーリング（三重らせん説）、キングズ・カレッジ（フランクリン、ウィルキンス）との競争。</p>
+                </div>
+                <div class="card">
+                    <h3">3. モデル構築</h3>
+                        <p>ワトソンとクリックは分子模型を使用。試行錯誤で正しい構造に到達。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 1953年の論文</h3>
+                        <p>Nature誌に1ページの論文。「この構造は複製メカニズムを示唆する」——控えめな表現で革命を宣言。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: DNA as Source Code</h2>
+            <div class="it-card">
+                <h3">DNA as Source Code</h3>
+                    <p>DNAは生命のソースコード。A、T、G、Cの4文字（2ビット）で記述。64個のコドンが20種のアミノ酸を指定。</p>
+            </div>
+            <div class="it-card">
+                <h3">Double Helix as RAID 1</h3>
+                    <p>二重らせんはRAID 1（ミラーリング）。同じ情報の冗長コピー。一方が損傷しても修復可能。</p>
+            </div>
+            <div class="it-card">
+                <h3">Replication as Git Clone</h3>
+                    <p>DNA複製はgit clone。元のリポジトリを複製して新しいセルに渡す。半保存的＝一方のブランチを継承。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mutation as Bug</h3>
+                    <p>突然変異はバグ。複製エラーや外部要因で発生。多くは有害、まれに有益。進化の原動力。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>DNA二重らせん構造</strong>：分子生物学の基盤となる発見。</li>
+                <li><strong>『二重らせん』</strong>：発見の過程を描いた自伝。1968年。</li>
+                <li><strong>ヒトゲノム計画</strong>：ワトソンが初代所長を務めた。</li>
+                <li><strong>分子生物学の確立</strong>：遺伝学と生化学の統合。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>シュレーディンガー（『生命とは何か』）</li>
+                            <li>エイブリー（DNA＝遺伝物質）</li>
+                            <li>シャルガフ（塩基組成則）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>分子生物学</li>
+                            <li>ゲノム科学</li>
+                            <li>バイオテクノロジー</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 生命科学の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ワトソン・クリック</th>
+                        <th>メンデル</th>
+                        <th>ダーウィン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>分子構造</td>
+                        <td>遺伝法則</td>
+                        <td>進化メカニズム</td>
+                    </tr>
+                    <tr>
+                        <td><strong>レベル</strong></td>
+                        <td>分子</td>
+                        <td>形質</td>
+                        <td>個体群</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>モデル構築</td>
+                        <td>交配実験</td>
+                        <td>観察・比較</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ソースコード</td>
+                        <td>継承</td>
+                        <td>適応的最適化</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：生命は情報か</h2>
+            <div class="thought-experiment">
+                <h3">生命の還元主義</h3>
+                    <p>DNAの発見は、生命を「情報」として理解することを可能にしました。</p>
+                    <p>ゲノムはソースコード。遺伝子はサブルーチン。タンパク質はコンパイル結果。</p>
+                    <p>しかし問いがあります：</p>
+                    <p>生命は本当に「プログラム」に還元できるか？</p>
+                    <p>意識、感情、目的——これらも遺伝子で説明できるか？</p>
+                    <p>遺伝子決定論への批判もあります。環境、エピジェネティクス、創発性——還元主義では捉えきれない側面。</p>
+                    <p>ワトソンとクリックの発見は偉大でした。しかし「生命とは何か」という問いはまだ完全には答えられていません。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        生命は「情報」ですか、それとも「それ以上」ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ジェームズ・ワトソンは、フランシス・クリックと共にDNAの二重らせん構造を発見し、1962年にノーベル賞を受賞した分子生物学のパイオニアです。「生命の秘密」——遺伝情報は化学的コードであり、分子レベルで理解できる。この発見はセントラルドグマ、ヒトゲノム計画、バイオテクノロジーへと発展しました。ロザリンド・フランクリンのX線回折データが決定的な役割を果たしたこと、競争と協力のダイナミクスなど、科学史の重要なケーススタディでもあります。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Life's code revealed.</p>
+    </footer>
+</body>
+
+</html>

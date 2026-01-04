@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>十字架のヨハネ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            /* Dark Night Blue */
+            --secondary: #0a1628;
+            /* Abyss Dark */
+            --accent: #60a5fa;
+            /* Soul Light */
+            --highlight: #dbeafe;
+            /* Dawn Glow */
+            --bg: #050a14;
+            /* Deep Night */
+            --text: #dbeafe;
+            --border: #1e40af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .night-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(30, 58, 95, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(96, 165, 250, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3a5f 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🌙";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(30, 58, 95, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(30, 58, 95, 0.2);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Night Section */
+        .night-section {
+            background: linear-gradient(135deg, #000 0%, #1e3a5f 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .night-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .stars {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🌙";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="night-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← DARK NIGHT</a>
+        <div>JOHN_v6.00</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-600 / THE_MYSTIC_POET</span>
+        <h1>十字架のヨハネ</h1>
+        <p class="en-name">John of the Cross (1542–1591)</p>
+        <p class="catchphrase">「魂の暗夜」——闘の中の神との出会い</p>
+        <div class="os-tags">
+            <span class="os-tag">哲学OS</span>
+            <span class="os-tag">神秘OS</span>
+            <span class="os-tag">詩OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">霊性の暗夜</h2>
+            <div class="hero-box">
+                <p class="hero-text">十字架のヨハネ（サン・フアン・デ・ラ・クルス）は、16世紀スペインの神秘家、詩人、カトリック教会の教会博士です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヨハネの歴史的業績——<b>「魂の暗夜」で霊的成長における苦難と剥奪の役割を体系化。神秘神学の頂点</b>。アビラのテレサと共に跣足カルメル会を発展。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    改革反対派により9ヶ月間投獄。その牢獄で最も美しい神秘詩を創作。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    「魂の暗夜」は、<b>「デバッグの苦しみ——すべてが壊れた時、問題を深く理解する機会。暗闇の中でこそ見えるもの。失敗は学びへの入口」</b>という、否定を通じた成長のフレームワーク。
+                </p>
+            </div>
+        </section>
+
+        <!-- 暗夜 -->
+        <section class="night-section">
+            <h2>🌙 魂の暗夜</h2>
+            <div class="stars">✨ 🌑 ✨</div>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+                感覚の暗夜 → 霊の暗夜<br>
+                すべての慰めが剥奪される<br>
+                神さえ不在に感じる<br>
+                しかし、この暗闘を通してこそ<br>
+                より深い神との合一に至る
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ヨハネの神秘神学</h2>
+            <div class="quote-box">
+                <p class="quote-text">暗い夜に、燃え立つ愛の苦悶に駆られて——<br>おお、幸いな冒険！——</p>
+                <p class="quote-author">— 十字架のヨハネ『魂の暗夜』冒頭</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌙 魂の暗夜</h3>
+                    <p>詩と散文の注解。霊的成長における剥奪と苦難の役割。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 愛の生ける炎</h3>
+                        <p>神との合一の頂点を描く。最も神秘的な作品。</p>
+                </div>
+                <div class="card">
+                    <h3">🏔️ カルメル山登攀</h3>
+                        <p>霊的完成への道のガイド。体系的な神秘神学。</p>
+                </div>
+                <div class="card">
+                    <h3">📜 詩作</h3>
+                        <p>スペイン語最高の神秘詩。牢獄で創作された。</p>
+                </div>
+                <div class="card">
+                    <h3">⛓️ 投獄</h3>
+                        <p>1577-78年、9ヶ月間トレドで投獄。改革反対派による。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 否定神学</h3>
+                        <p>神は「〜ではない」。肯定より否定で近づく。nada（無）の道。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Negative Path</h2>
+            <div class="it-card">
+                <h3>Dark Night as Debugging</h3>
+                <p>暗夜はデバッグ。すべてが壊れた時に問題を深く理解する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Nada as Null</h3>
+                    <p>nada（無）はnull。すべてを空にしてこそ、新しいものが入る。</p>
+            </div>
+            <div class="it-card">
+                <h3">Prison as Constraints</h3>
+                    <p>牢獄は制約。制約の中で最も創造的になれる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Poetry as Compression</h3>
+                    <p>詩は圧縮。最小の言葉で最大の意味を。高効率エンコーディング。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>魂の暗夜</strong>：否定を通じた成長の体系化。</li>
+                <li><strong>神秘詩</strong>：スペイン文学の頂点。</li>
+                <li><strong>否定神学</strong>：nada（無）の道。</li>
+                <li><strong>教会博士</strong>：神秘神学の権威。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>偽ディオニュシオス</li>
+                        <li>アビラのテレサ</li>
+                        <li>否定神学伝統</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>カルメル会霊性</li>
+                            <li>T.S.エリオット</li>
+                            <li>現代霊性</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：暗闇の価値</h2>
+            <div class="thought-experiment">
+                <h3">なぜ暗夜なのか</h3>
+                    <p>なぜ神は霊的成長に暗夜を用いるか？</p>
+                    <p>なぜ直接的な光ではなく、闇の中で？</p>
+                    <p>ヨハネの答え：夜には別の視覚がある。</p>
+                    <p>昼の光では見えないものが見える。</p>
+                    <p>慰めがある時は、自分の慰めを愛している。</p>
+                    <p>慰めがない時、神自身を愛するようになる。</p>
+                    <p>現代の「失敗学」も同じ——</p>
+                    <p>成功からは学べないことが、失敗から学べる。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        暗闇でしか見えないものがありますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>十字架のヨハネ（1542-1591）は、16世紀スペインの神秘家、詩人、教会博士です。「魂の暗夜」で霊的成長における苦難と剥奪の役割を体系化し、神秘神学の頂点に達しました。アビラのテレサと共に跣足カルメル会を発展させましたが、改革反対派により9ヶ月間投獄。その牢獄でスペイン語最高の神秘詩を創作しました。否定神学の伝統を受け継ぎ、nada（無）の道を説き、T.S.エリオットなど現代の詩人にも影響を与えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Through the dark night.</p>
+    </footer>
+</body>
+
+</html>

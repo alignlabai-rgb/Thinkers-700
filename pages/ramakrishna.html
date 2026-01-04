@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラーマクリシュナ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ea580c;
+            /* Saffron Orange */
+            --secondary: #7c2d12;
+            /* Deep Ochre */
+            --accent: #fb923c;
+            /* Light Devotion */
+            --highlight: #ffedd5;
+            /* Divine Glow */
+            --bg: #431407;
+            /* Deep Temple */
+            --text: #ffedd5;
+            --border: #f97316;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Hindu Background */
+        .hindu-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Ramakrishna Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ea580c 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🙏";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.6rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #f97316 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(234, 88, 12, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(234, 88, 12, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Religious Paths Section */
+        .paths-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ea580c 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .paths-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .paths-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .path-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50%;
+            text-align: center;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🙏";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .paths-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hindu-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PARAMAHAMSA</a>
+        <div>RAMAKRISHNA_v6.75</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-675 / THE_MYSTIC_OF_DAKSHINESWAR</span>
+        <h1>ラーマクリシュナ</h1>
+        <p class="en-name">Ramakrishna Paramahamsa (1836–1886)</p>
+        <p class="catchphrase">「すべての宗教は真実である——池の水を汲む瓶の形が違うだけ」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">神秘主義OS</span>
+            <span class="os-tag">多元OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">ダクシネーシュワルの聖者</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    ラーマクリシュナ・パラマハンサは、19世紀インドの最も影響力のある神秘家・聖者です。カルカッタ近郊のダクシネーシュワル寺院でカーリー女神の司祭を務めながら、様々な宗教的修行を実践しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「諸宗教の一致」</b>——ヒンドゥー教の様々な道、イスラム教、キリスト教を実践し、すべてが同じ神的真理に導くと体験した。宗教多元主義の体現者。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ラーマクリシュナは頻繁に<b>「サマーディ（三昧）」</b>に入った——神との合一体験。弟子のヴィヴェーカーナンダはこのメッセージを世界に広めた。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ラーマクリシュナは、<b>「すべてのプログラミング言語をマスターしたポリグロット——Java, Python, C++, Haskell...
+                        構文（儀式）は違うが、すべて同じマシン（神）で実行される。どの言語も『正しい』」</b>と体現した人物です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 諸宗教の道 -->
+        <section class="paths-section">
+            <h2>🛕 実践した宗教的道</h2>
+            <div class="paths-grid">
+                <div class="path-box">
+                    <p>🙏 カーリー</p>
+                    <p style="font-size: 0.8rem;">シャクティ崇拝</p>
+                </div>
+                <div class="path-box">
+                    <p>💙 クリシュナ</p>
+                    <p style="font-size: 0.8rem;">バクティ</p>
+                </div>
+                <div class="path-box">
+                    <p>🕉️ ヴェーダーンタ</p>
+                    <p style="font-size: 0.8rem;">不二一元論</p>
+                </div>
+                <div class="path-box">
+                    <p>☪️ イスラム</p>
+                    <p style="font-size: 0.8rem;">スーフィー</p>
+                </div>
+                <div class="path-box">
+                    <p>✝️ キリスト教</p>
+                    <p style="font-size: 0.8rem;">イエスへの瞑想</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                すべての道で「サマーディ」を体験。宗教の多様性は表面的、究極の真理は一つ。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ラーマクリシュナ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">すべての川は海に流れ込む。宗教も同じ——すべて神に至る。</p>
+                <p class="quote-author">— ラーマクリシュナ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🙏 神への献身</h3>
+                        <p>バクティ（献身）がラーマクリシュナの中心。理論より体験。カーリー女神を母として崇拝。</p>
+                </div>
+                <div class="card">
+                    <h3">🌊 諸宗教の一致</h3>
+                        <p>すべての宗教は同じ神への異なる道。「池」は一つ、「瓶」が違うだけ。排他主義を拒否。</p>
+                </div>
+                <div class="card">
+                    <h3">🧘 サマーディ</h3>
+                        <p>神秘的合一体験。頻繁にトランス状態に入った。「ビジョン」ではなく「融合」。</p>
+                </div>
+                <div class="card">
+                    <h3">🪷 カーリー崇拝</h3>
+                        <p>破壊と創造の女神カーリーを「母」として崇拝。シャクティ（女神の力）の伝統。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 寓話と比喩</h3>
+                        <p>複雑な哲学を簡単な物語で説明。「盲人と象」「塩人形と海」などの比喩。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍🎓 弟子たち</h3>
+                        <p>最も有名な弟子はヴィヴェーカーナンダ。ラーマクリシュナ・ミッションを設立。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 神への道 -->
+        <section class="section">
+            <h2 class="section-title">🛤️ 神への四つの道</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. バクティ・ヨーガ</h3>
+                        <p>献身の道。神への愛と崇拝。ラーマクリシュナが最も強調した道。感情を通じて神に近づく。</p>
+                </div>
+                <div class="card">
+                    <h3">2. ジュニャーナ・ヨーガ</h3>
+                        <p>知識の道。ヴェーダーンタ哲学。「私はブラフマンである」。知性を通じて神を認識。</p>
+                </div>
+                <div class="card">
+                    <h3">3. カルマ・ヨーガ</h3>
+                        <p>行為の道。無私の奉仕。結果への執着なく行動。社会奉仕として発展。</p>
+                </div>
+                <div class="card">
+                    <h3">4. ラージャ・ヨーガ</h3>
+                        <p>瞑想の道。心のコントロール。パタンジャリのヨーガ・スートラ。八支則。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Religious Pluralism</h2>
+            <div class="it-card">
+                <h3">All Languages Compile to Same Machine Code</h3>
+                    <p>すべての宗教（言語）は同じ神（マシン）で実行される。構文は違えど、結果は同じ神的真理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Samadhi as Kernel Access</h3>
+                    <p>サマーディはカーネルレベルのアクセス。通常は隠された根本的実在への直接体験。</p>
+            </div>
+            <div class="it-card">
+                <h3">Rituals as User Interface</h3>
+                    <p>儀式、教義はユーザーインターフェース。バックエンド（神）は同じ。UIの好みは人それぞれ。</p>
+            </div>
+            <div class="it-card">
+                <h3">Vivekananda as API Developer</h3>
+                    <p>ヴィヴェーカーナンダはAPI開発者。ラーマクリシュナの内的体験を外部からアクセス可能にパッケージ化。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 遺産</h2>
+            <ul class="list-rich">
+                <li><strong>ラーマクリシュナ・ミッション</strong>：ヴィヴェーカーナンダが設立。教育・福祉活動。</li>
+                <li><strong>近代ヒンドゥー復興</strong>：植民地時代のインドに宗教的自信を与えた。</li>
+                <li><strong>宗教多元主義</strong>：「すべての宗教は真実」という姿勢。</li>
+                <li><strong>宗教間対話</strong>：現代のインターフェイス運動に影響。</li>
+                <li><strong>神秘主義研究</strong>：西洋の学者（オルダス・ハクスリーなど）に影響。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">根</h3>
+                        <ul class="list-rich">
+                            <li>ヴェーダーンタ</li>
+                            <li>タントラ</li>
+                            <li>バクティ運動</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">枝</h3>
+                        <ul class="list-rich">
+                            <li>ヴィヴェーカーナンダ</li>
+                            <li>ラーマクリシュナ・ミッション</li>
+                            <li>宗教多元主義</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 宗教的アプローチの座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ラーマクリシュナ</th>
+                        <th>排他主義</th>
+                        <th>無神論</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>他宗教</strong></td>
+                        <td>すべて真実</td>
+                        <td>自分のみ真実</td>
+                        <td>すべて虚偽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>神</strong></td>
+                        <td>一つ、多くの名</td>
+                        <td>一つ、一つの名</td>
+                        <td>存在しない</td>
+                    </tr>
+                    <tr>
+                        <td><strong>救済</strong></td>
+                        <td>多くの道</td>
+                        <td>一つの道</td>
+                        <td>不要</td>
+                    </tr>
+                    <tr>
+                        <td><strong>方法</strong></td>
+                        <td>体験・実践</td>
+                        <td>信仰・教義</td>
+                        <td>理性・科学</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：すべての宗教は真実か</h2>
+            <div class="thought-experiment">
+                <h3">池と瓶の問い</h3>
+                    <p>ラーマクリシュナは言います：「池（神）は一つ。人々は異なる瓶（宗教）で水を汲む。ある人は『水』と呼び、ある人は『パーニー』と呼び、ある人は『アクア』と呼ぶ。しかし水は同じ」</p>
+                    <p style="margin-top: 1.5rem;">
+                        これは魅力的なビジョンです。しかし批判もあります：宗教は単なる「名前の違い」ではない。矛盾する主張がある——イエスは神か？輪廻は真実か？これらを「すべて真実」と言えるか？</p>
+                    <p style="margin-top: 1.5rem;">
+                        ラーマクリシュナの答えは「体験」にある。理論的には矛盾していても、神秘体験のレベルでは同じ真理に到達する。「象を触る盲人」——各人は象の一部だけを知る。</p>
+                    <p style="margin-top: 1.5rem;">現代の宗教多元主義者（ジョン・ヒックなど）はこのアプローチを発展させました。「究極的実在」は一つだが、人間の認識は文化的に形成される。
+                    </p>
+                    <p style="margin-top: 1.5rem;">しかし、これは各宗教の固有性を薄めてしまうという批判もあります。「すべて同じ」は本当に敬意か、それとも違いの無視か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        すべての宗教は同じ真理に至るのでしょうか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ラーマクリシュナ・パラマハンサ（1836-1886）は、19世紀インドの最も影響力のある神秘家・聖者です。ダクシネーシュワル寺院のカーリー女神の司祭として、彼は様々な宗教的道——ヒンドゥー教のシャクティ崇拝、ヴァイシュナヴィズム、ヴェーダーンタ、イスラム教のスーフィズム、キリスト教——を実践し、すべてが同じ神的真理に導くと体験しました。「すべての川は海に流れ込む」——このメッセージは宗教多元主義の先駆けとなりました。弟子のスワミ・ヴィヴェーカーナンダはこの教えを世界に広め、ラーマクリシュナ・ミッションを設立。近代ヒンドゥー復興と宗教間対話に大きな影響を与えました。神秘体験の普遍性を体現した聖者です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. All religions are true.</p>
+    </footer>
+</body>
+
+</html>

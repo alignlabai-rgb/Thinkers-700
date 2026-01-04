@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エドマンド・ペレグリーノ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0891b2;
+            /* Medical Cyan */
+            --secondary: #164e63;
+            /* Clinical Dark */
+            --accent: #22d3ee;
+            /* Light Healing */
+            --highlight: #cffafe;
+            /* Care Glow */
+            --bg: #083344;
+            /* Deep Hospital */
+            --text: #cffafe;
+            --border: #06b6d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Medical Background */
+        .medical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(8, 145, 178, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Bioethics Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "🩺";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #06b6d4 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(8, 145, 178, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Virtue Section */
+        .virtue-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0891b2 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .virtue-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .virtue-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .virtue-box {
+            padding: 2rem 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+            width: 180px;
+        }
+
+        .virtue-center {
+            padding: 3rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.1rem;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🩺";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="medical-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← BIOETHICS</a>
+        <div>PELLEGRINO_v6.55</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-655 / THE_PHYSICIAN_PHILOSOPHER</span>
+        <h1>エドマンド・ペレグリーノ</h1>
+        <p class="en-name">Edmund D. Pellegrino (1920–2013)</p>
+        <p class="catchphrase">「医療は、傷つきやすい者への信頼に基づく道徳的営みである」</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">医療OS</span>
+            <span class="os-tag">徳OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">医療倫理学の巨人</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    エドマンド・ペレグリーノは、アメリカの医師・生命倫理学者であり、医療専門職倫理の最も重要な理論家の一人です。ジョージタウン大学のケネディ倫理研究所で長年活動し、医師—患者関係の倫理的基盤を探求しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼の核心概念は<b>「医療における徳倫理」</b>——医療倫理は規則や原則だけでは不十分。医師には特定の徳（誠実、思いやり、正義、賢慮など）が必要。医療は「傷つきやすい者への信頼に基づく道徳的営み」。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>「患者の善」</b>を中心に据えた——患者の医学的善、患者が認識する善、人間としての善、そして究極的な善。医療行為はこれらすべてを考慮しなければならない。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ペレグリーノは、<b>「医療システムのソフトウェア倫理——ハードウェア（医療技術）やアルゴリズム（治療プロトコル）だけでは不十分。システム管理者（医師）の徳（品質保証、誠実なログ、ユーザー中心設計）が必要。患者は脆弱なユーザーであり、彼らの信頼を裏切らないシステム設計を」</b>と主張しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 医師の徳 -->
+        <section class="virtue-section">
+            <h2>💊 医師に必要な徳</h2>
+            <div class="virtue-diagram">
+                <div class="virtue-box">
+                    <p>🤝 誠実</p>
+                    <p style="font-size: 0.85rem;">Fidelity</p>
+                </div>
+                <div class="virtue-box">
+                    <p>💚 思いやり</p>
+                    <p style="font-size: 0.85rem;">Compassion</p>
+                </div>
+                <div class="virtue-center">
+                    <p>患者の善<br>Good of Patient</p>
+                </div>
+                <div class="virtue-box">
+                    <p>⚖️ 正義</p>
+                    <p style="font-size: 0.85rem;">Justice</p>
+                </div>
+                <div class="virtue-box">
+                    <p>🧠 賢慮</p>
+                    <p style="font-size: 0.85rem;">Prudence</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                規則に従うだけでは良い医師にはなれない。患者の善のために、医師は特定の徳を育て、体現しなければならない。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ペレグリーノ思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">医療関係の本質は、傷つきやすさと信頼に基づく。</p>
+                <p class="quote-author">— エドマンド・ペレグリーノ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>💊 徳倫理</h3>
+                    <p>規則倫理（何をすべきか）より性格倫理（どんな人であるべきか）。アリストテレス的徳倫理を医療に適用。医師の品性が重要。</p>
+                </div>
+                <div class="card">
+                    <h3">🤕 傷つきやすさ</h3>
+                        <p>患者は病気によって傷つきやすい状態にある。この非対称性が医療倫理の出発点。権力関係の認識。</p>
+                </div>
+                <div class="card">
+                    <h3">🤝 信頼</h3>
+                        <p>患者は医師を信頼して身を委ねる。この信頼を裏切ってはならない。信頼は医療の基盤。</p>
+                </div>
+                <div class="card">
+                    <h3">📋 患者の善</h3>
+                        <p>医学的善、認識される善、人間としての善、究極的善——4つのレベル。総合的に考慮すべき。</p>
+                </div>
+                <div class="card">
+                    <h3">⛪ カトリック生命倫理</h3>
+                        <p>ペレグリーノはカトリック的視点も持つ。しかし世俗的にも通用する議論を展開。信仰とレス理性の統合。</p>
+                </div>
+                <div class="card">
+                    <h3">🏥 臨床倫理</h3>
+                        <p>抽象的理論より臨床現場に根ざした倫理。実際の症例から哲学へ。ベッドサイドの倫理。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 原則主義との対話 -->
+        <section class="section">
+            <h2 class="section-title">🔄 原則主義との対話</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. ビーチャム＆チルドレスの四原則</h3>
+                        <p>自律尊重、善行、無危害、正義——これらは有用だが、規則のリストに過ぎない。誰がこれを実践するかが問題。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 徳なき原則</h3>
+                        <p>原則を知っていても、徳なき医師は実践できない。規則を暗記しても、状況に応じた判断ができない。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 補完関係</h3>
+                        <p>ペレグリーノは原則を否定しない。原則＋徳が必要と主張。規則と性格の両方。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 医療の本質</h3>
+                        <p>医療は技術ではなく道徳的営み。患者は商品ではなく傷つきやすい人間。この認識が出発点。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Medical Ethics</h2>
+            <div class="it-card">
+                <h3>Virtue as Code Quality</h3>
+                <p>徳はコード品質。良いプログラマーは単にシンタックスを知っているだけでなく、クリーンコード、可読性、保守性への態度を持つ。医師の徳は「医療コード品質」。</p>
+            </div>
+            <div class="it-card">
+                <h3">Vulnerability as Security Risk</h3>
+                    <p>脆弱性はセキュリティリスク。患者は「脆弱な状態」にあるユーザー。システム管理者（医師）は彼らの脆弱性を悪用してはならない。</p>
+            </div>
+            <div class="it-card">
+                <h3">Trust as API Contract</h3>
+                    <p>信頼はAPIコントラクト。患者は医師が契約通りに動作すると信頼してコールする。コントラクト違反は信頼を破壊。</p>
+            </div>
+            <div class="it-card">
+                <h3">Patient Good as User-Centered Design</h3>
+                    <p>患者の善はユーザー中心設計。システムは開発者のためではなく、ユーザー（患者）の善のために設計されるべき。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『医療の哲学的基礎』（A Philosophical Basis of Medical Practice）</strong>：トマセッラとの共著。医療倫理の基盤。</li>
+                <li><strong>『医師の徳』（The Virtues in Medical Practice）</strong>：徳倫理の医療への適用。</li>
+                <li><strong>患者の善の四層構造</strong>：医学的・認識的・人間的・究極的善。</li>
+                <li><strong>ケネディ倫理研究所</strong>：ジョージタウン大学での長年の活動。</li>
+                <li><strong>大統領生命倫理諮問委員会議長</strong>：ブッシュ政権下で務める。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>アリストテレス（徳倫理）</li>
+                            <li>トマス・アクィナス</li>
+                            <li>ヒポクラテス</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>医療専門職倫理</li>
+                            <li>臨床倫理学</li>
+                            <li>カトリック生命倫理</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 生命倫理の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ペレグリーノ</th>
+                        <th>ビーチャム＆チルドレス</th>
+                        <th>ジョナサン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>アプローチ</strong></td>
+                        <td>徳倫理</td>
+                        <td>原則主義</td>
+                        <td>責任原理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>焦点</strong></td>
+                        <td>医師の性格</td>
+                        <td>行為の規則</td>
+                        <td>未来への責任</td>
+                    </tr>
+                    <tr>
+                        <td><strong>中心概念</strong></td>
+                        <td>患者の善</td>
+                        <td>四原則</td>
+                        <td>責任</td>
+                    </tr>
+                    <tr>
+                        <td><strong>宗教的背景</strong></td>
+                        <td>カトリック</td>
+                        <td>世俗的</td>
+                        <td>ユダヤ的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>コード品質</td>
+                        <td>仕様書</td>
+                        <td>長期保守計画</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：良い医師とは何か</h2>
+            <div class="thought-experiment">
+                <h3>規則を守る医師 vs 徳ある医師</h3>
+                <p>ある医師は、すべての規則を完璧に守る。インフォームド・コンセントを取得し、プライバシーを保護し、記録を正確につける。しかし患者に対して冷淡で、共感がなく、機械的に対応する。これは良い医師でしょうか？
+                </p>
+                <p style="margin-top: 1.5rem;">原則主義者は言うかもしれない：規則を守っている限り、問題はない。自律尊重、善行、無危害、正義——すべて満たしている。感情は倫理の問題ではない。
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    ペレグリーノは言う：これでは不十分。患者は傷つきやすい状態にある。彼らが必要としているのは、規則の遵守だけでなく、思いやり、共感、信頼できる関係。徳なき規則遵守は医療の本質を見失っている。</p>
+                <p style="margin-top: 1.5rem;">逆のケースはどうか：規則を時に破るが、患者のために心から尽くす医師。徳はあるが、コンプライアンスに問題。どちらが良い医師か？</p>
+                <p style="margin-top: 1.5rem;">
+                    ペレグリーノは答える：理想は両方。しかし規則だけでは「良い医師」の十分条件にならない。徳——誠実、思いやり、賢慮——がなければ、患者の真の善を実現できない。</p>
+                <p
+                    style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                    良い医師に必要なのは、規則ですか、徳ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>エドマンド・ペレグリーノ（1920-2013）は、アメリカの医師・生命倫理学者であり、医療専門職倫理の最も重要な理論家の一人です。医療倫理に徳倫理を導入し、規則や原則だけでは不十分であると主張しました。医師には誠実、思いやり、正義、賢慮といった徳が必要。「医療関係の本質は、傷つきやすさと信頼に基づく」——患者は脆弱な状態で医師に身を委ね、その信頼は裏切られてはならない。患者の善を多層的に（医学的、認識的、人間的、究極的に）理解し、それを実現するのが医師の使命。ジョージタウン大学ケネディ倫理研究所での長年の活動、大統領生命倫理諮問委員会議長としての貢献——ペレグリーノは生命倫理学に消えない足跡を残しました。良い医師とは何か——この問いに対する彼の答えは、規則を超えて、徳を問うものでした。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Healing is a moral act.</p>
+    </footer>
+</body>
+
+</html>

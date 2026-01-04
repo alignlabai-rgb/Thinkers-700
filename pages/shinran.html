@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>親鸞 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c2d12;
+            /* Nembutsu Brown */
+            --secondary: #1c1917;
+            /* Mappo Dark */
+            --accent: #ea580c;
+            /* Tariki Orange */
+            --highlight: #fed7aa;
+            /* Ojo Light */
+            --bg: #0c0a09;
+            /* Bonno Deep */
+            --text: #fef3c7;
+            --border: #9a3412;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Tariki Background */
+        .tariki-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(124, 45, 18, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Jodo Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #292524 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "南無阿弥陀仏";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            opacity: 0.03;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #991b1b 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 45, 18, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3.5rem;
+            text-align: center;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 45, 18, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tariki Diagram */
+        .tariki-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #292524 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .tariki-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .tariki-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tariki-box {
+            padding: 3rem 4rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .bonno-box {
+            background: #52525b;
+            border: 2px solid #a1a1aa;
+        }
+
+        .nembutsu-box {
+            background: var(--accent);
+            border: 3px solid var(--highlight);
+            padding: 4rem 5rem;
+        }
+
+        .ojo-box {
+            background: #059669;
+            border: 2px solid #34d399;
+        }
+
+        .tariki-arrow {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "🙏";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .tariki-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tariki-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← 教行信証</a>
+        <div>JODO_SHINSHU_v4.79</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-479 / 見真大師</span>
+        <h1>親鸞</h1>
+        <p class="en-name">Shinran (1173–1263)</p>
+        <p class="catchphrase">「善人なおもて往生をとぐ、いわんや悪人をや」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">心理OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">悪人こそ救われる</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    「良いことをすれば救われる」——これが宗教の常識でしょう。しかし、鎌倉時代の僧・親鸞は、この常識を逆転させました。<b>「善人なおもて往生をとぐ、いわんや悪人をや」</b>——善人でさえ救われるのだから、悪人が救われないわけがない。これが<b>「悪人正機」</b>の教えです。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    なぜ悪人こそが救いの対象なのか。親鸞によれば、自分を「善人」と思う者は、まだ自力への執着——<b>「はからい」</b>——を捨てきれていない。本当の救いは、自分の無力さを徹底的に認め、阿弥陀仏の本願に身を任せる<b>「他力」</b>によってのみ得られる。煩悩まみれの凡夫であることを自覚した者こそ、阿弥陀仏の救いにふさわしいのです。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    親鸞を学ぶことは、<b>「自力」と「努力」への信仰を問い直すこと</b>です。功績主義、自己啓発、成功哲学——「自分の力で何とかする」という現代の常識に対し、親鸞は根本的な異議を唱えています。
+                </p>
+            </div>
+            <div style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: #fff; border-radius: 20px;">
+                <h4 style="color: #fff;">💡 たとえるなら</h4>
+                <p>親鸞は、<b>「救済とは、自分でバグを修正しようとすること（自力）ではなく、完璧なシステム管理者（阿弥陀仏）にroot権限を委ねること（他力）である。自分がバグだらけ（煩悩）であることを認めた者こそ、サポートを受ける資格がある」</b>と教えた、宗教的システム設計者です。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 他力の図式 -->
+        <section class="tariki-section">
+            <h2>🙏 他力本願の構造</h2>
+            <div class="tariki-diagram">
+                <div class="tariki-box bonno-box">
+                    <p>😔 凡夫</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">煩悩具足の身</p>
+                </div>
+                <div class="tariki-arrow">→</div>
+                <div class="tariki-box nembutsu-box">
+                    <p>🙏 称名念仏</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">南無阿弥陀仏</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #fff;">他力への信</p>
+                </div>
+                <div class="tariki-arrow">→</div>
+                <div class="tariki-box ojo-box">
+                    <p>✨ 往生</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">浄土への往生</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                念仏は「修行」ではなく「感謝」。阿弥陀仏の本願によって、すでに救いは約束されている。念仏はその恩に報いる行為。自力の「はからい」を捨てて、本願に身を任せる。</p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 浄土真宗の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">善人なおもて往生をとぐ、いわんや悪人をや</p>
+                <p class="quote-author">— 『歎異抄』第三条</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🙏 他力本願</h3>
+                        <p>阿弥陀仏の本願（誓い）の力による救い。自分の修行や善行（自力）ではなく、仏の慈悲（他力）に身を委ねる。「本願」は「もともとの誓い」の意。</p>
+                </div>
+                <div class="card">
+                    <h3">😈 悪人正機</h3>
+                        <p>悪人こそが阿弥陀仏の救いの正当な対象。自力で善行できると思う「善人」より、無力を自覚した「悪人」のほうが他力を受け入れられる。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 煩悩具足</h3>
+                        <p>人間は煩悩（欲望・執着・無知）を完全には捨てられない。出家も在家も、聖者も凡夫も、煩悩を抱えたまま生きる。これが人間の現実。</p>
+                </div>
+                <div class="card">
+                    <h3">📿 称名念仏</h3>
+                        <p>「南無阿弥陀仏」と称える念仏。しかしそれは功徳を積む修行ではなく、阿弥陀仏への感謝の表明。念仏さえも自力ではなく他力による。</p>
+                </div>
+                <div class="card">
+                    <h3">💒 非僧非俗</h3>
+                        <p>親鸞は僧侶でありながら妻帯し「愚禿釈親鸞」と名乗った。僧でも俗人でもない第三の生き方。出家主義への根本的批判。</p>
+                </div>
+                <div class="card">
+                    <h3">⚡ 信心正因</h3>
+                        <p>往生の真の原因は念仏の回数ではなく、阿弥陀仏への「信」。一念の信があれば往生は定まる。信と念仏の関係の明確化。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 変革構造図 -->
+        <section class="section">
+            <h2 class="section-title">🔄 自力から他力へ</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 末法思想</h3>
+                        <p>仏教の正しい教え・修行・悟りが廃れた「末法」の時代。自力での悟りは不可能。この危機意識が他力思想の前提。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 法然との出会い</h3>
+                        <p>29歳で法然に師事し、専修念仏の教えに帰依。彼岸の比叡山から此岸の市井へ。民衆のための仏教への転換。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 流罪と新生</h3>
+                        <p>念仏弾圧により越後に流罪。僧籍剥奪され「愚禿」と名乗る。妻帯し、非僧非俗の新しい生き方を開始。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 教えの深化</h3>
+                        <p>『教行信証』で他力思想を体系化。悪人正機、信心正因、自然法爾——親鸞独自の思想を展開。浄土真宗の開祖へ。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 システム分析：他力 as 委譲</h2>
+            <div class="it-card">
+                <h3">Self-fix vs. Managed Service</h3>
+                    <p>自力はセルフホスティング——自分でサーバーを管理し、自分でバグを修正する。他力はマネージドサービス——専門家（阿弥陀仏）に運用を委託し、自分は利用に専念する。</p>
+            </div>
+            <div class="it-card">
+                <h3">Grace as Pre-authentication</h3>
+                    <p>阿弥陀仏の本願は「事前認証」。ユーザー（衆生）がログインする前から、すでにアクセス権が付与されている。念仏は認証プロセスではなく、アクセス確認の通知。</p>
+            </div>
+            <div class="it-card">
+                <h3">Bonno as Permanent Bug</h3>
+                    <p>煩悩は「永続的なバグ」。人間というシステムには修正不可能なバグが組み込まれている。完璧なシステム（成仏）は自力では達成不可能。外部サポートが必須。</p>
+            </div>
+            <div class="it-card">
+                <h3">Akunin-Shoki as Vulnerability Disclosure</h3>
+                    <p>悪人正機は「脆弱性の自己開示」。自分のバグ（煩悩）を隠す者より、正直に報告する者のほうがサポート（救い）を受けられる。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>悪人正機説</strong>：善人より悪人こそ救いの対象という逆説的教説。宗教的常識への根本的挑戦。</li>
+                <li><strong>信心正因</strong>：念仏の回数ではなく「信」こそが往生の真の原因。行より信への転換。</li>
+                <li><strong>非僧非俗</strong>：僧侶でありながら妻帯・肉食。出家主義を超えた新しい仏教徒像。</li>
+                <li><strong>自然法爾</strong>：はからい（自力的計算）を捨て、本願のままに任せる境地。究極の他力思想。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>法然（専修念仏、師匠）</li>
+                            <li>曇鸞・道綽・善導（中国浄土教）</li>
+                            <li>龍樹・天親（インド仏教）</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>蓮如（本願寺中興の祖）</li>
+                            <li>清沢満之（近代真宗）</li>
+                            <li>鈴木大拙（禅と浄土の対話）</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 日本仏教の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>親鸞（浄土真宗）</th>
+                        <th>法然（浄土宗）</th>
+                        <th>道元（曹洞宗）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>中心実践</strong></td>
+                        <td>念仏（感謝として）</td>
+                        <td>念仏（修行として）</td>
+                        <td>只管打坐</td>
+                    </tr>
+                    <tr>
+                        <td><strong>自力/他力</strong></td>
+                        <td>絶対他力</td>
+                        <td>他力</td>
+                        <td>自力</td>
+                    </tr>
+                    <tr>
+                        <td><strong>救いの対象</strong></td>
+                        <td>悪人正機</td>
+                        <td>万人</td>
+                        <td>修行者</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>フルマネージド</td>
+                        <td>サーバーレス</td>
+                        <td>セルフホスト</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：溺れる者</h2>
+            <div class="thought-experiment">
+                <h3">助けを求められるのは誰か</h3>
+                    <p>海で溺れている二人がいます。一人は「自分は泳げる」と確信して、必死にもがいています。もう一人は「自分は泳げない」と知って、救助を待っています。</p>
+                    <p>どちらが助かるでしょうか？——「自分は泳げる」と思っている者は、助けの手を拒否するかもしれません。しかし「自分は泳げない」と知っている者は、差し伸べられた手を素直につかむことができます。</p>
+                    <p>親鸞の「悪人正機」はこれと似ています。「自分は善人だ」「自分の力で救いを得られる」と思う者は、阿弥陀仏の本願を必要としない——つまり受け取れない。「自分は煩悩まみれの悪人だ」「自力では救われない」と知る者こそ、本願の救いをそのまま受け取れる。
+                    </p>
+                    <p>救いを求められるのは、救いが必要だと知っている者だけなのです。</p>
+                    <p
+                        style="background: var(--accent); color: #fff; padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        あなたは「善人」ですか、「悪人」ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>親鸞の浄土真宗は、日本仏教の中で最も徹底した「他力」思想です。「悪人正機」は宗教的常識を逆転させ、自力への執着こそが救いの障害だと教えました。煩悩具足の凡夫であることを認め、阿弥陀仏の本願にすべてを委ねる——この教えは、功績主義と自己啓発に支配された現代社会においても、根本的な異議申し立てとして響き続けています。僧でも俗人でもない「非僧非俗」の生き方、妻帯・肉食の公認、念仏を「修行」ではなく「感謝」として再定義——親鸞は仏教を根本から再構築し、在家者のための宗教を完成させました。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. 南無阿弥陀仏</p>
+    </footer>
+</body>
+
+</html>

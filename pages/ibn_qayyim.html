@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イブン・カイイム・アル＝ジャウズィーヤ - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7e22ce;
+            /* Spirituality Purple */
+            --secondary: #3b0764;
+            /* Heart Dark */
+            --accent: #a855f7;
+            /* Path Light */
+            --highlight: #f3e8ff;
+            /* Soul Glow */
+            --bg: #1a0533;
+            /* Deep Spirit */
+            --text: #f3e8ff;
+            --border: #6b21a8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .ibnqayyim-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(126, 34, 206, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7e22ce 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "💜";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.4rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #6b21a8 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(126, 34, 206, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(126, 34, 206, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prison-section {
+            background: linear-gradient(135deg, #000 0%, #7e22ce 50%, #000 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .prison-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "💜";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ibnqayyim-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← HEART</a>
+        <div>IBN_QAYYIM_v6.14</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-614 / THE_HEART_DOCTOR</span>
+        <h1>イブン・カイイム・アル＝ジャウズィーヤ</h1>
+        <p class="en-name">Ibn Qayyim al-Jawziyya (1292–1350)</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「心の医者」——法と霊性の統合</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">霊性OS</span>
+            <span class="os-tag">法OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">法・霊性・倫理の統合</h2>
+            <div class="hero-box">
+                <p class="hero-text">イブン・カイイム・アル＝ジャウズィーヤは、14世紀ダマスカスのハンバリー派法学者、スーフィズム批評家、イブン・タイミーヤの最も著名な弟子です。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    イブン・カイイムの歴史的業績——<b>法学と霊性を統合。『旅人の道標』で心の病と治療を分析。「心の医者」として知られる</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    師イブン・タイミーヤと共に投獄されるも、獄中で多くの著作を執筆。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>イブン・カイイムの著作は、<b>「心のデバッグガイド——欲望、傲慢、嫉妬などのバグを特定し、修正パッチを適用。内面のリファクタリング」</b>という、魂のメンテナンス。</p>
+            </div>
+        </section>
+
+        <section class="prison-section">
+            <h2>⛓️ 獄中の執筆</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                師イブン・タイミーヤと共に投獄<br>
+                ダマスカスの城塞で<br>
+                しかし獄中こそ執筆の時<br>
+                多くの名著がここで生まれる<br>
+                外的自由を失っても<br>
+                内的自由は奪えない
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 イブン・カイイムの思想</h2>
+            <div class="quote-box">
+                <p class="quote-text">心には病があり、その治療はクルアーンとスンナにある。</p>
+                <p class="quote-author">— イブン・カイイム・アル＝ジャウズィーヤ</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">💜 心の病</h3>
+                        <p>シュブハート（疑惑）とシャハワート（欲望）。二つの心の病。</p>
+                </div>
+                <div class="card">
+                    <h3">🛤️ 旅人の道標</h3>
+                        <p>来世への旅路。100のステーションを解説。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 法と霊性</h3>
+                        <p>外的シャリーアと内的精神的意味を統合。</p>
+                </div>
+                <div class="card">
+                    <h3">🔥 スーフィズム批判</h3>
+                        <p>革新（ビドア）を批判しつつ、霊性の本質を擁護。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 多産な著述家</h3>
+                        <p>100以上の著作。法学から霊性まで幅広く。</p>
+                </div>
+                <div class="card">
+                    <h3">👨‍🏫 イブン・タイミーヤ</h3>
+                        <p>師に従い、師の思想を発展させる。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Heart</h2>
+            <div class="it-card">
+                <h3>Heart Disease as Bugs</h3>
+                <p>心の病はバグ。欲望と疑惑がシステムを腐敗させる。</p>
+            </div>
+            <div class="it-card">
+                <h3">Cure as Debugging</h3>
+                    <p>治療はデバッグ。クルアーンとスンナがログファイル。</p>
+            </div>
+            <div class="it-card">
+                <h3">Stations as Milestones</h3>
+                    <p>100のステーションはマイルストーン。旅の進捗を測る。</p>
+            </div>
+            <div class="it-card">
+                <h3">Prison as Sandboxed Environment</h3>
+                    <p>獄中はサンドボックス。外部から隔離されても内部で開発続行。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>心の医学</strong>：霊的病理学と治療法。</li>
+                <li><strong>法と霊性の統合</strong>：外的と内的の調和。</li>
+                <li><strong>旅人の道標</strong>：霊的旅路のガイド。</li>
+                <li><strong>健全なスーフィズム</strong>：革新を排し本質を守る。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>イブン・タイミーヤ</li>
+                        <li>ハンバリー法学</li>
+                        <li>初期スーフィズム</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ワッハーブ派</li>
+                            <li>サラフィー主義</li>
+                            <li>現代イスラム復興</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：獄中の自由</h2>
+            <div class="thought-experiment">
+                <h3">外的自由と内的自由</h3>
+                    <p>イブン・カイイムは獄中で最も生産的だった。</p>
+                    <p>外的自由を奪われても——</p>
+                    <p>内的自由は奪えなかった。</p>
+                    <p>むしろ拘束が集中をもたらした？</p>
+                    <p>日常の雑事から解放された？</p>
+                    <p>ソクラテスも獄中で哲学を続けた。</p>
+                    <p>ボエティウスも獄中で『哲学の慰め』を書いた。</p>
+                    <p>制約は創造性を殺すか、育てるか。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        外的自由と内的自由、どちらがより重要ですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>イブン・カイイム・アル＝ジャウズィーヤ（1292-1350）は、14世紀ダマスカスのハンバリー派法学者であり、イブン・タイミーヤの最も著名な弟子です。法学と霊性を統合し、『旅人の道標』で心の病（シュブハートとシャハワート）とその治療を分析。「心の医者」として知られます。師と共に投獄されながらも獄中で多くの著作を執筆し、100以上の作品を残しました。ワッハーブ派、サラフィー主義、現代イスラム復興に影響を与えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Heal the heart.</p>
+    </footer>
+</body>
+
+</html>

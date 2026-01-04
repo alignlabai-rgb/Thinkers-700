@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒポクラテス - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            /* Medical Teal */
+            --secondary: #042f2e;
+            /* Healing Dark */
+            --accent: #2dd4bf;
+            /* Life Light */
+            --highlight: #ccfbf1;
+            /* Health Glow */
+            --bg: #021a19;
+            /* Deep Medicine */
+            --text: #ccfbf1;
+            --border: #0f766e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .hippocrates-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(13, 148, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(45, 212, 191, 0.08) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d9488 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⚕️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #0f766e 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(13, 148, 136, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(13, 148, 136, 0.15);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .oath-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d9488 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .oath-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⚕️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hippocrates-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← MEDICINE</a>
+        <div>HIPPOCRATES_v6.23</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-623 / THE_FATHER_OF_MEDICINE</span>
+        <h1>ヒポクラテス</h1>
+        <p class="en-name">Hippocrates（紀元前460頃–370頃）</p>
+        <p style="font-size: 1.3rem; opacity: 0.8; margin-bottom: 4rem;">「医学の父」——医の倫理と科学的医学</p>
+        <div class="os-tags">
+            <span class="os-tag">倫理OS</span>
+            <span class="os-tag">医学OS</span>
+            <span class="os-tag">科学OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">医の倫理と科学的医学</h2>
+            <div class="hero-box">
+                <p class="hero-text">ヒポクラテスは、古代ギリシアの医師であり、「医学の父」と称される人物です。コス島で生まれ、医学を神秘や呪術から分離し、科学的方法論の基礎を築きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ヒポクラテスの歴史的業績——<b>ヒポクラテスの誓いで医療倫理を確立。四体液説で疾病の自然的原因を理論化。臨床観察を重視</b>。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    現代でも医師はヒポクラテスの誓いの精神を受け継ぐ。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4>💡 たとえるなら</h4>
+                <p>ヒポクラテスの業績は、<b>「医療のプロトコル定義——『まず害するなかれ』というエラーハンドリングの原則。患者データ（症状）を観察し、仮説（診断）を立て、検証（治療）する」</b>という、医学のOS化。
+                </p>
+            </div>
+        </section>
+
+        <section class="oath-section">
+            <h2>📜 ヒポクラテスの誓い（要約）</h2>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; text-align: left;">
+                ・患者の利益のために医術を用いる<br>
+                ・害を与えず、不正を行わない<br>
+                ・致命的な薬を与えない<br>
+                ・堕胎を行わない<br>
+                ・患者の秘密を守る<br>
+                ・自分の能力と判断に従って治療する
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 ヒポクラテスの医学</h2>
+            <div class="quote-box">
+                <p class="quote-text">まず害するなかれ。(Primum non nocere)</p>
+                <p class="quote-author">— ヒポクラテス（帰される言葉）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🩺 臨床観察</h3>
+                    <p>症状を詳細に記録。予後を重視。経験に基づく診断。</p>
+                </div>
+                <div class="card">
+                    <h3">💧 四体液説</h3>
+                        <p>血液、粘液、黄胆汁、黒胆汁。バランスが健康。</p>
+                </div>
+                <div class="card">
+                    <h3">🌿 自然療法</h3>
+                        <p>自然治癒力を重視。食事、休息、運動。</p>
+                </div>
+                <div class="card">
+                    <h3">⚗️ 合理的医学</h3>
+                        <p>神罰や呪術を否定。自然的原因を追求。</p>
+                </div>
+                <div class="card">
+                    <h3">📝 症例記録</h3>
+                        <p>詳細な患者記録。疫学の先駆け。</p>
+                </div>
+                <div class="card">
+                    <h3">⚖️ 医の倫理</h3>
+                        <p>患者第一。秘密保持。害を与えない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Medicine</h2>
+            <div class="it-card">
+                <h3>Oath as Code of Conduct</h3>
+                <p>誓いは行動規範。医師のコーディング・スタンダード。</p>
+            </div>
+            <div class="it-card">
+                <h3">Four Humors as System Model</h3>
+                    <p>四体液説はシステムモデル。パラメータのバランスが健康。</p>
+            </div>
+            <div class="it-card">
+                <h3">Observation as Logging</h3>
+                    <p>臨床観察はロギング。症状を詳細に記録。</p>
+            </div>
+            <div class="it-card">
+                <h3">Do No Harm as Error Prevention</h3>
+                    <p>「害するなかれ」はエラー防止。悪化させないことが最優先。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>医療倫理</strong>：ヒポクラテスの誓い。</li>
+                <li><strong>科学的医学</strong>：呪術からの分離。</li>
+                <li><strong>四体液説</strong>：疾病理論。</li>
+                <li><strong>臨床観察</strong>：症例記録の伝統。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>アスクレピオス信仰</li>
+                        <li>エンペドクレス</li>
+                        <li>エジプト医学</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>ガレノス</li>
+                            <li>イスラム医学</li>
+                            <li>現代医療倫理</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：パターナリズム</h2>
+            <div class="thought-experiment">
+                <h3">医師は患者の利益を知っている？</h3>
+                    <p>ヒポクラテスの倫理——</p>
+                    <p>「患者の利益のために」医術を用いる。</p>
+                    <p>しかし「利益」を決めるのは誰か？</p>
+                    <p>医師か、患者か？</p>
+                    <p>医師が「これが患者のため」と判断し——</p>
+                    <p>患者の意思に反して治療する。</p>
+                    <p>これはパターナリズム（父権主義）。</p>
+                    <p>現代では「インフォームド・コンセント」——</p>
+                    <p>患者自身が決定権を持つ。</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        「患者のため」は、誰が決めるべきですか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>ヒポクラテス（紀元前460頃-370頃）は、古代ギリシアの医師であり「医学の父」と称されます。医学を神秘や呪術から分離して科学的方法論の基礎を築き、ヒポクラテスの誓いで医療倫理を確立しました。「まず害するなかれ」の原則、四体液説、臨床観察の重視は、ガレノス、イスラム医学を経て現代医学に受け継がれています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. First, do no harm.</p>
+    </footer>
+</body>
+
+</html>

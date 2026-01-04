@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エレン・G・ホワイト - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            /* Advent Purple */
+            --secondary: #2e1065;
+            /* Sabbath Dark */
+            --accent: #a78bfa;
+            /* Light Prophecy */
+            --highlight: #ede9fe;
+            /* Health Glow */
+            --bg: #1e1033;
+            /* Deep Remnant */
+            --text: #ede9fe;
+            --border: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        /* Advent Background */
+        .advent-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Adventist Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "✝️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.08;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Pillars Section */
+        .pillars-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .pillars-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .pillars-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .pillar-box {
+            padding: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            width: 180px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4rem;
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "✝️";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+
+            .pillars-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="advent-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← ADVENTISM</a>
+        <div>WHITE_v6.63</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-663 / THE_PROPHETESS</span>
+        <h1>エレン・G・ホワイト</h1>
+        <p class="en-name">Ellen G. White (1827–1915)</p>
+        <p class="catchphrase">「身体は魂の神殿である——健康は霊的義務」</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">健康OS</span>
+            <span class="os-tag">終末論OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 0. 学ぶ意味 -->
+        <section class="section">
+            <h2 class="section-title">アドベンチスト運動の母</h2>
+            <div class="hero-box">
+                <p class="hero-text">
+                    エレン・G・ホワイトは、19世紀アメリカの宗教指導者であり、セブンスデー・アドベンチスト教会の共同創設者・預言者的指導者です。生涯で2000回以上の幻視を受けたと主張し、100冊以上の著作を残しました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    彼女の核心概念は<b>「健康改革」</b>——身体は「魂の神殿」であり、健康は霊的義務。菜食主義、禁酒、禁煙、運動、清潔——これらは神への奉仕の一部。医療と宗教の統合。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    また<b>「安息日遵守」</b>と<b>「再臨待望」</b>——土曜日を安息日として守り、キリストの再臨を待ち望む終末論的信仰。日曜遵守は「獣の刻印」と警告。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    ホワイトは、<b>「キリスト教OSのホリスティック・アップデート——宗教を魂だけでなく身体にも拡張。ヘルスチェック機能（健康改革）、スケジューラ更新（土曜安息日）、終了条件の設定（再臨待望）——包括的なライフスタイルOSを設計」</b>しました。
+                </p>
+            </div>
+        </section>
+
+        <!-- 1. 四本柱 -->
+        <section class="pillars-section">
+            <h2>🏛️ アドベンチズムの柱</h2>
+            <div class="pillars-grid">
+                <div class="pillar-box">
+                    <p>📅 安息日</p>
+                    <p style="font-size: 0.85rem;">土曜日を守る</p>
+                </div>
+                <div class="pillar-box">
+                    <p>✝️ 再臨</p>
+                    <p style="font-size: 0.85rem;">キリストの再来</p>
+                </div>
+                <div class="pillar-box">
+                    <p>🥗 健康改革</p>
+                    <p style="font-size: 0.85rem;">身体は神殿</p>
+                </div>
+                <div class="pillar-box">
+                    <p>📖 預言の霊</p>
+                    <p style="font-size: 0.85rem;">ホワイトの幻視</p>
+                </div>
+            </div>
+            <p
+                style="margin-top: 3rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.8);">
+                これらの教義がセブンスデー・アドベンチスト教会のアイデンティティを形成。
+            </p>
+        </section>
+
+        <!-- 2. OS of the Core -->
+        <section class="section">
+            <h2 class="section-title">🧠 ホワイト思想の核心</h2>
+            <div class="quote-box">
+                <p class="quote-text">身体は魂の神殿である。神はその神殿を健康に保つことを望んでおられる。</p>
+                <p class="quote-author">— エレン・G・ホワイト</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3">🥗 健康改革</h3>
+                        <p>菜食主義を推奨。酒・タバコ・コーヒー・紅茶を禁止。運動、清潔、休息。身体の健康は霊的義務。</p>
+                </div>
+                <div class="card">
+                    <h3">📅 安息日</h3>
+                        <p>土曜日（第七日）を安息日として厳格に守る。日曜遵守は後の獣の刻印と警告。創造の記念。</p>
+                </div>
+                <div class="card">
+                    <h3">✝️ 再臨待望</h3>
+                        <p>キリストの文字通りの再臨を待ち望む。終末論的希望。1844年の「大いなる失望」からの再建。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 預言の霊</h3>
+                        <p>ホワイト自身の幻視は「預言の霊」の現れとされる。彼女の著作は教会で権威を持つ。</p>
+                </div>
+                <div class="card">
+                    <h3">🏥 医療伝道</h3>
+                        <p>健康と宗教を統合した医療ネットワークを構築。今日のロマリンダ大学医療センターなど。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 教育</h3>
+                        <p>ホリスティックな教育哲学。頭・手・心を統合。世界中にアドベンチスト学校を設立。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 健康改革の詳細 -->
+        <section class="section">
+            <h2 class="section-title">🥗 健康改革の内容</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">1. 菜食主義</h3>
+                        <p>肉食を避け、野菜・果物・穀物・ナッツを推奨。エデンの園の本来の食事に戻る。</p>
+                </div>
+                <div class="card">
+                    <h3">2. 禁酒・禁煙</h3>
+                        <p>アルコール、タバコを厳禁。コーヒー、紅茶も避ける。身体を汚す刺激物は神殿を汚す。</p>
+                </div>
+                <div class="card">
+                    <h3">3. 運動と休息</h3>
+                        <p>適度な運動と十分な休息。新鮮な空気と日光。自然治癒力を高める生活。</p>
+                </div>
+                <div class="card">
+                    <h3">4. 水療法</h3>
+                        <p>水を内外から活用。水を飲み、水浴する。当時の医療に代わる自然療法。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ITアナロジー -->
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Holistic Religion</h2>
+            <div class="it-card">
+                <h3">Health as System Maintenance</h3>
+                    <p>健康はシステムメンテナンス。身体（ハードウェア）のケアは、魂（ソフトウェア）のパフォーマンスに影響。定期的なヘルスチェック。</p>
+            </div>
+            <div class="it-card">
+                <h3">Sabbath as Scheduled Downtime</h3>
+                    <p>安息日はスケジュールされたダウンタイム。週に一度、システムを停止して再起動。リフレッシュとリセット。</p>
+            </div>
+            <div class="it-card">
+                <h3">Second Coming as System Reboot</h3>
+                    <p>再臨はシステムの完全リブート。現在の腐敗したシステムを終了し、新しいバージョン（新天新地）を起動。</p>
+            </div>
+            <div class="it-card">
+                <h3">Prophecy as Debug Log</h3>
+                    <p>預言はデバッグログ。神からのメッセージが預言者を通じて記録される。ホワイトの著作はログの集積。</p>
+            </div>
+        </section>
+
+        <!-- 5. 新機能 -->
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>『各時代の大争闘』</strong>：キリスト教史と終末論の包括的著作。</li>
+                <li><strong>『健康への道』</strong>：健康改革の原則。</li>
+                <li><strong>バトルクリーク・サナトリウム</strong>：ケロッグ博士と協力した健康施設。</li>
+                <li><strong>ロマリンダ大学</strong>：アドベンチスト医療教育の中心。</li>
+                <li><strong>世界的な教育・医療ネットワーク</strong>：今日2000万人以上の信者。</li>
+            </ul>
+        </section>
+
+        <!-- 6. 系譜 -->
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3">Import</h3>
+                        <ul class="list-rich">
+                            <li>ウィリアム・ミラー（再臨運動）</li>
+                            <li>健康改革運動</li>
+                            <li>プロテスタント終末論</li>
+                        </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>セブンスデー・アドベンチスト教会</li>
+                            <li>ケロッグ（コーンフレーク）</li>
+                            <li>健康長寿研究</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 比較表 -->
+        <section class="section">
+            <h2 class="section-title">⚖️ 宗教的健康観の座標</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ホワイト</th>
+                        <th>主流プロテスタント</th>
+                        <th>世俗的健康観</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>身体の位置づけ</strong></td>
+                        <td>魂の神殿</td>
+                        <td>副次的</td>
+                        <td>自己目的</td>
+                    </tr>
+                    <tr>
+                        <td><strong>健康の意味</strong></td>
+                        <td>霊的義務</td>
+                        <td>世俗的事項</td>
+                        <td>個人的選択</td>
+                    </tr>
+                    <tr>
+                        <td><strong>食事規定</strong></td>
+                        <td>菜食推奨</td>
+                        <td>自由</td>
+                        <td>科学的根拠</td>
+                    </tr>
+                    <tr>
+                        <td><strong>安息日</strong></td>
+                        <td>土曜日</td>
+                        <td>日曜日</td>
+                        <td>なし</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITアナロジー</strong></td>
+                        <td>ホリスティックOS</td>
+                        <td>分離アーキテクチャ</td>
+                        <td>ユーザー主導</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 8. 思考実験 -->
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：健康と信仰</h2>
+            <div class="thought-experiment">
+                <h3">身体は誰のものか</h3>
+                    <p>エレン・G・ホワイトは「身体は魂の神殿」と言いました。私たちの身体は自分のものではなく、神から預かったもの。だから健康に気をつけることは霊的義務。</p>
+                    <p style="margin-top: 1.5rem;">
+                        この考え方には力があります。実際、アドベンチストは平均より長寿で健康です。ロマリンダはブルーゾーン（長寿地域）の一つ。菜食、禁酒、コミュニティ——これらは科学的にも効果が認められています。
+                    </p>
+                    <p style="margin-top: 1.5rem;">しかし問いが生じます：宗教が健康を規定することは良いことか？</p>
+                    <p style="margin-top: 1.5rem;">肯定的に見れば：動機づけの力。「自分のため」より「神のため」の方が強い動機になる人もいる。コミュニティの支えもある。</p>
+                    <p style="margin-top: 1.5rem;">批判的に見れば：自律性の問題。健康的選択を個人の自由ではなく宗教的義務にすると、従わない人への判断が生じる。不健康な人は「罪人」か？
+                    </p>
+                    <p style="margin-top: 1.5rem;">
+                        現代の「ウェルネス」文化は、宗教なしに似たような規範を生み出しています。グルテンフリー、オーガニック、ヨガ——これらは新しい「世俗宗教」でしょうか？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        健康は義務ですか、それとも権利ですか？</p>
+            </div>
+        </section>
+
+        <!-- 10. まとめ -->
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>エレン・G・ホワイト（1827-1915）は、19世紀アメリカの宗教指導者であり、セブンスデー・アドベンチスト教会の共同創設者です。生涯で2000回以上の幻視を受けたと主張し、100冊以上の著作を残しました。「身体は魂の神殿」——健康は霊的義務であるという彼女の教えは、菜食主義、禁酒禁煙、運動と休息を包括する健康改革運動を生み出しました。土曜日を安息日として守り、キリストの再臨を待ち望む終末論的信仰。バトルクリーク・サナトリウム、ロマリンダ大学——医療と教育のネットワークを世界中に構築。今日、セブンスデー・アドベンチスト教会は2000万人以上の信者を持ち、アドベンチストは世界で最も長寿な集団の一つです。ホワイトの「ホリスティックな信仰」は、宗教と健康の統合の一つのモデルを示しています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. The body is the temple of the soul.</p>
+    </footer>
+</body>
+
+</html>

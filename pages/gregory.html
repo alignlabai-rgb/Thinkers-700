@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グレゴリウス1世 - Thinkers 700</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc2626;
+            /* Papal Red */
+            --secondary: #450a0a;
+            /* Vatican Dark */
+            --accent: #f87171;
+            /* Holy Light */
+            --highlight: #fecaca;
+            /* Chant Glow */
+            --bg: #1c0505;
+            /* Deep Authority */
+            --text: #fecaca;
+            --border: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .papal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(248, 113, 113, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: var(--secondary);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 50%, var(--bg) 100%);
+            color: #fff;
+            padding: 14rem 4rem;
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "⛪";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18rem;
+            opacity: 0.1;
+        }
+
+        .rank {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 0.4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .en-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .os-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .os-tag {
+            padding: 0.6rem 2.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .section {
+            margin-top: 12rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto 0;
+        }
+
+        .hero-box {
+            background: var(--secondary);
+            border: 2px solid var(--border);
+            padding: 5rem;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            font-weight: 400;
+        }
+
+        .hero-text b {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #b91c1c 100%);
+            color: #fff;
+            padding: 7rem;
+            margin: 8rem 0;
+            position: relative;
+            border-radius: 30px;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-family: 'Fira Code', monospace;
+            text-align: right;
+            color: var(--highlight);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .it-analogy {
+            background: var(--secondary);
+            color: #fff;
+            padding: 8rem;
+            margin: 10rem 0;
+            font-family: 'Fira Code', monospace;
+            border-radius: 30px;
+            border: 2px solid var(--accent);
+        }
+
+        .it-analogy h2 {
+            color: var(--accent);
+            margin-bottom: 4rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .it-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 15px;
+        }
+
+        .it-card h3 {
+            color: var(--accent);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Chant Section */
+        .chant-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #dc2626 100%);
+            padding: 8rem;
+            margin: 10rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .chant-section h2 {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+        }
+
+        .chant-notes {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .list-rich li {
+            margin-bottom: 2rem;
+            list-style: none;
+            padding-left: 4rem;
+            position: relative;
+            font-size: 1.15rem;
+        }
+
+        .list-rich li::before {
+            content: "⛪";
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .thought-experiment {
+            background: var(--secondary);
+            border: 3px solid var(--accent);
+            padding: 5rem;
+            margin: 10rem 0;
+            border-radius: 20px;
+        }
+
+        .thought-experiment h3 {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 8rem;
+            opacity: 0.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                padding: 10rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="papal-bg"></div>
+
+    <nav class="nav">
+        <a href="../index.html">← PAPACY</a>
+        <div>POPE_v5.94</div>
+    </nav>
+
+    <header class="container header">
+        <span class="rank">OBJECT_ID: P-594 / THE_GREAT_POPE</span>
+        <h1>グレゴリウス1世</h1>
+        <p class="en-name">Gregory I / Gregory the Great (c. 540–604)</p>
+        <p class="catchphrase">「神のしもべのしもべ」——中世教皇権の礎</p>
+        <div class="os-tags">
+            <span class="os-tag">宗教OS</span>
+            <span class="os-tag">制度OS</span>
+            <span class="os-tag">典礼OS</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">西方教会制度</h2>
+            <div class="hero-box">
+                <p class="hero-text">グレゴリウス1世（大グレゴリウス）は、6世紀末から7世紀初頭のローマ教皇であり、カトリック教会の四大ラテン教父の一人です。中世教皇権の基礎を築きました。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    グレゴリウス1世の歴史的業績——<b>教皇権の強化、典礼の改革（グレゴリオ聖歌）、宣教事業、牧会的神学</b>。教会行政の巨人。
+                </p>
+                <p class="hero-text" style="margin-top: 2rem;">
+                    ローマ市を実質的に統治し、ランゴバルド人との交渉、飢饉への対応など世俗的リーダーシップも発揮。
+                </p>
+            </div>
+            <div
+                style="margin-top: 4rem; padding: 4rem; background: var(--accent); color: var(--bg); border-radius: 20px;">
+                <h4 style="color: var(--bg);">💡 たとえるなら</h4>
+                <p style="color: var(--bg);">
+                    グレゴリウス1世は、<b>「組織のCEO兼CTO——制度設計、標準化、外部関係、プロダクト（典礼）開発すべてを統括。スタートアップを巨大企業に成長させた」</b>という、教会のスケーリング。
+                </p>
+            </div>
+        </section>
+
+        <!-- グレゴリオ聖歌 -->
+        <section class="chant-section">
+            <h2>🎵 グレゴリオ聖歌</h2>
+            <div class="chant-notes">♪ ♫ ♪ ♩</div>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto;">
+                西方キリスト教の典礼音楽<br>
+                単旋律・無伴奏<br>
+                グレゴリウス1世に帰されるが、実際は後世の編纂<br>
+                名前は彼の権威を借りている
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🧠 グレゴリウス1世の業績</h2>
+            <div class="quote-box">
+                <p class="quote-text">私は神のしもべのしもべである。</p>
+                <p class="quote-author">— グレゴリウス1世（教皇の伝統的称号の起源）</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>⛪ 教皇権強化</h3>
+                    <p>中世教皇権の基礎。ローマ司教の首位権を主張・実践。</p>
+                </div>
+                <div class="card">
+                    <h3">🎵 典礼改革</h3>
+                        <p>グレゴリオ聖歌。典礼の標準化。礼拝の統一。</p>
+                </div>
+                <div class="card">
+                    <h3">📚 牧会規則</h3>
+                        <p>Liber Regulae Pastoralis。司教・司祭の指導書。広く影響。</p>
+                </div>
+                <div class="card">
+                    <h3">🌍 イングランド宣教</h3>
+                        <p>アウグスティヌスをイングランドに派遣。アングロ・サクソン改宗。</p>
+                </div>
+                <div class="card">
+                    <h3">🏛️ ローマ統治</h3>
+                        <p>教皇領の事実上の統治者。飢饉対策、ランゴバルドとの交渉。</p>
+                </div>
+                <div class="card">
+                    <h3">📖 著作</h3>
+                        <p>『対話』『ヨブ記注解』など。中世神学に影響。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-analogy">
+            <h2>💻 System Analysis: Institution Building</h2>
+            <div class="it-card">
+                <h3>Papacy as Central Authority</h3>
+                <p>教皇権は中央権威。分散したネットワークに統一された管理。</p>
+            </div>
+            <div class="it-card">
+                <h3">Gregorian Chant as Standard Protocol</h3>
+                    <p>グレゴリオ聖歌は標準プロトコル。どの教会でも同じ典礼。</p>
+            </div>
+            <div class="it-card">
+                <h3">Pastoral Rule as Best Practices</h3>
+                    <p>牧会規則はベストプラクティス。リーダーシップのガイドライン。</p>
+            </div>
+            <div class="it-card">
+                <h3">Mission as Expansion</h3>
+                    <p>宣教は市場拡大。新しい地域へのプロダクト展開。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🚀 実装された新機能</h2>
+            <ul class="list-rich">
+                <li><strong>教皇権</strong>：中世教皇制度の基盤。</li>
+                <li><strong>グレゴリオ聖歌</strong>：典礼音楽の標準化。</li>
+                <li><strong>牧会規則</strong>：聖職者指導の体系化。</li>
+                <li><strong>宣教事業</strong>：キリスト教の地理的拡大。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🌳 思想の系譜</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Import</h3>
+                    <ul class="list-rich">
+                        <li>アウグスティヌス</li>
+                        <li>レオ1世</li>
+                        <li>ベネディクトゥス</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3">Export</h3>
+                        <ul class="list-rich">
+                            <li>中世教皇制</li>
+                            <li>西方典礼</li>
+                            <li>カトリック行政</li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🔮 思考実験：宗教と政治</h2>
+            <div class="thought-experiment">
+                <h3">しもべのしもべ、それとも権力者</h3>
+                    <p>グレゴリウス1世は自らを「神のしもべのしもべ」と呼んだ。</p>
+                    <p>しかし、彼は強力な権力者だった。</p>
+                    <p>謙遜の修辞か、それとも権力の正当化か？</p>
+                    <p>宗教的権威と政治的権力の関係は？</p>
+                    <p>「奉仕する指導者」という概念は——</p>
+                    <p>実際の権力行使と矛盾しないか？</p>
+                    <p>現代の「サーバント・リーダーシップ」も同じ問題——</p>
+                    <p>権力を持ちながら謙遜であることは可能か？</p>
+                    <p
+                        style="background: var(--accent); color: var(--bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; font-size: 1.3rem; font-weight: 700; text-align: center;">
+                        権力と謙遜は両立しますか？</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">📝 結論</h2>
+            <p>グレゴリウス1世（c.
+                540-604）は、6世紀末から7世紀初頭のローマ教皇であり、カトリック教会の四大ラテン教父の一人です。中世教皇権の基礎を築き、典礼を改革し（グレゴリオ聖歌）、イングランド宣教を開始し、『牧会規則』で聖職者指導を体系化しました。ローマ市を実質的に統治し、「神のしもべのしもべ」という謙遜な称号を用いながらも、強力なリーダーシップを発揮。西方キリスト教の形を決定的に形作った教皇です。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Intellectual OS Pioneer Project. Servant of the servants of God.</p>
+    </footer>
+</body>
+
+</html>
